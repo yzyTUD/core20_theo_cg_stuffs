@@ -1,8 +1,5 @@
 
-    //here is for 
-        survey ques.
-        transfer questions
-
+    
     bigpic 
         前期基础
             ppt-1-Overview

@@ -1,7 +1,6 @@
 
     //
-        不要轻易出手研究一个领域，先确定研究价值与可行路径！qv策略 
-        quickshow策略:快速做出一些demo，展示学习效果！ 
+        quickshow:快速做出一些demo!
         notations:
             research-  research ideas! 
             t- basic tasks 
