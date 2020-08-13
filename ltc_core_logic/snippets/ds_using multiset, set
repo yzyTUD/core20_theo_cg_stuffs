@@ -1,0 +1,15 @@
+#include <iostream>
+#include <set>
+using namespace std;
+
+int main(){
+	
+	set<int> mset;
+	mset.insert(10); 
+	mset.insert(100);
+	mset.insert(10);
+
+	cout<<mset.size()<<endl;
+
+	return 0;
+}

@@ -1,0 +1,11 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    long SIZE = 4 * 1024 * 1024 * 1024 / 4;
+    int* arr = new int[SIZE];
+    int n;
+    cin >> n;
+    return 0;
+}

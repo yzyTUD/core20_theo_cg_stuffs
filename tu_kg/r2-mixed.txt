@@ -1,0 +1,1900 @@
+
+//convention
+    r0-mov     -- motivation 
+    r0-ext     -- extention of the know. with the help of internet 
+    r1-k2rough -- get a roughly understanding, achieve a detailready state
+    r2-mixed   -- mixed detail learned from slides 
+        pp-  -- problems not solved 
+        q-   -- question may be asked 
+        *q-   -- ques. should be asked 
+        opxx -- the corresponding page number on slides
+    r3-question_list_extraction  -- ques. list extracted from mixed.txt
+    r3-hlev_extraction   -- high level understanding of the contents (global view) for further use
+    r3-problem_extraction  -- extracted problems 
+    r4-summ    -- summary of the whole content 
+    r5-ext     -- additional, research related, dev related code/ lib/ tutorial/ tech 
+    r6-myexam  -- quest. that have been asked in my exam  
+
+---rem2vp-ex-global---
+    *q- use three lan to express that whos daughter is professor 
+        pad op268 
+    *q- their limiations? 
+        <> sparql
+            path length 
+            return path 
+            parallel pattern 
+            otherkinds of pattern 
+        <> rdf triple
+            order  
+        <> datalog
+            no vertices counting 
+            no path iteration 
+            no regular expressions 
+        <> cypher
+            regular expressions are limited 
+        <> property graph
+            some wikidata statements  
+        <> ...
+    *q- well-known items  
+        <> TimBL’s propersal 
+        <> Perron-Frobenius Theorm 
+        <> GN algorithm 
+        <> dendrogram
+        <> hypothetical Community partitioning
+        <> sufficiently dense communities, large bi-cliques must exist
+    *q- all common complexity clases? ! 
+        <> basic: 
+            <> st-reachability
+                NL-complete 
+            <> parallel-reachability
+                NL-complete 
+            <> *TrueQBF 
+                PSpace-complete 
+            <> Hamiltonian checking
+                NP-complete  
+            <> tautology prob. 
+                coNP-hard 
+            <> 3col 
+                NP-complete(NP-hard )
+            <> SAT 
+                NP-hard 
+        <> sparql x3
+            <> total 
+                PSpace-complete 
+            <> data 
+                NL-complete 
+        <> datalog x3  // all harder than sparql 
+            <> total 
+                exptime-complete 
+            <> data 
+                p-complete 
+        <> cypher 
+            at least PSpace complete in query complexity
+        <> schema checking 
+            NP-hard 
+    exq- all sparql subtasks found in exercise: 
+        ...
+    ok-pp- what are prefixed names in this pic? s2p22 
+    h- The OWL Web Ontology Language extends the semantic features of RDF
+        what are semantic features here? 
+    h- theory is sth. build upon each other 
+    pp- expressivity bet. sparql and rdbms sql?
+    h- what does rdf:type mean?     
+        a- 
+            state that a res. is a instance of a class 
+    *q- what means a db is normalized? 
+        a- units converted to base units ...
+    q- we can import wikidata to neo4j? y 
+    q- QA pipeline? graph db querying ext  
+    q- redis? 
+    h- db enlarge operation -- make it complete 
+    q- what are wikis? 
+        a- human knowledge network/ system
+    h- summ highlev s0op30 
+---rem2vp-slide1---* usually starts from here...
+    h- the hype 
+    **q- what is KG op18 
+        graph base that is a graph 
+        collection of facts rules or other knowledge
+        that express somekind of relations and connections 
+    *q- features of KG sys? op19 x3 
+        structured
+        normalised
+        connected
+    *q- why wikipedia not KG? rdbms not? op29 
+    q- def. of simple undirected graph? set of? op- 
+    q- what is hypergraph? op33 
+        a- with higher arity edges
+    q- what is graph with self-loops
+            a- having edges to itself 
+    q- what is multi-graph
+            a- multiple edges with the same vertices same dir 
+    *q- what is in-degree
+            a- number of edges pointing towards it
+    q- what is out-degree 
+            a- number of edges pointing from it
+    q- what is directed path
+            a- a sequence of consecutive edges, two possible dirs
+    *q- what is simple path (directed or undirected)
+            a-path without repeated vertices
+    q- what is notations of a path op-
+            v1->v2 e 
+    q- what is strongly connected
+            a- a directed path from any vertex to any other 
+    q- what is adjacency matrix
+            a- a matrix of VxV, value 1 if there is an edge
+    q- what is missed in adjacency list rep. op40 
+        vertices without edges
+    *q- possible rep. of a graph? x3 
+        how they can be adapted to other complex graphs? op39 
+    *q- pros and cons of each? op42 x2x1
+        matrix
+            +
+                space eff. for dense graph 
+                be processed with matrix operations 
+            - 
+                un natural for labeling  
+        list 
+            + 
+                space effi. for sparse graph 
+                easy labeling 
+            -
+                hard to process 
+    *q- what is rdf? ext op59 what kind of graph? 
+        a- 
+            resource description framework
+            used to modeling directed, edge-labelled graphs
+            a open standard 
+    q- why we need rdf? h ext 
+        a- 
+            graphs may be modeled diff. from diff. people 
+            we want to exchange them, merge them auto. 
+            so we need a standard to describe the desired graph 
+    q- labelling in rdf? restricted form of multi-graphs? op51 
+        a- multiple edges can exist when they have diff. labels 
+    q- what are uri/iri/url ? op54 
+    q- RDF uses IRIs in two ways? op57 
+        a- vertices and edge label 
+    q- shape of a url? op55 
+    q- URIs vs. URLs? 
+        a- url should specify the location of a digital document
+            uri not 
+    q- urn used for? op56 
+        a- naming resources , like isbn 
+    q- rdf identifies vertices and edge-types using? 
+        a- iris 
+---rem2vp-slide2---
+    q- where comes from iris? x2 op5 
+        a- create , reuse 
+    //q- ways to construct Resolvable IRIs? s2p5
+        ...
+    q- why use domain in iris? op5 
+        a- ownership 
+    q- we should avoid existing pages? y ? 
+    q- iris should display to users? n 
+    **q- how to make iris Resolvable? x3  
+        fragments
+        HTTP redirects
+        Content negotiation
+    q- which to use to select the type of file returned? op11
+        Accept header
+    *q- Why not use IRIs for data value? op16 x1 
+        a- 
+            same meaning every where 
+            //buildin understanding 
+            //more interpreted
+    *q- how to rep. a value in rdf?shape?example? xsd? 
+        a- "lexical val"^^datatype-IRI 
+            "547"^^xsd:int 
+            "18-02-2020"^^xsd:date
+        a- datatype based on xml schema 
+    //**q- datatype in RDF is specified by the following components? the shape?
+        value space, lexical space, lexical to value maping 
+    q- lexical space of a integer? op20 
+    q- value space and lexical space of decimal? 
+        arbitry lang decimal numbers, decimal strings 
+    h- we can also use rdf:datatype  , xsd 
+    **q- what are rdf terms?x3 op27 
+        IRIs
+        blank nodes
+        and literals.
+    q- a RDF literal is an expression of form? 
+        a- "lexical value"^^datatype?
+    q- language-tagged string is an expression of the form?
+        a- "string"@language
+    *q- what is bnodes? 
+        a- 
+        are vertices
+            ,that are not identified by a IRI
+        placeholder
+        there is something at this position
+        as auxiliary vertices
+    **q- what is RDF graph? which types are allowed in which part? 
+        a-
+            a set of triples
+            subject: iri, bnodes 
+            predicate: iri
+            object: iri, bnodes, literal
+    q- ill-formed literals are allowed in graphs? y 
+    *q- RDF Serialisations, their formats? x5 
+        op32 
+    q- encode this graph to ntriple? op34 
+    **q- procons of the rdf Serialisations x2? op41 
+        Ntriple
+            pro: simple/fast/basic 
+            c:space/non-humanreadable
+        turtle 
+            pro:simple/humanreadable 
+            cons:can not parse by grab 
+    q- Blank nodes can be encoded using square brackets? y 
+    lan- semicolon ; colon .
+    h- xml rep. is not good, so we need rdf 
+    q- what is the usage of xsd,rdf,rdfs prefix? op43 
+    q- rdf triple, rdf graph, rdf dataset? op44 
+    *q- what is named graph, and how to encode it? op45 
+    q- RDF graphs are really hypergraphs with ternary edges? y 
+    q- we have to express The relation of predicates, so hypergraphs? y 
+    q- RDF provides several properties for describing properties
+    h- Constraint languages SHACL and SHEX can restrict graphs syntactically
+    q- what is properties? op56 
+        ra- used for edge labels 
+---rem1vp-slide3---
+    q- what can be encoded in RDF? almost every thing? 
+        databese, other graphs 
+    h- tools and libs are imp. acco. to standards, which will help us 
+        dev. sth
+    *q- chanllenges when translating data into rdf? op09 
+        n-ary relations 
+        order  
+    *q- how to deal with them? x3 to sort, compare them op20 
+        n-ary relations 
+            Introduce auxiliary nodes 
+            RDF Reification
+            has a dedicated vocabulary to reify RDF triples
+        sort 
+            linked lists
+                easy insert 
+                hard access 
+            order-indicating properties
+                fast access 
+                hard insert 
+            give up     
+    q- what is sparql op23 
+    h- we can update a database use sparql
+    q- asks for a list of all resource IRIs together with their labels op24 
+        <> Find up to ten people whose daughter is a professor
+        <> Count all predicates in the database op27 
+        <> Find the person with most friends
+        <> Find pairs of siblings
+    *q-  shape of a SPARQL query? x4 which parts? op31 
+        Prologue, Select clause, Where clause,Solution set modifiers
+    h- variable assignment? pattern matching process? predicate
+    q- how to express order information in sparql? 
+        desc(), ASC() ordering comparator
+    *q- how to express "most"? op- 
+    q- further types of queries? x2 
+        ASK query: check the existance 
+        CONSTRUCT query: build new rdf triples 
+    *q- does sparql support literals as subject? y 
+        allows variables everywhere
+    *q- what is BGP? 
+        a set of triple patterns, will be used to query
+        used to describe the patterns, which will be used to query 
+        Turtle snippet that specifies patterns
+    *q- What is the meaning of blank nodes in query patterns?
+        unspecified resource
+        *like var. but can not bind
+        can match any node 
+    hq- why support literal as subject? 
+        inversed query 
+    q- What is the meaning of blank nodes in query results?
+        a variable was matched to a bnode
+        the bnode id in query and in db may differ 
+    q- what is the partial func.? vs total func. ?  ext
+        a- all inputs are considered 
+    pp- blank nodes to RDF terms op43 ? 
+        in bgp
+    q- The multiset of these solutions is denoted evalG(P)? how to understand this 
+    *q- what is the result of sparql formally op42 
+    q- what is solution sequence op42 
+    h- multiset is an unordered set 
+    q- what doeas this mean? µ(σ(P)) ⊆ G op43 
+    h- µ changes from querying to result set 
+    h- P is set of triple patterns 
+    h- denote the graph given by the triples in P after first replacing bnodes according to σ, and then replacing variables according to µ
+    h- The multiset of these solutions is denoted evalG(P)
+    h- film-actor example 
+    h- cardinality 其实就是个数，集合中的
+    h- 在查询中的bnode can be mapped to two resources, so there will be two things in solution multiset
+    q- what is the cardinality in this position? given a graph and a query op44
+        <> eg:Arrival eg:actorRole eg:aux1, eg:aux2
+        <> ?film eg:actorRole []
+        q- what is the matching behaver in this place? 
+        q- how about this? ?film eg:actorRole [ eg:actor ?person ] 
+        <> eg:Arrival eg:actorRole eg:aux1, eg:aux2
+        <> eg:aux1 eg:actor eg:Adams ; eg:character "Louise Banks" .
+    q- what is the result from this query? to this graph? this database? op45 
+    h- result should be a list of value to the vars
+    q- What is evalG(eg:s eg:p eg:o) over the empty graph G = ∅? op48 
+    *q- what is Boolean queries? op50 
+        cannot yield bindings for any variable
+        Queries that cannot yield bindings for any variable op50
+    q- What is evalG(eg:s eg:p eg:o) over the graph G = {eg:s eg:p eg:o}? op50
+    h- sparql is meanly depend on matching graph patterns(暴力枚举？)
+    pp- Queries that cannot yield bindings for any variable op50
+        ok, use a examples to understand 
+---rem1vp-ex1-st-slide4---
+    ////exercise 
+        *1-q- Write a SPARQL query that counts the number of directed triangles 
+        *2-q- Write a SPARQL query that nds all pairs 
+            <> of actors that have co-starred in two movies.
+            aux 是辅助节点，查询时利用嵌套
+        *3-q- more than one nobel price 
+            <> see ex5 
+    ////exercise
+    h- Wikidata as a working example to try out our knowledge, other resources possible 
+    h- Wikidata is a Free Knowledge Graph database that we can play with 
+    q- what are properties of wikidata? op08 x2
+        Large graph
+        active community
+    h- Dec 2014: Google announces the closure of Freebase and migration to Wikidata
+    h- 4th Feb 2013: The first statements can be created
+    h- 2012: Wikidata development kick-off in Berlin
+    h- create and dev between 2012-2014 
+    q- applications of wikidata? ext x2
+        a- 
+            QA 
+            data-driven 
+            in apps: Data-driven journalism, 
+                Knowledge base of intelligent assistants 
+                such as Apple Siri and Amazon Alexa
+            in research: Wikidata as a subject of study 
+                (social dynamics, internationality, biases, . . . )
+    *q- Wikimedia wikidata and wikipedia? what is WMF? op17 
+        Wikimedia Foundation
+        wikidata is part of wikimedia proj. 
+        wikidata is a kg based database 
+        wikipedia is driven by wikidata 
+    q- wikidata can be viewed and modified online? 
+    q- basic principles of wikidata? op20 rough 
+        open editing, community control 
+    h- wikidata has one page per entity, with diff. sections 
+    *q- what are two views of wikidata? and their properties. op28 
+        document-centric
+            grouped by subject
+            sections 
+            order is preserved 
+        graph-structured
+            relationships as main 
+            order does not affect 
+    *q- what is Wikidata entity documents? the content it has? x4 - op34 
+        Entity ID
+        Terms header
+        Statements
+        Site links
+    t- language-independent id, abel, short description, 
+        and list of aliases
+        best available language, statements may have a rank, 
+        which encodes their current significance
+        Site links: Connections to pages on other Wikimedia projects
+    *q- what is the main part of the page? 
+        a- statements
+    q- how to realise entity-level information integration? ext 
+        site links  
+    **q- how does property pages differs from entity pages? op34
+        no sitelinks 
+        start with P instead of Q 
+    ***q- Why does Wikidata use abstract (numeric) QIDs and PIDs? op35
+        International
+        stable against change 
+        Convenient short  
+    q- How to find the ID of an item? ext op35 
+        a- just google item + "wikidata id" may work 
+    h- statements may Annotated with property-value pairs
+    q- what is Wikidata’s basic information units? op37
+        statements are basic units! 
+        similar to triple, it is 
+            "Wikidata items + wikidata properties + value"
+    *q- how statements can be build? op37 
+        a- "Wikidata items + wikidata properties + value"
+    q- start time is a property type? y
+    h- property types are predicates, list of all possible properties can be found online 
+        https://www.wikidata.org/wiki/Wikidata:List_of_properties/politics
+        subclass of (P279)
+        instance of (P31)
+    q- find list of all properties in wikidata? ext 
+        an official page 
+    h- Texts in a specific language (similar to language-tagged RDF strings)
+    h- Property types cannot be changed once created.
+    *q- how does wikidata store infos. internally? op41
+        a- document-centric form using a JSON format
+    *q- why Data is converted to RDF? x3 op43 
+        for external use, exchange 
+        entity-specific linked data exportsn via web -> wikipedia 
+        query service
+    *q- differences bet. Wikidata’s graph view and rdf? op43 x3 
+        h- not the same thing but can be converted bet. each other 
+        common: 
+            Based on directed, labelled, multi-graph
+            properties identity 
+            order not imp. 
+        differ: 
+            a-  // from s to large 
+                iri(id)
+                datatype(literal) 
+                links(addi.)
+            Wikidata statements can have annotations and references
+            datatypes are differ 
+            wikidata ID are not IRIs 
+    h- we can Encoding statements in RDF(statements are in graph view)
+    h- wikidata has rdf dump, converts will happen inside this process, encoding statements in RDF
+        is not easy. 
+    h- some predefined prefix:https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format
+    **q- how to encode statements when where are many annotations? op46 
+        a- in the style of reification
+        h- annotations are predicate-object pairs, include bnodes can help 
+    *q- what is diff. bet. wdt: and p: op50 ext 
+        a- 
+            Truthy statement predicates have prefix wdt: 
+                with the property name (e.g. wdt:P2
+                The statements(bnodes ) are linked to the 
+                entity with the predicate with prefix p: 
+                and the name of the property (e.g. p:P2).
+            wdt is used to access predicates
+            p is used to access statements 
+    h- References and complex values are represented using auxiliary nodes
+    lessq- rules that trans. from wikidata to rdf? ext -h op51 
+    /q- what is statement RDF encoding? op51 
+    h- Order of qualifiers or statements is not represented in RDF
+    **q- is there some information loss during that conversion? 
+        Order of qualifiers or statements
+    h- The complete Wikidata-to-RDF documentation is available online
+    **q- how to encode Labels, descriptions, aliases? Sitelinks? op52
+        literals, use property "schema:about" 
+    q- what is content negotiation? ext 
+    h- Wikidata SPARQL Query Service (WDQS)
+    q- liberal configuration, how about the timeout? how many secs? op54 
+    h- features about online query Service? (if a online qu. should be dev.)
+        a- Query editing support (auto-completion, suggestions. examples) 
+    h- how WDQS can be used? op55 
+        a-  playing an important role in 
+        Wikidata editing and quality control
+        but keeping up with Wikidata’s growth becomes harder
+    q- what is the backend of wdqs? ext 
+    h- wdqs uses typical LAMP stack, BlazeGraph used as free and open-source graph database
+        script used to monitor changes and update the database accordingly
+        incoming requests distributed by load balancing (LVS)
+        public SPARQL query service is available
+    q- SPARQL query features? go to ext! 
+---rem1vp-ex1-slide5--- core basic for the following chapters! try them out 
+    ////exercise 
+        *1-q- all people that have returned from two spaceights operated by organisations from dierent countries and amount of time 
+            <> human space flight Q752783 
+            <> instanceof P31 
+            <> lunch time P619 
+            <> astronaut mission (P450)
+        *2-q- find all people that have received more than one Nobel Prize
+            <> award received (P166)
+        *5-q- check for the existence of a 5-clique in the P3373 (“sibling”)
+            return label 
+        q- what is the diff. of wdt:Pxxx and p:Pxxx and ps:Pxxx ? 
+            statement access, see the pic below:  
+            https://www.mediawiki.org/wiki/Wikibase/Indexing/RDF_Dump_Format
+    ////exercise 
+    h- core of sparql relies on basic graph patterns (BGPs)
+        returns sequences or multi-sets of partial functions (“solutions”)
+    *q- what are property paths? op5 
+        can express more complicated predicate for match 
+    *s-q- Find all descendants of Johann Sebastian Bach op06 
+        with no predicate hasChild but two predicates hasFather and hasMother
+    h- Property path syntax-- similar to regular expression
+    q- how does this execute? ˆ!ˆeg:p1*/eg:p2?|eg:p3+ op07 
+        a- (((ˆ((!(ˆeg:p1))*))/(eg:p2?))|(eg:p3+))
+    *q- ˆ(iri*) is actually the same as the meaning of (ˆiri)*? 
+    h- property path pattern is a triple hs, p, oi,
+    h- extending Turtle syntax to allow 
+    **q- meaning of the following ppp op09
+        ! means negation 
+        <> ?x !(eg:p|eg:q)* ?y:
+            neither eg:p nor eg:q, length >= 0 
+        <> ?x eg:p/eg:p eg:o:
+        <> ?x (!eg:p|!ˆeg:q)* ?y
+            forward edges not labelled eg:p and reverse edges not labelled eg:q
+            means not labeled 
+        <> !(ˆiri1|· · · |ˆirin)
+            length-1 path, inversed, none of the given iris  
+        <> !(iri1|· · · |irin)
+            length-1 path, none of the given iris  
+        <> PP1 / PP2
+            followed by 
+        ...
+    h- or inside a sparql query, which may be hard 
+    *q- the semantic def. of the property paths (more formal) op11 set theory
+        path(!(iri1|· · · |irin)) = ? 
+    h- a path from µ(σ(s)) to µ(σ(o)) that is labelled by a word in path(pp)
+    h- We do not count the number of distinct paths: only existence is checked.
+    h- SPARQL 1.1 sometimes counts some paths
+    **q- why counting paths is not feasible in g op14 x2 
+        loops
+        grows exp. 
+    h- we may “erases” the count
+    q- ?s eg:p|eg:q ?o may have multiplicities? 
+        1 or 2 
+    q- Find all descendants of Bach that were composers op15 
+    // Filters
+    h- Filters can express many conditions to eliminate some of the query results
+        it can not intro. new vars into the qu. result 
+    *q- how filters can be used? 
+        a- 
+            express many conditions, eliminate
+            as checkers, can express conditions:
+        p- 
+            Type checks and language checks...
+            Check for non-existence of certain graph patterns
+    *s-q- find out where in Germany towns have names 
+        ending in “-ow” or “-itz” op18 
+    less-q- how semicons can be used? ext 
+    q- Filters are not Turtle syntax and don’t require . as separators?
+    h- Turtle syntax!
+    q- what means bind variables? - give value to variables
+        Answers are eliminated, never added
+    q- The position of filters within a pattern is not relevant? y
+        The relative order of several filters does not 
+            change the final outcome
+        Implementations will optimise order 
+            (apply selective filters as early as possible)
+    ext- detail of the filter optimization? what kind of xxx will be changed order? 
+    h- the order on dates is different from the order on numbers
+    q- are all pairs of resources of distinct type might be comparable? n op22 
+    q- how to check if two terms are the same (not just equal-valued) in filter? op-
+    q- how to check if a string matches a regular expression? 
+    q- howto xxx ... op- 
+    ext- practice the use of diff. conditions and record them in a long snippet file in a mixed way 
+    q- check test type of RDF term? in filter block op- 
+    ext- many different filter conditions.
+    en- Parentheses can be used to group conditions
+    h- Functions can be used in filters in order to calcu. something and compare them with desired. 
+    q- what func. are there can be used to compute? 
+        a- Arithmetic functions, RDF term functions, Date/time functions
+    q- how to extract parts of a date? -prac. op24 
+    h- also some logical func. exists -- IN and NOTIN check membership of a term in a list
+    h- FILTER NOT EXISTS
+    s-q- From Wikidata, find out how many living people 
+        <> are know who are born in Dresden op25 
+    *q- how to provide a form of negation in queries? op- ext  
+    h- RDF allows almost all kinds of terms in almost all positions, maybe no scene 
+    *q- how errors propagate in sparql? 
+        use EBV 
+    *q- what is effective boolean value (EBV)? op26 
+        a- 
+            used for error propergation 
+            empty strings have EBV “false”, other strings have EBV “true”
+    //q- why there can be calcu. correctly? ext 
+    *q- projection = removal of some bindings from results?
+    q- how to set multiplicity of any element in the result to 1? op29 
+    *s-q- Find cities and their population densities op28 
+    h- may define additional results computed by functions in select clauses
+    ext- 
+        projection queries (SELECT queries) may only project out variables bound in the query. 
+        project expressions from result bindings, rather than literal values in the store.
+    *q- what does projection mean? ext 
+        a- 
+            do some calcu. and 
+            return values that do not occur in the graphs 
+                that comprise a query's RDF data set
+        example: 
+            Returning the total cost of an order's line item as the product of two variables
+            Returning computed values, such as the current day of the week
+            Performing simple string parsing
+    q- what are Solution Set Modifiers? ext 
+        a-  
+            expressions after the query’s WHERE clause
+            modify the solution set 
+    q- what means OFFSET? operator? op- 
+    h- Both LIMIT and OFFSET should only be used on 
+        explicitly ordered results
+    *s-q- In Wikidata, find the largest German cities, rank 6 to 15 op30
+    *q- what is group graph pattern? op- 
+        A query part within braces
+    *s-q- In Wikidata, find everybody who is a composer by occupation 
+        <> or who has composed something op33
+    h- union adds up multiplicities
+    s-q- find composers, and, optionally, their spouses
+    ***q- FILTER NOT EXISTS vs MINUS? op- 
+        a- 
+            MINUS can oper. two group graph patterns 
+                that do not share any variables.
+    s-q- In Wikidata, find composers, and, optionally, their spouses op35 
+    h-  OPTIONAL may leave some query variables unbound
+    *s-q- In Wikidata, find universities located in 
+        <> one of the 15 largest German cities op- 
+    q- what is Subqueries? 
+        a- can also be viewed as pre-queries
+    h- order of results from subqueries is not relevant 
+    h- Only selected variable names are part of the subquery result
+        some hidden var. exists 
+    q- what means BIND operator?  op39 
+        a- Define derived values by applying functions to query results 
+    *s-q- find people who are composers, or musicians, 
+        <> or who play some instrument op40 -ferr 
+    q- what is VALUES expression op-
+        a- it defines solution mappings
+            similar to subqueries
+    h- VALUES behaves just like a subquery with the specified result
+    q- only IRIs or literals can be used in VALUES? y
+    *q- what is the important use of VALUES? op- 
+        a- 
+            much more efficient than sending 100 small queries, 
+            or nested UNION
+    invq- efficiently combine 100 possible options? how to do that? op41 
+    h- BIND can be used instead of expression assignments with AS in SELECT
+    *q- what is that "as" part in select? what are they actually? op42 
+    h- cannnot be used before they were assigned.
+    q- what is the problem here? given a piece of query code op- 
+    q- Assignments of constants to variables are better realised with VALUES? 
+    *q- if we are going to assign a constant variable, which should we use? 
+    s-q- write a code to queryxxx use a constant xxx ext 
+    *q- what is grouping? op44 
+        a- split a multiset of solutions into several multisets
+    q- what is Aggregate function? op- in the select part? 
+    invq- what we should do if we want to calcu. value as return 
+    s-q-  find the ten most common professions of people born in Dresden op- 
+    q- for grouping, we have to select aggregate ones? n 
+    h- we can select non-aggregate terms used for grouping
+    ext- several aggregate functions
+    h- All aggregate functions receive one expression as parameter
+    q- is there allowed? (two para. showed)
+    h- DISTINCT expression used to remove duplicates
+    *s-q- find all professions of more than 100 people born in Dresden op46
+    h- Property Path Patterns can express arbitrarily long paths! 
+    h- Aggregates are used to obtain answers that combine several solutions.
+    h- SPARQL aggregate functions: op45 
+    (keep a snippets file to prac. )
+    *h-s-q- all possible features of sparql? -h s6op2 -and possible examples
+    *q- what is COUNT(*) as ?val here COUNT? ext h
+        Aggregates
+    sum-q- feature-rich query language sparql features? x7 s6op-start
+    **q- express filter after aggregation? how op46 
+//////////////////////////////////////core theory part//////////////////////////////////////
+---rem1vp-ex1-slide6---SPARQL: Semantics
+    ////ex 
+        *ok-1-q- fails in the presence of blank nodes
+            pp- ipad page 249 
+        2-q- there are sets of solution mappings such that xxx 
+        *th-hard-3-q- show that equivalent of two statements: graph related 
+        4q- (little too complex, mixed many parts )
+            <> top 30 composers with the most musical works, whose English label is longer than
+                <> the average English label of musical works
+            subq- ...
+    ////ex 
+    h- SPARQL is a feature-rich query language
+    h- bgps are conjunctions of triple patterns
+    //q- what is miu. in this context? op04 ?? 
+    h- SPARQL algebra that are under queries, which is key to understand the complexity of it 
+    h- query algebra operations
+    h- "we define the multiset" are imp. 
+    *h- each operation corresponds to a underlying Semantic
+    h- semantic of bind may hard 
+    *h- sum on op31 
+    q- how to transfer to semantic operations? roughly 
+    h- synta. expression -> algebra expression -> ?
+    h- can be converted into nested expressions
+    //detailready//
+    ////new 
+    //start with op11 
+    q- joins of two multisets(omga) of solution mappings? op12 notation 
+    q- multiplicity, cardinality of the solution? op13 notation
+    *q- BGP solutions using joins (higher lev.) op- notation
+    h- join means combine var. from both side 
+    ****q- BGP solutions using joins, proof that. op17  ferr
+        include from both sides 
+        use subset method from both side 
+        lan-
+            https://www.youtube.com/watch?v=yCwnifwVjIg 
+            miu. is a memeber of BGP(P)
+            A union B 
+        a- 
+            pick up ... 
+            assume... 
+            compatible...
+
+            pick up... 
+            from the def, we know that there is miu1 and miu2 ... 
+            * pad written p218 
+                the two are equal!
+                pp- 
+            from the right side, we know that ... 
+            so, 
+            and that means... 
+    pp- the multiplicity of any solution will therefore be 1
+    *q- how to deal with bnodes? 
+        like variables 
+        that are 
+            projected away later on
+    q- research- optimizations? rough 
+        Efficient data structures for finding compatible solutions to triple patterns
+        Streaming joins: returning first results before join is complete
+    h- pad writting p55
+    q- join--any known algorithm needs exponential time? 
+    h- algebra operations
+    h- Join computed the natural join of two results
+    **q- sum- operators expression? 
+        <> Join(M1, M2), Fileter, Union, MINUS, LeftJoinG, Extend
+        <> BIND? OPTIONAL! Group!!
+        op154 written pad  
+        op31 !
+    h- the para. of those operators? multiset ... 
+    ***q- pp- diff. bet. join and union? op31  
+        join compatible mappings from M1 and M2, no duplicates! 
+        but union has. 
+        https://www.essentialsql.com/what-is-the-difference-between-a-join-and-a-union/
+    h- operators can be expressed with help of set theory 
+    *q- Minus(M1, M2) does not depend on cardinalities of mappings in M2? y
+    h- option operation: augments solutions in M1 
+    *q- ok-pp- why need a filter in LeftJoin? op25 
+        为了兼容，简化内部algebra calcu. 
+    *q- diff. bet. filter inside optional or outside? op27 
+        when inside, maybe only one people returned, but not the other 
+    h- subqueries return multisets?
+    *q- VALUES behaves just like a subquery with the specified result?
+    h- bind -- extension of solution mappings in M
+        pp- eval(µ(ϕ))
+    q- operators for solution set modifiers? x3 work on lists of mappings L 
+    *huge-q- From query to algebra expression? algo? 
+        from inner most 
+        deal with mainly three types of things, condition based 
+        remove all filter outside, and filt them later 
+    q- GROUP BY ?occupation year(?date) possible? y 
+    q- GROUP BY semantic? 
+    h- Φ(µ0) = Φ(µ) op34 这里是在进行筛选，group core part 
+    *q- what are aggregate functions? what are they? 
+        in selection part 
+        calcu. mulitsets to values 
+    *q- how to deal with several aggregates are selected in the query? 
+        join them 
+    q- can further converted into nested expressions of operators? y how 
+        case match and convert with rules 
+    less-sum-q- Join, FilterG,Union,Minus,LeftJoinG,Extend
+---rem1vp-ex1-slide7---SPARQL: Complexity and Expressivity
+    ////ex
+        q-1- transferm to algebra, too large task, prac. basic part
+            q- subtask: 
+        ***q-2- Evaluate the following expression of the SPARQL algebra
+            q- subtask:join means combine 2 things that should compatible
+            q- subtask:LeftJoin means? 
+                optional, filter  
+                pp- 
+
+        q-4- see task6   
+    ////
+
+    q- what is the naive approach and its complexity
+    q- what computational models are? 
+    *q- how To classify algorithms? x3
+    key- Some complexity classes may hard 
+    q- prob. of Finding BGP solutions is a decision prob. 
+        <> and has NP complexity
+        (with respect to the size of the pattern)
+        NP-hard 
+    q- complexity hierarchy
+        https://upload.wikimedia.org/wikipedia/commons/a/a0/P_np_np-complete_np-hard.svg
+    *q- many-one reduction 
+        a-
+            is a reduction which converts instances of 
+                one decision problem into instances of a 
+                second decision problem
+            pp-err- op22 
+    *q- key- NP-hard, NP, NP-c
+        a-
+            means can be reduced to polynomial time by a non-deterministic Turing machine.
+            不是NP的一部分，最直观的就是他们不可以在P时间被验证
+            not part of NP, maybe can not be varified in P time 
+    key- NP 
+        a- can be varified in P time
+    key- NP complete 
+        a- the hardest ones in NP class  
+    q- 如何相互转化？ 
+        A reduction from X to Y is simply an algorithm A which solves X by 
+            making use of some other algorithm B which solves problem Y
+        "polynomial time reduction" if all parts of A other than B have a polynomial time complexit
+    key- From 3-colourability to BGP matching
+    *q- key- coNP
+        a- 
+            the complement class to NP, not equal to NP, not symmetric
+            Other complexity classes are symmetric
+            eg. No Hamiltonian Path
+        Relationships of Complexity Classes ct19s12op5
+        no-instances have short certificates
+        example: 
+            No Hamiltonian Path: Does the graph G not have a Hamiltonian path?
+            Is the propositional logic formula ϕ a tautology (true under all assignments)
+    *q- key- PSpace
+        a- 
+            a more powerful class, sat can be solved in linear space 
+        Space seems to be more powerful than time
+        power of space 
+        ct19s9op8
+        Tautology can be solved in linear space
+        Sat can be solved in linear space
+        using an amount of memory that is polynomial 
+            in the input length (polynomial space) 
+        https://jeremykun.files.wordpress.com/2012/02/chp_venn_diagram.jpg
+        http://s3.amazonaws.com/sf-web-assets-prod/wp-content/uploads/2018/05/29144646/Scott_AAronson_Quantum_And_Classical_Uncertainty.svg
+    *q- space is more powerful than time, why? 
+        they can be reused, take examples to have a better understand!
+    key- typical problems and their complexity
+    h- game design, start from Complexity!
+    h- SPARQL is PSpace-hard, but can be imp. 
+    h- Other widely used query languages, such as SQL, have similar complexities
+    h- SQL query
+        answers, e.g., are not, if all SQL features are allowed.
+        not computable 
+    q- why practical?
+        a- 
+            NL-complete for data complexity 
+            parallelisable
+            queries are limited
+        *In practice, databases grow very big, while queries are rather limited!
+            less than 100 
+        measure more carefully 
+        a polynomial space algorithm could still discover all solutions
+            (and stream them to an output)
+        *SPARQL is NL-complete for data complexity, hence practically tractable and well
+            parallelisable
+        Already Optional alone leads to PSpace-hardness
+        Combinations And/Union
+            and And/Select cause
+            NP-hardness
+        数据库的实现在时间复杂度上会有成熟的优化算法，比如排序（order by），分组统计（group by）和取不重复值（distinct）
+        你要争取毫秒级操作?
+    q- Complexity of SPARQL Evaluation ext 
+        what is the complexity of 
+        "AND", "Filter", "Optional", "Union "
+        "Combinations And/Union "
+
+        a-
+            and,Filter,Union -- in P
+            Optional -- in PSpace 
+            AU -- in NP 
+        http://borneo.informatik.uni-freiburg.de/content/team/schmidt/docs/talk_disputation.pdf
+        
+    h- ext- Exploiting RDF Constraints for Query Optimization/ 
+        "sparql Query Optimization"
+    q- Where this sketch is lacking? s7op58
+    //detailready//
+    ////new////
+    h- BGPG(P) is the join of the solution multisets of all individual triple
+        patterns in P.
+    *q- hardness compute bgp solutions? find, join after that op12 
+        find: linear 
+        join two multisets is quadratic 
+            k multisets is expotional! 
+    q- where comes the hardnbess? 
+        join of partial solutions 
+    *q- measures of a problem’s “difficulty”? x3 
+        computational models 
+        constrained resources
+        resource bounds 
+    q- complexity hierarchy? op14 
+    h- np is extremely common class for challenging problems
+    *q- what is NP 
+        can be varified in P time 
+    q- varify bgp solution is  quadratic time? y 
+    *q- what is polynomially many-one reducible
+        "complete" problems comes from here 
+    *q- L1 can be reduced to L2, L2 is at least hard as L1? y 
+    *q- how to reduce sparql query to 3Col problem:
+        we can construct a situation that use sparql to solve the 3col problem 
+        thus the complexity is at least the one of 3col 
+        detail see slides 
+    *q- 3col problem? 
+        assign 3col to vertices of a graph 
+        ,and no two adjacent vertices have the same colour
+    *q- sat problem?  op
+        给定公式，
+        例如，公式“a AND NOT b”是可以满足的，因为可以找到值a = TRUE且b = FALSE
+        “a AND NOT a”是不可满足的
+        **a- 
+            possible to assign truth values to propositional variables
+                ,so that fai eval to true? 
+    h- Completeness again is defined by polynomial reductions
+    q- what is QBF ? 
+        Quantified Boolean Formulae QBF, 一阶逻辑基本单位
+    *q- the shape of QBF, what is fai here? 
+        propositional logic formula
+        quantifiers {x,x}
+        replace? fai[X/.]
+    *q- TrueQBF problem? 
+        a-
+            fai is a quantified boolean formula 
+            ,does ϕ evaluate to true?
+        consists of two: exists, forall 
+        one can be reduced to SAT 
+        the other can be reduced to tautology checking 
+    *q- assume its hardness? 
+        TrueQBF is harder than both NP and coNP
+        PSpace-complete
+    q- we can also express universal quantifiers? y 
+    ****q- express QBF using sparql? op41 
+        pq example 
+    *q- check SPARQL query is PSpace hard, how to proof -re
+        We reduce QBF formulae to SPARQL queries
+    ***q- why is sparql practice? roughly 
+        NL-complete for data complexity 
+        parallelisable
+        queries are limited
+    *q- what is data-complexity query-complexity? 
+        Does Q have answers over G?, fixed query Q
+        Does Q have answers over G? (for fixed RDF graph G)
+    q-  s-t-reachability problem? 
+        from s to t, does have a directed path? 
+    *q- Deciding if a SPARQL query has any solutions is NL-hard? y 
+    q- Answering queries in PSpace? y
+    //q- Where this sketch is lacking? s7op58
+    *q- why practical? detailed 
+        a- 
+            total = query complexity(wrt. query) + data complexity(wrt. rdf graph)
+                + stream them out(in PSpace, can have many results)
+            queries are limited
+    q- limitations of sparql? see s8! 
+---rem1vps-*ex1*-spql-slide8---SPARQL Limits/Datalog
+    ////ex
+        *1-q- are expressible in SPARQL? try express them! x12 
+            4 pp- ferr 
+                subq- find all kinds of paths with sparql? 
+            q- find nodes that are cousinsn not possible? y 
+            q- can not expressive parallel reachability? y not the same thing with complexity
+            10 ferr 
+                h- both possible direction 
+                h- all predicate not equ. to all path !!
+                pp- can be rewritten with Nr.4? 
+                not that easy 
+            11 hard pp- 
+                h- we have to use eg:iri in this task to get a closer view 
+            12 ferr ferr 
+                subq- select all nodes? 
+                collect the num. of nodes? !!
+        *2-q- show how to decide ϕ ∈ SAT using a SPARQL query that does not contain any BGPs
+            sub-q- express the SAT prob. formally 
+        3-q- find a  SPARQL queries exponential say about that.
+            sub-q- find a  SPARQL queries exponential
+        *4-q- Which of the following QBF are satisfiable?
+            没有明确的背景，not 满足！
+            possible always true? just assign val. for one var.! 
+            one always? 
+    ////
+    *q- why not every set of RDF graphs corresponds to a query
+    h- power means characterise strictly more sets of graphs
+    q- The lower the complexity of query answering, 
+        the lower its expressivity, which complexity?
+        why? op07 (Complexity-based arguments)
+    q- why can not measure expressivity with complexity? not so correct? op08 
+    q- give a example shows that Complexity not equ. to expressivity op- 
+    q- proof that SPARQL cannot express parallel reachability. op- 
+        pp- 不是讲的特别清楚，有一些前提假设没有交代，要弄清楚还需要时间去看CT。暂时就这样背吧....
+    h- Non-regular path languages cannot be expressed--due to the use of regular expression 
+    h- 其实regex同常是够用的？ 进一步的表达性需要更多的复杂性，难以承受的计算量。
+    h- “Wide” paths consisting of repeated graph patterns cannot be expressed
+    q- what can not be expressed? op14 
+    h-  non-linear patterns
+    q- sum- limits of sparql? x4+x4 
+        express limiations + limits by design 
+    h- SPARQL cannot talk about path lengths
+    h- SPARQL has no support for recursive/iterative computation, e.g., for page rank or
+        other graph algorithms
+    h- longest path detection is NP-complete [in data complexity!]
+    q- why not support them in sparql? 
+    q- Potential reasons? x3 
+    //
+    q- what is the func. of the following code? Example 8.5 op17 
+    s-q- replaces all uses of the hasSister 
+        property with a different encoding of the same information
+    h- it can also encode results as RDF graphs (CONSTRUCT)
+    // 
+    h- Rules have their consequence on the left
+    key- rule-based query language datalog 
+    q- diff. bet. datalog and prolog 
+    key- first-order logic/ atom/ predicate 
+        a-
+            布尔逻辑
+                布尔代数是数学中的称呼
+            命题逻辑
+                Propositional calculus/ zeroth-order logic/ statement logic...
+            一阶逻辑
+                predicate logic,First-order logic,谓词逻辑
+                prolog/datalog使用一阶逻辑而不是高阶逻辑
+            二阶逻辑
+                二阶逻辑是一阶逻辑的扩展，一阶逻辑是命题逻辑的扩展
+                Second Order Logic 的引入有个很大的问題，就是 Russell’s Paradox
+            高阶逻辑
+                二阶逻辑接着被高阶逻辑和类型论所扩展。
+    h- Datalog semantics is set-based (no multiplicity of results)
+    h- Datalog is a rule-based query language that 
+        can express more powerful recursive queries
+    h- datalog uses first order logic/ and prolog.
+    ////new//// 
+    q- Naive, iteration-based solution finding procedure 
+        <> runs in polynomial space
+    *q- what does power mean? expressive power op4 
+        power means characterise strictly more sets of graphs
+        a- Which sets of RDF graphs can I distinguish
+    *q- why not all set of rdf corresponds to a query? 
+        give a example of which we can not get by sparql 
+        formally: 
+            we have NL-hard in data complexity. 
+            to classify rdf graphs, we need  PSpace-complete complexity
+            so we can not use sparql to query all patterns 
+            -> at least PSpace complex ones can have most expressivity
+            (QBF shows that )
+    *q- higher complexity higher expressivity? not always true 
+        h- cannot even solve all problems in their own complexity class
+        the parallel reachability problem example   
+    **q- proof that parallel reachability is in NL 
+        <> but can not be expressd in sparql 
+        a- 
+            higher degrees can only be enforced for a limited number of nodes
+            we can only use infinitly many *vertices of degree 2 in rdf to 
+                *match to a property path pattern
+                and limited number of nodes with higher degree 
+                but parallel problem need to check arbitry many 4 degree nodes 
+    *q- why data complexity talked here? 
+        can be seen as RDF graphs classification problem, which has 
+        fixed query. 
+    *q- what patterns cannot be expressed using sparql? op14 x4 x4 detail
+        pattern limits 
+            Non-regular path 
+            Nested regular expressions
+            Tree-like patterns
+            wide paths 
+            *parallel patterns
+        fundamental limits:
+            dataypes
+            *pathlength 
+            *return paths as result 
+            no support for recursive/iterative computation
+    *q- what limitation does sparql have? roughly x2 
+    *q- why not support them in sparql? op15 x3 
+        performance
+        history 
+        design 
+    //q- what are not introduced feature? 
+    h- datalog uses first order logic/ and prolog.
+    ////datalog////
+    *d-q- datalog-- a query for all ancestors of the individual Alice 
+    //q- ext- deduct with ancestor(X, Y) :- parent(X, Y). ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y)
+    *q- diff. bet. datalog and prolog 
+        datalog do not require a spec. order of s.,prolog does 
+        order is not imp. in datalog, but for prolog. 
+    h- An atom is a formula of the form R(t1, . . . , tn)   
+        with R a predicate symbol of arity n
+    *q- what is a fact? 
+        A rule with empty body (m = 0) is called a fact
+    **q- how to model rdf triples in datalog x2 
+        rule with empty body 
+        model rdf terms in datalog? !! 
+    q- set of Datalog rules is a Datalog program
+    q- database used in datalog is a set of facts 
+    *q- no multiplicity of results of datalog? y  
+---rem1vps-ex1-dl-slide9---Rules for Querying Graphs
+    --little bit too hard, finish it fast 
+    ////excerise 
+        1-exq- any datalog can be safe? 
+            additional atoms to make rules safe 
+        *2-exq- inferences under stratied negation and under classical logical semantics do not coincide   
+            simplest case! 
+            an example shows that confict if we are going to derive goal() 
+        *3-exq- Show how to express the following SPARQL features in Datalog
+            property path pattern 
+            UNION
+            MINUS 
+            NOT EXISTS
+        *4-exq- Compute a stratifiation for the following Datalog program
+    ////
+    key- Datalog semantics/ syntax/ detail about them 
+    
+    s-q- parallel s-t-reachability for predicates p and q 
+        (for triple encoding)
+    h- datalog query has a higher complex. 
+        namly P-complete in data complexity
+    q- does not imply that all P-computable problems can be
+        solved with a Datalog query, why? op10
+    key- monotonic logic 
+    lan- Stratification means arranging something, or something that has been arranged, into categories
+    h- sparql is not enough for queries in the future, 
+        we may need logic to help the QA process
+        hence, VLog is imp. and it has
+        many high-level features for knowledge
+        base management and rule manipulation.
+    key- VLog4j
+        a- 
+            VLog rule engine, support an extension of Datalog as lan.  
+        +
+            The rule language supported by VLog4j is 
+                an extension of Datalog 
+            DLGP format/ rdf format/ owl format... are supported as data source 
+            https://github.com/knowsys/vlog4j/wiki/Rule-syntax-grammar
+    hardones- Stratified negation semantic 
+    q- Query for maternal ancestors of Ada Lovelace op37 
+    //detailready// 
+    ////new 
+    //q- what is Tp? immediate consequence operator TP?  op04 
+        inserting known facts for the body literals to compute a new literal
+        maps Herbrand interpretations to Herbrand interpretations
+        monotonic and even continuous
+        也就是推理的过程
+        but: the sequence is limited 
+        符号单独硬记吧，好在不重要
+    *q- how apply Datalog to graph data? x2 
+        Properties as binary predicates
+            “sees” no relation between properties
+        Triples as ternary hyperedges(相对于datalog的hyper)
+            better 
+    *s-q- query expresses parallel s-t-reachability for 
+        <> predicates p and q (for triple encoding):
+        op08 
+        直观来讲，是把两个加一起，the simplest case 
+    *q- what means nullary result predicate? 
+        this is a boolean query. op- 
+    q- Non-linear (e.g., tree-shaped) patterns 
+        <> possible with datalog, how? ext 
+    *q- Datalog complexity op9 
+    *q- Datalog is monotonic, what does this mean?l 
+        <> p problem is monotonic? n 
+        more input facts given, the more results derived.
+        op10 
+    **s-q- query for living people born in Dresden op12 
+        P19 born, P570 dead date, Q1731 dresden 
+    q- require all rules to be safe, and 
+        <> why this does not restrict expressivity? (exercise)
+        add more rules to make it safe 
+    *q- Result(x) :− triple(x, wdt:P19, wd:Q1731), ¬triple(x, wdt:P570, y), meaning? 
+        op15 
+    **q- A rule is safe? op- 
+        all of its variables occur 
+            in non-negated atoms in its body
+    *q- problem with negation?  
+        fails if negation is freely used in recursion
+    *q- the idea of stratified negation ? 
+        limit negation rules in each lev. 
+            , we can avoid non-monotonic behaviour.
+                still has limitations 
+    q- set of facts we obtained from stratified negation is 
+        <> not affected by choose ,this is called? 
+        M is called perfect model or unique stable model
+    *q- pra-lessdirct-q- algo that obtaining a stratification? op25 roughly
+    *q- deside which lev. it belones to? 
+        obtain the maximum edge with "-" in a path 
+    *q- express eg:JSBach (ˆeg:hasFather|ˆeg:hasMother)+ ?x with datalog 
+        带入法理解！ 把短的代入长的中进行推理
+    h- Datalog with stratified negation captures and 
+        extends important parts of SPARQL
+    **h-q- relation with datalog and sparql 
+        datalog has more powerful expressivity
+        can express some sparql, and support some not supported
+        and always assume DISTINCT 
+    ***q- datalog can not express?  
+        *Subqueries
+        *counts 
+        *all kinds of path 
+        ...
+    h- many implementations of datalog 
+    q- vlog4j supports evaluating Datlog queries over RDF files? y
+        Stratified negation and value invention
+    q- slightly different rules in vlog4j? y 
+    *s-q- Ancestor of alice and not composer op36 
+    s-q- how to define ancestor?
+        h- 中间变量法！ 定义中间变量：爷爷我中间是爸爸 
+    *s-q- Query for maternal ancestors of Ada Lovelace op37
+    h- Stratified negation is a simple way of adding negation to recursive queries   
+---rem1vps-ex1-dl-slide10---Property Graphs 
+    ////
+        1-q- Datalog query that finds a Hamiltonian cycle 
+        *1-q- decide Hamiltonian cycle with datalog fixed query? n 
+            Hamiltonian cycle is in NP-complete, datalog is in P-complete 
+        *huge-2-q- express graph patterns Datalog?  x12 
+            1. ferr 
+                recur!!! 
+            No.2 ferr 
+                use step! 
+            4. ferr 
+                var name!!
+            5 
+                commen ancestor! result!
+            No.6 pp- err? 
+                based on 5!
+                same level!! 
+            q- how to define a path? --recur. defi.
+            q- datalog can not count or iterate !!!?? pp- 
+        3-q- 
+        *4-q- movies example in Neo4j -tao pic 
+            sub-q- ... 
+    ////
+    h- why interplay with recursion must be limited? op3 
+    h- RDF graphs which do not contain any such 'loops' 
+    q- what is “Property Graph” 
+        refers to a broad class of 
+            enriched graph structures
+    h- many details related to this 
+        What are those “labels” that one can use for edges?
+    h- attribute-value pairs (called
+        “properties”) that can be associated with nodes and edges
+        take  a look at the pic on op06 
+    key-neo4j
+        a-
+            property graph database management system
+            we can analyse networks with it 
+        you can map, store and traverse networks of 
+            highly connected data to reveal invisible 
+            contexts and hidden relationships
+        Neo4j is a property graph database management system
+        imp. Cypher
+    **q- how can property graph be used? which model exists? x3 op08 
+    h- possibility: use rdf as underlying database and use property graph 
+        in higher lev. as abstract layer 
+    q- Types of “Property Graphs”? x3+ 
+    h- e different ways to interpret this model when designing actual data structures.
+    h- property graph is something build upon other data structures
+    h- property graph has a problem of implementation chaos 
+    h- a unified “(Property) Graph Query Language” GQL is under way 
+    h- e OpenCypher/Neo4j world uses completely different names for
+        concepts than the RDF world
+    q- what does it mean "Relationship types" in rdf world? 
+    key- opencyper
+        a- 
+            open query language for property graph databases
+            supported by neo4j 
+        GQL (Graph Query Language) as a new database query language.
+        Maintain and bugfix the openCypher query language
+    key- 图数据库？ graph database 
+        a- 
+            nowadays relationships becomes more and more imp. 
+            but relational dbms not handle this eff. 
+    key- NoSQL数据库    
+    key- 属性图in practice？ 
+        a- 
+            we can import rdf files to neo4j and store as property graph 
+        pp- file extension of property graph? 
+    key- opencyper in neo4j 
+        https://neo4j.com/blog/open-cypher-sql-for-graphs/
+    key- relations bet. quering lan? 
+        Datalog Datalog is a much older language than SPARQL or Cypher
+    *sum-q- what data model and corresponding quering lan. are there? libs?
+        a-
+            data model:
+                rdf, property graph... 
+            quering lan: 
+                sparql, cypher, datalog ...
+            libs:   
+                online, neo4j, vlog4j
+    *q- datatypies, object model, labeling rules in property graph? 
+        op15 round 
+    q- property graph has some limiations? 
+        a- 
+            may not suitable to model, e.g., Wikidata statements
+        Property Graph in this form is therefore not 
+            suitable to model, e.g., Wikidata statements:
+        op20 
+    q- transform From Property Graph to RDF? 
+    q- from rdf to property graph? op22 
+    h-q- the diff. from them 
+    s-q- Find up to ten people whose daughter is a professor op29 
+        Count all relationships in the database
+        Count all relationship types in the database
+        Find the person with most friends op-
+        Find pairs of siblings
+        Find friends of all people with name Paul Erdos, and return their ˝
+            name and the start date of the friendship
+    h- Cypher has many further features, Subqueries, Filter...
+    q- property graph makes data in two layers? which two? 
+    //detailready// 
+        //sum-q- what data model and corresponding quering lan. are there? libs?
+        //q- datatypies, object model, labeling rules in property graph? 
+    ////new 
+    h- Adding negation is useful, but the interplay with recursion must be limited
+    *q- what is “Property Graph” op05 
+        a type of graph 
+        with more features than rdf graph 
+        *a- enriched graph structures
+        primarily hints at the attribute-value pairs
+        ori. focus on properties
+    q- how can property graph be used? which model exists? x3 op08 
+    ***q- which model for property graph exists?Types of “Property Graphs”? x3+ 
+        obj model 
+            entity-relationship diagram
+        on top of relational db  
+            Graphs viewed as indexing and access layer on top of RDBMS
+        on top of rdf 
+            Examples: Amazon Neptune, Stardog, BlazeGraph
+    h- 业界的角度来讲可以先把rdf转成property graph，而后用cypher查询
+    h- types of graph database? 
+        rdf
+        property graph 
+        Apache Giraph
+        AllegroGraph
+    //ext-q- Programmatic access of property graph?
+        Tinkerpop
+        Apache Gremlin
+    q- what does it mean "Relationship types" in rdf world? op14 terminologies!
+        edge label, they have diff. terminologies 
+    h- label -> classes rep. 
+    h- Sets of properties can be assigned to vertices and edges
+    h- Property keys are unicode strings
+    h- Properties are key-value pairs
+    **q- limitations of property graph
+        hard to model statement of wikidata 
+        Property values cannot ref. to an other vertices or edges.
+        "together with"
+    **q- transform From Property Graph to RDF? 
+        //shall be simplified, include bnodes 
+        Use reification to represent edges by auxiliary nodes
+        datatype mapping 
+    q- what is reification? -re 
+    h-q- ext- model a statement into rdf wikidata
+    q- and from rdf to property graph? op22 
+        may hard due to restrictions of the later 
+    **q- datatypes in property graph, what types of data are allowed?  op14 op25
+        <> bnode   
+        <> node, relationships
+            iri
+        <> labels, relationship types, and property keys
+            are plain strings
+        <> property values
+            literal 
+        They cannot occur in the graph
+        and no further Properties
+    h- Current specification of openCypher 9:
+    h- Result formats not defined by spec. 
+    **s-q- asks for a list of all nodes that are in an EMPLOYER relationship
+        op28 
+    h-  query condition within MATCH { . . . }
+    **s-q- Find up to ten people whose daughter is a professor op29 
+    **s-q- nCount all relationships in the database:, types? 
+    h- 变量没有问号，括号包住变量，空的话就是空括号
+        和画图似的，实体有冒号，没有前缀
+        express properties in json style 
+        头不像尾像
+    ***q- compare sparql and cypher 
+        Easy-to-learn and human-readable
+        support distributed computing(high performance)
+        rdf has limitations 
+        pp- 
+    *s-q- Find the person with most friends
+    *s-q- Find pairs of siblings  op33 
+    *s-q- Find friends of all people with name Paul Erdos, 
+        <> and return their name and the start date of the friendship op34
+    *q- what are cypher features? roughly
+        Returning of paths and shortest paths
+        Filter expressions
+        Subqueries 
+        Unions
+        ...s
+    q- property graph makes data in two layers? which two?
+        primary layer, property graph layer 
+    h- ref to spec of the lan as a futher step 
+---rem1vps-ex1-cypher-slide11--- The Cypher Query Language
+    ////ex 
+        *1-q- Do the query results change if count(DISTINCT child) is used instead?
+            depends on the graph 
+        **2-q- graph patterns are expressible in Cypher? x12 
+            已经出现3次了！在ubung中，看起开必须会
+            可能是挑一个考三个语言 
+            从练习来看cypher 表达能力确实强！！
+            h- 3-filter 4-negation !!! 
+            pp- 6 op106 
+            6 ferr ferr 
+                name? three points should be attention! 
+            7 ferr 
+            9 ferr 
+                UNWIND expands a list into a sequence of rows
+                pp- 
+        *3-q- encode TrueQBF with cypher, what can we say about that?  
+            q- cypher has PSpace in query complexity
+            sub-q- ... 
+        *4-q- neo4j movie example x7 
+            see ex10 
+            4 ferr 
+                h- what should be returned!! take care !
+            6,7 good! 
+    ////
+    h- an other lan. which should also be familier with 
+    q- The shape of a Cypher query 
+    h- The order of clauses affects the semantics of queries
+    h- we can query nodes with more than one properties when using cypher
+    h- lan. semantic issues 
+    q- how to express path patterns? 
+    h- how to write a query with "optional"
+    https://console.neo4j.org/
+    use this online console to train cypher skills 
+    q- the value cannot be distinguished from “unbound”? y 
+    h- powerful path manipulation features are available
+    pp- key- what means homomorphisms, isomorphim op30 
+    //detailready// 
+    f- WHERE followed by a filter expression
+    f- with allows expressions and aggregates
+    f- Modifier sub-clauses: ORDER BY, LIMIT, and SKIP
+    f- union can be used complete way (with RETURN for each
+    q- The shape of a Cypher query 
+    q- how to express path patterns? 
+    q- the value cannot be distinguished from “unbound”? y 
+    ////new 
+    *q- what is allowed for node pattern? x3 op4 
+        variable
+        label 
+        properties
+    *q- find a man who is Scientist and a composer at the same time op04
+        pp-  
+    q- quotes of property keys, and their value? 
+        backticks,straight quotes
+    *q- find a person with particular name and birth year 
+    *q- what does this mean? (a)-[:E|F*5..10]->(b)<-[e {score:0.8}]-() op- 
+    q- what can be expressed in path pattern? op5  x4 
+        variable, range, relation types, properties
+    q- Cypher does not support arbitrary regular expressions? y sparql does? y 
+    *q- can we express  ?a (p/q)* ?b with cypher? 
+    q- express ?a (p|ˆp|q|ˆp)* ?b in cypher op07 
+    *q- pp- But do their semantics agree? op09 
+    q- SPARQL bnodes correspond to Cypher node patterns without variable
+    q- Each distinct path is a distinct match in cypher? op10 
+        y, path counting feature 
+    q- relationship must be used in only one place
+    *q- Query matching in Cypher is harder than NP. proof that. 
+        reduce to 3col problem 
+    *q- how can we use the same relationship more than one time? ext op14 
+        use multiple clauses MATCH 
+    q- Homomorphism semantics? isomorphim? 
+        some constrains 
+        not too much restriction on Graph pattern, but restrict edges
+            distinguish edges
+        pp- 
+    q- path manipulation features available? better? y
+    q- func. that working on nodes and relationships? roughly op15 
+    h- “varname.propertyKey” is used to access the value of a property
+    h- The function id returns the (numeric) ID of a nodes or relationships
+    h- keys returns the list of all property keys of a map-like object
+        labels, type possible as function working on nodes and relationships
+    *s-q- Find all ways in which two nodes are connected, and return
+        <> the list of relationship types in each case 
+        op16 //// the nodes are naming after n1 and n2 
+    q- how to access the content of paths? extract sublist, path len?
+        use func. relationships() and lenght() returns number of relationships(edges)
+    q- matched case can be solved as var. ? y 
+    *s-q- Find all shortest ways in which two nodes are connected, and limit its length to 10 
+        use allShortestPaths.
+        upper bound can be spec.  
+    *s-q- Find nodes with more than one label
+        use labels() and size() func. 
+    h- many build in func. to use 
+    q- WHERE clauses can use any expression? 
+    **q- Find all nodes that have value "scientist" as one of their occupations, and that do not have a spouse:
+        op21 
+    ////Further Cypher Features////
+    *q- if aggregated and non-aggregated results are defined, the non-aggregated ones will be the keys to group by? y 
+        implicit 
+    *s-q- Show married professors with their number of children op23 
+        distinct? pp- 
+        sub-q- find all professors in graph op23 
+    q- min, avg, count can be used 
+    q- WITH clauses as separators? y 
+    *s-q- Find all universities located in one of the ten largest cities op24 
+    q- Expressions that are not projected are not accessible after a WITH clause? y 
+    q- Find parent-child pairs with bi directions op25 
+        UNION automatically removes duplicates, 
+        UNION ALL can be used to keep them 
+    *s-q- Find parent-child pairs and, optionally, a spouse for the parent op26
+        ferr no direction!  
+    q- what happends if var. not bind? 
+    ***q- err. propergate in both sparql and cypher? 
+        Cypher uses the special value null to indicate errors
+        EBV 
+    *q- The use of null in Cypher is ambiguous? 
+        1. error
+        2. “unknown value”
+/////////////////////////////////////////outlook, usage and features///////////////////////////////////
+---rem1vps-ex1-slide12---Knowledge Graph Quality and Validation
+     ////ex 
+        *1-q- Develop a SHACL schema that validates statement values for geographic coordinates
+            h- 首先定义一个shape，而后说明是针对谁的
+            subq- write a SHACL schema for this property. with Q5?! 
+                use sh:nodeKind sh:class !
+        2-q- proof that ShEx schema is NP-hard by reducing from 3-colourability
+            subq- 
+        3-q-
+            subq- ...
+        4-q- 
+            subq- ...
+    ////
+    h- we focus on quality measurment, and monitor them automatically
+    **q- what is quality? two dimensions of KG(from requirements)? op17 
+        func. 
+            correct, complete, performance 
+        non-func. 
+            documentation, style guides 
+    q- what are Functional quality of that? x3 
+    q- what are non-functional? x5 
+    *q- what is TimBL’s Open Data Quality proposal, 5-star quality metric
+        op18 
+        the best--linked open data
+            available on the Web
+            structured
+            non-proprietary
+            //
+            use URIs to denote things
+            linked open data
+    h- the idea that see KGs as software and measure its quality 
+    h- always subjective measurments 
+    *q- what is the diff. when compared to software dev? measure kg quality p21 
+        unclear development life cycle
+    ***q- Quality checking approaches? x2x2 op30 
+        Manual
+            Subjective:experts
+            objective:clearly defined criteria
+        automatically
+            Operational:Ad hoc implementation, unit test 
+            Declarative:Schema
+    q- what is Competency questions? 
+        classical ones...
+        formalised in a query language, carefully designed query
+        expected result  
+        a example? op33
+    h- effort needed, we want to monimize it
+        modelling effort, maintenance 
+    h- similar to test case (unit test)
+    q- what are typical functional metrics of kg? -re op17 
+        x3 
+    h- Unit tests can also validate non-functional criteria.
+    q- in detail, we can use unit test to acc. this? y
+    q- what is XML Schema used for? ext op37 
+        constrain the syntactic form
+    q- rdf schema is an otology lan? y 
+    q- key- schema lan. ? -re 
+        a- 
+            schema lan. are used to 
+                *describe structures of documents
+            define eg. what are legal blocks, datatypes, ...
+            constrain the syntactic form 
+        An XML Schema describes the structure of an XML document.
+        define the legal building blocks of an XML document:
+        (define data types for elements and attributes) 
+        ...
+        https://www.w3schools.com/xml/schema_intro.asp
+    **q- rdf schema? x2 op38 what are they stands for? 
+        SHACL, ShEx 
+            shape constrain lan  
+            shape expression 
+    key- Validating using SHACL and ShEx
+        https://shacl.org/playground/
+        take shape graph and data graph as input 
+        check value type possible 
+        pp- "a" meaning? ext pg
+        sh:path -- show which property is being restricted 
+            -> target property
+        sh:minCount and sh:maxCount: Can specify the minimum and maximum number of allowed values for the property
+        sh:nodeKind: Can be used to specify that all values of 
+            a property must be Literals, IRIs or Blank nodes.
+        sh:class what class it should belone to 
+        sh:targetClass target class, for all person eg 
+    q- what is sh:path, sh:datatype, sh:targetClass, sh:pattern, sh:nodeKind
+        sh:closed true ;
+    q- the exercise 12.1! 
+    h- error messages and severity levels? 
+    q- what is a shape graph? op38 
+    h- a rich vocabulary for specifying property constraints
+    less-q- CLOSED and EXTRA play the role of what in SHACL? ext 
+        sh:closed and sh:ingoredProperties?
+    **q- common and diff. of the two: SHACL and ShEx op45 
+        common-
+            both support 
+                *recursive constraints and disjunctions
+        diff-
+            SHACL can provide additional error information 
+                and has lower complexity
+    q- complexity of the Validating? 
+        NP-complete complexity in the size of the graph
+        NP-completeness seems more challenging for ShEx than for SHACL
+    **h-q- many criteria to measure quality of kg, what are they? -re
+    *q-  basic approaches for automatic quality checks?  x2 -re 
+    h- rdf schama -- RDF constraint languages 
+        like SHACL and ShEx 
+        they can declaratively specify constraints 
+    //detailready// 
+    ////exercise 
+    1-exq- Develop a SHACL schema that validates statement values
+        ref.
+---rem1vps-ex1-v-slide13---Centrality measures
+    ////ex -may not be asked 
+        *1-q- Compute the rst three partial sums of the Katz centrality
+        *2-q- find a small graph for which not re-calculating and show error 
+        3-q-
+        4-q- 
+
+        q- Adjacency matrix for directed edge? op36 
+            比较特殊，从列往下看，是方向！ 不是对称矩阵！ 
+        q- centrality can be computed to a sum number? y not a matrix or vec. 
+        q- pp- 2 is not correct, bet. centrality should lower than 1 
+        q- how to measure bet. centrality for a given graph? 
+            calcu. how many paths that will pass this current edge 
+            devide by total num of shortest paths in the graph 
+    ////
+    *q- what is Centrality 
+        a- how to return most “important” ones on top
+    q- Possible Solution and their problems? op04 
+        a- 
+            use wikibase:sitelinks or compute 
+            application dep. 
+    h- precompute some metrics, and use them in queries 
+    h- it is about network analysis 
+    q- what are typical networks? they are becoming more and more imp. nowadays
+        transportation, social, web, chem. 
+    h- different notions of centrality can be measured, 
+        as for diff. types of graph/ application 
+    h- what is one-step paths
+    h- Paths might be more important if they pass through important nodes
+    h- follwing parts will focus on application free
+        model of centrality calcu. 
+    q- what is Degree centrality? op13 
+        given by the indegree of each node
+        we can take use of sitelinks 
+    q- wikibase:sitelinks is a pre-computed degree centrality? y
+    q- pro cons of Degree centrality p15 
+        simple fast 
+        just consider direct neighbors too simple 
+    **q- the random walk process? op22 
+        take a node randomly, uniformly 
+        use Transition matrix to calcu. the probability reaching a point 
+        [the same uniform probability for each choice of edge
+    h- it will converge to some limit, we can even compute them dirc. 
+    h-q- what is the actual operation we iteratively apply? op28 
+        matrix multiplication
+    *q- what is eigenvector centrality op29
+        we calcu. eigenvector acc. to the radom walk model 
+        and use it as centrality measurment 
+        not perfect 
+    //h-q- what is the components of eigenvectors? their meaning? op30
+    h- we only need the relative importance of nodes, scaling is ok  
+    *q- we want well-behaved eigenvectors, how can we get them? op32
+        strongly connected
+            no dead ends
+            no spider traps
+    *q- what is Perron-Frobenius Theorm 
+        if graph is  strongly connected,irreducible, eigenvector will be well-behaved 
+    q- what means irreducible for a matrix? op32 
+    *q- what means strongly connected for a directed graph? op34 x2 -re 
+        x2 characterise? 
+    **invq- what means dead ends and spider traps, why not good? op- 
+        dead ends 
+            don’t let a random walker continue
+            weight of node will be lost 
+        Spider traps
+            no path back to all other nodes 
+            weight is drained
+    invq- two cases that may lead to invalid non-meaningful centrality measure? -re 
+    q- what is transition matrix? op21 -re  
+    *q- what is the meaning of MM? two adj. matrix multply one after an other or more? op36
+        number of length-n paths 
+    h- use path to count centrality, we have to deal with path len. issues 
+        penalize longer paths 
+    *q- what is the Katz centrality
+    *q- pro cons of it? 
+        +
+            solve the prob. with eigenvector centrality
+        -
+            para. hard to control 
+            Small values focus on (very) short paths
+
+    h- centrality is a measurment used to compare to other nodes 
+    q- alpha must not too large, how can its value be computed? op39 
+    h-q- centralities? eigenvector centrality and katz centrality, diff? 
+        in-degree centrality, out-degree centrality
+    //
+    *q- the idea of pagerank? line by line, speak first 
+        1.random walk by stochastic transition matrix
+        2.also allow walkers to teleport to a random new location
+    *q- what is the iterative computing scheme used in pagerank op44 
+        taxation? damping? 
+    q- the effect of damping factor? too large? too small? op46 
+        small:  more local perspective that ignores long paths
+    q- does pagerank converges quickly? y 
+    ***q- compare pagerank to katz centrality
+        comm:
+            all-paths criteria
+            penalize
+        diff.
+            propagates the discounted weight, splits the weight
+            pagerank emph. distinguished focus 
+            pp-
+                outdegree...
+    h- centrality based on graph structure 
+    //detailready/
+---rem2vps-ex1-slide14---Community detection
+    ////ex
+        *1q- Find the minimal cuts, cardinality? normalised cut value? 
+        *2q- Find all bi-cliques in the following graph. Which bi-cliques are maximal?
+        *3q- Find a point base for the following graph. How does the point base change
+        4q- ...
+
+        h- cut 是分割的一个策略
+            cut-set是具体的分割点构成的集合，也就是分割边
+            cardinality of the cut-set 是割边的数量
+            normalised cut value其实就是该集合中所有边，加上边界的边
+                是个基于边的分割算法
+        h- 其实就是找最大的二分图，其他的都可以从这个二分图中导出
+            如果连通的，则必须包括所有点
+        h- point base of G-- basic points that can reach all v 
+    ////
+    *q- what is closeness centrality? op08 ferr and its notations? 
+        close to:
+        A node is important, if it is close to many other nodes
+        the formula.
+        h- has to be strongly connected graph 
+    **q- limiations of closeness centrality and solutions? op10 -x
+        nodes are close toghther --> road network may meaningful 
+        not defined for un strongly connected graphs --> a maximal N-step distance
+    *q- what is harmonic centrality? solved what issue of closeness? 
+        op- infinit lang path will 
+            affects one term of the sum, not the whole result.
+    *q- what is betweeness centrality? op13 
+        blet. other nodes 
+        a-imp. node if it is 
+            on the shortest path 
+                between many pairs of other nodes
+        Measure how relevant a vertex is for mediating flows
+        what is N-1 N-2 here? 
+        h- best used for star-shaped structure
+            can get High betweenness scores 
+    *extq- why normalised with (N-1)(N-2)? op13
+        A2 N-1 
+    q- there is sth. diff. when using this metric? ext 
+        might not desired: far from more densely connected areas
+        different from scenarios where other metrics uses 
+    *q- how fast can we achieve when imp. betweeness metric 
+        op15
+            cubic time 
+            go down to quadratic for sparse graphs
+    h-q- summerize all centrality criteria? op16 x7 
+        what are their meaning intuitively?
+    //bef. find imp. nodes
+    //now: find community
+    ////
+    q- what is Community feature? op18
+        a-
+            more likely to be connected when 
+                in two nodes in one Community
+        ... 
+    h-key- social network analysis 
+    q- why we study Community activity? op19 
+        reveal insights into how networks emerged
+        e improves our understanding
+    **q- approach of Girvan-Newman their algorithm? op21
+        the idea? 
+            removing edges of high betweenness
+        the algo? GN algorithm 
+            Compute betweenness for all edges
+            Remove edge with largest betweenness value
+            check connected components of remaining graph, 
+                and mark community
+            until enough amount found 
+    *h-q- it is a hierarchical clustering algo. what this mean? 
+        a dendrogram can be computed 
+    q- run GN algo in this graph op28 
+        will err if not re-calcu. the bet. cent.
+    h- betweeness-based clustering 
+    lan- dandrogram tree-view 
+    *q- what is the computational complexity of the GN algo? how to improve that? x2 op33 
+        random sub-sampling
+    ***q- problem of GN algo, when to stop? x3 possibles op35 
+        target number 
+        maximum size for communities
+        measurement for community quality
+    lan- hypothetical Community partitioning 
+    h- 假想的均匀分布应该是啥样的，这样就可以在检测到均匀分布的时候停下来
+        to simulate the real community networks as good as possi. 
+    q- why should preserve node degrees? 
+    h- partation quality estimation 
+    pp- op36    
+    *q- pp- op39 modularity define?
+        //describes what a real community should looks like (random )
+        *edges in communities when random distributed 
+    q- naive appro. random graph, problem? solve? op39 
+        preserve degree 
+    //q- what is modularity used for? op- 
+        a- measures degree of random? 
+    *q- calcu. of modularity metrics? op42 
+    **q- what appro. used to gen random. data as degree preserving? op41 
+        a- degree-preserving random graphs 
+        idea:
+            cut each edge into two stubs, glue the stubs back together randomly
+        fomula. op42 
+    *q- range of Q? how can it been used? the higher the better? 
+        should be higher than 0? y
+    h- modularity based Community detection, meaning not only GN algo. 
+    *q- inherent limiations of modularity-based approaches? op45 
+        cons of that? x2 
+            *not too small ones 
+            fast approximate approaches may too far away from optimum 
+            //not so real model 
+    h- key of modularity based algorithm? detect if it has enough connections 
+        in between 
+    //further detection methods op46 
+    q- idea of minimum cuts? 
+        minimize some value related to it 
+        Prefer cuts that 
+            (1) cut only few edges and 
+            (2) lead to components of similar size
+    //q- does it suitable for social Community detection? 
+    *q- idea of Bi-Cliques 
+        how works? op48 
+            1.Split graph into two equal-sized vertex sets
+            2.look for sub-sets
+            3.Grow communities by adding highly linked vertices
+        features of it? x3 
+            a- 
+                based on math. bkg 
+                    sufficiently dense communities, large bi-cliques must exist
+                good also for small Communities 
+                //freq. used on social netw. anal.
+    *q- the idea based on statistics? features of it? 
+        a- 
+            find the underlaying model, to explain data 
+            1.hard to solve 
+            2.can find overlapping ones
+            3.more insightful 
+    //detailready//
+---rem2vps-slide15---Summary and Outlook 
+    h- to understand graphs 
+    q- what is ontology op10 
+        description of knowledge about a domain of interest
+        rdf was used to describe graph model 
+    **q- which parts are there? x4  
+    h- knowledge of a domain of interest 
+        特殊领域的知识库，其中还可以做推理
+    q- snomed ct? op11 
+        health data db that use ontology model 
+        a- health data record sys. provides nomenclature
+    h- modeling and reasoning relationships
+    h- this ontology sys. can be used for clinical information retrival 
+    h- relationships are modelled formally 
+    q- diff. from taxonomy and databases? op10 op13 
+    *q- what is an ontology language? op14 
+        a- 
+            instance-level relationships, schema-lev relationships
+            a standard for encoding and sharing info. 
+            for encode and exchange 
+    key- description logic 
+        a- based on first order logic 
+    q- owl based on description logic, can be transfered to rdf? y
+    h- formal semantics of ontology lan. has logical meaning 
+    *q- what is reasoning? ext
+        a- 
+            analyse and evaluate in logical database 
+        a-
+            deduce more know. based on existing database 
+        entail addition facts, hidden 
+        we can enlarge db in this way 
+    q- from view of a sys. we want non-redandent info.? y 
+    *q- reasoning tasks in ontology system? x2 op15  
+        entailment, find more relationships
+        check Consistency 
+        Query answering
+    **q- what is entailment? op15 
+        find out more relationships
+    **q- QA process? ext 
+        a- 
+            find deduced query results 
+    ***q- comm. diff. bet. ontology lan. and constraints lan.? op16 
+        comm. 
+            encoded in machine-readable standardised formats
+                --> stored as machine readable fromats 
+            have a formal semantics
+        diff. 
+            ontology
+                semantic
+                domain knowledge
+            constrain
+                syntactic
+                measure quality 
+    q- what can ontology be used? h 
+        a- 
+            query answering
+            data integration
+    q- we can also use ontology to enlarge traditional db? y ext 
+    //detailready//

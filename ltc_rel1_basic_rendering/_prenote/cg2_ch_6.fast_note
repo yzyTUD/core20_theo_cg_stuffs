@@ -1,0 +1,63 @@
+	Skeleton Extraction
+	Medial Axis
+	&q what is? how is used? the idea? adv. and disadv.? 
+	&q the def. of Medial axis
+	set of shape points with at least two closest points to shape boundary
+	medial axis is very sensitive to small shape changes
+	&t imp. and paper and further reading 
+	Curve Skeletons
+	&h we can obtain Curve Skeletons from medial axis, how? op3 algo!
+	&q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+	Curve Skeleton Algorithms
+	&q what kind of Curve Skeleton Algorithms are there? x3 op4 
+	Thinning
+	Distance field based
+	discretize distance to shape boundary on voxel grid 
+	extract ridge lines
+	Geometric
+	 compute voronoi diagram 
+	General field functions
+	force fields and detection of local extrema
+	Competing Fronts
+	Sharf, Andrei et al. “Competing Fronts for Coarse-to-Fine Surface Reconstruction.” EG 2006
+	&q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+	&t imp. and paper and further reading 
+	compute unsigned distance field from points (a) ? initialize model to small sphere at maximum distance ? grow in normal direction with distance controlled step size ? keep deformable mesh smooth through Laplace operator ? tension trades smoothness vs inflation ? decrease tension and refine mesh if necessary ? project final mesh to MLS surface (f)
+	 small sphere
+	grow in normal direction 
+	keep deformable mesh smooth
+	MLS surface
+	avoids leaking
+	https://www.youtube.com/watch?v=lfNMZ5N2ZxQ
+	Sharf, Andrei, et al. "On-the-fly Curve-skeleton Computation for 3D Shapes." EG 2007
+	Fast Extraction on Noisy Data
+	Noisy Data
+	in different resolutions that evolve to reconstruct the shape
+	&q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+	&t imp. and paper and further reading 
+	keep book of surface to skeleton correspondences and front tension
+	keep book
+	filter short branches of skeleton
+	suitable for incomplete models 
+	postprocessing
+	approach is very fast and can construct skeleton in few seconds
+	&t imp. and paper and further reading 
+	On-the-fly Curve-Skeleton Computation
+	https://www.youtube.com/watch?v=zIPohvB5vHI
+	Mean Curvature Skeletons
+	Tagliasacchi et.al., SGP 2012
+	&q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+	&t imp. and paper and further reading 
+	Iterated mesh contraction via Mean Curvature Flow
+	tries to minimize its tension 
+	Can be expressed with the differential equation
+	&t write formulas and calculate this example 
+	Remeshing is done after every iteration.
+	After convergence, shortest edges are collapsed to produce a 1D curve skeleton.
+	Mean Curvature Skeletons
+	Final conversion to curve skeleton via Edge Collapse
+	MCF Skeletons - Results
+	A. Tagliasacchiy, I. Alhashim, M. Olson, H. Zhang, Mean Curvature Skeletons, SGP 2012, Code: https://code.google.com/p/starlab-mcfskel
+	? Tamal K. Dey and Jian Sun. 2006. Defining and computing curve-skeletons with medial geodesic function. In Proceedings of the fourth Eurographics symposium on Geometry processing (SGP '06). Eurographics Association, Aire-la-Ville, Switzerland, Switzerland, 143-152.
+	&t imp. and paper and further reading 
+	https://github.com/ataiya/starlab-mcfskel

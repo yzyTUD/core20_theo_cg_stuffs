@@ -1,0 +1,47 @@
+
+#include<iostream>
+#include<vector>
+#include <algorithm>
+using namespace std;
+int main() {
+	int N, M;
+	int* w = new int[1024];
+	int* v = new int[1024];
+	cin >> N >> M;
+	for (int i = 0; i < N ; i++) {
+		cin >> w[i] >> v[i];
+	}
+	vector<vector<int>> f(N, vector<int>(M + 1));
+	/*for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M + 1; j++) {
+			f[i][j] = 0;
+		}
+	}*/
+	// fill the corner case 
+	for (int i = 0; i < N; i++)
+		f[i][0] = 0;
+	for (int j = 1; j < M + 1; j++) {
+		if (j >= w[0])
+			f[0][j] = v[0];
+		else 
+			f[0][j] = 0;
+	}
+	// iterate the table 
+	for (int i = 1; i < N; i++) {
+		for (int j = 1; j < M + 1; j++) {
+			if (j < w[i]) {
+				f[i][j] = f[i - 1][j];
+			}
+			else {
+				f[i][j] = max(f[i - 1][j], f[i - 1][j - w[i]] + v[i]);
+			}
+		}
+	}
+	// show table 
+	for (int i = 0; i < N; i++) {
+		for (int j = 0; j < M + 1; j++) {
+			cout << f[i][j] << "\t";
+		}cout << "\n";
+	}
+	// backtrace
+}

@@ -1,0 +1,320 @@
+
+    //
+        exam ext paper 
+            s4!
+            http://users.ece.cmu.edu/~dawnsong/papers/sig-gen-oakland06.pdf
+                *A vulnerability signature matches all exploits of a given vulnerability
+                A vulnerability signature is a representation (e.g., a regular
+                expression) of the vulnerability language
+
+                A vulnerability is a type of bug that can be used by an
+                attacker to alter the intended operation of the software in a
+                malicious way
+
+                An exploit is an actual input that triggers a
+                software vulnerability
+
+                One of the most popular and effective exploit defense mechanisms is signature-based input
+                filtering
+
+                Thus, any improvements in signature generation will likely have
+                widespread impact.
+
+                We need automatic signature generation techniques
+                because manual signature generation is slow and error
+                prone.
+
+                worm outbreak
+
+                Automatic
+                techniques have the potential to be more accurate than manual efforts because vulnerabilities tend to be complex and
+                require intricate knowledge of details such as realizable program paths and corner conditions.
+
+                the complexities of a vulnerability 
+
+                ymorphic exploit variants that can trigger a software vulnerabil
+
+                an
+                exploit could use different assembly instructions that have
+                the same effect
+
+                the vulnerability uncovered by a new exploit attack instead of analyzing the exploit
+
+                At a high level, our main contribution
+                is a new class of signature
+
+                an unsafe execution state
+
+                satisfy a
+                vulnerability condition in the program.
+
+        课程场景：
+            航天项目，要求软件系统高度可靠
+            手术机器人
+            Software Developer at NASA
+                The emphasis is always "get things done as fast as possible." Because of this, I        work mainly in very high-level languages like Python.
+                Unfortunately, the rushed environment means considerations like rigorous testing
+                    software documentation, software packaging and distribution
+                    end up getting roped in to non-programming tasks
+                    If you hate things like documenting requirements or writing design documents and only love those moments writing code, you would love my job.
+                you will have to outline requirements and write design documents beforehand, and you    will occasionally have QA people breathing down your neck.
+                it is a very conspicuous target, and hackers like to practice hacking into NASA         networks before trying to compromise Department of Defense networks
+                That said, work at NASA feels much more meaningful than a lot of the private-sector     opportunities that I knew about when I was graduating
+                You're contributing to basic scientific research, not corporate profits. And you'll     always have interesting stories to tell your friends, like meeting astronauts, etc
+                 Mission critical means something very different, and very serious, at NASA.
+            spacex
+                enabling human life on Mars.
+                SpaceX is like Special Forces
+                MANAGER, SOFTWARE ENGINEERING (FLIGHT SOFTWARE)
+                    ground and vehicle software
+                    service our future needs for Mars such as Starship
+                    Manage and track multiple priorities while maintaining a focus towards common       project goals
+                    Develop highly reliable and available software systems
+                    Develop prototypes to prove out key design concepts and quantify technical          constraints
+                    delivering robust and scalable software applications
+                    Experience hiring, conducting performance reviews, and regular 1v1 meetings with    direct reports
+                    Excellent written and verbal communication skills
+                    Design and implement fault detection and mitigation in software
+                    Working knowledge of control theory
+                    Experience designing fault tolerant software
+                    Thorough knowledge of computer architecture and networks
+                    Strong skills in debugging, performance optimization and unit testing
+        some opensource systems with need of high availability or scientific computing cases 
+            https://github.com/handong1979/orbitdynamics
+    ppt-1
+        linux DEFECTS IDENTIFIED VS DEFECT FIXED
+        http://go.coverity.com/rs/157-LQW-289/images/2014-Coverity-Scan-Report.pdf
+        We need to know the kind of software faults pattern 
+        classify the kind of software faults of existing programs
+    ppt-2
+        equivalence class partitioning (ECP) partation testing 
+            divides the input data of a software unit into partitions of equivalent data from which     test cases can be derived.
+            test cases are designed to cover each partition at least once
+            An advantage of this approach is reduction in the time required for testing software due    to lesser number of test cases.
+            This technique tries to define test cases that uncover classes of errors
+            The equivalence partitions are usually derived from the requirements specification for      input attributes that influence the processing of the test object
+            improve the likelihood that we test corner cases
+        diff. random testing fuzzing 
+            They both seem to make use of random input
+            random testing 
+                increase coverage or to find out new/unexpected information
+            fuzzing 
+                *不只是随机了，是不是那个数据类型都不一定
+                Fuzz(y) testing is about sending complete rubbish
+                *The data is not necessarily random - it's just meaningless to the software.
+                does not necessarily use random inputs,may smart, or coverage guided
+                a quality assurance technique used to discover coding 
+                    errors and security loopholes in software
+                *symbolic execution is just "more sophisticated fuzzing."
+                (Dynamic) symbolic execution is sometimes called whitebox fuzzing
+                *3types of fuzzing:
+                    Blackbox fuzzing: doesn't require any information about the system 
+                        under test (SUT).
+                    Whitebox fuzzing: require all the information about the SUT
+                    Greybox fuzzing: require to know a little information
+                The current state-of-the-art is hybrid fuzzing, combining both greybox and whitebox
+                The idea is to use greybox fuzzer as global search to quickly sample the state space
+            关系：
+                测试技术可以一样一样来，一个比一个覆盖率更广，测试出来fault更多
+        coverage
+            Statement Coverage
+                the  test case  is executed in such a way that every statement  of the code  is 
+                    executed at least once      
+            branches coverage
+                every branch (decision) taken each way, true and false.
+                making sure that no branch leads to abnormal behavior of the application.
+            path coverage
+                All possible control paths taken, including all loop paths taken zero, once, 
+                    and multiple (ideally, maximum) items in path coverage technique
+
+
+    ppt-3
+        布尔可满足性问题
+            是否存在一组变量赋值，使問題为可满足
+            布尔可滿足性問題（Boolean satisfiability problem；SAT)
+            第一个被证明屬於NP完全的问题
+            对于一个确定的逻辑电路，是否存在一种输入使得输出为真?
+            Propositional logic
+        symbolic execution
+            Analysis	of	programs	with	unspecified	inputs
+            “Execute”	a	program	on	symbolic	inputs	
+            Symbolic	states	represents	sets	of	concrete	 states
+            Check path condition satisfiability – explore only  feasible paths
+            https://www.st.cs.uni-saarland.de/edu/automatedtestingverification12/slides/11-DynamicSymbolicExecution.pdf
+            Use	a off-the-shelf	constraint solver to solve path	conditions
+            SMT-Solver	/	SAT-Solver
+            https://github.com/msoos/cryptominisat
+                later coding 
+            get a symbloic result, not the real result
+            Efficiently	traverse all	execution	paths	one	by	 one	to	detect	
+            
+            Automatic Generation of High-Coverage Tests
+            gen. test cases....
+        KLEE    
+            KLEE is a symbolic virtual machine built on top of the LLVM compiler infrastructure, and available under the UIUC open source license.
+            http://klee.github.io/tutorials/testing-function/
+                later coding
+             	 	
+    ppt-4
+    ppt-5
+        we are going to detect 
+            bug/crash/misbehaviour/deviant behavior.....
+        Cryptanalysis/ Cryptographic attacks
+            circumventing the security of a cryptographic system by finding a weakness in a code, cipher, cryptographic protocol or key management scheme
+            ...
+        SSL/TLS在协议设计方面，存在一些弱点，可以被利用。
+            我们首先简单介绍CBC加密模式的工作原理。然后介绍基于CBC padding的相关攻击，
+            在SSL协议较早的版本中，大量使用CBC分组加密的模式对数据加密，如图2.1所示，加密解密过程都是分块进行
+            在实际应用中，当明文最后一块内容不足时，会进行填充。根据填充的内容，    
+                Serge Vaudenay在[1]中引入了padding attack
+            解密完成之后通常会检查是否符合规则，如果不符合，则会抛出Padding error异常，提示填充不正确
+            攻击就会变得高效很多。如lucky thirteen，POODLE attack 等都利用了padding内容的特性来提高攻击的效率
+            攻击者作为中间人拦截TLS数据包，并对数据包进行篡改，由于传输给服务器的数据包具有
+                特殊的排列方式，其中的一个包头域含有13字节，所以命名为“幸运 13”。
+            TLS协议会将错误的填充在MAC检测时当作零字节的填充，这个过程比正常协议解密的过程要短很多，产生了一个时间差
+            这种利用时间的侧信道攻击在实际攻击中有广泛的应用，具有一定程度的威胁性。
+            Daniel Bleichenbacher在[7]中提出了新的攻击(Bleichenbacher attack)。基于RSA的SSL密码套件方式，
+                利用PKCS#1的标准格式在可接受的时间内解密预主密钥内容
+        CBC分组加密
+        TLS attacker 
+            a two-stage fuzzing approach to evaluate TLS server behavior
+            automatically searches for cryptographic failures and boundary violation vulnerabilities
+            find unusual
+                padding oracle vulnerabilities and overflows/overreads in
+                widely used TLS libraries
+                including OpenSSL, Botan, and MatrixSSL.
+            to create Virtual Private Networks (VPNs) a
+            Its complexity led to various designs as well as implementation 
+                failures in various attack scenarios.
+            The large number of recent attacks has motivated researchers to provide further security analyses of TLS\
+            they have also developed tools for sending protocol messages in an arbitrary order
+                (for random testing )
+                however, he cannot execute dynamic field modifications given precomputed values in TLS message flows
+                that means, we can not do dynamic fuzzing 
+            the goal is to extend the test coverage of existing TLS libraries
+            necessary to develop a new TLS testing framework – TLS-Attacker
+            (design better TLS protocols)
+            arbitrary TLS protocol flows
+            TLS libraries suffer from severe security vulnerabilities, how to improve that?
+            Novel fuzzing approach for TLS
+            contributions 
+                evaluation method 
+                    a two-stage fuzzing approach for the evaluation of TLS servers  
+                    Our approach allows us to find different vulnerabilities in widely..
+                the concept 'Modifiable variables'
+                    it is a concept which is high flexibility for the implementation 
+                    of arbitrary cryptographic protocols
+            we do not attempt to claim TLS-Attacker is complete or that it detects every vulnerability
+            such a tool is necessary for the development of secure TLS libraries
+            TLS-Attacker is currently being integrated into Botan and MatrixSSL test suites     
+            enhanced evaluation of TLS implementations
+    ppt-6
+        PostgreSQL is a powerful, open source object-relational database system 
+        SQL Slammer[a] is a 2003 computer worm that caused a denial of service on some 
+            Internet hosts and dramatically slowed down general Internet traffic. 
+            scanned 90% of computers less than 10 min 
+            The program exploited a buffer overflow bug in Microsoft's SQL Server
+            the MS02-039 patch had been released six months earlier
+            It is a small piece of code that does little other than generate random IP 
+                addresses and send itself out to those addresses
+            If a selected address happens to belong to a host that is running an unpatched copy 
+                of Microsoft SQL Server Resolution Service listening on UDP port 1434
+            Home PCs are generally not vulnerable to this worm unless they have MSDE installed
+            it only stays in memory, and it is easy to remove
+        Valgrind -xxx
+            is an instrumentation framework for building dynamic analysis tools. 
+                There are Valgrind tools that can automatically detect many memory management 
+                and threading bugs
+    ppt-7
+        to be robust, means provide acceptable quality of service
+        tools that can inject simulated
+            faults to verify a system’s fault detection and recovery methods
+        and describe a prototype we have developed that meets these criteria
+        This tool, FIG, is capable of selectively introducing and logging errors 
+            at the application/library boundary on a running system
+        Our expectation is that FIG will be used for software development and verification
+        develop software with a higher degree of failure recoverability
+        Fault injection, recovery-oriented computing
+        glibc是linux下面c标准库的实现，即GNU C Library -xxx
+        The highly complex and dynamic nature
+        build adaptive, self-managing capabilities into next-generation 
+            business network and Internet applications 
+        detect and recover quickly from irregularities in its operating environment.
+        Recovery-Oriented Computing [1], an ongoing project at the University of 
+            California, Berkeley
+        These tools can then be used to evaluate the effectiveness and integrity of recovery
+            methods.
+        fault injection is notably absent in the development process of many Internet applications
+        As a result, the recovery methods in these programs, 
+            if they exist at all, often go to market untested.
+        
+        
+    ppt-8
+        omitted state needs to be recomputed on recovery
+        Error Checking and Correcting
+        development approaches
+            there are differences to take note of, which we’ll look at below.
+            a comparison and a guide to when you should use which.
+            special development approaches to web development.
+            we are facing a constantly changing environment
+            find themselves in a constantly changing and fluctuating environment
+            A lot of people only want to consume the web and are oblivious to the technologies behind it
+            Graceful degradation and progressive enhancement in a nutshell
+            graceful degradation 
+                Providing an alternative version of your functionality
+                graceful degradation is the practice of building your web 
+                    functionality so that it provides a certain level of user
+                    experience in more modern browsers, but it will also degrade 
+                    gracefully to a lower level of user in experience in older 
+                    browsers
+            progressive enhancement
+                Progressive enhancement Starting with a baseline of usable functionality
+                then increasing the richness of the user experience step by step by testing 
+                    for support for enhancements before applying them
+                Progressive enhancement is similar, but it does things the other way round
+            +
+                phy 
+                    ...
+                logical 
+                degradation 
+                reboot
+                    ...
+
+    ppt-9
+        antipattern
+            在实践中明显出现但又低效或是有待优化的设计模式
+            是用来解决问题的带有共同性的不良方法
+            它们已经经过研究并分类，以防止日后重蹈覆辙，并能在研发尚未投产的系统时辨认出来。
+            灵感来自于GoF的《设计模式》一书
+            血刃（Bleeding edge，刀锋）：采用一些未经测试和/或尚不稳定的前沿技术来运营，从而
+                导致成本超支、表现/性能不佳，和/或交付延期
+            摇钱树（cash cow）：盈利的老产品通常会导致对新产品的自负
+            +++++++++++++++++++++++++++++++++++++++++++++++++++
+            海鸥式管理（Seagull management）：只有当出现问题的时候管理人员才会跟雇员进行接触
+                和互动的管理模式。典型的场景就是，海鸥式的管理人员“飞”过来，嘁嘁喳喳，是人都批评一通，尔后“飞”走了！
+            厂商陷阱（Vendor lock-in，供应商套牢，供应商陷阱，厂商泥潭）：使一个系统过于依赖
+                于外部所提供的组件/部件。
+            团队思维（Groupthink）：在团队思维中，团队成员避免提出在一致观点之外的思维
+            障眼法（Smoke and mirrors）：展示还没实现的功能，就像它们已经实现了一样
+            九九定律（Ninety-ninety rule）：当项目“几近完成”时，低估完成项目所需时间的倾向。
+            拜物编程（Cargo cult programming）：由于对模式的盲目崇拜，在不理解的情况下就使用
+                模式和方法，企图得到好的结果
+            自我复制（Repeating yourself）：通过不断复制已有代码的模式或代码段进行编码；而非
+                采用once and only once（抽取原则）
+            拷贝粘贴编程（Copy and paste programming）：拷贝（然后修改）现有的代码而不是
+                构造通用的解决方案
+        chaos monkey 
+            Netflix 刚刚开源了他们那被人惦记好一阵子的“Chaos Monkey”，这是一套用来故意把服务器搞下线的软件，可以测试云环境的恢复能力。
+            Netflix 专门开发的一系列捣乱工具
+            避免失败的最好办法是经常失败”, 反映Netflix 通过主动破坏自身环境来发现弱点的做法
+            这猴子的工作是随机杀掉架构中的运行实例和服务。如果我们不经常检验自己战胜挫折的能力，那么在最需要的时候，遇到意料之外的故障事件的时候，能力很可能使不出来
+            Netflix 声称软件可以成功运行在在AWS 以外的云上，主要给用户检测自身环境中的失败条件
+            用户可以决定 Chaos Monkey 对新应用的攻击强度。
+            但一般用户不需要完全照学，可以养一只温顺点的猴子，叫它只跟特定的应用过不去，还可以把彻底搞死实例的几率设得低一些。
+            test the resiliency of a cloud environment.
+    ppt-10
+    ppt-11
+    ppt-12
+    ppt-13
+    ppt-14
+    

@@ -1,0 +1,280 @@
+	CHARACTER ANIMATION
+	Rigging
+	Animation
+	Skinning
+	&q explain those terms!
+	map skeleton to mesh
+	map pose from skeleton to mesh
+	in reference pose
+	map pose
+	define new pose on skeleton
+	for each bone describe influence on vertices by assigning weights
+	build skeleton, align with mesh and adapt bone lengths
+	morph targets
+	Morph Target Animation
+	&q what is? how is used? the idea? adv. and disadv.? 
+	model a large number of localized deformations to provide different expressions of the mesh
+	 provide an animation parameter 
+	Auto-Rigging
+	&q how many Auto-Rigging methods are there? 
+	Given several pose shapes of a character (from 3D scanner or animator)
+	Physically-Based Approaches
+	&q what is? how is used? the idea? adv. and disadv.? 
+	Computational cost
+	Large number of parameters to adapt for each animated individual
+	Scanning
+	Advantages
+	Very realistic
+	Disadvantages
+	Needs scanning devices
+	Need many examples
+	Memory consumption
+	https://doi.org/10.1111/cgf.12048
+	http://www.youtube.com/watch?v=L4T4t2_qkDk
+	&t imp. and paper and further reading 
+	Geometric Approaches
+	Linear blend skinning
+	Dual quaternion skinning
+	Geometric Approaches
+	Advantages
+	Simple & efficient
+	Disadvantages
+	Yields some artifacts
+	http://www.youtube.com/watch?v=LUOJccOZfWQ
+	&q how many skinning and rigging methods are there and what are theit adv. and disadvantages! 
+	Keyframe based shape animation
+	physically based animation
+	design model / scene with physical parameters
+	compute keyframe based shape animation from laws of physics
+	 from laws of physics
+	character animation
+	animate keyframe poses of skeleton
+	attach vertices to bones 
+	animation
+	&q what kind of animation techs are there? x3 
+	&t imp. two of them! 
+	&t imp. and paper and further reading 
+	&h op12 
+	compute deformed surface model
+	Storing a Skinned Mesh
+	vertex weights
+	skeleton joint
+	mesh vertices in rest pose
+	geometry
+	connectivity
+	attach vertices to bones (W)
+	animate keyframe poses of skeleton (Pi )
+	design skeleton S with bones
+	&q the repres. illu. the animation process on op12 !
+	skeleton is aligned with skin mesh in reference pose (?? = 0)
+	&q what we get after rigging? op14 
+	define vertex weights
+	hand, fitting or IK
+	&q hwo can we define a new pose? above 
+	For each joint one can transform coordinates from the reference pose to the new pose with the transformations
+	for each joint
+	we have a transformation defined from the reference pose to the current frame
+	A vertex is influenced by the ones where the weight is larger than zero
+	&q a vertex is not affect by all the bones? y typically 
+	&q how can skel. affect vertex on suface? simplest way? linear combination! 
+	Linear vertex Blend Skinning
+	&q write formulas and calculate this example 
+	skeletal subspace deformation (SSD)
+	linear vertex blending leads to artefacts due to loss of volume:
+	&q what artifacets can arise using SSD method? op18 x2 
+	elbow collapse
+	Candy wrapper
+	due to loss of volume:
+	LBS artefacts
+	&h ssd method is also called lbs 
+	http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.8995&rep=rep1&type=pdf
+	high dimensional animation space to be learned from examples
+	all figures © Merry et al. 2006
+	&t imp. and paper and further reading 
+	Interpolation by affine combination
+	&t write formulas and calculate this example 
+	build curves over transformations, which can be used for camera animation
+	To interpolate between two transformations ??? ?? ??0 and ??? ?? ??1 , one can first compute the relative transform
+	Representing transformations by homogeneous matrices, concatenation corresponds to matrix product 
+	add fractional parts ?
+	&q the case of add fractional parts t? write formulas and calculate this example 
+	&h op23 
+	Another approach is to decompose
+	into a product of transformations that can be split into fractional parts individually through parameters
+	&t imp. and paper and further reading 
+	Any homogeneous matrix can be written as product
+	&p
+	&h op23 
+	Interpolation is only possible if no reflection ??? is present
+	&p 
+	But this only works for interpolation not for blending with more than two matrices and weights
+	Affine combination
+	&q Affine combination interpolation? 
+	&q what kind of interpolations are there? which is intunitive one? affine + quaternoin !
+	Quaternion Interpolation
+	? One can interpolate two unit quaternions q1 and q2 with the SLERP operation,
+	In computer graphics, Slerp is shorthand for spherical linear interpolation
+	&t imp. and paper and further reading 
+	&q why we learn interpolation methods?? for blending, for skinning! 
+	&q the diffculty is how can we model it and not gen. artifacts! 
+	LOG MATRIX BLENDING
+	Log Matrix Blending (Alexa 2002)
+	Basic idea: the log function can be used to transform the product operation into a sum:
+	&q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+	This means that ?? and ?? are split into infinitesimally small parts which are interwoven to a commutative result
+	&t write formulas and calculate this example op29 
+	If logarithms exist of ?? and ?? one can proof the identity
+	Log Matrix Blending (Alexa 2002)
+	Properties when applied to rigid body transformations
+	result is always a valid rigid body transformation
+	valid rigid body transformation
+	interpolates between two rotations with uniform angular speed
+	interpolation between two rotations is not necessarily along the shortest path
+	&h we have to do some interpolation when blending?? 
+	&p
+	Discussion
+	linear systems can be solved and SVD be performed in log space allowing for statistical analysis of motion
+	Errors and Omissions in Marc Alexaís ìLinear Combination of Transformationsî
+	&t further reading 
+	&t imp. and paper and further reading 
+	repeated conversion to log space, averaging in log space and conversion back to quaternion space 
+	Spherical Averages (Buss 2001)
+	&q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+	SPHERICAL BLENDING
+	has not been used in skinning
+	Spherical Blend Skinning (Kavan 2005)
+	&t imp. and paper and further reading 
+	To avoid artefacts ensure that all dot products of the quaternions are positive
+	SBS
+	Spherical Blend Skinning (Kavan 2005)
+	For cloth simulation we need some optimization approach
+	&t cloth simulation ! 
+	How to find a good rotation center ?? ?? ?
+	&q How to find a good
+	&rotation centerq 
+	For revolute joints simply choose point on joint axis
+	&t write formulas and calculate this example op37 
+	Optimization
+	Accompanying video for paper "Spherical Blend Skinning", I3D 2005.
+	&t imp. and paper and further reading 
+	Real-time Skeletal Skinning with Optimized Centers of Rotation
+	SCREW MOTIONS & DUAL QUATERNION BLENDING
+	DUAL QUATERNION BLENDING
+	&q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+	&t imp. and paper and further reading 
+	rigid body transformation include translations, rotations, reflections and their combinations.
+	rigid body transformation include
+	&q rigid body transformation include??
+	proper rigid body transformations exclude all reflections and are also called roto-translations.
+	A [proper] rigid body transformation can be represented as an orthonormal matrix ?? and a translation vector ?? ? :
+	Screw Motions
+	&q what is? how is used? the idea? adv. and disadv.? 
+	Chasleës/Mozzi's/Cauchy's screw theorem
+	Screw theorem
+	Pl¸cker Coordinates
+	&q what is? how is used? the idea? adv. and disadv.? 
+	resulting in 4 degrees of freedom
+	proof
+	&q proof this 
+	an oriented line from ?? through ?? can be represented as a direction vector ?? = ?? - ?? and the moment vector ?? = ????? as 6D homogenous Pl¸cker Coordinates
+	6D homogenous Pl¸cker Coordinates
+	Pl¸cker Coordinates Applications
+	Line Geometry 
+	test whether two lines{??: ??} and {??' : ??'} intersect in 3D:
+	Compute common plane of intersecting lines
+	Compute plane for line and point 
+	Compute homogenous representation of line-line intersection point (no line may pass origin)
+	&
+	&q how can we do those? 
+	&t imp. and paper and further reading 
+	&t we can obtain from cgv imp. on its website!
+	Further Applications in Ray-Tracing
+	intersection
+	&t some intersection calcu. with help of PlÅcker Coordinates!
+	&t imp. and paper and further reading 
+	accelerate ray intersection computations
+	dual base
+	similar to the complex
+	but
+	 dual numbers 
+	&q what is? how is used? the idea? adv. and disadv.? 
+	transformation rule is implemented in the dual product:
+	Dual Coordinates
+	Dual Algebra und Dual Quaternions
+	multiplication
+	conjugation
+	inverse
+	square root
+	dual quaternion
+	conjugations
+	norm
+	inverse quaternion
+	Unit Dual Quaternions
+	&q why use dual number? 
+	&h rotations can be rep. better! more intunitively! op46 
+	&h the transfermation rule can be rep. in dual product op46 
+	&t write formulas and calculate this example 
+	&q dual algebra? write formulas and calculate this example ! 
+	&q dual algebra is similar to complex algebra? y! 
+	for unit dual quaternions dual and non dual part are orthogonal
+	composition of rotation and translation is
+	screw motion form of unit dual quaternion with dual angle ??? and dual axis vector ?? ? :
+	&q hwo can we rep. scorew motion with dual quaterion? op49 
+	&t an exampel calculation! op50 
+	convert to dual quaternion:
+	rearrange into
+	convert skinning transformation to dual quaternions
+	Dual quaternion Linear Blending
+	(Kavan 2007/8)
+	To avoid artefacts ensure that all dot products of the dual quaternions are positive
+	For each vertex 
+	for optimized computations and shader code see paper
+	&t addi. imp. and paper and further reading 
+	Properties
+	always computes a valid rigid body transformation
+	interpolates two rigid transformations along the shortest path
+	very fast computation
+	does not interpolate transformations with uniform speed
+	Missing Property
+	&q comparation of four blending methods! 
+	&q adv. adn disadv. of dual quaternion? op53 
+	 Understanding Quaternions, http://3dgep.com/?p=1815
+	Quaternion Demonstrator, https://graphics.stanford.edu/courses/cs348c-95-fall/software/quatdemo
+	Convert from rotation matrix to quaternion, http://www.cg.info.hiroshima-cu.ac.jp/~miyazaki/knowledge/teche52.html
+	Ben Kenwright: A Beginners Guide to Dual-Quaternions, http://wscg.zcu.cz/wscg2012/short/a29-full.pdf
+	http://wscg.zcu.cz/wscg2012/short/a29-full.pdf
+	TRANSFORMATION OF NORMALS
+	blended transformations of all blending schemes cannot be used to transform vertex normals correctly
+	&q  explain why we have to transform normals why it was not correct before by default? op56 
+	Tangent and Normal transformation
+	A vertex normal is transformed with the inverse transposed of the Jacobian
+	Linear Blend Skinning Case
+	&q how can we fix normal directions in diff. blending cases? 
+	plus the deformable part
+	due to the variation of weights over the skin mesh
+	Computation of weight gradients
+	Similar to vertex normal computation one computes the weight gradients first per triangle and then averages at vertices the gradients of adjacent triangles.
+	can be computed from
+	in a preprocessing step.
+	Combining the formulas
+	&q write formulas and calculate this example 
+	&q how can we fix the normal problem? in one fomula! in the cese of LBS? op60 
+	for DLB use dual quaternions to compute
+	(LBS or DLB)
+	&q for DLB, there is also normal problems? y 
+	Transformation of Normals
+	Accurate and Efficient Lighting for Skinned Models
+	https://vimeo.com/85267396
+	&t further reading imp. and paper and further reading 
+	&
+	http://shihaowu.net/
+	https://igl.ethz.ch/people/
+	https://igl.ethz.ch/publications/
+	&t imp. and paper and further reading 
+	Linear combination of transformations. In Proceedings of the 29th annual conference on Computer graphics and interactive techniques (SIGGRAPH '02). ACM, New York, NY, USA, 380-387. DOI=10.1145/566570.566592
+	Ladislav Kavan and JirÌ é·ra. 2005. Spherical blend skinning: a realtime deformation of articulated models. In Proceedings of the 2005 symposium on Interactive 3D graphics and games (I3D '05). ACM, New York, NY, USA, 9-16. DOI=10.1145/1053427.1053429
+	Bruce Merry, Patrick Marais , James Gain. 2006. Animation space: a truly linear framework for character animation. ACM Transactions on Graphics 25(4):1400-1423. http://pubs.cs.uct.ac.za/archive/00000373/
+	Ladislav Kavan, Steven Collins, JirÌ é·ra, and Carol O'Sullivan. 2007. Skinning with dual quaternions. In Proceedings of the 2007 symposium on Interactive 3D graphics and games (I3D '07). ACM, New York, NY, USA, 39-46. DOI=10.1145/1230100.1230107 ? Marco Tarini, Daniele Panozzo, Olga Sorkine-Hornung, Accurate 
+	http://vcg.isti.cnr.it/deformFactors/
+	Downloadable Demo
+	&t imp. and paper and further reading 

@@ -1,0 +1,117 @@
+
+    //在读课件的时候进行的扩展阅读
+    //在课件的基础之上大概再了解一下，为了灵活运用，不是全部都需要总结
+    !good santances 
+        Use 'systematic methods' to speed up your paper writing process 
+        open discussion instead of a frontup reading of slides
+        should use the ACM SIGPLAN Conference Format
+        effective writing
+        Your work is not scientific if you just choose the first solution and do it
+        go beyond conventional thinking
+        critical thinking tools!
+        abstructs should unfold the research hypothesis
+        take use of Paragraph development scheme
+        indecats what he will find in paper 
+    +
+        http://www.creativeproblemsolving.com/tools/cps_summary.pdf
+        A PMI Chart is useful in a debate over a difficult decision
+            Step 1. Consider the Plus Points 
+            simply enumerate all of the positive things you can think of
+            enumerate all of the negative things you can think of.
+            look whole picture of the event 
+            It is a great tool for critical thinking, focussing your attention, evaluating and analysing
+        A radar chart 
+            is a graphical method of displaying multivariate data 
+            three or more quantitative variables represented on axes starting from the same point
+            The relative position and angle of the axes is typically uninformative.
+            trade-offs, and a multitude of other comparative measures
+            Kiviat diagram
+            https://upload.wikimedia.org/wikipedia/commons/3/3e/Star_Plot_of_16_cars.jpg
+            an expamle of buing cars 
+            we can use them to identify clusters of cars with similar features
+            average-to-above-average roominess
+        Donut Chart
+        ...VIS charts 
+        aims 
+            provide students from Bachelor to PhD level all skills required to conduct good scientific work
+            you should be able to write your thesis.
+            open discussion instead of a frontup reading of slides
+            will be a guided discussion of the contents
+            Your paper must be submitted until 25th of June 2019 (AoE) by submitting it via Easychair (https://easychair.org/conferences/?conf=asise2019).
+            The paper should use the ACM SIGPLAN Conference Format acmart
+            Please include page numbers in your paper. Adding the line
+            A guide to effective writing.
+        what i learn
+            typical methods and their detail to use for effective writing.
+            and have to know that how the process going 
+    Structure of the lecture-按照流程讲述的一门课
+        Introduction and Fundamental Research Activities x4（前期基础知识）
+            +   
+                The limits of science，Data, information, knowledge and wisdom (DIKW).
+            ppt-1-Overview
+            ppt-2-Self-Management
+                zopp
+                    Goal analysis/problem analysis tool 
+                    a hierarchical goal-oriented problem-solving method with success proof
+                    B-POPP is a ZOPP-like problem and efficiency analysis
+                        checks blocking factors preventing that objectives are reached.
+                        it considers more 
+                    Do a ZOPP or a B-POPP and refine it
+
+                甘特图
+                    也称为条状图(Bar chart)。 是在1917年由亨利·甘特开发的，其内在思想简单，基本是一条线条图
+                    横轴表示时间，纵轴表示活动(项目)
+                    图形或表格的形式显示活动；
+                    是一种通用的显示进度的方法
+                    构造时应包括实际日历天和持续时间，并且不要将周末和节假日算在进度之内
+                    甘特图具有简单、醒目和便于编制等特点，在企业管理工作中被广泛应用
+                    可分为计划图表、负荷图表、机器闲置图表、人员闲置图表和进度表等五种形式
+            ppt-3-Report Types
+            ppt-4-What is science?
+        *The Research Process ADED （过程是怎样的，展开讲）
+            ppt-5-The Research Process ADED
+            ppt-6-Information Gathering-Literature Analysis
+            ppt-7-Solution Design Processes
+                Priorixx methods(sorting methods )?
+                    1.num.
+                    2.binary.
+                    3.kiviat graph 
+            ppt-8-Writing Papers-Research Hypotheses
+                Direct Paragraph,Suspended Paragraph
+                    ...
+                discussion
+                    基本是一个重复，展望（内部外部）
+
+            ppt-9-Writing-Types of Research Papers
+                Shaw's and other's classifications of research papers
+        How To Do Scientific Presentations(后期) and review
+            ppt-10-Presentations
+                This lecture gives a primer on how to prepare and present excellent presentations.
+            ppt-11-Revising and Reviewing
+                LyX tool
+                    LyX is a document processor
+                    has a pretty good built-in change tracking system
+                        Just do your edits in change-tracking mode and you are done
+                why is good to champion 
+                    by focusing programme committee members' attention on whether or not they will 
+                        "champion" a submitted paper during the programme committee meeting.
+                    we can make the selecting Reviewing process 
+                    *more efficient 对我们reviewer
+                    *encourage people to fight for it， 对他们writer  
+                !review aspects?
+                    main idea:
+                        paper lev: skeleton/innovation depth
+                    content:
+                        section lev: research question/result/method/Evaluation? has unity?
+                        sentence lev: coherence/conciseness
+                        subsentence lev: 
+                            syntactic revision 
+                                Grammar/spell-checking/
+            ppt-12-Ethics in Computer Science
+                ACM Code of Conduct
+                IEEE Code of Conduct
+
+
+
+
+

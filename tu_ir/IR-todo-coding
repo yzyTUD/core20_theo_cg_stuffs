@@ -1,0 +1,30 @@
+
+    （关键词列表）
+        ml
+            ::with python on some datasets 
+                Sequential Covering
+                ---
+                Regelbasierte Systeme
+                决策树 C4.5
+                --
+                Naïve Bayes分类实现,Multinomial NB: 0,81 – 0,84
+                Bernoulli NB: 0,71 – 0,75
+                --
+                all 1
+                tfidf
+                Rocchio: 0,86 – 0,87
+                kNN
+                --
+                SVM
+            
+
+
+        retrival 
+            ::System on txt documents (or pdfs )
+                boolean 
+                doc eva.
+                去重
+                    Shingles 
+                    Super Shingles
+                SMOTE的全称是Synthetic Minority Over-Sampling Technique，译为“人工少数类过采样法”。 
+                

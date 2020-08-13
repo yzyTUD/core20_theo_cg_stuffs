@@ -1,0 +1,28 @@
+
+    from tao
+        fault error failure ok
+        Rx ok
+            what is Rx? mechanism 
+            two types of sensor 
+            environment changes ( all the things in a form ) ok
+        3. antipattern ok
+            cascading failure and how to fix it  -xxx
+            chain reaction how to fix it 
+        4. bugs as deviant behavior ok 
+            explain must beliefs may beliefs  -xxx
+            analyse a short of code
+                free?lock?
+                check-then-use/use-then-check? -xxx
+        5. tainted data ok
+            static/dynamic 
+            coarse grain tainted / precise tainted 
+            sting the architecture/signature/ polymorphism *paper ext
+        不用写伪代码...
+    myexam 
+        bugs as deviant behavior
+            mast beliefs, may beliefs
+            analyse a code
+                he asked a lot of ques. here, i did not do it well....
+                he said that was in exercise...
+                so, maybe we have to practice more
+            no more...the other exam takes too much time 

@@ -1,0 +1,514 @@
+
+    from tao
+        fault error failure ok
+        Rx ok
+            what is Rx? mechanism 
+            two types of sensor 
+            environment changes ( all the things in a form ) ok
+        3. antipattern ok
+            cascading failure and how to fix it  -xxx
+            chain reaction how to fix it 
+        4. bugs as deviant behavior ok 
+            explain must beliefs may beliefs  -xxx
+            analyse a short of code
+                free?lock?
+                check-then-use/use-then-check? -xxx
+        5. tainted data ok
+            static/dynamic 
+            coarse grain tainted / precise tainted 
+            sting the architecture/signature/ polymorphism *paper ext
+        不用写伪代码...
+    from slides 
+        ppt-1--introduction and roughly what is fault, classes of fault
+            the goal of the course? under what condition? roughly p27 -ext 
+            what diff from past/before. challenges now ?p7
+            what is our approach in general? hhh
+            Services need to be? p11
+            types of defect ? p13 -ext
+            defect density? normally 
+            typical kinds of defects in linux? p18 pass
+            what is INTEGER HANDLING ISSUE,CONTROL FLOW ISSUE? -ext 
+            availability def p32 -xxx
+            CAUSES OF UNAVAILABILITY [IEEE1995] x3 roughly
+            *relationship fault error failure p35
+            CHAIN OF DEPENDABILITY THREATS p39 
+                between components
+            what is failure model? p43  -xxx
+            what happens when it go beyond failure model?
+            *FAULT TYPES? x5 imodified p47 -xxx
+            Why is Software Fault Tolerance important?
+            what are Dependability threads? relationship between them 
+            which func can be used in c/c++ to allocate mem? -p47 r1
+            *write a mem fault =
+        ppt-2--approach1 first step of testing, recommended--Unit test, Ramdom testing(later:Fuzzing, parti....
+            the cause of Mars Climate Orbiter crash/xxx in radiation therapy?
+            roughly, how is the economic costs of faulty software in the U.S. range?
+            abc testing steps, but how to choose?
+            the key idea of v life cycle model in systems eng.
+            diff. lev of testing?
+            Unit testing
+                basic terminologies
+                    Test case, Test set, SUT, FUT 
+                    Black box testing, White box testing
+                    post-condition, pre-condition, invariants
+                black box sort func testing example roughly, sort? what we are going to implement? op15 large
+                    if we test func: is_sorted(),....
+                unit test, how can we gen. test case? -- basic gen x2 .......
+                how does is_permutation() func. been used?
+                why we need to emphasize counter examples?
+                use assert to perform unit test code? p15 
+                what is the RECOMMENDED APPROACH (order ) to testing a SUT? p16  x5... large  =
+            TDD
+                3 steps of TEST-DRIVEN DEVELOPMENT
+                why new tests should be initially fail? avoid?
+                benefits of TDD?  p20 r1  x2 
+                how to clean up code? steps?  x3 
+                diff bet.  verification and validation? == 
+            black-Random testing !
+                some terminologies 
+                    Failure Rate formula?， SUT, cardinality， for int32 y,z , S=??
+                RT FOLLOWS GEOMETRIC DISTRIBUTION ?
+                    formula ?
+                    given fail probability is t, what is the probability 
+                        that at least one failure is found within x times?
+                probability of 
+                    no failure detected?
+                    at least one failure defected? with t and number of test cases x 
+                        that means Cumulative distribution function!the pic? p33
+                        can add together to calcu. ==
+                Mean number of test cases until failure found ? p31 ==
+                disadv.? when t is small? what happends
+                what can we do to increase likelihood to detect bugs? 
+                    by assuming that only one val. is incorrect     
+                solution to test overflow. ?  p45 
+                problem of black box testing?  -ans 
+            white-STRUCTURAL COVERAGE TESTING
+                what kind of coverage criterias are there? -ans x3 p56...
+                    in detail explain  
+                draw a CONTROL FLOW GRAPH p56 ==
+                relationship between statement, branch, path, loop coverage? -ans
+                WHY NOT ALWAYS 100% STATEMENT COVERAGE? p52 
+                cov. are Quantifiable? p53
+                loop coverage example, draw a pic p56 
+                further coverage criteria x3 p57 ==
+                +
+                    Def-Use CFG? ,control-flow graph (CFG)
+                    All-Defs-Coverage (ADC), All-Uses Coverage (AUC)?
+                        https://ece.uwaterloo.ca/~agurfink/ece653/assets/pdf/W04-DataflowCoverage.pdf
+        *ppt-3--approach2 “Execute" a program on symbolic inputs
+            review, how to test a program?(black box testing) x3 steps p4 
+            what are 
+                symbolic value p5, symbolic expressions, path constraint, symbolic execution tree 
+            how many paths?  
+            how to reach the area that we inter. p14 x3 
+            HOW TO MITIGATE PATH EXPLOSION? x3 paper, p15  
+                later 
+            ways to extract constrains? SE Engine? roughly
+            what is path constraints in logical term?
+            NP-complete?
+            stru. of solvers? x2 -ans p21 p19 18 exerp35
+            solver-side optimizations? accelerating?
+                x2 p24 
+            based on the fact that each branch usually depends on a small number of variables...
+            pro & cons of SE?...
+                problems by symbolic execution x3 p25 p34 
+                advantages of symbolic execution? p34 x2 
+            tools that w can use to symbolic execution? x3 p27 
+            KLEE architecture p28-30 
+            distributed se exist....  == 
+        ppt-4--approach3 static analysis, checking deviant behavior with addi. checker similar to compiler 
+            bugs can be seen as conflicting intentions.....
+            goal? Find as many (serious) bugs as possible
+            why need automation? 
+            key odea of intension check  s4p3
+            examples of correctness rules? p5  roughly
+            static check based on intent--with an extended compiler
+            Lock Checker, free Checker? p10 
+            benefits of extending compiler to check source code? p7  x1 
+            explain code op11  
+            how to dealwith the fact that there may be multiple free functions? p28 
+            for an other call to freeit(), we should allocate an other state machine?
+            now, still manually...
+            problem by doing this heuristik? p29 
+            match any call and any pointer? p32 code? roughly
+            taint1
+                the case that SANITIZE(santaiz) INTEGERS BEFORE USE, explain with pic ? p35 
+                some example to this ? p39 roughly
+                we should not use integers comes from users directly.....
+            MUST belief
+                *summ. typical error?  -xxx
+                    pointer 
+                        use after free
+                        check then use/ use then check...
+                        os security beliefs at the sametime? 
+                    variables
+                        uninitialized
+                        redundancy...
+                        unused
+                    mem
+                        buffer 
+                            size overflow 
+                        heap stack 
+                            overflow 
+                FIND ERRORS WITHOUT KNOWING TRUTH? x2 p50 
+                    summ. method used for must believe and may 
+                *MUST beliefs and may, what are they? give examples p52 p56 exerp38 
+                how to use those beliefs?
+                what are must beliefs in this code ? p51 
+                ?? p58 may or must? !! -ext
+                p60 61 later template used to drive must beliefs
+                check(p==NULL) can drive 2 MUST beli? three typies of traditional contraditons? p65 66 73
+                how to do redundancy checking, useless? examples  p75 78 
+                FINDING SECURITY HOLES, how? example  p81 
+                how to do belief analysis? roughly, general
+                if one thing in two sys. imp has two beliefs, there is a contraditons? 
+                when there are multiple implementations ? p85
+                cross-check for contradictions...
+            MAY belief
+                the idea used to handle MAY belief? p89 
+                why use z-rank to rank 'errors'? some are real error, others are false positives
+                    and how?  
+                why there may be problems with free() function? p95 
+                *z-rank example with foo and bar function? which is err? p96 概率 p91 
+                    a ranking formula? compare foo and bar ? is foo< bar err? 
+                *free error?similar to last one. example p99 i wrote  
+                an other way to rank snippets that we found? p103 
+                    heuristic? see how often?...
+                an other example, use in subfunction! worst bug case? short explain p108 ??
+            check “A() MAY BE FOLLOWED BY B()” Rule? p110 algo x3 p91  -xxx
+            the key idea of 'code beliefs'? -ans
+            what to use for static analysis? template? algo? p113 
+        ppt-5--approach4 'totally random'
+            positive testing vs negative testing 
+            what is fuzzing? belongs to nega?
+            compared to Ramdom testing 
+            problem with random testing 
+            what is testing coverage/depth ? ==
+            anatomy of a testing system p9 x3 -xxx
+            anatomy of Ramdom tester... p9 
+            FUZZER’S DATA PRODUCTION method? p11 x2 + p12-14 x3x2 hh large
+            what is Evolutionary fuzzing p14  
+            CLASSIFICATION OF SOPHISTICATION FOR FUZZER’S DATA PRODUCTION p15 hhh
+                rank them 
+            from the data Generator to SUT? how to transafer data? x4 p17
+            what about monitoring sys.? p20  
+            Fuzzing workflow p21 x5 after fuzzing? 
+            why monitoring? detect what? 
+            how to deal with Long testing time when using fuzzing? p22 x1 ==
+            ---
+            what is tls, in which area?
+            implementations for tls protocol? p24 
+                later 
+            what means "attack" here? p26  
+            how to attack roughly? p26
+            attack catego.? x3 
+                Cryptographic attacks roughly
+                State machine attacks
+                    Man in the middle can read the whole conversation
+                Overflow and Overread attacks 
+            main idea of  BLEICHENBACHER’S ATTACK? p31 
+            write a TLS-Attacker using fuzzer? modi. x2 p33 
+            TLS attacker can reveal several vulnerabilities? which p34 
+            the paper Systematic Fuzzing and Testing of TLS Libraries later 
+            fuzzing can be used for IPSec over SSH? -future work 
+        ppt-6--approach5 'taint analysis' dealing with attacts 
+            taint analysis 
+                basic s:sql and php injection prevent(static )
+                basic idea of taint analysis p5 
+                simple way to prevent sql injection p4 
+                course vs precise way of tainting  ==
+                prevent sql injection using taint analyse..p9 x1 
+                what means php injection? p10 
+                    -- input strings as php code or manipulate system state 
+                vulnerabilities--漏洞！
+                detecting vulnerabilities 
+                overwrite vulnerability
+                common overwrite vulnerability, what they use? x3 p17 
+                    bufferxxx 
+                overwrite targets? x2 ==
+                why not static analyse?
+                dynamic taint analysis, the idea? the approach?x2 p18 
+                what means 'a sensitive way' when using a data ?
+                IMPLEMENTATION? Valgrind
+                what are typical untrusted sources?x3 p22 re 
+                what are typical ways of propagate a taint? what are we tracking? p23 x2 
+                we can detect many attacks with help of taint analysis!.....
+                the stru. p28 i write r3
+                we can do taint analysis without their source code 
+                how to improve the performance when using taint analysis? p28
+            for defense system (against attacks)
+                Sting: An Automatic Defense System, how does it work? the architecture?  p14
+                what is exploit detection 
+                how should it be?
+                    should provide detailed info 
+                    should detect most typies of EXPLOITS
+                Antibodies should be vulnerability-specific? p33 
+                VSEF? roughly p33 p34 
+                paper TAINT-BASED VSEF FILTER GENERATION later 
+                can have FALSE POSITIVE and false negatives ? how to deal with ? p39 
+                advantages of taint-based VSEF (when compared to Valgrind) x3 p44 -xxx
+                success criteria of the VSEF sys.? x2 p43 
+            TaintCheck: TaintSeed, TaintTrack, TaintAssert? p46 -xxx
+            Advantages of static vs. dynamic taint analysis
+            Coarse vs. precise tainting
+            Sting: How to efficiently detect and prevent the spreading of   worms
+            VSEF Vulnerability Specific Execution Filtering:
+                Filter based on execution trace rather than on input
+        ppt-7--highlevbugs(heisenbug)-MECHANISMS1
+            why there are bugs still?
+            the def of robust -xxx
+            sys. architecture p7 
+            diff. bet. robustness and software fault tolerance p10 
+            what is the reason of resource depletion? lack of res.?
+            resource failures is kind of robustness issue? 
+            how to measure robustness? p13  ==
+            types of bugs? x3 their examples?x4  p18
+            what kind of bugs are difficult to recognize? roughly
+            what may behind random effect? 
+            for non-reproducible fault, what approach can we use?  highlev x8..
+            compare HEISENBUGS and BOHRBUGS? x2 -xxx
+            the idea of process pair with pic p22 -ans 
+            what is supervisord script used for? 
+            supervisord architecture-- similar to program state graph p30
+            still, we have problems even Thorough we use supervisord script to help us restart 
+                how to solve this problem? x2 or their combination // p31 + p35 
+                ->the architecture of it! p35 
+            combined approach, ultimate solution! p35 -xxx
+            service states -- 
+            what to query when watching supervisord? x2 p33 
+            ---
+            in gracefully degradation, we can return partial or wrong result? 
+                what we should do to prevent that? 
+                the idea? p37 
+                degeneration
+            --- 
+            selective retry, the idea? 
+            HIERARCHICAL retry, what is that?
+            use selective retry to increase the probability of success 
+            Bohrbug--continus crashing 
+                we can solve it with gracefully DEGREDATION
+                store session state 
+            how can we know the number that a client have already retried? p60 
+            using session state? p62 
+            given 2 processes, how can we detect one has been Crashed?/link processes?
+                use pipe, how ? p72 
+                as failure detector?
+            what is termination atomicity?  p73 
+            example in practice: farmer/ worker model p59 explain in detail
+            what is Rejuvenation? p83 
+            it can be Proactive or Reactive? 
+            PROACTIVE REJUVENATION VARIANTS? 
+                what is periodicxxx, detail 
+                what is Load-basedxxx, detail
+                and prediction based 
+            only rejuvenate if all services that are needed for recovery are available, effective Rejuvenation
+        ppt-8--highlevbugs-MECHANISMS2 ok 
+            ---Checkpointing
+                what is Checkpointing? 
+                //what problem can arise when using waitpid() func.? p14 
+                the problem of lost updates 
+                    why? with a pic. hhh
+                    approach? p21 ==
+                Rejuvenation vs Checkpointing and state? p29 
+                ways to balence from storing all states to saving no states? x2 
+                    effective checkpointing
+                we are talking about online applications / similar to states 
+                    in vms, dockers
+            ---scrubbing
+                how to state scrubbing? 
+                    mem, app state 
+                how to Memory scrubbing? p33
+                how to purge state errors? (similar to dependency errors in system)
+                given a piece of code, what is N mean p34 ? what means ft>=0? 
+                    why exit?
+                APPLICATION STATE CORRECTION? check the invariants
+                whta is the diff. bet. processes and threads? p42 
+                what can we use when facing resource leak? 
+                MECHANISMS USED BY APACHE? hh p52
+            ---recovery block
+                what is recovery block?　idea? p54 
+                    example p55 
+                what happends if no alternatives here? 
+                what costs does it have? recovery block p59 roughly
+            ---microreboot
+                what can we use if we have a long restart time 
+                how to do that p71 
+                what is reboot tree 
+                what is mttf/mttr p78 
+                how can make it more robust? by making use of two components, 
+                    watching each other rebooting each other 
+                why good? the one with bad MTTF has smaller MTTR 
+                SUBTREE DEPTH AUGMENTATION, what is that pic p93 
+                why subdivision? prevent to reboot the whole sys. 
+                diff. tree structures exist, to minimize the need of reboot 
+                tight coupling vs loose coupling? p117 hhh
+                methods- retry for Idempotent function? or non-xx  x3 p118 
+                All resources have a lease time？ resource lease time...
+                resources will be reclaimed
+                structure of reboot can improve reboot time
+            ---MICROSERVICES
+                MICROSERVICES has a better scalbility/data recovery ? 
+        ppt-9--highlevbugs-antipattern ok
+            network is homogenous? 
+            topology does not change? 
+            infinite bandwidth? 
+            what is antipattern p7 
+            is post mortem analyse a good pattern? 
+            what are typical integration points? p9 x3 
+                and what is that 
+            problems may happen with integration points? p15 
+            AWS has 100s of services, how can they be connected with each other? 
+            an example to Microservices? cloud computing ? 
+            AWS architecture hh 
+                -later 
+            antipattern1--cascading failures
+                the problem of it? 
+                to overcome it, we have to prevent propagation of failures bet. layers
+                    how? x3 
+                patterns that we can use for this properse? p23 x1
+                CIRCUIT BREAKER STATE TRANSITIONS hhh 
+                how does time out method work? why we use it p23 
+                    examples about that p32 
+                problem by proxy method? p33 
+                ***summ. what we do for this anti pattern? what are patterns? x3 
+            antipattern2--chain reaction
+                the problem of it?
+                even though our servers are decoupled, may be problems
+                what is that problem? p35 p37 
+                ***patterns for that? x4 
+                    detail for them -large ==
+            antipattern3--blocked threads 
+                threads are waiting for sth. or accu. they will all be blocked and can not prograss 
+                why hard to test them? 
+                solution? x2 
+                    detail to each -large 
+            DDoS attack
+                what is „Slashdot“ effect ==
+                good marketing can kill your system
+                solution/ approach x4 -large  p52 ==
+            when to Rejuvenate? a pattern? p55 
+                more efficient hand-over? p57 
+                Tools for automatic restart? hh p59 
+                p60 later 
+                what is respawn limit xy? when used to restart a service or the system. p60 
+            amazon ASG?
+                why auto scaling? p64 what police can we use? 
+                    metrics? x4 cpu utilization.....
+                    when some metrics satisfy a given condition, we perform an adjustment
+                    not easy to speak a good policy 
+                    scale up/ down? 
+                    but, cpu not allways the bottleneck... hard to say which is 
+                what is ELASTIC LOAD BALANCER?
+                    the architecture? p75 
+                    load balencer with scaling group
+                    it also ...
+                what means availability zones? 
+                    grouped into regions
+                    each region is completely independent 
+                    similar to bulkhead approach
+                    and autoscaling group in availability zone
+                    the architecture? p79 
+                    fail-over to an other rigion 
+                further, can use DNS based load balencing and fail-over 
+            what is chaos monkey,the idea  p86 87 ext  x2 
+        ppt-10--highlevbugs-Microservices and chaosmonkey ok
+            start from compartion 
+            the modern way of building dependable services? 
+            most Challenges using traditional methods? x2 roughly p3
+            how do you think about MONOLITHIC software  p4
+            kinds of MONOLITHIC soft? x3 p5 hh
+            with git tool, we can use branch for ? x3 p8 
+            Disadvantage even though git management has been used? \
+            modern source control system
+            feature branch? how to merge into dev. 
+            rebase?? later 
+            the example of python lib. p14 
+            the architecture of monolithic dev. process p16 
+            advantages and disadv of monolithic deployment p18 19 x1x3 roughly
+            def. of microservices p23 
+            can use diff. versions in diff. services (parts)
+            illu. the scalbility of those two approaches: monolithic+microservices
+                p29 
+            the scalbility of microservices: easy to introduce new versions 
+            the runtime structure of monolithic and non-monolithic services p34 
+            loose coupling? how x2 p39 
+            what is a fail-fast design p45
+            local restart process, when dealing with error can not solve  p45 
+            what is transparent restart? p46 
+            we have to avoid all services reboot at the same time! 
+            remote restart? how p47 
+            load balencer may also be restarted 
+            dealing with： LB may have diff. IP when restarted -- use url 
+            how to perform fault injection during testing and production? 
+            apply fault tolerant to microservices? roughly hh
+        chaosmonkey ok
+            the idea -- check if our solution works
+            def of a complex system? p5    
+            why bugs everywhere? -- too complex too little time 
+            what is Chaos Engineering p7 
+                ways to do that x2 p9 
+            what is the Problem with testing env.? x1
+            the solution for that? p11 
+            it is about increasing the confidence of the sys. 
+            how to measure that our sys. works properly? 
+                -- use monitoring infrastra.
+                what to measure? p13 roughly x3 
+            what to inject? p14 x2 
+            pass fault injections does not means sys. will work properly in 
+                production sys. 
+            perform injections during staff is in office... 
+            what means MINIMIZE BLAST RADIUS p19 
+            diff. kinds of monkeys p21-23
+                also, some good monkeys 
+            steps/ways to test x3  p25 
+        ppt-11--highlevbugs-RX ok 
+            the poisonous request , what is that 
+            the problem when we using the same configuration for each instance? p7 
+            idea of rx 
+                in real life means ? 
+                in se dev means? 
+                p9 
+                p67 
+            diff. checkpointing Strategies? p10 x2 --理论上不是这章节的
+            in RX, what do we do when bug is detected ?x3  p12 
+            re: kinds of bugs? x3
+            advantages of rx p15 ==
+            what are execution env. ? x3 p16 
+            what are the properties of a re-env. change? p16 x2 
+            bugs in mem. management, how can it be solved (applying) p18 give examples 
+            heap and stack, give some examples p19 
+            what is RETURN-ORIENTED PROGRAMMING (ROP) ? p28 ==
+                to prevent? 
+            possible solution to buffer overflow x2x1 p29 p30
+            stack buffer overflow attack explain ? 
+            heap buffer overflow ? what is that ? what is the problem? overwrite what 
+            what is mem. corruption p42
+            one can overwrite any mem. location? 
+            inject attack code ... code later 
+            environmental changes, what are they typically p46
+            security problems hard to detect 
+            ---
+            rx architecture? p50 x5 the pic!! *
+                what are sensors? p51 
+                two types of sensors p51 
+                why not integrated the second type? 
+                what are SENSORS? p51 
+                lightweight checkpointing method? paper[2] later 
+                the pic? p50, exp!!
+                    what is env wrapper? includes what? x3+ 
+                        what is mem. wrapper supports what? x4 hhh 
+                        what is message wrapper
+                        process scheduling.... why we use them? p54 
+                        env warpers? x5 
+                    proxy can also help this process 
+                    the functionality of control unit in rx architecture 
+                env. changes and the types of bugs * explain the table -xxx
+                bug types can be solved by RX ? p59 .... roughly x4...
+                recovery performance? explain the pic.. p62
+                minor performance impact of RX 
+                how to Improve the performance of RX? 
+                    the order of env. changes does metter x3 we have to optimize it p65 
+                Challenges of RX p66 == -xxx
+                it is about surviving software faults....
+                provides more feedbacks for bug analysis (diagnoses)
+                typical imp. , with diff. env. settings 

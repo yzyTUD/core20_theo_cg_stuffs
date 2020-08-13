@@ -1,0 +1,29 @@
+
+
+    //
+        ccf 
+    ---
+        Robotics
+        Symbolic Computation, logic computing 
+        Scientific computing 科学运算
+    ---
+        web技术
+    ---
+        System architecture 计算机系统架构
+        Software engineering 软件工程
+        数据库
+        编译器
+        信息论‎
+        信息安全
+        媒体技术
+        游戏理论，游戏性
+    ---
+        hardware-tech 
+            seed--
+                SoC, fpga, 硬件加速,nvidia computing libs.
+            book--
+            online--gpgpu nvidia
+    
+
+    
+    

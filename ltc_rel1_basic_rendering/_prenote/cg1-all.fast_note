@@ -1,0 +1,1713 @@
+
+	&q what is possible options for Magnification Filter?
+	Minification Filter
+	&q illu. the Magnification Filter and Minification Filter by two example cases in a draw!
+	Moir� patterns
+	&q what is Moir� patterns? the reason?
+	some texels are just ignored.
+
+	Use the mipmap level based on amount of minification
+	n build a mip map hierarchy
+	GL_NEAREST_MIPMAP_NEAREST
+	minification filter:
+	DETAIL MAPPING
+	Bump Mapping
+	e illusion of geometric details by altering lighting.
+	Traditional Bump Mapping [Blinn78]
+	Normal Mapping
+	Parallax Mapping
+	Parallax Occlusion Mapping
+	 many variations
+	&q what is included in Bump Mapping? x4 op16 
+	Bump Mapping
+	&t imp. those methods! 
+	Do not use interpolated vertex normals ?? ? ?? directly
+	interpolated
+	Interpret color as normal
+	&q why is the color of normal map image always blue?
+	&h this component is always set to 1 
+	Transform tangent-space normal to eye space
+	Transform normal to eye space and calculate lighting there
+	&h tangent sapce is sticking on the model
+	&q when calcu. normal in normal mapping, we have two options to use the normal? x2 op18 
+	Transform normal to eye space and calculate lighting there.
+	Transform light position and viewer position to tangent space
+	How do we get the tangent and bitangent?
+	Store in model along with normals
+	Calculate in geometry shader
+	Calculate in fragment shader
+	tangent and bitangent
+	&h typically, we get tangent and bitangent from? 
+	Tangent Frame
+	Same for ??. Solve linear system
+	in Fragment Shader
+	&q hwo can we calcu. tangent frame in Fragment Shader?
+	&t calcu. the tangent frame and show them! in two ways: one in given material file, the other calcu. in frag. shader 
+	respect to screen coordinates (dFdx(), dFdy()).
+	Eye-space fragment position
+	calculate derivatives with respect to screen coordinates
+	&q calculate derivatives with
+	&h respect to screen coordinatesh
+	Discussion Normal Mapping
+	Advantages
+	Disadvantages
+	Relatively cheap, easy to implement Increases realism significantly
+	Silhouettes are unaffected
+	Normal maps usually allow more details at the same resolution
+	Change the position from which we sample the texture.
+	Height map as texture
+	Coarse Base Mesh
+	&h acco. to the height map of the texture, we can sample colors in a diff. way! better way
+	&q the idea of Parallax Occlusion Mapping?
+	Parallax Occlusion Mapping
+	Simple texture mapping samples the texture at the fragment position.
+	Parallax occlusion mapping finds the intersection with a height map and samples the texture there
+	Example Height Map
+	Transform view ray to ????h-space and walk
+	Transform
+	&t try out!
+	To get the eye position in ????h-space solve
+	Fragment receives uv and h from texture lookup
+	walk and interpolate between samples
+	&q how can the eye posi. be solved? the equ.? op24 
+	Spikes are more pronounced
+	Discussion Parallax Occlusion Map.
+	Advantages
+	Disadvantages
+	Slight increase in realism
+	More expensive
+	Assumes tangent space to be planar (breaks at high curvatures)
+	Calculation of approximate fragment depth
+	world scaling of the height map must be synchronized 
+	with the scale used to compute the normals in normal map
+	synchronized
+	scaling
+	&h this method is computational costy 
+	Refine the mesh and move the vertices along the normal
+	Displacement Mapping
+	Modify the geometry
+	tessellation shader
+	&h tesseltion shader is before geom. shader! 
+	Takes a patch and produces primitives (triangles/lines)
+	subdivided triangle, quad, or set of isolines
+	Tessellation Control Shader
+	Input: Vertices of a single patch
+	Generic per-patch attributes
+
+	Output
+	Tessellation Evaluation Shader
+	Attributes for a single refined vertex (similar to vertex shader)
+	&t further reading needed!
+	Displ. Mapp. with Tess. Shaders
+	Sample displacement map and move vertex position along normal
+	Evaluation Shader:
+	&q in which shader are we moving the vertex position? op30 
+	Same as before (don�t do parallax occlusion mapping)
+	Transform position to clip space ? gl_Position
+	Calculate tangent frame (based on the coarse mesh)
+	Tessellation Control Shader
+	Sample displacement map
+	&q only one related shader for tesselation? n 
+	Same as before, transform vertices to eye space
+	&q what should we prepare in the vertex shader? calcu. or transform sth.? op30 
+	*&h we have to prac. : retail a particular cpt in more than three ways! 
+	Transform position to clip space ? gl_Position
+	Full Displacement
+	Discussion Displacement Mapping
+	Advantages
+	Disadvantages
+	Increase in realism (depends on model)
+	Easy to implement
+	Works at the presence of curvature
+	complex geometry (more work for GPU)
+	Self-intersections may occur.
+	the world scaling of the height map must be synchronized
+	We have used albedo, normal, and displacement maps
+	albedo
+	Specular maps describe the specular reflectivity of a surface.
+	Ambient Occlusion Maps describe the ambient reflectivity
+	Environment maps show the surrounding of an object (cube maps)
+	Shadow maps
+	&t try diff. maps out! imp. them as mixed style in cgv framework!
+	Textures
+	accessed via samplers.
+	Apart from colors, texture can store all kinds of information, e.g. normals or displacements.
+	Bump mapping gives the illusion of geometric detail
+	Displacement Mapping actually adds geometric detail.
+	Surfaces
+	Parametric Surface
+	Height Field
+	Implicit Surface
+	representations
+	analytic
+	&t typical shapes and their formulas! op07  
+	discrete surface representations
+	&q two kinds of surface representation? in detail, in analatic repre. there are further 3 kinds of them?
+	point based surfaces
+	subdivision surfaces
+	digital elevation model (dem)
+	digital elevation model
+	&t more detail and tasks in digital elevation model!! DEM
+	&
+	nurbs model
+	Surface Analysis
+	Taylor Expansion
+	Differential Geometry Topology Features
+	Polygonal Meshes Halfedge Data Structure Mesh Processing
+	The Taylor expansion is a tool for local analysis of a function ?? in the vicinity of a location ??.
+	vicinity
+	 increasing number of local derivatives to generate local approximations
+	gradient
+	vector of partial derivatives
+	The partial derivatives are tangents
+	row-vector of partial derivatives is now a matrix
+	Jacobian
+	matrix is called the Jacobian
+	This matrix is called the Jacobian
+	Hessian
+	Gradient and Hessian form a paraboloid
+	Jacobian ???? ?? spans tangent space
+	&q what is the diff. bet. Hessian matrix and jacobian matrix? matrix of first derivative vs second derivative! 
+	dot product with the gradient
+	calculate the derivative in a direction
+	the basis of the tangent space
+	 Jacobian transforms
+	univariate scalar functions ??, ??, the derivative of the concatenation is
+	&lan 
+	Approximate length ?? with dense sampling
+	&t calcu. approxi. lenth base on integration? op20 
+	&q calcu. length base on integration? formula? example? ! basic math.
+	2D Curve Example
+	Length of Curve mapped to Surface
+	&q the above question, generalize to 3d, to surfaces! 
+	First Fundamental Form
+	???? ?????
+	First Fundamental Form allows to define an inner product
+	 we can define a new norm:
+	The length of a curve on a surface can be expressed
+	&h in a new way with help of FFF
+	First fundamental form is positive definite and can be decomposed via Eigenvalue decomposition:
+	Eigenvalue decomposition
+	Infinitesimal Area
+	&h this can be expressed with FFF
+	&q the formula of a SA calcu. represented with FFF? 
+	&h op28 
+	Surface Area of Sphere
+	&q calcu. Surface Area of Sphere with FFF 
+	&qq how FFF is used in geom.? calcu. areas! 
+	&h we dont need FFF to calcu. line length? y 
+	&q what is the corresponding formular? to calcu. angles lengths and areas?? op31 
+	Curvature of Curve
+	For general parameterization curvature computes to
+	&q the formula 
+	Optimal Curve Design in 2D
+	[Gum �04] proposes to design curves with a control polygon by minimizing a functional that integrates curve length and curvature over the curve.
+	Curve Design
+	&t further reading needed! coding needed! 
+	Normal Curvature on Surface
+	&q the formulas for Gaussian curvature mean curvature and principle curvatures
+	principle curvatures result from diagonalization of second fundamental form
+	&q how second fundamental form be used? to calcu. the principle curvature
+	principle curvatures
+	&q how SFF be calcu.? by basic derivatives 
+	Classification of Surface Points
+	hyperbolic
+	parabolic
+	elliptic
+	&q whta are they, what are their properties? categ. a given point! 
+	Gaussian curvature
+	&q to calcu. Gaussian curvature, we need both FF? y 
+	sketch based surface design through curvature optimization
+	FiberMesh
+	Designing Freeform Surfaces with 3D Curves
+	&t additional effort needed! 
+	https://www-ui.is.s.u-tokyo.ac.jp/~takeo/research/fibermesh/index.html
+	https://www-ui.is.s.u-tokyo.ac.jp/~takeo/papers/fibermesh.pdf
+	&h a java runnable is provided
+	TOPOLOGY
+	7 Bridges of K�nigsberg
+	the number of entering paths must be equal to the number of exiting paths per node 
+	no solution
+	A topological space S is a 2-manifold
+	&q what does it mean for A topological space S is a 2-manifold?
+	topologically equivalent to a circular disk
+
+	Topologically equivalent informally means that there is a continuous mapping between the sets
+	rubber
+	 without cutting or stitching.
+
+	(The marked points are non-manifold and there is no way to fit a disk without cutting the surface apart)
+	&q give examples for the case : 2-manifold non-manifold
+	2-manifold with border
+	topologically equivalent to a disk or a half disk
+	half disk
+	Mesh elements of different type that touch each other are called incident
+	incident
+	2 vertices or faces that share an incident edge are called adjacent
+	&q what is the diff. bet. incident and adj.?
+	of different type 
+	&h are of diff. type or not
+	valence ??(??) / degree ??(??)
+	&q what is valence and degree? 
+	 incident edges 
+	summing all valences/degrees of a manifold mesh without border, yields twice the number ?? of edges
+	&h summing all valences/degrees
+		of a manifold mesh without
+		border, yields twice the
+		Surface Properties 
+	Orientability
+	In 3D, all closed manifold surfaces are orientable
+	&q Not orientable are for example?
+		the M�bius strip or the Klein Bottle
+	&t 3d分形程序
+	
+	
+	
+	https://blog.csdn.net/dcrmg/article/details/53291415
+	https://blog.csdn.net/Augusdi/article/details/20466677
+	https://www.cnblogs.com/farewell-farewell/p/9403487.html
+	https://blog.csdn.net/qq_28597703/article/details/47278643?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1
+	https://www.alwa.info/2019/%E9%87%91%E8%9E%8D%E7%9B%B8%E5%85%B3%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D-Viser.html
+	https://laishujie.github.io/2018/09/23/%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82%E7%9A%84%20OpenGL%20ES%20%EF%BC%88%E4%B8%80%EF%BC%89%E5%85%A5%E9%97%A8%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86/
+	https://www.itread01.com/p/1425376.html
+	http://staff.ustc.edu.cn/~zhuang/cgi/lectures/cg3.pdf
+	glutMainLoop
+	https://www.google.com/imgres?imgurl=http%3A%2F%2Faliyunzixunbucket.oss-cn-beijing.aliyuncs.com%2Fcsdn%2F307b365f-5aea-4038-b344-d69e0f5aa87d%3Fx-oss-process%3Dimage%2Fresize%2Cp_100%2Fauto-orient%2C1%2Fquality%2Cq_90%2Fformat%2Cjpg%2Fwatermark%2Cimage_eXVuY2VzaGk%3D%2Ct_100%2Cg_se%2Cx_0%2Cy_0&imgrefurl=https%3A%2F%2Fwww.itread01.com%2Fp%2F1425376.html&tbnid=QjNO5oZeZI_vBM&vet=10CB0QMyhyahcKEwi4tf-5-JfpAhUAAAAAHQAAAAAQFA..i&docid=8p7PzD5chBKGHM&w=829&h=662&q=OpenGL%20%E6%8A%98%E7%BA%BF%E5%9B%BE&ved=0CB0QMyhyahcKEwi4tf-5-JfpAhUAAAAAHQAAAAAQFA#h=662&imgdii=GBiubOTqDj9doM:&vet=10CB0QMyhyahcKEwi4tf-5-JfpAhUAAAAAHQAAAAAQFA..i&w=829
+	https://www.google.com/search?q=%E5%87%A0%E4%BD%95%E7%BE%8E%E5%AD%A6&rlz=1C1CHBF_enDE890DE890&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjw6v74-ZfpAhVI2KQKHcblATUQ_AUoAXoECAsQAw&biw=1280&bih=613#imgrc=hd5FZvusib2zqM
+	https://www.google.com/search?q=%E5%87%A0%E4%BD%95%E7%BE%8E%E5%AD%A6&rlz=1C1CHBF_enDE890DE890&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjw6v74-ZfpAhVI2KQKHcblATUQ_AUoAXoECAsQAw&biw=1280&bih=613#imgrc=CBDKwBZOocp0VM
+	https://www.google.com/search?q=%E5%8F%AF%E8%A7%86%E5%8C%96+%E7%BE%8E%E5%AD%A6&tbm=isch&ved=2ahUKEwjj6Pn5-ZfpAhXSOuwKHZ5tAGAQ2-cCegQIABAA&oq=%E5%8F%AF%E8%A7%86%E5%8C%96+%E7%BE%8E%E5%AD%A6&gs_lcp=CgNpbWcQAzoCCABQp-ADWLrzA2Cu9ANoAHAAeACAAaIBiAGVCpIBAzYuNpgBAKABAaoBC2d3cy13aXotaW1n&sclient=img&ei=qNuuXuP0ONL1sAee24GABg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=_BK5ZlaJMswgMM
+	https://www.google.com/search?q=%E5%8F%AF%E8%A7%86%E5%8C%96+%E7%BE%8E%E5%AD%A6&tbm=isch&ved=2ahUKEwjj6Pn5-ZfpAhXSOuwKHZ5tAGAQ2-cCegQIABAA&oq=%E5%8F%AF%E8%A7%86%E5%8C%96+%E7%BE%8E%E5%AD%A6&gs_lcp=CgNpbWcQAzoCCABQp-ADWLrzA2Cu9ANoAHAAeACAAaIBiAGVCpIBAzYuNpgBAKABAaoBC2d3cy13aXotaW1n&sclient=img&ei=qNuuXuP0ONL1sAee24GABg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=QAiY5F8eaWfvlM
+	https://www.google.com/search?q=%E5%8F%AF%E8%A7%86%E5%8C%96+%E7%BE%8E%E5%AD%A6&tbm=isch&ved=2ahUKEwjj6Pn5-ZfpAhXSOuwKHZ5tAGAQ2-cCegQIABAA&oq=%E5%8F%AF%E8%A7%86%E5%8C%96+%E7%BE%8E%E5%AD%A6&gs_lcp=CgNpbWcQAzoCCABQp-ADWLrzA2Cu9ANoAHAAeACAAaIBiAGVCpIBAzYuNpgBAKABAaoBC2d3cy13aXotaW1n&sclient=img&ei=qNuuXuP0ONL1sAee24GABg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=Gv_FTdhcUzBV3M
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=Ce-uXB-JzWZ0XM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=W69-rdIMnPJq_M
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=AIaoH0qvabqKjM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=e3Nfr90aMtLKFM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=e3Nfr90aMtLKFM&imgdii=s6MwyovQNg0_tM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=LUDLdWVmM8OxkM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=wTS6QQevY40eVM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=jKstBc8qpMfLQM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=C3ZwWrfeO__2DM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=_utWzWVUizJHQM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=eB00XtNKswQtDM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=2zQD42Hqov4awM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=o3qAjg4OJ-ELGM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=IsbNG2yIHXOfJM
+	https://www.google.com/search?q=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&tbm=isch&ved=2ahUKEwigw4HV-pfpAhXekaQKHeBhDiEQ2-cCegQIABAA&oq=3d+%E8%89%BA%E6%9C%AF+%E5%87%A0%E4%BD%95&gs_lcp=CgNpbWcQAzoGCAAQDBAYUK01WKBQYM9VaAFwAHgAgAGXAYgBnAuSAQM0LjmYAQCgAQGqAQtnd3Mtd2l6LWltZw&sclient=img&ei=Z9yuXuDzNt6jkgXgw7mIAg&bih=613&biw=1280&rlz=1C1CHBF_enDE890DE890#imgrc=xGMsfwoyt4lUpM
+	Klein Bottle
+	A surface is called orientable if it has an oriented planar realization
+
+	orientable
+	&q what is orientable?
+	planar realization of a cube
+	&q give the planar realization of a cube
+	Surface Properties
+	Euler equation
+	Euler characteristic ?
+	does not depend on the chosen subdivision.
+	 Betti-Numbers h?
+	The Euler characteristic is calculated from the subdivision independent Betti-Numbers h?
+	Betti-Numbers
+	&q what is Betti-Numbers?
+	 number of connected components or shells ?
+	maximum number of closed cutting curves that do not divide ?
+	number of orientable shells
+	&q calcu. betti number for the given shape! op45 
+	Two surfaces are topologically equivalent if their Betti numbers are identical
+	&t proof this ! 
+	Topologically equivalent surfaces can be morphed (continuously transformed) into each other
+	&t write a code to illu. this process! 
+	For closed surfaces, the number of holes is called the genus of the surface
+	genus
+	Every closed manifold surface in 3D is equivalent to a torus with the number of holes corresponding to the genus of the closed surface
+	Torus
+	&q mesh with one whole is topological equ. with Torus?y 
+	Doppeltorus
+	Tripeltorus�
+	&t write a code to calcu. wholes for a given mesh! ref. meshlab! 
+	�darts�: transition from a sharp edge into a planar area
+	smooth surface point
+	smooth border curve
+	convex or concave vertices with border curves or edges
+	&q tell the type of a point on a surface 
+	&t write a code to classify points 
+	Global properties like curve length and surface area need to be integrated
+	Tangent direction is first derivative of curve
+	 first derivative (Jacobian) 
+	Second derivatives yield curvature that measures the deviation from a straight line / planar surface
+	Second derivatives yield curvature
+	Manifolds formalize well-behaved surfaces
+	Complex surfaces are partitioned into disk shaped patches
+	 into disk shaped patches
+	This yields vertices, edges, and faces whose numbers are related via the Euler equation to the Betti numbers
+	Betti numbers that uniquely define the topological type of a manifold
+
+	manifold
+	Meshes
+	Low poly modeling
+	&t try out Low poly modeling! 
+	Triangulation of point clouds from 3D Scanners (surface reconstruction)
+	Simplification
+	Stripification
+	Subdivision
+	Algorithms on Meshes
+	Stripification � conversion into triangle strips for fast rendering
+	Smoothing � noise suppression by moving vertices
+
+	Compression � compact encoding
+	Simplification � approximation by reduction of number of vertices
+	Level of detail representation
+
+	Progressive representation
+	Feature extraction � find sharp edges and corners
+	Parametrization� Calculation of texture coordinates
+	Constructive Solid Geometry � set operations on solids
+	Subdivision � insertion of vertices, edges and faces in a process that converges to a smooth surface
+	&q typical mesh processing operations? 
+	&t try out! part of them are in task3 
+	&t write more tasks in this way! 
+	A polygon mesh ?? is defined as a tripel ( ?? , ?? , ?? )
+	The topological type (given by betti numbers) is called mesh topology
+	Manifold Topology
+	conditions
+	&q what is manifold for meshs? check if a given mesh is manifold in your code! 
+	&t check if a given mesh is manifold 
+	manifold topology is no sufficient condition for manifold surface
+	each edge is incident to two vertices
+	each edge is incident to one or two faces
+	&q typical non-manifold cases for meshes ?
+	&h op07 
+	Triangulation of Polygons
+	Ear-Cutting Algorithm
+	&q pseudo code, proof, +- adv. disadv. of it? 
+	&q complexity of this algo.? 
+	 case of ?? concave corners the worst case run-time is ??( ?? - 3 � ?? � ?? - ?? )
+	??( ?? - 3 � ?? � ?? - ?? )
+	&h op10
+	&t imp. this algo for subdev. for a given rep. polygon
+	A common simplification is the restriction to triangle meshes. 
+	 General polygon meshes need then be triangulated during reading
+	Every polygon mesh can be triangulated
+	All faces are triangles and thus automatically planar
+	&q relationships bet. vertices and faces for a triangle mesh with out border? op10 
+	The average valence is 6
+	&q proof that The average valence is 6! 
+	&q proof that this becomes 2 when ....
+	&q everage number of edges for a given vertex? 2 
+	typical mesh attributes are
+	&q typical mesh attributes are?
+	position normals texture coordinates colors tangential vectors status flags (processed,�)
+	attributes can be attached to mesh elements
+	attributes are stored in containers
+	mesh elements
+	&q which mesh elements are there? 
+	vertices (must have position) edges faces corners / half-edges
+	the obj format supports 3 attributes (pos,nml,texCrd)
+	&q how many attri. are supported in obj file format? 3 
+	Array Containers for Element Data
+	array of element data, i.e. vertex positions
+	Linked Lists for Element Data
+	&q compare these two representations 
+	linear traversal is significantly slower than in arrays
+	element handles are pointers, where conversion to indices for serialization is in the worst case of linear complexity
+	container is not needed for traversal
+	no own garbage collection necessary, pointers stay valid forever
+	 new indices are assigned during garbage collection and need to be updated elsewhere
+	from time to time garbage collection necessary
+	Efficient operations are Iteration of faces with nested iteration of face corners (here) or face edges. Computation of face degree
+	For each face, the index of the first corner is stored (index of last corner is the one previous to first corner index of next face).
+	(index of last corner
+	&q how can we compute (index of last corner for a given face? in a mesh obj 
+	one previous to first corner index of next face
+	adjacencies
+	incidences
+	mesh data structures typically keep track of
+	&q what are imp. for a mesh data? what gonna included in the data stru. of a mesh? 
+	shells ?? and boundary loops ?
+	faces and boundary loops are very similar and can be handled in the same way as loops ?
+	shells
+	Euler equation can be extended by the number ?? of boundary loops
+	Euler equation
+	&mesh data
+	&structures typically keep
+	&q what is the Euler equation with boundary loop number "b"??
+	GEOMETRY ANALYSIS
+	&q calcu. area for a triangle and for a polygon ? formula! op17 
+	The signed area of a triangle is the ?? component of the cross product
+	?? component of the cross product
+	Select arbitrary reference point
+	If reference point lies on the inner side wrt. the edge
+	&t the calcu. of the area for a given mesh -task3 
+	Volume Enclosed by Triangle Mesh
+	divergence theorem allows to transform volume into surface integral
+	For a triangle mesh, this reduces to a sum over all triangles of determinant of triangle corner positions
+	Triangle mesh must be oriented and closed for this to work
+	corner positions
+	&q how to calcu. volume for a given mesh? formular? op19 
+	divergence theorem
+	surface integral
+
+	reduces
+	determinant
+	move the vertex to maximally change the volume enclosed by the mesh
+
+	Volume Gradient
+	&q what is Volume Gradient
+	 volume preserving smoothing
+	&q what is  volume
+	&q what is volume preserving smoothing? 
+	volume preserving smoothing
+	&t imp. volume preserving smoothing in code! 
+	&t ref. to meshlab, do some calcu. for a given mesh! in cgv cmake openmesh framework! 
+	&t and store as proj. plugin! 
+	For every vertex, a normal can be estimated from the normals of the incident faces
+	 incident normals
+	weighted with wedge angle
+	weighted with triangle area
+	with equal weights
+	&q diff. methods for calcu. estimating vertex normals! x3 &t imp. them in code! 
+	we can compute centroids from simple mesh data structure by iterating the edges
+	Centroid of One-Ring
+	&q calcu. Centroid of One-Ring 
+	&q pseudo code for calcu. Centroid of One-Ring
+	 union-find
+	&q &t use  union-find to extract shells for a given mesh 
+	&t mesh editing tool for removing connected components 
+	the first Betti number is the number of connected components or shells
+	to compute it, apply union find data struc. on vertices:
+	genus & orientability
+
+	&q &t calcu. genus & orientability
+	Vertices, edges, and faces are the basic mesh elements
+	Shells and boundary loops are global features
+	global features
+	Adding a union-find data structure allows to analyze connected components on the simple mesh representation.
+	not for genus & orientability
+	Halfedge
+	helper mesh elements 
+	a directed edge, i.e. two halfedges make up an edge:
+	For non-manifold connectivity, more than two halfedges can be incident to an edge
+	restricted to manifold connectivity
+	&?does it restricted to manifold connectivity? for this ds?
+	Halfedge DS stores 
+	vertexHalfEdge(vi);
+	&q using halfedge ds? how will the mesh be stored? op08
+	&q write down the 
+	&q stru.
+	Halfedge DS Construction
+	Pointer vs Index-Based Implement
+	Vertex Circulator
+	Enumerate Adjacent Vertices
+	&q hwo to do those operations based on halfedge ds?
+	Given a vertex with index vi, we can reach the neighbor indices vj by
+	most implementations of halfedge ds provide a circulator, that can be used as STL iterators
+	nested traversal 
+	&q op05 
+	Determine inverse, border, and non-manifold halfedges
+	After sorting
+	 a sequential scan
+	&q what can we get from this sorting? op09
+	unmatched boundary halfedges
+	matched halfedges
+	halfedges of non-manifold edges
+	sorting in ??(??).
+
+	&q how can we sorting in O(n)?
+	After inverse matching, non-manifold edges can be cut to get manifold with boundary
+	Boundary loop extraction
+	&q how can we do Boundary loop extraction? op10
+	Circulators are used to
+	&q how can circulators be used? x3 
+	cycle around vertices cycle around faces cycle along boundary loops
+	Tagging (store flag/index per mesh element) is used to
+	mark processed elements store ids of connected component, triangle strip, �� per mesh element
+	Region growing
+	traverse mesh elements along adjacencies for
+	orienting meshes
+	compression
+	streaming processing
+	decompose into sequential strips that need no additional information and are supported by OpenGL
+	Motivation to use triangle strips
+	&q the Motivation to use triangle strips??
+	Computing triangle strips
+	&q how to compute triangle strips? algo. &t imp. 
+	Idea: Use region growing to propagate a consistent orientation across shells
+	Orientability
+	&q hwo can we check Orientability? algo. &t imp. 
+	Keep a queue of active faces for region growing.
+	maintain status attribute
+	can be unprocessed, queued, or processed.
+
+	When traversing to a face:
+	Re-orientation of a face requires:
+	Swapping of previous and next halfedge pointers. Update of origin vertex pointers.
+	Re-orientation
+	&q how can we Re-orientation a mesh? &t further reading, coding imp.
+	Orientability Algorithm
+	& op17
+	simple mesh representation 
+	 or build a neighborhood data structure like the halfedge data structure
+	local navigation
+	&q in which cases simple mesh representation does not work? 
+	typically restricted to manifold connectivity. 
+	&q the limitations of half edge ds? in this case, can we use simple mesh representation? 
+	 inverse matching that can be solved in linear time
+	The halfedge data structure allows for region growingbased analysis
+	 region growingbased analysis 
+	&q describe  region growingbased analysis! 
+	Flags are used to store status of mesh elements
+	Mesh Processing
+	MESH SMOOTHING
+	original mesh noise added smoothing result
+	example of mesh smoothing for abstraction with increasing smoothness from left to right
+	heat equation
+	Numerical Integration
+	This integration scheme is called Explicit Euler
+	 Implicit Euler integration scheme
+	&q what is  Implicit Euler integration scheme and explicit case? x2 diff.? 
+	For every update, the linear system needs to be solved.
+	Matrix is constant and can be factorized once.
+	Laplace operator is a functional and maps a scalar function to another scalar function:
+	Vector valued functions can be treated componentwise
+	Laplacian is the divergence of the gradient
+	&q what does it mean by saying Laplacian is the divergence of the gradient?
+	Laplacian can be discretized with finite differences
+	Laplacian on Surfaces
+	generalization of the Laplacian from Euclidean space to surfaces
+	called Laplace-Beltrami operator
+	Laplace-Beltrami operator
+	&q what si Laplace-Beltrami operator, and the result it applied to a given surface? op12 
+	independent of the parameterization
+	Smoothing iteration
+	&q Smoothing iteration in math form?? op13 
+	&q why we move alone normal can result a smoothing effect?
+	&q we want to apply heat diffusion to the para. surface, and it becomes mean curvature normal occationally! 
+	 Laplace-Beltrami Operator is again a matrix that computes vector to average of neighbors. 
+	For averaging there are two options
+	&q For averaging there are two options, which two? 
+	Uniform
+	unweighted one-ring center of gravity
+	this is typically called Laplace Operator]
+	Cotangent
+	parallel to surface normal
+	no tangential smoothing
+	tangential smoothing
+	&q what means tangential smoothing? does it have for uniform averaging? cotangent averaging? 
+	curvature is mapped to color
+	 illustrate the effect of smoothing
+
+	&t  illustrate the
+	&effect of smoothing
+	&t !! with help of mapping curvature of a given point to color !! looks pretty good 
+	Cotangent Laplace-Beltrami
+	Area of Voronoi cell of vertex
+	Care must be taken with obtuse triangles
+	cotangent becomes negative)
+	Applied to the position function results in a smoothing purely in normal direction
+	results in a smoothing purely in normal direction
+
+	Comparison
+	&q gien a pic. say, which method it belones to! 
+	&q op16 
+	Surface feature based mesh segmentation, Wang et al.
+	More Applications of the Laplacian
+	Diffusion Diagrams, Herholz et al.
+	Remeshing / Geodesics
+	Laplacian Mesh Processing, Sorkine
+	Mesh Editing
+	Remeshing Pipeline
+	&t further reading, coding! 
+	Botsch&Kobbelt, A Remeshing Approach to Multiresolution Modeling
+	Simplification
+	Remeshing Pipeline
+	&q Remeshing Pipeline? op19 &t imp. 
+	Face Insertion and Removal
+	&q Face Insertion and Removal algos. &t imp. 
+	Edge Flip
+	&q Edge Flip algo. and &t imp. 
+	&q &t hole filling algo. further reading + coding 
+	Edge Split
+	Flags are used to store status of mesh elements
+	Laplace Beltrami operator. When applied to position, it corresponds to mean curvature normals.
+	Dynamic mesh processing allows optimization of connectivity;
+	for triangle meshes objective is valence six
+	Connectivity change should be implemented on welldesigned base operations
+	 base operations like edge flip / split or collapse
+	Validity checks on resulting connectivity (manifoldness) and geometry (no extraordinary changes) necessary
+	Validity checks
+	&q Validity checks should be done after each operation above 
+	Acceleration Data Structures
+	Data Structures
+	Grids and Hierarchies
+	Spatial Queries
+	allow fast retrieval operations
+	Raytracing with bounding volumes
+	Space Subdivision
+	&q what kind of Space Subdivision are there? typical 4 cases x4 ? op05 
+	regular grid
+	regularly sampled and uniformly sized objects)
+	octrees
+	kd-tree
+	BSP-tree
+	for most scenes
+	Bounding Volume
+	&q what bounding volune do you know? xn 
+	6-DOP
+	AABB
+	14-DOP
+	OBB
+	&q what is the diff. bet. AABB and OBB BV? 
+	&q op06 
+	Painter�s Algorithm
+	Visibility Sorting
+	Result of over operator depends on order
+	&q does order affect visibility sorting? y diff. color may be found 
+	&q what is painters algo.? are there related techni. found in graphics? 
+	Occlusion Culling
+	&q what is Occlusion Culling? op10 
+	traverse front to back
+	keep track of opaque / occluded parts of screen
+	do not draw occluded parts
+	 testing a bounding volume first
+	approaches
+	View Frustum Culling
+	&q what is that 
+	implement fast selection process for scene parts inside of view frustum
+	Computational geometers call this windowing problem
+	&h may already have great algo. in traditional pipeline opengl pipeline 
+	Rendering � Ray / Path Tracing
+	In ray- and path tracing, light is followed along a huge number of rays through complex scenes
+	Bidirectional Path Tracing
+	Raytracing
+	&q illu those processes. &t imp. them 
+	object intersect a ray from given point in given direction first
+	is there an occluder blocking the connection between two points (shadow test)
+	shadow test
+	&q whta is shadow test
+	Proximity queries � knn
+	&q what is knn in modeling? op14 
+	for given query point, find ?? closest neighbors
+	build acceleration data structure (octree, kd-tree, BVH)
+	classification
+	reconstruction
+	&h applied in photon mapping , knn and BVH 
+	octree, kd-tree, BVH
+	 classifying objects based on closest training examples in the feature space
+	in the feature space
+	The k-nearest neighbor algorithm is amongst the simplest of all machine learning algorithms:
+	an object is classified by a majority vote of its neighbors,
+	If ?? = 1, then the object is simply assigned to the class of its nearest neighbor.
+	Classification in Pattern Recognition
+	&q how knn can be used to Classification in Pattern Recognition
+	Function Reconstruction
+	&q what is the knn approach for Function Reconstruction? op16 
+	collect ?? nearest neighbors ???? with values ???? around ?
+	use filter to compute
+	average filter
+	weighted average filter
+	median filter 
+	moving least squares filter
+	&q thus, for any given point x, we cna calcu. the val. of the function. op 16 
+	Proximity queries � distance to surface
+	&h can be used for calcu. the clostest distance from a point to a given surface! as heuristic 
+	&h cgv has a very good feature that we can use c++ libs very easily: lots of math. libs here. We can also transfer py to c easily. or provide a py. binding 
+	Acceleration Data Structures
+	APPLICATIONS IN ANIMATION
+	Collision detection
+	Checking collisions between all pairs yields ?? ?? 2 tests
+	Collision detection 
+	&q how ds can be used for Collision detection ? hwo would it acclerate the detection process? op18 
+	first ray intersection
+	Collection of Queries
+	depth sorted traversal
+	visibility test between two points
+	nearest neighbor, knn
+	range queries (all points in bounding volume) closest point on surface all intersecting primitives
+	&q how those goals can be accelerated with data stru.? op21 
+	best performing data structure depends on queries and scene properties.
+	computational geometry has more data structures with better worst case behavior
+	computational geometry has more data structures 
+	building time
+
+	query time 
+	typically tree structure, often binary trees
+	balanced trees are important for runtime guarantees
+	balanced trees
+	&q &t use balanced trees for runtime gurantees in a test scene! 
+	http://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/code/
+	http://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/code/tritri_isectline.txt
+	test whether two convex polyhedra intersect [use SAT theorem]
+	&q what is SAT theorm 
+	For any two non intersecting convex shapes 
+	there exists a separating axis such that the 1D projections of the shapes do not intersect on the axis.
+	separating line
+
+	&h if we can find one separating line
+	&h we can say that these two objects are saparated 
+	Test for Convex Shapes
+	which axis directions are sufficient?
+	&q which lines are sufficient for testing? 
+	SAT based intersection test
+	Example Intersection Tests
+	&q Example Intersection Tests for boxes, Triangle, Box-Triangle edge pairs!? total 15 axes op 26 
+	Box-Triangle edge pairs
+	Acceleration � Grids and Hierarchies
+	Ray traversal
+
+	Stop if intersection is found
+	Grid ray traversal 
+	&q given an example, explain how Grid ray traversal is performed op05 
+	Mailbox technique
+	&q what is Mailbox technique
+	avoid repeated intersection computations by testing object mailbox first
+	&t imp. the Grid ray traversal
+	Grid ray traversal
+	Basics on Hierarchies 
+	Inner nodes store subdivision info / BVs. Leaves store primitives
+	Inner nodes store
+	&q what will Inner nodes store? 
+	Query times depend on hierarchy depth. Balanced hierarchies yield logarithmic depth & query time
+	Simplest and most commonly used construction approaches build hierarchy from top to bottom
+	top-down
+	&q what is the most simple way to build a hierarchy? top-down
+	Sort primitives along AABB axis of longest extent and split in equally sized halves
+	BVH top down construction
+	&q BVH top down construction algo. process &t imp. op10 
+	BVHs have the advantage that primitives don�t need to be split and therefore no mailbox technique is necessary
+	selection of bounding volume type is a compromise
+	between simplicity
+	tightness
+	selection of bounding volume type is a compromise
+	&q why we say that selection of bounding volume type is a compromise? x2 bet. what? 
+	k-Dops
+	&q what is dop stands for? A discrete oriented polytope (DOP) generalizes the bounding box
+	A discrete oriented polytope (DOP) generalizes the bounding box
+	A k-DOP is the Boolean intersection of extents along k directions.
+	&t gen. a k dop with given para. in testing scene.
+	a bounding volume for a set of objects is a closed volume that completely contains the union of the objects in the set.
+	Bounding volumes are used to improve the efficiency of geometrical operations 
+	In many applications the bounding box is aligned with the axes of the co-ordinate system, and it is then known as an axis-aligned bounding box (AABB). 
+	axis-aligned bounding box (AABB)
+	&t further reading about BV 
+	https://en.wikipedia.org/wiki/Bounding_volume#Common_types
+	an arbitrary bounding box is sometimes called an oriented bounding box (OBB)
+	arbitrary bounding box
+	have the disadvantage that when the model is rotated they cannot be simply rotated with it, but need to be recomputed
+	AABBs 
+	recomputed
+	A bounding capsule is a swept sphere (
+	 It has traits similar to a cylinder,
+	For example, two capsules intersect if the distance between the capsules' segments is smaller than the sum of their radii. This holds for arbitrarily rotated capsules
+	A bounding ellipsoid is an ellipsoid containing the object. Ellipsoids usually provide tighter fitting than a sphere
+	A convex hull is the smallest convex volume containing the object. If the object is the union of a finite set of points, its convex hull is a polytope.
+	A discrete oriented polytope (DOP) generalizes the bounding box. A k-DOP is the Boolean intersection of extents along k directions. 
+	A minimum bounding rectangle or MBR � the least AABB in 2-D � is frequently used in the description of geographic (or "geospatial") data items
+	The intersection of two k-DOP's can be computed very similarly to AABBs: for each orientation, you just check the two corresponding intervals of the two DOP's
+	The complexity of the overlap test of two DOP's is in O(k)
+	The Persistence of Vision Ray Tracer, most commonly acronymed as POV-Ray
+	a cross-platform ray-tracing program that generates images from a text-based scene description
+	a Turing-complete scene description language (SDL) that supports macros and loops
+	scene description language (SDL) 
+	support for textures and rendered output in many image formats, including TGA, PNG, and JPEG, among others
+	http://www.povray.org/
+	Some colored dice rendered in POV-Ray. CSG, refraction and focal blur are demonstrated.
+	https://en.wikipedia.org/wiki/POV-Ray
+	&t further reading 
+	Top Down Hierarchy Construction Idea
+	&q Top Down Hierarchy Construction Idea? op13 
+	Hierarchy Construction Pseudo-Code
+	&t imp.
+	BSP tree top down construction
+	&q BSP tree top down construction &t imp. and pseudo code 
+	selection of splitting plane
+	 minimize number of cut primitives and maximize balancing of hierarchy
+	tree is built such that all primitives are split nodes
+	Binary space partitioning
+	https://en.wikipedia.org/wiki/Binary_space_partitioning
+	using hyperplanes as partitions.
+	was developed in the context of 3D computer graphics in 1969
+	In 1993, Doom was the first video game to make use of BSP
+	 randomized selection by bringing primitives in random permutation and always splitting at next primitive.
+	if application is restricted to triangles, resulting quads need to be triangulated
+	buildSpaceSubdivision(leftPrims ? splitPrimsL);
+	 primitives completely contained in splitting plane
+	hierarchical Space Subdivision (SS)
+
+	&q what is the diff. bet. hierarchical Space Subdivision (SS)
+	&q and BSP tree split 
+	&q wheather a primitive is splited
+	&t further reading! from web! 
+	mostly by planes, that can split primitives into smaller parts
+	bounding volume hierarchies recursively split the set of primitives
+	& 
+	RAY TRACING WITH THE BSP TREE
+	1992
+	Efficient Collision Detection Using Bounding Volume Hierarchies of k-DOPs
+	&h our goal is to build bsp tree accross the scene, but we can imp. it with BVH or SpaceSubdivision method! 
+	&h this is their relationship! 
+	Spatial Queries
+	&h new chapter , cg12 
+	signed distance is negative inside of bounding volume and positive outside 
+	knn helper classes and functions
+	sdist
+	yielding an upper bound for new neighbors and queued nodes
+	Knn on BVHs
+	&q describe the process of doing Knn on BVHs! op05 
+	uses consider path to find primitives close to x and to queue not yet visited nodes
+	&t imp. knn on bvhs! op06 
+	&q what is "consider"? "considerPath"? consider if we will inseart to max heap ; add path traversal path! 
+	KnnResult<P,V,k> inherits PQueue<P,V,topIsMax>
+	topIsMin
+	&q can we also write topIsMin here? y 
+	&q we can get the order of k nearst neighbours and more than k? y! 
+	&q pseudo code &t imp. 
+	distance computation
+	tiny changes to pointbased knn algorithm r
+	result queue stores triangles
+	point to point is replaced by point to triangle distance
+	build over all triangles
+	Point to surface distance
+	&q how can ew calcu. Point to surface distance based on knn above? 
+	&h above is about querying knn points. we are now trying to query knn-triangles! 
+	Visibility Sorting Pseudo Code
+	&q Visibility Sorting Pseudo Code. what is the imput? a collection of points and a view point ! 
+	space subdivisions can be used for visibility sorting
+	&q how? space subdivision first, and given a view point, then we can sort easily! op10 
+	&q for the given primitives and space subdivision, and view point, say, what is the sorted order! op11
+	&q for the two cases! 
+	&h travel from root, n = root at first 
+	&q use() func. better be substituded by a vector push_back() ! 
+	&h in this way, the order of primitives in vector is the order we want! 
+	BVH collision test
+	only descends down the hierarchy if the BVs of the root nodes intersect
+	&q the algo. op12 
+	AABB � rotation makes node-node intersection test more complicated (same as OBB-intersection test)
+	k-dops � can become very expensive in the rotated case
+	more efficient to re-compute the axis-aligned BVs in each inner node for each time step from rotated primitives
+	collision
+	&q in collision detection, which BV are we going to use? most effecient? op13
+	Blister: GPU-based rendering of Boolean combinations of free-form triangulated shapes
+	&t further reading 
+	CONSTRUCTIVE SOLID GEOMETRY
+	CSG-Operations
+	&q what CSG-Operations are there? x4 
+	works on valid solids, which can be represented as
+
+	implicit functions
+	polygonal meshes representing the boundary
+	enumeration of grid voxels or octree cells
+	BSP-trees constructible from polygon meshes
+
+	simplest query is the point inclusion test
+	Illustration of Operations
+	&q Illustration of Operations
+	spatial data structures minimize the number of potential intersection candidates
+	efficiently rejecting large parts of the scene
+	efficiently rejecting
+	clustering approaches can be used to improve hierarchy construction
+	clustering approaches 
+	&t further reading,  improve
+	 improve hierarchy construction
+
+	&hierarchy construction
+	&t with better clustering strategy, based on ML 
+	clustering
+	regular grids and octrees provide faster traversal algorithms but are less flexible
+	hybrid variants exist like BP-Octree
+	subdivides an octree until geometry is convex and can be represented by a set of bounding planes (BP)
+
+	hybrid variants
+	&t further reading, hybrid variants! &t those interesting stru.! 
+	Optimization I
+
+	&h new chapter 
+	vector of n optimization variables
+	Parameterization
+	objective function f
+	optimum
+	equality constraints
+	inequality constraints
+	&q explain those terms 
+	maximization problems can be cast into minimization problems
+	fit plane to set of points by minimizing sum of possibly weighted squared plane distances
+	rigidly align shapes based on point correspondences
+	embed 3d surface patches with low distortion into 2d plane for texture mapping
+	&q how can they be achieved? in math lang. explain! 
+	optimization variables are continuous or discrete or a mixture of both
+	optimization variables are constrained or unconstrained
+	objective function / constraints are convex or not convex 
+	objective function is differentiable (pointwise function, gradient and or Hessian evaluation is possible)
+	quadratic programming
+	convex optimization
+	linear least squares and non linear least squares
+	deterministic (always return same result) vs. stochastic 
+	&q explain those terms! 
+	ocal vs. global (are able to find local/global optimum (sometimes))
+	closed form solution vs. iterative methods
+	 (start at initial guess and improve until (local) optimum is found 
+	derivative-free methods vs. methods which rely on the pointwise evaluation of first or second derivatives
+	of objective functions with respect to objective variables
+	global minimizer:
+	ocal minimizer
+	isolated if local minimizer is unique in arbitrarily small neighborhood
+	Different Minima
+	&q what kind of minima are there? x3 
+	Convexity
+	&q what is Convexity? 
+	function is convex 
+	optimization is convex
+	in a convex optimization problem, a stationary point is always a global minimizer
+	Theorem
+	&q proof this Theorem, or find somewhere that has been proofed 
+	gradient vector
+	Hessian of second derivatives 
+	For twice continuously differentiable functions the Hessian is symmetric
+	 twice continuously differentiable functions
+	Derivatives
+	&q tell the Derivatives in math form 
+	finite differences
+	forward differences
+	central differences
+	std::numeric_limits<float>::epsilon()
+	&q how can we get numeric limitations in c++? 
+	Positive Definitness
+	geometrically 
+	Positive Definitness
+	&q geom. explaination of Positive Definitness? op11
+	no vector is mapped to a direction opposite to itself
+	called stationary. Stationary points can also be saddle points
+
+	Use Taylor expansion in case of continuously differentiable functions
+	2nd order sufficient condition
+	stationary
+	&q what is stationary
+	&q explain those terms! in math 
+	SINGULAR VALUE DECOMPOSITION
+	Linear Transformations
+	Symmetric Matrices
+	In the general case A also contains a rotation and maps the right singular vectors in columns of V to the left singular vectors U t
+	ellipsoid, whose lengths are called singular values
+	permute the major axes such that the singular values decrease in size.
+	General Quadratic Case
+	&q illu. with a graph, what happening! 
+	General Rectangular Case
+	additional dimensions
+	Matrix Approximation
+	&
+	&q what is Matrix Approximation, how can we approximate a matrix with svd? cutting ? op18 
+	symmetric matrices, the SVD can be used to compute the eigenvalue decomposition
+	Numerical SVD is an expensive operation
+	need to pay attention to the dimensions of the matrix
+	More efficient iterative algorithms exist to extract
+	 largest or smallest singular/Eigen value and vectors. 
+	SOLVING LINEAR LEAST SQUARES PROBLEMS
+	polynomial fitting
+	residuals
+	Least squares
+	 find best model parameters
+	&q what is the goal of Linearn List squares? 
+	Matrix Form of LLS
+	The LLS objective function is convex and has a globally unique minimum
+	&q the condition for that? 
+	The objective function can be written as
+	If rank ?? = ??, it is possible to use the pseudo inverse ?? + to compute the least squares solution in a closed form
+	?? = ?? +?
+	compute the least squares solution in a closed form
+	&q under what condition can we compute the least squares
+	&solution in a closed form? 
+	&q op23 
+	the sizes of ?????? and ?????? only depend on the number of parameters ?
+	not on the number of data points!
+	&
+	& does it more hard to caompute LLS para. with more sampling points? n, the complexity only dep. on the number of para.!
+	Overdetermined case
+	Underdetermined Case
+	Illustration of Underdetermined case
+	Reference Point
+	&q how equ. becomes under those conditions? 
+	Pseudo Code to solve any LLS with SVD
+	Weighted Least Squares Fitting
+	&qrelated equ. in this case? weighted! op29 
+	LLS to weighted linear least squares (WLLS) 
+	introducing the diagonal matrix ?? 
+	the normal equations become
+	weighted pseudo inverse
+	Linear Least squares is a useful technique to solve overdetermined systems of linear equations
+
+	If residuals correspond to measurements with errors distributed according to normal distribution
+	LLS is maximum likelihood estimator
+	&p 
+	Normal Estimation in 3D Scans 
+	Input: set of 3D points sampled from surface
+	Output: set of denoised 3D points with normal
+	&q describe the task op32 
+	Reduced Plane Fitting Problem
+	Eigenvalue decomposition of the symmetric matrix
+	&t imp. the plane fitting algo. with given posint cloud! 
+	Note that the sign of the normal direction (plane orientation) is not unique
+	a region growing normal orientation algorithm
+	A globally consistent orientation 
+	&q hwo to determain A globally consistent orientation ?
+	Output: return plane through ??? orthogonal to ?? ? * = �??1
+	compute weighted cov. matrix
+	compute Eigenvector ??1 of smallest Eigenvalue of ???
+	REGISTRATION OF 3D DATA SETS
+	Registration is the process of bringing two data sets into a joint coordinate system based on feature correspondences
+	&t imp. : bring munltiple 3d scans together! with kinect! 
+	common correspondences are point-topoint, point-to-plane or line-to-line
+
+	one distinguishes between rigid and nonrigid registration
+	Given two scans ?? & ?? we want to find a rigid transformation ?
+	 rigid transformation
+	Standard approach: ICP algorithm
+	Iterative Closest Points (ICP) Algorithm
+	several 3D-Scans from different view points need to be transformed into a common coordinate system and then fused
+	according to some distance function and the alignment according to correspondences.
+	algorithm is iterative and assumes a coarse initial alignment of the 3D scans
+	Kabsch Algorithm
+	&q what is ICP algo. and Kabsch? imp. &t 
+	distance of all corresponding point pairs with respect to ???? is minimized
+	Kabsch Algorithm
+	minimized
+	optimal translation
+	Similarly to plane fitting it turns out that we can solve the translation separately
+	Compute the �covariance matrix�
+	Compute the SVD of ?
+	optimal rotation
+	&
+	&q the equ given by kabsch algo.! 
+	&q the pseudo code given by ICP
+	&q proof the KAbsch algo! 
+	http://igl.ethz.ch/projects/ARAP/svd_rot.pdf
+	more details and proofs can be found in Olga Sorkine�s note:
+	Advanced Techniques
+	&h new chapter 
+	Line Search Approach
+	Trust Region Approach
+	Iterative Optimization Methods
+	Large Linear Least Squares Problems
+	The matrix ?? in large problems is typically very sparse
+	SVD has cubic runtime and quadratic memory requirements
+	sparse direct solver (superLU, csparse, sparse cholesky factorization, �)
+
+	direct
+	steepest descent
+	conjugate gradients (for symmetric matrices only)
+	Biconjugate gradient stabilized method (supports also asymmetric matrices)
+
+	Large Linear Least Squares Problems
+	&q effecient methods for solving Large Linear Least Squares Problems? x2 x1 x3 
+	&t further reading! coding! modulization!
+	direct methods on normal equations ?? ???? is symmetric, positive definite and still sparse One therefore needs some sparse direct solver (superLU, csparse, sparse cholesky factorization, �) iterative solvers steepest descent conjugate gradients (for symmetric matrices only) Biconjugate gradient stabilized method (supports also asymmetric matrices)
+
+	&
+	&q op04 
+	Sparse Matrix formats
+	&q what Sparse Matrix formats are there? 
+	Sparse triplet
+	Compressed Row Storage
+	Compressed Column Storage
+	ACRS
+	ACCS
+	&q given a matrix, rep. it in sparse form! a small example for exam! op05
+	linearCG
+	Linear Conjugate Gradient Algorithm
+	&q describe this algo. &t imp. to calcu. some simple maxima! use it for optimization problems! -> modulize it into omi_pub!
+	gradient equals to residual:
+	choose initial search direction as
+	all further ones as
+	Choose ???? to make ????+1 conjugate to ???
+	compute only once
+	Theorem: using a set of ?? conjugate vectors as search directions with optimal step lengths solves the linear system in no more than ?? iterations.
+	a set of ?? conjugate vectors as search directions
+	Conjugacy
+	a set of vectors is conjugate with respect to ??, iff
+	&q what means conjugate
+	conjugate
+	Optimal Step Width 
+	&q how to choose Optimal Step Width ? 
+	&t further reading! 
+	Conjugate Gradients
+	supports very large problems and sparse matrices
+	non linear version
+	biconjugate gradient stabilized method, often abbreviated as BiCGSTAB
+	https://en.wikipedia.org/wiki/Biconjugate_gradient_stabilized_method
+	&t further reading! 
+	BiCGSTAB
+	yields super-linear convergence for linear problem and non linear problems close to optima
+
+	preconditioning can significantly improve convergence but needs to be adapted to problem
+	PARAMETRIZATION
+	come without texture coordinates
+	generate a uv-mapping in three steps
+	&
+	&q the setps of generate a uv-mapping
+	&in three steps
+	&h segment surface into patches
+	segment surface into patches topologically equivalent to a disk flatten patches with minimal distortion of surface metric (first fundamental form) pack flattened patches into a square shaped texture that forms a texture atlas
+	segment surface into patches topologically equivalent to a disk
+	flatten patches with minimal distortion of surface metric (first fundamental form)
+
+	pack flattened patches into a square shaped texture that forms a texture atlas
+	&q illu. those process with pic. op12 
+	Least Squares Conformal Maps for Automatic Texture Atlas Generation
+	SIGGRAPH 2002 
+	Surface Painting
+	Nathan A. Carr, John C. Hart: Painting Detail, SIGGRAPH 2004
+	Dynamic texture atlas
+	painted surface
+	&t further reading! &paper !
+	Remeshing
+	P. Alliez, M. Meyer and M. Desbrun: Interactive Geometry Remeshing, 
+	SIGGRAPH '2002 
+	Segmentation and Packing
+	all three subproblems are optimization problems
+	segmentation and packing do not directly map to the mathematical optimization problem
+	segmentation and packing 
+	&h segmentation and packing is simpler 
+	Our packing algorithm inserts the charts one by one, and maintains the �horizon� (in blue) during the process. E
+	Each chart (in green) is inserted at the position minimizing the �wasted space� (in black) 
+	 The top horizon (in red) of the current chart is then used to update the horizon
+	Bruno L�vy, Sylvain Petitjean, Nicolas Ray et J�rome Maillot
+	Patch flattening
+	Notation
+	measure the flattening quality
+	&q measure the flattening quality? A perfect (isometric)
+	A perfect (isometric) flattening preserves all distances
+	if the first fundamental form is the identity matrix everywhere
+	If the surface patch contains a point with Gaussian curvature ? 0, it cannot be flattened
+	cannot be flattened
+	&flattening preserves all
+	&q under which condition can not be flattened? op18
+	always possible to get an angle preserving or area preserving embedding but not both at the same time
+	&q how can we compute eigenvalue analytically with help of first/second fundamential form? FFF op19 a formula! 
+	intrinsic properties
+
+	&q what intrinsic properties
+	&q can be preserved? 
+	ength (isometric): strongest requirement
+	angle (conformal): strong requirement
+	area: weak requirement
+	stretch and compression:
+	harmonic: strong condition
+	&q op20! &t derive those formulas under diff. conditions! 
+	essential to avoid overlaps in the flattened patch
+	distinguishes between fixed (typically to circle) and free (optimized) boundaries. 
+	The latter is important for patches with complicated boundaries
+	complicated boundaries
+	&q what kind of flattern methods can we support? x3x2 = 6 
+	Linear least squares problems
+	sum over the edge lengths in parameter space
+	Optimal texture location are weighted centroids of their one ring
+	&q how can we model this problem? in math! with WLLS! 
+	Deriving linear system
+	&q Deriving linear system!
+	The resulting linear system is homogeneous and has the trivial solution 
+	&h linear sys. can be found on op23
+	has the trivial solution that all texture coordinates are identical to the origin
+	Fixing the boundary
+	avoid the degenerate solution
+	fixes the boundary vertex texcoords on a simple convex shape like a circle or square to R0
+	texcoords are split correspondingly into free and fixed ones
+	Finally the matrix is split into four blocks
+	The blocks can be split resulting in the final inhomogeneous linear system of equations
+	inhomogeneous linear system of equations
+
+	&q what is the result inhomogeneous linear
+	&system of equations
+	&q ?
+	Defining the weights
+	&q what kind of energies can we use to define weights? op25 
+	Linear Least Squares Approaches
+	spring energy with rest length 0
+	proportional to length of edge in original mesh
+	proportional to reciprocal length in original mesh
+	Dirichlet-Energy
+	Chi-Energy
+	Approximates the area of the surface
+	resulting embedding is near angle preserving
+	two discretizations: Cotangens & mean value
+	Measures the integral of the Gaussian curvature
+	Results in area preserving embedding
+	area preserving embedding
+	Chi-Energy
+	&t imp. of those methods! and extract / modulize them to omi_pub
+	Non Linear Energy Functions
+	Most isometric Parameterizations (MIPs)
+
+	Minimize the sum over all triangles of the condition number of the Jacobian
+	Discrete equiareal mappings
+	Angle Based Flattening
+
+	Maximum Stretch Metric
+	Minimize the maximum stretch over all triangles
+	SIMPLIFICATION
+	rendering and mesh processing applications can be speeded up
+	Level of Detail (LoD)
+	discrete optimization problem
+	approximate a given polygonal mesh either with a certain error tolerance or with a maximum number of polygons/triangles
+	 NP-complete
+	discuss a commonly used greedy strategy that yields good but not optimal results
+	It uses the edge collapse operation to incrementally simplify until approximation error is reached.
+	Simplification Algorithm
+	&q algo.
+	http://mgarland.org/software/qslim.html
+	perform edge collapse
+	Update error of affected edge collapse operations and re-insert into priority queue
+	Edge Collapse
+	Validity checks
+	Manifold Connectivity
+	edge collapses that introduce new non-manifold edges or vertices are detected & skipped:
+	&q can we always do edge collapse? n 
+	&q under which conditions can not do that? 
+	Error Measurement
+	&q how 
+	different approaches to measure the error introduced by an edge collapse based on different distance measures.
+
+	quadric error metrics (QEMs) [Rossinac, Ronfard 1996; Garland, Heckbert, 1997]
+	QEMs measure the average squared distance of a point to a set of planes
+	an optimal target location for the edge collapse operation
+	QEMs support fast union of planes
+	defines the Quadric Error Metric as 10-tupel Q=[M,v,e]
+	Per plane one defines single plane quadrics Q
+	fast union of planes
+	For each edge collapse the onerings of collapsed vertices are merged by adding their quadrics.
+	quadrics
+	The target location is computed as the point that minimizes the merged QEM. 
+	minimizes
+	the merged QEM
+	A good compromise between computational cost and approximation quality
+	one vertex and two faces are removed
+	 two pairs of edges are merged
+	Edge Collapse
+	&
+	&q fill the blank: one vertex and two faces
+	one vertex and two faces are removed, two pairs of edges are merged
+	&are removed, two pairs of
+	&edges are mergedtt
+	&
+	&h -
+	special version at boundary
+	defines operators to scale and add quadrics:
+
+	evaluate() computes ?? ?
+	minarg method is implemented through a robust least squares solver:
+	It returns the point closest to all planes and in the underdetermined case also closest to pref.
+	QEM is used as error metrics
+	&q how QEM are used? 
+	measure sum of squared distances to planes in one-ring
+	The target location is computed as the point that minimizes the merged QEM.
+	Ellipsoids show Isosurface of vertex QEMs for fixed error value
+	&t compute and illu. this pic.! op37 
+	merged QEM
+	Discussion
+	Advantages
+	fast computation and combination through weighted sum
+	good reconstruction of sharp features
+	simple optimization of new location
+	optimization
+	of new location
+	Disadvantages
+	no strict error guarantees
+	error accumulation possible
+	reference point needed to handle degenerate cases at very sharp creases
+	http://mgarland.org/software/qslim.html
+	&
+	https://github.com/alecjacobson/qslim
+	I no longer use Windows on a regular basis, and have not updated the Windows build files.
+	I have tested this process on both Linux (Debian) and Mac OS X (10.3) machines. Compilation on other Unix platforms should probably work as well.
+	cross-platform GUI based on FLTK.
+	Compiles with modern compilers (e.g., GCC 3.x).
+	This software contains the bulk of the code I developed in the course of my doctoral research at Carnegie Mellon University.
+	Since I developed it for my own research purposes, the code may be a little ugly in places
+	t�s also been a place to toy around with experimental features.
+	However, it�s proven quite useful to me, and I hope you�ll find it useful as well.
+	https://www.youtube.com/watch?v=SqQDantwDqI
+	&
+
+
+	+
+		&t additional res.: http://www.pmp-book.org/	
+		Geometry
+		Instanced Rendering
+		Tesselation Examples
+		OBJ Rendering
+
+		Indexed Rendering
+		A polygon mesh ?? is defined as a triple ??, ??, ?? with the 3 sets
+		Oftentimes, E can be derived from F and sometimes vice versa .
+		ordered in a consistent winding order.
+		right-hand rule:
+
+		winding order is used for backface culling
+		OBJ file format is line based 
+		vertex positions (v)
+		normals (vn)
+		f 1//1 3//1 7//1 5//1
+		separated by slash symbols) per corner
+		First index is 1 and not 0!
+		Polygon Meshes � Data Structure
+		store the OBJ content in array containers
+
+		Polygon Meshes � Data Structure
+		geometry is stored in vertex arrays
+		vertex attributes (position, texcoords,�)
+		and textures storing (colors, displacements, �)
+		interleaved or non interleaved order
+		Vertex Buffer with Interleaved storage:
+		Stream processing unit
+		in the first part of the rendering pipeline
+		OpenGL Vertex
+		OpenGL Primitives
+		primitve assembly
+		point, line, and triangle (1, 2, and 3 vertices)
+		basic rendering primitives 
+		glDrawArrays(GL_TRIANGLES, startIdx, count);
+		strips
+		To compute derivatives and other quantities depending on neighbors
+		adjacency
+		array based rendering
+		Indexed rendering
+		Vertex Buffer:
+		Index Buffer
+		glDrawElements
+		For indexed rendering use the glDrawElements function
+		Indexed Rendering allows to define primitives based on a different order than the one of the vertex buffers.
+
+		Index Buffer
+		order
+		generate several strips in one index buffer, one can define a restart index that marks the end of a strip
+		restart index
+		In closed triangle meshes each vertex appears in 6 triangles
+		in case of a stripification in 2 strips
+		indexed rendering saves memory and vertex shader executions
+		vertex shader executions
+		Indirection induces performance penalty due to additional memory access and reduced cache coherency
+		reduced cache coherency.
+		TESSELATION EXAMPLES
+		Tgl Strip Tesselation of Height Fields
+		Height Field Tesselation
+		Parametric Surfaces
+		Tesselation
+		SphereTesselation
+		define std::vector to collect all vertices
+		glBindBuffer
+		glBufferData
+		glEnableVertexAttribArray
+		glVertexAttribPointer
+		unbind the vertex array object for now
+		normals and texcrds are indexed separately
+		OBJ files
+		the extraction of vertex data from a polygonal mesh
+		OBJ to Renderable Vertex Buffers
+		extraction of vertex buffer from simple polymesh
+		For every corner triplet, check if we already assigned a vertex index to it:
+		append vertex index to index buffer
+		create vertex, assign new index
+		index buffer (oneelement per corner)
+		indexed rendering for obj files 
+		Geometry Shader
+		invokation: once per primitive 
+		input: points (1), lines (2), triangles (3), lines_adjacency (4), triangles_adjacency (6)
+		points, line_strips, triangle_strip
+		strips
+		Low vertex count primitives
+		the maximum number of output vertices per geometry shader invokation is limited
+		Tesselation of complete sphere typically not possible
+		Good applications
+		Platonic solids
+		Billboards
+		Lines illustrating normals
+		Geometry Shader
+		Spheres show up only partially
+		geometry shader inputs are arrays even for input type points. 
+		predeclared inputs are gl_PositionIn[], gl_PointSizeIn[]
+		the same name has to be used for the array in the geometry shader
+		in vec3 normal[];
+		out vec3 normal;
+		EmitVertex();
+		stream vertex out
+
+		a geometry shader for bezier curves
+		layout
+		Geometry Shaders � Bezier Curve
+		29
+		Geometry Shader � Show Normals
+		out: GL_LINE_STRIP
+		// line is done (begin new one)
+		EndPrimitive();
+		SCENE GRAPHS AND INSTANCED RENDERING
+		Scene Organization
+		a collection of virtual objects and their parameters is called a scene
+
+		Properties (material, �)
+		Lights (illuminate, shadow)
+		Animations
+		fast traversal of elements
+		Scene Graph Example
+		35
+		glDrawElementsInstanced
+		Each draw call requires communication between CPU and GPU and is therefore a potential bottleneck
+		potential bottleneck
+		making the matrix an instance attribute
+		vertex shader has access to gl_InstanceID.
+		Instanced Rendering - Sphere
+		instances of one vertex per sphere
+		circumvents Geometry Shader limitations
+		geometry shader generates one quad
+		inputs become arrays!
+		Polygon meshes are among the most important representations
+		OBJ is a simple to read file format that can store polygon meshes
+		mapped directly to a simple in-core data structure.
+
+		Geometry shader can be used to generate a small amount of geometry
+		38
+		Light Transport
+
+		Light Perception
+		Lighting in Shader
+
+		irradiance
+		intensity
+		radiance
+		Emission
+		Transport
+		Scattering
+		in transparent media like gases light is deflected at particles of the medium
+		Reflection
+		reflected at surfaces
+		Refraction
+		light passes through transparent surfaces like glas
+		Absorption
+		at surfaces light is absorpt
+
+		Detection
+		eyes and image sensors measure spatial light distributions
+
+		Spectrum
+		The intensity of emitted light varies with direction of emission
+
+		IES file format allows specification of spatially varying light intensity
+		http://photometricviewer.com/
+		view photometric curve
+		realtime renderer
+		Autodesk 3ds Max integration
+		color bleeding
+		Illuminated surfaces act as light sources of indirect light 
+		resulting in Color Bleeding
+		Scene brightness can significantly increase with the number of interreflections
+		Mirror reflection arises at smooth surfaces especially at near tangential viewing directions
+		example of mirror reflections and soft shadows 
+		diffuse surface scattering
+		Refraction
+		changes light direction 
+		Curved surfaces bundle light and can generate caustics
+		Volumetric scattering
+		illustrate fog, smoke and generates effects like subsurface scattering and crepuscular rays
+		crepuscular rays
+
+		Ambient occlusion
+		a technique to estimate shadowing without a specific light source
+		the whole space is assumed to be filled with light emitting gas
+		light emitting gas
+		Point light
+		lead to hard shadows
+		Area light sources
+		soft shadows
+		The human eye has four different light receptors
+		receptors
+		Lumen (lm). 
+		Perceived light power
+		RGB and XYZ color space
+		normalized color spaces have been introduced
+		for different display 
+		normalized
+		CIE XYZ reference space
+		The sRGB color space refines the non linear relationship between physical RGB channels ?????????????? and the sensation adapted ones ?????????
+		non linear relationship 
+		better image quality
+		Most displays perform a gamma correction with ?? = 2.2
+		Reflected Light
+		integrate
+		Reflection Probability 
+		Incoming Light 
+		integrate Reflection Probability times Incoming Light over incoming directions
+		Reflected Light = integrate Reflection Probability times Incoming Light over incoming directions
+		Incoming Light = Outgoing Light of first hit when tracing in incoming direction
+		Rendering Equation
+		integrate pairwise geometry terms over patches
+		Bidirectional Path-Tracing
+		sample camera path
+		sample light path
+		interconnect paths
+		http://madebyevan.com/webgl-path-tracing/
+		The entire scene is dynamically compiled into a GLSL shader.
+		To calculate a pixel color, a ray is shot into the scene and allowed to bounce around five times
+		LOCAL ILLUMINATION
+		Common simplifications
+		ignore indirect lighting
+		restrict light source types
+		avoid solving integrals in the rendering equation,
+		restrict mirror reflection to planar surfaces
+		calculate hard shadows or approximate soft shadows in another rendering pass
+		use efficient-to-evaluate materials
+		Spot Light
+		Local Illumination Models
+		diffuse lighting
+		specular lighting
+		opening angle used to compute ambient occlusion factor
+		ambient lighting (once)
+		Lambertian Radiation
+		portional to cosine of ??
+
+		outgoing radiance
+		The sun is no Lambertian Radiator
+		Oren-Nayar � surface is composed of diffuse microfacets with stochastically distributed orientiations
+		Oren-Nayar
+		Lambertian �simplest model that is computed from cosine of angle between surface normal and incoming light direction
+
+		Diffuse Reflection
+
+		Constant BRDF yields local lighting model that depends on direction to light source but not on observer
+		Lighting Calculations
+		Constant BRDF
+		surface reflects the same in all directions
+		Albedo is the amount of reflected light over the amount of incoming light in dependence of wavelength typically represented as sRGB value
+		For Lambertian albedo describes the reflection properties completely
+		describes the reflection properties
+		Specular Reflection
+		Phong � oldest empirical models adds shininess 
+		Blinn-Phong � based on mirror reflecting microfacets
+		Cook Torrance � incorporates self-shadowing into microfacet model (see CG3)
+		Diffuse lighting type
+		Influence of shininess
+		Specular lighting type
+		Phong Blinn-Phong Cook-Torrance
+
+		SHADER
+		Which Coordinate System To Use?
+		Preserves angles
+		Preserves distances
+		light attenuation
+		All quantities must be transformed into the coordinate system
+		Different quantities are usually given in different coordinate systems:
+		Normals must be transformed with the inverse transpose of the transformation matrix.
+		Too steep attenuation
+		Eye Coord
+		Fragment shader: Receive interpolated quantities.
+		Use uniforms to calculate missing quantities.
+
+		Calculate lighting
+		Interpolated normal has non-unit length.
+		39
+		do the transformation at the end of every fragment shader
+		use sRGB framebuffers with glEnable(GL_FRAMEBUFFER_SRGB);
+		sRGB
+		Pay attention to your input colors. Some of them might already be gamma-corrected (e.g. textures ? transform with ??h???????????? = ?????????????????? ?
+		If you have multiple render passes, gamma correction is only needed in the last one.
+		Object Coordinates
+		World Coordinates
+		Eye Coordinates
+		Which Coordinate System To Use?
+		How can shader codes be designed where different algorithms for different parts can be combined?
+		Write modules for different algorithms and link them in the final program to a composed shader
+		Attach Shader to Program
+		can be choosen flexible with gui 
+		hader function are used 
+		one shader object is needed that contains the main function and declares operations
+		Conceptionally
+		�and other variables/instructions� here
+		allows to reuse compiled codes and dynamically create shader programs that suit the current needs
+		Realtime CG approximates realistic lighting
+		Lighting calculations should be done in an anglepreserving coordinate system
+		anglepreserving coordinate system.
+
+		Work for lighting calculation is shared among CPU, vertex shader, and fragment shader.
+		Work for lighting calculation
+		Local illumination models are composed of ambient, diffuse (Lambertian / Oren-Nayar), and specular (Phong, Blinn-Phong, Cook-Torrance) components.
+		Local illumination models
+		Texturing
+		adding details from a 2D image to a mesh.
+		Every surface point addresses a point in the texture
+		Every surface point
+		Texture coordinates are defined as vertex attributes
+		interpolated into triangles
+		in DirectX
+		The ??-axis in DirectX points in the opposite direction
+		Solution: Flip image or texture coordinates.
+	+
+		https://zhuanlan.zhihu.com/p/101218649
+		����ģ����
+		Job Simulator �� Rick and Morty ����ͬһ����˾����Ʒ�������Ǹù�˾��Google�չ�������������Ϸ�������˽ϸߵ����������ɼ�ģ����Ϸ��Ǳ������
+		http://blog.sina.com.cn/s/blog_5fb40ceb0102wbhk.html
+		http://s16.sinaimg.cn/bmiddle/001KF55Fzy75vOgvniLef&690
+		https://www.zhihu.com/question/28452098
+		��ʹ��FIFA�����Ĵ�����Ȼ�������Ա��͸����bug��
+		��Ϥͼ��ѧ/����ѧ��������㷨�������㷨ʵ�־���
+		�����뷢 xiang.huang@galasports.net
+		MMO < FPS < RTS < ������������Ϊʵ��ʵ�ʿ�����AI���ˣ�����ҿ���һ�£�ʲô����Ӳ��AI��
+		����������ʵ��һ���ڶ���������һ��������������Ϊ��ֻҪѵ�����������ܽ��һ������������뷨
+		Ӳ����ϷAI������״̬������Ϊ����״̬���ǻ���������Ϊ����ѡ������AIû��Ϊ���ⶫ������Ҷ���hard code�ģ�
+		https://i0.hdslb.com/bfs/article/02a7ef41642080aabd15dd98b628433b28682eee.jpg@1200w_674h.webp
+		��ѧ���治����
+		���ߣ�VR����
+		https://www.bilibili.com/read/cv614000/
+		������ bilibili
+		��Զ�� VR����һ���������ģ����ë����Ϸ����ͬ�ڳ����ģ������VR��Ϸ������ʵģ������ë�������ͬʱ���������˼���Ȥ��С��Ϸ
+		http://faculty.cs.tamu.edu/sueda/projects/redmax/
+		http://www.gamfe.com/zhuanye/kecheng/youxidonghuasheji.html
+		����и�����Դ�Ǵ�ͳCG������˾��VR,������Ա��������֮��������õģ����ǽ������澭�鲻��
+		VR���������������������ͷԽ��
+		��ĳЩ��Ϸ�У��������¿����ƶ��ֱ�ʱ����ῴ����Щ�������壬��������һ����Ϊ�����˶�ѧ������� IK���Ķ������������Ƶ�
+		IK body��VR��Ϸ�����˳��ʵ�ֵĻ���Ԫ��
+		IK�������ӳ�����
+		��������ʵ��ս���У�ֻҪ����ֱ���Ⱦ������������ʵ��ս���ͻ��ʵ�ʵ�ս�����Ӽ���
+		������������ʵ�п�����������Ϊ��������ʵ��һ���ִ��ڵ�ʱ����� ��������ͻ᲻��г
+		������һ��IK��������ȭ��ģ�����ж���Ҫ�����������Ĵ�һ���̼�
+		���÷�����ѧ����Ч����ȽϺ�
+		https://www.bilibili.com/video/av47002986/
+		grk29t
+		�����ض����Hand IK Retargeting
+		IKinema��˾ר���ṩ�ùǼܽṹ��������ʵ�˶���ϵͳ
+		https://toutiao.io/posts/xhh713/preview
+		��������ϷҲ�в���֮��������ģʽ̫����ª������ֻ���ĸ���ͬ��ѡ�ֽ�ɫ���ж�ս��û���κε����½���
+		�ĸ�С��Ϸ������ģʽҲ����������Ϸ�Ŀ����Զ��ӳ�һ�㣬��������������С��Ϸ�󣬱��ʧȥ���ʸ�
+		https://zhuanlan.zhihu.com/p/27026296
+		https://zhuanlan.zhihu.com/p/22226094
+		��Ϊ��ѹ��������Ϸ��ֻ�����ǻ���ʽ�����ͼ��
+		ƫ���ڽ����� VR ��Ϸ
+		���ǵ��Ŷӹ�ģ��Ԥ�㣬�ڸ߱����ǰ���£���ȥ������Ϸ�淨����������˵ʵ��̫���ˡ�
+		������Ӱ
+		IK��Inverse Kinametics����д,�Ƿ����˶�ѧ����˼��������ֲ�ṹ��,�ؽں͹���ʵ�ʹ������˶���,�����ؽڡ���ؽڡ���ؽڼ����ӹ�������һ���˶���
+		https://arxiv.org/pdf/1909.09318.pdf
+	+
+		Using Textures in OpenGL
+		glGenTextures
+		glActiveTexture
+		glBindTexture
+		glTexImage2D
+		Upload pixel data.
+		GL_RGB
+		Internal Format
+		Provided data format
+		glTexParameteri
+		Specify parameters
+		Textures can be sampled from, e.g. in a fragment shader.
+		uniform sampler2D albedoTexture; 
+		texture(diffuseTexture, texCoord) //returns a color
+		Sample a location
+		texCoord
+		glUniform1i(diffuseTextureLocation, 0); 
+		glActiveTexture(GL_TEXTURE0); 
+		Active
+		Texture Sampling Filters
+		Texture Sampling Filters
+		Texture coordinates usually do not coincide with texel locations:
+		Magnification filter if fragment is smaller than a texel
+		Magnification filter
+		Minification filter if fragment is larger than a texel
+		Magnification Filter
+		Possible Options
+		GL_NEAREST
+		bilinearly between the four neighboring texels.
+		Magnification Filter
+	

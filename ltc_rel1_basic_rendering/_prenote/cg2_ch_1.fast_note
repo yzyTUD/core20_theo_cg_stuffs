@@ -1,0 +1,226 @@
+	Advanced Modelling
+	3D Scanning
+	calibration
+	articulated objects
+	inverse kinematics
+	rigging motion capturing skinning
+	one joint consultation before first exams
+	Implicit Surfaces
+	Tao Ju, Frank Losasso, Scott Schaefer and Joe Warren, Dual Contouring on Hermite Data, Proceedings of ACM SIGGRAPH, 2002
+	https://www.cse.wustl.edu/~taoju/
+	&t addi. read materials 
+	Robust Optimization for Topological Surface Reconstruction
+	continuous function
+	splits
+	into three sets
+	&q which three?
+	interior
+	implicit surface
+	exterior
+	&q math def. og implicit surface 
+	&
+	An implicit function ?? is called regular, iff 
+	where ?? ?? = 0 the gradient ?????? ?? does not vanish.
+	manifold an
+	regular
+	finite volume
+	an outer region of unbounded volume
+	Implicit Function Theorem
+	&?whatisImplicit Function Theorem?
+	 function assumes an arbitrary value ?
+	 level set functions
+	Example
+	Numeric Gradients Instable
+	analytic gradient computation
+	&q which is better? why not use num. ? unstable! 
+	&q how comes unstable? what is the effect? math? op08
+	&t try it out! draw a heart! to test numm. unstable property! and better soluton than analytical! 
+	Gradient Computation
+	BlobTree (Wyvill et al. 1998)
+	combine several subtrees with boolean set operations like in a CSG 
+	&t addi. paper 
+	Advantages of Implicit Representation
+	easy to define closed objects
+	closed objects
+	just in time tessellation simplifies modelling
+	CSG
+	space deformation
+	as algebraic distance
+	simple support for skeleton based shape representations
+	skeleton based shape representations
+	direct raytracing by searching for zero crossings
+	&q advantages ad dis. op11 
+	Primitives
+	&q what Primitives are there? x4 
+	distance surfaces
+	algebraic surfaces
+	define function as polynomial in x, y, and z of arbitrary degree
+	&
+	basis on lattice
+	as scalar coefficients to basis
+	radial basis
+	radially symmetric basis functions around point samples
+	Manhattan distance
+	Euclidean distance
+	Minkowski distance
+	?-norm 
+	Chebyshev distance
+	&q what kind of distance do you know? op13 
+	unit spheres for different p-norms
+	&
+	The shape of a superquadric remains the same also without taking the p2 -th root,
+	 significantly simplifies the gradient computation
+	Superquadrics
+	Primitives
+	Superquadrics
+	&q Superquadrics is an other imp. primitive! 
+	&t imp. this primitive! 
+	Signed Distance Functions
+	reproduce the primitive or a one sided offset surface
+	plane
+	cube
+	Euclidean distance
+	Chebyshev distance
+	&q hwo can we define a cube in implicit surface construction? op16 
+	Primitives 每 Quadric Examples
+	cone
+	cylinder
+	parabolic
+	hyperbolic
+	hyperboloids
+	elliptic
+	hyperbolic
+	paraboloids
+	&q their math expression 
+	Quadrics are algebraic surfaces of maximum degree two
+	 with a symmetric homogeneous matrix
+	Any quadric can be thought of as a perspective transformation of a sphere
+	Perspective transformations can change the topology of the sphere
+	and cut it open or even onto several parts
+	perspective transformation
+	blobs or meta balls are motivated by atoms forming molecules and the corresponding electromagnetic potential
+	 electromagnetic potential
+	define a potential function decreasing with distance to the atom
+	&q the formula! 
+	implicit surface can be defined:
+	potential function
+	&t imp. the metaball! 
+	&t record the merging process! 
+	Tessellation
+	Marching Cubes
+	Ambiguities
+	Ambiguous cases: 3, 6, 7, 10, 12, 13
+	3, 6, 7, 10, 12, 13
+	where the 2D ambiguity arises on one or more faces
+	choose a higher resolution grid
+	dual contouring
+	MC versus DC
+	&q algos! &t imp. of those two! 
+	&q compare those two! 
+	Dual Contouring
+	marching cubes
+	cuts sharp features short
+	circumvents this
+	edge plane intersection
+	compute one point per cell
+	constructing for each edge a plane through the edge point
+	If a cell has more than three edge planes
+	solve a least squares problem with reference point to avoid degeneration
+	avoid degeneration
+	DC Algorithm
+	If a cell has more than three edge planes
+	&q why we should take care when If a cell has more than three
+	& edges?
+	edge plane qem Q
+	&q does DC algo use qem ds? y 
+	the function of the translated circle is
+	Manipulation
+	Space Warping
+	Function Value Mappings
+	affine and projective transformations
+	non linear deformations
+	maps each point from warped to unwarped space.
+	Function Value Mappings
+	define a combined implicit surface with the function
+	combined
+	CSG & blending of surfaces
+	g of surfaces ? a
+	&q what is the diff. bet. space wa. and func. value mapping? what are they used typically 
+	combined implicit surface with the function
+	&h func. val. mapping is about its self --> combine several func. together 
+	&
+	warping function
+	Warped implicit:
+	Gradient of warped implicit
+	Mapped implicit
+	Gradient of mapped implicit
+	&q calcu. derive formulas for those two cases for simple vec.! 
+	Manipulation 每 Linear Transformations
+	A corresponding warp function can be implemented with the inverse of the matrix
+	The inverse matrix is just the Jacobian of the warp
+	Example 2: Shear
+	&q write the implicit surface func. for given transformation M -- linear model transformation 
+	&h op36 
+	Manipulation 每 Non-Linear Examples
+	taper
+	twist
+	bend
+	&q what non-linear transformations do you know? 
+	Function Value Mappings
+	compute the gradient
+	Example Derivative Computation
+	&q what is the gradient calcu. from FVM? op38 
+	Non-Linear Examples
+	&t imp. Non-Linear Examples
+	&q derive formulas for two cases, and drivatives formulas! 
+	Spatial Blending
+	&t code for Spatial Blending
+	get two levelset surfaces on both sides
+	The gradient computes to
+	&q formulas for levelset and outline mapping &t try!! 
+	The min and max operations used for union and intersection of implicit surfaces are not smooth at the intersection of the surfaces.
+	not smooth 
+	For blending we are looking for smoother function value mappings
+	behave in the same way as min and max
+	Other Minkowski norms can be used to reproduce different blending profiles.
+	More than two implicit surfaces can be easily incorporated to the blending operators.
+	Union & Intersection
+	Signed Distance Functions
+	Smooth Union & Intersection
+	Spherical Blend 每 Union 
+	Super-Elliptic Blend 
+	&t imp. 
+	Bulging Artefacts
+	the blended union of boxes still does not work
+	one can correct the radii of influence depending on the angle ? between the gradients
+	&q hwo can we do correction? why also not work sometimes? op47
+	Skeleton Based Implicit Surfaces
+	A skeleton can be 1d, 2d or 3d.
+	Distance Surfaces
+	Convolution
+	generates sharp edges in concave regions
+	but generates bulging artefacts
+	&q compare distance surface and convolution surface! op49 
+	The field function is defined as convolution
+	&q func.? 
+	Potential functions
+	&q w Potential functions d u know?
+	Gaussian
+	Cauchy
+	inverse powers of radius
+	blended inverse
+	Jin 2002
+	 McCormack 1998
+	convolution is linear operator ? superposition
+	one can handle a skeleton composed of primitives by integrating potential over each primitive and then summing the results
+	each
+	summing
+	Circular Arc
+	Convolution Surfaces 每 Bulging
+	Thick Skeletons
+	bulges only arise when skeleton is narrower than filter.
+	use weights and decrease weights at line intersections.
+	X. Jin, C.-L. Tai, Analytical methods for polynomial weighted convolution surfaces with various kernels, C&G 2002
+	&t addi. reading paper! 
+	provide analytic solutions for large number of potential functions for the case of line segments
+	? introduce up to cubic weighting functions along segments with analytic solutions

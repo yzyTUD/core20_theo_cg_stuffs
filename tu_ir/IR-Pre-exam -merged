@@ -1,0 +1,297 @@
+
+
+    ppt
+        ch1 
+            what are unstructured nature (usually text)? & -  
+            compare IR and databank & - 
+            what are Daten, Wissen Information &
+            Aufbau eines IR-Systems  示意图 p15  & 
+            usage of IR Systems & x2
+
+        ch2
+            Why is grep not the solution & p6 --
+            To answer the query ？ example & - p8
+            why not used? & -
+            why inverted ? Inverted Index & 
+            what is posting list? & - p11
+            建立过程 3个步骤 &
+            dic和posting如何存储 &
+            do intersection for two postings & -
+            What is the best order for processing this query? & 
+            using skip lists how ? &(有点过时)
+            pseudocode for skiping list &
+            Westlaw特性 &
+            how to use Bi-word index to do Phrase Queries &
+            terms in Extended Bi-words &
+            Bi-word index? p&c &
+            Positional index usage & example p38
+            “Proximity” intersection algo  &
+            Combination scheme how & -
+            What are “good” bi-words & -
+        
+        ch3
+            how to determine lan in one text? & -
+            what is & 
+                Term,Morphem,Inflection ,
+                Derivation,Kompositum,Noun Phrase (NP)
+            promblems for reading words in IR? & *5
+            what is &
+                Grammatical markings,Stemming,
+                Lemmatization,Case Folding,Stop words
+            Soundex & what why how-  Example::Soundex of HERMAN H650 p41
+            Successor Variety  &what , how it words  - -e READABLE p28
+            ngram Stemmers:  & ::statistics statistical 0.8
+            Porter's Stemmer explain & -
+                简单计算 ubung & 
+            为啥为检索带来的好处非常有限 & - NEXT
+            Stemming?or not &
+            Danger’s of stemming &
+            Part-of-Speech Tagging what is &
+            how can we do Part-of-Speech Tagging &
+            编辑距离calcu & how 
+
+        ch4
+            词典的数据结构what datastructures can be used for dictionaries &
+            通配符查询 三种情况 & - 例子：：[hel*o] look up 
+            kgram [mon*] &
+            Spelling Correction 三种 &
+            
+        ----
+        ch5
+            Why rank
+            Jaccard coefficient to Scoring，how? &
+            what is tf, idf &
+            tf-idf weighting , how &
+            tf-idf formular & -
+            tf-idf compare & - those two 
+            when tf is 0? &
+            tf idf calcu & - P28
+            The vector space model & x3
+            why Euclidean distance is a bad idea & -
+            tf idf calcu & - 从p41开始计算
+            tf idf algo p46 & - NEXT
+            differ. weghts &
+                Inc.Itn 
+                Itn.bnn
+                
+        ch6
+            why compression &
+            what is Lossy vs. lossless compression & -
+            Heaps’ law mean? formular &
+            zipf Law mean ？ formular &
+            Dictionary as a string &
+            Dictionary as a string with blocking &
+            Front coding &
+            Bytewise compression  & calcu - p34
+            Gamma Codes for gap encoding & calcu -p39 13 四个步骤 &
+            Gamma:some advantages & - explain -
+            Gamma seldom used in practice & - explain
+            
+             
+
+        ch7
+            基于块的排序索引方法Blocked Sort-Based Indexing (BSBI) idea & -  algo & - 
+            内存式单遍扫描索引构建方法Single-Pass In-Memory Indexing (SPIMI) algo & - 
+            Caching策略 x2 &
+            zwei Arten von Rechner‐Knoten :  & - two types of nodes 
+            advantages or dis- of distributed index construction & - NEXT
+            why can parallelisierbar? & - 
+            MapReduce Architecture & - NEXT 
+            Delta-Index: how it works ? & whne put the delta index to Disk: &
+           
+        ch8
+            Term-at-a-Time (TAAT): and DAAT &
+            NRA ： No Random Accesses function explain & -
+                结束条件 &
+                p27计算 & -
+                p29公式 & -
+                我的网上照片例子 &计算 - NEXT
+
+        ch9
+            how to Measure the happiness ? & - p5  explain
+            Precision and Recall
+                公式 p9 & -
+                计算p10 & -
+            F-Measure Precision/recall tradeoff
+                Example & - p13
+            Cost-based Measure & calcu
+            Accuracy ：：TP TN 占用的比例 
+                公式 & -
+                calcu &
+            Macro average (precision) and Micro average (precision) 
+                p19 calcu & 公式有问题 
+            PR curve 呈锯齿形的原因? & -
+            p28计算 & - ubung中有对应的题目 &
+            what are included in benchmarks &
+            ppt上计算 & p37 - 给定两个判断，求Kappa统计
+                网页中那个计算 & - NEXT
+            Pooling策略--评价所有文档工作量是很大的，可以只评价检索的 &
+            A/B Testing &
+            生成动态摘要的目标是选出满足如下条件的片段 & - NEXT p49
+
+
+        ----
+        ch10
+            four different examples with picture & - for user feedback
+            idea of Rocchio Algorithm to do feedback & two classes 
+                formular &
+                what effect parameter has & -
+                有图来解释这个公式 & -：
+            Positive versus negative feedback & -
+            When Does Relevance Feedback Work? &
+            Evaluation of feedback:how many times is enough to do that &
+            problems，不起作用的原因  & - NEXT
+            为相关反馈：它不可能完全避免自动化操作所带来的风险 &
+            but it workd well? &
+            what can we do to 间接相关反馈 &
+            查询扩展(Query expansion) methods &
+            基于统计学的结果，相关性矩阵
+                calcu & - NEXT p48 
+
+        ch11
+            计算 状态检索值 Retrievalstatuswert & calcu 
+            Test auf Unabhängigkeit &calcu - p
+            概率检索模型 idea &
+            二值独立模型BIR &
+            Okapi formular & calcu & 
+            文档评分纵向比较： & -
+            概率IR优缺点 & - NEXT explain
+
+        ch12
+            语言模型 idea & -
+            what is language of LM &
+            双圈节点对应的是 &
+            计算例子 & - p165 例12-2
+            描述有限自动机 EA & - explain
+            计算 P(Katzen fangen Mäuse) & - 
+            二元语言模型为啥不用 & - exp
+            kann man LM durch Markow-Ketten darstellen & - Horizont（向前看的视野）?
+            p20公式 & -
+            Jelinek-Mercer Smoothing & -
+            输入为Tasse Kanne的那个计算 & - NEXT
+            ubung中 &
+            Multiplikation kleiner Werte Führt zu Rechenungenauigkeiten & - how to handle &
+            LMs vs. BIR
+                    联系 & - NEXT
+                    区别 & - NEXT
+            LMs vs. Vector-Space-Modell
+                    联系 & - NEXT
+                    区别 & - NEXT
+
+        ch13
+            为什么 Web纷繁杂乱、变化迅速 &
+            web 特点 &
+            静态页面与动态  & - exp  
+            整个Web有向图结构？ & -
+            作弊问题：几种方法排名作弊？ & -
+            google的用户体验特点： & -
+            普通的 Web 搜索查询似乎可以分成哪三大类？  & -
+            Web规模估计 &
+            Mercator 采集器 五个模块 &
+            web中的重复问题 &
+                solution1 :设计指纹比如64位
+                solution 2:k shingling技术 
+            IR on the web vs. IR in general 
+                三点不同 & 
+            网络搜索的具体形式特点 & 
+            网络文档特点，主要的四个特性 & -
+            Crawling，两个特点？ & 
+            ppt中例子 & - 理解，给图画出来路径
+            How are ads ranked  & - exp
+            次高价拍卖 & -解释 and calcu。 p47
+            主要的两个问题 
+                Keyword arbitrage
+                Violation of trademarks
+            Estimate the similarity based on the sketches use MinHash &
+            Super Shingles 例子 & - p65
+            常见的Spam技术 &
+
+
+        ch14
+            链接分析的意义 & -
+            PageRank过程假设： & -
+            计算PageRank权重 & - p322 p23公式 & -
+            面向主题的 PageRank:简单做法 &
+            处理混合的情况？ &
+            特点 & - x2
+            HITS循环迭代公式 & - 计算优化？ & - 超链导向的主题搜索
+            理解 & -
+            idea & -
+            问题：  & -
+            特点 & 
+
+        ----
+        ch15
+            在垃圾邮件处理中，有哪些基本的处理方法 & p7 
+            Maschinelles Lernen，how it works  &画图 
+            分类的评价 & x3 
+                Confusion Matrix erweitern p27 pic
+                cross validation 
+            Undersampling , oversampling,Hybrid-Verfahren &
+            下采样方法 & x4
+                NearMiss方法...
+            Oversampling & x2
+            Feature-Scaling
+                why & 
+                three methods &
+            Feature-Auswahl x3 &
+                based on frequncy
+                IM  formular & calcu. & p65
+                卡方 calcu. & p69
+
+        ch16
+            Regeln haben Wenn-Dann Form  &
+            Evaluation von Regeln
+            Grundlegende Maße,两个指标 公式 &,计算 & p15
+            Drei Qualitätsmaße ,formular &,p21 ?? NEXT
+                 Laplace-Maß
+                    NEXTNEXTNEXT
+                 Likelihood Quotienten Test
+                 FOIL's Information Gain
+                eg. & p26
+            Sequential Covering,idea &,formular &,eg p33 &&&,Nachbearbeitung
+        ch17
+            贝叶斯分类：
+                why Naïve &
+                why not Naive &
+            Multinomiales Naïve Bayes ：idea & formuar  & calcu &
+            Bernoulli Naïve Bayes ： idea & formuar  & calcu & Anmerkungen &
+            Aktuelle Anwendung &
+        ch18
+            Klassifikation im Vektorraum
+                Vektorraum:vector space
+                画图 & p6 
+                exp &
+            Rocchio Klassifikator idea & formuar  & calcu & Probleme bei Rocchio &
+            kNN process & ,Beispiel &,
+                Wahl von k? & 
+                变种 &  x2
+            
+        ch19
+            Darstellung Hyperebene mit Ebenengleichung 
+                formular &
+                clacu p7 &
+            Vorgehen bei mehr als zwei Kategorien ?Multiclass SVMs?,exp & p10
+            ::when there are more than two classes 
+                Trainingsphase:Perzeptron
+                verfahren exp &
+            calcu. p16 & 
+            SVM Linearer Fall
+                Einfach Verfahren &
+                    formular p21 & -
+                    Duale Formulierung & -
+                Beispiel p33 &
+            Erweitertes Optimierungsverfahren
+                    Einführung einer Schlupfvariable：：引入松弛变量
+                    formular &
+                    Einfluss von C exp & -
+            Kernel Trick--Nichtlineare Entscheidungsgrenzen
+                key idea &
+                kernel types & x4
+                
+    ubung
+        尤其是里面的判断题
+        
+
+
+

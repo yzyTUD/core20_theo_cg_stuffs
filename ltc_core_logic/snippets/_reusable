@@ -1,0 +1,8 @@
+
+
+    ---check the result 
+        std::cout << "check result: " << ((*std::max_element(myints, myints + 7) == 9) ? "pass" : "fail") << std::endl;
+    
+
+
+    

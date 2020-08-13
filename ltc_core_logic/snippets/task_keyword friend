@@ -1,0 +1,56 @@
+
+#include <iostream> 
+
+class A;
+class C;
+class B { // B has most access ability 
+private:
+    int b;
+
+public:
+    void showA(A& x);
+    void showC(C& x);
+};
+
+class A {
+private:
+    int a;
+
+public:
+    A() { a = 1; }
+    friend class B; // Friend Class 
+};
+
+class C {
+private:
+    int c;
+
+public:
+    C() { c = 2; }
+    friend void B::showC(C& x);
+};
+
+// cpp file below: (logically)
+void B::showA(A& x)
+{
+    // Since B is friend of A, it can access 
+    // private members of A 
+    std::cout << "A::a = " << x.a << std::endl;
+}
+void B::showC(C& x) {
+    // Since showB() is friend of B, it can 
+    // access private members of B 
+    std::cout << "C::c = " << x.c << std::endl;
+}
+
+
+int main()
+{
+    A a;
+    B b;
+    C c;
+    b.showA(a);
+    b.showC(c);
+
+    return 0;
+}

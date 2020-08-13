@@ -1,0 +1,1316 @@
+
+    //
+        不要轻易出手研究一个领域，先确定研究价值与可行路径！qv策略 
+        quickshow策略:快速做出一些demo，展示学习效果！ 
+        notations:
+            research-  research ideas! 
+            t- basic tasks 
+            q- questions 
+            p- problems not solved 
+            lan- good language
+             
+    //
+    ---math
+        //
+            basic math, general edu. 
+            output  
+                vis. the diff. shapes and their properties 
+                iK, discreate math -> algorithm vis. 
+                mathematical Optimization -> vis. the volumn 
+                diff. geometry -> geometric analysis, manipulation in 3d, cad 
+        preview_pass 
+            seedonline
+                Ellipse https://en.wikipedia.org/wiki/Ellipse#In_triangle_geometry
+                    it generalizes a circle, which is the special type of ellipse in which the two focal points are the same
+                    eccentricity e bet. 0,1 
+                    q- what 3 types of conic sectionsare there?  
+                    parabolas and hyperbolas, both of which are open and unbounded
+                    This constant ratio is the above-mentioned eccentricity
+                    The shapes of planets and stars are often well described by ellipsoids
+                    the ellipse is the image of a circle under parallel or perspective projection.
+                    q- basic concepts: major axis,minor axis 
+                        > focal distance or linear eccentricity.
+                        > semi-major and semi-minor axes.
+                        > semi-latus rectum
+                    q- Standard equation
+                    Removing the radicals by suitable squarings
+                    The semi-latus rectum is equal to the radius of curvature of the osculating circles at the vertices.
+                    exterior line, tangent and secant.
+                    q- the coordinate equation for the tangent point 
+                    satisfy the implicit equation
+                    To distinguish the degenerate cases from the non-degenerate case, let ∆ be the determinant
+                    q- how to distinguish 
+                        > non-degenerate real ellipse
+                        > imaginary ellipse
+                        > and a point ellipse
+                        https://www.muchlearning.org/?page=62&ccourseid=1437&sectionid=2301
+                    q- what is the canonical form of a gen. ellipse? 
+                    q- canonical form parameters can be obtained from the general form coefficients by the equations?
+                    called the eccentric anomaly in astronomy
+                    Rational representations of conic sections are commonly used in Computer Aided Design
+                    q- Rational representation of a ellipse? rational parametric equation of an ellipse
+                        moving counter-clockwise with increasing u 
+                    q- the limitations of it? 
+                        can not express (-a,0)
+                    General ellipse with affine transformations def.
+                    q- parametric representation of a general ellipse with affine transformations? 
+                    The definition of an ellipse in this section gives a parametric representation of an arbitrary ellipse
+                    the para. form a space 
+                    q- the Polar form relative to center, to focus 
+                    https://en.wikipedia.org/wiki/Conic_section#Conic_parameters
+                    Conjugate diameters in an ellipse generalize orthogonal diameters in a circle.
+                    q- what is Conjugate diameters 
+                    q- def. of orthoptic or director circle of the ellipse?
+                        the intersection point of orthogonal tangents
+                    q- calculation of the area/Circumference/ of a ellipse with double integral
+                        (may use diff. metrics)
+                    q- what is 算术-几何平均数
+                        两个数列收敛于相同的数，这个数称为x和y的
+                    *q- 算术几何平均数的积分表达式? 
+                    q- 上述积分表达式的推导？ 
+                    q- 椭圆的弧长的计算并不是很容易的事
+                    q- 为啥研究椭圆积分？ 
+                        通常，椭圆积分不能用基本函数表达
+                        通过适当的简化公式，每个椭圆积分可以变为只涉及有理函数和三个经典形式的积分。
+                            （也即，第一，第二，和第三类的椭圆积分）进行求解
+                        椭圆积分也可以表达为勒让德形式和Carlson对称形式
+                        +https://zh.wikipedia.org/wiki/%E9%9B%85%E5%8F%AF%E6%AF%94%E6%A9%A2%E5%9C%93%E5%87%BD%E6%95%B8
+                        椭圆函数是作为椭圆积分的逆函数被发现的
+                    q- 第一类不完全椭圆积分 def. 对应导数公示
+                        第二类不完全椭圆积分
+                    q- 完全积分和不完全积分的区别？ 
+                        如果幅度为pi/2,或者x=1, 则是完全积分，是不完全积分的特例
+                    h- 某些积分不好求解但是可以用幂级数表达！人类智慧的结晶
+                    高斯超几何函数https://zh.wikipedia.org/wiki/%E8%B6%85%E5%87%A0%E4%BD%95%E5%87%BD%E6%95%B0
+                    *h- 有一些微分方程的解可以表达成某些形式的级数，而有时候函数可以用来计算他们的极限
+                Elliptic integral https://en.wikipedia.org/wiki/Elliptic_integral#Complete_elliptic_integral_of_the_second_kind
+                    spec. kind of integral, hard to evaluate with classical method
+                Parabola https://en.wikipedia.org/wiki/Parabola#In_a_cartesian_coordinate_system
+                    approximately U-shaped
+                    can be def. with a point (the focus) and a line (the directrix). 
+                    automobile headlight reflectors and the design of ballistic missiles
+                    The horizontal chord through the focus (see picture in opening section) is 
+                        called the latus rectum; one half of it is the semi-latus rectum. 
+                    has a downward opening when lower than zero 
+                    *the graph of an arbitrary polynomial of degree 2 is a parabola
+                    These parabolas open to the left 
+                    q- how to use the Hesse normal form of a line to calculate the distance? 
+                    The implicit equation of a parabola is defined by an irreducible polynomial of degree two
+                    q- The implicit equation of a parabola
+                    q- The general function of degree 2
+                    q- how is it differ from ellipse, parabola and Hyperbola? 
+                        the range of eccentricity, for parabola, the eccentricity is 1 
+                    q- polar representation
+                    Inverting this polar form shows that a parabola is the inverse of a cardioid.
+                    reflective property
+                    The reflective property states that if a parabola can reflect light, then light 
+                        that enters it travelling parallel to the axis of symmetry is reflected toward the focus.
+                    consequence of the de Casteljau algorithm for a Bezier curve of degree 2
+                    q- gen. of Dual parabola
+                    De Casteljau's algorithm is a recursive method to evaluate polynomials in Bernstein form or Bézier curves
+                    evaluate individually using De Casteljau's algorithm.
+                    q- what is de Casteljau's algorithm and how can it be used? what means the "evaluate"
+                    Connecting the consecutive points we create the control polygon of the curve.
+                    Subdivide now each line segment of this polygon with the ratio
+                    This way you arrive at the new polygon having one fewer segment.
+                    Repeat the process until you arrive at the single point – this is the point of the curve corresponding to the parameter
+                    q- how can we understand the algo. graphically? 
+                    The following picture shows this process for a cubic Bézier curve:
+                    +Bézier curve
+                        q- def. of a Bézier curve 
+                        is a parametric curve
+                        related to the Bernstein polynomial
+                        can be used for design of computer fonts and animation.
+                        Bézier curves are used to model smooth curves that can be scaled indefinitely.
+                        the motion of a welding arm, for example, should be smooth to avoid unnecessary wear.
+                        consists of a list of control points, 
+                        The sums in the following sections are to be understood as affine combinations, 
+                        the coefficients sum to 1.
+                        a linear Bézier curve is simply a straight line between those two points
+                        the first and the last point always lie on the curve, but not the others 
+                        Quadratic Bézier curves uses 3 points 
+                        String art star Design
+                        q- breif history about the curve?
+                            1912, Bernstein polynomials(polynomials were not applied to graphics)
+                            1959, by mathematician Paul de Casteljau using de Casteljau's algorithm,a numerically stable method
+                            1962, widely publicised by the French engineer Pierre Bézier
+                        general case: point-to-point linear combination (linear interpolation) of a pair 
+                            of corresponding points in two Bézier curves of degree n − 1.
+                        however one should use caution as high order curves may lack numeric stability
+                        For fourth-order curves one can construct intermediate points
+                        q- constract high order bezier curve? 
+                            construct intermediate points, quadratic Bézier curves, cubic curves, and the position 
+                            of the tangent point is the one we are going to evaluate.
+                        when imp. a edition sys., the points can be graphically displayed and used to manipulate the curve intuitively
+                        Affine transformations such as translation and rotation can be applied on the curve by applying the respective 
+                            transform on the control points of the curve.
+                        Higher degree curves are more computationally expensive to evaluate
+                        q- a way to simplify the constru. process can be? 
+                            low order Bézier curves are patched together, producing a composite Bézier curve.
+                        q- how can we smoothly combine multiple curves effeciently? 
+                            guarantees that the resultant curve is C1 continuous, meaning that the first derivative is continuous everywhere.
+                    +string art 
+                        Mithlesh or pin and thread art, is characterized by an arrangement of colored thread strung 
+                            between points to form geometric patterns or representational designs such as a 
+                            ship's sails
+                    +包络线（Envelope）
+                        是几何学里的概念，代表一条曲线与某个曲线族中的每条线都有至少一点相切
+                        computational geo. 
+                        may be seen as the topologic boundary of a union of sets, whose boundaries are the curves of the envelope.
+                        Clearly the resulted envelope is also a concave parabola.
+                    +concave parabola.
+                        a concave function is the negative of a convex function
+                    +Vector graphics
+                        in contrast to raster graphics 
+                        the SVG, EPS, PDF or AI graphic file formats and are intrinsically 
+                            different from the more common raster graphics file formats
+                        Many web browsers now have some support for rendering SVG data but full 
+                            implementations of the standard are still comparatively rare.
+                        independent of the resolution of the rendering device
+                        Rendering SVG requires conversion to raster format at a resolution appropriate for the current task
+                        q- fast-rendering primitive objects for vector graph rendering? x3 
+                        may also support splines and other curves, Catmull–Rom splines, metaballs
+                        q- when the conversion from one format to an other is lossless? would it be possible to those sys.?
+                    +font system 
+                        TrueType fonts use composite Bézier curves composed of quadratic Bézier curves
+                        composed of quadratic Bézier curves
+                        SVG use composite Béziers composed of cubic Bézier curves for drawing curved shapes.
+                        detail, we have to check and devide the characters into seg. besed on their flatness 
+                        convert exactly all Bézier and conic curves (or surfaces) into NURBS
+                    +spline curve 
+                        In numerical analysis, a cubic Hermite spline or cubic Hermite interpolator is a spline w
+                            here each piece is a third-degree polynomial specified in Hermite form  
+                    *image vectorization
+                        Convert raster images like PNGs, BMPs and JPEGs to scalable vector graphics (SVG, EPS, DXF)
+                        the image will not pixelate when we enlarge it
+                        we have to convert them to two-dimensional vector format.
+                        Vector art images are used widely in the printing, advertising and 
+                            embroidery digitizing industry and digital marketing agencies.
+                        If the image is magnified enough, its artifacts appear.
+                        Images of sharp edges become fuzzy or jagged.
+                        Edges and filled areas are represented as mathematical curves or gradients, and they can be magnified arbitrarily.
+                        In vectorization the shape of the character is preserved, so artistic embellishments remain.
+                        Synthetic images such as maps, cartoons, logos, 
+                            clip art, and technical drawings are suitable for vectorization
+                        Continuous tone photographs (such as live portraits) are not good candidates for vectorization.
+                        one of several raster file formats
+                        A company may have commissioned a logo from a graphic arts firm
+                        Many freelancer are provide the service with cheap price
+                        high quality image
+                        also, Image tracing
+                Hyperbola
+                    defined by its geometric properties or by equations for which it is the solution set
+                    that are mirror images of each other and resemble two infinite bows
+                    The hyperbola is one of the three kinds of conic section, formed by the intersection of a plane and a double cone.
+                    q- def. intuitively?
+                        If the plane intersects both halves of the double cone but does not pass through the apex of the cones, then the conic is a hyperbola.
+                    Each branch of the hyperbola has two arms which become straighter (lower curvature) further out from the center of the hyperbola.
+                    q- the Asymptotes equ. 
+                    q- canonical form, Quadratic equation
+                    calcu. Arc length, no closed form expression of the solution possible
+                    q- the numerical equ. to this problem? expressed with  elliptic integral? 
+                *seed-h- the core of the geometric? describe relations bet. diff. shapes and their properties
+                    find a possible application for them. or, when facing a particular problem, give them a 
+                    geometrical solution with the properties we obtained.
+                    https://en.wikipedia.org/wiki/Geometry
+                        curves: 
+                            Ellipse,Parabola,hyperbola,B-spline,spline,...
+                        surfaces: 
+                            (Quadric Surfaces, parametric surface, Geometric topology)
+                            ellipsoid,Paraboloid...hyperbolic paraboloid...
+                            Moebius Strip, the Trefoil Knot, the Big Knot, the Klein Bottle, and the Klein Figure 8 Surface...
+                二次型是一些变量上的二次齐次多项式
+                *微分工具研究几何代数问题：
+                    代数《华罗庚文集:数论卷2》共二十章，前六章是属于基础知识，内容包括：整数分解、同余式、二次剩余、多项式之性质、素数分布概况、数论函数等；
+                    后十四章是就解析数论、代数数论、超越数论、数的几何这几个数论主要分支的基础部分加以介绍，内容包括：三角和、数的分拆、素数定理、连分数、
+                    不定方程、二元二次型、模变换、整数矩阵、p-adic数、代数数沦导引、超越数、Waring问题与Prouhet-Tarry问题、数的几何等，书里引述厂许多我
+                    国古代数学家在数论上的成就，也包含了许多近代数论中的重要成果，例如著者关于完整三角和及最小原根的结果、关于Prouhet-Tarry问题的结果、B
+                    asorpaaos关于最小二次非剩余的结果、Selberg关于素数定理的初等证明，RothSiegel定理、A.O.关于Hilbert第七问题的证明、Siegel关于二元二
+                    次型类数的定理 关于Waring问题的证明关于问题的结果、Selberg的筛法等等；书中也包括了著者许多未经发表的结果。《华罗庚文集:数论卷2》是
+                    以深入浅出、循序渐进的笔法写成的，读者可以通过它看出如何从一个简单的概念逐步走向深刻的研究，看出具体与抽象之间的联系
+                    https://archive.org/details/hualuogeng/page/n7/mode/2up
+                Analytic_geometry https://en.wikipedia.org/wiki/Analytic_geometry
+                B-spline/ xxx spline/ NURBS/ 
+                Hermite Interpolation http://fourier.eng.hmc.edu/e176/lectures/ch7/node5.html -later
+                Lagrange multipliers
+                q- what kinds of optimizations are there? x4
+                    Non-calculus methods without constraints
+                    Non-calculus methods with constraints
+                    calculus methods without constraints
+                    calculus methods with constraints
+            seedfrombookcpt 
+                geodesic distance
+                    神经元追踪的算法
+                    三维空间中，两点之间的最短路径
+                    测地线是在一个曲面上，每一点处测地曲率均为零的曲线。
+                    http://lemonc.me/average-geodesic-distance.html
+                        而在数学或几何领域，通常出现在图网络以及网格表面的距离计算之中
+                        与我们平时在几何空间通常用到的 Euclidean Distance（欧氏距离），即两点之间的最短距离，有所区别。
+                        http://source.lemonc.me/wp-content/uploads/2016/07/shorteset-path-on-mesh.jpg
+                        计算三维点云中两点的 Geodesic Distance，首先要利用点云中所有点构建出一个类似于网格的表面结构的图，随后通过找到两点在图中的最短路径
+                        用这个 Average Geodesic Distance 作为一个三维点的几何特征时，越靠近中心部位的点的值会越低
+                        t- 给定模型，计算Average Geodesic Distance
+                            ok-platform
+                            ok-detail 
+                                for all other vertices:
+                                    //calcu. distance, count number of edges in bet. 
+                                    use dijkstra/ bfs? y 
+                                    // we can get the neighbours of a given vertex 
+                            similar code 
+                        越靠近中心部位的点的值会越低，而边缘末端的点的值会相对更高
+                        这看似简单的算法原理在实际的计算中还是相当耗时的，会随着三维点数的增加，耗时呈指数级的增长。
+                        但由于实际中往往并不需要用到非常精确的 Geodesic Distance，因此，目前有很多加速计算过程和近似结果的工作
+                        research- 实际中往往并不需要用到非常精确的 Geodesic Distance，因此，目前有很多加速计算过程和近似结果的工作
+                            Surazhsky V, Surazhsky T, Kirsanov D, et al. Fast exact and approximate geodesics on meshes[C]
+                                //ACM transactions on graphics (TOG). ACM, 2005, 24(3): 553-560
+                            Novotni M, Klein R. Gomputing geodesic distances on triangular meshes[J]. 2002.
+                            *Noyel G, Angulo J, Jeulin D. Fast computation of all pairs of geodesic distances[J]. 
+                                Image Analysis, Stereology, 2011, 30(2): 101-109.
+                            
+                        t- Average Geodesic Distance 作为每个点的几何特征值的可视化结果
+                            将该几何特征值归一化后，用红色代表最远值（1.0），蓝色代表最近值（0.0）。
+                            ok-platform
+                            ok-detail
+                                process:
+                                    for
+                                        marke all edges along the road 
+                                draw call:
+                                    for each edge that in the vector:
+                                        gl_color();
+                                        draw_line
+                                    ...
+                            similar codes 
+                                https://doc.cgal.org/latest/Surface_mesh_shortest_path/index.html
+                            package the task 
+                            make it part of lib? y 
+                                part of mathlib:
+                                    double calcu_average_geodesic_distance(vex1, vex2)
+                                    void calcu_average_geodesic_distance_and_mark(vector edges, vex1, vex2)
+                        https://www.cse.ust.hk/~wlibs/#about_me
+                    2005 SIGGRAPH中Fast Exact and Approximate Geodesics on Meshes文章的实现，
+                ---linear algebra
+                    LU Factorization
+                    QR Factorization
+                        Practical QR Algorithm 
+                    Rank-Deficient Least Squares Problem 
+                    Square and Underdetermined Systems
+                    Perturbation Theory
+                    Computing the SVD
+                    Eigenvalue Problem
+                    Jacobi-root finding 
+                    Theorems
+                    Similarity of Matrices
+                    The Isomorphism Theorems
+                ---Computational Geometry
+                    Convex Hulls
+                    Partitioning a Polygon into Monotone Pieces
+                    Triangulating a Monotone Polygon
+                    Linear Programming
+                    Incremental Linear Programming
+                    Orthogonal Range Searching
+                        Kd-Trees
+                        Fractional Cascading
+                    Voronoi Diagrams
+                    Farthest-Point Voronoi Diagrams
+                    Computing the Discrepancy
+                    Delaunay Triangulations
+                    A Framework for Randomized Algorithms
+                    Interval Trees
+                    Priority Search Trees
+                    Segment Trees
+                    The Complexity of Convex Hulls in 3-Space
+                    Binary Space Partitions
+                    Triangulations algos 
+                    Robot Motion Planning
+                    Minkowski Sums
+                    diff. kinds of distances! 
+                    Quadtrees
+                    Shortest Paths algos.
+                    Simplex Range Searching
+                        Partition Trees
+                        Cutting Trees
+                ---computational physics 
+                    Runge-Kutta Methods
+                    Numerical Instabilities 
+                    Euler’s Method . .
+                    ODEs computation with c 
+                    Poisson’s Equation - see the book 
+                    The Diffusion Equation
+                    The wave equation, which in one dimension takes the form
+                    Monte-Carlo Integration
+                ---DIFFERENTIAL GEOMETRY
+                    Hilbert Spaces
+                    Tensor Products
+                    Moore–Penrose Generalized Inverse
+                    The Umbral Calculus
+                    Power Series
+                    Taylor and Maclaurin Series
+                        Taylor Polynomials
+                    The Lie Algebra of a Lie Group
+                    Vector Bundles and Submersions
+                    The Theorem of Frobenius . . .
+                    Levi-Civita Connection
+                    Generalized Theorema Egregium
+                    Cartan–Ambrose–Hicks Theorem
+                    Homotopy
+                    Positive Ricci Curvature
+                    The Theorem of Hadamard and Cartan
+                ---differential-equations.pdf
+                    have to read from beginning 
+                    a good book!
+                ---Mathematical Optimization
+                    Introduction%20to%20Mathematical%20Optimization.pdf
+                    Constrained Extrema
+                    Karush-Kuhn-Tucker Theorem under Convexity
+                    Rescaled Convex Functions
+                    Finite-Horizon Dynamic Programming
+                    Infinite-Horizon Dynamic Program
+                    very good book!!
+                ---numerical analysis 
+                    Heron’s algorithm
+                    Nonlinear Equations, complex roots 
+                    Direct Solvers
+                    Iterative Methods
+                    Schur decomposition
+                    Newton’s method 
+                    Conjugate Gradients
+                    梯度下降
+                    Polynomial Interpolation
+                    Norms in infinite-dimensional spaces
+                    Chebyshev and Hermite Interpolation
+                        Lebesgue function
+                    Approximation Theory
+                        Best approximation by polynomials
+                        Weierstrass and Bernstein
+                        Piecewise polynomial approximation
+                    Interpolatory quadrature
+                    Gregorie-Euler-Maclaurin formulas
+                    Eigenvalue Problems
+                    Chapter 16. Ordinary Differential Equations 257
+                        16.1 Basic theory of ODEs 257
+                        16.2 Existence and uniqueness of solutions 258
+                        16.3 Basic discretization methods 262
+                        16.4 Convergence of discretization methods 266
+                        16.5 More reading 269
+                        16.6 Exercises 269
+                        16.7 Solutions 271
+                    Chapter 17. Higher-order ODE Discretization Methods 275
+                        17.1 Higher-order discretization 276
+                        17.2 Convergence conditions 281
+                        17.3 Backward differentiation formulas 287
+                        17.4 More reading 288
+                        17.5 Exercises 289
+                        17.6 Solutions 
+                ---Principles%20of%20Scientific%20Computing.pdf
+                    Quasi-Newton methods .  
+                    6 Nonlinear Equations and Optimization 125
+                        6.1 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 126
+                        6.2 Solving a single nonlinear equation . . . . . . . . . . . . . . . . . 127
+                        6.2.1 Bisection . . . . . . . . . . . . . . . . . . . . . . . . . . . 128
+                        6.2.2 Newton’s method for a nonlinear equation . . . . . . . . . 128
+                        6.3 Newton’s method in more than one dimension . . . . . . . . . . . 130
+                        6.3.1 Quasi-Newton methods . . . . . . . . . . . . . . . . . . . 131
+                        6.4 One variable optimization . . . . . . . . . . . . . . . . . . . . . . 132
+                        6.5 Newton’s method for local optimization . . . . . . . . . . . . . . 133
+                        6.6 Safeguards and global optimization . . . . . . . . . . . . . . . . . 134
+                        6.7 Determining convergence . . . . . . . . . . . . . . . . . . . . . . . 136
+                        6.8 Gradient descent and iterative methods . . . . . . . . . . . . . . 137
+                        6.8.1 Gauss Seidel iteration . . . . . . . . . . . . . . . . . . . . 138
+                        6.9 Resources and further reading . . . . . . . . . . . . . . . . . . . . 138
+                        6.10 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 139
+                    7 Approximating Functions 143
+                        7.1 Polynomial interpolation . . . . . . . . . . . . . . . . . . . . . . . 145
+                        7.1.1 Vandermonde theory . . . . . . . . . . . . . . . . . . . . . 145
+                        7.1.2 Newton interpolation formula . . . . . . . . . . . . . . . . 147
+                        7.1.3 Lagrange interpolation formula . . . . . . . . . . . . . . . 151
+                        7.2 Discrete Fourier transform . . . . . . . . . . . . . . . . . . . . . . 151
+                        7.2.1 Fourier modes . . . . . . . . . . . . . . . . . . . . . . . . . 152
+                        7.2.2 The DFT . . . . . . . . . . . . . . . . . . . . . . . . . . . 155
+                        7.2.3 FFT algorithm . . . . . . . . . . . . . . . . . . . . . . . . 159
+                        7.2.4 Trigonometric interpolation . . . . . . . . . . . . . . . . . 161
+                        7.3 Software . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 162
+                        7.4 References and Resources . . . . . . . . . . . . . . . . . . . . . . 162
+                        7.5 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 162
+                    8 Dynamics and Differential Equations 165
+                        8.1 Time stepping and the forward Euler method . . . . . . . . . . . 167
+                        8.2 Runge Kutta methods . . . . . . . . . . . . . . . . . . . . . . . . 171
+                        8.3 Linear systems and stiff equations . . . . . . . . . . . . . . . . . 173
+                        8.4 Adaptive methods . . . . . . . . . . . . . . . . . . . . . . . . . . 174
+                        8.5 Multistep methods . . . . . . . . . . . . . . . . . . . . . . . . . . 178
+                        8.6 Implicit methods . . . . . . . . . . . . . . . . . . . . . . . . . . . 180
+                        8.7 Computing chaos, can it be done? . . . . . . . . . . . . . . . . . 182
+                        8.8 Software: Scientific visualization . . . . . . . . . . . . . . . . . . 184
+                        8.9 Resources and further reading . . . . . . . . . . . . . . . . . . . . 189
+                        8.10 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 189  
+                    9 Monte Carlo methods 195
+                        9.1 Quick review of probability . . . . . . . . . . . . . . . . . . . . . 198
+                        9.1.1 Probabilities and events . . . . . . . . . . . . . . . . . . . 198
+                        9.1.2 Random variables and distributions . . . . . . . . . . . . 199
+                        9.1.3 Common random variables . . . . . . . . . . . . . . . . . 202
+                        9.1.4 Limit theorems . . . . . . . . . . . . . . . . . . . . . . . . 203
+                        9.1.5 Markov chains . . . . . . . . . . . . . . . . . . . . . . . . 204
+                        9.2 Random number generators . . . . . . . . . . . . . . . . . . . . . 205
+                        9.3 Sampling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 206
+                        9.3.1 Bernoulli coin tossing . . . . . . . . . . . . . . . . . . . . 206
+                        9.3.2 Exponential . . . . . . . . . . . . . . . . . . . . . . . . . . 206
+                        9.3.3 Markov chains . . . . . . . . . . . . . . . . . . . . . . . . 207
+                        9.3.4 Using the distribution function . . . . . . . . . . . . . . . 208
+                        9.3.5 The Box Muller method . . . . . . . . . . . . . . . . . . . 209
+                        9.3.6 Multivariate normals . . . . . . . . . . . . . . . . . . . . . 209
+                        9.3.7 Rejection . . . . . . . . . . . . . . . . . . . . . . . . . . . 210
+                        9.3.8 Histograms and testing . . . . . . . . . . . . . . . . . . . 213
+                        9.4 Error bars . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 214
+                        9.5 Variance reduction . . . . . . . . . . . . . . . . . . . . . . . . . . 215
+                        9.5.1 Control variates . . . . . . . . . . . . . . . . . . . . . . . 216
+                        9.5.2 Antithetic variates . . . . . . . . . . . . . . . . . . . . . . 216
+                        9.5.3 Importance sampling . . . . . . . . . . . . . . . . . . . . . 217
+                        9.6 Software: performance issues . . . . . . . . . . . . . . . . . . . . 217
+                        9.7 Resources and further reading . . . . . . . . . . . . . . . . . . . . 217
+                        9.8 Exercises . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 218
+                ---scien. computing 
+                    Jacobi, Gauss-Seidel and SOR methods .
+                    8 Interpolation 47
+                        8.1 Piecewise linear interpolation . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+                        8.2 Cubic spline interpolation . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+                        8.3 Multidimensional interpolation . . . . . . . . . . . . . . . . . . . . . . . . . 51
+                    2 Root finding 11
+                        2.1 Bisection Method . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+                        2.1.1 Estimate √
+                        2 = 1.41421 . . . using x0 = 1 and x1 = 2. . . . . . . . . . 11
+                        2.2 Newton’s Method . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+                        2.2.1 Estimate √
+                        2 using x0 = 1. . . . . . . . . . . . . . . . . . . . . . . . . 12
+                        2.3 Secant Method . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+                        2.3.1 Estimate √
+                        2 using x0 = 1 and x1 = 2. . . . . . . . . . . . . . . . . . 13
+                        2.4 A fractal from Newton’s Method . . . . . . . . . . . . . . . . . . . . . . . . 13
+                        2.5 Order of convergence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+                        2.5.1 Newton’s Method . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+                        2.5.2 Secant Method . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+                    3 Integration 17
+                        3.1 Elementary formulas . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+                        3.1.1 Midpoint rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+                        3.1.2 Trapezoidal rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+                        3.1.3 Simpson’s rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+                        3.2 Composite rules . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+                        3.2.1 Trapezoidal rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+                        3.2.2 Simpson’s rule . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+                        3.3 Adaptive integration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+                    4 Differential equations 23
+                        4.1 Initial value problem . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+                        4.1.1 Euler method . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+                        4.1.2 Modified Euler method . . . . . . . . . . . . . . . . . . . . . . . . . 23
+                        4.1.3 Second-order Runge-Kutta methods . . . . . . . . . . . . . . . . . . 24
+                        4.1.4 Higher-order Runge-Kutta methods . . . . . . . . . . . . . . . . . . 25
+                        4.1.5 Adaptive Runge-Kutta Methods . . . . . . . . . . . . . . . . . . . . 26
+                        4.1.6 System of differential equations . . . . . . . . . . . . . . . . . . . . 27
+                ---数值计算方法和算法%255B张韵华%255D.pdf
+                    数值微积分
+                        newton-cotes integration 
+                        romberg integration 
+                        gaussian integeration 
+                    曲线拟合
+                    常微分方程数值解
+                ---计算机网络的数学基础.pdf
+                    Standard discrete distributions 18
+                        Bernoulli distribution 18
+                        Binomial distribution 18
+                        Geometric distribution 20
+                        Poisson distribution 20
+                    Standard continuous distributions 21
+                        Uniform distribution 21
+                        Gaussian or Normal distribution 21
+                        Exponential distribution 23
+                        Power law distribution 25
+                    Stochastic Processes and Queueing Theory 169
+                        Overview 169
+                            A general queueing system 170
+                            Little’s theorem 170
+                        Stochastic processes 171
+                            Discrete and continuous stochastic processes 172
+                            Markov processes 173
+                            Homogeneity, state transition diagrams, and the Chapman-Kolmogorov equations 174
+                            Irreducibility 175
+                            Recurrence 175
+                            Periodicity 176
+                            Ergodicity 176
+                            A fundamental theorem 177
+                            Stationary (equilibrium) probability of a Markov chain 177
+                            A second fundamental theorem 178
+                            Mean residence time in a state 179
+                        Continuous-time Markov Chains 179
+                            Markov property for continuous-time stochastic processes 179
+                            Residence time in a continuous-time Markov chain 180
+                            Stationary probability distribution for a continuous-time Markov chain 180
+                        Birth-Death processes 181
+                            Time-evolution of a birth-death process 181
+                            Stationary probability distribution of a birth-death process 182
+                            Finding the transition-rate matrix 182
+                            A pure-birth (Poisson) process 184
+                            Stationary probability distribution for a birth-death process 185
+                        The M/M/1 queue 186
+                        Two variations on the M/M/1 queue 189
+                            The M/M/ queue: a responsive server 189
+                            M/M/1/K: bounded buffers 190
+                        Other queueing systems 192
+                            M/D/1: deterministic service times 192
+                            G/G/1 193
+                            Networks of queues 19
+                ---http://mosaic.mpi-cbg.de/?q=education/courses/STMS
+                
+            seedfrompapercpt
+            seedfromcode    
+                
+        ---
+        book_pass
+            book- basic geo. formulas
+                q- what types of triangles are there? x3 
+                Pythagorean Theorem 中国人叫勾股定理
+                Sum of the Angles 
+                Perimeter is sum of all edges
+                    this comes from περίμετρος 
+                    a path that encompasses/surrounds a two-dimensional shape.
+                    The perimeter of a circle or ellipse is called its circumference. 
+                    the length of fence required to surround a yard or garden
+                    The perimeter of a wheel/circle (its circumference) describes how far it will 
+                        roll in one revolution
+                    infinitesimal line element
+                    the perimeter is given as a closed piecewise smooth plane curve
+                    bounding volumes in {\displaystyle n}n-dimensional Euclidean spaces
+                    Archimedes approximated the perimeter of a circle by surrounding it with 
+                        regular polygons.
+                    An equilateral polygon is a polygon which has all sides of the same length
+                    rhombus is a 4-sided equilateral polygon
+                    To calculate the perimeter of an equilateral polygon, one must multiply the 
+                        common length of the sides by the number of sides
+                    circumradius
+                    A regular polygon may be characterized by the number of its sides and by 
+                        its circumradius
+                    the constant distance between its centre and each of its vertices
+                    The length of its sides can be calculated using trigonometry
+                    The three cleavers of a triangle all intersect each other at the triangle's 
+                        Spieker center.
+                    Indeed, a commonplace observation is that an enlargement (or a reduction) 
+                        of a shape make its area grow (or decrease) as well as its perimeter.
+                    Proclus (5th century) reported that Greek peasants "fairly" parted fields relying on their perimeters.
+                    The convex hull of a figure may be visualized as the shape 
+                        formed by a rubber band stretched around it
+                    q- what is convex hull
+                    q- what kind of centers exists in a triangle? xn > 6
+                quadrilateral
+                Isoperimetric inequality
+                Nagel point
+                    the Nagel point is a triangle center,
+                    The lines ATA, BTB, CTC concur in the Nagel point N of triangle ABC.
+                    construction of the point TA is to start at A and trace around triangle ABC half its perimeter
+                    the Nagel point is sometimes also called the bisected perimeter point
+                    segments ATA, BTB, CTC are called the triangle's splitters.
+                    The Nagel point is the isotomic conjugate of the Gergonne point.
+                    The Nagel point, the centroid, and the incenter are collinear on a line called the Nagel line.
+                    the Nagel point is the incenter of the anticomplementary triangle.
+                Trilinear coordinates
+                    q- what is Trilinear coordinates
+                    a point relative to a given triangle describe the relative directed 
+                        distances from the three sidelines of the triangle.
+                        Trilinear coordinates are an example of homogeneous coordinates
+                    If a point is on a sideline of the reference triangle, its corresponding trilinear coordinate is 0
+                    It is impossible for all three trilinear coordinates to be non-positive
+                    incenter of a triangle ABC are 1 : 1 : 1
+                    r is the inradius of triangle ABC.
+                Barycentric coordinate system
+                Spieker center
+                Circumference of a circle
+                    proportional to its diameter and its radius
+                    π is not rational (it cannot be expressed as the quotient of two integers)
+                    nor is it algebraic (it is not a root of a polynomial equation with rational coefficients)
+                In the animated picture on the left, all the figures have the same convex hull; the big, first hexagon.
+                diameter
+                    a diameter of a circle is any straight line segment that passes through the center of the circle
+                    the longest chord of the circle
+                    Both definitions are also valid for the diameter of a sphere.
+                    this being twice the radius r.
+                    A diameter of an ellipse is any chord passing through the center of the ellipse
+                    The longest diameter is called the major axis.
+                    διάμετρος 
+                    It is often abbreviated DIA, dia, d, or ⌀.
+                    used in technical drawings or specifications
+                    photographic filter thread sizes are often denoted in this way
+                    any line segment from the center to its boundary.
+                arclength 
+                    Arc length is the distance between two points along a section of a curve.
+                Etymology
+                coastline paradox 
+                    counterintuitive observation that the coastline of a landmass 
+                        does not have a well-defined length.
+                    The measured length of the coastline depends on the method used 
+                        to measure it and the degree of cartographic generalization.
+                    no single well-defined perimeter to the landmass.
+                    In three-dimensional space, the coastline paradox is readily 
+                        extended to the concept of fractal 
+                        surfaces whereby the area of a surface varies, depending 
+                        on the measurement resolution.
+                https://www.youtube.com/watch?v=ku4rEwRxZOc
+                Complementary Angles when they add up to 90 degrees
+                Two Angles are Supplementary when they add up to 180 degrees.
+                Opposite (vertical) angles are congruent 
+                Angles 1 and 4 are congruent
+                alternate interior angles
+                    So there are actually two pairs!
+                Alternate Interior Angles theorem 
+                    if two parallel lines are cut by a transversal, then the pairs of alternate interior angles are congruent
+                similar vis! code- 
+                    https://www.mathsisfun.com/definitions/alternate-interior-angles.html       
+                link- https://www.mathsisfun.com/index.htm
+                    Pentagram，Hexagon, Pentagon
+                    concave, When any internal angle is greater than 180°. otherwise, convex
+                    Hinduism and Buddhism to help meditation.
+                    Angle of Intersecting Secants Theorem
+                    Intersecting Chords Theorem
+                    Trigonometry is a special subject of its own
+                    Polyhedra and Non-Polyhedra
+                    Platonic Solids
+                        the same number of polygons meet at each vertex (corner)
+                        There are only five platonic solids.
+                        Icosahedron, Octahedron
+                    Prisms, Pyramids
+                    Polyhedra must have flat faces
+                    Non-Polyhedra
+                    Euler Characteristic
+                    the Euler Characteristic can also be less than zero.
+                    Euler Characteristic is a basic idea in Topology
+                    Lastly, this discussion would be incomplete without showing that a Donut and a Coffee Cup are really the same!
+                    they are topologically equivalent
+                    they can be deformed into one another.
+                    homeomorphic
+                    Perspective Drawings
+            book- CalcI_Complete
+            book- Introduction to Basic Geometry
+            link- https://artofproblemsolving.com/wiki/index.php/Math_textbooks        
+                Algebra
+                Calculus
+                Combinatorics
+                Geometry
+                Number Theory
+                Probability
+                Statistics
+            book- The Free High School Science Texts
+                numbers 
+                    op9
+                    numbers are used to represent quantity
+                    they are not physical
+                    our brain can  performing arithmetic on them
+                    a better way to express a half is using fraction 1/2 or as a decimal number 0,5
+                    real numbers imaginary numbers
+                    When you add, subtract, multiply or divide two numbers, you are performing arithmetic
+                    Subtraction is actually the same as adding a negative number
+                    It doesn’t matter which order you write additions and subtractions
+                    Numbers are either positive or negative, and we call this their sign
+                    A positive number has positive sign, and a negative number has a negative sign.
+                    Just like addition and subtraction, multiplication and division are opposites of each other
+                    op12 
+                Functions
+                Numerics
+                Differentiation
+                Geometry
+                Trigonometry
+                Solving Equations
+                Working with Data
+            book- Advanced Calculus
+            book- 同济高等数学第六版上、下册 全
+            book- differential-equations
+            +advanced calcu. dir.
+                link- http://fourier.eng.hmc.edu/e176/lectures/index_e176.html
+                link- http://fourier.eng.hmc.edu/e176/lectures/NM/, http://fourier.eng.hmc.edu/e176/lectures/NumericalMethod/
+                book- *linear algebra( for IK )
+                book- 2013 Matrix Computations 4th
+                book- HPLPython
+                link- http://fourier.eng.hmc.edu/e176/lectures/algebra/
+                book- Numerical%20Analysis.pdf
+                book- DIFFERENTIAL GEOMETRY, Geometric Calculus
+                    Differential geometry is a mathematical discipline that uses the 
+                        techniques of differential calculus, integral calculus, linear algebra and 
+                        multilinear algebra to study problems in geometry.
+                    geometric structures on differentiable manifolds
+                    Differential geometry is closely related to differential topology and the geometric aspects of the theory of differential equations. 
+                    generalizes Euclidean geometry to spaces that are not necessarily flat
+                    Differential topology is the study of global geometric invariants without a metric or symplectic form.
+                    A Lie group is a group in the category of smooth manifolds.
+            +discreate dir. 
+                book- discreate math
+                book- Mathematical Optimization
+            book- 普特南数学竞赛
+        ---
+        paper_pass
+            about the conferences 
+            reading
+        ---
+        code_pass(这里只是简单的一些task)
+            openmesh 
+                read detail 
+                ok-merge 
+                basic calcu. from book (use eigen)
+                    proof the result by calcu. back
+            eigen
+                read detail 
+                merge 
+                basic calcu. from book (use eigen)
+                    proof the result by calcu. back 
+            boost 
+                read detail 
+                merge 
+                basic calcu. from book (use eigen)
+                    proof the result by calcu. black
+            designed vis proj. 
+                task- 
+
+    ---phy 
+        //
+            output
+                cae calculations
+                interactive calculation
+                简单弹性形变，受力程度可视化
+                无非就是计算形变（比例极限），计算内力分布！
+                基于有限元方法的弹性刚体
+                弹簧结构，变形计算
+                各种连接结构的比例极限
+                calcu. cases 
+                questions for basic concepts 
+        ---
+        preview_pass 
+            seedonline  
+            seedfrombookcpt
+            seedfrompapercpt
+            seedfromcodelibs
+        ---
+        book_pass    
+            book-math basic duke 
+                finish 
+            book-gen. phy 
+                book- General Physics I & II 
+                    I 
+                        // 
+                            total pages = 352
+                            cur page = 26, 225 
+                            total 51 chapters 
+                            finish
+                        ...// be merged later 
+                        ---Black Holes
+                        A star like our Sun exists in a state of equilibrium
+                        the Sun will run out of hydrogen fuel to burn, and the Sun will begin to collapse
+                        q- when will the sun collapse? op225
+                        q- what is the life cycle of the sun? op225
+                        white dwarf star
+                        over 10 billion years or so, a white dwarf star will cool into a black dwarf star.
+                        q- what will happen 
+                            less than star with 4–8 solar mass? 
+                            star with 4–8 up to about 10–15 solar masses? 
+                            heavy stars 
+                        q- how can we proof The existence of black holes? op225 
+                        constellation Cygnus.
+                        ---op226
+                        mass redistributions
+                        seasonal, or unpredictable one-time events like mass shifts
+                        Even the construction of a dam can cause tiny, measurable changes in the Earth’s rotation rate
+                        gradually slower over the long term
+                        q- how would it look like after a long period of time? about the Earth’s rotation op226 
+                        q- what is precession and nutation, its calcu., what is the reason for that  
+                            motions of the axis is called 
+                        q- describe the motion of the Earth’s rotation axis 
+                        q- in ancient times (c. 3000 B.C.) the “North star” was the star Thuban (˛ Draconis), why?
+                        star chart with the direction of the Earth’s north pole over time.
+                        q- what is the diff. bet. precession and nutation? 
+                            nutation that it is a kind of “nodding” up and down of the Earth’s axis
+                        q- how many motions are Superimposed to the motion of the earth? 
+                            precession, nutationPolar, Motion
+                        shifts in the distribution of the Earth’s mass due to earthquakes, tsunamis, or even dams
+                            cause small changes in the Earth’s moment of inertia
+                        As the Moon pulls on the Earth’s oceans, there is a friction force created that tends to slow the Earth’s rotation
+                        q- the equ. of length of the day (LOD) op229 
+                        atomic clocks are running fast compared to the Earth rotation
+                        q- what is utc stands for? 
+                            Coordinated Universal Time, or UTC
+                        q- as the earth slows down, the I will also decrease, But angular momentum is conserved; where does the
+                            > angular momentum go?
+                            It turns out that it is transferred to the Moon
+                            As the Earth’s rotation slows, the Moon recedes away from the Earth to conserve angular momentum. 
+                        h-  the Moon is currently receding from the Earth at a rate of about 4 cm per year
+                        h- not only will the Moon always present the same face to the Earth,
+                            but the Earth will always present the same face to the Moon
+                        q- why may the  tidal locking of the Earth to the Moon not happen? 
+                            another 50 billion years, longer than the 5 billion years! after which the Sun will reach its red
+                            giant stage
+                            may expand enough to consume both the Earth and the Moon.
+                        h- For comparison, the current age of the Universe is 13.7 billion years. op230 
+                        ---op260 
+                        these formulations are expressed in the language of partial differential equations.
+                        using the “backward-6” symbol
+                        ordinary derivatives, partial derivatives
+                        q- calcu. Eq. (56.3)
+                        order of differentiation doesn’t matter
+                        q- what is Clairaut’s theorem 
+                        first take derivatives with respect to x, and then, with respect to y (w.r.t)
+                        q- calcu. Eq. (56.3) op261 
+                        +Lagrangian mechanics
+                            拉格朗日力学是对经典力学的一种的新的理论表述，着重于数学解析的方法
+                            经典力学最初的表述形式由牛顿建立，它着重於分析位移，速度，加速度，力等矢量间的关系，又称为矢量力学
+                            拉格朗日方程具有更普遍的意义，适用范围更广泛。还有，选取恰当的广义坐标，可以大大地简化拉格朗日方程的求解过程。
+                            哈密顿量{\displaystyle H}H可以通过对拉格朗日量进行勒让德变换得到。哈密顿量是经典力学的另一种表述哈密顿力学的基础
+                            哈密顿量在量子力学中到处出现
+                            费曼发明了路径积分表述，将最小作用量原理扩展到量子力学
+                            路径积分表述简单的退化为哈密顿原理。
+                        +分析力学
+                            是理论力学的一个分支，是对经典力学的高度数学化的表达
+                            拉格朗日、哈密顿、雅可比等人使用广义坐标和变分法，建立了一套同矢量力学等效的力学表述方法
+                            分析力学又分为拉格朗日力学和哈密顿力学。前者以拉格朗日量刻画力学系统，运动方程称为拉格朗日方程，后者以哈密顿量刻画力学系统，运动方程为哈密顿方程。
+                            https://archive.org/details/AnalyticalMechanics_862/page/n7/mode/2up hhh
+                            Quantum Mechanics https://www.ks.uiuc.edu/Services/Class/PHYS480/
+                        +advanced mechanics
+                            Applied_mechanics https://en.wikipedia.org/wiki/Applied_mechanics#Major_topics
+                        ---op262 
+                        Newtonian mechanics is mathematically fairly straightforward
+                        alternative formulations of classical mechanics
+                        It is important to understand that all of these formulations of mechanics equivalent. In principle, any of
+                            them could be used to solve any problem in classical mechanics
+                        q- what is the relationship bet. those 3 typies of equ. that describes 
+                            sometimes much easier to solve than the equations that arise from Newtonian mechanics.
+                        h- neither Lagrangian nor Hamiltonian mechanics requires the concept of force, they use energy instead 
+                        is sometimes advantageous in certain problems
+                        q- Lagrange’s equation? 
+                        q- the unit both side of the Lagrange’s equation? 
+                            dementionless
+                        one-dimensional simple harmonic oscillator
+                        q- calcu. the motion equ. according to the Lagrange’s equ. for 
+                            > a one-dimensional simple harmonic oscillator
+                        q- for a simple plane pendulum of length ` with a bob of mass m, derive the equ. wrt. theta and t op264 
+                        a particle as a single second-order differential equation
+                        An understanding of Hamiltonian mechanics provides a good introduction to the mathematics of quantum mechanics
+                        h- they are diff. expressions of the classical mechanics, define diff. 
+                            substitutions, also, we can def. more! but maybe less effec. 
+                        q- why we describe the func. with L.x; v? those two var.? op262
+                        the  Simple Harmonic Oscillator case, we can calcu. the E and H 
+                        as substitutions for Newtonian equ. (similar to the sec. law of Newton)
+                        For bodies moving at a significant fraction of the speed of light, Newton’s mechanics needs to be modified
+                        q- diff. bet. spec. and general relativity? 
+                            may wrong :如果时空是平直的，没有弯曲，曲率为 0。这时候就是狭义相对论。如果时空是弯曲的，曲率不为 0，这时候就是广义相对论
+                            时空是否弯曲
+                            广义相对论处理的是比平直的Minkowski时空更一般的流形，其中也包含着平直的Minkowski时空这种特殊情况。
+                        light does not obey the usual laws of velocity addition.
+                        ---op268 
+                        q- spec. relativity tells that time travel to the future is possible? y 
+                            does it indicates the possibility for traveling to the past? n 
+                        q- what consequences does spec. relativity has? their equ.? 
+                            Time Dilation
+                            Length Contraction
+                        h- when traveling at nearly the speed of light, time goes slower
+                            example maybe show that when the astronauts arrive, they are only 1.8 years older
+                        h- the concept of force may not always valid, the momentum still works under spec. relativity
+                        which is in Newton’s original form
+                        q- from classical theorem to spec. relativity? 
+                            multiply a factor gamma 
+                        q- why can not go faster than the light? from the view of momentum
+                            op269 
+                        self-evident equation
+                        q- the equ. that calcu. the diff. of the Velocities under spec. relativity? op270 
+                        q- what is annihilation of matter and antimatter? 
+                        q- the equ. of speed, Rest Energy, Kinetic Energy... under spec. rel. ? how can be reduced to classical form?
+                        q- energy equ. in terms of momentum, do they have linear relationship? p- 
+                        ---op272 
+                        For these small distance scales, classical mechanics no longer works
+                        beyond our everyday experience
+                        facts about quantum mechanics
+                            no sense to talk about the the exact position x of a particle
+                            Only when we go measure the position of the particle does it appear
+                            a particle can only possible to predict the probability that it will be found at a given location.
+                            use wave function to replace posi. x in classical mechanics
+                            wave-particle duality: 
+                                matter fundamentally behaves like both a wave and a particle at the same time.
+                                electrons show both particle-like behavior and wave-like behavior
+                            it can not measured to arbitrary accuracy.
+                            impossible to know both a particle’s exact position and its velocity at the same time 
+                        q- what is Heisenberg uncertainty principle
+                        not all values of energy are accepted
+                        particle can have only certain discrete values of energy
+                        q- what does it mean by saying that the energy is quantized?
+                        an electron in orbit around an atom has its orbital position quantized
+                        err op273 now -> not 
+                        q- how can it be that a particle is in many places at once
+                            nobody has a good intuitive picture of how things can possibly be this way
+                            Nature is far stranger than we can imagine.
+                        Quantum mechanics does not use the concept of a force
+                        everything is formulated in terms of energy
+                        q- why quantum mechanical wave functions are complex func. but can still have phy. meaning? 
+                            the physically meaningful quantity is the square of the wave function, which is real
+                        Substitute for U.x/ the specific potential energy present in the problem
+                        which, in classical mechanics is; Substitute for F .x/ the specific force present in the problem;
+                        q- write the following equ. 
+                            time-dependent Schr¨odinger equation
+                            time-independent Schr¨odinger equation
+                        q- Hermite polynomials.
+                        quantum simple harmonic oscillator 
+                        in quantum mechanics, there is always a minimum non-zero energy that the particle must have.
+                        the fundamental randomness of Nature restricts the 
+                            accuracy to which it is possible to make these measurements. 
+                        q- Heisenberg uncertainty principle, the list of relations? op275 
+                        ---op276 
+                        q- The basic particles of matter. what are Quarks and Leptons? 
+                        periodic table of the elements.
+                        h- force is just what we observe in visible scale, which, is not the Natural expression of 
+                            the Nature 
+                        civilization of creatures living on the surface of a neutron star.
+                        q- greek alphabet? op284 
+                        *q- Exact values of trigonometric functions at 3ı intervals
+                            can be expressed in terms of square roots? y 
+                        Towers of exponents
+                        q- SI Units? x7 op296 
+                        Derived SI units
+                        q- the val. of a zebi? we know one kibi is 2^10 
+                        Physical Constants op306 
+                        Unit Conversion Tables
+                        about the angle measurment 
+                        The SI unit of plane angle is the radian (rad)
+                            arc length equal to the radius of the circle
+                        a full circle is 2 radians
+                        Since a hemisphere is 180ı or  radians, 
+                        conversion factors are? 
+                        h- Plane Angle and solid angle 
+                        q- what is solid angle? what about steradians? 
+                            area / r^2 
+                            a full sphere subtends an area equal to the area of a 
+                                sphere (4r2) divided by the square of its radius (r 2)
+                            a full sphere is 4 steradians
+                        q- There is a simple relation between plane angle and solid angle for a right circular cone
+                            > what is the equ. ? 
+                        To multiply a vector by a scalar, just multiply each component by the scalar
+                        q- what is the dir. of a cross product? 
+                            if you curl the fingers of your right hand from
+                            A into B, then the thumb of your right hand points in the direction
+                        ---op317 
+                        Determinant of a matrix 
+                        q- what is cof of a matrix? 
+                        The matrix of cofactors is the matrix of signed minors;
+                        q- formula of the inverse of a matrix op318 
+                        ---op320 
+                        q- exact solution for a plane pendulum? (use Jacobian elliptic function)
+                        ++Jacobian elliptic function, elliptic integral
+                        for larger amplitudes, the true period is longer than predicted 
+                            by the small-angle approximation
+                        ++write/find prog. for the following problem
+                            1. Projectile Problem
+                            2. Kepler’s Equation
+                            3. Hyperbolic Kepler’s Equation
+                            4. Barker’s Equation
+                            5. Reduction of an Angle
+                            6. Helmert’s Equation
+                            7. Pendulum Period
+                            8. 1D Perfectly Elastic Collisions
+                        accu. phy. constants 
+                            op336 
+                            https://physics.nist.gov/cuu/Constants/index.html
+                    II
+                        //
+
+                        //
+                        ---Electricity and Magnetism
+
+                        ---Magnetism
+            +FEM dir.   
+                *book- 弹性力学 - elasticity-theory-applications-and-numerics-sadd-3rd
+                qv- keyexp- web, books ... 
+                    //
+                        向前看，有哪些问题值得研究？！ 先略知一二！ 
+                        在这些问题面前，你是否感受到了自己的无知？！ 
+                    //
+                    真正的有限元建模，是一个非常考验力学功底的工作
+                    工程结构有限元分析
+                    材料力学(mechanics of materials)是研究材料在各种外力作用下产生的
+                        应变、应力、强度、刚度、稳定和导致各种材料破坏的极限
+                    材料力学与理论力学、结构力学并称三大力学。材料力学的研究对象主要是棒状材料，如杆、梁、轴等
+                    对于桁架结构的问题在结构力学中讨论，板壳结构的问题在弹性力学中讨论。
+                    研究结构构件和机械零件承载能力的基础学科
+                    不发生断裂，即具有足够的强度；②构件所产生的弹性变形应不超出工程上允许的范围，即具有足够的刚度；
+                        ③在原有形状下的平衡应是稳定平衡，也就是构件不会失去稳定性。
+                        也就是对强度、刚度和稳定性这三方面的要求
+                    安全又经济的设计提供理论依据和计算方法。
+                    根据胡克定律(Hooke's law)，在弹性限度内，材料的应力与应变成线性关系。
+                    https://wenku.baidu.com/view/85716814fad6195f312ba68a.html
+                    https://www.zip118.com/213908125_0407/52381.html
+                        https://wenku.baidu.com/view/54a45f04bceb19e8b8f6baf0.html
+                    
+                    https://zhuanlan.zhihu.com/p/89342644
+                        力学分析和有限元分析的求解途径不同
+                            以材料力学、弹性理论为代表的理论分析和以有限元方法为代表的
+                                数值计算其实都是研究工程结构响应的方法和手段
+                            但是两者在分析结构响应时采用的是两条完全不同的路子
+                        *力学是采用连续体的解析途径，而有限元分析则是采用离散的数值分析的途径。！ 
+                            本质是不同，但是算的是一个东西？相互验证？ 
+                            材料力学对带孔杆件拉伸的强度计算时，认为沿孔径的净截面上拉应力是均匀分布的，
+                                而弹性理论给出的解答则说明在孔边附近应力不仅不是均匀分布，而且还有明显的应力集中现象。
+                        *有限元方法则是通过离散化的途径将连续的求解域分割为一系列单元的组合体，
+                            这些单元通过有限数量的节点与其他相邻的单元连接在一起
+                            Zienkiewicz是有限单元法的三位创始人之一
+                            基于变分原理建立单元节点力和节点位移之间的关系，即单元刚度方程。
+                            由此可见，有限元方法的整个求解过程，完全没有用到求解数学物理方程中的那些经典的解析方法。
+                            ，我在课题中遇到较为复杂的球对称问题，难于求解相关的方程，商用程序中又没有球对称单元，因此基
+                                于对微分方程的加权余量法导出有限元列式并通过Fortran程序进行了计算。
+                            软件用户需要首先把待分析的实际工程问题映射为一个性质和边界条件都明确化的力学问题，再将这个力学问题映射为商用软件
+                                可以求解的数学问题或计算模型，这两次映射其实是有限元分析真正关键的地方。
+                            ，可能导致模型中各部件在拓扑上不连续等错误。
+                        *力学对有限元分析有着重要的指导作用
+                            基本方程、解的唯一性定理、圣维南原理等对有限元分析及计算结果的解释等方面都有指导作用。
+                            力学概念清楚的软件用户，能够通过概念来论证计算模型的有效性，也可以通过力学概念来避免不必要的计算工作量。
+                            专家组经过反复的研究论证，判定国内一家985高校的计算团队给出的结果是错的，因其采用的一些计算假定不符合实际情况
+                            对于大量研发力量薄弱的中小企业，缺乏专业经验，有些甚至没有专职分析人员的情况下，要真正地具备仿真分析能力会有多困难
+                            学习了力学，有可能不会有限元分析，但是如果没有力学概念，同样也做不好有限元分析。
+                    https://zhuanlan.zhihu.com/p/56326567
+                        冯康首次发现时称为基于变分原理的差分方法
+                        *核心是求解微分方程组或积分方程组       
+                        在解偏微分方程的过程中，主要的难点是如何构造一个方程来逼近原本研究的方程，并且该过程还需要保持数值稳定性
+                        有限元方法的发展开始于五十年代中后期使用在机身框架和结构分析上
+                        事实证明，对于繁复纷杂的大自然，只用常微分方程是不够的，因为有些研究对象不能简化成质点，一个典型的例子就是琴弦：
+                        *对于质点的求解一般用常微分方程就ok了，但是对于非质点的研究还需引入更加复杂的计算
+                        偏微分方程能描述的连续体的各个点随时间连续变化的情况，本质上就是一种“场”的描述了。
+                        自然界的各种现象，都需要用偏微分方程来描述
+                        *在应有边界条件和初始条件下的偏微分方程才有意义求解
+                        *通常边界条件（含边界条件和初始条件）有三类，一类是变量本身的约束，如 [公式] ，称之为狄利克雷边界条件；
+                            一类是变量的导数有约束，如 [公式] ，称之为诺依曼边界条件；还有第三类就是前两者的混合，成为罗宾边界条件
+                        对于偏微分方程，除了少数极简单的情况下能计算出解析解（形式还很复杂），绝大多数情况下我们还无法很好的求解
+                        *有限元法就是为了求解偏微分方程！
+                        对于大多数偏微分方程而言，我们是没有办法求得解析解的，只能退而求其次，寻求个近似解，试着来只能
+                        我们举一个利兹法的例子，可能大家会更容易理解一些：两端简支的等截面梁，
+                            受均匀分布载荷 [公式] 作用如图所示，试求解梁的挠度
+                        传统解决偏微方程的方法（如利兹法）
+                        也就是说我们可以采用“化整为零”的思想，将复杂不易求解的东西切成简单的容易计算的几何形状来进行等效
+                        在局部假设位移函数就简单多了
+                        为基函数组成一个空间，空间里的任意函数（足够光滑）都可以由这些基函数线性叠加而来。再比如傅里叶分解也是这个意思：
+                            任意周期函数（满足狄利克雷条件），
+                            都可由正余弦函数叠加而来，而系数就是被分解函数与基函数的内积，
+                            也就是被分解函数在基函数上的投影！
+                        **有两种提高精度的方法，一种就是细化网格，此时会数值解更逼近真解，我们称之为h-refinement，也就是h法
+                            另一种就会保持网格不变，选择更高阶数的形函数，称之为p-refinement，也就是p法。
+                        一种认为有限元无所不能，上算天文，下算地理，给个电脑就能工作，这种人一般没有亲自做过数值计算；
+                        首先要知道碰到的问题数学模型是什么，边界条件时什么，其中边界条件往往更复杂，难以获得，这就需要评估其中误差有多大
+                        ABAQUS感觉主要在科研行业流行
+                    ---
+                    应力集中
+                        在物体中的几何不连续（不平滑）导致了局部应力场强度的提升
+                        圆形缺孔附近的的应力集中状况
+                        Charles Inglis算出椭圆形附近的应力集中。为线弹性断裂力学理论的发展跨出新的一步。
+                        1920年，Alan Arnold Griffith进一步基于能量的分析开创了断裂力学的领域
+                    脆性材料
+                        工程上常将延伸率＞5%的材料称为塑性材料，而将延伸率＜5%的材料称为脆性材料
+                        对于塑性材料，其抗拉与抗压强度基本相等，对于脆性材料，其抗拉强度一般小于其抗压强度
+                        https://zhuanlan.zhihu.com/p/63429022
+                        材料力学中举例的脆性材料是铸铁
+                        一般来说，塑性材料的抗冲击能力远高于脆性材料
+                        紧接着材料力学中举出了一个例子：低碳钢的冲击冲击韧性远高于铸铁。
+                        冲击韧性是材料的性能指标，之前材料的一个性能指标是弹性模量
+                        感觉材料力学就是就是一门以实验结果为导向，不断增加理论在丰富自己，
+                            使得自己能解释多数自然现象的一门学科
+                        比如在强度解决不了刚度问题的时候，引入了刚度也就是变形和挠度的概念来解决，
+                            刚度解决不了稳定性问题的时候又引进了稳定性的概念即长细比的定义，
+                            解决不了脆性材料和塑性材料问题的时候，又引进了冲击韧性这个材料的属性。
+                        也就是在不断解释实验现象！ 
+                    挠度
+                        弯曲变形时横截面形心沿与轴线垂直方向的线位移称为挠度
+                        指梁、桁架等受弯构件在荷载作用下的最大变形
+                        一张弓，有弓弦和弓架。弓弦是没有形变是的样子，弓架是形变后的样子，
+                            那么弓弦的中点和弓架的中点之间的距离就是挠度
+                        应变包括挠度！ 
+                        应变的范围要广得多，比如压缩弹簧，有应变，却没有挠度。
+                        分析挠度时的方法？ x4
+                            几何方法（the Geometrical method）
+                                面矩法（Moment-Area method）
+                                共轭梁法（Conjugate-Beam method）
+                            能量法（the Energy method）
+                                虚功法
+                                卡式定律
+                    各种材料的性能指标
+                    实验中有些现象理论暂时还没办法解释？y
+                    扭转内力计算
+                    受扭破坏分析
+                    研究弯曲是更有挑战性的！ -- 梁有关的计算！ 
+                    强度理论
+                    压杆稳定计算？ 
+                    惯性力
+                    疲劳度计算
+                    各种钢材 
+                        角钢
+                        工字钢
+                        槽钢
+                        轧钢
+                        低碳钢
+                        ...
+                    https://zhuanlan.zhihu.com/p/62162132
+                    连接技术有关的强度计算
+                    焊接技术与工程
+                    https://auto.gasgoo.com/News/2016/12/0701300830870002546218.shtml
+                    铆接技术大赏 
+                    如何设计截面积？ ！
+                    ---
+                    材料力学研究的是材料在各种外力作用下产生的应变、应力、强度、刚度、稳定和导致各种材料破坏的极限。
+                    弹性力学？ 
+                    *弹性力学广泛应用于建筑、机械、化工、航天等工程领域。材料力学则一般用于机械工程和土木工程
+                    似乎更加基础，三大力学是 材料力学与理论力学、结构力学
+                    "材料力学"的名称并不能对应它的内容. 应该分成"材料强度力学"和"杆件力学"
+                    "材料力学"使用了很多近似，导致原本应该按照弹性力学中的偏微分方程去计算的问题，
+                        可化简为微分方程或代数方程来计算
+                    还是弹性力学更加值得去学，更偏向于理论
+                    材料力学的假设条件太多
+                    截面法在材料力学中应用非常广泛，但是意味着截面法的分析思路是：
+                        将杆件作为一个整体，或者杆件的局部作为一个整体。这就是我认为的较为宏观的意思。
+                    相对简单的计算
+                    作为对比，弹性力学，在应用的时候，多先假设应力张量和应变张量
+                    这时候有了材料力学的概念，对更复杂的结构和力学分析打好基础
+                    力学这块的太过高深和庞杂
+                book- breif MM 材料力学基础！
+                    // 
+                        无非就是计算形变，计算内力分布！，还是用传统经典基本物理学
+                        知识有点散，收获不是很大...
+                        "力学", 即物体受力与变形的关系
+                        page gap = 25  
+                    ch01 
+                    ch02 
+                    ch03 
+                    ch04 
+                    ch05 
+                    ch06
+                    ch07 
+                    ch08 
+                    ch09
+                    ch10 
+                    ...
+                    ---> book- 材料力学，刘洪文
+                        // 课后答案! 
+                        ch01 
+                            ...
+                            习题ok
+                        over-后面这本总结的更好一些 
+                        ch02 
+                        ...
+                        
+                    ---> book- 材料力学，同济大学
+                        //
+                            cur page: 
+                                23,  
+                            一共400多页， 
+                            每日极限100页
+                            基本概念，计算参考+ 各种细节
+                            课后答案基本忽略
+                        summ. 
+                            变形计算，内力可视化
+                            梁有关的变形计算，可视计算
+                        ch01   
+                            +
+                                力矩是个矢量。力矩的方向与它所造成的旋转运动的旋转轴同方向
+                                旋转轴同方向，右手定则判断方向
+                                cross叉乘，旋转半径和力的方向叉乘
+                                作用力促使物体绕着转动轴或支点转动的趋向
+                                
+
+
+                        ch02 
+                        ch03 
+                        ch04 
+                        ch05 
+                        ch06
+                        ch07 
+                        ch08 
+                        ch09
+                        ch10 
+                book- 结构力学 MIT https://ocw.mit.edu/courses/mechanical-engineering/2-080j-structural-mechanics-fall-2013/course-notes/
+                    // 
+                    ch01 
+                    ch02 
+                    ch03 
+                    ch04 
+                    ch05 
+                    ch06
+                    ch07 
+                    ch08 
+                    ch09
+                    ch10
+                book- 固体力学，结构工程
+                book- 
+                *book- 简明有限元
+                qv- 有限元 
+                    对复杂的连续体进行离散化，和微分的思想类似
+                online- 
+                    http://netclass.csu.edu.cn/NCourse/hep033/Index.htm
+                    https://books.google.de/books?id=JY7RkIozaoUC&pg=PA87&lpg=PA87&dq=%E5%BA%94%E5%8F%98%E7%9F%A9%E9%98%B5&source=bl&ots=WdtOr9lVUW&sig=ACfU3U0nR-VTMcN9-AD_Hf4dQ_9lau5C5Q&hl=en&sa=X&ved=2ahUKEwj8m5fa2bPoAhWNfMAKHbTMBcUQ6AEwCXoECAoQAQ#v=onepage&q=%E5%BA%94%E5%8F%98%E7%9F%A9%E9%98%B5&f=false
+                book- 工程结构有限元分析
+                libs- https://libmesh.github.io/
+                    Solving a 2D Poisson Problem
+                    Linear Elastic Cantilever
+                libs- ABAQUS基础入门与案例精选
+                    ABAQUS 不仅可以做单一部件的力学和复杂物理场的分析，而且可以处理多系统的
+                        分析，这一特点相对于其他软件是独一无二的。 
+                    如何快速有效地理解和掌握 ABAQUS 丰富的分析功能和操作方法     
+                    本书在案例部分设置了金属板的成型分析、轴对
+                        称容器的结构分析、汽车刹车盘的热应力分析、桁架结构、弹塑性结构分析、风扇结构
+                        的转动等，几乎包含了机械分析的所有内容
+                    https://zhuanlan.zhihu.com/p/42957470  
+                    runnable-smalltask-https://zhuanlan.zhihu.com/p/47950557
+                        一根悬臂梁，长200mm,截面是30mm*20mm的矩形（高度方向是20mm）。该梁左端固定，
+                            在其上面施加向下的分布力系，载荷集度是0.6Mpa.已知材料使用低碳钢，
+                            弹性模量是200GPA，泊松比是0.3,要计算梁的位移。
+                        key-exp: 
+                            弹性模量
+                            米塞斯应力
+                    https://zhuanlan.zhihu.com/p/113538156
+                    ...
+                libs-summ- 通常使用有限元分析的题目？MC方法？
+                            //
+                                结果？ 生成报告文件link.rpt， 应力的云图
+                                有一些有限元分析的题目本身没有解析解
+                                x4 
+                            //
+                            ---结构静力学
+                                给定各种条件计算梁的位移
+                                球和2维板材的受力分析
+                                非线性形变计算，不可逆的一种变形
+
+                            ---结构动力学
+                                冲击碰撞是一种十分常见的现象，如子弹穿甲、叶片脱落、汽车碰撞试验等
+                                这些都是可以模拟的--最简单的就是小球
+                                    钢球和方形钢板模型，钢球的半径为 0.05m，钢板的宽度为 0.5m，
+                                        厚度为 0.06m，模拟中假设钢球以垂直于钢板的速度 300m/s、平行于钢板的速度 800m/s
+                                        冲击钢板，冲击时间为 4E-5s，分析钢板对钢球冲击的响应。
+
+                            ---热力学分析
+                                对于一定模型，分析模型在150 C° 下的应力场
+                                温度升高后的 Mises 应力云纹图
+                                计算刹车片的接触压力的分布 op317 ABAQUS基础入门与案例精选
+                                +
+                                    几乎所有的工程问题都与热有关，如焊接、铸造，以及各种冷热加工过程、高温环
+                                        境中的热辐射、内燃机、管路系统、电子元件、蜗轮机等。
+                                    可以将热分析分成几种类型：与时间无关的稳态热分析和与时间有关的瞬态热分析
+                                热扩散温度的计算
+
+                            ---多体系统
+                                螺旋桨位移变量云图
+                                两个万向联轴器的相对运动规律
+                                使用 ABAQUS 提供的联轴器单元进行分析。从
+                                    而避免了通常的静力、动力学分析方法非常烦琐的分析过程。
+                                Mises 应力云图
+
+                            ---半导体器件模拟
+                                电压分析？
+
+                            ---化学模拟（蒙特卡洛方法）
+            +Electricity Magnetism dir. 
+                book- 
+            +plasma dir. 
+            *+inversed kenimatics dir. 
+                book- Introduction-Kinematics_final
+                book- slides cg2 
+            +condensed case phy.
+            +fluid mechanics 
+        ---
+        paper- 
+        ---
+        code- 
+        ---
+        
+                        
+                    
+

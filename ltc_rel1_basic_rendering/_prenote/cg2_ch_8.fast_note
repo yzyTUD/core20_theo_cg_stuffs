@@ -1,0 +1,60 @@
+
+	&t imp. and paper and further reading
+		Subdivision Curves
+		Warren, Weimer: Subdivision Methods for Geometric Design: a constructive approach, Morgan Kaufmann 2002
+		Malcom Sabin: Continuity Analysis of Subdivision Curves
+	&q what is? how is used? the idea? adv. and disadv.? 
+		> Corner Cutting
+		quadratischer B-Spline
+		&t imp. and paper and further reading 
+	&q explain the following 
+		> subdivision scheme:
+		> subdivision step
+		> stationary schemes
+		> even points
+		> odd points
+		> linear
+		> Interpolating vs. approximating
+		subdivision scheme: rule that maps polygon to a polygon with more points ? 
+		subdivision step: one application of the subdivision rule ? 
+		arity a: fraction of number of points after subdivision step divided by number of points before, often a?
+		stationary schemes: subdivision rule is independent of location in polygon and independent of point position ? 
+		even points: old points that existed before a subdivision step and are still exisiting afterwards
+		odd points: points inserted by a subdivision step ? 
+		linear: rule is affine combination of even points ? 
+		Interpolating vs. approximating: rule preserves / does not preserve positions of even points
+		more points
+		one application of the subdivision rule
+		fraction 
+		divided by number of points before
+		often a?2
+		s independent of location in polygon
+		stationary
+		even points: old points
+		before a subdivision step
+		odd points: points inserted
+		linear: rule is affine combination of even points
+	&q write formulas and calculate this example. op5 Curves � matrix notation
+	&t for Schemata,mask, write formulas and calculate this example op6 7
+	&q what is? how is used? the idea? adv. and disadv.? 
+		> Local Subdivision Matrix
+		> Eigenvalue Analysis
+		> provides stencils for the limit position and limit tangents
+		> z-Transformation
+		> maps the coordinate vectors to polynomials
+	&t imp. and paper and further reading 
+	&p some formulas detail 
+	&q what is? how is used? the idea? adv. and disadv.? 
+		> Sufficient Continuity Condition
+		> a mask is called contractive,
+		if the absolute values of even and odd elements, i.e. of the stencils, sum to less than 1. 
+		The limit curve is Ck -continuous
+		if the k?1-th difference scheme multiplied by 2 k is contractive
+		i.e. m(z) can be divided by (z?1) k?1 and 2 k �? k?1m(z) is contractive.
+	&q what is? how is used? the idea? adv. and disadv.? 
+	&t imp. and paper and further reading 
+	&h these two are analysis tools, we can use them to check: Ck-continuous or contractive
+	&q what is convergence and continuity criteria? op13!! 
+		> z-Transformation
+		> Eigenvalue Analysis
+	convergence and continuity criteria

@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class ContactInfo{
+	string telnummer;
+	string adress;
+	public:
+		ContactInfo(string a1,string a2){
+			telnummer=a1;
+			adress=a2;
+		}
+		string getTel(){
+			return telnummer;
+		}
+		string getAdr(){
+			return adress;
+		}
+};
+ContactInfo* hashtable[10000]; 
+int main(){
+	
+	string tmpname;
+	ContactInfo* tmpinfo;
+	int hashvalue;
+	
+	//insert contect infos
+	tmpname="zhangsan";
+	hashvalue=0;
+	for(int i=0;i<tmpname.length();i++){
+		hashvalue+=(int)tmpname.at(i);
+	}
+	tmpinfo=new ContactInfo("+8615165110272","shijignshan,beijing");
+	hashtable[hashvalue]=tmpinfo;
+
+	//search 
+	string searchname;
+	while(true){
+		cin>>searchname;
+		tmpname=searchname;
+		hashvalue=0;
+		for(int i=0;i<tmpname.length();i++){
+			hashvalue+=(int)tmpname.at(i);
+		}
+		//get tmp info from hash table
+		tmpinfo=hashtable[hashvalue];
+		if(tmpinfo==NULL){
+			cout<<"not in list"<<endl;
+		}else{
+			cout<<"phone: "<<tmpinfo->getTel()<<" adress: "<<tmpinfo->getAdr()<<endl;
+		}
+	}
+
+	
+
+	return 0;
+}

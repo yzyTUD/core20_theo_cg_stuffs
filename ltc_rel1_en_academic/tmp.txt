@@ -1,0 +1,122 @@
+	PyTorch C++ frontend
+	The C++ frontend exposes a pure C++11 API that extends this underlying C++ codebase with tools required for machine learning training and inference
+	inference
+	This includes a built-in collection of common components for neural network modeling
+	This tutorial will walk you through an end-to-end example of training a model with the C++ frontend
+	we will be training a DCGAN – a kind of generative model – to generate images of MNIST digits
+	wet your appetite for training more complex models
+	it should be enough to give you a whirlwind overview of the PyTorch C++ frontend
+	dive straight into defining and training our model.
+	CppCon 2018
+	components and design philosophy.
+	ecosystem 
+	public portions of the PyTorch C++ API
+	 An interface to the TorchScript JIT compiler and interpreter;
+	C++ Frontend: High level constructs for training and evaluation of machine learning models;
+	evaluation 
+	research and production ready C++ library
+	for tensor computation and dynamic neural networks with strong emphasis on GPU acceleration as well as fast CPU performance
+	we look forward to welcoming more users
+	At the moment, the C++ API should be considered “beta” stability
+	 we may make major breaking changes
+	breaking changes
+	in service of providing the Python interface to PyTorch
+	which is our most stable and best supported interface.
+	most stable and best supported interface
+	core Tensor class, on which many hundreds of operations are defined.
+	Most of these operations have both CPU and GPU implementations
+	Tensor class will dynamically dispatch based on its type.
+	could look as follows:
+	as follows:
+	are found in the at:: namespace
+	with capabilities concerning automatic differentiation
+	consists of several base libraries with the prefix cgv
+	a standard cgv_viewer and several plugins
+	in the command line arguments
+	 large collection of mostly templated math functions and solvers
+	templated 
+	support for fonts, images, video and 3D data
+	"cgv_viewer_12.exe" loads "cgv_12.dll"
+	For building libraries, plugins, and applications there are four configurations
+	shared release (Release Dll)
+	build an executable
+	"Release Exe" and "Debug Exe", which both build a statically linked executable.
+	A plugin can register instances or factories of newly implemented classes
+	factories 
+	instances 
+	The use of quotes is important when the file path contains spaces
+	additional include paths
+	The framework uses the following platform independent third party libraries with completely free licenses
+	platform independent third party libraries
+	completely free licenses
+	the introduction of threads to the C++-standard
+	Normally, one includes the header cgv/render/gl/gl.h, which includes the glew header.
+	3rd party libraries
+	3rd party libraries with more restrive licenses 
+	&x
+	CBLAS (used by the superLU library in the superlu_wrapper plugin)
+	superlu (sparse linear equation solver used by superlu_wrapper plugin, which implements the interface in cgv/math/sparse_les.h
+	In order for the framework to find headers and libraries of libraries, which are not included in the framework, one has to add the paths to one of the following environment variables, that store lists of paths as semicolon separated strings:
+	find headers and libraries of libraries
+	one has to add the paths to one of the following environment variables
+	makefile generation scheme
+	Visual Studio 2019 (vs142)
+	A template project file is located at CGV_DIR/make/ppp/templates/pj.ppp
+	 It documents all possible entries to a project file. 
+	all possible entries
+	to a project file
+	copies this template, renames it to something like "my_project.pj"
+	edits it with a favorite text editor.
+	The current version of this file is inserted to the end of this page
+	passing the file as command line argument to the batch-script "generate_makefile.bat" located in CGV_DIR/bin.
+	This script only runs if the system variable CGV_COMPILER is set.
+	very convenient to bind the "generate_makefile.bat" script as default program to the extension "*.pj"
+	This can be done by double clicking a pj-file and selecting "generate_makefile.bat" as default program.
+	 It calls "generate_makefile.bat" with the examples plugin pj-File as argument.
+	examples 
+	This allows you to get started very easily.
+	avoid paths with spaces
+	in case you want to use the x64 platform start the define_platform.bat script and follow instructions
+	define_platform
+	alternatively you can run the following command in the command prompt:
+	ensure that examples plugin is the active project
+	INCLUDE 
+	additional include paths, which are appended to the default paths
+	export include paths to projects
+	The default library paths include //CGV_DIR/lib and the path list defined in the environment 
+	addIncDirs 
+	addLibDirs
+	addIncDirs
+	addLibDirs
+	addSharedDefines 
+	to generate rule files also via the addRules variable
+	addRuleFiles
+	a twofold strategy is realized based on a default config file and a user specific. 
+	a twofold strategy
+	Lines that start with a '/' are comments. 
+	 Lines that contain configuration information are processed with the cgv::base::process_command function
+	processed with the cgv::base::process_command function.
+	The default file is checked into the svn repository and has the extension ".def"
+	The user can copy the default file into a file with the same name but the extension ".cfg"
+	The line "show all" is a special command that will cause the viewer to print out all registered objects and their properties to the console window
+	In this way one can find out all objects that can be configured.
+	&x
+	·´Éä¾ÍÊÇÔÚÔËÐÐÊ±²ÅÖªµÀÒª²Ù×÷µÄÀàÊÇÊ²Ã´
+	The basic idea builds on the visitor concept.
+	In the function all base classes, members and methods are described to the visitor.
+	If you want to register a factory that can generate picker instances you use the following line instead:
+	registration by a plugin.
+	lives in the namespace cgv::base
+	inheritance is used heavily in the cgv framework
+	not allowed to inherit base more than one time
+	what would lead to object schizophrenia. 
+	schizophrenia
+	C++ does not allow to enforce this constraint, which therefore lies in the responsibility of the programmer. Please be aware of that!
+	cgv::base::register_object(object_ptr, options) taking two parameters - the to be registered object and an option string
+	The option string is used to steer where the object should be registered to
+	After registration the cgv::base::base::on_register() method of the registered object is called. This gives the object the opportunity to initialize itself
+	knowing that it has been integrated into the gui and rendering structures.
+	and rendering structures
+	Again all registered listeners are notified by their unregister_object method
+	The listeners must make sure to remove all reference counted pointers onto the object passed to their unregister_object() method.
+	The viewer uses the function cgv::base::process_command_line_args to process all commands specified on the command line

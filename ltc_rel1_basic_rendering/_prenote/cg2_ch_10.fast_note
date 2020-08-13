@@ -1,0 +1,300 @@
+	Inverse Kinematics & Motion Capturing
+	Inverse Kinematics Problem
+	&q what is? how is used? the idea? adv. and disadv.? 
+	inverse kinematics problems solves
+	&q what is teh input and output of IK? 
+	&t write formulas and calculate this example  op4 
+	state vector
+	parameters
+	dependent variables
+	parameters
+	the end effector pose
+	degrees of freedom (DOF)
+	? In most cases the DOFs does not match the number of dependent variables and IK becomes ill-posed 
+	or unsolvable
+	 DOFs does not match the number of dependent variables
+	&h ill posed means that there maybe multiple solutions! 
+	often posed in form of a least squares energy minimization
+	&q draw a graph to illu. why IK problem is always ill-posed
+	&h op5 
+	 degenerate or singular configurations
+	 the end effector looses one or several degrees of freedom
+	oscillations during IK
+	&t further reading, what is oscillations during IK
+	&h op6 not sufficient for understanding 
+	&p 
+	different constraints
+	&q what kind of different
+	&constraints 
+	&q can be found? op7
+	collision constraints
+	avoid self-collisions 
+	joint angle constraints 
+	position constraints to restrict the movement of the end effector
+	orientation constraints to restrict the orientation of the end effector, for example in case of special demands for grasping.
+	grasping
+	&h think about the arm chain of robots, grasping! 
+	start with some initial guess 
+	for the parameter vector
+	the default state
+	state of the previous time step in an animation
+	the result of a previous optimization phase
+	 some descent direction ?????? is found in parameter space
+	Steps ????+1 = ???? + h???????? are taken until no further improvement in energy is possible.
+	 relative transformation 
+	&q what is? how is used? the idea? adv. and disadv.? 
+	&op9
+	Forward Kinematics
+	kinematic chain
+	The forward kinematics is described as a function ?? that maps the ??-dimensional parameter vector ?? to a 6D pose:
+	maps the ??-dimensional parameter vector
+	&q describe the forward Kinematics and IK in math. op10 
+	&q what is f? mapping from n para. vector to a 6d pose 
+	&q how energy is defined? op10 
+	This is a non linear least squares problem
+	One can introduce weights
+	&p why we can define weights? diff. bone may have diff. effects? y 
+	Orientation Matrix Formulation
+	Euler Angle Formulatio
+	The weights ???? can be used to blend out orientation constraints for individual axes
+	&p the formula when using Orientation Matrix Formulation?? 
+	&h op12 
+	Quaternion Formulation
+	&q what kind of formulations can be found when representing IK problems?
+	&h x3 
+	With a normalized quaternion ?? ? = ?? ?? ?? ?? the pose is 7D
+	&q how can we formulate the IK problem with Quaternion?
+	&q what problems can arise in this case? op13 hwo can we solve that prob. caused by dual meaning of quaternoin?
+	&q how many dofs are needed in each formulation?
+	&h 6d 10d 7d 
+	Skeleton IK
+	&q what is? how is used? the idea? adv. and disadv.? 
+	multiple target locations are important
+	working with multiple end effectors
+	&q hwo can we solve skel. IK? op14 
+	optimize
+	minimizing the squared sum of the end effector constraints with the Kabsch algorithm
+	Kabsch algorithm
+	minimizing an energy that sums over the squared endeffector-constraint distances where the endeffector locations are computed along kinematic chains from the fixed root node
+	&p cannot understand, further reading &t 
+	&h op14 
+	&t code reading may help
+	&h above is about how can we formulate the IK prob. with math tools 
+	adding fixation points (in the simplest case one at the root node) 
+	fixation points 
+	In an interactive editor one has to define kinematic chains based on user input
+	For a climbing figure we need several end effector constraints. This is discussed by Chris Hecker on his inverse kinematics page
+	http://www.chrishecker.com/Inverse_kinematics
+	particle-based solver (like SHAKE, RATTLE, Jakobsen)
+	rigid body dynamics solver
+	Cyclic Coordinate Descent (CCD)
+	simple serial analytical IK
+	My Adventures in Inverse Kinematics.
+	http://www.chrishecker.com/images/7/76/Gdc2002-ik.ppt
+	http://www.chrishecker.com/Inverse_kinematics
+	&t imp. and paper and further reading 
+	Dual quaternion IK was presented by Ben Kenwright in 2013: Inverse Kinematics with Dual-Quaternions, Exponential-Maps, and Joint Limits
+	Inverse Kinematics with Dual-Quaternions, Exponential-Maps, and Joint Limits
+	&t imp. and paper and further reading 
+	CYCLIC COORDINATE DESCENT
+	&h ccd is one of the most simple solvers 
+	need an initial guess
+	monoton
+	Line Search Approach
+	Trust Region Approach
+	Another mentionable derivative-free alternative is the Downhill-Simplex method of Nelder and Mead
+	Coordinate Descent: 
+	Powell‘s method:
+	line search along search directions
+	&h ccd is coordinate aligned
+	Search directions are standard basis vectors
+	Line Search Approach
+	&q which 3 method found with Line Search Approach? op17 
+	CCD
+	s often used to generate initial guess for secondary method with fast convergence rate close to optimum 
+	coordinate descent can be implemented efficiently as the line search problem can be solved analytically
+	for secondary method
+	&q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+	reduce IK to parameter
+	&p op19 reduce IK to parameter??
+	CCD – Line Search
+	&q how CCD - Line Search behaves in the simplest case? given pic. op20 
+	reformulate energy minimization in local coordinates according to Orientation Matrix Formulation
+	CCD – Line Search – Full Approach
+	reformulate
+	&q reformulate the math formulas before to the case that uses ccd method! op21 
+	Orientation term
+	Position term
+	&p op22 can not understand 
+	the CCD can get stuck in degenerate situations
+	random offset 
+	solution
+	degenerate situations
+	&q how to hadle degenerate situations for the ccd algo?
+	&h op24 
+	UNCONSTRAINED IK
+	https://www.youtube.com/watch?v=-z_l7Jdz8Bo
+	&
+	&h ccd can either be constrained or unconstrained
+	UNCONSTRAINED IK
+	Steepest Descent
+	Newton
+	convergence rate near local minimum quadratic
+	Quasi Newton methods
+	track approximation of Hessian or its inverse
+	Quasi Newton methods track approximation of Hessian or its inverse
+	Newton methods
+	&h we can use Newton methods or Quasi xxx for solving unconstrained mode 
+	Furthermore
+	DFP
+	BFGS
+	Low memory implementation 
+	L-BFGS
+	Broyden–Fletcher–Goldfarb–Shanno (BFGS) method
+	Davidon–Fletcher–Powell formula
+	&t imp. and paper and further reading 
+	&h many related method can be used!! 
+	&t imp. and paper and further reading 
+	Weighted Non Linear Least Squares
+	WNLLS
+	One problem with the Gauss-Newton method is that the Pseudo inverse becomes unstable in degenerate positions
+	One problem with the Gauss-Newton method
+	&q One problem with the
+	&Gauss-Newton methodq ?
+	This problem does not arise in the steepest descent method where only the transposed of the Jacobian is used
+	? Idea: combine both methods optimally
+	&h diff. methods may be combined! 
+	&t write formulas and calculate this example 
+	Descent directions
+	&q which Descent directions can be found?
+	the resulting WNLLS approach is then called Gauss-Newton method
+	&
+	Levenberg Marquardt 
+	combine steepest descent
+	with
+	Gauss-Newton approach
+	 ?? is initialized to large values and decreased close to the optimum
+	&q how the additional para. be handled in this method? (can be seen as a combined method)
+	Levenberg Marquardt suggest to adapt ??-control to the directional curvature by the generalization
+	&
+	&t imp. and paper and further reading 
+	&t write formulas and calculate this example 
+	&h op33 
+	Self-adapting Levenberg Marquardt
+	self-adaptive LM method
+	Descent with steepest descend direction is also called transposed Jacobian method in IK literature
+	It needs to be combined with a line search method
+	a single iteration is fast
+	often used in interactive IK approaches, e.g. in character pose editors.
+	 Newton direction computed from the approximate Hessian is called Gauss-Newton method or non linear least squares in math and inverse Jacobian method in IK
+	Newton direction computed from the approximate Hessian
+	 The natural step width of 1 simplifies line search.
+	The taxi cab method corresponds to iteratively optimize only one joint parameter at the time
+	only one joint parameter at the time
+	This is called cyclic coordinate descent method in IK
+	often implemented as the optimal step width can be computed analytically
+	&h ccd always as a pre-processing step
+	? Levenberg-Marquardt and BFGS are better than inverse Jacobian and often used for IK
+	one can use the non linear conjugate gradient method discussed in CG1.
+	https://en.wikipedia.org/wiki/Conjugate_gradient_method
+	&t imp. and paper and further reading 
+	&t further reading 
+	start with cyclic coordinate descent and continue with Levenberg-Marquardt or BFGS.
+	&h the stru. is clear now! 
+	CONSTRAINED IK
+	Parameter Constraints
+	 lower and upper bound:
+	simple constraints and the optimization problem is called bound constrained.
+	bound constrained
+	&q bound constrained can easily be handled? y 
+	these constraints can be easily incorporated by the gradient projection method:
+	defines the projection operation
+	 uses this to project descent directions to the feasible region
+	The rest of the algorithms stays the same
+	http://users.iems.northwestern.edu/~nocedal/lbfgsb.html
+	https://github.com/PatWie/CppNumericalSolvers
+	&t imp. and paper and further reading 
+	General Constraints
+	Positional constraints like that a foot should stay on the floor are non linear in the parameters
+	foot should stay on the floor
+	non linear in the parameters
+	 in the form of equalities or inequalities
+	Lagrangian multiplier method incorporates constraints
+	constraint forces can be derived from constraints
+	reinforce constraints in case of numerical deviations
+	equality constraints
+	&q how can we handle equality constraints in general case? op39 and inque.! x2x1 
+	&q what is? how is used? the idea? adv. and disadv.? 
+	&t imp. and paper and further reading 
+	Linear complementary problems (LCP)
+	&t additional efforts!! if you want to get a clear view of the whole field! 
+	MOTION CAPTURING
+	MoCap
+	illuminate markers from all directions
+	add markers at joints
+	 from all directions
+	acquire views from several synchronized cameras
+	detect markers in each acquired view
+	reconstruct 3D positions
+	track points over time
+	extension: use light emitters of different frequency as markers with id (no matching necessary)
+	Standard MoCap Approach
+	&q what is? how is used? the idea? adv. and disadv.? 
+	&Standard MoCap Approach
+	&h op41 
+	use motion capture data to disambiguate IK
+	solve IK problem by maximizing pose probability
+	Keith Grochow, Steven L. Martin, Aaron Hertzmann, Zoran Popovic, Siggraph 2004
+	Style-Based Inverse Kinematics
+	http://grail.cs.washington.edu/projects/styleik/
+	&t imp. and paper and further reading 
+	&t further reading! 
+	Red points are training poses
+	orange connections mark some training poses
+	https://www.youtube.com/watch?v=X5Z7ZJ39zAA
+	RGBD Motion Capturing
+	&q typical methods for motion capturing? x3 op45 
+	&q what is? how is used? the idea? adv. and disadv.?  compare them!
+	uses depth camera with a machine learning approach
+	http://research.microsoft.com/apps/pubs/default.aspx?id=162510
+	Taylor, Shotton, Sharp, Fitzgibbon CVPR 2012
+	&h this is a computer vision approach 
+	2D parameterized template human mesh (vitruvian manifold)
+	use decision tree to estimate per pixel texcoords
+	Interactive Motion Mapping
+	Helge Rhodin, James Tompkin, Kwang In Kim, Kiran Varanasi, Hans-Peter Seidel, Christian Theobalt, Eurographics 2014 (http)
+	http://gvv.mpi-inf.mpg.de/projects/DirectMotionMapping/
+	use Kinect skeleton tracking to steer character
+	steer character
+	&h steer means control in simple words 
+	Given sparse pose mapping from source to target, learn pose mapping without rigging and skinning
+	interactive control of virtual character
+	https://www.youtube.com/watch?v=SG5D12tBBAk
+	&t imp. and paper and further reading 
+	SKELETON FITTING
+	&q what is? how is used? the idea? adv. and disadv.? 
+	Input: set of 3D marker points tracked over time 
+	 markers can be occluded 
+	Output: skeleton topology
+	bone lengths, joint locations in rotation centers
+	Reference: Adam G. Kirk James F. O¡¯Brien David A. Forsyth, Skeletal Parameter Estimation from Optical Motion Capture Data, CVPR 2015
+	&h that is also a computer vision task 
+	&h for the case of motion capturing with kinect 
+	&paper may have some impro. cap. motion in vr! 
+	&t imp. and paper and further reading 
+	http://graphics.berkeley.edu/papers/Kirk-SPE-2005-06
+	extract topology by minimum spanning tree
+	use IK to extract joint parameters 
+	build matrix of marker pair distances and measure pair distance variance over time
+	http://graphics.berkeley.edu/papers/Kirk-SPE-2005-06/
+	http://graphics.berkeley.edu/papers/Kirk-SPE-2005-06/Kirk-SPE-2005-06.pdf
+	Wang, L-CT, and Chih-Cheng Chen. "A combined optimization method for solving the inverse kinematics problems of mechanical manipulators." Robotics and Automation, IEEE Transactions on 7.4 (1991): 489-499
+	Welman, Chris. Inverse kinematics and geometric constraints for articulated figure manipulation. Diss. Simon Fraser University, 1993.
+	Meredith, Michael, and Steve Maddock. Real-time inverse kinematics: The return of the Jacobian. Technical Report No. CS-04-06, Department of Computer Science, University of Sheffield, 2004.
+	Shan, Shidong. A Levenberg-Marquardt method for large-scale bound-constrained nonlinear least-squares. Diss. The University of British Columbia (Vancouver), 2008
+	Kenwright, Ben. "Inverse Kinematics with Dual-Quaternions, Exponential-Maps, and Joint Limits." International Journal On Advances in Intelligent Systems 6.1 and 2 (2013): 53-65
+	http://chrishecker.com/Inverse_kinematics
+	https://github.com/PatWie/CppNumericalSolvers
+	L-BFGS-B Solver in C++
+	Adam G. Kirk James F. O¡¯Brien David A. Forsyth, Skeletal Parameter Estimation from Optical Motion Capture Data, CVPR 2015
+	&t imp. and paper and further reading 

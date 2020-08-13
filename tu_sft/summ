@@ -1,0 +1,28 @@
+
+    ppt-1
+        introduction and roughly what is fault, classes of fault
+    ----------------------------------------------------------
+    ppt-2
+        traditional way -- black box testing / white, TDD ...
+    ppt-3
+        approach to test -- Symbolic Execution
+    ppt-4
+        approach to test -- Fuzzing
+    ppt-5
+        -
+    ppt-6
+        approach to test -- Taint Analysis
+    ----------------------------------------------------------
+    ppt-7
+        ? SFT Mechanisms
+    ppt-8
+        at runtime -- Microservices
+    ----------------------------------------------------------
+    ppt-9
+        when coding -- Patterns and Anti -Patterns 
+    ppt-10
+        RX
+    ppt-11
+        Orchestra
+    ppt-12
+        Fault Tolerant Services

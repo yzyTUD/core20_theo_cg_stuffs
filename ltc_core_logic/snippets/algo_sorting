@@ -1,0 +1,129 @@
+#include <iostream>
+using namespace std;
+
+void print_array(int* arr, int size) {
+	cout << "\n";
+	for (int i = 0; i < size; i++) {
+		cout << arr[i] << " ";
+	}
+	cout << "\n";
+}
+void bubble_sort(int* a, int size) {
+	// loop sorted items i from 0 to max:
+	for (int i = 0; i < size; i++) {
+		// loop unsorted items j:
+		for (int j = 0; j < size - i; j++) {
+			// if two ele. unsorted, swap:
+			if (a[j] > a[j + 1]) {
+				// swap
+				int tmp;
+				tmp = a[j];
+				a[j] = a[j + 1];
+				a[j + 1] = tmp;
+			}
+		}
+	}
+}
+void selection_sort(int* a, int size) {
+	// loop all position 
+	for (int i = 0; i < size; i++) {
+		int minval_posi = i;
+		// select the min val in unsorted position
+		for (int j = i + 1; j < size; j++) {
+			if (a[j] < a[minval_posi])
+				minval_posi = j;
+		}
+		// put it to the desired position 
+		int tmp = a[i];
+		a[i] = a[minval_posi];
+		a[minval_posi] = tmp;
+	}
+}
+void insertion_sort(int* a, int size) {
+	// loop all unsorted positions 
+	for (int i = 1; i < size; i++) {
+		// mark the current one 
+		int current = a[i];
+		int preIndex = i - 1;
+		// backward loop all sorted position, while not a suitable position 
+		while (preIndex >= 0 && a[preIndex] > current) {
+			// move the sorted backward 
+			a[preIndex + 1] = a[preIndex];
+			preIndex--;
+		}
+		// insert 
+		a[preIndex + 1] = current;
+	}
+}
+void shell_sort(int* a, int size) {
+	// start from some gap and decrease until 0 
+	for (int gap = floor(size / 2); gap > 0; gap = floor(gap / 2)) {
+		// loop all unsorted position 
+		for (int j = gap; j < size; j++) {
+			int preidx = j - gap;
+			int current = a[j];
+			// backward loop sorted position, while not suitable:
+			while (preidx >= 0 && a[preidx] > current) {
+				// move the elements backward 
+				a[preidx + gap] = a[preidx];
+				preidx = preidx - gap;
+			}
+			// insert 
+			a[preidx + gap] = current;
+		}
+	}
+}
+void merge(int* a, int* L, int lsize, int* R, int rsize) {
+	// merge sorted subarray 
+	int i = 0;
+	int j = 0;
+	int k = 0;
+	while (i < lsize && j < rsize) {
+		if (L[i] < R[j])
+			a[k++] = L[i++];
+		else
+			a[k++] = R[j++];
+	}
+	while (i < lsize)
+		a[k++] = L[i++];
+	while (j < rsize)
+		a[k++] = R[j++];
+}
+void merge_sort_recur(int* a, int size) {
+	// devide recursively, stop at n<2 
+	if (size < 2) return;
+	int mid = size / 2;
+	int* L = new int[mid];
+	int* R = new int[size - mid];
+	for (int i = 0; i < mid; i++) {
+		L[i] = a[i];
+	}
+	for (int i = mid; i < size; i++) {
+		R[i - mid] = a[i];
+	}
+	merge_sort_recur(L, mid);
+	merge_sort_recur(R, size - mid);
+	merge(a, L, mid, R, size - mid);
+	delete[] R;
+	delete[] L;
+}
+#include <algorithm>
+#include <vector>
+void stl_vector_sort(int* a, int size) {
+	vector<int> v;
+	for (int i = 0; i < size; i++) {
+		v.push_back(a[i]);
+	}
+	sort(v.begin(),v.end());
+	for (int i = 0; i < size; i++) {
+		a[i] = v.at(i);
+	}
+}
+int main() {
+	int a[] = 
+		{ 6,2,3,1,9,10,15,13,12,17 }; 
+		//{ 9,0,6,5,8,2,1,7,4,3,1,2,6,4,3,9,5,3,1,12,42,35,65,28 };
+	print_array(a, sizeof(a) / sizeof(int));
+	stl_vector_sort(a, sizeof(a) / sizeof(int));
+	print_array(a, sizeof(a) / sizeof(int));
+}

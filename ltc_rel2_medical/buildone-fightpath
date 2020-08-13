@@ -1,0 +1,29 @@
+//不一定可以运行出来，长时间的一个活动，不断尝试，不要耽误时间！！
+//one is enough--在这个领域，至少有一个开源lib可以从头编译
+
+zhou-原始代码的bug
+    ！qtopengl引入的问题
+        使用QtGui/QtGui代替
+    ！arcball cpp中的glu函数调用失败
+        引入windows header头文件
+    ！原始代码中raw数据不知道干啥的，挺大的
+mitk 
+    ！qt版本太高，很多函数都deprecated，改不过来
+        1.change to qt5.11.1
+        2.转移到slicer应用
+        3.读文档，好像最高支持到5.8
+slicer 
+    时间比较长，并且大概需要20G空间，因为从头编译python
+    ！成功编译但是运行失败，因为python库问题，ctest是可以执行的
+        1.使用debug看看问题在哪里 
+            https://www.slicer.org/wiki/Documentation/Nightly/Developers/Tutorials/Debug_Instructions
+        2.网上搜解决方案（已经把其他的python disable掉了）
+        3.转移到win上尝试
+            ！machine type x64 conflict x86!
+                tried to add a X64 build to a project converted from VS2003.
+                The error is telling you that the linker has been run with a target that specifies
+                x64 while the module the linker is reading was created for x86. 
+            1. change to x86 qt 
+                高版本只提供x64--向上兼容并不总是成功的，尤其在医学影像这样的大软件系统中              
+        4.转移到虚拟机尝试
+    

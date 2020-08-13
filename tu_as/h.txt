@@ -1,0 +1,178 @@
+
+    //here is for 
+        survey ques.
+        transfer questions
+
+    bigpic 
+        前期基础
+            ppt-1-Overview
+            ppt-2-Self-Management
+                +
+                    管理好时间、任务...
+                ALPEN
+                Eisenhower portfolio
+                ZOPP,B-ZOPP,POPP
+                Dependency Graph,GANTT chart
+                types of questions 
+                Blooms Taxonomy of learning levels
+            ppt-3-Report Types
+                +
+                    各种report怎么写
+                Writing ex'cerpt
+                Bullet protocal 
+                Result protocal 
+                Research proposal 
+                semi-defense 
+                headines?
+                criteria for master thesis
+            ppt-4-What is science?
+                +
+                    不同的科学，软件技术是那种科学？
+                exact science vs technical science vs formal science vs theorical computer science 
+                practical Research vs idealized Research
+                basic Research applied Research and experimental development
+                technology Research vs product Research
+                computer science vs software engineering 
+                theorical+engineering+empirical 
+                structual science  
+        写作的各个阶段分别可以用什么工具
+            ppt-5-The Research Process ADED                 --论文写作步骤 + idea生成，写作基础
+                ADED Research process(otto)
+                AD-R-ED,A-PP-ED,A-HE-D,and the spec. process for technical science thesis 
+                Orientation process(idea gen.)(Overview)(in Process A)
+                    semantic map 
+                    concept map 
+                    mind maps-node labeled mind map 
+                    Q-A-Hierarchy 
+                    alternative row Hierarchy
+                    canvas
+                problem Analysis 
+                    7W-question 
+                    +other maps/canvas 
+            ppt-6-Information Gathering-Literature Analysis --怎么读论文 + 写’related works‘部分
+                DIKW pyramind
+                interpretation differ under differ. circumstances
+                problems by reading 
+                RIK 
+                    relevence check + information aqui. + know. aqui.
+                relevence check 
+                diff. typies of Research results [Fong]
+                SWOT strategic analysis
+                    Strength,Weakness,Oppo.,Threats
+                KillerApp analysis
+                markup/formulate questions/record ideas...
+                grouping with concept maps 
+                House Concept map 
+                know. aqui.
+                    talk to someone else 
+                    write summary
+                    embed new know. to old ones 
+                Lazy Reading process RIK 
+                other reading methods 
+                    before/after 
+                    SQ3R/SQ4R/SSQAR 
+                how to recite/ summ.
+                    underlineing 
+                    margin notes, how?
+                buttom-up experting mehtod* -- im using now 
+                search tools 
+                    SLUB/saxony/..
+                manage tools(bibfile) 
+                    scripts
+                what to cite- do not cite sec. resources
+                1-3-1 structure for Literature analysis
+                writing Literature analysis para.
+            ppt-7-Solution Design Processes                 --PSP问题解决，输出'intro.','design'
+                +
+                    问题解决的顺序不同于写作顺序
+                    speed up finding a solution 
+                PSP problem solving Process 
+                PAD+SAD+RAD 
+                S.P.A.L.T.E.N. method (more details in PAD,SAD...) [Albers]
+                    Assessment of multiple solutions 
+                "Design Thinking" method 
+                    prototype standord..
+                VanGundy problem solving method -- PARGESI
+                    problem redefinition 
+                use them with GANTT chart 
+                PAD
+                    abstruct-chapter (吸引人的一种策略)
+                        nABC analysis
+                        NABC value proposition 
+                        Elevator Pitches 
+                        Elevator Pitches with MOPARC 
+                        Variants of POPP 
+                        B-POPP,BATE-POPP,BATEID-POPP 
+                SAD 
+                    for design chapter （打分和排序）
+                        SGAP method 
+                        gen. of ideas .... many methods exist
+                        Assessment... many grading methods,percentage...
+                        Prioritization.....binary/multiple
+                            de bono's PMI/Kiviat-Graph 
+                        Olympic/Efficiency criteria
+                        Efficiency analysis -- Magic rectangle method 
+                            CoTiQQ Diagram
+                        advance analysis -- Tabular form 
+                            boolean advance analysis
+                RAD 
+                    for introduction （有条理脉络的）
+                        POS/POSE 
+            ppt-8-Writing Papers-Research Hypotheses        --Hypotheses. 输出‘abstruct’，‘result’，‘eva.’，‘Diss.’
+                9 kinds of Hypotheses 
+                    //how to define your Research Hypotheses? where are you 
+                    Cause-Effect scheme
+                    Means-End scheme
+                    Automatation Hypotheses vs Optimization Hypotheses
+                    Bundy' Dimentions of enhancement(Hypotheses Hierarchy)
+                4 kinds of Research results-- ‘result’
+                    Observations/Laws/Theories/Patterns 
+                6 kinds of evaluation mehtods -- ‘evaluation’
+                    mathematicak proof, experiment.....
+                writing abstruct*
+                    5 Newman's abstruct templete
+                        Enhanced Model/Enhanced Solution/Enhanced Tool/...
+                    Research Hypotheses + before + evaluation success.
+                        before-
+                            nABC,POPP.... 
+                    POSE scheme 
+                    BABLOS/BAPBLOS scheme 
+                    PIBA benefit analysis for idea papers 
+                    4-Quarter-Cake [Vigenschow]
+                        7w honest serving man 
+                    MOPARC - [Koopman]
+                        emphasizes results 
+                        BAPARC-background 
+                        MOGARC-gap
+                    NABC 
+                'Disscussion' part 
+                    和abstruct 呼应，和问题呼应
+                    interal + external disscusion part mode 
+                        seeds to expansion
+            ppt-9-Writing-Types of Research Papers          --分类,论文文本架构
+        评价，论文课件
+            ppt-10-Presentations
+            ppt-11-Revising and Reviewing
+            ppt-12-Ethics in Computer Science
+
+
+    when we do seq. writing 
+        //写东西之前想想有没有已经成熟的范式pattern 
+        //这样好处：
+            不用担心字数
+            架构整齐容易修改扩展
+            更加明确自己的目标，我这个论文是什么类型的，或者一本书
+            design Pattern for paper writing 
+        read papers -- ppt6
+        gen idea -- ppt5
+        write abstruct -- ppt8
+        write outline -- ppt9 
+        write para. -- ppt8+ppt6+ppt7 
+            solution -- ppt7 
+            validation -- ppt8 
+            diss. -- ppt8 
+            related works --ppt6 
+        write title -- ppt3 
+        review.check -- ppt11 
+        do Presentation -- ppt10 
+

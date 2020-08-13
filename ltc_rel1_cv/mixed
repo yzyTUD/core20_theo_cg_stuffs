@@ -1,0 +1,1776 @@
+
+    // 目标：看懂论文，实现论文中方法，在cgv中使用
+    
+    preview_pass 
+        seedcpt 
+            bilateral filter 
+                http://people.csail.mit.edu/sparis/bf/#code
+                https://mlcv.inf.tu-dresden.de/courses/st20/cv2/slides-bilateral-filter.pdf
+                t- 在cgv中实现bilateral filter
+            iamge segmentation  
+                https://ijcsmc.com/docs/papers/May2014/V3I5201499a84.pdf
+                Image segmentation technique is used to partition an image into meaningful parts having similar features and properties
+                simplification i.e. representing an image into meaningful and easily analyzable way.
+                divide an image into several parts/segments having similar features or attributes.
+                The basic applications of image segmentation are: Content-based image retrieval, Medical imaging, Object detection and Recognition Tasks, Automatic traffic control systems and Video surveillance
+                Discontinuity detection based approach
+                Similarity detection based approach
+                category in which edges formed due to intensity discontinuity are detected and linked to form boundaries of regions 
+                thresholding techniques
+                region growing techniques and region splitting and merging
+                These all divide the image into regions having similar set of pixels.
+                The clustering techniques also use this methodology
+                Multiple Thresholding
+                The region growing based segmentation methods are the methods that segments the image into various regions based on the growing of seeds
+                the growing of seeds is controlled by connectivity between pixels and with the help of the prior knowledge of problem
+                First of all, all the connected components of ?s? are eroded
+                These connected components in ?q? are segmented regions.
+                Soft clustering
+                Watershed Based Methods
+                https://github.com/balcilar/Color-Image-Segmentation-Using-Region-Growing-and-Region-Merging
+                https://github.com/suhas-nithyanand/Image-Segmentation-using-Region-Growing/blob/master/region_growing.py
+                https://github.com/Monketo/ComputerVision/blob/master/Region%20Growing.ipynb
+                Region-growing methods rely mainly on the assumption that the neighboring pixels within one region have similar values
+                The method of Statistical Region Merging[28] (SRM) starts by building the graph of pixels using 4-connectedness with edges weighted by the absolute value of the intensity difference
+                One region-growing method is the seeded region growing method
+                used as a measure of similarity
+                The pixel with the smallest difference measured in this way is assigned to the respective region
+                noise in the image can cause the seeds to be poorly placed.
+                Another region-growing method is the unseeded region growing method
+                A special region-growing method is called {\displaystyle \lambda }\lambda -connected segmentation (see also lambda-connectedness). It is based on pixel intensities and neighborhood-linking paths
+                Split-and-merge segmentation is based on a quadtree partition of an image.
+                This method starts at the root of the tree that represents the whole image.
+                If it is found non-uniform (not homogeneous), then it is split into four child squares (the splitting process)
+                If, in contrast, four child squares are homogeneous, they are merged as several connected components (the merging process).
+                The node in the tree is a segmented node
+                When a special data structure is involved in the implementation of the algorithm of the method, its time complexity can reach {\displaystyle O(n\log n)}O(n\log n)
+                a group of pixels that share common characteristics (like pixel intensity )
+                They carry more information than pixels
+                it is not real segmentation
+                provide a convenient and compact representation of images
+                useful for computationally demanding problems
+                segmentation is the process of assigning a label to every pixel in an image such that pixels
+                Segmentation can be used to locate objects and boundaries (lines, curves etc.) in images
+                SLIC (Simple Linear Iterative Clustering) Algorithm for Superpixel generation
+                Linear Iterative Clustering
+                This is done in the five-dimensional [labxy] space
+                pixel color vector in CIELAB color space
+                normalize the spatial distances in order to use the Euclidean distance in this 5D space
+                takes as input a desired number of approximately equally-sized superpixels K
+                At the onset of the algorithm,
+                chosen with k= [1,K] at regular grid
+                normalized by the grid interval S
+                A variable m is introduced in D? allowing us to control the compactness of a superpixel
+                moving them to seed locations corresponding to the lowest gradient position in a 3�3 neighborhood
+                avoid placing them at an edge and to reduce the chances of choosing a noisy pixel
+                I(x,y) is the lab vector corresponding to the pixel at position (x,y), and ?.? is the L2 norm.
+                This takes into account both color and intensity information.
+                After all the pixels are associated with the nearest cluster center, a new center is computed as the average labxy vector of all the pixels belonging to the cluster.
+                repeated until convergence
+                https://miro.medium.com/max/1400/1*FStz0fehlrgs18rue-H2VA.png
+                http://www.kev-smith.com/papers/SLIC_Superpixels.pdf
+                SLIC_Superpixels.pdf
+                https://www.iro.umontreal.ca/~mignotte/IFT6150/Articles/SLIC_Superpixels.pdf
+                https://github.com/darshitajain/SLIC/blob/master/SLIC_Algorithm.ipynb
+                https://github.com/PSMM/SLIC-Superpixels
+                https://www.tu-chemnitz.de/etit/proaut/en/research/superpixel.html
+                Compact watershed segmentation of gradient images
+                https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_segmentations.html
+                K-Means based image segmentation
+                the approach proposed by Felzenswalb and Huttenlocher [3], Quick Shift [4], Watersheds [5] and Turbopixels [6].
+                https://github.com/davidstutz/bachelor-thesis-superpixels
+                Library containing 7 state-of-the-art superpixel algorithms with a total of 9 implementations used for evaluation purposes in [1] utilizing an extended version of the Berkeley Segmentation Benchmark
+                https://github.com/davidstutz/superpixels-revisited/tree/a572daf21f342a19129379686270334de479f8f5
+                Superpixels Revisited
+                http://val.serc.iisc.ernet.in/crowd_flow_seg/CrowdFlowSegmentation.html
+                http://www.ijetmr.com/Articles/Vol5Iss3/01_IJETMR18_A03_290.pdf
+                Superpixels have become an essential tool to the vision community
+                concentrating on their boundary adherence, segmentation speed, and performance.    
+        seedfrombookcpt
+        seedfrompapercpt
+        seedfromcode
+    --- 
+    book_pass
+        book--LearningOpenCV3.pdf
+            ctl:
+                prereading_pass
+                viewing_pass
+                noting_pass
+                prac_pass 
+            prereading_pass
+                // keywords from book contents or detail be taken as seed 
+                // in chs, most easy way of understanding! 
+                2. Introduction to OpenCV
+                    hello world code, and explain 
+
+                3. Getting to Know OpenCV Data Types
+                    typedef Vec<uchar, 2> Vec2b;
+                    typedef Vec<int, 2> Vec2i;
+                    ...some thing like this 
+                    type的命名格式为CV_(位数)+(数据类型)+(通道数)
+                    all possible vals.? 
+                    CV_16U
+                    CV_8UC7, to get this you would have to call CV_8UC(7)
+                    identical to cv::Vec<T, 4>)
+                        -- The Template Structures
+                    SSE2 instructions
+                    cv::FastMalloc() works just like the malloc() you are familiar with, 
+                        except that it is often faster, and it does buffer size alignment for you
+                4. Images and Large Array Types
+                    cv::Mat, 
+                    To deal with this problem, OpenCV relies on a construct called
+                        saturation casting.
+                    array creator, accessor, iterator...
+                    Template Structures
+                    Matrix Expressions: Algebra and cv::Mat
+                5. Array Operations. .
+                    get to know the ditails about diff. kinds of operations: cv::exp()
+                    cv::gemm()
+                6. Drawing and Annotating
+                7. Functors in OpenCV. .
+                8. Image, Video, and Data Files
+                9. Cross-Platform
+                ---
+                10. Filters and Convolution
+                    diff. kinds of filter kernels, their effect and diff. 
+                    how to use them for vision tasks 
+                    Derivatives and Gradients
+                    smoothing 
+                    Image Morphology
+                11. General Image Transforms. . . . 
+                    https://zhuanlan.zhihu.com/p/53367135
+                12. Image Analysis. . . . .
+                    霍夫变换
+                        主要作用是从图像中检测出具有某种相同特征的几何形状，如直线、圆等。
+                        Hough变换是图像处理中从图像中识别几何形状的基本方法之一
+                        Hough变换的基本原理在于利用点与线的对偶性，
+                            将原始图像空间的给定的曲线通过曲线表达形式变为参数空间的一个点
+                            曲线-》点
+                        曲线的检测问题转化为寻找参数空间中的峰值问题
+                        把检测整体特性转化为检测局部特性。比如直线、椭圆、圆、弧线等。
+                        霍夫变换于1962年由Paul Hough 首次提出[53]，后于1972年由Richard Duda和Peter Hart推广使用[54]
+                        经典霍夫变换用来检测图像中的直线，后来霍夫变换扩展到任意形状物体的识别，多为圆和椭圆。
+                        图像x--y平面上的一个前景像素点就对应到参数平面上的一条直线
+                        把图像平面上的点对应到参数平面上的线，最后通过统计特性来解决问题。假如图像平面上有两条直线，那么
+                            最终在参数平面上就会看到两个峰值点，依此类推
+                        *简而言之，Hough变换思想为：在原始图像坐标系下的一个点对应了参数坐标系中的一条直线，
+                            同样参数坐标系的一条直线对应了原始坐标系下的一个点
+                        在实际应用中，y=k*x+b形式的直线方程没有办法表示x=c形式的直线(这时候，直线的斜率为无穷大)。
+                            所以实际应用中，是采用参数方程p=x*cos(theta)+y*sin(theta)
+                        q- 为啥使用参数方程？
+                        https://images0.cnblogs.com/blog/585228/201406/241054351742214.png
+                        其实Hough变换可以检测任意的已知表达形式的曲线，关键是看其参数空间的选择，参数空间的选择可以根据它的表达形式而定
+                        p- 可以选择与原图像空间同样的空间作为参数空间。那么圆图像空间中的一个圆对应了参数空间中的一个点
+                        未知半径的圆检测？？
+                        *椭圆有5个自由参数，所以它的参数空间是5维的，因此他的计算量非常大，所以提出了许多的改进算法
+                        idea- 检测椭圆的高效算法，用离散数学解决
+                        对于处理一般图像，需要对图像进行边缘检测和二值化处理,Hough变换的输入是黑白二值图像。
+                        https://blog.csdn.net/weixin_33737774/article/details/86312780?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3
+                        统计所有N（θ,p）的大小，取出N（θ,p）>threasold的参数  （threadsold是预设的阈值）
+                        https://www.cnblogs.com/lancer2015/p/6852488.html
+                        一般情况下，我们在提取直线之前会对原始图像做一次Canny边缘检测。
+                        *orig：http://homepages.inf.ed.ac.uk/rbf/HIPR2/hough.htm
+                        h- The main advantage of the Hough transform technique is that it is tolerant of gaps in feature boundary descriptions and is relatively unaffected by image noise.
+                    DFT 
+                        离散傅里叶变换（Discrete Fourier Transform，缩写为DFT），是傅里叶变换在时域和频域上都呈离散的形式，将信号的时域采样变换为其DTFT的频域采
+                        在实际应用中通常采用快速傅里叶变换计算DFT。
+                        并且一定将体会到通过傅里叶分析看到世界另一个样子时的快感。
+                        随着时间发生改变, 这种以时间作为参照来观察动态世界的方法我们称其为时域分析。
+                        上图是音乐在时域的样子，而下图则是音乐在频域的样子。所以频域这一概念对大家都从不陌生，只是从来没意识到而已
+                        你眼中看似落叶纷飞变化无常的世界，实际只是躺在上帝怀中一份早已谱好的乐章
+                        傅里叶同学告诉我们，任何周期函数，都可以看作是不同振幅，不同相位正弦波的叠加。在第一个例子里我们可以理解为，
+                            利用对不同琴键不同力度，不同时间点的敲击，可以组合出任何一首乐曲。
+                        而贯穿时域与频域的方法之一，就是传中说的傅里叶分析。傅里叶分析可分为傅里叶级数（Fourier Serie）和傅
+                            里叶变换(Fourier Transformation)，我们从简单的开始谈起。
+                        （只要努力，弯的都能掰直！）
+                        https://daily.zhihu.com/story/3935067
+                        http://pic4.zhimg.com/7a83f7d06bee1d4b7f0c19b7addf8cb0_b.jpg
+                        但是要多少个正弦波叠加起来才能形成一个标准 90 度角的矩形波呢？不幸的告诉大家，答案是无穷多个
+                        不仅仅是矩形，你能想到的任何波形都是可以如此方法用正弦波叠加起来的
+                        而后面依不同颜色排列而成的正弦波就是组合为矩形波的各个分量。这些正弦波按照频率从低到高从前向后排列开来
+                        每两个正弦波之间都还有一条直线，那并不是分割线，而是振幅为 0 的正弦波
+                        不同频率的正弦波我们成为频率分量
+                        在频域，0 频率也被称为直流分量，在傅里叶级数的叠加中，它仅仅影响全部波形相对于数轴整体向上或是向下而不改变波的形状。
+                        正弦波就是一个圆周运动在一条直线上的投影
+                        https://en.wikipedia.org/wiki/File:Fourier_series_square_wave_circles_animation.gif
+                        留给了读者无穷的遐想，以及无穷的吐槽，其实教科书只要补一张图就足够了：频域图像，也就是俗称的频谱
+                        http://pic3.zhimg.com/bb8de9d8a622ec08852a334ed34f404b_b.jpg
+                        这就是矩形波在频域的样子，是不是完全认不出来了？
+                        世界是静止的”吗？估计好多人对这句话都已经吐槽半天了。想象一下，世界上每一个看似混乱的表象，实际都是一条时间
+                            轴上不规则的曲线，但实际这些曲线都是由这些无穷无尽的正弦波组成。
+                        我们眼中的世界就像皮影戏的大幕布，幕布的后面有无数的齿轮，大齿轮带动小齿轮，小齿轮再带动更小的。在
+                            最外面的小齿轮上有一个小人——那就是我们自己。
+                        我们只看到这个小人毫无规律的在幕布前表演，却无法预测他下一步会去哪。
+                            而幕布后面的齿轮却永远一直那样不停的旋转，永不停歇。
+                        这样说来有些宿命论的感觉。说实话，这种对人生的描绘是我一个朋友在我们都是高
+                            中生的时候感叹的，当时想想似懂非懂，直到有一天我学到了傅里叶级数……
+                        +
+                            所以对于数组来说,数字之间变化剧烈,代表高频,柔和代表低频.
+                            灰度变化快的是高频,慢的是低频.比如一个物体的边缘,就是高频信号,物体内部,就是低频.
+                            傅立叶变换无非是告诉你这副图像上XXX频率的信号有多少多少, YYY的频率有多少多少.
+                            图像的傅立叶变换可以让你直观的看到这幅图总体上"剧烈"的变化有多少,"柔和"的变化有多少.
+                            一副整体很模糊的图,傅立叶变换后显示的低频分量就很多
+                            同理,如果你在频域上将高频分量去掉,再反变换回去,那图片就会变的模糊.
+                            高频分量表示图像中灰度变换比较快的那些地方，比如物体的边缘就是灰度的突然变化，所以物体边缘就是高频分量
+                            比如低通滤波只让低频分量通过，往往就是使图像模糊，因为边缘信息被去除了。
+                            所谓空域就是这个图像本身, 一副图像是由一个一个的像素点组成的每个像素点有0~255的取值范围
+                            整个图像可以看做是一个矩阵 矩阵的大小就是图像的分辨率，每个像素就是矩阵里的一个数字
+                        https://blog.csdn.net/ViatorSun/article/details/82387854
+                            二维频谱中的每一个点都是一个与之一 一对应的二维正弦/余弦波。
+                            相比于时域分析图像的艰难，在频域分析图像就变得无比轻松
+                            频谱图中的四个角和X,Y轴的尽头都是高频。
+                            中间最小的那个圆圈内包含了大约85%的能量，中间那个圈包含了大约93%的能量，而最外面那个圈则包含了几乎99%的能量。
+                        https://imlogm.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/image-fft/    
+                            二维傅立叶不是x方向与y方向正弦余弦的简单叠加，而是乘积的叠加。
+                            维傅立叶变换后生成的图像与原图上的像素点不存在一一对应关系
+                            原图中的像素值是x,y坐标轴下的（即空间域），而傅立叶变换后的像素值是u,v坐标轴下的（即频域）。
+                            https://imlogm.github.io/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/image-fft/1_1.png
+                            这两点处的亮度值最大，其余点处亮度值为0。这表示原始图像可以由这两点所对应的三角波组成，三角波的幅值为其对应点的亮度
+                            我用红框标出了其中的一个三角波，这个三角波的外形与图1的原始图像最相似。结果也和我们预料的一样，傅立叶变换后，
+                                这个三角波的幅值是最大的，所以我们看到了图1中小图左上角的白点
+                            这两个白点是对称的（换而言之，右下角区域的三角波和左上角区域的三角波对称）
+                                本质上就应该是对称的
+                                傅立叶双边频谱关于原点对称
+                                离散傅里叶变换本质是周期信号求傅里叶级数，所以其实会有周期延拓
+                            为什么要频移，因为我们把傅立叶变换得到的二维矩阵用图像的方式显示时，默认的坐标原点(0, 0)位于图像的左上角。频移要做的就是把坐标原点移动到图像的中心。
+                            https://pic2.zhimg.com/v2-bad520e27c839917cf27d76e1206bb70_1200x500.jpg
+                        https://zhuanlan.zhihu.com/p/110026009
+                            一维傅里叶变换是将一个一维的信号分解成若干个复指数波
+                            可以将每一个复指数波 [公式]都视为是余弦波+j*正弦波的组合。
+                            频域就是一些参数，千万种变化的图像其实是各种基本元素的组合
+                                组合也是千变万化的，组合可以model成参数，参数决定了最终图像张啥样
+                            在信号处理中用到更多的也是幅度图。
+                            一维傅里叶变换就是一个基变换，在时域中，基是一族冲激信号 [公式] ,在频域中；基是 [公式] ，而且这组基是正交基。
+                            https://pic3.zhimg.com/80/v2-70e8b55909a2486d0e1058e5ecccfbbe_1440w.jpg
+                            FT将其分解成若干个一维的简单函数之和。二维的信号可以说是一个图像，类比一维，那二维FT是不是将一个图像分解成若干个简单的图像呢？
+                            二维FT将一个图像分解成若干个复平面波 [公式] 之和
+                            通过公式，我们可以计算出，每个平面波在图像中成分是多少。从公式也可以看到，二维傅里叶变换就是将图像与每个不同频率的不同方向的复平面波做内
+                                积（先点乘在求和），也就是一个求在基 [公式] 上的投影的过程
+                            二维频率域K-SPACE
+                            三个参数可以确定一个一维的正弦波
+                            哪几个参数可以确定一个二维的正弦平面波呢？答案是四个，其中三个和一维的情况一样（频率 [公式] ,幅度 [公式] ，相位 [公式]），但是具有相同这些参数的平面波却可以有不同的方向 [公式] 
+                            向量是有方向的，也是有长度的。所以我们用一个二维的矩阵的来保存分解之后得到的信息。这个矩阵就是K空间
+                            这个点里面保存的内容复数就是此平面波的幅度和相位。下面这个图很好的体现了这一点
+                            *所以k空间和对应图像储存的信息含量是一样的，只不过表现形式不同，或者说基不同。
+                            信息含量不变
+                            https://pic1.zhimg.com/80/v2-39eb0e4cd7fa4f0cd927bc97fc1c1674_1440w.jpg
+                            同时在k空间中采样过低，图像也会混叠
+                            二维傅里叶变换中，实空间旋转多少，频率空间也会相应旋转多少。这其实是高维傅里叶变换缩放定理的一种特殊情况
+                            因为matlab中的fft算法都是将0放在第一个的，所有写matlab时一定要将k空间fftshift一下使得零频回到k空间中心。
+                            简单的应用k空间进行去噪例子。通过去掉明显的k空间的异常峰，可以去除图像中有规律变化的噪声或者伪影
+                            https://pic4.zhimg.com/80/v2-5b1db77b17cc490cae1e9670bb34eeeb_1440w.jpg
+                            指纹去噪
+                            天体表面去噪
+                            复数图像的k空间没有共轭对称的特点
+                    DCT
+                        类似于离散傅里叶变换，但是只使用实数。
+                        一个是离散正弦变换，它相当于一个长度大概是它两倍的实奇函数的离散傅里叶变换；
+                            另一个是改进的离散余弦变换，它相当于对交叠的数据进行离散余弦变换。
+                        尤其是它的第二种类型，经常被信号处理和图像处理使用，用于对信号和图像（包括静止图像和运动图像）进行有损数据压缩
+                        这是由于离散余弦变换具有很强的"能量集中"特性：大多数的自然信号（包括声音和图像）的能量都集中在离散余弦变换后的低频部分
+                        而且当信号具有接近马尔可夫过程的统计特性时，离散余弦变换的去相关性接近于K-L变换（Karhunen-Loève变换——它具有最优的去相关性）的性能。
+                        在静止图像编码标准JPEG中，在运动图像编码标准MJPEG和MPEG的各个标准中都使用了离散余弦变换
+                        *在这些标准制中都使用了二维的第二种类型离散余弦变换，并将结果进行量化之后进行熵编码。
+                        其中（0,0）位置的元素就是直流分量，矩阵中的其他元素根据其位置表示不同频率的交流分量。
+                        一个类似的变换, 改进的离散余弦变换被用在高级音频编码，Vorbis和MP3音频压缩当中
+                        离散余弦变换也经常被用来使用谱方法来解偏微分方程，这时候离散余弦变换的不同的变量对应着
+                            数组两端不同的奇/偶边界条件
+                        直接使用公式进行变换需要进行{\displaystyle O(n^{2})}O(n^{2})次操作，但是和快速傅里叶变换类似，
+                            我们有复杂度为{\displaystyle O(n\log(n))}O(n \log(n))的快速算法，
+                            这就是常常被称做蝶形变换的一种分解算法
+                        另外一种方法是通过快速傅里叶变换来计算DCT，这时候需要{\displaystyle O(n)}O(n)的预操作和后操作。
+                        https://www.jianshu.com/p/b923cd47ac4a
+
+                13. Histograms and Templates. . 
+                    Histograms basic 
+                        直方图是数码摄影的核心工具，是“摄影师的X光片”。
+                        科学曝光、精确后期。
+                        当我们用横轴代表0-255的亮度数值。竖轴代表照片中对应亮度的像素数量，这个函数图像就被称为直方图。
+                        统计学的感觉
+                        上面的这个直方图，准确来说应该叫RGB直方图
+                        q- 直方图反应了什么？
+                        我们可以同时看到R（红）、G（绿）、B（蓝）每个通道的直方图，以及最上面叠加后的RGB直方图
+                        其中灰色的是三个通道直方图都重合的部分，黄色是绿、红两个通道直方图重合的部分，而
+                            红色则是只有红通道直方图的部分
+                        提示环境亮度反差是否超过了相机能记录下来的宽容度
+                        一张理想的曝光应该如下图，直方图堆积在中部，最左侧和最右侧都没有被切断
+                        255的纯白亮度值那含有非常多的像素
+                        https://www.zhihu.com/question/20511799
+                        这个时候就需要通过降低曝光补偿，缩小光圈，降低ISO，加快快门速度的方式来减小曝光时间。
+                        太亮了的话就是过曝光
+                        q- 什么是过曝光，如何补救。相反case。？
+                        一张欠曝的图片，最0值的纯黑区域也有大量的像素存在，直方图的左侧切断。需要我们在拍摄时增加曝光量。
+                        如果想记录下暗部区域的枯木细节，则亮部的太阳周围天空全部过曝溢出，一片死白。直方图上看，左侧接触边缘，右侧切断，
+                            很明显环境光比超出了相机的宽容度，我们不可能在一张照片中记录下所有细节。
+                        这个时候，我只能用包围曝光的办法同时拍下上面的两张图片，这样图片亮部和暗部被分别记录在了两幅图里。
+                            后期再用蒙板合成两张图片
+                        这也是高动态HDR的思想！
+                        q- 什么是HDR
+                        q- 信噪比”(芯片收到的光线信号与芯片本身噪点数量的比值)太低。是是啥效果？
+                        2003年摄影师 Michael Reichmann提出了“向右曝光”的概念。即在照片亮部不溢出的情况下，让照片中的像素尽量的记录在更亮的区域内
+                            也就是直方图尽量的靠右，让高光白色区域总是存在一些像素。
+                        像素主要是分布在直方图的中间，体现晨雾的朦胧。
+                        一张照片的明暗，我们可以从两个角度进行解读。一种是科学的方式，也就是前面提到的曝光。    
+                            一种是艺术的方式，也就是我接下来会讲到的影调
+                        或许从科学的角度，我们会说它是欠曝的。但换成艺术的角度，我们却会说它的影调是低调深沉的
+                        而中间调的照片是最常见的，画面中既有黑又有白，但大部分像素都分布在直方图中间的区域，给人一种正常、中性的感觉
+                        h- *后期的目的，就是依据直方图，重新调整照片的亮度分布，达到我们想要的气氛。
+                    Template Matching
+                14. Contours. . . . . . . . . . .
+                    assemble those edge pixels into contours
+                    not only edges 
+                    approximate a contour representing a polygon with another contour having fewer vertices
+                15. Background Subtraction. . . .
+                    背景建模或前景检测的算法主要有：
+                        混合高斯模型（Mixture of Gaussian Model）
+                        混合高斯在现有的背景建模算法中应该算是比较好的，很多新的算法或改进
+                            的算法都是基于它的一些原理的不同变体，
+                            但混合高斯算法的缺点是计算量相对比较大，
+                            速度偏慢，对光照敏感）；
+                    
+                16. Keypoints and Descriptors. . 
+                17. Tracking. . . 
+                18. Camera Models and Calibration. 
+                20. The Basics of Machine Learning in OpenCV. .
+                21. StatModel: The Standard Model for Learning in OpenCV. . . . 
+                22. Object Detection. . . . 
+            // contents : op10 
+            obj: 基本的图像操作，数据结构，概念，一些坑，特殊性
+            ch01-ch05
+                rerequisites, For the most part, readers need only know how to program in C++
+                OpenCV portability guide
+                q- 
+                opencv2/flann/miniflann.hpp
+                Approximate nearest neighbor matching functions
+                opencv2/imgproc/imgproc_c.h
+                Old C image processing functions
+                opencv2/video/photo.hpp
+                Algorithms specific to handling and restoring photographs
+                opencv2/features2d/features2d.hpp
+                Two-dimensional feature tracking support
+                Cascade face detector; latent SVM; HoG; planar patch detector
+                Calibration and stereo
+                ---
+                ---
+                some of the modules available in the opencv_contrib repository
+                OpenCV timeline
+                OpenCV is built in layers
+                language bindings and sample applications
+                contributed code in opencv_contrib
+                which contains mostly higher-level functionality
+                After that is the core of OpenCV, and at the bottom are the various hardware optimizations
+                hardware acceleration layer (HAL)
+                Speeding Up OpenCV with IPP
+                subset of Intelï¿½ï¿½s Inteï¿½\ grated Performance Primitives (IPP) library
+                low-level optiï¿½\ mized C code 
+                The improvement in speed from using IPP can be substantial
+                Relative speedup when OpenCV uses IPPICV
+                Online Documentation
+                there is extensive documentation as well as a wiki available
+                divided into several major compoï¿½\ nents:
+
+                ---op35 
+                a truly excellent compressed referï¿½\ ence to almost the entire library
+                pin these two beautiful pages to your cubicle wall
+                The exact module list has evolved over time
+                ---op40 
+                The ï¿½ï¿½coreï¿½ï¿½ is the section of the library that contains all of the basic object types and their basic operations.
+                imgproc
+                The image processing module contains basic transformations on images
+                Two-dimensional feature tracking support
+                Every function in the library is part of one module
+                This module contains user interface functions that can be used to display images or take simple user input. It can be thought of as a very lightweight window UI toolkit.
+                highgui
+                objdetect
+                This module contains algorithms for detecting specific objects
+                such as faces or pedestrians. You can train the detectors to detect other objects as well.
+
+                The Machine Learning library is actually an entire library in itself
+                doing nearest neighbor searches in large data sets.
+                flann
+                current modules
+                FLANN stands for ï¿½ï¿½Fast Library for Approximate Nearest Neighbors.ï¿½ï¿½ 
+                you will not likely use directly, but which are used by other functions
+                gpu (split to multiple cuda* modules in OpenCV 3.0)
+                There are also some funcï¿½\ tions that are implemented only for GPU operation
+                require computational resources sufficiently high that implementation on non-GPU hardware
+                photo This is a relatively new module that contains tools useful for computational photography.
+                This entire module implements a sophisticated image stitching pipeline
+                stitching
+                nonfree
+                algorithms that are patented or otherwise burdened by usage restrictions (e.g., the SIFT algorithm)
+                segregated
+                segregated into their own module
+                This module contains old things that have yet to be banished from the library altogether
+                This is a newer module that could be considered analogous to the GPU module,
+                ocl (disappeared in OpenCV 3.0; replaced with T-API technology)
+                Khronos OpenCL standard
+                Khronos-capable parallel device. 
+                This is in contrast to the gpu module
+                NVidia CUDA toolkit 
+                exact meaning of the parameters these algorithms require
+                in-depth understanding
+                basic building blocks of the library
+                proper understanding of the algorithms implemented
+                the latter is less mature
+                Deep neural networks
+                Text detection and recognition; may optionally use open source OCR Tesseract as backend
+
+                Processing RGB + depth maps, obtained with Kinect and other depth sensors
+                computed with stereo correspondence algorithms
+                Biologically inspired vision
+                Advanced image processing and computational photography algorithms
+
+                ximgproc, xphoto
+                object-tracking algorithms
+                tracking
+
+                Then you need to reconfigure OpenCV with CMake
+                OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules
+                The built contributed modules will be put into the same direcï¿½\ tory as regular OpenCV binaries
+                Portability
+                OpenCV has been ported to almost every commercial system
+                This meant that the C and C++ code had to be fairly stanï¿½\ dard 
+                is the most mature
+                Parallelization in Linux is done via a third-party library or by enabling OpenMP
+                Parallelization in Android is done via Intel TBB.
+                together with its performance and portability
+                decision or a new representation
+                The decision might be ï¿½ï¿½there is a person in this sceneï¿½ï¿½ or ï¿½ï¿½there are 14 tumor cells on this slide.ï¿½ï¿½
+                Computer vision1  is the transformation of data from a still or video camera 
+                into either a decision or a new representation
+                transformation
+                A new representation might mean turning a color image into a grayscale image
+                removing camera motion from an image sequence.
+                we are such visual creatures
+                There is massive feedback in the visual stream that is, as yet, little understood
+                made from years of living in the world
+                What the computer ï¿½ï¿½seesï¿½ï¿½ is just a grid of numbers. Any given numï¿½\ ber within that grid has a rather large noise component
+                this grid of numbers is all the computer ï¿½ï¿½sees.ï¿½ï¿½
+                the 2D appearance of objects can change radï¿½\ ically with viewpoint
+                is worse than hard: it is formally impossible to solve. 
+                The same 2D image could represent any of an infinite combination of 3D scenes
+                Such corruption stems from variations in the world (weather, lighting, reflections, movements)
+                imperfections in the lens and mechanical setup
+                finite integration time on the sensor (motion blur),
+                electrical noise in the sensor or other electronics, and compression artifacts after image capture. 
+                The robot might use the facts that a desk is an object found inside offices and that staplers are mostly found on desks
+                This gives an implicit size reference
+                eliminate falsely ï¿½ï¿½recognizingï¿½ï¿½ staplers in impossible places (e.g., on the ceiling or a window)
+                The robot can safely ignore a 200-foot advertising blimp shaped like a stapler
+                Contextual information can also be modeled explicitly with machine learning techniï¿½\ ques
+                measure hidden bias variables by using additional sensors. 
+                We typically deal with noise by using statistical methods. 
+                lens distortions are well understood, one need only learn the parameters for a simple polynomial model in order to describe
+                monitoring system that counts how many people cross through an area in an amusement park
+                Vision software for robots that wander through office buildings will employ different strategies than vision software for stationary security cameras because the two systems have signifiï¿½\ cantly different contexts and objectives
+                we can rely on those constraints to simplify the problem and the more reliable our final solution will be
+                In the latter case, there are several tried-and-true methods of using the library
+                ---
+                q- what is the perpose of cv tasks?
+                    Computer vision tasks include methods for acquiring, processing, analyzing and understanding digital images, and extraction of high-dimensional data from the real world in order to produce numerical or symbolic information
+                    This image understanding can be seen as the disentangling of symbolic information from image data using models constructed with the aid of geometry, physics, statistics, and learning theory
+                    disentangling 
+                q- Typical tasks?
+                    // there is a hierarchy, when talking about cv tasks. There are some high lev tasks, mid-lev 
+                        tasks, and low lev. We typically work at mid-lev!!
+                    low-lev:
+                        Image features detection 
+                            at various levels of complexity are extracted from the image data
+                            include Lines, edges and ridges.
+                            Localized interest points such as corners, blobs or points.
+                            More complex features may be related to texture, shape or motion
+                    mid-lev:
+                        Image restoration
+                        object Detection/segmentation 
+                    high-lev:
+                        face detection 
+                ---
+                modular and headers are not the same 
+                The main header file of interest is .../ include/opencv2/opencv.hpp
+                it just calls the header files for each OpenCV module:
+
+                it will slow down compile time
+                https://drive.google.com/file/d/0B6J64DhFuODLamVjWkNWNDFZeHc/view
+                op49
+                --- op49 + 15p
+                Display a Picture
+                a wide array of image file types
+                cv::imshow( "Example1", img );
+                cv::Mat 
+                OpenCV functions live within a namespace called cv.
+                To get out of this bookkeeping chore
+                general include opencv.hpp
+                only the neces- sary include file to improve compile time
+                loads the image
+                cv::imread
+                determines the file format
+                based on the filename
+                A cv::Mat structure is returned
+                OpenCV uses this structure to handle all kinds of images
+                single-channel, multichannel, integer-valued
+                assigns a name to the window
+                cv::namedWindow
+                WINDOW_NORMAL If this is set, the user can resize the window (no constraint).
+                WINDOW_OPENGL If this is set, the window will be created with OpenGL support
+                WINDOW_AUTOSIZE If this is set, the window size is automatically adjusted to fit the displayed image
+                cannot change the window size manually.
+                https://docs.opencv.org/2.4/modules/highgui/doc/user_interface.html?highlight=namedwindow
+                In the former case, the size of the window will be the same regardless of the image size
+                display it
+                cv::imshow
+                cv::Mat structure
+                If a positive argument is given, the program will wait for that number of milliseconds
+                If the argument is set to 0 or to a negative number, the program will wait indefinitely for a key-press
+                automatically deallocated
+                For longer, more complex programs, the programmer should make sure to tidy up the windows before they go out of scope to avoid memory leaks
+                After that, we will start to tinker a little more with the actual images
+                some kind of loop to read each frame in sequence
+                cv::VideoCapture
+                cap >> frame;
+                cv::imshow( "Example3", frame );
+                instantiated
+                This object can open and close video files of as many types as ffmpeg supports
+                Once we have displayed the frame, we then wait 33 ms
+                if( cv::waitKey(33) >= 0 ) break;
+                video at 30 frames per second and allow user input to interrupt between each frame 
+                it is better to check the cv::VideoCapture structure in order to deter- mine the actual frame rate of the video
+                Otherwise, 33 ms will pass and we will execute the loop again. 
+                tinker around, enhance our toy programs
+                add a slider trackbar
+                whenever the user jumps to a new location in the video with the trackbar, we’ll pause there in single-step mode
+                HighGUI toolkit provides a number of simple instruments
+                cv::createTrackbar() and indicate which window we would like the trackbar to appear in
+                int current_pos = (int)g_cap.get(cv::CAP_PROP_POS_FRAMES);
+
+                cv::setTrackbarPos("Position", "Example2_4", current_pos);
+                a global variable to represent the trackbar position
+                onTrackbarSlide
+                cv::createTrackbar("Position", "Example2_4", &g_slider_position, frames,  onTrackbarSlide);
+                callback
+                updates this variable and relocates the read position
+                leading g_ to any global variable
+                A positive number indi- cates how many frames are displayed before stopping;
+                a negative number means the system runs in continuous video mode
+                some AVI and mpeg encodings do not allow you to move backward in the video
+                g_cap.set(cv::CAP_PROP_POS_FRAMES, pos);
+                int frames = (int) g_cap.get(cv::CAP_PROP_FRAME_COUNT);
+                int tmpw = (int) g_cap.get(cv::CAP_PROP_FRAME_WIDTH);
+                These routines allow us to configure (or query, in the latter case)
+                HighGUI is highly civilized
+                when a new video position is requested, it will automatically handle issues such as the possibility that the frame we have requested is not a keyframe; it will start at the previous keyframe and fast-forward up to the requested frame without us having to fuss with such details
+                does not distinguish between the name of the trackbar and the label that actually appears on the screen next to the trackbar
+                lightweight
+                framerate? p-
+                any change on delay will change framerate, how can we control this? p-
+                use OpenCV to create your own video player
+                smoothing an image, which effectively reduces the information content of the image by convolving it with a Gaussian or other simi- lar kernel function
+                Could use GaussianBlur(), blur(), medianBlur() or bilateralFilter()
+                To make this point clear, we use it in two consecutive calls to cv::GaussianBlur()
+                The size of the Gaussian kernel should always be given in odd numbers
+                temporary storage is assigned for us in this case.
+                out is used as both the input and out- put 
+                The resulting doubleblurred image is displayed
+                uses Gaussian blurring to downsample an image by a factor of 2
+                handle the changing scales in which a scene or object is observed
+                image pyramid
+                Nyquist-Shannon Sampling Theorem
+                cv::pyrDown( img1, img2);
+                ??????,???????????????
+                only a singlechannel image to write to
+                Canny edge detector
+                cv::cvtColor( img_rgb, img_gry, cv::COLOR_BGR2GRAY);
+                convert
+                cv::Canny( img_gry, img_cny, 10, 100, 3, true );
+                string together various operators quite easily
+                pyrDown
+                pyramid down operator
+                look for lines that were present in the twice-reduced image,
+                cv::Vec3b intensity = img_rgb.at< cv::Vec3b >(y, x);
+                uchar blue = intensity[0];
+
+                cv::Vec3b
+                (unsigned int)red
+                (unsigned int)img_gry.at<uchar>(y, x) 
+                x /= 4; y /= 4;
+                Pyramid2
+                img_cny.at<uchar>(x, y) = 128; // Set the Canny pixel there to 128
+                In still other cases, we want to work with real-time data streaming in from some kind of camera device
+                cv::VideoCapture object works the same for files on disk or from a camera
+                The default value is –1, which means “just pick one”;
+                cv::VideoCapture cap;
+                cap.open(0); 
+                if( !cap.isOpened() ) { // check if we succeeded
+
+                std::cerr << "Couldn't open capture." << std::endl;
+                record streaming input
+                we are able to create a writer device that allows us to place frames one by one into a video file
+                cv::VideoWriter.
+                converts them to a log-polar format (something like what your eye actually sees
+                double fps = capture.get( cv::CAP_PROP_FPS );
+                writer.open( argv[2], CV_FOURCC('M','J','P','G'), fps, size );
+                cv::logPolar(
+                logpolar_frame, // Output log-polar frame
+                Centerpoint for log-polar transformation
+                log-polar transformation
+                Fill outliers with 'zero'
+
+                writer << logpolar_frame;
+                mostly familiar elements
+                read some properties
+                The second is the video codec with which the video stream will be compressed
+                There are countless such codecs in circulation, but whichever codec you choose must be available on your machine
+                codecs are installed separately from OpenCV
+                relatively popular MJPG codec
+                CV_FOURCC(’M’,’J’,’P’,’G’)
+                take stock of where we are and look ahead to what is coming
+                the library contains primitive functions for manipulating these images
+                more sophisticated manipulation of the entire set of abstract data types
+                In the next few chapters, we will delve more deeply into the basics and come to understand in greater detail both the interface-related functions and the image data types. 
+                explore the many specialized services that the API provides
+                camera calibration, tracking, and recognition
+                build the library in both the debug and the release versions. This may take some time,
+                lkdemo.cpp (this is an example motion-tracking program).
+                by typing n. Typing n again will toggle between “night” and “day” views.
+                reads from a camera and stores downsampled color images to disk
+                display the frames as they are processed
+                dynamically vary the pyramid downsampling reduction level by factors of between 2 and 8
+                Getting to Know OpenCV Data Types
+                ---op67 
+                cover the vast menagerie of functions that allow us to manipulate this data in a host of useful ways
+                These types include simple vectors and matri- ces, as well as representations of simple geometric concepts like points, rectangles, sizes, and the like. 
+                basic data types
+                large array types
+                helper objects
+                The star example of this category is the cv::Mat class
+                represent arbitrary-dimensional arrays
+                this category contains related objects such as the sparse matrix cv::SparseMat class
+                nondense data such as histograms
+                OpenCV also makes heavy use of the Standard Template Library (STL).
+                under the hood
+                In fact, cv::Vec<> is a vector container for anything, and uses templating to create this functionality
+                In most usages, however, cv::Vec is used as a container for C primitive types like int or float
+                Why not just use STL classes?
+                fixed vector classes are intended for small vectors whose dimensions are known at compile time
+                handle small common operations
+                cv::Mat class, which is the right way to handle big arrays
+                aliases (typedefs) for common instantiations of the cv::Vec<> template
+                like cv::Vec2i, cv::Vec3i, and cv::Vec4d
+                aliases
+                cv::Vec{2,3,4,6}{b,w,s,i,f,d} is valid for any combination of two to four dimensions and the six data types
+                fixed vector classes
+                handling of certain specific small matrix operations
+                3 × 3 matrices around, and a few 4 × 4, which are used for various transformations
+                cv::Matx{1,2,3,4,6}{1,2,3,4,6}{f,d}
+                fixed matrix classes
+                precisely this knowledge that makes operations with the fixed matrix classes highly efficient and eliminates many dynamic memory allocation operations
+                The main difference between the point classes and the fixed vector classes is that their members are accessed by named vari- ables 
+                rather than by a vector index
+                Those aliases have names like cv::Point2i, cv::Point2f, and cv::Point2d, or cv::Point3i, cv::Point3f, and cv::Point3d
+                cv::Scalar is directly derived from an instantiation of cv::Vec<> (specifically, from cv::Vec<double,4>)
+                cv::Size and cv::Rect
+                own templates
+                cv::Rect has all four
+                For floating-point values of width and height, use the alias cv::Size2f
+                cv::RotatedRect and contains a cv::Point2f called cen ter, a cv::Size2f called size, and one additional float called angle.
+                can’t
+                cv::RotatedRect and contains a cv::Point2f called cen ter, a cv::Size2f called size, and one additional float called angle.
+                examples that should convey what you can and can’t do with these objects
+                For the low-level details, you should consult .../opencv2/core/core.hpp.
+
+                big advantage of the point classes is that they are simple and have very little overhead.
+                last letter indicating the desired primitive
+                b is an unsigned character, s is a short integer, i is a 32-bit integer, f is a 32-bit floating-point number, and d is a 64- bit floating-point number
+                list of functions natively supported by the point classes
+                singleton can be understood to mean
+                Double-precision dot product
+                Query if point p is inside rectangle r
+                the values will automatically be rounded.
+                four-dimensional point class. 
+                Element-wise multiplication 
+                (Quaternion) conjugation
+                (Quaternion) real test 
+                cv::Scalar s( x0, x1, x2, x3 );
+
+                member access functions (i.e., operator[]),
+                and other properties from the fixed vector classes
+                inherits all
+                old C interface CvScalar
+
+                cv::Scalar
+                Member access sz.width; sz.height;
+                Compute area sz.area();
+                size classes do not support casting to the fixed vector classes
+                more restricted utility
+                Matrix of zeros m23d = cv::Matx23d::zeros();
+                Matrix of ones m16f = cv::Matx16f::ones();
+                Matrix of identical elements m33f = cv::Matx33f::all( x );
+
+                cv::Matx21f m(x0,x1); cv::Matx44d m(x0,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15);
+
+                there is no 1 × 1 matrix alias, nor is there a 5 × 5
+                but you will pretty much never want the missing ones anyway
+                If you really do want one of the odd ones, you can just instantiate the template yourself (e.g., cv::Matx<5,5,float>).
+                cv::Matx<5,5,float>
+                Singleton algebra
+                Comparison
+                Reshape a matrix 
+                Cast operators 
+                cv::DECOMP_LU
+                default method is
+                n44f = m44f.inv( method ); 
+                Solve linear system 
+                Per-element multiplication 
+                m31f = m33f.solve( rhs31f, method )
+
+                m32f = m33f.solve<2>( rhs32f, method );
+                *
+                essentially solving for k different systems at once
+                also determine the number of columns in the result matrix
+                fixed matrix functions are static relative to the class
+                directly as members of the class
+                rather than as members of a particular object
+                handy class function for it: cv::Mat33f::eye(). 
+                The fixed vector classes are derived from the fixed matrix classes
+                convenience functions for cv::Matx<>
+                convenience functions
+                num- ber of columns is one
+                with the addition of w, which indicates an unsigned short
+                v4f[ i ]; v3w( j ); // (operator() and operator[]  // both work)
+
+                Copy constructor
+                Vec6d v6d(x0,x1,x2,x3,x4,x5);
+                The most substantial difference between the OpenCV and STL complex number classes
+                member access
+                member functions real() and imag()
+                while in the OpenCV class, they are directly accessible as (public) member variables re and im
+                Complex conjugate z2 = z1.conj();
+
+                Value constructors cv::Complexd z1(re0); cv::Complexd(re0,im1) ;
+
+                op78
+                termination criteria
+                for doing various operations on the con- tainers (such as “ranges” or “slices”)
+                Looking into cv::Ptr, we will examine the garbagecollecting system
+                “smart” pointer object cv::Ptr
+                Helper Objects
+                OpenCV uses exceptions to handle errors. OpenCV defines its own exception type, cv::Exception
+                which is derived from the STL exception class std::exception.
+                CV_Error( errorcode, description ) will generate and throw an exception with a fixed text description. 
+                CV_Error_( errorcode, printf_fmt_str, [printf-args] ) works the same, but allows you to replace the fixed description with a printf-like format string
+                CV_Assert( condition )
+                These macros are the strongly preferred method of throwing exceptions, as they will automatically take care of the fields func, file, and line for you
+                Utility Functions
+                cv::cubeRoot() 
+                cv::getNumThreads() 
+                cv::setUseOptimized() Enables or disables the use of optimized code (SSE2, etc.)
+
+                cv::setNumThreads()
+                Set number of threads used by OpenCV
+                align to block size, a power of 2
+                cv::alignPtr()
+
+                On architectures such as x86, the CPU handles this for you automatically
+                assembling your value from those reads at the cost of a sub- stantial penalty in performance.
+                why we have to do this by our self even if there is auto. done?
+                q- why we have to do this by our self even if there is auto. done?
+                the minimum number that is greater or equal to sz yet divisible by n
+                align to block size, a power of 2
+                cv::alignSize()
+                cv::allocate()
+
+                similarly to the array form of new
+                The result is reported in degrees ranging from 0.0 to 360.0, inclusive of 0.0 but not inclusive of 360.0
+                cv::cubeRoot()
+                cv::FastMalloc() works just like the malloc() you are familiar with, except that it is often faster, and it does buffer size alignment for you. 
+                When OpenCV is compiled with OpenMP support, this function sets the number of threads that OpenCV will use in parallel OpenMP regions
+                if we have four cores each with two hyperthreads, there will be eight threads by default
+                SSE2 instructions
+                later versions have increasingly moved to containing that code in the OpenCV itself
+                template metaprogramming style simi- lar to STL, Boost, and similar libraries.
+                cv::Point_<int>
+                actually
+                instantiating these templates on your own
+                provide the unitary type
+                compose the template
+                cv::Scalar_<Type T>
+                identical to cv::Vec<T, 4>)
+                cv::Vec<Type T, int H> A set of H objects of type T.
+                Dynamic and Variable Storage
+                also have corresponding template types cv::Mat<> and cv::SparseMat_<>
+                handle compact collections
+                color (channel) vec- tors or coordinate vectors
+                as well as small matrices that operate in these spaces
+                classes that are specializations of those templates
+                Generate some random numbers
+                open .../opencv/cxcore/include/cxtypes.h. 
+                Create a floating-point cv::Point2f and convert it to an integer cv::Point. Convert a cv::Point to a cv::Point2f.
+                Using the cv::Mat33f and cv::Vec3f objects (respectively), create a 3 × 3 matrix and 3-row vector.
+                Can you multiply them together directly? If not, why not?
+                Compact matrix and vector template types:
+                Can you multiply them together directly? If not, why not?
+
+                Try type-casting the vector object to a 3 × 1 matrix
+                What happens now?
+                The next stop on our journey brings us to the large array types
+                Chief among these is cv::Mat,
+                epicenter of the entire C++ implementation of the OpenCV library. 
+                The overwhelming majority of functions in the OpenCV library are members of the cv::Mat class
+                take a cv::Mat as an argument, or return cv::Mat as a return value;
+                are stored as dense arrays
+                for every entry in the array, there is a data value stored in memory corresponding to that entry
+                The alternative would be a sparse array
+                This can result in a great savings of storage space if many of the entries are in fact zero
+                but can be very wasteful if the array is relatively dense. 
+                histogram
+                For the case of sparse arrays, OpenCV has the alternative data structure, cv::SparseMat.
+                IplImage and CvMat. You might also recall CvArr
+                these are all gone, replaced with cv::Mat
+                no more dubious casting of void* pointers in function arguments
+                tremendous enhancement in the internal cleanliness of the library
+                N-Dimensional Dense Arrays
+                a data pointer to where the array data is stored
+                refcount reference counter analogous to the ref- erence counter used by cv::Ptr<>. 
+                The memory layout in data is described by the array step[]
+                two-dimensional array
+                &(mtxi, j) = mtx.data + mtx.step 0 *i + mtx.step 1 * j
+                not required to be simple primitives
+                The data contained in cv::Mat
+                returned by a member function, cv::channels().
+                a two-dimensional three-channel array of 32-bit floats; in this case, the element of the array is the three 32-bit floats with a size of 12 bytes
+                two dimentional(i,j) def. an element, for this element, there are three float numbers  
+                The difference between an n-dimensional single-channel array and an (n¨C1)-dimensional multichannel array is that this padding
+                will always occur at the end of full rows
+                no size and no data type
+                later ask it to allocate data by using a member function such as create().
+                Valid types in this context specify both the fundamental type of element as well as the number of channels
+                CV_32FC3 would imply a 32-bit floating-point three-channel array
+                have the form CV_{8U,16S,16U,32S,32F,64F}C{1,2,3}
+                optional fourth argument with which to initialize all of the ele©\ ments in your new array
+                m.setTo( cv::Scalar( 1.0f, 0.0f, 1.0f ) );
+
+                scalar is actually a scalar list
+                ?
+                The purpose of this padding is to improve memory access speed.
+                CV_8UC(3) is equivalent to CV_8UC3
+                no macro for CV_8UC7, to get this you would have to call CV_8UC(7)
+                It is critical to understand that the data in an array is not attached rigidly to the array object. 
+                it is possible to assign one matrix n to another matrix m (i.e., m=n)
+                If I update B, A is also affected
+                Mat A; // Suppose A has some values in it Mat B=A;
+                When a Mat is specified as a function parameter with or without the reference &, the class uses smart pointers internally to point to the original data instead of copying it
+                I do believe using it improves readability
+                people that are not aware of the internal workings of a Mat might fear that a copy is being made if the parameter is specified without &.
+                format(R,"python")
+                default formatting option. OpenCV, however, allows you to format your matrix output:
+                https://docs.opencv.org/2.4/doc/tutorials/core/mat_the_basic_image_container/mat_the_basic_image_container.html
+                t- 
+                in fact you will use only a small fraction of these most of the time
+                Having said that, when you need one of the more obscure ones, you will proba©\ bly be glad it is there.
+                The copy constructors (Table 4-2) show how to create an array from another array
+                Generalized region of interest copy constructor that uses an array of ranges to select from an n-dimensional array
+                region of interest
+
+                you may want to create a new C++-style cv::Mat structure from an existing CvMat or IplImage structure
+                These constructors do a lot more for you than you might realize at first
+                it is possible to simply use a pointer to one of the C structures wherever a cv::Mat is expected and have a reasonable expectation that things will work out correctly
+                why the copyData member defaults to false
+                either an arbitrary cv::Vec<> or cv::Matx<> to be used to create a cv::Mat array
+                template constructors
+                use template to construct cv::Mat
+                corresponding dimension and type,
+                const cv::Matx<T,m,n>& vec,
+                cv::Mat(  const cv::Matx<T,m,n>& vec,  bool copyData=true );
+                static member functions to create cer©\ tain kinds of commonly used arrays 
+                zeros(), ones(), and eye()
+                Accessing Array Elements Individually
+                The basic means of direct access is the (template) member function at<>()
+                using the row and column locations of the data you want
+                cv::Mat::ones(), if the array created is multichannel, only the first chan©\ nel will be set to 1.0, while the other channels will be 0.0
+                m.at<cv::Vec2f>(3,3)[0]
+                cv::Mat m = cv::Mat::eye( 10, 10, 32FC2 );
+
+                printf(  "Element (3,3) is %f + i%f\n",  m.at<cv::Complexf>(3,3).re,  m.at<cv::Complexf>(3,3).im, );
+                complex numbers
+                create an array made of a more sophisticated type
+                cv::Complexf is an actual object type, a purely compile-time construct
+                The need to generate one of these representations (runtime) from the other (compile time) is precisely why the cv::DataType<> template exists.
+                convert compilation-time type information to an OpenCV-compatible data type identifier
+                Mat A(30, 40, DataType<float>::type);
+                Template "trait" class for OpenCV primitive data types.
+                description of such primitive data types without adding any fields or methods to the corresponding classes
+                It is not DataType itself that is used but its specialized versions
+                *
+                There are thus two ways to get a pointer
+                cruise through the entire array as if it were a giant one-dimensional array
+                isContinuous() will tell you if the members are continu©\ ously packed.
+                3 types of accessors for cv::Mat
+                sequential access
+                iterator mechanism
+                works more or less identically to, the anal©\ ogous mechanism provided by the STL containers
+                cv::MatIterator<> and cv::MatConstIterator<>
+                one for const and one for non-const arrays
+                The cv::Mat methods begin() and end() return objects of this type
+                dle the continuous packing and noncontinuous packing cases automatically, as well as handling any number of dimensions in the array.
+                cv::Mat m( 3, sz, CV_32FC3 ); // A three-dimensional array of size 4-by-4-by-4
+                cv::randu( m, -1.0f, 1.0f ); // fill with random numbers from -1.0 to 1.0
+                int sz[3] = { 4, 4, 4 };
+
+                cv::MatConstIterator<cv::Vec3f> it = m.begin();
+                (*it)[0]*(*it)[0]+(*it)[1]*(*it)[1]+(*it)[2]*(*it)[2];
+                compute the ¡°longest¡± element in a three-dimensional array of three-channel elements
+                [0]
+                channel
+                vector, Vec3f
+                Consider the case of adding two arrays, or converting an array from the RGB color space to the HSV color space
+                the same exact operation will be done at every pixel location.
+                ---
+                Given two arrays, cv::absdiff() computes the difference between each pair of cor©\ responding elements in those arrays
+                places the absolute value of that difference into the corresponding element of the destination array
+                dsti = saturate( | src1i ? src2i | )
+
+                The face of a child, alpha-blended onto the face of a cat
+                dsti = saturate(src1i *¦Á + src2i *¦Â + ¦Ã)
+                may be of any pixel type as long as both are of the same type. 
+                They may also have any number of channels (grayscale, color, etc.) as long as they agree
+                src1 and src2
+                This function can be used to implement alpha blending [Smith79; Porter84];
+                blend one image with another. In this case, the parameter alpha is the blending strength of src1, and beta is the blending strength of src2
+                additional parameter ¦Ã
+                more flexibility
+                additive offset to the resulting destination image
+                train func. in  ch05, design tasks and search the net. see ch05 as seeds
+                Complete program to alpha-blend the ROI starting at (0,0) in src2 with the ROI starting at (x,y) in src1
+                cv::calcCovarMatrix()
+
+                cv::compare()
+                This function makes element-wise comparisons between corresponding pixels in two arrays, src1 and src2
+                cv::CMP_EQ
+                dst will be an 8-bit array where pixels that match are marked with 255 and mismatches are set to 0
+                cv::magnitude()
+
+                dsti = xi 2 + yi 2
+
+                cv::Mahalanobis() computes the value
+                The Mahalanobis distance is defined as the vector distance measured between a point and the center of a Gaussian distribution
+                it is computed using the inverse covariance of that distribution as a metric
+                Intuitively, this is analogous to the z-score in basic statistics, where the distance from the center of a distribution is measured in units of the variance of that distribution
+                Mahalanobis distance
+                cv::multiply()
+
+                it multiplies the elements in src1 by the corresponding elements in src2 and puts the results in dst
+                cv::OutputArray dst, 
+                dsti = saturate(scale*src1i *src2i)
+
+                cv::norm()
+
+                cv::NORM_L2
+
+                cv::NORM_RELATIVE_INF
+
+                cv::NORM_RELATIVE_L1
+
+                cv::NORM_RELATIVE_L2
+
+                cv::perspectiveTransform()
+                The cv::perspectiveTransform() function performs a plane-plane projective trans©\ form of a list of points (not pixels).
+                Possible values of method argument to cv::solve()
+                cv::DECOMP_SVD Singular value decomposition (SVD
+                cv::DECOMP_CHOLESKY For symmetric positive matrices
+                cv::DECOMP_EIG Eigenvalue decomposition, symmetric matrices only
+                cv::DECOMP_QR QR factorization
+                cv::DECOMP_NORMAL Optional additional flag; indicates that the normal equations are to be solved instead
+                The methods cv::DECOMP_LU and cv::DECOMP_CHOLESKY cannot be used on singular matrices
+                reversing the row and column indices
+                cv::transpose()
+                This function does support multichannel
+                cv::transpose() 
+                if you are using multiple channels to represent complex numbers, remember that cv::transpose() does not perform complex conjugation
+                does not perform complex conjugation
+                cv::Mat::t()
+                has the advantage that it can be used in matrix expressions like:
+
+                A = B + B.t();
+
+                looked at a vast array of basic operations that can be done with the all-important OpenCV array structure cv::Mat
+                all-important OpenCV array structure
+                we will look at more sophisticated algorithms that implement meaningful computer vision algorithms
+                the operations in this chapter will form the basic building blocks for just about anything you want to do
+                the operations in this chapter will form the basic building blocks
+                basic building blocks
+                Create a two-dimensional matrix with three channels of type byte with data size 100 ¡Á 100, and set all the values to 0.
+                Draw a green rectangle between (20, 5) and (40, 20).
+                Practice using region of interest (ROI)
+                region of interest (ROI)
+                Create a mask using cv::compare(). Load a real image. Use cv::split() to split the image into red, green, and blue images
+                draw something on top of an image obtained from somewhere else.
+                ---ch06
+                Algebra and cv::Mat
+                ---ch04
+            ch06 Drawing and Annotating
+            ch07 
+            ch08 
+            ch10
+                At this point, we have all of the basics at our disposal. 
+                understand the structure of the library as well as the basic data structures
+                HighGUI interface
+                primitive methods required
+                sophisticated operations
+                move on to higher-level methods that treat the images as images
+                when OpenCV needs to apply a filter
+                area spills off the edge of the image
+                under- stand filters (also called kernels) 
+                Filters, Kernels, and Convolution
+                in some small area around
+                The template that defines both this small area�s shape, as well as how the elements of that small area are combined
+                linear kernels.
+                can be expressed as a weighted sum of the points around (and usually including) x, y in I
+                equations
+                op276
+                pixel in I that is offset from x, y by i, j.
+                q- what is k here?
+                including
+                q- the equ. of a filter 
+                q- how the boundary will be handled?
+                The size of the array I is called the support of the kernel
+                q- p- the case in 3d? 
+                q- non-linear filter? 
+                represent the kernel graphically as an array of the values of ki,j
+                a normalized 5 � 5 box kernel
+                Sobel �x-derivative� kernel
+                5 � 5 normalized Gaussian kernel;
+                the �anchor� is represented in bold
+                The signal processing com- munity typically prefers the word filter, while the mathematical community tends to prefer kernel
+                can be considered essentially interchangeable for our purposes
+                median filter, which replaces the pixel at x, y with the median value inside of the kernel area
+                nonlinear kernel
+                Anchor points
+                of the kernel
+                the terms corresponding to I(x � 1, y) and I(x + 1, y) are multiplied by
+                Border Extrapolation
+                how borders are handled
+                Making borders yourself
+                you will only need to tell the particular function how you would like those pixels created.5
+                create �padded� images
+                cv::copyMakeBorder()
+                Given an image you want to pad out, and a second image that is somewhat larger
+                the pixels are usually not even really created; rather, they are just �effectively created� by the genera- tion of the correct boundary conditions
+                Top side padding (pixels)
+                Bottom side padding (pixels)
+                int borderType, // Pixel extrapolation method
+                const cv::Scalar& value = cv::Scalar() // Used for constant borders
+
+                q- the tmplete of the func.? 
+                shown padded using each of the six different border- Type options available to cv::copyMakeBorder()
+                An extreme zoom in at the left side of each image
+                schematic representation
+                from the opposite edge
+                two slightly different forms of reflection available: cv::BORDER_REFLECT and cv::BORDER_REFLECT_101
+                with the result that the very edge pixel is not replicated
+                default behavior for OpenCV methods
+                The value of cv::BOR DER_DEFAULT resolves to cv::BORDER_REFLECT_101
+                cv::BORDER_REFLECT_101 Extend pixels by reflection, edge pixel is not �doubled�
+                cv::BORDER_REPLICATE Extend pixels by copying edge pixel
+
+                BORDER_REPLICATE
+                cv::BORDER_WRAP Extend pixels by replicating from opposite side
+                This function is typically used internally to OpenCV (for example, inside of cv::copy MakeBorder) 
+                cv::borderInterpolate():
+                it can come in handy in your own algorithms as well
+                categori- cally reject those pixels below or above some value while keeping the others
+                cv::threshold() accomplishes these tasks
+                an array is given, along with a threshold, and then something happens to every element of the array depending on whether it is below or above the threshold
+                you can think of threshold as a very simple convolu- tion operation that uses a 1 � 1 kernel 
+                upward operations
+
+                thresholdType
+                cv::THRESH_BINARY_INV
+                cv::THRESH_TRUNC 
+                thresholdType, the thresholding operation.
+                Results of varying the threshold type in cv::threshold();
+                q- given an image, show what will happen if a threshold operation is applied 
+                addWeighted
+                Calculates the weighted sum of two arrays.
+                void addWeighted(InputArray src1, double alpha, InputArray src2, double beta, double gamma, OutputArray dst, int dtype=-1)
+                dst = src1*alpha + src2*beta + gamma;
+                matrix expression:
+                C++: void bitwise_and(InputArray src1, InputArray src2, OutputArray dst, InputArray mask=noArray())�
+                Calculates the per-element bit-wise conjunction of two arrays or an array and a scalar.
+                Add equally weighted rgb values
+                sum_rgb( src, dst);
+                cv::Mat src = cv::imread( argv[1] ), dst;
+                we don�t want to add directly into an 8-bit array 
+                will over- flow. 
+                Instead, we use equally weighted addition of the three color channels
+                Note that cv::accumulate() can accumulate 8-bit integer image types into a floating-point image
+                accumulate
+                cv::accumulate(b, s);
+
+                cv::Mat::zeros(b.size(), CV_32F);
+                s is single val. array/ matrix 
+                s.convertTo(dst, b.type());
+
+                o determine the optimal value of the threshold for you. 
+                passing the special value cv::THRESH_OTSU as the value of thresh.
+                Otsu�s algorithm is to consider all possible thresholds
+                It turns out that minimizing the variance of the two classes in this way is the same as maximizing the variance between the two classes
+                Because an exhaustive search of the space of possi- ble thresholds is required, this is not a particularly fast process.
+
+                q- Otsus algorithm minimizes
+                err- op284 minimizing 
+                q- what is Adaptive Threshold?
+                int adaptiveMethod, // mean or Gaussian
+                cv::ADAPTIVE_THRESH_MEAN_C, then all pixels in the area are weighted equally. 
+                q- how does Gaussian filter works, weights?
+                    weighted according to a Gaussian function of their distance from that center point
+                the parameter thresholdType is the same as for cv::threshold() shown in
+                h- that is, the threshold varies from diff. blocks 
+                The adaptive threshold technique is useful when 
+                requires that the source and destination images be distinct
+                cv::imshow("Adaptive Threshold",Iat);
+
+                cv::Mat Igray = cv::imread(argv[6], cv::LOAD_IMAGE_GRAYSCALE);
+                computing a weighted average of the b � b region around each pixel location minus a constant
+                constant is given by C
+                raw image courtesy of Kurt Konolige
+                Binary threshold versus adaptive binary threshold
+                Smoothing, also called blurring 
+                simple and frequently used image-processing operation. 
+                reduce noise or camera artifacts
+                reduce the resolution of an image in a principled way
+                OpenCV offers five different smoothing operations, each with its own associated library function
+                This argument tells the smoothing operation how to handle pixels at the edge of the image.
+                borderType
+                simple blur operation is provided by cv::blur()
+                simple mean
+                The argument anchor can be used to specify how the kernel is aligned with the pixel being computed.
+                should be centered relative to the filter. 
+                In the case of multichan- nel images, each channel will be computed separately 
+                normalized box filter
+                the values ki, j  are all equal
+                Box Filter
+
+                The main difference between cv::box Filter() and cv::blur() is that the former can be run in an unnormalized mode (normalize = false)
+                you can use any of the usual aliases (e.g., CV_32F).
+                simple blur is a specialized version of the box filter
+                block averaging
+                �middle-valued� pixel
+                Median Filter
+                Median fil- tering is able to ignore the outliers by selecting the middle points.
+                ignore the outliers by selecting the middle points.
+                the anchor point is always assumed to be at the center of the kernel.
+
+                Blurring an image by taking the median of surrounding pixels
+                mean filter is a non-linear filter 
+                and set the y value to 0 (its default value), then the y and x values will be taken to be equal. 
+                If you set them both to 0, then the Gaussian�s param- eters will be automatically determined from the window size through the following formulae:
+                int borderType = cv::BORDER_DEFAULT // Border extrapolation to use
+                borderType argument
+                An example Gaussian kernel where ksize = (5,3), sigmaX = 1, and sigmaY = 0.5
+                higher perfor- mance optimization for several common kernels. 
+                the �standard� sigma (i.e., sigmaX = 0.0) give better performance than other kernels.
+                    3 � 3, 5 � 5, and 7 � 7 kernels with
+                somewhat larger class of image analysis operators known as edge-preserving smoothing
+                Bilateral Filter
+                extrapolation
+                contras- ted to Gaussian smoothing
+                whereas random noise can be expected to vary greatly 
+                As a result, Gaussian smoothing blurs away edges
+                substantially more processing time
+                bilateral filtering provides a means of smoothing an image without smoothing away its edges
+                Results of bilateral smoothing
+                The second component is also a Gaussian weighting but is based not on the spatial distance from the center pixel but rather on the difference in intensity8  from the center pixel
+                weighs similar pixels more highly than less similar ones, keeping high-contrast edges sharp. 
+                watercolor painting of the same scene
+                This effect is particularly pronounced after multiple iterations of bilateral filtering.
+                multiple
+                This can be useful as an aid to segmenting the image.
+                first is the diameter d of the pixel neighborhood that is considered during filtering
+                analogous to the sigma parameters in the Gaussian filter
+                width of the Gaussian kernel in the spatial domain called sigmaSpace.
+                broader the range of intensities (or colors) that will be included in the smoothing
+                larger
+                and thus the more extreme a discontinuity must be in order to be preserved)
+                Typical values are less than or equal to 5 for video processing, but might be as high as 9 for non-real-time applications
+                As an alternative to specifying d explicitly, you can set it to -1, in which case, it will be automatically computed from sigma Space.
+                small values of sigmaSpace (e.g., 10) give a very light but noticeable effect
+                large values (e.g., 150) have a very strong effect
+                somewhat �cartoonish� appearance.
+                Derivatives and Gradients
+                ---
+                Sobel operators exist for any order of derivative as well as for mixed partial derivatives
+                The effect of the Sobel operator when used to approximate a first deriva- tive in the x-dimension
+                The argument ddepth allows you to select the depth (type) of the generated output (e.g., CV_32F)
+                if src is an 8-bit image, then the dst should have a depth of at least CV_16S to avoid overflow
+                0 value indicates no derivative in that direc- tion
+                The ksize parameter should be odd
+                aperture sizes up to 31 are supported
+                If you set ksize to 1, then the kernel size will automatically be adjusted up to 3
+                visualize a derivative in an 8-bit image
+                when the differenve is large, this will be enlarged and has effect on the dst image 
+                nice property that they can be defined for kernels of any size
+                can be constructed quickly and iteratively
+                be constant over space
+                clearly a kernel that is too large will no longer give a useful result.
+                Sobel operator is not really a derivative as it is defined on a discrete space
+                not really a second derivative;
+                it is a local fit to a parabolic function
+                why one might want to use a larger kernel
+                fit over a larger number of pixels
+                approximate a derivative in the case of a discrete grid.
+                less accurate for small kernels
+                The difficulty arises when you want to make image measurements that are approximations of directional derivatives 
+                assem- bling a histogram of gradient angles around the object
+                a concrete example of where you may want such image meas- urements is in the process of collecting shape information from an object by assem- bling a histogram of gradient angles around the object
+                many common shape classifiers are trained and operated
+                In this case, inac- curate measures of gradient angle will decrease the recognition performance of the classifier.
+                less accu- rate for small kernels
+                For a 3 * 3 Sobel filter, the inaccuracies are more apparent the farther the gradient angle is from horizontal or vertical.
+                it should always be used if you want to make image measurements using a 3 � 3 filter
+                as fast but more accurate than the Sobel filter
+                The 3 * 3 Scharr filter using flag cv::SCHARR
+                discrete approximation to the Laplacian operator
+                works something like the second-order Sobel derivative
+                Laplacian function
+                Laplacian operator uses the Sobel operators directly in its computation
+                the orders of the derivatives are not needed
+                gives the size of the region over which the pixels are sampled in the computation of the second derivatives
+                ksize
+                In the special case of ksize=1, the Laplacian operator is computed by convolution with the single kernel
+                The single kernel used by cv::Laplacian() when ksize = 1
+                this case, ksize is actually 3 
+                Laplacian operator can be used in a variety of contexts. A common application is to detect �blobs.�
+                the form of the Laplacian operator is a sum of second derivatives along the x-axis and y-axis
+                Conversely, a point or small blob that is surrounded by lower val- ues will tend to maximize the negative of this function
+                the first derivative of a function, which will (of course) be large wherever the function is changing rapidly
+                it will grow rapidly as we approach an edge-like discontinuity and shrink rapidly as we move past the discontinuity
+                look to the 0s of the second derivative for locations of such local maxima
+
+                ---
+                q- how to use Laplacian function to detect edges? op300
+                    look to the 0s of the second derivative for locations of such local maxima
+                q- both substantial and less meaningful edges will be 0s, how to filte them out?
+                    do again, the sobel operator
+                    first and second derivatives and their zero crossings.
+                    the 0 corresponding to a large first
+                        derivative is a strong edge
+                    q- draw a pic to illustrate this op301 
+                morphological transformations
+                Image morphology is its own topic and, especially in the early years of computer vision
+                    a great number of morphological operations were developed
+                We will start with those, and then move on to the more complex operations
+                typically defined in terms of its simpler predecessors.
+            11 General Image Transforms
+
+            20. The Basics of Machine Learning in OpenCV
+            ---
+        *book--Computer Vision A Modern Approach 2nd Edition
+            ctl:
+                prereading_pass
+                viewing_pass
+                noting_pass
+                prac_pass 
+            都有哪些图像操作，现代版
+        book--Computer Vision--algorithms and application
+            ctl:
+                prereading_pass
+                viewing_pass
+                noting_pass
+                prac_pass 
+        book--Digital Image Processing Using Matlab(2004)
+            ctl:
+                prereading_pass
+                viewing_pass
+                noting_pass
+                prac_pass 
+        book--图像处理与计算机视觉算法及应用  原书第2版 [（美）帕科尔著][清华大学出版社][2012.05][388页]sample
+        book--计算机视觉——算法与应用.pdf
+        slides--ml1,ml2,cv2
+            ctl:
+                prereading_pass
+                viewing_pass
+                noting_pass
+                prac_pass 
+            https://mlcv.inf.tu-dresden.de/courses/st20/cv2/index.html
+                exercise
+                Bilateral filtering
+                Pixel labeling
+                Pixel classification
+                Prior knowledge
+                Smoothness
+                Connectedness
+                Convexity
+                Image segmentation
+                Image decomposition
+                Prior knowledge
+                Connectedness
+                Joint image segmentation and pixel labeling
+                Object recognition
+                Recognizing a single object
+                Recognizing multiple objects
+                Applications
+                Recognizing constellations of stars
+                Human body pose estimation
+                Object tracking
+                Tracking a single object
+                Tracking multiple objects
+                Applications
+                Tracking humans in street scenes
+                Tracking living cells during tissue formation
+                Joint object recognition and tracking
+            https://mlcv.inf.tu-dresden.de/courses/ws19/ML1/ml1_ws19.html
+                Machine Learning Textbooks
+                    Bishop, Pattern Recognition and Machine Learning
+                    Shai, Understanding Machine Learning
+                    Barber, Bayesian Reasoning and Machine Learning
+            https://mlcv.inf.tu-dresden.de/courses/st20/ml2/index.html
+                Logistic regression • Machine Learning I recap • 2020-04-06
+                Markov Random Fields
+                Learning problem
+                Inference problem
+                Submodularity and minimum st-cuts
+                Pseudo-Boolean optimization
+                Clustering of graphs
+                Learning problem
+                Inference problem
+                Deep learning
+                Stochastic gradient descent
+                Artificial neural networks
+                Back-propagation
+                Convolutional neural networks
+                Generative adversarial networks
+                Recurrent neural networks
+                Transformers
+                Mathematical foundations
+                Minimum st-cut problem
+                Basics of polyhedral geometry
+        slides--http://vision.stanford.edu/teaching/cs131_fall1718/
+            https://github.com/StanfordVL/cs131_notes
+        slides--https://cs231n.github.io/classification/ new     
+        seed--media related algos.
+    ---
+    tomove 
+        仰望星空，每天都要抬头看看，方向在哪里，目标还有多远 每天1h       
+            mixed--
+                *发力coding，刷sota
+                *科研也就是一种玩，不断挑战自己，这是一种游戏元素！ 
+                *所谓书越读越少并不对！我有一套读书价值观，理论
+                    问题：关注的问题不够多，知识掌握不够灵活，只知道基础远远不够
+                        推理能力在遇到问题的时候才会体现出差别
+                    *分步，交互式学习法
+                        deposit-geathering learning style inspired by photon mapping
+                            书要成片成势，要学photon mapping算法
+                        交互式学习，笔记甚至问题，越多越好
+                猫式时间管理
+                领域大方向？找到突破口就ok
+                https://zhuanlan.zhihu.com/p/71140167
+                https://arxiv.org/list/cs.CV/pastweek?skip=0&show=25
+                http://bbs.cvmart.net/topics/287/cvpr2019
+                CVPR也就成为很多计算机视觉领域研究者趋之若鹜的盛宴，它的受关注程度更是今非昔比。
+                CVPR2019最佳论文，该荣誉最终由卡耐基梅隆大学、多伦多大学、伦敦大学学院的多位研究者斩获
+                *理清方向，每口井下都有金子，关键看你能不能掘出来。诸如传统的模版匹配都能发cvpr，有什么课题是一定不能的？
+                如何写作如何投稿
+                有人加入就要明确规矩，如何按contribution排位置，不要讲人情。
+                放假就去cv公司实习吧……你会发现有太多太多有趣的问题可做了。
+                发顶会，必然是需要个人努力的。但是你必须要做好长期努力的准备。换句话说，一两年内没效果也没有什么好奇怪的
+                通常来说，从无到有，一篇顶会，基本需要3-9月的全职劳动。时间上的差别因人因任务而异。如果你没那么多时间的投入，那没啥好说的，洗洗睡吧。
+                sota=State of the Arts，一般就是指在一些benchmark的数据集上跑分非常高的那些模型
+                https://www.zhihu.com/question/64566768
+                如果你不能在9个月中勤快发出第一稿去，那么几乎可以说，你再好的idea也可能变的没那么好了。
+                如果你不觉得自己是学生中的异类，反而觉得自己是大多数的话，那我劝你还是别折腾了，因为不管cvpr今年的录取数量是不是又创了新高，“顶会”两个字就注定了它不可能是大多数人能中的。
+                全国能发顶会顶刊的，为什么都集中在某些学校和实验室？因为导师指导么？当然不是全部！学生本身是更大的原因 —— 当我把同一个idea交给两个不同的学生去做的时候，有人一个礼拜就能出结果，有人却一个学期也做不出来
+                大多数导师，根本没有那么多时间给你指导，有指导也多是在大方向上的，指望老师给你看看tensorboard还行，但是要给你看代码，那你确实是想多了
+                *每口井下都有金子，关键看你能不能掘出来。诸如传统的模版匹配都能发cvpr，有什么课题是一定不能的？
+                八股文中的也不是少数
+                新课题做的人少，但是新课题可不是一拍脑袋想出来就完了的，实验数据呢？没配套的数据，新问题根本无法入手
+                一般老板都会给一个大的课题，可是具体做什么方向，用什么方法，怎么做，写什么文章，怎么写，基本都是我自己看着办
+                老板最大的帮助是给了我一个单位，一份不啃老的薪水，还有大概一个礼拜能分到的15-30分钟
+                一直到博后期间，我才真正意识到自己的问题 —— 我其实根本不会做研究。我之前所做的，更多的都是在做项目。
+                这么多年书都读狗身上了，跟个痴汉一样就知道硬来，凡事只想用高性能直接把审稿人干趴下，却根本不晓得要去引导／迎合审稿人的口味。
+                其实能让人眼前一亮的，并不是只有好的性能，好的故事一样也可以。而实际中，好故事远比好性能要容易做到的多。
+                能够给指导的实验室，可遇不可求；整日让干杂活，压榨学生，不学无术的导师国内大有人在（包括T大P大）
+                *首先回答题主问题。结论是不建议直接做CV，现在已经白热化了。若组里没大牛的话，你要保证你的paper很novel，很solid，最好能开源。
+                个人建议从刷SOTA做起，也就是找篇state of the art，最好是很新在顶会发表了而且方向又不是那个热几万个人在做的类似目标检测的这种，然后想办法改进他。
+                *刷SOTA
+                你自己选题，做出SOA的成果，自圆其说，行文流畅，能给人启发，那就能发顶会。
+                *组里目前的实习生本科的话一般是ACM亚洲区域赛金牌以上，Master和PHD的话最好是领域内紧跟前沿的研究者。视频图像超分辨率和增强，视频分析，增量学习，强化学习，
+                    目标跟踪与检索等研究方向提供，紧贴监控工业界实战导向。
+                这个不用多说吧，好的论文都是在拍脑门-尝试-失败-再拍-再尝试-再失败，这个循环中过来的，随时做好失败的准备，然后重新开始
+                一个idea，水平高的人一眼就能看出来哪里有问题，可行不可行
+                现在牛人那么多，什么成果都没有的前提只靠Coding能力想进大公司太难了！
+                *Deep learning的发展才刚刚起步，如果你了解一下那些发展了上百年的学科，就会发现DL的门槛不高，甚至很低
+                这个领域目前还处在圈地运动的阶段，等十年后再往回看，90%以上的paper都会是垃圾，届时才是需要老板来提供经验和鉴别力
+                *导师无法指导深度学习就算了，还要安排一堆横向项目来做，基本就是当码农，对科研毫无帮助。
+                *writing style 
+                    a、A+B+C模式。有人在优化领域做了个A，但是并不完美，另外有人在某些领域做了个
+                        B，可以配合A解决某问题。那么，你看出来了，于是你试试看A+B，work。好了。想办法编个故事。
+                        把A不能解决的问题说得十分紧要，体现你的novelty。
+                    b、比赛模式。在公开数据集的比赛项目上不断尝试想法。
+                        做到第一的足够发论文，第二第三的有新奇想法和insight也可以发文。这种模式结果可信，因此不会有人喷结果，
+                        一般就是要想办法讲一个很美的故事，把你的所有哪怕最小的trick的价值都体现的淋漓尽致。
+                    c、挖坟模式。cv领域有很多传统问题，很多人还在契而不舍的用老方法提升。但是现在其他会议出来很多新工具，
+                        想办法加进去，实现相同目标但更高性能。
+                    d、挖坑模式。从实际需求出发，想一个新问题。这种方式不用着急做实验，但是一定要故事讲很好，
+                        所以难度很高。不然reviewers won't buy it。李飞飞就是挖坑起家，少有人能模仿那么好的。
+                    ---https://www.zhihu.com/question/64566768
+                    语言要过关：如果你英文不好，说半天说不清楚，肯定是不行的。语法，行文，这些都可以说必不可少的。
+                    没人会接受一篇，根本读不懂的文章。也不会有人愿意一篇到处错别字的文章。六级不过，那就注定只能是
+                    别人帮你写文章，你挂名。另外科学写作和其他的英语行文也不一样，即便你过了六级，也不见得就达标了
+                    。故事要合理：具体怎么讲故事，因人而异，就跟拍电影一样，每个人都可以不一样。但是，你不能在自己
+                    的故事里面有明显的瑕疵。比如前面埋了坑，承诺了某项优点，后面结果中却缺失。比如故事的逻辑推断不符
+                    合常理。……总之，你最起码要能自圆其说。结果要过关：不管怎么绕，你没有可能在顶会上发表一篇明显比S
+                    oTA更差的文章。注意这里所谓的结果是个抽象概念，而不是具体的指标。如果别人准确率比你高，你可以跟
+                    人比速度，如果比人速度比你快，你可以跟他比消耗资源……总之，你要有一技之长，给你的方法定位准确的目
+                    标客户群。话题要贴切：不是做图像的，都应该发CVPR。如果在投稿的时候，你发现很难找到对应的track。
+                    那就说明了，你其实并不合适投这个会。比如混沌图像加密之类的话题就不合适。长的要好看：我犹豫再三，
+                    还是把此点列入。虽然reviewer不应该以貌取人，但是事实就是如此，长的不好看的文章，天生就被人歧视，
+                    又或者说，一眼就揭示出了投稿人的经验缺失，从而悲剧。在CV领域，画图做表的功夫尤为重要。怎么才是好
+                    的，这个没有固定答案，但是最起码，你要保证所有图表的一贯性，大小，字号，清晰度，长宽比，用色等等。
+                    当然如果你还在用word写文章，那就当我什么都没有说好了。
+                    ---
+                    要有足够的铺垫：这点至少我认为是非常重要的。虽然不可否认，有学生第一次投顶会就中了，
+                        但是很负责的说，在其上我所花的精力是那些有过准备学生的3-4倍
+                    要有足够的计算资源：注意这并不是一个绝对标准，而是一个相对的。比如，你就一块GPU，
+                        那你还是别做imagenet这样的物体分类任务了，因为你烧不起。但是，如果你做降噪的任务，那一块好的GPU省省也够了。如果你只有CPU，那做传统算法也不见得就没有出路。总之要量力而行。
+                    要有足够的编程基础：至少需要熟练使用python，基本的图像处理库，如opencv，skimage之流，
+                        机器学习sklearn之流，另外加一门常见的深度学习框架。如果连基本的编程都不会，类是啥都不知道，
+                        那么还是先补全了吧。
+                    要有足够的理论基础：不管是数学还是机器学习，你至少得要知道，你在干什么。指望把别人现成的代码，改改就发顶会的，
+                        并不是不能做到。但是前提是，你得要真的知道每行代码在干什么。
+                如果你结果solid到无处可喷，写作差一点不太碍事。但大多数文章都是靠写作取胜的，实际效果都不一定能还原。
+                这没有捷径，就要写和学。
+                *尽快尝试投稿，投过一次就知道top conference的level在哪，写作的问题在哪。
+                始终记住，没有人有超过二十分钟的时间去读懂你的文章，看了introduction都没觉得你做的东西有趣的时候就没戏了。
+                不要写Chinese English。多看看外国报纸，美国人的论文。
+                找高年级博士是不可取的，他们肯定希望做出成果归自己，缓解毕业压力。
+                我自己做ANN的时候甚至出过试题，考察学弟的学习和coding能力。所以，跟我合作的学弟们都在我经手
+                    的论文里发挥了重要作用，配得上二三作的位置。
+                哪些问题还没有解决
+                https://www.zhihu.com/question/47602063
+                    存在更多multi modal的数据。除去RGB图像，可能还会有Lidar, GPS, IMU等等。
+                        如何交叉利用这些multi modal的信息，寻找最廉价有效的Supervision Signal，也会是一个很有意义的问题
+                    传统问题的一些新的setting：像Object Detection这些传统问题，在众多大神这两年的快速推进中，
+                        单从性能上而言，已经达到了一个相当不错的阶段
+                    我个人的观点来说，继续压榨这些传统setting，边际收益可能会很低。
+                    单就detection而言，我们可以衍生出Video Detection，RGBD Detection，
+                        Instance Segmentation等等新的setting
+                在前沿领域更容易出成果，相比挖祖坟！ 
+                *论文计划：
+                    前沿比赛模式适合作为入手！！--3篇至少
+                        和acm其实很类似，在通用，新的数据集上有更好效果--也是andres的思路
+                    ABC模式--1，2篇、挖祖坟
+                        图形学主要的思路
+                    挖坑 -- 3篇
+                        cv cg结合之类的
+                新的setting来说都是非常值得研究的。而且这些新的setting的诞生，
+                    其实背后都是会有一些实际的应用场景，这些问题兼具研究的价值与实用性。
+                Imitation Learning：如何从少量的demonstration中，快速学习一个还不错的policy
+                Confidence Learning：目前虽然deep learning在性能上取得了非常大的进步
+                *这都是前人挖的坑，赛道窄未必有人关注，挖到金子的概率还是挺大的
+                微软亚洲研究院机器学习组包含机器学习的各个主要方向，在理论、算法、应用等不同层面推动机器学习领域的学术前沿
+                应用简单，核心是要研究的模型是什么样的，
+                    深度学习是在创新学习模式，网络架构？调参数？
+                    视觉是在优化改进最优化算法？
+                *平时学的都是一堆祖坟，以及当时解决方案！，不然怎么应对最新的发展？
+                    整个学习过程就是一个photon mapping的渲染过程，首先是积累，把光子积累到笔记中
+                    写论文就是geathering的过程
+                ***描述一下你想在哪个坑里做什么，这样导师才可以给你帮助
+            未解决的问题，突破口
+                ...
+            未来方向
+                ...
+            seed--
+            Harris角点检测
+            SIFT特征
+            概述
+
+            将对人眼模糊的图像处理成清晰的图像
+            在图像增强过程中，不分析图像降质的原因，处理后的图像不一定逼近原始图像。
+            基于空域的算法处理时直接对图像灰度级做运算，基于频域的算法是在图像的某种变换域内对图像的变换系数值进行某种修正，是一种间接增强的算法。
+            软组织对X射线的衰减变化不大，导致图像灵敏度不强
+            “徘徊者7号”
+            X射线断层成像
+            无损安全检查、指纹、虹膜、掌纹、人脸等生物特征的增强处理
+            有雾图像、夜视红外图像、交通事故的分析
+            直方图
+                直方图从左到右代表从暗到亮从下到上代表像素数量从少到多，直方图在某个区域的高度越高，代表在这个亮度下的像素越多
+                这个直方图的亮度分布比较均匀（从暗到亮基本都有像素分布），因此应该是一张曝光比较均衡的照片。
+                这张照片的RGB直方图主要集中在右侧，也就是说这张照片的像素亮度都比较高，因此这张照片属于比较明亮的类型。
+                当我们进行提高对比度操作的时候，可以发现直方图向两侧移动了
+            直方图均衡化：调节亮度进行直方图的改变
+            对比度
+                指的是一幅图像中明暗区域最亮的白和最暗的黑之间不同亮度层级
+                韦伯对比度、Michelson对比度、均方根对比度
+
+            频率域
+
+            低通滤波（即只让低频信号通过）法，去掉图中的噪声
+            高通滤波法，则可增强边缘等高频信号，使模糊的图片变得清晰
+
+            空间域
+                空间域法中具有代表性的算法有局部求平均值法和中值滤波（取局部邻域中的中间像素值）法等，它们可用于去除或减弱噪声。
+                基于空域的算法分为点运算算法和邻域去噪算法。点运算算法即灰度级校正、灰度变换和直方图修正等，目的或使图像成像均匀，或扩大图像动态范围，扩展对比度。邻域增强算法分为图像平滑和锐化两种。平滑一般用于消除图像噪声，但是也容易引起边缘的模糊。常用算法有均值滤波、中值滤波。锐化的目的在于突出物体的边缘轮廓，便于目标识别。常用算法有梯度法、算子、高通滤波、掩模匹配法、统计差值法等。
+        //math bkg
+            book--discreate mathmatics
+                ctl:
+                    prereading_pass
+                    viewing_pass
+                    noting_pass
+                    prac_pass 
+            book--Combinatorial Optimization
+                ctl:
+                    prereading_pass
+                    viewing_pass
+                    noting_pass
+                    prac_pass
+                +prereading_pass
+                    https://zhuanlan.zhihu.com/p/31644892
+                        q- 一般形式表示(general form)?
+                        问题最终是求解一个最小值(如果是求最大值max，加一个符号即可转化成求最大问题)
+                        称上面的方程组为线性规划的标准形式(standard form).所有线性规划问题都可以表示为标准形式。
+                        q- maxtrix form?
+                        我们使用加粗的小写字母 [公式] 表示列向量，使用大写字母A表示矩阵，普通小写字母x表示实数。
+                        A是行满秩（即每行等式都是有意义的）
+                        我们把A按列重新排列，表示成 [公式]
+                        q- proof： *若线性规划有解，则一定存在基可行解为最优解。一定在顶点！ 
+                        q- 另非基变量 [公式] 全部取值为0，则得到的一个解我们称之为基解。那么基解的个数最多为？
+                            因为从A的n个列向量中任选线性无关的m个向量，所以每次组合得到的基向量B均对应着某一个基解
+                        单纯形算法：从可行域的一个顶点到另一个顶点迭代求解。
+                        q- 单纯形算法思想？
+                        初始的一个基本可行解 - 构造新的解....
+                        q- 构造新的解过程！
+                        求解初始基本可行解（两阶段法）
+                        https://blog.csdn.net/qq_21063873/article/details/78711455
+                    http://bioinfo.ict.ac.cn/~dbu/
+        //complexity bkg 
+            book--Introduction to the theory of complexity
+                ctl:
+                    prereading_pass
+                    viewing_pass
+                    noting_pass
+                    prac_pass 
+        //machine learning bkg -- classical way 
+            book--ml in action 
+                ctl:
+                    prereading_pass
+                    viewing_pass
+                    noting_pass
+                    prac_pass 
+            book--machine-learning
+                ctl:
+                    prereading_pass
+                    viewing_pass
+                    noting_pass
+                    prac_pass 
+            book--Probability and Statistics
+                ctl:
+                    prereading_pass
+                    viewing_pass
+                    noting_pass
+                    prac_pass 
+    ---
+    paper_pass
+        // 看什么：
+            cv
+                期刊三cv
+                    CVPR（每年），ICCV（奇数年）和ECCV（偶数年）
+                会议
+                    PAMI, IEEE Trans. Pattern Analysis & Machine Intelligence, index • IEEE Computer SocietyIJCV, 
+                    IJCV International Journal of Computer Vision, http://link.springer.com/journ
+            cg 
+                siggraph 
+        mlcv--https://mlcv.inf.tu-dresden.de/publications.html
+            // 
+                learn how to proof sth.! 
+                multiple object tracking for automomous 
+                human pose estimation 
+                instance-separating semantic segmentation
+            rigorous methodological research
+            A very good university degree in mathematics or computer science or a related discipline
+            Comprehensive education in mathematics, especially in discrete 
+                mathematics and one area of mathematical optimization
+            Implementation, empirical analysis and comparison of these algorithms with respect to real data
+            https://mlcv.inf.tu-dresden.de/job-offer-cv.pdf
+                reimbursed
+                Applications from women are particularly welcome. The same applies to people with disabilities
+                proven experience in C++ (at least C++11)
+            *http://openaccess.thecvf.com/content_cvpr_2017/papers/Levinkov_Joint_Graph_Decomposition_CVPR_2017_paper.pdf
+                This problem offers a common
+                    mathematical abstraction of seemingly unrelated computer
+                    vision tasks
+                instance-separating semantic segmentation, articulated human body pose
+                    estimation and multiple object tracking
+                unconstrained integer quadratic program and the  minimum cost lifted multicut problem, 
+                    both of which are NPhard
+                that has been studied intensively in the context of graphical models
+                Decomposition and Node labeling 
+                semantic segmentation and articulated human body pose estimation
+                q- possible applications? how they are related to cv tasks? 
+                    multiple object tracking for automomous 
+                    human pose estimation 
+                    instance-separating semantic segmentation
+                p-h- the problems studied are NP Hard problems, use appri. instead? 
+                benchmark data sets and feasible solutions found by our algorithms, 
+                    we report state-of-the-art application-specific accuracy.
+                benchmarking -- measurments! 
+                q- what is Multiple object tracking
+                    decide whether this point depicts an object or background
+                    For every pair of points that depict objects, one needs to decide if the object is the same
+                s- decition problems 
+                01-labels indicating that a bounding box depicts an object or background
+                    -> 
+                s- https://ps.is.tuebingen.mpg.de/person/stang
+                q- what is Instance-separating semantic segmentation
+                    modeled as graphical problem? 
+                s-  Kroeger et al. [19] state this problem as a multi-terminal 
+                    cut problem w.r.t. a (super)pixel adjacency graph of the image
+                the problem from the KITTI [11] and Cityscapes [7]  benchmarks, obtaining
+                    more accurate results for Cityscapes  than any published work.
+                q- how is the articulated human pose estimation problem be abstracted? 
+                    s- Pishchulin et al. [25] and Insafutdinov et al.
+                s- some NP hard problems like NL-LMP
+                s- UIQP
+                q- which benchmark to use in this task? 
+                    MPII Human Pose Dataset
+                h- how can we have better score on the dataset? 
+                s- basic graphical algo, and their problems 
+                q- define the minimum cost node labeling
+                    lifted multicut problem, NL-LMP.
+                q- s- Parameters?, Feasible Set, cost function? 
+                s- linearly constrained binary cubic program.
+                q- s-  Lemma 1 For any graph.... 
+                h- lemma-proof 
+                Without loss of generality
+                solution in LMP  is also in NL-LMP 
+                q- local search algo for compute feasible solutions of the NL-LMP efficiently
+                s- DeeperCut: A deeper, stronger, and faster multiperson pose estimation model.
+                a local search is carried out
+                    not over the set of individual transformations of the current
+                    feasible solution but over a set of sequences of transformations
+                This leads us to define two local search algorithms for the NL-LMP.
+                Our C++ implementation computes cost differences incrementally and solves the optimization 
+                    problem over transformations by means of a priority queue
+                The time and space complexities are identical to those of KLj and are established in
+                s- Efficient decomposition of image and mesh graphs by lifted multicuts
+                s- find some code imp. the benchmarks! 
+                s- find soluitons for typical vision tasks, esp. for these three distinct computer vision tasks
+                we set up instances of the NL-LMP from published data
+                Convergence of B&C, KLj/r and KLj∗r in an application to the task of articulated human body pose estimation.
+                s- Convergence graph plot 
+                we compare the convergence
+                arrive at near optimal feasible
+                    solutions after 10−1 seconds
+                five orders of magnitude faster than B&C.
+                KLj/r and KLj∗r have lower cost and higher applicationspecific accuracy (Acc) on average
+                The shorter absolute running time of KLj/r and KLj∗r allows us to increase the number of nodes from 150, as in [13], to 420
+                table, ... 
+                We have defined and implemented two local search algorithms, KLj/r
+                    and KLj∗r
+                converge monotonously to a local optimum
+                We have shown applications of these algorithms to the tasks of articulated human body pose estimation
+                We conclude that the NL-LMP is a useful mathematical abstraction in the field of computer vision
+                *the fields of computer vision and combinatorial optimization
+                s- Multi-Person Tracking by Multicut and Deep Matching
+                    s-  submitted our results to the ECCV 2016 MOT Challenge 2
+                        for evaluation
+            codes from andres
+                *OpenGM 
+                    discrete factor graph models and distributive operations on these models
+                    making OpenGM as flexible as possible such that it can work with the large scope of different models
+                    http://hciweb2.iwr.uni-heidelberg.de/opengm/index.php?l0=algs
+                    Combinatorial/Gobal Optimal Methods
+                    Wrapped External Code for Discrete Graphical Models
+                    s- papers related
+                    s- h5 files, datasaets 
+                    h- rel. large algos., many versions 
+                    s- http://www.andres.sc/publications/andres2012opengm.pdf
+                        high-level concepts such as semantic objects that are to be detected and tracked
+
+                    s- http://www.andres.sc/publications/opengm-2.0.2-beta-manual.pdf
+                    s- http://www.andres.sc/publications/kappes-2013.pdf
+                    s- http://ipa.iwr.uni-heidelberg.de/ipabib/Papers/kappes-dagm2010.pdf
+                graph 
+                    tests only, no apps included....
+                Marray
+                    Fast Runtime-Flexible Multi-dimensional Arrays and Views in C++
+                    s- other imp. such as boost MultiArray and Blitz++
+                    the dimension of Marray views and arrays can be set and changed at runtime.
+                    conjunction with the comprehensive and convenient Marray interface, this brings some of the flexibility
+                    HDF5 input and output, including reading and writing of hyperslabs
+                    not properly for single proj, but works for the proj
+                    s- hdf5 https://support.hdfgroup.org/HDF5/Tutor/h5image.html
+                random-forest
+                    ...
+                seed-growing 
+                    no matlab found 
+                graphics 
+                    no hdf5 found 
+            pubications
+                Motion Segmentation & Multiple Object Tracking by Correlation Co-Clustering
+                http://infoscience.epfl.ch/record/201670/files/turetken16_1.pdf
+                A Comparative Study of Modern Inference Techniques for Structured Discrete Energy Minimization Problems
+                    http://arxiv.org/pdf/1404.0533
+                http://www.andres.sc/publications/andres20123d.pdf
+                http://arxiv.org/pdf/1812.01426
+                http://proceedings.mlr.press/v80/lange18a/lange18a.pdf
+                http://arxiv.org/pdf/1705.05020
+                http://openaccess.thecvf.com/content_ICCV_2017/papers/Rempfler_Efficient_Algorithms_for_ICCV_2017_paper.pdf
+                *http://www.andres.sc/publications/rempfler2017miccai.pdf
+                http://proceedings.mlr.press/v70/hornakova17a/hornakova17a.pdf
+                http://openaccess.thecvf.com/content_cvpr_2017/papers/Swoboda_A_Message_Passing_CVPR_2017_paper.pdf
+                *http://openaccess.thecvf.com/content_cvpr_2017/papers/Levinkov_Joint_Graph_Decomposition_CVPR_2017_paper.pdf
+                +Machine Learning for Computer Vision - Bjoern Andres - Technical University Dresden
+                ---
+                http://arxiv.org/pdf/1706.06822
+                http://www.andres.sc/publications/andres2010arrays.pdf
+        mpi
+        cvpr, iccv, eccv ... 
+
+        ...
+    ---
+    code_pass 
+        code--cv2,ml1,ml2 tud 
+        code--opencv3 
+        code--OpenGM 2 https://mlcv.inf.tu-dresden.de/code.html
+            OpenGM comes with an uniform inference algorithm framework, which makes developing of new algorithms quite easy
+            OpenGM is a C++ template library for discrete factor graph models
+            No restrictions are imposed on the factor graph or the operations of the model
+            The binary OpenGM file format is based on the HDF5 standard and incorporates user extensions automatically.
+            Discrete Graphical Models in C++
+        code--Marray https://mlcv.inf.tu-dresden.de/code.html
+            Fast Runtime-Flexible Multi-dimensional Arrays and Views in C++
+        code--graph https://mlcv.inf.tu-dresden.de/code.html
+            Graph – Graphs and Graph Algorithms in C++
+        code--Seeded region growing https://mlcv.inf.tu-dresden.de/code.html
+            In n-dimensional grid graphs, in linear time (C++ and MATLAB)
+    ---- 
+    idea_gen:哪个坑里做什么,大概可行！ 
+        cg：
+            综合的一种信念，vr中真实交互，出现在科幻电影中的那种
+            rendering(cg1 cg3)
+                rendering in VR -- master thesis? research direction? 
+                    真实感渲染，大量数据渲染，科学可视化
+                    *Trajectory Vis.
+                        particle and trajectory visualization
+                        如果要读博，基本就是这个方向
+                Machine Learning for Rendering
+            *dynamics -- Learning to Move (cg2)
+                这学期proj在搞
+            mesh processing, FEM (cg1 cg2)
+        cv 
+            *segmentation 
+                apply combina. methods (minimizing some cost)
+                mathematical optimization
+            *object-detection 
+            ...
+            
+        dl
+            *更好的框架，过程？ 
+                强化学习，迁移学习，
+                *推理学习
+
+
+        
+
+
+

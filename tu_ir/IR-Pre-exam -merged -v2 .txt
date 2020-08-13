@@ -1,0 +1,320 @@
+            ----lev 1
+                ch1 -
+                    was ist IR? &
+                    what are unstructured nature (usually text)? & -  
+                    what is data, knowledge and Information &
+                    Aufbau eines IR-Systems::structure of IR system  示意图 p15  & -
+                    usage of IR Systems &  
+                    compare IR and databank & -  x6
+
+                ch2 -
+                    Why is grep not the solution & p6 --
+                    To answer the query with help of Term-document incident matrix ？ example & - p8
+                    why not used? & -
+                    why inverted ? Inverted Index & 
+                    what is posting list? & - p11
+                    posting list 建立过程 3个步骤 &
+                    dic和posting如何存储 &
+                    What is the best order for processing this query? & 
+                    how to skip ? &
+                    why skip lists are not used now  ? & x2
+                    Westlaw特性 & x2
+                    how to use Bi-word index to do Phrase Queries &
+                    key idea of Extended Bi-words &
+                    why Bi words not used ? &
+                    what is Positional index &
+                    how can position index be used to Proximity search & 
+                    what is the Combination scheme of those two  & -
+                    What are “good” bi-words & -
+                
+                ch3
+                    how to determine lan in one text? & -
+                    what is & 
+                        Term,Morphem,Inflection ,
+                        Derivation,Kompositum,Noun Phrase (NP)
+                    promblems for reading words in IR? & *5
+                    what is &
+                        Grammatical markings(POS Tags),Stemming,
+                        Lemmatization,Case Folding,Stop words
+                    key idea of Sondex & 
+                    Successor Variety &
+                    n-gram stemmers:  & ::statistics statistical 0.8
+                    Porter's Stemmer explain & -
+                    Stemming?or not &
+                    Danger’s of stemming &
+                    Part-of-Speech Tagging what is &
+                    how can we do Part-of-Speech Tagging & x2
+                    edit distance & 
+
+                ch4
+                    词典的数据结构what datastructures can be used for dictionaries &
+                    通配符查询::Wildcard queries  x3 & - 例子：：[hel*o] look up 
+                    permuted index and kgram 比较 & -
+                    Spelling Correction 三种 &
+                    Issues when using Spelling correction  & Problems 
+                
+            ----lev 2
+                ch5
+                    compare: rank or not & -
+                    Why rank & x2
+                    Jaccard coefficient to Scoring，how? & problems: & -
+                    what is tf idf &
+                    tf-idf weighting , how & 
+                    tf-idf formular & -
+                    tf-idf compare & - those two 
+                    when tf is 0? & x2
+                    The vector space models before and now  & x3
+                    why Euclidean distance is a bad idea & -
+                    differ. weghts &
+                        Inc.Itn 
+                        Itn.bnn
+                        分别代表啥意思，公式列出来 
+                        
+                        
+                ch6
+                    why compression & x2 -
+                    what is Lossy vs. lossless compression & - -
+                    Heaps’ law mean?
+                    the meaning for IR systems &
+                    zipf Law mean ？
+                    Dictionary as a string & 主要save的是哪里的空间
+                    why 3B here needed &
+                    Dictionary as a string with blocking & 主要save的是哪里的空间
+                    为啥block不能太大 & 
+                    how to Tradeoff &
+                    Front coding & 
+                    how to store gaps & x2
+                    Variable length code & 
+                    Variable byte code  &
+                    Gamma Codes for gap encoding & calcu -p39 13 四个步骤 &
+                    Gamma:some advantages & - explain - x2
+                    Gamma seldom used in practice & - explain
+                    
+                    
+                ch7
+                    External Memory Sort &
+                    缩写的含义 &
+                    基于块的排序索引方法Blocked Sort-Based Indexing (BSBI) idea & -  algo & - 
+                    内存式单遍扫描索引构建方法Single-Pass In-Memory Indexing (SPIMI) algo & - 
+                    Caching策略 x2 &
+                    zwei Arten von Rechner‐Knoten :  & - two types of nodes 
+                    advantages or dis- of distributed index construction & - NEXT
+                    Mathods of Distributing &
+                    why can parallelisierbar? & - 
+                    MapReduce Architecture & - NEXT 
+                    Delta-Index: how it works ? & when put the delta index to Disk: &
+                
+                ch8
+                    Term-at-a-Time (TAAT): and DAAT &
+                    NRA ： No Random Accesses function explain & -
+                        结束条件 &
+                        p29公式 & - x5 mink,unseen,worst,best,high(t)
+
+                ch9
+                    how to Measure the happiness ? & - p5  explain x4 2+2
+                    Precision and Recall
+                        公式 p9 & -
+                    F-Measure Precision/recall tradeoff
+                        formula & - p13
+                    Cost-based Measure & calcu
+                    Accuracy ：：TP TN 占用的比例 
+                        公式 & -
+                        calcu &
+                    Macro average (precision) and Micro average (precision) 
+                        p19 calcu & 公式有问题? 貌似没有 
+                    PR curve 呈锯齿形的原因? & -
+                    what are included in benchmarks & x3
+                    Kappa统计 why ? &
+                    Pooling策略--评价所有文档工作量是很大的，可以只评价检索的 &
+                    A/B Testing &
+                    what to descreption in summaries &
+                    生成动态摘要的目标是选出满足如下条件的片段 &  p49
+
+
+            ----lev 3
+                ch10
+                    four different examples with picture & - for user feedback -next
+                    idea of Rocchio Algorithm to do feedback & 
+                        centroid , opt. query formular &
+                        有图来解释这个公式 & -：
+                    Used in practice &
+                        what effect parameter has & -
+                    Positive versus negative feedback & -
+                    When Does Relevance Feedback Work? & ??
+                    Evaluation of feedback:how many times is enough to do that &
+                    problems，不起作用的原因  & - NEXT x4
+                    为相关反馈问题 &
+                    but it workd well? &
+                    what can we do to 间接相关反馈 &
+                    查询扩展(Query expansion) methods &
+                    基于统计学的结果，相关性矩阵
+                        calcu & - NEXT p48 
+
+                ch11
+                    事件的优势率（ odds） & f
+                    状态检索值 Retrievalstatuswert ，Retrieval status value & 
+                        公式
+                        意义 & 
+                    Test auf Unabhängigkeit formula &
+                    概率检索模型 idea &
+                    二值独立模型BIR & 全称
+                    Okapi formular & calcu & 
+                    文档评分纵向比较： & -
+                    概率IR优缺点 & - NEXT explain
+
+                ch12
+                    语言模型 idea & -
+                    what is language of LM &
+                    双圈节点对应的是 &
+                    描述有限自动机 EA & - explain
+                    计算 P(Katzen fangen Mäuse) & - 
+                    二元语言模型为啥不用 & - exp
+                    kann man LM durch Markow-Ketten darstellen & - Horizont（向前看的视野）?
+                    retrival function p20公式 & -
+                    Jelinek-Mercer Smoothing & -
+                    Multiplikation kleiner Werte Führt zu Rechenungenauigkeiten & - how to handle &
+                    LMs vs. BIR x1
+                        联系 & - NEXT
+                        区别 & - NEXT
+                    LMs vs. Vector-Space-Modell
+                        联系 & - NEXT
+                        区别 & - NEXT
+
+                ch13  web basic , +++++++++
+                    为什么 Web纷繁杂乱、变化迅速 & x1
+                    web IR特点 & x3
+                    静态页面与动态  & - exp  
+                    magure the size of the web & Web规模估计 &
+                    整个Web有向图结构？ & - x6
+                    作弊问题：几种方法排名作弊？ & - x2
+                    google的用户体验特点： & -  x3
+                    普通的 Web 搜索查询似乎可以分成哪三大类？  & -
+                    Mercator 采集器 五个模块 &
+                    ppt中例子 & - 理解，给图画出来路径
+                    web中的重复问题 & x2
+                        solution1 :设计指纹比如64位
+                        solution 2:k shingling技术 
+                    网络搜索的具体形式特点 & 
+                    网络文档特点，主要的四个特性 & -
+                    Crawling，两个特点？ & 
+                    How are ads ranked  & - exp x2+n
+                    次高价拍卖 & and calcu。 p47
+                        Anybody can participate and bid on keywords
+                    主要的两个问题 
+                        Keyword arbitrage
+                        Violation of trademarks
+                    常见的Spam技术 & x2
+
+
+                ch14
+                    链接分析的意义 & - 
+                    PageRank过程假设： & - x2
+                    面向主题的 PageRank:简单做法 &
+                    处理混合的情况？ &
+                    pagerank 特点 & - x2
+                    HITS循环迭代公式 & - 计算优化？ & - 超链导向的主题搜索
+                        idea & - 
+                        问题：  & - x1
+                        hits 特点 & - x2
+
+            ----lev 4 ---
+                ch15  
+                    在垃圾邮件处理中，有哪些基本的处理方法 & p7  x2
+                    Maschinelles Lernen，how it works  &画图 
+                    *总体：分类的评价 & x3 + 2
+                        basic 
+                            Accuracy and  Error Rate
+                            Recall, Precision and F1 
+                            formula & -
+                        erweitern
+                            Confusion Matrix  p27 pic
+                            cross validation x3
+                    *Undersampling , oversampling,Hybrid-Verfahren & -- deal with data skew
+                    下采样方法说出名字就可以 & x4
+                    Oversampling & x2 说出名字，简称，全称
+                    Feature-Scaling x3
+                    *Feature-Auswahl x3 &
+
+                ch16 -算法细节，如何继续优化
+                    Form der Regeln  &
+                    *Evaluation von Regeln
+                        Grundlegende Maße,两个指标 公式 &,计算 & p15
+                            太大太小？
+                        Drei Qualitätsmaße ,formular &,p21 ?? NEXT
+                            combine the two values 
+                            eg. & p26
+                    *Sequential Covering,
+                        idea &,
+                        formular &,eg p33 &&&,
+                        *算法 p30 
+                        Nachbearbeitung x2+ x2
+                ch17 -公式有点费劲
+                    *贝叶斯分类：
+                        why Naïve & x1
+                        why not Naive & x2
+                    Multinomiales Naïve Bayes ：idea & formuar  & calcu & 
+                        三个层级的公式 
+                            *第一层次-
+                            基本cj d, p tk cj 估计， gamma (d) 
+                            how to de smoothing？
+                        +代码对应 & 数组...
+                        +ML实际上存储的是什么，学习的是啥
+                        +term freq =1 的时候就是Bernoulli Naïve Bayes？ false ! why 
+                    Bernoulli Naïve Bayes ： idea & formuar  & 
+                        也是三个层次
+                        smoothing？ why + 2 in the denominator 
+                        Anmerkungen & x2
+                    Aktuelle Anwendung & x1
+                ch18
+                    *Klassifikation im Vektorraum
+                        Vektorraum:vector space
+                        exp &
+                    Rocchio Klassifikator 
+                        idea & 
+                        formuar  & 
+                        *Probleme bei Rocchio & x2
+                    kNN 
+                        process & 
+                        *Wahl von k? & x2-3
+                        变种 &  x2
+                    
+                ch19 -svm 细节
+                    Darstellung Hyperebene mit Ebenengleichung ::p9
+                    Vorgehen bei mehr als zwei Kategorien ? Multiclass SVMs?,exp & p10 x3steps
+                        ::when there are more than two classes x2
+                    *Trainingsphase:Perzeptron
+                        what is R ,ita &
+                        verfahren exp & x3steps
+                        learn rate &
+                        formula of perceptron &
+                            alpha factor in the formular what is that &
+                        dual form &
+                    SVM
+                        *SVM Linearer Fall
+                            距离的表达式 &
+                            Einfach Verfahren &
+                                formular p30 & -
+                                    it can be solved with Lagrange multiplier or quadratic  programming
+                                        -Well-studied solution algorithms
+                                    why larger than 1 ? (constraint formula )
+                                Duale Formulierung & -
+                            Beispiel p33 &
+                            
+
+                        *Erweitertes Optimierungsverfahren
+                                using slack variable in SVM：：引入松弛变量
+                                    formular & p38
+                                    Einfluss von C exp & -
+                                        tradeoff parameter (chosen by cross-validation)
+                                    what is m :: number of slacks?
+                                    condition ? &
+
+                        *说名字-Kernel Trick--Nichtlineare Entscheidungsgrenzen
+                            key idea &
+                            kernel types & x4
+                                RBF Kernel--Gauß‘scher Kernel
+                                Polynomial Kernel
+                                Sigmoid Kernel
+                                Cosinus Similarity Kernel
+                                Chi-squared Kernel
+                            how to choose ? 10k

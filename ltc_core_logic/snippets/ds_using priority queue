@@ -1,0 +1,18 @@
+#include <iostream>
+#include <queue>
+int main(){
+
+    std::priority_queue<int> q;
+    q.push(15);
+    q.push(40);
+    q.push(20);
+    q.push(18);
+    q.push(100);
+
+    while(!q.empty()){
+        std::cout<<q.top()<<std::endl;
+        q.pop();
+    }
+
+    return 0;
+}

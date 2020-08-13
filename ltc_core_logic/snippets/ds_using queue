@@ -1,0 +1,20 @@
+#include <iostream>
+#include <stack>
+#include <queue>
+
+int main(){
+
+    int a[]= {1,2,3,4,5,6};
+    std::queue<int> q;
+    q.push(a[1]);
+    q.push(3);
+    q.pop();
+    std::cout<<q.size()<<" "<<q.front()-q.back()<<std::endl;
+
+
+
+    return 0;
+}
+
+
+

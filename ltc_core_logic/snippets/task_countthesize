@@ -1,0 +1,6 @@
+#include<iostream>
+void main() {
+	std::cout << "int  = " << sizeof(int) << std::endl;
+	std::cout << "unsigned int  = " << sizeof(unsigned int) << std::endl; 
+	
+}

@@ -1,0 +1,15 @@
+#include <iostream>
+class Apple{
+    public:
+        double weight;
+        int color;
+};
+int main(){
+
+    Apple* a=new Apple();
+    a->weight=10;
+    a->color=0;
+
+    std::cout<<a->weight<<std::endl;
+    return 0;
+}

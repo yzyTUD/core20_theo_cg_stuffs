@@ -1,0 +1,82 @@
+	Subdivision Surfaces
+	arbitrary topology: (spherical, toroidal, double toroidal
+	scalability: by definition multi-scale representation
+	numerical robust: if you start with well behaved base meshes suitable for FEM solvers, the subdivided meshes inherit the good proberties
+	good proberties
+	simple implementation: code is quite simple even though mathematical analysis is rather involved
+	construction of basis functions and wavelets over surface possible
+	local rules: computational rules should not depend on distant points
+	affine invariance: affine transformations and subdivision process should be commutative
+	commutative
+	continuity: limit curves and surfaces should be as smooth as possible
+	limit curves
+	&q what is limit curves
+	Midpoint Subdivision
+	&h  many subdevision method exists, have diff. properties! 
+	Peters, J. und Reif, U.: The Simplest Subdivision Scheme for Smoothing Polyhedra. ACM Transactions on Graphics 16 (1997), S. 420-431.
+	&t imp. and paper and further reading 
+	split process into subdivision and smoothing:
+	Interpretation
+	Vocabulary
+	&q explain the following 
+	ordinary vertex
+	in triangle meshes valence 6 and at boundary valence 4 in quad meshes valence 4 and at boundary valence 3
+	extraordinary vertex
+	The first subdivision step separates all extraordinary vertices
+	Therefore the limit surface only needs to be analized in neighborhood of ordinary and isolated extraordinary points
+	analized in neighborhood of ordinary
+	Types
+	 triangle vs. quad mesh
+	approximating vs. interpolating
+	rule preserves / does not preserve positions of even points
+	Interpolating vs. approximating
+	Interpolating
+	preserves
+	continuity of limit surfaces
+	subdivision step: face split vs. vertex split
+	&h many possibilities exists! 
+	&q what kind of subdivision methods are there? x8 op10
+	quad split
+	triangle split
+	vertex split
+	&q explain the diff. bet.  above! 
+	Loop
+	Butterfly
+	Kobbelt
+	Catmull Clark
+	Doo Sabin
+	Midedge
+	Biquartic
+	&t try out those subdivision schmata! 
+	&t imp. and paper and further reading 
+	&q compare them! op12 make it as picmem.
+	Butterfly Subdivision 
+	a face split scheme on triangle meshes
+	face split
+	Positions of old vertices are preserved, such that we get an interpolating scheme
+	Butterfly-stencil is used for edge points
+	On boundary edges
+	&q have spec. stencil on boundaries? y 
+	&q the stencil of it! op21 op22 picmem!
+	&h Extraordinary boundary rule exists! 
+	Decision tree
+	&q how can we make sure, which rule to apply? with what tech.? 
+	&q Decision tree, kind of state machine ...
+	Edge is boundary
+	two inner vertices
+	Butterfly-Regel
+	one inner vertex
+	two boundary vertices
+	&h diff. cases may occour 
+	Nie?ner, M., Loop, C., Meyer, M., & Derose, T. (2012). Feature-adaptive GPU rendering of Catmull-Clark subdivision surfaces. ACM Transactions on Graphics (TOG), 31(1), 6.
+	&q given a picture, judge which subdivision method has been used! op36 
+	There does not exist a surface subdivision scheme that is C2 -continuous also at extraordinary points
+	&h 
+	Continuity
+	All subdivision schemes have different artefacts at irregular vertices
+	visualization of the influence or base function corresponding to one vertex
+	&t illu. vis !
+	Interpolation of the positions of a base mesh is also possible for approximating schemes if limit stencil is known
+	&q would it possible to calcu. the final subdivision directly? y op40 
+	&t imp. and paper and further reading 
+	&q it would be no local scheme! global! 

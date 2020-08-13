@@ -1,0 +1,351 @@
+
+---
+class Node{
+
+};
+
+class Tree{
+    
+};
+
+
+---
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+#include <string>
+using namespace std;
+
+typedef struct Node{
+  char data;
+  struct Node *lchild;
+  struct Node *rchild;
+}BTree;
+
+string str1, str2;
+void postOrder(BTree *T)
+{
+ if(T!=NULL)
+ {if(T->lchild!=NULL) 
+    postOrder(T->lchild);
+  if(T->rchild!=NULL)
+     postOrder(T->rchild);
+  cout<<T->data;
+ }
+ return;
+}
+
+BTree *trans(int l1,int h1,int l2,int h2){ 
+      if(l1 > h1 || l2 > h2)//递归出口，不符合条件，直接返回空节点 
+            return NULL;
+    int j = l2;
+    
+    while(str2[j] != str1[l1]){ j++; }
+    
+    //构造根节点 
+    BTree *T=(BTree*)malloc(sizeof(BTree));  
+    T->data=str2[j];   
+    T->lchild=NULL;   
+    T->rchild=NULL;
+    
+    T->lchild=trans(l1+1,l1+j-l2,l2,j-1); //返回左子树 
+    T->rchild=trans(l1+j-l2+1,h1,j+1,h2); //返回右子树 
+    return T;
+}
+
+
+int main()
+{
+       
+    while(cin >> str1 >> str2)
+    {
+      int L1 = str1.length();
+      int L2 = str2.length();
+      BTree *T = trans(0,L1-1,0,L2-1);
+      postOrder(T);
+      cout << endl;
+    }
+  return 0;
+}
+
+---
+// CPP program to construct binary 
+// tree from given array in level 
+// order fashion Tree Node 
+#include <bits/stdc++.h> 
+using namespace std; 
+
+/* A binary tree node has data, 
+pointer to left child and a 
+pointer to right child */
+struct Node 
+{ 
+  int data; 
+  Node* left, * right; 
+}; 
+
+/* Helper function that allocates a 
+new node */
+Node* newNode(int data) 
+{ 
+  Node* node = (Node*)malloc(sizeof(Node)); 
+  node->data = data; 
+  node->left = node->right = NULL; 
+  return (node); 
+} 
+
+// Function to insert nodes in level order 
+Node* insertLevelOrder(int arr[], Node* root, 
+          int i, int n) 
+{ 
+  // Base case for recursion 
+  if (i < n) 
+  { 
+    Node* temp = newNode(arr[i]); 
+    root = temp; 
+
+    // insert left child 
+    root->left = insertLevelOrder(arr, 
+        root->left, 2 * i + 1, n); 
+
+    // insert right child 
+    root->right = insertLevelOrder(arr, 
+        root->right, 2 * i + 2, n); 
+  } 
+  return root; 
+} 
+
+// Function to print tree nodes in 
+// InOrder fashion 
+void inOrder(Node* root) 
+{ 
+  if (root != NULL) 
+  { 
+    inOrder(root->left); 
+    cout << root->data <<" "; 
+    inOrder(root->right); 
+  } 
+} 
+
+// Driver program to test above function 
+int main() 
+{ 
+  int arr[] = { 1, 2, 3, 4, 5, 6, 6, 6, 6 }; 
+  int n = sizeof(arr)/sizeof(arr[0]); 
+  Node* root = insertLevelOrder(arr, root, 0, n); 
+  inOrder(root); 
+} 
+
+// This code is contributed by Chhavi 
+
+---
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+#include <string>
+#include <queue>
+#include <stack>
+using namespace std;
+
+/* A binary tree node has data,
+pointer to left child and a
+pointer to right child */
+struct Node
+{
+  int data;
+  Node* left, * right;
+};
+
+/* Helper function that allocates a
+new node */
+Node* newNode(int data)
+{
+  Node* node = (Node*)malloc(sizeof(Node));
+  node->data = data;
+  node->left = node->right = NULL;
+  return (node);
+}
+
+void insertLevelOrder(int arr[], Node*& root,int i, int n)
+{
+  if (i < n)
+  {
+    root = newNode(arr[i]);
+    insertLevelOrder(arr, root->left,  2 * i + 1, n);
+    insertLevelOrder(arr, root->right, 2 * i + 2, n);
+  }
+}
+
+void inOrder(Node* root)
+{
+  if (root != NULL)
+  {
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
+  }
+}
+
+void preOrder(Node* root)
+{
+  if (root != NULL)
+  {
+    cout << root->data << " ";
+    preOrder(root->left);
+    preOrder(root->right);
+  }
+}
+
+void bfs(Node* root) {
+  std::queue<Node*> q;
+  q.push(root);
+  while (!q.empty()) {
+    Node* cur = q.front();
+    q.pop();
+    if (cur != NULL) {
+      cout << cur->data << " ";
+      q.push(cur->left);
+      q.push(cur->right);
+    }
+  }
+}
+
+void dfs(Node* root) {
+  std::stack<Node*> s;
+  s.push(root);
+  while (!s.empty()) {
+    Node* cur = s.top();
+    s.pop();
+    if (cur != NULL) {
+      s.push(cur->right);
+      s.push(cur->left);
+      cout << cur->data << " ";
+    }
+  }
+}
+
+int main()
+{
+  int arr[] = { 1, 2, 3, 4, 5, 6, 6, 6, 6 };
+  int n = sizeof(arr) / sizeof(arr[0]);
+  Node* root = NULL;
+  insertLevelOrder(arr, root, 0, n);
+  inOrder(root);
+  std::cout << std::endl;
+  preOrder(root);
+  std::cout << std::endl;
+  bfs(root);
+  std::cout << std::endl;
+  dfs(root);
+}
+
+
+---
+//
+    change the val of nodes to char. can easily build a tree from strings 
+    which, can be used to encrypt: two person together can get the key neither one of them 
+
+#include<iostream>
+#include<cstdio>
+#include<cstring>
+#include <string>
+#include <queue>
+#include <stack>
+using namespace std;
+
+/* A binary tree node has data,
+pointer to left child and a
+pointer to right child */
+struct Node
+{
+  char data;
+  Node* left, * right;
+};
+
+/* Helper function that allocates a
+new node */
+Node* newNode(char data)
+{
+  Node* node = (Node*)malloc(sizeof(Node));
+  node->data = data;
+  node->left = node->right = NULL;
+  return (node);
+}
+
+void insertLevelOrder(string str, Node*& root,int i, int n)
+{
+  if (i < n)
+  {
+    root = newNode(str[i]);
+    insertLevelOrder(str, root->left,  2 * i + 1, n);
+    insertLevelOrder(str, root->right, 2 * i + 2, n);
+  }
+}
+
+void inOrder(Node* root)
+{
+  if (root != NULL)
+  {
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
+  }
+}
+
+void preOrder(Node* root)
+{
+  if (root != NULL)
+  {
+    cout << (char)root->data << " ";
+    preOrder(root->left);
+    preOrder(root->right);
+  }
+}
+
+void bfs(Node* root) {
+  std::queue<Node*> q;
+  q.push(root);
+  while (!q.empty()) {
+    Node* cur = q.front();
+    q.pop();
+    if (cur != NULL) {
+      cout << cur->data << " ";
+      q.push(cur->left);
+      q.push(cur->right);
+    }
+  }
+}
+
+void dfs(Node* root) {
+  std::stack<Node*> s;
+  s.push(root);
+  while (!s.empty()) {
+    Node* cur = s.top();
+    s.pop();
+    if (cur != NULL) {
+      s.push(cur->right);
+      s.push(cur->left);
+      cout << cur->data << " ";
+    }
+  }
+}
+
+int main()
+{
+  string str = "abcdefghijklmnopqrstuvwxyz";
+  //int arr[] = { 1, 2, 3, 4, 5, 6, 6, 6, 6 };
+  int n = sizeof(str) / sizeof(str[0]);
+  n = 26;
+  //int n = sizeof(arr) / sizeof(arr[0]);
+  Node* root = NULL;
+  insertLevelOrder(str, root, 0, n);
+
+  std::cout <<"in-order:"<< std::endl;
+  inOrder(root);
+  std::cout << "\npre-order:" << std::endl;
+  preOrder(root);
+  std::cout << "\nbfs:" << std::endl;
+  bfs(root);
+  std::cout << "\ndfs:" << std::endl;
+  dfs(root);
+}

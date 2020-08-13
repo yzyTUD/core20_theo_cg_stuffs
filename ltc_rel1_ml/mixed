@@ -1,0 +1,1244 @@
+
+    // 目标：看懂论文，实现论文中方法，在cgv中使用
+
+    preview_pass 
+        seedonline  
+            卷积神经网络,卷积层，池化层，全连接，激活函数
+                卷积神经
+                对于大型图像处理有出色表现。
+                在它内部，参数从输入层向输出层单向传播。有异于循环神经网络，它的内部不会构成有向环。
+                手写识别是最早成功利用RNN的研究结果
+                Hochreiter和Schmidhuber于1997年发现了长短期记忆(LSTM)网络，并在多个应用领域创造了精确度记录
+                一个由 CTC 训练的LSTM网络赢得了多项连笔手写识别竞赛，成为第一个赢得模式识别竞赛的RNN
+                LSTM还改进了大词汇量语音识别[11][12]和文本到语音合成[13]并在谷歌安卓系统中使用
+                LSTM打破了改进机器翻译[16]、语言建模[17]和多语言处理的记录[18]。 LSTM 结合卷积神经网络改进了图像自动标注
+                而池化层往往在卷积层后面，通过池化来降低卷积层输出的特征向量，同时改善结果（不易出现过拟合）
+                总的一个结构大致如下：
+                连接所有的特征，将输出值送给分类器（如softmax分类器）。
+                输入层、卷积层、激活函数、池化层、全连接层
+                即INPUT（输入层）-CONV（卷积层）-RELU（激活函数）-POOL（池化层）-FC（全连接层）
+                POOL（池化层）
+                卷积层是一个5*5*3的filter
+                我们通常会使用多层卷积层来得到更深层次的特征图
+                https://img-blog.csdn.net/20170416204559735?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWpsOTEyMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast
+                https://img-blog.csdn.net/20170416204734894?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWpsOTEyMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast
+                https://img-blog.csdn.net/20170416210303322?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWpsOTEyMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast
+                如果输入变化很小，导致输出结构发生截然不同的结果，这种情况是我们不希望看到的
+                为了模拟更细微的变化，输入和输出数值不只是0到1，可以是0和1之间的任何数，
+                激活函数是用来加入非线性因素的，因为线性模型的表达力不够
+                Sigmoid函数
+                常用的激活函数
+                目前已被淘汰
+                Tanh函数
+                ReLU函数
+                很大程度的解决了BP算法在优化深层神经网络时的梯度耗散问题
+                Leaky ReLU函数
+                真实使用的时候最常用的还是ReLU函数，注意学习率的设置以及死亡节点所占的比例即可
+                池化层 对输入的特征图进行压缩
+                一方面使特征图变小，简化网络计算复杂度；一方面进行特征压缩，提取主要特征，如下：
+                https://img-blog.csdn.net/20170416212122301?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWpsOTEyMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast
+                一种是Avy Pooling,一种是max Pooling
+                Avy pooling现在不怎么用了，方法是对每一个2*2的区域元素求和，再除以4，得到主要特征
+                这里的pooling操作是特征图缩小，有可能影响网络的准确度，因此可以通过增加特征图的深度来弥补（这里的深度变为原来的2倍）。
+                https://img-blog.csdn.net/20170416212159273?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWpsOTEyMg==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast   
+            GAN 
+            BP算法 
+                * BP 是一种快速求导的技术
+                在稍微复杂例子中，路径求和法很容易产生路径爆炸
+            计算图模型
+                BP算法运行在计算图模型之上
+                https://samaelchen.github.io/deep_learning_step2/
+                https://blog.csdn.net/xbinworld/article/details/56523063
+                * BP 是一种快速求导的技术
+                可以作为一种不单单用在深度学习中并且可以胜任大量数值计算场景的基本的工具。
+                有向图结构来描述神经网络的计算:
+                * 我们需要 和式法则（sum rule ）和 乘式法则（product rule）：
+                在图中每条边上都有对应的导数了
+                那么 c 也是以 1 的速度在改变，导致 e 发生了 2 的速度在改变。因此 e 是以 1 * 2 的关于 a 变化的速度在变化。
+                对一个点到另一个点的所有的可能的路径进行求和，每条路径对应于该路径中的所有边的导数之积
+                因此，为了获得 e 关于 b 的导数，就采用路径求和
+                在稍微复杂例子中，路径求和法很容易产生路径爆炸
+                但是在图更加复杂的时候，路径数量会指数级地增长。相比于粗暴地对所有的路径进行求和，更好的方式是进行因式分解：
+                通过在每个节点上反向合并路径而非显式地对所有的路径求和来大幅提升计算的速度。实际上，两个算法对每条边的访问都只有一次！
+                前向微分需要百万次遍历计算图才能得到最终的导数，而反向微分仅仅需要遍历一次就能得到所有的导数！速度极快！
+                * 我们将衡量神经网络表现的代价函数看做是神经网络参数的函数。
+                    我们希望计算出代价函数关于所有参数的偏导数，从而进行梯度下降（gradient descent）
+                * 我们将衡量神经网络表现的代价函数看做是神经网络参数的函数。
+                    我们希望计算出代价函数关于所有参数的偏导数，从而进行梯度下降（gradient descent）。
+                * 我们将衡量神经网络表现的代价函数看做是神经网络参数的函数。
+                    我们希望计算出代价函数关于所有参数的偏导数，从而进行梯度下降（gradient descent）
+                其实BP的本质就是链式法则。
+                有使用前向微分更加合理的场景么？当然！因为反向微分得到一个输出关于所有输入的导数，前向微分得到了所有输出关于一个输入的导数。如果遇到了一个有多个输出的函数，前向微分肯定更加快速）
+                Recurrent Neural Network 中理解 vanishing gradient 的原因。
+                有的时候，越是有效的算法，原理往往越是简单。
+                自学的过程中，我敢保证 99.9% 的人都有通过视频来学习
+                x.data *= 100 # 只改变了值，不会记录在计算图，所以不会影响梯度传播
+                https://tangshusen.me/Dive-into-DL-PyTorch/#/chapter03_DL-basics/3.1_linear-regression
+            回归问题？分类问题？聚类问题？
+                给定一个样本特征 , 我们希望预测其对应的属性值 , 如果  是离散的, 那么这就是一个分类问题，
+                    反之，如果  是连续的实数, 这就是一个回归问题。
+                如果给定一组样本特征 , 我们没有对应的属性值 , 而是想发掘这组样本在  维空间的分布, 
+                    比如分析哪些样本靠的更近，哪些样本之间离得很远, 这就是属于聚类问题
+                如果我们想用维数更低的子空间来表示原来高维的特征空间, 那么这就是降维问题。
+                样本特征
+                属性值
+                离散
+                连续 - 函数有关的
+                特征空间？包含样本特征的空间？
+                分类问题中用到的学习算法，在回归问题中也能使用
+                分类问题最常用的学习算法包括 SVM (支持向量机) , SGD (随机梯度下降算法), Bayes (贝叶斯估计), Ensemble, KNN 等。
+                    而回归问题也能使用 SVR, SGD, Ensemble 等算法，以及其它线性回归算法。
+                q- 逻辑回归（Logistic Regression）解决的是什么问题？
+                    是一种用于解决二分类（0 or 1）问题
+                q- 这三个问题的区别？ ：：回归问题？分类问题？聚类问题？ 
+                    或者说知道到底有几个类别, 而聚类是不知道属性的范围的
+                所以 classification 也常常被称为 supervised learning, 而clustering就被称为unsupervised learning。 
+                q- unsupervised learning？ 
+                    不知道属性范围的！ 例如聚类问题。给你一个社交网络图，判断里面有几类人。
+                    这种问题一般更复杂。而常用的算法包括 k-means (K-均值), GMM (高斯混合模型) 等。
+            k-means (K-均值)
+            GMM (高斯混合模型)
+            逻辑回归,normal回归,线性回归
+                逻辑回归（Logistic Regression）是一种用于解决二分类（0 or 1）问题的机器学习方法，用于估计某种事物的可能性
+                注意，这里用的是“可能性”，而非数学上的“概率”，logisitc回归的结果并非数学定义中的概率值
+                q- h- 不可以直接当做概率值来用, 为啥？
+                    该结果往往用于和其他特征值加权求和，而非直接相乘。
+                逻辑回归（Logistic Regression）与线性回归（Linear Regression）都是一种
+                    广义线性模型（generalized linear model）
+                逻辑
+                逻辑回归假设因变量 y 服从伯努利分布，而线性回归假设因变量 y 服从高斯分布
+                因此与线性回归有很多相同之处，去除Sigmoid映射函数的话
+                去除Sigmoid映射函数的话，逻辑回归算法就是一个线性回归。
+                逻辑回归是以线性回归为理论支持的
+                但是逻辑回归通过Sigmoid函数引入了非线性因素，因此可以轻松处理0/1分类问题
+                要先介绍一下Sigmoid函数，也称为逻辑函数（Logistic function）：
+                （Hypothesis function）
+                其中 [公式] 是我们的输入， [公式] 为我们要求取的参数。
+                一个机器学习的模型，实际上是把决策函数限定在某一组条件下
+                这组限定条件就决定了模型的假设空间
+                这个函数的意思就是在给定 [公式] 和 [公式] 的条件下 [公式] 的概率。
+                选择0.5作为阈值是一个一般的做法，实际应用时特定的情况可以选择不同阈值，如果对正例的判别准确性要求高
+                可以选择阈值大一些，对正例的召回要求高，则可以选择阈值小一些
+                决策边界，也称为决策面
+                非线性决策边界
+                https://pic1.zhimg.com/80/v2-5687064adfc823e35f3eec13f51be97c_1440w.png
+                决策边界其实就是一个方程
+                任何能够衡量模型预测出来的值 [公式] 与真实值 [公式] 之间的差异的函数都可以叫做代价函数 [公式] 
+                如果有多个样本，则可以将所有代价函数的取值求均值，记做 [公式]
+                后面做的所有事情就是训练模型的参数 [公式]
+                训练参数的过程就是不断改变 [公式] ，从而得到更小的 [公式] 的过程。
+                在线性回归中，最常用的是均方误差(Mean squared error)，
+                在逻辑回归中，最常用的是代价函数是交叉熵(Cross Entropy)
+                香农信息量用来度量不确定性的大小：一个事件的香农信息量等于0，表示该事件的发生不会给我们提供任何新的信息，
+                例如确定性的事件，发生的概率是1
+                发生了也不会引起任何惊讶
+                当不可能事件发生时，香农信息量为无穷大
+                这表示给我们提供了无穷多的新信息，并且使我们无限的惊讶
+                最大化似然函数和最小化损失函数实际上是等价的
+                https://mlcv.inf.tu-dresden.de/courses/st20/ml2/Ex/1/1_logreg_sln.html
+                    lab1采用了固定的iter次数
+                    lab2使用了梯度下降算法--用一个阈值来控制
+                    q- 公式的推导见res和课件
+                    t- 把lab1改成lab2形式的梯度下降
+                    t- 转换成c++代码整合到cgv中
+                        用于分类点云数据！             
+            马尔科夫
+                为状态空间中经过从一个状态到另一个状态的转换的随机过程。该过程要求具备“无记忆”的性质：下一状态的概率分布只能由当前状态决定
+                在时间序列中它前面的事件均与之无关。这种特定类型的“无记忆性”称作马尔可夫性质。
+                随机漫步就是马尔可夫链的例子。随机漫步中每一步的状态是在图形中的点
+                这么说可能有些不严谨，但是这样做可以大大简化模型的复杂度，因此马尔科夫链在很多时间序列模型中得到广泛的应用，比如循环神经网络RNN，隐式马尔科夫模型HMM等
+                只要求出系统中任意两个状态之间的转移概率，这个马尔科夫链的模型就定了。看一个具体的例子
+                这个马尔科夫链是表示股市模型的，共有三种状态：牛市（Bull market）, 熊市（Bear market）和横盘（Stagnant market）
+                https://img-blog.csdn.net/20180922225436641?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2JpdGNhcm1hbmxlZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70
+                q- 形式化定义
+                q- 马尔科夫链模型的状态转移矩阵对于一个问题是确定的？ y
+                当这个状态转移矩阵P确定以后，整个股市模型就已经确定
+                这个转移矩阵就厉害了。不管我们的初始状态是什么样子的，只要状态转移矩阵不发生变化，当n→∞n \to \inftyn→∞时，最终状态始终会收敛到一个固定值。
+                q- 马尔科夫链具有收敛性--pagerank！ 
+                    本质是什么？矩阵分析，自动控制原理等过程中，经常会提到矩阵的幂次方的性质
+                马尔可夫链细致平稳条件
+                    1.可能的状态数是有限的。
+                    2.状态间的转移概率需要固定不变。
+                    3.从任意状态能够转变到任意状态。
+                    4.不能是简单的循环，例如全是从x到y再从y到x。
+                Q- 细致平衡条件（Detailed Balance Condition）
+                    上式取j→∞j \to \inftyj→∞，就可以得到矩阵表达式...
+                    https://blog.csdn.net/bitcarmanlee/article/details/82819860
+                马尔可夫链在实际中有非常广泛的应用。例如奠定互联网基础的PageRank算法，就是由马尔可夫链定义的
+                m阶马尔可夫链:换句话说，未来状态取决于其前m个状态
+                静态马尔可夫链:转移概率与n无关。
+                稳定分布π是一个（行）向量，它的元素都非负且和为1
+                可反转马尔可夫链:对于可反转马尔可夫链，π总是一个平稳分布。
+                可反转条件 = 细致平衡条件（Detailed Balance Condition）
+                伯努利方案是马尔可夫链的一种特殊情形，其转移概率矩阵有相同的行，即下一状态均匀独立于当前状态
+                马尔科夫链可以应用于金融与经济中一系列现象的建模，包括资产价值与市场冲击
+                马尔可夫链也有众多的生物学应用，特别是增殖过程，可以帮助模拟生物增殖过程的建模。隐蔽马尔可夫模型还被用于生物信息学
+                马尔可夫过程，能为给定样品文本，生成粗略，但看似真实的文本：他们被用于众多供消遣的“模仿生成器”软件。马尔可夫链还被用于谱曲。
+            HMM
+                它用来描述一个含有隐含未知参数的马尔可夫过程。其难点是从可观察的参数中确定该过程的隐含参数
+                而在隐马尔可夫模型中，状态并不是直接可见的，但受状态影响的某些变量则是可见的
+                隐性马尔可夫模型常被用来解决有未知条件的数学问题。
+                应用；他选择做什么事情只凭天气。你对于他所住的地方的天气情况并不了解，但是你知道总的趋势。
+                    在他告诉你每天所做的事情基础上，你想要猜测他所在地的天气情况
+                https://zh.wikipedia.org/wiki/%E7%BB%B4%E7%89%B9%E6%AF%94%E7%AE%97%E6%B3%95
+                维特比算法（英语：Viterbi algorithm）是一种动态规划算法。它用于寻找最有可能产生观测事件序列的维特比路径——隐含状态序
+                    列，特别是在马尔可夫信息源上下文和隐马尔可夫模型中
+                HMM最初的应用之一是开始于20世纪70年代中期的语音识别。[1]
+                q- 马尔可夫性质
+                    当一个随机过程在给定现在状态及所有过去状态情况下，其未来状态的条件概率分布仅依赖于当前状态
+            遗传算法，模拟退火算法
+            过拟合
+            kreas, tensorflow, pytorch ... numpy .... 
+            numpy
+            python 
+            famous python packages
+                https://towardsdatascience.com/installing-keras-tensorflow-using-anaconda-for-machine-learning-44ab28ff39cb
+            ...
+            famous cnns, dnns 
+            状态空间搜索问题（启发式搜索）
+                A＊算法
+                    跳棋的棋局数:大约10e78、国际象棋的棋局数:大约10e120、围棋的棋局数:大约10e761
+                    八皇后问题、八数码问题、贪吃蛇AI、斗地主AI
+                    h(n)=0 宽度优先搜索
+                    g（n）=0  最佳优先搜索
+                    h(n)<= h*(n)则成为A*算法   算法A满足（1）（2）则称作A*     不超过两个耗散值之差
+                    h（n）的定义：：是关键   可能对应多种启发信息
+                        open用于选择扩展节点   closed 表  扩展完了的节点表
+                    优先选择f(中)最小的   mk   mj     mi三类
+                    八数码问题中，h(n)   是不对位的个数   h(n) = 4;
+                    A、A*算法存在四个定理证明
+                        定义启发函数
+                        扩展节点，计算f值，比较选择最小的，继续扩展（可以修正临时错误）
+                        M-C问题：
+                    规则集
+                        IF (m, c, 1) THEN (m-1, c, 0)   过去一个传教士
+                        IF (m, c, 1) THEN (m, c-1, 0)   过去一个传野人
+                        IF (m, c, 1) THEN (m-1, c-1, 0)
+                        IF (m, c, 1) THEN (m-2, c, 0)
+                        IF (m, c, 1) THEN (m, c-2, 0)
+                            转变成：
+                        IF (m, c, 1) AND 1 ≤i+j≤2 THEN (m-i, c-j, 0)
+                        IF (m, c, 0) AND 1 ≤i+j≤2 THEN (m+i, c+j, 0)
+                alpha－beta剪枝算法
+                    利用问题自身的信息  设定估计函数
+                    极大层节点的下线å
+                极小层节点的上限ß
+                与或图中的搜索算法
+                    AO*   与或图：Hanoi塔
+            聚类算法
+                聚类算法，不是分类算法。
+                    分类算法是给一个数据，然后判断这个数据属于已分好的类中的具体哪一类。
+                    聚类算法是给一大堆原始数据，然后通过算法将其中具有相似特征的数据聚为一类
+                朴素贝耶斯
+                支持向量机
+            回归预测
+            无监督学习与监督学习
+                k－临近算法是无监督学习
+            神经网络学习
+                20世纪80 年代
+                大量处理单元互联组成的非线性、自适应信息处理系统
+                学习的目的是什么：分类
+                学习的内容是什么：权值
+                CNN－卷积神经网络
+                神经网络指的是⽣物学启发的编程范式
+                从观测数据中进⾏学习
+                深度学习是无监督学习的一种
+                机器学习：对未知数据进行分类的能力
+                监督非监督学习
+                    简单的判断：训练时输入的数据有标签，则为有监督学习，没标签则为无监督学习。
+                    监督：(supervised learning)利用一组已知类别的样本调整分类器的参数，相当于对着答案联系
+                    非监督：(unsupervised learning)数据没有标签，也叫聚类，相当于没有答案
+                    事实上，没有那么多编排好的练习册
+                    半监督学习：一部分数据有标签，没有标签占大多数
+                手写识别被认为是神经网络学习的原型问题
+                监督学习
+                回归分析：输出的标签是连续的
+                分类：输出的标签是离散的
+                非监督学习
+                神经网络学习是非监督学习
+                神经元，感知器，决策器是多输入，单输出的一种计算模型
+                感知器的偏置是阈值的负数
+                    假如感知器的输入中每个权重为-2，整体的偏置为3，实现了与非门
+                    与非门是通用运算
+                    一个最容易理解的多层神经网络的例子是加法器，将与非门替换成感知器
+                    神经元可以搭建传统电路，计算机电路。同时可以构建学习神经网络。而神经网络可以做到电路无法实现的事情
+                    感知器不可以被用来学习的原因：变化太大太快，要的是微笑的改变。因此引入s神经元。
+                s神经元具有特殊的数学形式与性质，相当于平滑了的阶跃函数。因此可以实现对感知器的模拟以及微小变化的实现，可以用来进行机器学习过程。
+                    多层感知器（MLP）的本质是s神经元
+                神经网络
+                    前馈神经网络：上一层的输出是下一层的输入***基础和重点是前馈神经网络
+                    递归神经网络：算法复复杂，目前算法还不够强大，但是更加接近我们的真实工作状态
+                    bp神经网络：即误差反传误差反向传播算法的学习过程，由信息的正向传播和误差的反向传播两个过程组成
+                训练图像测试图像
+                    隐藏层的神经元在做什么：识别一部分图像是否存在
+                    用10个输出而不是4个？
+                        更接近自然
+                        相关性难以界定
+                    引入二次代价函数，均方误差，用来评估网络的好坏
+                    所以训练的目的是最小化权重和偏执的代价函数，梯度下降的算法。也叫最小化二次代价。
+                    梯度下降法就是不断最小化梯度，运用更新规则，让小球向山谷滚落。可以证明，用梯度下降法计算最小值是最快的。
+                    但是人们已经在致力于研究梯度下降的替代品
+                    训练迭代期：训练的输入数据太多，没法有效进行运算。甚至由于不需要梯度的精确计算。随机梯度下降法。
+                    在线学习递增学习：每次只学习一个样本。是一种极端情况。
+                    输入层不设置偏置
+                    学习速率与超参数：学习速率是一种超参数，小的学习速率使得学习过程太过缓慢。大的学习速率使得学习正确率反而减小。
+                    （p16）
+
+                人工智能开源框架 
+            tensorflow
+                It has a comprehensive, flexible ecosystem of tools, libraries and community resources
+                build and deploy ML powered applications.
+                *Easy model building 
+                A simple and flexible architecture to take new ideas from concept to code
+                Build and train state-of-the-art models without sacrificing speed or performance. 
+            Kreas   
+                *tf.keras is TensorFlow's high-level API for building and training 
+                    deep learning models. It's used for fast prototyping
+                Keras is a neural network library while TensorFlow is the open source library 
+                    for a number of various tasks in machine learning
+                Keras and TensorFlow are among the most popular frameworks when it comes to Deep Learning
+                Keras, on the other hand, is a high-level neural networks library 
+                    which is running on the top of TensorFlow, CNTK, and Theano.
+                *keras only used with in tensorflow
+            梯度下降算法
+                计算的梯度就相当于斜率，下降到一定程度以后我们认为是达到最小值
+            Autoencoder 
+                神经网络中的权重矩阵可看作是对输入的数据进行特征转换，即先将数据编码为另一种形式，然后在此基础上进行一系列学习
+                如果编码后的数据能够较为容易地通过解码恢复成原始数据，我们则认为较好的保留了数据信息
+                autoencoder通过神经网络进行预训练，从而确定的初始值
+                其目标是让输入值等于输出值
+                该约束可看作是一种regularization，用于减少参数的个数，控制模型的复杂度
+                对于多层神经网络的参数初始化问题，我们可以依次对每一层进行autoencoder
+                首先按照上述方法确定第一层的权重参数，然后固定第一层的参数，对第二层的参数进行训练，以此类推，直到得到所有权重值
+                自编码器（Autoencoder）是一种旨在将它们的输入复制到的输出的神经网络
+                他们通过将输入压缩成一种隐藏空间表示（latent-space representation），然后这种重构这种表示的输出进行工作
+                g(f(x))和x尽量接近
+                如果在AutoEncoder的基础上加上L1的Regularity限制（L1主要是约束每一层中的节点中大部分都要为0，只有少数不为0，
+                    这就是Sparse名字的来源），我们就可以得到Sparse AutoEncoder法
+                如果隐藏节点比可视节点（输入、输出）少的话，由于被迫的降维，自编码器会自动习得训练样本的特征（变化最大，信息量最多的维度）
+                但是如果隐藏节点数目过多，甚至比可视节点数目还多的时候，自编码器不仅会丧失这种能力，更可能会习得一种“恒等函数”——直接把输入复制过去作为输出。
+                那么使得神经元大部分的时间都是被抑制的限制则被称作稀疏性限制
+                因此，这就迫使编码器去学习输入信号的更加鲁棒的表达，这也是它的泛化能力比一般编码器强的原因。DA可以通过梯度下降算法去训练。
+            common ML problems?
+            topics provided with tensorflow
+                https://www.tensorflow.org/tutorials/text/transformer 
+                basic image classification
+                classification of Movie reviews
+                regression: Predict fuel efficiency
+                Convolutional Neural Network (CNN)
+                Transfer learning with TensorFlow Hub
+                Image segmentation
+                Text classification with an RNN
+                Neural machine translation with attention
+                Image captioning with visual attention
+                Transformer model for language understanding
+
+                Classify structured data with feature columns
+                Time series forecasting
+
+                neural style transfer
+                DeepDream -- neural network "dream" and enhance the surreal patterns
+                Generative Adversarial Networks (GANs)
+                image to image translation using conditional GAN's
+                an adversarial example using the Fast Gradient Signed Method (FGSM)
+                generate images of handwritten digits by training a Variational Autoencoder
+        seedfrombookcpt
+            https://www.deeplearningbook.org/lecture_slides.html
+                Gradient Descent
+                Structure of Neural Network Cost Functions
+                Deep Feedforward Networks
+            https://github.com/m2dsupsdlclass/lectures-labs
+                Intro to Deep Learning
+                Neural Networks and Backpropagation
+                Embeddings and Recommender Systems
+                Convolutional Neural Networks for Image Classification
+                Deep Learning for Object Detection and Image Segmentation
+                Recurrent Neural Networks and NLP
+                Sequence to sequence, attention and memory
+                Expressivity, Optimization and Generalization
+                Imbalanced classification and metric learning
+                Unsupervised Deep Learning and Generative models
+            https://web.stanford.edu/class/cs20si/syllabus.html
+        seedfrompapercpt
+            https://github.com/Tencent/ActionDetection-DBG
+        seedfromcodelibs
+            https://github.com/pbharrin/machinelearninginaction
+            https://github.com/PacktPublishing/Python-Deep-Learning-Second-Edition
+            https://github.com/Unity-Technologies/ml-agents
+            scikit-learn: 
+                machine learning in Python https://scikit-learn.org
+            numpy
+            theano  
+                http://deeplearning.net/software/theano/tutorial/
+                http://deeplearning.net/software/theano/tutorial/index.html
+                http://www.deeplearningbook.org/
+                https://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf
+            tensorflow 
+                example1
+                    https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/keras/classification.ipynb#scrollTo=t9FDsUlxCaWW
+            pytorch 
+                https://pytorch.org/tutorials/
+                https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html
+                * https://github.com/ShusenTang/Dive-into-DL-PyTorch
+            anaconda 
+                Anaconda是一个预装了很多我们用的到或用不到的第三方库的Python。
+                而且相比于大家熟悉的pip install命令，Anaconda中增加了conda install命令
+                conda install会比pip install更方便一些。
+                Anaconda是包管理器和环境管理器，Jupyter notebook 可以将数据分析的代码、图像和文档全部组合到一个web文档中。
+                https://www.zhihu.com/question/58033789/answer/254673663
+                Anaconda在英文中是“蟒蛇”，麻辣鸡（Nicki Minaj妮琪·米娜）有首歌就叫《Anaconda》，表示像蟒蛇一样性感妖娆的身体。
+                Anaconda 附带了一大批常用数据科学包，它附带了 conda、Python 和 150 多个科学包及其依赖项。因此你可以立即开始处理数据。
+                Anaconda 是在 conda（一个包管理器和环境管理器）上发展出来的。
+                q- install numpy?
+                    Anaconda Navigator
+                conda就可以帮助你为不同的项目建立不同的运行环境。
+                还有很多项目使用的包版本不同，比如不同的pandas版本，不可能同时安装两个 Numpy 版本
+                每个项目中几乎都有一个独立环境和py
+                安装完Anaconda已经自带安装好了Python，不需要你再安装Python了。
+            summ_tasks:
+                https://github.com/pytorch/examples
+    ---
+    book_pass
+        book--Machine Learning in Action
+            classification 
+                NN、决策树、朴素贝叶斯、支持向量机svm、ridge回归、线性回归
+            Unsupervised learning
+            data cleaning 
+                principal component analysis
+        book--机器学习周志华
+            第4章 决策树 73
+                +pre 
+                    根节点开始，测试待分类项中相应的特征属性，并按照其值选择输出分支，直到到达叶子节点，将叶子节点存放的类别作为决策结果。
+                    https://pic2.zhimg.com/80/v2-39d109b46ea4f34d5efbf67edc11d57d_1440w.png
+                    叶子节点可以重复
+                    决策树代表实例属性值约束的合取的析取式
+                    于是我们可以很牛的告诉他，你买的这个纹理清晰，根蒂硬挺的瓜是坏瓜，orz！
+                    给你训练数据，你的决策树是怎么构建的呢？没有树，谈何遍历，谈何分类？
+                    给我下面训练数据，我如何构建出决策树
+                    在当前层数选择了不同的特征来作为我的分裂因素造成的
+                    我们就可以继续由该特征的不同属性值进行划分，依次一直到叶子结点。
+                    是以什么标准来选择特征的？这就是我们要说的决策树的关键步骤是分裂属性。
+                    *按照某一特征属性的不同划分构造不同的分支，其目标是让各个分裂子集尽可能地“纯
+                        尽可能“纯”就是尽量让一个分裂子集中待分类项属于同一类别
+                    判断“纯”的方法不同引出了我们的ID3算法，C4.5算法以及CART算法，这些后面会详细介绍！
+                        在某些场合下也有缺陷
+                        采用上面算法生成的决策树在事件中往往会导致过度拟合。也就是该决策树对训
+                            练数据可以得到很低的错误率，但是运用到测试数据上却得到非常高的错误率
+                        https://blog.csdn.net/xbinworld/article/details/44660339
+                        优化方案*3 
+                        信息熵下降越快，说明信息越明确，就是寻找纯度最好的分类方法
+                    q- 如何进行类别估计？进行决策树的遍历即可
+                    q- 如何构建决策树？
+                    决策树的生成算法有ID3, C4.5和C5.0等。决策树是一种树形结构，其中每个内部节点表示一个属性上的判断
+                    q- 根据啥建立决策树？Supervised Learning？ 
+                        根据数据集， 也就是先验知识，比如西瓜的一个表
+                    t- code ， 不用id3也可以构建，但是问题在哪里？
+                    当然也可以有和上图完全不同的树形，比如下图这种的：
+                    h- 决策树不只有一种，那么哪种最好？为啥要纯？
+                    对于一组数据，熵越小说明分类结果越好
+                    但是这种分割显然只对训练数据有用，对于新的数据没有意义，这就是所说的过度学习（Overfitting）
+                    所以为了避免分割太细，c4.5对ID3进行了改进，C4.5中，优化项要除以分割太细的代价，这个比值叫做信息增益率
+                    q- 一共有10组数据：Cross-Validation? 如何做？
+                        做10次，然后大平均错误率。这样称为 10 folds Cross-Validation。
+                        第一次. 1到9做训练数据， 10做测试数据
+                        决策树训练的时候，一般会采取Cross-Validation法：比如一共有10组数据：
+                    优缺点
+                        +测试数据集时，运行速度比较快；
+                        -容易发生过拟合（随机森林可以很大程度上减少过拟合）；
+                        -信息增益准则对可取数目较多的属性有所偏好（典型代表ID3算法），而增益率准则
+                            （CART）则对可取数目较少的属性有所偏好，
+                            但CART进行属性划分时候不再简单地直接利用增益率尽心划分，而是采用一种启发式规则）
+                    优化 
+                        剪枝：1）用单一叶节点代替整个子树，叶节点的分类采用子树中最主要的分类；2）将一个字数完全替代另外一颗子树。
+                            后置裁剪有个问题就是计算效率，有些节点计算后就被裁剪了，导致有点浪费。
+                        K-Fold Cross Validation
+                        Random Forest
+                            用训练数据随机的计算出许多决策树，形成了一个森林
+                            然后用这个森林对未知数据进行预测，选取投票最多的分类。实践证明，此算法的错误率得到了经一步的降低
+                            这种方法背后的原理可以用“三个臭皮匠定一个诸葛亮”这句谚语来概括。一颗树预测正确的概率可能不高，但是集体预测正确的概率却很高。
+                            RF是非常常用的分类算法，效果一般都很好。
+                4.1 基本流程 73
+                4.2 划分选择 75
+                4.2.1 信息增益 75
+                4.2.2 增益率 77
+                4.2.3 基尼指数 79
+                4.3 剪枝处理 79
+                4.3.1 预剪枝 80
+                4.3.2 后剪枝 82
+                4.4 连续与缺失值 83
+                4.4.1 连续值处理 83
+                4.4.2 缺失值处理 85
+                4.5 多变量决策树 88
+                4.6 阅读材料 92
+                习题 93
+                参考文献 94
+                休息一会儿 95
+            第5章 神经网络 97
+                +pre
+                    http://www.ruanyifeng.com/blog/2017/07/neural-network.html
+                    学家一直希望模拟人的大脑，造出可以思考的机器
+                    它接受多个输入（x1，x2，x3...），产生一个输出（output），好比神经末梢感受各种外部环境的变化，最后产生电信号。
+                    各种因素很少具有同等重要性：某些因素是决定性因素，另一些因素是次要因素。因此，可以给这些因素指定权重（weight）
+                    还需要指定一个阈值（threshold）
+                    决定去不去参观：阈值的高低代表了意愿的强烈，阈值越低就表示越想去，越高就越不想去。
+                    q- output表达式？ 公示？
+                    http://www.ruanyifeng.com/blogimg/asset/2017/bg2017071203.png
+                    这张图里，信号都是单向的，即下层感知器的输出总是上层感知器的输入。现实中，
+                        有可能发生循环传递，即 A 传给 B，B 传给 C，C 又传给 A，这称为"递归神经网络"
+                    http://www.ruanyifeng.com/blogimg/asset/2017/bg2017071206.png
+                    q- 矢量化以后的公示
+                    权重（w）和阈值（b）
+                    多层感知器的结构
+                    q- 最难的事权重和阈值， 现实中很难估计它们的值， 有一种办法那就是试错
+                    整个过程需要海量计算。所以，神经网络直到最近这几年才有实用价值，而且一般的 CPU 还不行，
+                        要使用专门为机器学习定制的 GPU 来计算。
+                    上面的模型有一个问题没有解决，按照假设，输出只有两种结果：0和1。
+                        但是，模型要求w或b的微小变化，会引发输出的变化。如果只输出0和1，未免也太不敏感了
+                    h- 以上是最简单的神经元模型，其实还有很多，经典的事一种函数的模型
+                        sigmoid模型 http://www.ruanyifeng.com/blogimg/asset/2017/bg2017071209.png
+                    误差逆传播算法（backpropagation BP算法）是迄今最成功的的神经网络算法。显示任务中使用
+                        神经网络时，大多是在使用BP算法进行训练
+                    不仅适用于多层前馈神经网络，还可以用于其他类型的神经网络，训练递归。
+                    BP算法基于梯度下降策略，以目标的负梯度方向对以上参数进行调整
+                    学习率控制着算法每一轮迭代中的更新步长，若太大则容易振动，太小则收敛速度又会太慢。
+
+
+
+                5.1 神经元模型 97
+                5.2 感知机与多层网络 98
+                5.3 误差逆传播算法 101
+                5.4 全局最小与局部极小 106
+                5.5 其他常见神经网络 108
+                5.5.1 RBF网络 108
+                5.5.2 ART网络 108
+                5.5.3 SOM网络 109
+                5.5.4 级联相关网络 110
+                5.5.5 Elman网络 111
+                5.5.6 Boltzmann机 111
+                5.6 深度学习 113
+                5.7 阅读材料 115
+                习题 116
+                参考文献 117
+                休息一会儿 120
+            第6章 支持向量机 121
+                +pre
+                    支持向量机（support vector machines, SVM）是一种二分类模型，它的基本模型是定义在特征空间上的间隔最大的线性分类器
+                    SVM的的学习策略就是间隔最大化，可形式化为一个求解凸二次规划的问题
+                    SVM的的学习算法就是求解
+                        *凸二次规划的最优化算法。
+                    但是几何间隔最大的分离超平面却是唯一的（？proof）
+                    假设训练数据集是线性可分的
+                    因此SVM模型的求解最大分割超平面问题又可以表示为以下约束最优化问题
+                    https://zhuanlan.zhihu.com/p/31886934
+                    q- 写出svm对应的线性规划问题
+                    可以对其使用拉格朗日乘子法得到其对偶问题（dual problem）。
+                    满足KKT条件
+                    修改最优化形式
+                        现在我们的优化问题变成了如上的形式。对于这个问题，我们有更高效的优化算法，即序列最小优化（SMO）算法
+                    我们通过这个优化算法能得到 [公式] ，再根据 [公式] ，我们就可以求解出 [公式] 和 [公式] ，进而求得我们最初的目的：找到超平面，即”决策平面”
+                    训练完成后，大部分的训练样本都不需要保留，最终模型仅与支持向量有关。
+                    但是实际情况下几乎不存在完全线性可分的数据，为了解决这个问题，引入了“软间隔”的概念，即允许某些点不满足约束
+                    q- 什么是“软间隔”
+                    q- 为什么要加入松弛变量
+                        因为不等式就是特殊的等式，而且，等式能做的操作远多于不等式。反之也成立。
+                        松弛变量就是右边值b与左边式子的差值，大小未知，但是肯定大于等于0，因为左侧小于右侧)
+
+                6.1 间隔与支持向量 121
+                6.2 对偶问题 123
+                6.3 核函数 126
+                6.4 软间隔与正则化 129
+                6.5 支持向量回归 133
+                6.6 核方法 137
+                6.7 阅读材料 139
+                习题 141
+                参考文献 142
+                休息一会儿 145 
+            第7章 贝叶斯分类器 147
+                +pre 
+                    给定数据表格进行判断分类
+                    可以训练决策树，同时也可以利用条件概率进行统计
+                    甚至可以用神经网络！ 
+                    至少这几章，都可以用来分类classification，有监督，而不是聚类（无监督）
+                7.1 贝叶斯决策论 147
+                7.2 极大似然估计 149
+                7.3 朴素贝叶斯分类器 150
+                7.4 半朴素贝叶斯分类器 154
+                7.5 贝叶斯网 156
+                7.5.1 结构 157
+                7.5.2 学习 159
+                7.5.3 推断 161
+                7.6 EM算法 162
+                7.7 阅读材料 164
+                习题 166
+                参考文献 167
+                休息一会儿 169
+            第8章 集成学习 171
+                +pre 
+                    集成学习归属于机器学习，他是一种「训练思路」，并不是某种具体的方法或者算法。
+                    「人多力量大」，它并没有创造出新的算法，而是把已有的算法进行结合，从而得到更好的效果
+                    Bagging 的思路是所有基础模型都一致对待，每个基础模型手里都只有一票。然后使用民主投票的方式得到最终的结果。
+                    经过 bagging 得到的结果方差（variance）更小。
+                    在 bagging 的方法中，最广为熟知的就是随机森林了：bagging + 决策树 = 随机森林
+                    https://medium.com/@pkqiang49/%E4%B8%80%E6%96%87%E7%9C%8B%E6%87%82%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0-%E8%AF%A6%E8%A7%A3-bagging-boosting-%E4%BB%A5%E5%8F%8A%E4%BB%96%E4%BB%AC%E7%9A%84-4-%E7%82%B9%E5%8C%BA%E5%88%AB-6e3c72df05b8
+                    Boosting 和 bagging 最本质的差别在于他对基础模型不是一致对待的，
+                        而是经过不停的考验和筛选来挑选出「精英」，
+                        然后给精英更多的投票权，表现不好的基础模型则给较少的投票权
+                        大部分情况下，经过 boosting 得到的结果偏差（bias）更小。
+                    每一轮训练都提升那些错误率小的基础模型权重，同时减小错误率高的模型权重。
+                    在每一轮改变训练数据的权值或概率分布，通过提高那些在前一轮被弱分类器分错样例的权值，减小前一轮分对样例的权值，来使得分类器对误分的数据有较好的效果。
+                    在 boosting 的方法中，比较主流的有 Adaboost 表示自适应boosting 和 Gradient boosting 。
+                    梯度树提升（Gradient Tree Boosting）是一个boosting算法在损失函数上的泛化
+                    优缺点分析：
+                        Bagging：各个预测函数可以并行生成
+                        Boosting：各个预测函数只能顺序生成，因为后一个模型参数需要前一轮模型的结果。
+                    Boosting(提高)
+                    stacking通常是异质集成
+                    Stacking是通过一个元分类器或者元回归器来整合多个分类模型或回归模型的集成学习技术
+                    https://github.com/vsmolyakov/experiments_with_python/blob/master/chp01/ensemble_methods.ipynb
+                8.1 个体与集成 171
+                8.2 Boosting 173
+                8.3 Bagging与随机森林 178
+                8.3.1 Bagging 178
+                8.3.2 随机森林 179
+                8.4 结合策略 181
+                8.4.1 平均法 181
+                8.4.2 投票法 182
+                8.4.3 学习法 183
+                8.5 多样性 185
+                8.5.1 误差--分歧分解 185
+                8.5.2 多样性度量 186
+                8.5.3 多样性增强 188
+                8.6 阅读材料 190
+                习题 192
+                参考文献 193
+                休息一会儿 196
+            ---前面是分类任务
+            *第9章 聚类 197
+                +pre
+                    
+                9.1 聚类任务 197
+                9.2 性能度量 197
+                9.3 距离计算 199
+                9.4 原型聚类 202
+                9.4.1 k均值算法 202
+                9.4.2 学习向量量化 204
+                9.4.3 高斯混合聚类 206
+                9.5 密度聚类 211
+                9.6 层次聚类 214
+                9.7 阅读材料 217
+                习题 220
+                参考文献 221
+                休息一会儿 224
+            ---数据清洗等闲杂操作
+            第10章 降维与度量学习 225
+                10.1 k近邻学习 225
+                10.2 低维嵌入 226
+                10.3 主成分分析 229
+                10.4 核化线性降维 232
+                10.5 流形学习 234
+                10.5.1 等度量映射 234
+                10.5.2 局部线性嵌入 235
+                10.6 度量学习 237
+                10.7 阅读材料 240
+                习题 242
+                参考文献 243
+                休息一会儿 246
+            第11章 特征选择与稀疏学习 247
+                11.1 子集搜索与评价 247
+                11.2 过滤式选择 249
+                11.3 包裹式选择 250
+                11.4 嵌入式选择与L$_1$正则化 252
+                11.5 稀疏表示与字典学习 254
+                11.6 压缩感知 257
+                11.7 阅读材料 260
+                习题 262
+                参考文献 263
+                休息一会儿 266
+            ---更多学习模型
+            ??第12章 *计算学习理论 267
+                12.1 基础知识 267
+                12.2 PAC学习 268
+                12.3 有限假设空间 270
+                12.3.1 可分情形 270
+                12.3.2 不可分情形 272
+                12.4 VC维 273
+                12.5 Rademacher复杂度 279
+                12.6 稳定性 284
+                12.7 阅读材料 287
+                习题 289
+                参考文献 290
+                休息一会儿 292
+            *第13章 半监督学习 293
+                13.1 未标记样本 293
+                13.2 生成式方法 295
+                13.3 半监督SVM 298
+                13.4 图半监督学习 300
+                13.5 基于分歧的方法 304
+                13.6 半监督聚类 307
+                13.7 阅读材料 311
+                习题 313
+                参考文献 314
+                休息一会儿 317
+            *第14章 概率图模型 319
+                14.1 隐马尔可夫模型 319
+                14.2 马尔可夫随机场 322
+                14.3 条件随机场 325
+                14.4 学习与推断 328
+                14.4.1 变量消去 328
+                14.4.2 信念传播 330
+                14.5 近似推断 331
+                14.5.1 MCMC采样 331
+                14.5.2 变分推断 334
+                14.6 话题模型 337
+                14.7 阅读材料 339
+                习题 341
+                参考文献 342
+                休息一会儿 345
+            *第15章 规则学习 347
+                15.1 基本概念 347
+                15.2 序贯覆盖 349
+                15.3 剪枝优化 352
+                15.4 一阶规则学习 354
+                15.5 归纳逻辑程序设计 357
+                15.5.1 最小一般泛化 358
+                15.5.2 逆归结 359
+                15.6 阅读材料 363
+                习题 365
+                参考文献 366
+                休息一会儿 369
+            *第16章 强化学习 371
+                16.1 任务与奖赏 371
+                16.2 $K$-摇臂赌博机 373
+                16.2.1 探索与利用 373
+                16.2.2 $\epsilon $-贪心 374
+                16.2.3 Softmax 375
+                16.3 有模型学习 377
+                16.3.1 策略评估 377
+                16.3.2 策略改进 379
+                16.3.3 策略迭代与值迭代 381
+                16.4 免模型学习 382
+                16.4.1 蒙特卡罗强化学习 383
+                16.4.2 时序差分学习 386
+                16.5 值函数近似 388
+                16.6 模仿学习 390
+                16.6.1 直接模仿学习 391
+                16.6.2 逆强化学习 391
+                16.7 阅读材料 393
+        book--understanding-machine-learning-theory-algorithms.pdf
+        slides--http://cs229.stanford.edu/syllabus-spring2019.html
+        slides--http://www.cs.cmu.edu/~ninamf/ML13/
+            http://www.cs.cmu.edu/~ninamf/ML13/lect0819.pdf
+        slides--tud 
+            Markov Random Fields
+                Learning problem
+                Inference problem
+                Submodularity and minimum st-cuts
+                Pseudo-Boolean optimization
+            Clustering of graphs
+                Learning problem
+                Inference problem
+            * Deep learning
+                Stochastic gradient descent
+                Artificial neural networks
+                Back-propagation
+                Convolutional neural networks
+                Generative adversarial networks
+                Recurrent neural networks
+                Transformers
+            Mathematical foundations
+                Minimum st-cut problem
+                Basics of polyhedral geometry
+        **"neural network pytorch tutorial"
+            https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html
+                ...
+            http://neuralnetworksanddeeplearning.com/about.html
+                ...
+            https://adventuresinmachinelearning.com/neural-networks-tutorial/
+        https://pytorch.org/tutorials/
+        https://github.com/pytorch/examples
+        book--Deep-Learning-with-PyTorch
+        deeplearningbook.org
+        book--Introduction to Machine Learning with Python
+        book--https://github.com/ShusenTang/Dive-into-DL-PyTorch
+            简介
+                很多时候它们被赋予了更广义的名字：人工智能
+                只需要一点儿工夫我们便能设计出十几个按钮以及一系列能精确描述微波炉在各种情况下的表现的规则
+                以上两个例子中，我们都不需要收集真实世界中的数据，也不需要系统地提取这些数据的特征。只要有充足的时间，我们的常识与编程技巧已经足够让我们完成任务
+                事实上，要想解读图像中的内容，需要寻找仅仅在结合成千上万的数值时才会出现的特征，如边缘、质地、形状、眼睛、鼻子等，最终才能判断图像中是否有猫。
+                深度学习应用共同的核心思想：我们可以称其为“用数据编程”
+                用数据编程
+                机器学习是一门讨论各式各样的适用于不同问题的函数形式
+                以及如何使用数据来有效地获取函数参数具体值
+                函数
+                参数
+                深度学习是指机器学习中的一类函数，它们的形式通常为多层神经网络
+                是计算机科学历史上的一个分水岭。
+                深度学习已经在你的手机里：拼写校正、语音识别、认出社交媒体照片里的好友们
+                不要求具有高深的数学或编程背景
+                我们希望本书能帮助和启发新一代的程序员、创业者、统计学家、生物学家，以及所有对深度学习感兴趣的人。
+                很多领域都可以用深度学习，计算机科学家让他们学习更快
+                基于的神经网络模型和用数据编程的核心思想已经被研究了数百年。
+                自古以来，人类就一直渴望能从数据中分析出预知未来的窍门
+                数据分析正是大部分自然科学的本质，
+                我们希望从日常的观测中提取规则，并找寻不确定性。
+                概率论、统计学和模式识别等工具帮助自然科学的实验学家们从数据回归到自然定律，从而发现了如欧姆定律
+                （描述电阻两端电压和流经电阻电流关系的定律）这类可以用线性模型完美表达的一系列自然法则。
+                中世纪，数学家也热衷于利用统计学来做出估计
+                使用16名男子的平均脚长来估计男子的平均脚长
+                时至今日，智能机器的发展可谓日新月异
+                他提出神经是通过正向强化来学习的，即赫布理论 [2]。赫布理论是感知机学习算法的原型
+                强化合意的行为、惩罚不合意的行为，最终获得优良的神经网络参数。
+                交替使用线性处理单元与非线性处理单元，它们经常被称为“层”。
+                线性处理单元
+                研究者们尝试组建模仿神经元互动的计算电路
+                神经网络的生物学解释被稀释，但仍保留了这个名字
+                当时使用的数据集也相对小得多。费雪在1936年发布的的Iris数据集仅有150个样本，并被广泛用于测试算法的性能。
+                具有6万个样本的MNIST数据集在当时已经被认为是非常庞大了
+                如今已被认为是典型的简单数据集。
+                数据和计算力的稀缺
+                核方法、决策树和概率图模型等统计工具更优。
+                在强大的理论保证下提供可以预测的结果。
+                数据和计算力的稀缺
+                互联网的崛起、价廉物美的传感器和低价的存储器令我们越来越容易获取大量数据
+                2020	1 T（社交网络）	100 GB	1 P（NVIDIA DGX-2）
+                计算力的增长又盖过了数据量的增长
+                导致了机器学习和统计学的最优选择从广义线性模型及核方法变化为深度多层神经网络。
+                这样的变化正是诸如多层感知机、卷积神经网络、长短期记忆循环神经网络和Q学习等深度学习的支柱模型在过去10年从坐了数十年的冷板凳上站起来被“重新发现”的原因。
+                近年来在统计模型、应用和算法上的进展常被拿来与寒武纪大爆发
+                可用资源变多了
+                生成对抗网络的关键创新在于将采样部分替换成了任意的含有可微分参数的算法。
+                把在ImageNet数据集上训练ResNet-50模型的时间降到了7分钟
+                最初的训练时间需要以天来计算
+                7分钟
+                许多情况下单个GPU已经不能满足在大型数据集上进行训练的需要
+                过去10年内我们构建分布式并行训练算法的能力已经有了极大的提升。
+                深度学习框架也在传播深度学习思想的过程中扮演了重要角色。Caffe、 Torch和Theano这样的第一代框架使建模
+                    变得更简单。许多开创性的论文都用到了这些框架。如今它们已经被TensorFlow（经常是以高层API Keras的
+                    形式被使用）、CNTK、 Caffe 2 和Apache MXNet所取代。第三代，即命令式深度学习框架，是由用类似Num
+                    Py的语法来定义模型的 Chainer所开创的。这样的思想后来被 PyTorch和MXNet的Gluon API 采用，后者也正
+                    是本书用来教学深度学习的工具
+                第三代，即命令式深度学习框架，是由用类似NumPy的语法来定义模型
+                只是训练模型用py，使用的话怎么都可以
+                训练一个逻辑回归模型曾是卡内基梅隆大学布置给机器学习方向的新入学博士生的作业问题。时至今日，这个问题只需要少于10行的代码便可以完成，普通的程序员都可以做到。
+                MNIST和USPS手写数字数据集
+                可以用于读取银行支票、进行授信评分以及防止金融欺诈
+                实现哪个应用？ 可以排个名，从最简单的开始，目的其实是训练融合的这种技能
+                没必要非盯着人机对话，当然可以文本挖掘的形式训练这个网络以及各种算法
+                ImageNet基准测试上取得了28%的前五错误率 [15]。到2017年，这个数字降低到了2.25% [16]
+                使用时间差分强化学习玩双陆棋的TD-Gammon开始
+                国际象棋有更复杂的状态空间和更多的可选动作。
+                AlphaGo在2016年用结合深度学习与蒙特卡洛树采样的方法达到了人类水准 [18]。
+                * 对德州扑克游戏而言，除了巨大的状态空间之外，更大的挑战是游戏的信息并不完全可见，例如看不到对手的牌
+                先进的算法是人工智能在游戏上的表现提升的重要原因。
+                * 游戏曾被认为是人类智能最后的堡垒
+                完全自主驾驶的难点在于它需要将感知、思考和规则整合在同一个系统中。目前，深度学习主要被应用在计算机视觉的部分，剩余的部分还是需要工程师们的大量调试。
+                自动驾驶不光是算法的问题，还有传感器多模态学习的问题
+                机器人学、物流管理、计算生物学、粒子物理学和天文学近年来的发展也有一部分要归功于深度学习。
+                深度学习已经逐渐演变成一个工程师和科学家皆可使用的普适工具。
+                首先提升自己的核心能力，而后才可以考虑复现一些？
+                Detecting 3D Points of Interest Using Multiple Features and Stacked Auto-encoder.
+                https://www.cs.utah.edu/~ladislav/shu18detecting/shu18detecting.pdf
+                We implemented the proposed algorithm in Matlab and C++. I
+                In average, our algorithm takes around 10 minutes to process a single model on a PC with 2.60GHz CPU and with 128GB RAM.
+                表征学习关注如何自动找出表示数据的合适方式
+                由许多简单函数复合而成的函数。当这些复合的函数足够多时，深度学习模型就可以表达非常复杂的变换。
+                特征学习或表征学习是学习一个特征的技术的集合：将原始数据转换成为能够被机器学习来有效开发的一种形式
+                允许计算机学习使用特征的同时，也学习如何提取特征：学习如何学习
+                作为表征学习的一种，深度学习将自动找出每一级表示数据的合适方式。
+                端到端的训练。也就是说，并不是将单独调试的部分拼凑起来组成一个系统，而是将整个系统组建好之后一起训练。
+                像是Canny边缘探测 [20] 和SIFT特征提取 [21] 曾占据统治性地位达10年以上，但这也就是人类能找到的最好方法了。当深度学习进入这个领域后，这些特征提取方法就被性能更强的自动优化的逐级过滤器替代了。
+                语义相关的词嵌入能够在向量空间中完成如下推理：“柏林 - 德国 + 中国 = 北京”。可以看出，这些都是端到端训练整个系统带来的效果。
+                当数据非常稀缺时，我们需要通过简化对现实的假设来得到实用的模型。
+                端到端的训练
+                完全无参数的模型
+                深度学习的不同在于：对非最优解的包容、对非凸非线性优化的使用
+                非线性优化
+                深度学习社区长期以来以在学术界和企业之间分享工具而自豪，并开源了许多优秀的软件库、统计模型和预训练网络。
+                预训练网络
+                正在编写的代码有没有可以被“学习”的部分
+                如果把人工智能的发展看作是新一次工业革命，那么深度学习和数据的关系是否像是蒸汽机与煤炭的关系呢？为什么？
+            基本代码
+                是随机神经网络和循环神经网络的一种
+                它是最早能够学习内部表达，并能表达和（给定充足的时间）解决复杂的组合优化问题的神经网络
+                但是，没有特定限制连接方式的玻尔兹曼机目前为止并未被证明对机器学习的实际问题有什么用。
+                如果连接方式是受约束的（即受限玻尔兹曼机），学习方式在解决实际问题上将会足够高效。
+                自组织映射（SOM）或自组织特征映射（SOFM）
+                notebook可以直接在代码旁写出叙述性文档，而不是另外编写单独的文档。也就是它可以能将代码、文档等这一切集中到一处，让用户一目了然。如下图所示。
+                Jupyter Notebook 已迅速成为数据分析，机器学习的必备工具。因为它可以让数据分析师集中精力向用户解释整个分析过程。
+                这里不得不吹一下PyTorch的官方文档，从安装到入门，深入浅出，比tensorflow不知道高到哪里去了
+                Tensor提供GPU计算和自动求梯度等更多功能
+                张量可以看作是一个多维数组
+                标量可以看作是0维张量
+                向量可以看作1维张量，矩阵可以看作是二维张量。
+                h- 在PyTorch中，torch.Tensor是存储和变换数据的主要工具
+                Tensor和NumPy的多维数组非常类似。
+                q- 创建一个5x3的未初始化的Tensor：
+                    torch.empty(5, 3)
+                q- 创建一个5x3的随机初始化的Tensor, long型全0的Tensor
+                    x = torch.rand(5, 3)
+                    x = torch.zeros(5, 3, dtype=torch.long)
+                初始化的时候可以指定数据类型
+                q- 直接根据数据创建tensor
+                    x = torch.tensor([5.5, 3])
+                    [5.5, 3]
+                tensor
+                x = torch.randn_like(x, dtype=torch.float) # 指定新的数据类型
+                print(x.shape)
+                可以通过shape或者size()来获取Tensor的形状:
+                tup1[0] = 100;
+                tup3 = tup1 + tup2;
+                创建一个新的元组
+                Python 元组(Tuple)操作详解
+                还有很多函数可以创建Tensor，去翻翻官方API就知道了，
+                q- 创建tensor， 对角线为1，其他为0，正态分布
+                    eye(*sizes)	对角线为1，其他为0
+                    normal(mean,std)/uniform(from,to)	正态分布/均匀分布
+                q- tensor各种操作，广播机制
+                    torch.add(x, y)
+                PyTorch操作inplace版本都有后缀_, 例如x.copy_(y), x.t_()
+                既然 Variable 和 Tensor merge 到一块了, 那就叫 Tensor吧)
+                q- 几种情况下不可以用inplace方法？
+                    对于 requires_grad=True 的 叶子张量(leaf tensor) 不能使用 inplace operation 对于在 
+                        求梯度阶段需要用到的张量 不能使用 inplace operation 
+                q- inplace方法有什么优势？
+                    in-place operation(原位)支持原位修改张量，通过原位修改，避免针对张
+                        量重新分配buffer，可以降低内存的使用。
+                    降低内存的使用。
+                由于pytorch底层计算图会记录每个变量的历史计算过程，在BP求导计算过程中需要使用历史计算中间结果。原位操作会修改这些中间结果值。
+                计算图需要进行较大的调整，因此pytorch官方并不建议使用。
+                同一种操作可能有很多种形式，下面用加法作为例子。
+                q- 声明两个4*4 矩阵，进行add运算以及各种矩阵运算？
+                q- 用类似NumPy的索引操作来访问Tensor的一部分，给定x...
+                    ，需要注意的是：索引出来的结果与原数据共享内存，也即修改一个，另一个会跟着修改。
+                    y = x[0, :]
+                    print(x[0, :]) # 源tensor也被改了
+                    index_select(input, dim, index)	在指定维度dim上选取，比如选取某些行、某些列
+                    高级的选择函数
+                    nonzero(input)	非0元素的下标
+                h- A torch.Tensor is a multi-dimensional matrix
+                    containing elements of a single data type.
+                masked_select
+                q- 创建随机矩阵，选择其中大于0.5的，使用mask
+                    >>> x = torch.randn(3, 4) 
+                    >>> x tensor([[ 0.3552, -2.3825, -0.8297,  0.3477],         
+                        [-1.2035,  1.2252,  0.5002,  0.6248],         
+                        [ 0.1307, -2.0608,  0.1244,  2.0139]]) 
+                    >>> mask = x.ge(0.5) 
+                    >>> mask 
+                        tensor([[False, False, False, False],         
+                        [False, True, True, True],         
+                        [False, False, False, True]]) 
+                    >>> torch.masked_select(x, mask) 
+                        tensor([ 1.2252,  0.5002,  0.6248,  2.0139])
+                改变形状
+                q- 用view()来改变Tensor的形状：把一个（3，5）tensor改成（5,3）
+                    z = x.view(-1, 5) 
+                注意view()返回的新Tensor与源Tensor虽然可能有不同的size，但是是共享data的，也即更改其中的一个，另外一个也会跟着改变。
+                (顾名思义，view仅仅是改变了对这个张量的观察角度，内部数据并未改变)
+                x += 1 print(x) print(y) # 也加了1
+                h- 如果需要拷贝，推荐先用clone创造一个副本然后再使用view
+                返回一个真正新的副本（即不共享data内存）
+                使用clone还有一个好处是会被记录在计算图中，即梯度回传到副本时也会传到源Tensor。
+                q- 把Tensor转换成一个Python number
+                    item(), 它可以将一个标量Tensor转换成一个Python number
+                    tensor([2.3466]) 2.3466382026672363
+                PyTorch还支持一些线性函数，这里提一下，免得用起来的时候自己造轮子，具体用法参考官方文档
+                q- 使用mm/bmm	矩阵乘法，batch的矩阵乘法
+                q- 使用addmm/addbmm/addmv/addr/baddbmm..	矩阵运算
+                q- 使用t	转置
+                q- 使用inverse	求逆矩阵
+                q- 使用dot/cross	内积/外积
+                PyTorch中的Tensor支持超过一百种操作，包括转置、索引、切片、
+                    数学运算、线性代数、随机数等等，可参考官方文档。
+                q- 什么是广播机制
+                    当对两个形状不同的Tensor按元素运算时，可能会触发广播（broadcasting）机制
+                q- 把一个view(1, 2) 的tensor 和view(3, 1) 的进行add
+                    arange(1, 3)
+                    x = torch.arange(1, 3).view(1, 2) 
+                    print(x) 
+                    y = torch.arange(1, 4).view(3, 1) 
+                    print(y) 
+                    print(x + y)
+                而y中第一列的3个元素被广播（复制）到了第二列。如此，就可以对2个3行2列的矩阵按元素相加。
+                那么x中第一行的2个元素被广播（复制）到了第二行和第三行，
+                q- y = x + y这样的运算是会新开内存的，如何避免？减少内存开销？在矩阵运算中
+                    结果通过[:]写进y对应的内存中。
+                    y += x
+                    torch.add(x, y, out=y)
+                索引操作是不会开辟新内存的，而像y = x + y这样的运算是会新开内存的
+                我们可以使用Python自带的id函数：如果两个实例的ID一致，那么它们所对应的内存地址相同；反之则不同。
+                运算的内存开销
+                我们还可以使用运算符全名函数中的out参数或者自加运算符+=(也即add_())达到上述效果
+                q- 用numpy()和from_numpy()将Tensor和NumPy中的数组相互转换的时候，内存变化？
+                    其实这个转化就是相当于取tensor的一个field的值
+                    数组共享相同的内存（所以他们之间的转换很快）
+                    a = torch.ones(5) 
+                    b = a.numpy()
+
+                    a += 1 
+                    print(a, b) 
+                    b += 1 
+                    print(a, b)
+                    ---
+                    import numpy as np
+                    a = np.ones(5)
+                    b = torch.from_numpy(a)
+                    print(a, b)
+
+                    a += 1
+                    print(a, b)
+                    b += 1
+                    print(a, b)
+                将NumPy中的array转换成Tensor的方法就是torch.tensor(), 需要注意的是，
+                    此方法总是会进行数据拷贝（就会消耗更多的时间和空间）
+                所有在CPU上的Tensor（除了CharTensor）都支持与NumPy数组相互转换。
+                c = torch.tensor(a) 
+                a += 1 
+                print(a, c)
+                Return an array of ones with the same shape and type as a given array.
+                numpy.ones_like
+                Tensor on GPU
+                x = x.to(device) 
+                print(z.to("cpu", torch.double))       # to()还可以同时更改数据类型
+                q- 在gpu上创建变量y，把cpu上x变量迁移到gpu上，而后进行add
+                    # 以下代码只有在PyTorch GPU版本上才会执行
+                    if torch.cuda.is_available():
+                        device = torch.device("cuda")          # GPU
+                        y = torch.ones_like(x, device=device)  # 直接创建一个在GPU上的Tensor
+                        x = x.to(device)                       # 等价于 .to("cuda")
+                        z = x + y
+                        print(z)
+                        print(z.to("cpu", torch.double))       # to()还可以同时更改数据类型
+                我们经常需要对函数求梯度（gradient）
+                注意x是直接创建的，所以它没有grad_fn, 而y是通过一个加法操作创建的，所以它有一个为<AddBackward>的grad_fn。
+                像x这种直接创建的称为叶子节点，叶子节点对应的grad_fn是None。
+                print(x.is_leaf, y.is_leaf) # True False
+                通过.requires_grad_()来用in-place的方式改变requires_grad属性：
+                如果不想要被继续追踪，可以调用.detach()将其从追踪记录中分离出来，这样就可以防止将来的计算被追踪，这样梯度就传不过去了
+                还可以用with torch.no_grad()将不想被追踪的操作代码块包裹起来，这种方法在评估模型的时候很常用
+                https://tangshusen.me/Dive-into-DL-PyTorch/#/chapter02_prerequisite/2.3_autograd
+                out是一个标量，所以调用backward()时不需要指定求导变量：
+                上面的输出是正确的
+                grad在反向传播过程中是累加的(accumulated)
+                这意味着每一次运行反向传播，梯度都会累加之前的梯度，所以一般在反向传播之前需把梯度清零。
+                为了避免这个问题，我们不允许张量对张量求导，只允许标量对张量求导，求导结果是和自变量同形的张量
+                为什么在y.backward()时，如果y是标量，则不需要为backward()传入任何参数；否则，需要传入一个与y同形的Tensor
+                简单来说就是为了避免向量（甚至更高维张量）对张量求导
+                需要传入一个和z同形的权重向量进行加权求和得到一个标量。
+                注意，x.grad是和x同形的张量。
+                所以与 y2y  2 ?	   有关的梯度是不会回传的，只有与 y1y  1 ?	   有关的梯度才会回传，即 x2x  2   对 xx 的梯度。
+                上面提到，y2.requires_grad=False，所以不能调用 y2.backward()，会报错
+                RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn
+            线性回归，softmax, 多层感知机 -- 以及他们的简单实现
+                ---
+                    线性回归输出是一个连续值
+                    与回归问题不同，分类问题中模型的最终输出是一个离散值
+                    图像分类、垃圾邮件识别、疾病检测等输出为离散值的问题都属于分类问题的范畴。
+                    softmax回归则适用于分类问题。
+                    价格取决于很多因素，如房屋状况、地段、市场行情等
+                    我们希望探索价格与这两个因素的具体关系。
+                    线性回归假设输出与各个输入之间是线性关系
+                    寻找特定的模型参数值，使模型在数据上的误差尽可能小
+                    模型训练（model training）。
+                    一栋房屋被称为一个样本（sample），其真实售出价格叫作标签（label），用来预测标签的两个因素叫作特征（feature）
+                    其中常数 12  2 1 ?	   使对平方项求导后的常数系数为1
+                    这个误差只与模型参数相关，因此我们将它记为以模型参数为参数的函数。
+                    使用的平方误差函数也称为平方损失（square loss）
+                    损失函数形式较为简单时，上面的误差最小化问题的解可以直接用公式表达出来。这类解叫作解析解（analytical solution）
+                    大多数深度学习模型并没有解析解，只能通过优化算法有限次迭代模型参数来尽可能降低损失函数的值。这类解叫作数值解（numerical solution）。
+                    通过优化算法有限次迭代模型参数
+                    与预先设定的一个正数的乘积作为模型参数在本次迭代的减小量。
+                    ∣B∣ 代表每个小批量中的样本个数（批量大小，batch size），ηη 称作学习率（learning rate）并取正数。
+                    人为设定的，并不是通过模型训练学出的，因此叫作超参数（hyperparameter）
+                    我们通常所说的“调参”指的正是调节超参数，例如通过反复试错来找到超参数合适的值。在少数情况下，超参数也可以通过模型训练学出
+                    优化算法停止时的值分别记作 w?1,w?2,b?  w ^    1 ?	  ,  w ^    2 ?	  ,  b ^  。注意，这里我们得到的并不一定是最小化损失函数的最优解 w?1,w?2,b?w  1 ? ?	  ,w  2 ? ?	  ,b  ?  ，
+                    模型预测、模型推断或模型测试。
+                    因此输入层的输入个数为2。输入个数也叫特征数或特征向量维度。
+                    输入层并不涉及计算，按照惯例，图3.1所示的神经网络的层数为1
+                    输出层中的神经元和输入层中各个输入完全连接。因此，这里的输出层又叫全连接层（fully-connected layer）或稠密层（dense layer）
+                    将这两个向量按元素逐一做标量加法
+                    向量相加的另一种方法是，将这两个向量直接做矢量加法。
+                    d = a + b
+                    尽可能采用矢量计算，以提升计算效率
+                    重写损失函数为
+                    线性回归的矢量计算表达式
+                    小批量随机梯度下降的迭代步骤
+                    其中梯度是损失有关3个为标量的模型参数的偏导数组成的向量：
+                    应该尽可能采用矢量计算，以提升计算效率。
+                    尽管强大的深度学习框架可以减少大量重复性工作，但若过于依赖它提供的便利，会导致我们很难深入理解深度学习是如何工作的
+                    matplotlib import pyplot as plt
+                    线性回归的从零开始实现
+                    噪声代表了数据集中无意义的干扰
+                    使用线性回归模型真实权重
+                    q- 生成测试数据集的思路？
+                    每次返回batch_size（批量大小）个随机样本的特征和标签。
+                    我们将权重初始化成均值为0、标准差为0.01的正态随机数，偏差则初始化成0。
+                    之后的模型训练中，需要对这些参数求梯度来迭代参数的值，因此我们要让它们的requires_grad=True
+                    下面是线性回归的矢量计算表达式的实现。我们使用mm函数做矩阵乘法。
+                    我们需要把真实值y变形成预测值y_hat的形状。以下函数返回的结果也将和y_hat的形状相同。
+                    我们根据当前读取的小批量数据样本（特征X和标签y），通过调用反向函数backward计算小批量随机梯度，并调用优化算法sgd迭代模型参数
+                    由于变量l并不是一个标量，所以我们可以调用.sum()将其求和得到一个标量
+                    再运行l.backward()得到该变量有关模型参数的梯度。
+                    不要忘了梯度清零
+                    for epoch in range(num_epochs):  # 训练模型一共需要num_epochs个迭代周期
+                    print(true_w, '\n', w) print(true_b, '\n', b)
+                    仅使用Tensor和autograd模块就可以很容易地实现一个模型。接下来，本书会在此基础上描述更多深度学习模型
+                    将训练数据的特征和标签组合
+                    dataset = Data.TensorDataset(features, labels)
+                    DataLoader
+                    PyTorch提供了大量预定义的层，这使我们只需关注使用哪些层来构造模型。
+                    实际使用中，最常见的做法是继承nn.Module，撰写自己的网络/层
+                    y = self.linear(x)
+                    使用预定义，声明是一个线性组合？
+                    print(net) # 使用print可以打印出网络的结构
+                    我们还可以用nn.Sequential来更加方便地搭建网络，Sequential是一个有序的容器，网络层将按照在传入Sequential的顺序依次被添加到计算图中。
+                    num_inputs
+                    net.add_module('linear', nn.Linear(num_inputs, 1))
+                    可以通过net.parameters()来查看模型所有的可学习参数，此函数将返回一个生成器。
+                    for param in net.parameters():
+                    注意：torch.nn仅支持输入一个batch的样本不支持单个样本输入
+                    我们通过init.normal_将权重参数每个元素初始化为随机采样于均值为0、标准差为0.01的正态分布。偏差会初始化为零
+                    net[0]这样根据下标访问子模块的写法只有当net是个ModuleList或者Sequential实例时才可以
+                    PyTorch在nn模块中提供了各种损失函数，这些损失函数可看作是一种特殊的层，PyTorch也将这些损失函数实现为nn.Module的子类
+                    实现为nn.Module的子类
+                    我们现在使用它提供的均方误差损失作为模型的损失函数。
+                    loss = nn.MSELoss()
+                    同样，我们也无须自己实现小批量随机梯度下降算法。torch.optim模块提供了很多常用的优化算法比如SGD、Adam和RMSProp等
+                    SGD、Adam和RMSProp等。
+                    优化net所有参数的优化器实例
+                    import torch.optim as optim
+                    torch.
+                    print(optimizer)
+                    我们还可以为不同子网络设置不同的学习率，这在finetune时经常用到。例：
+                    更简单也是较为推荐的做法——新建优化器，由于optimizer十分轻量级，构建开销很小，故而可以构建新的optimizer。
+                    但是后者对于使用动量的优化器（如Adam），会丢失动量等状态信息，可能会造成损失函数的收敛出现震荡等情况。
+                    param_group['lr'] *= 0.1 # 学习率为之前的0.1倍
+                    optimizer.zero_grad() # 梯度清零，等价于net.zero_grad()
+                    我们从net获得需要的层，并访问其权重（weight）和偏差（bias）。
+                    学到的参数和真实的参数很接近。
+                    torch.utils.data模块提供了有关数据处理的工具，torch.nn模块定义了大量神经网络的层
+                    torch.optim模块提供了很多常用的优化算法。
+                    使用PyTorch可以更简洁地实现模型。
+                    softmax回归适用于分类问题。它使用softmax运算输出类别的概率分布。
+                    softmax回归是一个单层神经网络，输出个数等于分类问题中的类别个数。
+                    交叉熵
+                    平方损失则过于严格
+                    改善上述问题的一个方法是使用更适合衡量两个概率分布差异的测量函数。其中，交叉熵（cross entropy）是一个常用的衡量方法
+                    交叉熵只关心对正确类别的预测概率，因为只要其值足够大，就可以确保分类结果正确
+                    最小化交叉熵损失函数等价于最大化训练数据集所有标签类别的联合预测概率 
+                ---
+                    图像中的4像素分别记为x1,x2,x3,x4x  1 ?	  ,x  2 ?	  ,x  3 ?	  ,x  4 ?	  。假设训练数据集中图像的真实标签为狗、猫或鸡（假设可以用4像素表示出这3种动物），这些标签分别对应离散值y1,y2,y3y  1 ?	  ,y  2 ?	  ,y  3 ?	  。
+                    虽然我们仍然可以使用回归模型来进行建模，并将预测值就近定点化到1、2和3这3个离散值之一，但这种连续值到离散值的转化通常会影响到分类质量
+                    用更加适合离散值输出的模型来解决分类问题。
+                    输出值个数等于标签里的类别数。
+                    与线性回归的一个主要不同在于
+                    softmax回归同线性回归一样，也是一个单层神经网络。由于每个输出o1,o2,o3o  1 ?	  ,o  2 ?	  ,o  3 ?	  的计算都要依赖于所有的输入x1,x2,x3,x4x  1 ?	  ,x  2 ?	  ,x  3 ?	  ,x  4 ?	  ，softmax回归的输出层也是一个全连接层。
+                    依赖关系的实质就是那个线性方程组
+                    最大的输出所对应的类作为预测输出，即输出 argmaxioi  i argmax ?	  o  
+                    softmax运算符（softmax operator）解决了以上两个问题。它通过下式将输出值变换成值为正且和为1的概率分布：
+                    刚才举的例子中的输出值10表示“很置信”图像类别为猫，因为该输出值是其他两类的输出值的100倍。但如果o1=o3=103o  1 ?	  =o  3 ?	  =10  3  ，
+                    这时候，如果y?2=0.8  y ^ ?	    2 ?	  =0.8，不管y?1  y ^ ?	    1 ?	  和y?3  y ^ ?	    3 ?	  的值是多少，我们都知道图像类别为猫的概率是80%
+                    softmax运算不改变预测类别输出。
+                    softmax回归对样本ii分类的矢量计算表达式为
+                    为了进一步提升计算效率，我们通常对小批量数据做矢量计算
+                    输出个数（类别数）为qq
+                    交叉熵损失函数
+                    大部分模型在MNIST上的分类精度都超过了95%。为了更直观地观察算法之间的差异，我们将使用一个图像内容更加复杂的数据集Fashion-MNIST[2]
+                    本节我们将使用torchvision包
+                    torchvision.models: 包含常用的模型结构（含预训练模型），例如AlexNet、VGG、ResNet等；
+                    torchvision.transforms: 常用的图片变换，例如裁剪、旋转等；
+                    torchvision.datasets: 一些加载数据的函数及常用的数据集接口；
+                    我们通过参数train来指定获取训练数据集或测试数据集（testing data set）
+                    测试数据集也叫测试集（testing set），只用来评价模型的表现，并不用来训练模型。
+                    我们还指定了参数transform = transforms.ToTensor()使所有数据转换为Tensor，如果不进行转换则返回的是PIL图片。
+                    transforms.ToTensor()将尺寸为 (H x W x C) 且数据位于[0, 255]的PIL图片或者数据类型为np.uint8的NumPy数组转换为尺寸为(C x H x W)且数据类型为torch.float32且位于[0.0, 1.0]的Tensor。
+                    尺寸为(C x H x W)且数据类型为torch.float32且位于[0.0, 1.0]的Tensor。
+                    上面的mnist_train和mnist_test都是torch.utils.data.Dataset的子类，所以我们可以用len()来获取该数据集的大小
+                    因为有10个类别，所以训练集和测试集的样本数分别为60,000和10,000。
+                    训练集中和测试集中的每个类别的图像数分别为6,000和1,000。
+                    feature的尺寸是 (C x H x W) 的
+                    * Channel x Height x Width
+                    Fashion-MNIST中一共包括了10个类别，分别为t-shirt（T恤）、trouser（裤子）、pullover（套衫）、dress（连衣裙）、coat（外套）、sandal（凉鞋）、shirt（衬衫）、sneaker（运动鞋）、bag（包）和ankle boot（短靴）
+                    f.imshow(img.view((28, 28)).numpy())
+                    以下函数可以将数值标签转成相应的文本标签。
+                    f.axes.get_xaxis().set_visible(False)
+                    下面定义一个可以在一行里画出多张图像和对应标签的函数。
+                    figs = plt.subplots(1, len(images), figsize=(12, 12))
+                    X.append(mnist_train[i][0])
+                    show_fashion_mnist(X, get_fashion_mnist_labels(y))
+                    训练数据集中前10个样本的图像内容和文本标签。
+                    所以我们可以将其传入torch.utils.data.DataLoader来创建一个读取小批量数据样本的DataLoader实例
+                    PyTorch的DataLoader中一个很方便的功能是允许使用多进程来加速数据读取。
+                    这里我们通过参数num_workers来设置4个进程读取数据。
+                    数据读取经常是训练的性能瓶颈
+                    该函数将返回train_iter和test_iter两个变量。随着本书内容的不断深入，我们会进一步改进该函数。它的完整实现将在5.6节中描述。
+                    查看读取一遍训练数据需要的时间。
+                    我们将高和宽分别为hh和ww像素的图像的形状记为h×wh×w或(h，w)。
+                    Fashion-MNIST是一个10类服饰分类数据集
+                    Xiao, H., Rasul, K., & Vollgraf, R. (2017). Fashion-mnist: a novel image dataset for benchmarking machine learning algorithms. arXiv preprint arXiv:1708.07747.
+                ---
+                    模型的输入向量的长度是 28×28=78428×28=784：该向量的每个元素对应图像中每个像素。由于图像有10个类别，单层神经网络输出层的输出个数为10
+                    softmax回归的权重和偏差参数分别为784×10784×10和1×101×10的矩阵。
+                    同之前一样，我们需要模型参数梯度。
+                    线性回归中只有两个参数，在图像mnist中有28*28*10个输入，参数
+                    如何对多维Tensor按维度操作
+                    只对其中同一列（dim=0）或同一行（dim=1）的元素求和，并在结果中保留行和列这两个维度（keepdim=True）。
+                    这样一来，最终得到的矩阵每行元素和为1且非负。
+                    softmax运算的输出矩阵中的任意一行元素代表了一个样本在各个输出类别上的预测概率。
+                    一个样本
+                    softmax运算会先通过exp函数对每个元素做指数运算，再对exp矩阵同行元素求和，最后令矩阵每行各元素与该行元素之和相除
+                    partition = X_exp.sum(dim=1, keepdim=True)
+                    对于随机输入，我们将每个元素变成了非负数，且每一行和为1。
+                    y = torch.LongTensor([0, 2])
+                    在代码中，标签类别的离散值是从0开始逐一递增的。
+                    通过使用gather函数，我们得到了2个样本的标签的预测概率
+                    给定一个类别的预测概率分布y_hat
+                    如果它与真实类别y一致，说明这次预测是正确的
+                    y_hat.argmax(dim=1)返回矩阵y_hat每行中最大元素的索引
+                    (y_hat.argmax(dim=1) == y)是一个类型为ByteTensor的Tensor
+                    y = torch.LongTensor([0, 2])
+                    not the same as y = torch.LongTensor([0: 2])
+                    !! 只是0,2两个元素
+                    torch.gather(input, dim, index, out=None, sparse_grad=False) → Tensor
+                    input, dim, index
+                    http://tangshusen.me/Dive-into-DL-PyTorch/#/
+                    https://github.com/ShusenTang/Dive-into-DL-PyTorch/blob/master/code/chapter03_DL-basics/3.10_mlp-pytorch.ipynb
+                    n += y.shape[0]
+                    ？？
+                    因为我们随机初始化了模型net，所以这个随机模型的准确率应该接近于类别个数10的倒数即0.1。
+                    true_labels = d2l.get_fashion_mnist_labels(y.numpy()) pred_labels = d2l.get_fashion_mnist_labels(net(X).argmax(dim=1).numpy())
+                    d2l.show_fashion_mnist(X[0:9], titles[0:9])
+                    事实上，绝大多数深度学习模型的训练都有着类似的步骤。
+                    可以使用softmax回归做多类别分类
+                    softmax回归的简洁实现
+                    softmax回归的输出层是一个全连接层，所以我们用一个线性模块就可以了
+                    LinearNet
+                    使用LinearNet就是简化的版本
+                    when I print x.shape[0]  x.shape[0] it prints 10
+                    OrderedDict
+                    An OrderedDict is a dict that remembers the order that keys were first inserted. 
+                    如果做了上一节的练习，那么你可能意识到了分开定义softmax运算和交叉熵损失函数可能会造成数值不稳定
+                    PyTorch提供了一个包括softmax运算和交叉熵损失计算的函数。它的数值稳定性更好。
+                    loss = nn.CrossEntropyLoss()
+                    optimizer = torch.optim.SGD(net.parameters(), lr=0.1)
+                    epoch 2, loss 0.0022, train acc 0.812, test acc 0.807 epoch 3, loss 0.0021, train acc 0.825, test acc 0.806 epoch 4, loss 0.0020, train acc 0.832, test acc 0.810 epoch 5, loss 0.0019, train acc 0.838, test acc 0.823
+                    使用上一节中定义的训练函数来训练模型。
+                    PyTorch提供的函数往往具有更好的数值稳定性。
+                ---
+                多层感知机：
+            自定义层+模型构造
+            卷积神经网络
+            循环神经网络
+                文本情感分类：使用循环神经网络：chapter
+            梯度下降和随机梯度下降以及优化算法
+            多GPU计算
+            图像增广
+
+
+    ---
+    paper_pass
+    ---
+    code_pass
+        code--cgv framework 
+        code--cs284 stanford 
+        code--physical system 

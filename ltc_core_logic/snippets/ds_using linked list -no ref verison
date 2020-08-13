@@ -1,0 +1,37 @@
+#include<iostream>
+using namespace std;
+class mNode{
+    int num;
+    mNode* next;
+    public:
+        mNode(int n){
+            num=n;
+        }
+        int getNum(){
+            return num;
+        }
+        void setNext(mNode* nextnode){
+            next=nextnode;
+        }
+        mNode* getNext(){
+            return next;
+        }
+
+};
+class mLL{
+    public:
+        mNode* head;
+};
+int main(){
+    mLL* ll=new mLL();
+    //
+    mNode* inode = new mNode(4);
+    inode->setNext(new mNode(5));
+
+
+    ll->head=inode;
+    cout<<ll->head->getNum()<<endl;
+    cout<<ll->head->getNext()->getNum()<<endl;
+
+    return 0;
+}

@@ -1,0 +1,21 @@
+
+    //some questions are inversed, so we have to prepare for them 
+    
+    inverse
+        recognize fault in code snippets
+    summ. when facing xxx ? 
+        resource leak?
+        when facing high load 
+        when facing full disks 
+        if we want to achieve atomicity?
+        apply fault tolerant to microservices?
+        
+        ...
+    coding 
+        black box test func.怎么写 -xxx
+        SAT-Solver? SMT solver? !!! -xxx
+            z3,stp...
+        OpenSSL, MatrixSSL, Botan and GnuTLS  attack -xxx
+        https://github.com/RUB-NDS/TLS-Attacker -xxx
+        https://github.com/DynamoRIO/dynamorio -xxx
+        inject attack code -xxx

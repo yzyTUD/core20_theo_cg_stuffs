@@ -1,0 +1,167 @@
+	Rigging
+	&q explain the following: 
+	rig
+	rigging
+	skinning
+	build and fit skeleton into model
+	build and fit
+	bone weights
+	skeleton for 3D model
+
+	Rigging from Animations
+	&
+	&h many riggging methods exists! 
+	Pinocchio
+	http://people.csail.mit.edu/ibaran/papers/2007-SIGGRAPH-Pinocchio.pdf
+	fully automatic rigging and skinning of given mesh such that motion data can be mapped to mesh
+	&q what is input and output of pinoccio sys.? 
+	Input
+	3D mesh (close to standard pose)
+	skeleton (fixed topology)
+	Output
+	skeleton embedding
+	vertex weights
+	https://github.com/elrond79/Pinocchio
+	allows rigging, skeleton export and animation
+	Overview of Pinoccio
+	&q pseudo code? proof? complexity? adv. disadv.? imppseudo code? proof? complexity? adv. disadv.? imp. &t
+	Discretization
+	? Discrete Embedding through two stage discrete optimization of penalty function
+	penalty function
+	continuous optimization 
+	Learn weights of penalty function by max margin method
+	on good and bad example riggings
+	Skinning Weights computation through per bone 
+	heat equation
+
+	&t imp. and paper and further readimp. and paper and further reading
+	&t imp. and paper and further reading 
+	construct sphere cover similar to poisson disk sampling on medial axis 
+	in order of decreasing sphere radius
+	Discrete Embedding
+	reduce skeleton to one bone per chain
+	optimize reduced skeleton by A* algorithm
+	build priority queue of partial embeddings sorted by lower bound estimate of penalty function of extension to full embedding
+	extract best partial embedding, try all extensions and sort them into queue
+	first full embedding found is optimum
+	extend reduced skeleton and perform local continuous optimization
+	gradient descent
+	Terms of Discrete Penalty
+	Penalty
+	&q what kind of Penalty can be defind? why we define them? what kind of bones will be filtered? op8 
+	length unsymmetry
+	vertex sharing
+	zero length (counts bones of zero length)
+	wrong direction unreduced (compute angle between bones in unreduced embedding and skeleton
+	&q what could be the worst case that we have to filter? op8 
+	7. wrong direction unreduced 
+	short bones (compare lengths in embedding and in skeleton)
+	Max Margin Learning
+	&q what is? how is used? the idea? adv. and disadv.? 
+	&t write formulas and calculate this example 
+	generate a large number of positive and negative examples (lots of work!)
+	penalty terms define points in 9D / 4D weighting space
+	difference along this direction between minimal coordinate of bad examples and minimum coordinate of good examples is maximize
+	&q what is the key idea of Max Margin Method? above! 
+	&h MMM is a ml method? y can be substituted by deep learning? maybe somehow 
+	eads to non convex optimization problem that is solved by randomly sample space and downhill simplex method
+	Heat Based Skinning
+	setting heat at bone i to 1 and 0 on all other bones
+	&q what is the key idea of heat based skinning? above! 
+	Solving heat equation on shape gives vertex weights
+	https://www.tau.ac.il/~stoledo/taucs/
+	&t imp. and paper and further reading 
+	eads to sparse linear system
+	Heat based weight computation
+	limitations
+	software plugins available
+	skeleton must be given
+	very thin limbs
+	unclear how to find degree 2 joints such as knees
+	RIGMESH
+	rigging is post processing
+	needs to be redone if further edit operations are necessary
+	&h if you want to change the mesh during dev. you have to repeat the rigging operations! so we can draw mesh and rig it! 
+	incorporate rigging into sketch based modeling
+	sketch based modeling
+	&h it limits on sketch based modeling -- when we are drawing the meshes by ourself 
+	advantage
+	no post processing necessary
+	Skeleton based animation possible ? animation quality can be tested early 
+	animation quality can be tested early in modeling process
+	 quality can be tested
+	&q what is? how is used? the idea? adv. and disadv.? 
+	makes Pinocchio system incremental
+	https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm
+	based on generalization of Douglas Peucker algorithm
+	&t imp. and paper and further reading 
+	Douglas Peucker algorithm
+	skeletonize
+	animate
+	merge
+	http://www.youtube.com/watch?v=1prInV9ZNY0
+	http://cs.gmu.edu/~ygingold/rigmesh
+	&t imp. and paper and further reading 
+	RIGGING FROM ANIMATIONS
+	&h similar to ml idea 
+	&q explain the idea of this with a graph op18 
+	&q what is the input and output of this process?
+	Input: animated mesh
+	Output: bones, vertex weights, bone motion
+	Advantages
+	compression
+	http://graphics.cs.cmu.edu/projects/sma/
+	Fast and Efficient Skinning of Animated Meshes
+	http://www.jarmilakavanova.cz/ladislav/papers/sam-eg10/sam-eg10.htm
+	&
+	&t imp. and paper and further reading 
+	segment triangles into rigid and flexible parts by examining their time evolutions
+	for each triangle compute feature vector consisting of concatenation of per frame rotations between triangle in initial pose and frame pose
+
+	for each triangle 
+	Perform mean shift clustering in rotation sequences
+	clustering
+	&h it is actually a clustering method -- how can we cluster/ segmentation diff. parts of a given mesh? consider this!
+	triangle segmentation
+	rigid bone estimation
+	averaging over all rotation matrices of bone triangles
+	compute rotation with polar decomposition
+	a factorization of the form
+	Polar 
+	https://en.wikipedia.org/wiki/Polar_decomposition
+	compute translation with area-weighted least squares fit to triangle centers
+
+	&t imp. and paper and further reading 
+	&h calcu. is not so straghtforward, we can imp. other simpler cases first when building our building block!
+	directly do least squares fit of affine transformation to triangle centers
+	bone estimation
+	least squares fit
+	&h actually, it has been transformed to optimization problem, and we can always find a way to solve it! 
+	Estimate Vertex Weights
+	firstly, bone influences are estimated
+	per vertex to a constrained linear least squares problem in the weights (must sum to 1)
+	constrained linear least squares problem 
+	&h similar optimization can be found! 
+	&h when we estimating vertex weights (we have already estimated bone weights above)
+	Avoiding overfitting
+	&q how can we Avoiding overfitting? 
+	can yield large negative weights leading to overfitting
+	weird artefacts in new bone poses
+	truncated least squares or even better by non negative least squares
+	http://graphics.cs.cmu.edu/projects/sma
+	https://www.youtube.com/v/e0rugcfR8K4
+	F&ESAM � Matrix Formulation
+	&t write formulas and calculate this example 
+	&h op27 
+	&q what is? how is used? the idea? adv. and disadv.? SMA!
+	&q how can we improve this method? SMA? 
+	To improve efficiency the problem is solved in a reduced ?? � ?? - dimensional trajectory space
+	? This can be solved by SVD, but Kavan et al. propose an alternate method that yields larger ?? but in much shorter time,
+	the overall runtime is reduced significantly
+	&h the last mehtod could be slow for we have to calcu. affine transformation per vertex
+	Matrix Decomposition
+	&h for skinning properse, a spec. Matrix Decomposition can be introduced
+	P�ter Boros�n, Ming Jin, Doug DeCarlo, Yotam Gingold, and Andrew Nealen. 2012. RigMesh: automatic rigging for part-based shape modeling and deformation. ACM Trans. Graph. 31, 6
+	http://people.csail.mit.edu/ibaran/papers/2007-SIGGRAPH-Pinocchio.pdf
+	Skinning mesh animations: http://graphics.cs.cmu.edu/projects/sma/ ? L. Kavan, P.-P. Sloan, C. O'Sullivan, 
+	Fast and Efficient Skinning of Animated Meshes, CGF 2010 http://www.jarmilakavanova.cz/ladislav/papers/sam-eg10/sam-eg10.htm

@@ -1,0 +1,85 @@
+    ppt-1
+        -
+            continus service delivery even xxx 
+            deal with software bugs during run-time
+            design, program & run robust cloud services
+            continuation of service in the face of failures
+            reduce/minimize the negative influence of bugs
+            availability, reliability, security and correctness of systems
+            Avoid System Failures in the Presence of Faults
+                it is about sys. interface
+            develop effective fault tolerance mechanisms
+            Here is about the step after the dev:
+                Tolerate likely software faults that remain in the system after development 
+            
+        -
+            or sth as warning
+        -
+            passing a negative int number as array index 
+            return a negative int number which will be used as para. of an assert statement 
+                -- mistake 
+            can not be reached 
+                -- mistake-logical failure 
+    ppt-2
+        -
+            testing all the time, during the sys. dev. 
+        -
+            write unit tests for functions and post-conditions
+        -    
+            inadequate, significant parts of program structure are not tested...
+        -
+            100% statement coverage does not imply 100% branch coverage
+            branch coverage is a stronger condition 
+            branch coverage apart from executing all the statements, 
+                we should also verify if the tests executes all branches
+            
+            path coverage? -p54 
+
+            *
+                statement
+                    each node 
+                branch 
+                    each edge 
+                path
+                    all paths (infinitely)
+                loop
+                    each loop 0,1,2....times 
+        -
+            condition coverage--subexpressions 
+            dataflow coverage--all read/write accesses
+        
+    ppt-3
+        -
+            Theory Solvers (SMT) based on SAT
+            SAT
+        -
+
+    ppt-4
+        -
+            without knowing the truth 
+    ppt-5
+    ppt-6
+        -
+            disallowing sql keywords or delimiters when tainted 
+            sql will be sent to database, thus ...
+            
+    ppt-7
+        -
+            fork chlid after start up 
+            use another thread to reply user requests
+        -
+            only retry on the highest level of abstraction
+            free some resources first before retrying
+    ppt-8
+        -
+            waitpid()会暂时停止目前进程的执行，直到有信号来到或子进程结束
+        -
+            Error Checking and Correcting
+            
+    ppt-9
+    ppt-10
+    ppt-11
+    ppt-12
+    ppt-13
+    ppt-14   
+            

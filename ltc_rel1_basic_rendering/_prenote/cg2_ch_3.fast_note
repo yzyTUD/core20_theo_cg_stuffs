@@ -1,0 +1,175 @@
+	3D Scan Processing
+	Kinect fusion
+	Real-time 3D Reconstruction and Interaction Using a Moving Depth Camera
+	Moving
+	https://www.microsoft.com/en-us/research/project/kinectfusion-project-page/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fprojects%2Fsurfacerecon%2F#!publications
+	&t publication about kinect fusion! 
+	More Recent Fusion Approach
+	http://graphics.stanford.edu/projects/bundlefusion
+	Large-Scale Direct Monocular SLAM
+	http://vision.in.tum.de/research/vslam/lsdslam
+	3D Scan Processing 
+	? local features
+	matching
+	registration
+	bring 3D scans in same coordinate system
+	estimate pose of camera (camera localization )
+	fusion
+	merge partial scans
+	reconstruction
+	estimate globally consistent surface
+	&q explain those key words 
+	local features
+	classification (outlier, boundary, sharp edge, corner, smooth) ? tangent space or surface normal ? curvatures and higher moments ? histogram descriptors
+
+	Riemann-Graph: f�r jeden Punkt die Kanten zu den k N�chsten Nachbarn (typisches k?[6,20])
+	&q what is riemann graph
+	Berechnung der Delaunay-Tetrahedrisierung �ber Punkteinf�gen oder konvexe H�lle. Robuste und schnelle Implementierungen in CGAL oder qhull.
+
+	http://www.qhull.org/
+	&t code! try out! 
+	&t and understand the code! 
+	&
+	Connect to all neighbors within a sphere of fixed radius estimated from sampling density
+	Outlier detection
+	Estimation of sampling density
+	&q how can we do this?
+	most edges of an outlier point are outgoing and only few ingoing
+	thresholding
+	sampling density ? is defined as the minimum radius
+	a circle in tangential space
+	&q how those cpt are defined?
+	Sampling is the process of converting a signal (e.g., a function of continuous time or space) into a numeric sequence
+	analog-to-digital conversion
+	or simply digitizing
+	at least one surface sample is found
+	Tangent Space Estimation
+	(CG1)
+	&q how did we slved tangent space estimation? in cg1?
+	& by modeling it into a LLS problem
+	&q which difficulties can be found in surface reconstruction? x5 
+	noise
+	corner
+	sharp corner
+	close sheets
+	outlier
+	C0 -discontinuity
+	C1 -discontinuity
+	Selection of robust norms
+	&q explain those 
+	Iterated Re-weightes Least Squares
+	IRLS suitable for convex norms like the p-norm
+	re-compute weights
+	 combine IRLS with localization weighting
+	IRLS
+	&q cpt of IRLS
+	&q for what kind of problem is IRLS suitble for? op16
+	homework: combine IRLS with localization weighting
+	&t imp. homework: combine IRLS with localization weighting for plane fitting problem!! 
+	A good family of robust norms is the Minkowski norm 
+	choice of localization and noise scales is important:
+	bilateral weights
+	Problems of weighted Tanget Space Fit
+	&q what are Problems of weighted Tanget Space Fit? op14
+	To support sharp creases and corners, a second weight ???? is multiplied to the localization weight:
+	Two choices have been proposed:
+	The bilateral weights depend on the to be estimated normals and couple the local optimzation problems into a global, nonlinear optimization problem
+	&h here, bilateral weighting actuall means : use a second weight! 
+	compute bilateral weights
+	fit tangential planes with new weights
+	iterate
+	&h for bilateral weights, typically we need to compute iter.
+	normal distance
+
+	plane distance ???? ?? = exp - ????? ?
+	[Fleishman03]
+	&t paper! 
+	We can fit a height field ?? ( ?? , ?? ) in a polynomial description
+	 to the neighboring points and use the tailor series
+	compute the curvature properties
+	&q hwo can we compute curvature properties? op21 
+	&h fit a  polonomial first 
+	Local Polynomial Fit
+	monoms are the simplest basis and can be built for increasing degrees
+	a linear combination of the basis functions
+	can be transformed to vector notation:
+
+	compare CG1 script on surface analysis
+	describe larger neighborhood of point with a histogram over angle ?? and height ?
+	Spin Images
+	&q what is Spin Images
+	this compute tangent space and local coordinate frame
+	compute histogram on grid vertices 
+	extrapolation
+	bilinear interpolation 
+	Spin images can well distinguish different local surface types
+	They are used frequently in shape matching approaches
+	&q how spin images can be used in mesh processing approach? op25
+	shape matching approaches
+	&q what other approaches do you know to shape
+	&matching approachesq?
+	&t imp. a shape matching sys.!
+	make matching approaches robust against choice of x -axis
+	&q how can we ensure that this matching process is robust? op25
+	[Johnson�97] � A. E. Johnson. Spin-Images: A Representation for 3-D Surface Matching. PhD thesis, Carnegie Mellon University, 1997.
+	https://dl.acm.org/doi/pdf/10.5555/601671.601673
+	https://dl.acm.org/doi/pdf/10.1145/882262.882368
+	? [Alexa�01] � M. Alexa, J. Behr, D. Cohen-Or, S. Fleishman, D. Levin, C. T. Silva. Point set surfaces. IEEE Visualization'01, acm.
+	? [Fleishman03] � S. Fleishman, I. Drori, D. Cohen-Or. Bilateral mesh denoising. SIGGRAPH�03, doi.
+	? [Jones03] � T. R. Jones, F. Durand, M. Desbrun. Noniterative, feature-preserving mesh smoothing. SIGGRAPH�03, doi
+
+	Y. Lipman, D. Cohen-Or, D. Levin. 2006. Error bounds and optimal neighborhoods for MLS approximation. SGP '06, acm
+
+	https://dl.acm.org/doi/pdf/10.1145/882262.882367
+	&
+	&t further reading paper!
+	consistent normal orientation is precondition of several surface reconstruction techniques
+	Poisson Reconstruction
+	&h here normal refers to point normal or surface normal? 
+	angent plane fitting does not give sign of normal
+	sign defines outside direction which needs to be globally consistent
+	position of 3D scanner defines outside direction, but
+	information is often lost 
+	&q can we preserve the ori. by recording cam. loc. somehow? 
+	normal orientation problem
+	&q what is the output of normal orientation problem?
+	estimate one or several normals from additional knowledge
+	build neighbor graph and propagate normal orientation along graph edges
+	normal orientation
+	&t after 3d scan, write a prog. to fix normal orientation 
+	&t check normal orientation of a scanned 3d dataset point cloud! 
+	initialization: estimate one or several normals per connected component from additional knowledge
+	outside direction of convex hull)
+	&h we may know nothing about the normal dir. of a given point cloud 
+	&q how can we estimate a initial step? op31 
+	build neighbor graph (i.e. Riemann graph with ?? = 16)
+
+	weight each graph edge by unreliability measure
+	define flip criterion
+	 propagate normal orientations from initialization over graph edges
+	propagate orientation along minimal spanning tree
+	minimal spanning tree
+	setup global unreliability minimization problem and solve with approximate solver [Schertler16]
+	&q how many solutions are there? x3+ op30 
+	flip criteria and unreliability measures
+	&h many possiblities exists 
+	given initial orientations and a connected graph of edges with unreliability as cost
+	MST
+	can be computed with Kruskal�s algorithm in ??(?? log ??) for ?? edges and minimizes unreliability
+	&q what is the time cost for computing a MST? op35 
+	The idea is to add edges with increasing unreliability starting from least unreliable one 
+	avoid cycles by tracing sets of connected graph vertices with union find data structure (compare CG1)
+	Global Optimization
+	&q hwo can we def. this global optimization problem? op37
+	problem is NP-hard
+	only semi-approximate solvers like QPBO (Quadratic Pseudo-Boolean Optimization) feasible
+	Global Orientation Problem
+	[Hoppe92] � H. Hoppe, T. DeRose, T. Duchamp, J. MCDonald, W. Stuetzle. Surface reconstruction from unorganized points. SIGGRAPH 1992. ? 
+	[Xie03] � H. Xie, J. Wang, J. Hua, H. Qin, A. Kaufman. Piecewise C1 continuous surface reconstruction of noisy point clouds via local implicit quadric regression. IEEE Visualization 2003, ? 
+	[K�nig09] � S. K�nig, S. Gumhold. Consistent Propagation of Normal Orientations in Point Clouds. VMV 2009 ? 
+	[Schertler16] � N. Schertler, B. Savchynskyy, S. Gumhold. Towards Globally Optimal Normal Orientations for Large Point Clouds. CGF, doi:10.1111/cgf.12795
+
+
+	sparse ICP 
+		....
+	SURFACE RECONSTRUCTION

@@ -1,0 +1,232 @@
+	3D Acquisition Techniques
+	Calibration
+	Projector Model and Calibration
+	Camera Calibration
+	Triangulation
+	Structured Light Approaches
+	Direct vs indirect illuminatio
+	Robust Pixel Classification
+	mechanical measurement of individual points
+	tomographic
+	precise laser triangulation measurement
+	phase shift measurement
+
+	volume visualization of MRI-Volume
+	RGBD-Cameras
+	affordable
+	3D cameras from different manufacturers
+	&
+	&q what kind of 3d  acquisition techni. do u know? x3
+	joint acquisition of color image and depth map with 30-90 fps
+	infrared camera acquires object with projected pattern
+	projector
+	infrared camera
+	RGB-camera
+	Microsoft kinect
+	&q wh
+	&q for Microsoft kinect, which part do you know? how it has been constructed?
+	Hardware architecture
+	&q the Hardware architecture of kinect?
+	Reconstruction algorithm computes depth map
+	Stereo Acquisition
+	system calibration and finding corresponding pixel locations
+	3D Scanning with Structured Light
+	projected patterns encode the projector column
+	ray through the camera pixal is intersected with plane through the projector column.
+	Camera Projection
+	pinhole camera
+	&q describe the pinhole camera model op12
+	in the origin and the z-direction corresponding to the view direction 
+	2D Projective Geometry
+	map points on a plane with a homography to image plane
+
+	world plane
+	image plane
+	?line as homogeneous vector
+	points and lines are dual:
+	?intersection of two lines
+	homography
+	homography is defined as a projective transformation 
+	maps from the projective plane to the projective plane bijectively
+	&q what is homoxxx ?
+	4 corresponding points determine homography
+	Estimation of Homography
+	at least ?? = 4 correspondences are necessary
+	(when mixing point and line correspondences, the case with 2 points & 2 lines is degenerate and does not work
+	2 points & 2 lines
+	&q can we use 2 points & 2 lines to estimate the homography? n degenerate case! 
+	&q how many corresp. are needed when estimating homography?
+	solved by the singular vector corresponding to the smallest singular value in the SVD.
+	Homography relate 2 views
+	&q Homography can relate 2 views in 2 ways? which two?
+	planar scene homography between 2 views:
+	pure rotation -> same pin hole:
+	&q model this process with math calcu. op18
+	&q what is the Geometric Camera Model, draw a graph to illu.!
+	Geometric Camera Model
+	&q explain the following:
+	intrinsic calibration
+	extrinsic calibration
+	Extrinsic Parameters
+	camera‘s position and orientation
+	defined by a 3x3 dim rotation matrix and a 3D translation vector.
+	rotation and translation each have 3 degrees of freedom (dof) together these are 6 dof
+	6 dof
+	Intrinsic Parameters
+	specify the internal geometry of the camera
+	 focal length
+	principle point
+	 skew strength
+	This results in 3 up to 5 intrinsic parameters
+	Dissecting the Camera Matrix
+	http://ksimek.github.io/2013/08/13/intrinsic
+	&q the whole calcu. process with matrices! express it! op24
+	Lens Distortion
+	&
+	&t simulate the length distorsion! 
+	non-linear radial and tangential distortion model
+	Non-linear Lens Distortion
+	&
+	&q  in such a pipeline, where should we add this Non-linear Lens Distortion process?op26
+	non-linear radial and tangential distortion model
+	&q the math. express of non-linear radial
+	&and tangential distortion model
+	&q ?
+	vector field plot tool by Kevin Mehall (©2010)
+	vector field plot tool 
+	&t code a vector field plot tool 
+	Camera Calibration by Zhang
+	&q the process of 
+	chessboard corners
+	 chessboard pattern
+	estimate intrinsic and extrinsic parameters
+	including lens distortion
+	&t calibratino with Zhang method with opencv ! 
+	PROJECTOR MODEL AND CALIBRATION
+	&h here is an other better approach -- stru. light mode! not camera calibration!
+	Projector Model
+	Estimate Local Homographies
+	Fix camera and projector intrinsics and use world
+	Optimize all intrinsic and extrinsic parameters to minimize the total re-projection error
+	&h no , here projector is used with zhangs method, not stru. light! 
+	camera and projector can be modeled with pinhole extended by radial and tangential lens distortion
+	intrinsic camera parameters can be determined by acquisition of chessboard in 3 and more poses 
+	 iterative non-linear optimization is performed with parameters estimated from linear model as initial guess
+	projector can be calibrated in the same way by projecting gray code images for projector-camera pixel correspondences.
+	Zhang: A Flexible New Technique for Camera Calibration, TechRep from 1998 and TPAMI 22(11) 2000
+	&t paper! 
+	Standard Setup
+	Uses one camera and one projector
+	Calibrate projector camera system, optionally rectify
+	Project structured light patterns from projector and acquire images with camera
+	synchronized
+	Reconstruct points through triangulation
+	Uses one camera and one projector
+	&q the problem when using Uses one camera and one
+	&projector
+	& ?
+	Only points seen from camera AND projector can be reconstructed
+	indirect lighting and highlights can cause problems
+	&q how can we solve those problem? op46
+	More Cameras
+	avoid problems with highlights
+	Highspeed Setups
+	In dynamic setting one can use synchronized high speed projector and camera
+	short illumination time
+	partially unsynchronized systems where the projector generates
+	STRUCTURED LIGHT APPROACHES
+	Line Shift Approach
+	&q math behind Line Shift Approach?
+	n patterns necessary, where n is number of projector columns
+	Gray Code Pattern Sequence
+	Binary and Gray Code
+	&q explain the approach with Binary and Gray Code! op55
+	&t try them! 
+	Phase Shift Approach
+	Phase Shift Discussion
+	Vorteil
+	 fast unabhängig von der Objekttextur und der Schärfe der Aufnahme
+	Debruijn Sequenzen I
+	kodierte Kantenübergänge [Zhang 2002]
+	&h zhangs method used stru. light! 
+	https://en.wikipedia.org/wiki/De_Bruijn_sequence
+	&t imp. this, show the squ. with vis. building block
+	s a cyclic sequence in which every possible length-n string on A occurs exactly once as a substring (i.e., as a contiguous subsequence).
+	De Bruijn graph
+	Each De Bruijn graph is Eulerian and Hamiltonian.
+	The Euler cycles and Hamiltonian cycles of these graphs
+	https://en.wikipedia.org/wiki/De_Bruijn_graph
+	&t addi. effort 
+	Projektionsmuster
+	Microsoft Kinect 
+	Farbkamera
+	Tiefenmessprinzip
+	zwei Vermutungen
+	Stereoblockmatching über Punktmuste
+	Tiefe aus Unschärfe mit astigmatischen Linsen
+	Hybrid: Graycode + Lineshift
+	Hybrid: Graycode + Phasenshift
+	Erweiterung von Debruijn auf 2D
+	Ansätze
+	&
+	&q what alterbnative stru. light pattern do you know? op62 
+	_inv_30min
+	SEPARATION OF DIRECT AND INDIRECT ILLUMINATION
+	S.K. Nayar, G. Krishnan, M. D. Grossberg, R. Raskar, Fast Separation of Direct and Global Components of a Scene using High Frequency Illumination, ACM Trans. on Graphics (also Proc. of ACM SIGGRAPH), 2006.
+	&
+	&t addi effort paper! 
+	directly reflected light
+	indirectly reflected light
+	SEPARATION
+	in structured light scanning only the direct illumination is of interest
+	Indirect
+	&q do we want Indirect illumination in  structured light
+	 structured light scanning
+	&scanningq?
+	&q no, we want direct light only. so, we can probab. extract direct light from images! how? 
+	 points the luminance due to
+	diffuse or specular interreflections (B)
+	subsurface scattering (C)
+	transluceny (E), or
+	volumetric scattering (F)
+	scene points in shadow (G) should be ignored
+	subsurface scattering 
+	&q given an image, say, where is subsurface scattering !
+	Idea of Separation
+	&
+	&q how can we saparate direct light and indirect light from the scene? we can use more than one pic. to do this! 
+	project high frequency pattern with 50% pixels on and its negative, such that each scene point is once illuminated and once not illuminated
+	once illuminated and once not illuminated
+	measure minimum and maximum luminance
+	projector sharpness is not perfect and varies over acquisition volume
+	do not use maximum frequency (i.e. 4x4 up to 6x6 squares)
+	&q what problems can arise when using such a strategy? how can we overcome them? x2 
+	&h op67 
+	Extension to Phase Shift
+	project an off pattern to determine Lamb directly
+	 indirect component
+	&q can we measure the  indirect component directly? op68 
+	mirror sphere yields artefacts as smoothness assumption is violated
+	&q why can not saparate light correctly for mirror sphere? op71 
+	projector shadow
+	&q where is projector shadow? in this pic? direct and indierct illu.? op72
+	Y. Xu, D. Aliaga: Robust pixel classification for 3D modeling with structured light. Graphics Interface 2007: 233-240
+	ROBUST PIXEL CLASSIFICATION
+	Dual Pattern Rules and Comparison
+	if ???? is less than threshold ??, scene point is in projector shadow
+	direct-indirect light separation is done as in previous
+	&q what is the idea used? what is the input for such a cllasification? op73
+	add the constraint that a pixel must classify oppositely in the two patterns
+	&q how can we make a classification more robust? op74 typically in binary classification! 
+	&t imp. the classification technique! 
+	camera-projector setup has problems with highlights which can be eliminated by adding a second camera
+	gray codes, phase shift and their combinations are most prominent methods
+	to reduce the number of patterns for fast scanning
+	encode projector column in spatial neighborhood
+	robust binary classification
+	uses global indirect light component to derive classification intervals
+	we did not cover brightness and color calibration. Both projector and camera do not map them linearly!!!
+	brightness and color calibration
+	&t further reading and coding, how can we calibrate brightness and color? op77
+	https://gfx.cs.princeton.edu/pubs/Hall-Holt_2001_SBC/realtimerange.pdf
+	&t paper! to read! 

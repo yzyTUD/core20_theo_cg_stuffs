@@ -1,0 +1,126 @@
+
+//
+    input: 一堆语料 
+        output：a set of rules 
+
+    goal: 
+        能够分析语法的各个成分含义用法
+        使用比较高级句式语法for scientific writing 
+        *口语写作的时候：word selecting + gramma checking
+        *语感其实很简单，根据语言材料可以轻松整合各种语言成分进行表达，但是是否得体合理？ 
+            checking是一个很重要的问题
+        *be able to check/ be able to extend existing sentences
+            be familier to the rules, 
+                -> it is a rule learning process(may endless)
+    lan. learning roadmap: 
+        1.basic words 
+        2.basic gramma to expressing basic idea 
+        ---
+        3.huge amount of articles reading, no barrier to read words 
+        ---
+        4.precise gramma for checking, which makes you check you words even when you speaking
+    *it is a research field, global problem to understand how we express meanings 
+        语言学，语言学家
+    *talking about xx not talking on xxx 
+        动词后面只能接正确介词带出的宾语：erganzung，不同的介词有不同的含义
+    *articles can be seen as: 
+        a set of nouns
+        a set of verbs and their Prepositions
+        a set of all other kinds of words/ elements 
+    help .. to doing -> 这里的to doing 是非谓语
+    非谓语是不是用的很多？ 
+    learn some description rules as result
+        what means xxx, which can be used in which part ... 
+    *句子具有树形结构，但是光知道结构是不行的，其中有很多细节--每个细枝末节几乎都有习惯用法和要求。应该熟悉他们。
+        也就是各种rules。
+//
+res
+    http://www.phrasebank.manchester.ac.uk/
+    https://www.easypacelearning.com/grammar/nouns/1446-collective-nouns-1
+    https://pan.baidu.com/s/1skeBCNb#list/path=%2F%E6%9F%AF%E6%9E%97%E6%96%AF%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95%E5%A4%A7%E5%85%A8
+    http://elibrary.bsu.az/books_250/N_88.pdf
+    
+    gramma is sth. can be researched world wide, ofcaourse we can learn them in english 
+    https://www.grammar-monster.com/glossary/non-finite_verbs.htm
+
+---https://www.zhihu.com/question/40342212
+    分析固定搭配后面隐藏的语法意义：介词短语构成各种成分！ 
+    ...
+    “动词 + 介词”搭配是由“介词短语作状语修饰*动词”所形成的，比如“look at”，
+        The kid is looking at a little rabbit.
+        其实后面是介词短语
+    形容词 + 介词”搭配是由“介词短语作状语修饰*形容词”， 比如“different from”
+    *相当于德语中的Erganzung搭配
+    “介词短语作定语”所构成的搭配，比如“take the place of”
+    “动词 + 副词”构成的搭配：比如“stand up” 其实后面是副词，修饰动词
+
+
+---basicenglishgrammarbook2.pdf
+---englishgrammarbook.pdf
+---Oxford%20Modern%20English%20Grammar.pdf
+---张道真
+---赖世雄
+    句子构成
+
+        pre 
+            gain: 基本的语法结构
+        + 
+            *英语语法其实不严谨，很多时候同一个词或结构可以被看做多种成分，大概是因为英语没有格的概念
+                宾语补语：I saw him crossing the road.（视为后置定语也可以）
+            https://www.zhihu.com/question/35471133
+            主语与谓语动词搭配形成形式主轴，即句子的主干成分
+            利用各种关联词和介词等把句中的各种短语（介词短语，名词短语），附加成分（同位语，插入语），
+                分词（现在分词分句，独立成分）和从句（定语从句，状语从句，同位语从句）往这根主干上钩搭
+            *犹如一棵枝叶横生的大树，盘根错节
+            无论长短复杂，本质就是一棵树，它有且必有一个主干
+            如果把谓语动词比作老虎，那么英语句子就是【一山不容二虎】
+            记得初中的时候总是在背诵stop to do和stop doing的区别、be made of和be made from的区别、
+                look forward to后面要加doing，
+                虽然也能应付考试，但是终究不能通透地理解语法的全貌，
+                所谓“只见树木，不见森林”
+            原因也许恰恰就在于我们背诵了太多语法条目，众多语法点交织起来，反而使我们不能形成一个完整的语法体系
+            pp- God bless you为什么不是God blesses you
+    -倒装
+    句子连接（关系词，代词连词）
+        并列连接词
+    --- corepart
+    不定式非谓语
+        +
+            非谓语动词是指在句子中不是谓语的动词
+            也就是一种动词使用，可以做很多成分。除了不能独立作谓语外，可以承担句子的其他成分。
+            *包括不定式、动名词和分词（现在分词和过去分词）
+            *解决的是这样的问题：
+                pp- 表达的意思比较复杂，涉及到了多个动作（动词）?
+            需要出现其它动词，这个动词必须被【降级】，才能和谓语动词同时存在。
+                非谓语动词形态（不定式，现在式，过去式）
+                分词（现在分词过去分词）
+                从句形态
+                从属连词，例如because，although等
+            https://www.zhihu.com/question/35471133
+            eg. 定语从句和状语从句的关系连词（which，that，when，whatever等）都是降级的标志
+                The boy who is crying said this.
+                I want to walk.
+                    不定式to walk是名词，作谓语动词want的宾语
+                His wish is to walk.
+                    非谓语做表语 
+                pp- 用动名词还是用to不定式？根据动词？ 
+                    取决于在句子中的思维内涵？
+                To see is to believe.
+            不定式和进行式由动词变成了名词
+            pp- 
+                并确定它们之间是主动还是被动关系
+                时间关系
+            *无论非谓语动词在句中充当何种成分，它都拥有一个 逻辑主语
+            pp- 补充逻辑主语： There is a problem to deal with.
+                There is a problem for you to deal with.
+            *降级的时候，定语从句和非谓语之间可以相互转化，其实就是不同降级方式之间的等效
+                当定语从句本身较为简单，且只是描述一种状态（teaches）的时候，我们可以将定语从句简化成非谓语动词
+                My colleague who teaches English has the report.
+                My colleague teaching English has the report.
+            ---
+            (S + V1) + (S + be + X) = S + V1, X （其中X就是非谓语动词）
+    助动词动词和时态与虚拟语气
+    副词比较
+    形容词介词代词数量词
+
+

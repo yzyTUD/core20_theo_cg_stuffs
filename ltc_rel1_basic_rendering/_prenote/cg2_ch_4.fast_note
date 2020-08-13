@@ -1,0 +1,206 @@
+	Rotations & Articulated Objects
+	Transformation matrices
+	? Besides the ï¿½realï¿½ dimension, an imaginary dimension extends
+	the imaginary dimension are orthogonal
+	Different equivalent notions exist to describe a point in the complex plane
+	component form
+	trigonometric form
+	&q what is trigonometric form for representing complex numbers? op 6
+	complex product is communitative:
+	conjugation
+	norm
+	inverse
+	zero crossings
+	&q what is conjugation for complex numbers? 
+	&q what is zero crossings
+	
+	
+	&q Eulerï¿½s Formula [what is?] [how is used?] [why do we have to?] [which ones?] [the idea of?] [advantage or disad.?] [formula? proof?]
+	proof is given by Taylor series expansions
+	the trigonometric form of a complex number becomes
+	&q trigonometric form [what is?] [how is used?] [why do we have to?] [which ones?] [the idea of?] [advantage or disad.?] [formula? proof?]
+	2D Rotation with complex number
+	&q how can we do 2D Rotation with complex number? rotate a complex number? 
+	3D ROTATIONS
+	&q how can we express a 3D ROTATIONS?
+	&h x4 
+	&q Properties of rotations in 3D [what is?] [how is used?] [why do we have to?] [which ones?] [the idea of?] [advantage or disad.?] [formula? proof?]
+	retain the length of vectors
+	Rotations form the special orthonormal group
+	Forward Euler Angle
+	A 3D rotation in the 321-convention of Euler angles as used in navigation for yaw, pitch, roll 
+	can be computed from a given rotation matrix
+	Inverse Euler Angles
+	http://staff.city.ac.uk/~sbbh653/publications/euler.pdf
+	&
+	&t paper!
+	321-convention
+	&q what is 321-convention
+	Euler angles as used in navigation for yaw, pitch, roll 
+	&
+	&q how euler angle is used? why we have to get it? from rotation matrix?
+	&q how can we get euler angle from rotation matrix? compute with an algo 
+	http://staff.city.ac.uk/~sbbh653/publications/euler.pdf
+	Pseudo-Code taken from Gregory G. Slabaugh
+	&t further reading 
+	Rotation around Axis
+	Every rotation can be described by an axis and an angle ?
+	For every rotation exist two axis-angle combinations:
+
+	Rotation around Axis
+	&h we can describe a rotation with Rotation around Axis 
+	&h sometimes it is more simpler to repres. rotation in such form 
+	QUATERNIONS
+	&q what is? how is used? the idea? adv. and disadv.?  QUATERNIONS
+	Quaternion Definition
+	comparison with complex number
+	Quaternion
+	&q how is Quaternion be defined?
+	product table
+	&q what is the product table used for Quaternion
+	&h op17 
+	&t rotations in 3D donï¿½t commute [imp.] [paper reading] [+further reading!]
+	&q does rotations in 3D commute?
+	&h def. is similar to orthogonal unit vectors
+	http://3dgep.com/?p=1815
+	&t imp. paperther reading 
+	&
+	&q what is conjugation, norm, ... of Quaternions? basic calcu.! 
+	conjugation
+	norm
+	inverse
+	unit quaternions
+	scalar+vector-interpretation
+	multiplication
+	unit quaternions
+	can be interpreted as rotation by a around 
+	&q how can we  rotate a 3d-vector? op19 
+	&t more on Quaternions! imp. paperther reading ! 
+	efficient concatenation of rotations
+	&q what is the main adv. of using Quaternions for calcu.? &h 
+	efficient concatenation of rotations
+	concatenation of rotation by ?? around ?? followed by rotation by ?? around ?
+	&t formula? proof? 
+	&t calcu.! this example! 
+	concatenation of rotation by ?? around ?? followed by rotation by ?? around ?
+	&
+	&t calculate this example 
+	&h op21 
+	http://www.cg.info.hiroshima-cu.ac.jp/~miyazaki/knowledge/teche52.html
+	Conversions from and to matrix
+	&q how can we convert from and to the form of rotation matrix? op22 
+	&t imp. paperther reading 
+	Double Cover of Rotations
+	&q what is Double Cover of Rotations? what does it mean? 
+	not unique
+	Each rotation has two representations. We call this a double cover of the group of rotations
+	The quaternions are also a double cover
+	&t proof this !
+	&t compare diff. representations! op 24 
+	ARTICULATED OBJECTS
+	Fabricating Articulated Characters using Skinned Meshes, Siggraph 2012
+	http://the-4thworld.com/essentials.html
+	&t imp. Paper Further reading 
+	Skeletal Animation
+	biped body tracking
+	illustration of human skeleton
+	https://en.wikipedia.org/wiki/Human_skeleton#Skull
+	&q anatomy of a humna skel.! 
+	leap motion hand skeleton
+	&q anatomy of a hand op29 
+	&h op28 
+	 facial animations
+	hand tracking
+	Kinematic Chain
+	the last bone is also called end effector
+	used for example for grabbing
+	connect two bones and often have an own coordinate system
+	bones and joints form a kinematic chain
+	&q explain those cpt:
+	bone/limb/link
+	base
+	end effector
+	joints
+	kinematic chain
+	most basic joint types are revolute and prismatic joints 
+	&q which types of joints do you know? x8 
+	revolute and prismatic 
+	per bone three coordinate systems are defined:
+	input joint
+	bone
+	output joint
+	joint coordinate systems are aligned with joint axis
+	joint coordinate systems are aligned with joint axis
+	Transformations are composed along kinematic chain
+	kinematic chain
+	&
+	&q how can we express kinematic chain with list of transf.? op32 
+	Basic Joint Types
+	Revolute
+	Universal
+	prismatic
+	Gimbal
+	Spherical
+	in-planar
+	http://www.mathworks.de/de/help/physmod/sm/assembled-joints.html
+	&t imp. Paper Further reading 
+	Special Joint Types
+	Cylindrical
+	Bearing
+	planar
+	Telescoping
+	Screw
+	&q what kind of joints are there? what is their dof? 
+	Coming from aironautics, the terms roll (x), pitch (y) and yaw (z) are commonly used
+	Roll-Pitch-Yaw
+	An arbitrary rotation is defined by 3 free parameters
+	Navigation using gyroscopes
+	313-Convention
+	The first and third axis can become parallel, thus reducing one degree of freedom. This is called “gimbal lock”.
+	gimbal lock
+	&q explain the gimbal
+	&lock
+	Roll-Pitch-Yaw
+	&q what is Roll-Pitch-Yaw?
+	&
+	kinematic chain (robot arm or path in skeleton) 
+	relative transformations
+	&q calcu. of the posi. of the end effector given a list of para. op36 
+	Forward Kinematics
+	Orientation for example given as Euler angles
+	Skeleton
+	a skeleton is a kinematic tree 
+	&q how can we define skel. tree besed on kinematic chan? 
+	with joints as nodes and bones along edges
+	has a single root joint and several end effectors
+	at each joint ?? a coordinate frame ???? is defined
+	the rigid body transformation ??(??) ???? between frames
+	&t write formulas and calculate this example 
+	&h op36 
+	rigid body transformation
+	&h rigid body transformation contains translation and rotation
+	representation of transformations
+	&q hwo can we represent a transformation? x3 
+	&q what is? how is used? the idea? adv. and disadv.? 
+	Denavit-Hartenberg notation
+	Using Euler angles
+	Using quaternion
+	has 7 parameters plus one normalization constraint
+	Euler angles one has 6 parameters
+	&q how many para. for each? 
+	the skeleton tree can be linearized for example in a depth first traversal
+	parents are always computed first
+	&q why we use depth traversal here? to visit a skel.? 
+	Denavit-Hartenberg notation
+	&q what is the adv. of using a DH representation? can use fewer para. four
+	&q what is the input and output of DH? 
+	&h op41 
+	https://www.youtube.com/watch?v=rA9tm0gTln8
+	DH 360° Angle Computation
+	&q why we should take care when calcu. DH 360ø Angle Computation?
+	One needs to determine the sign of ???? from the sign of
+	&q hwo can we determain the sign? op44 
+	&t imp. and paper and further reading 
+	? [Spong] … Mark W. Spong, Seth Hutchinson, and M. Vidyasagar, Robot Dynamics and Control (2nd Edition), 2004, Chapter 3 – Forward Kinematics: DH Convention
+	[Bächer] … Moritz Bächer, Bernd Bickel, Doug L. James, and Hanspeter Pfister. 2012. Fabricating articulated characters from skinned meshes. ACM Trans. Graph. 31, 4, Article 47 (July 2012), 9 pages. DOI: https://doi.org/10.1145/2185520.2185543
+	https://dl.acm.org/doi/10.1145/2185520.2185543
