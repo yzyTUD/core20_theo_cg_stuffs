@@ -2984,7 +2984,8 @@
                         每个样本的出现概率都’可以‘是各不相同的。
                     轮盘赌
                         十九世纪俄罗斯，由监狱的狱卒强迫囚犯进行
-                        用于递归深度的控制，一句话就ok         
+                        *用于递归深度的控制，一句话就ok  
+                        used to control the depth of recur. of the ray traveling through the scene       
                 ql 
                     the operator form of the rendering equ. ? op4, i wrote 
                     what is the meaning of each compon. ? s3op6, i wrote 
@@ -3011,95 +3012,118 @@
                     what is path tracing p31 
                     the monte carlo case of path tracing p32 formula
                 r1 
+                    &q measurement equ in operator form and rendering equ. op4 
+                        measurement  operator 
+                        spectral power
+                        its output? its dimention? 
                     multi-dimensional nested integrals
-                    measurement  operator 
-                    spectral power
                     can also be written as nested integrals
                     nested integrals
-                    &q why nested integrals?? op5
+                    &q why nested integrals?? op5 formulation 
                     &q how can we compute spectual power with help of nasted integral?? op5 
                     &q what is the dimension of the nasted integral??
                     evaluate nested integrals
-                    quadrature rule
-                    &q 
-                    brick-rule,  trapezoidal-rule, Simpson-rule
-                    brick-rule
-                    dimensional explosion or the  curse of dimensionality
-                    &q explain this 
-                    The required number of samples  to get the error below
-                    &h too many number of samples are needed to let the error below a certain level.
-                    Monte-Carlo Quadrature
+                    &q quadrature rule
+                        brick-rule,  trapezoidal-rule, Simpson-rule
+                    &q error estimation in brick-rule?? 1d,2d,d dimention! 
+                    &q why exponential to d?
+                    &q explain dimensional explosion or the curse of dimensionality
+                        [required number of samples]  
+                            to get the error below
+                    &h too many number of samples are needed to 
+                        let the error below a certain level.
                     &q error estimation for d dimention?? 
-                    cast integration as expected value problem
+                    &q what is the idea of Monte-Carlo Quadrature 
+                        cast integration as expected value problem
+                        does not suffer from the curse of dimensionality
+                        variance is independent of dimention, decrease with square root of N 
                     uniform distribution
                     &q the expected val of func. f in uniform distribution case ?? op07
-                    variance
+                    &q the error analysis of Monte-Carlo estimator, 
+                        > how it decreases with increasing number of samples 
+                        take a look at the standard deviation! 
+                        the standard deviation (measure for statistical error) 
+                        estimator decreases with the square root  of number of samples:
+                    &q the most imp. part of MC estimator is that Independent of the dimension
                     &q variance of the expected val?? 
-                    the  standard deviation (measure for statistical error) 
-                    estimator decreases with the square root  of number of samples:
-                    Independent of the dimension
                     number of samples
+                    &q the expression of the estimator?? op7
                     &q how fast error changes with the number of sampels?? compute?
-                    compute the actual integral of the function
-                    independent of the sampling distribution
-                    &q how 
-                    &q a new estimator? 
-                    The choice of the sampling distribution ?? ?? can  significantly influence the variance of the estimate
-                    influence the variance of the estimate
-                    Importance sampling
+                        compute the actual integral of the function
+                        independent of the sampling distribution
+                    &q a modified estimator? why we do the modification?? 
+                        The free choice of the sampling distribution
+                            it significantly influence the variance of the estimate
+                    &q what is the new expected value of estimator and variation?? op09
+                    &q what simplifacation will be done for nested integrals 
+                        > along light transport paths
+                        just sample once 
+                        reduce to single sample estimator 
                     &q what is Importance sampling, why good for estimating ?? 
-                    &q what can we do?? estimate the distribution of f and make p proportional to f !! op10
-                    Importance Sampling
-                    infinite  dimensional integral 
-                    Numeric approximation of this integral with standard  quadrature approaches
+                        choose px proportional to fx, reduce variance
+                    &q why can we reduce variance in this way?? 
+                        assume p = c * f...
+                    &q what can we do to reduce variance with MC estimator?? 
+                        estimate the distribution of f and make p proportional to f !! op10
+                    &q ofcourse we can do every thing with uniform distribution 
+                        > instead of Importance Sampling? but with a high variance! 
+                    infinite dimensional integral 
+                    Numeric approximation of this integral with standard  
+                        quadrature approaches
                     suffers from the curse of  dimensionality
-                    Monte Carlo techniques pose the numeric integration  problem as an expected value estimation problem
-                    expected value estimation problem
                     &q the idea of MC integration? 
+                        Monte Carlo techniques pose the numeric integration  
+                            problem as an expected value estimation problem
                     averaging  estimates from samples drawn from a distribution
                     Standard deviation (sqrt of variance)
                     Standard deviation (sqrt of variance) of the estimate  corresponds to the approximation
                     A good choice of ??(??) can significantly reduce variance
                     variance
-                    MONTE CARLO  GLOBAL ILLUMINATION
+                    ---MONTE CARLO  GLOBAL ILLUMINATION
                     contributions to a pixel depend on parameters for  light measurement and for the light path 
-                    sampled independently 
+                    &q why can we sample independently?  
                     can be multiplied
                     yields product of individual terms
                     Distribution Raytracing
-                    &q how can we summ over all contributions of rays ?? from all diff. paths 
+                    &q how can we summ over all contributions of rays ?? 
+                        > single path Monte Carlo estimator looks like?
+                        > from all diff. paths 
                     Sampling the spectrum
                     &q how can we Sampling the spectrum??
-                    To reuse Monte Carlo samples  one samples ?? from the sum  of the efficiency curves:
+                        To reuse Monte Carlo samples  one samples ?? 
+                            from the [sum]  of the efficiency curves:
                     spectral  quantities
-                    lense equation
-                    &q 
+                    ---lense equation
                     &q what is focal points? not always pass through a focal point!
                     &q give the names in blank places! 
-                    &q op15
+                    &q lens equ.! large 
                     the aperture  size ?? (measured as area of circle) 
-                    heard the term depth of field (DoF)
-                    enhance your photos.
+                    &q how can we simulate depth of field (DoF) in GI??
+                        enhance your photos.
+                        simulate with help of a thin lens (draw)
                     the zone of acceptable sharpness within a photo that will appear in focus.
                     Some images may have very small zones of focus which is called shallow depth of field.
                     shallow depth of field.
-                    Three main factors that will affect how you control the depth of field of your images are: aperture (f-stop), distance from the subject to the camera, and focal length of the lens on your camera. 
-                    How does aperture control depth of field?
-                    hole through which light enters the camera) controls the amount of light entering your lens. 
-                    Large aperture = Small f-number = Shallow (small) depth of field
+                    &q Three main factors that will affect your control of the Dof??? 
+                        aperture (f-stop), 
+                        distance from the subject to the camera, 
+                        focal length of the lens on your camera. 
+                    &q How does aperture control depth of field? addi 
+                        hole through which light enters the camera) controls the amount of light entering your lens. 
+                        Large aperture = Small f-number = Shallow (small) depth of field
                     aperture 
                     &h Dof can be controled by aperture 
                     To simulate depth of field
                     &q how can we simulate Dof in rendering ?? 
-                    &h with help of apertur
-                    Large aperture = Small f-number = Shallow (small) depth of field
-                    &q how aperture affect the Dof?? shallow or deeper??
-                    The closer your subject is to the camera, the shallower your depth of field becomes.
-                    focal length
-                    Focal Length refers to the capability of a lens to magnify the image of a distant subject.
-                    the longer you set your focal length the shallower the depth of field.
-                    &h simulate the Dof effect by introducing a thin lens and adjest its para. 
-                    Spatial and Temporal Filtering
+                        simulate with help of a thin lens (draw)
+                        &h with help of apertur
+                    Focal Length refers to the capability of a lens to magnify the 
+                        image of a distant subject.
+                    &q the longer you set your focal length the shallower the depth of field?
+                    &h simulate the Dof effect by introducing a 
+                        thin lens and adjest its para. 
+                    ---Spatial and Temporal Filtering
+                    tobecontinued op17 
                     tensor product
                     &q what is  tensor product
                     Spatial
