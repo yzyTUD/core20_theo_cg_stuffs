@@ -1,0 +1,218 @@
+    // an extension to slides 
+
+    ----modeling skills 
+    ppt-1-Implicit surface
+    ppt-2-3d scanning
+        gray code
+            在结构光测量中时间编码主要采用二进制编码(Binary Encoding)和格雷(Gray)编码两种
+            在投射的几幅格雷编码图案中任意一点作为黑白变化边界的机会最多只有一次
+            相对于二进制编码，格雷码编码在解码的时候，能够大大减少出现解码错误的机会
+            精确地确定扫描角α 是整个测量系统的关键
+            有一定结构的二维纹理图像（如图所示的黑白光栅图），获取其随着物体表面高度变化而变形的二维纹理图
+            http://www.luohanjie.com/2018-06-19/structured-light-phase-measuring-profilometry.html
+            http://www.luohanjie.com/images/structuredlight2.png
+            具有一定的抗噪能力。但在采样的过程中，要求物体保持静止
+            robust to noisy, static measure
+            图显示了使用软件生成的正弦光栅图，每一张图都比上一张图往右移动了四分之一个周期
+            晶投影仪能够利用个人电脑控制投影的图像。通过投影软件生成正弦光栅图像，它提供了一种高效的结构光投影方案
+            如果物体是运动的话，则可以利用单次拍摄的方法获取物体在某个时间点的三维表面图像
+            颜色的二进制组合来生成基于De Bruijn序列的颜色索引条带的示例
+            所有相邻的条纹必须具有不同的颜色。否则，会出现一些双倍或三倍宽度的条纹，这会混淆3D重建算法
+            https://www.jianshu.com/p/b0e030f3a522
+            2D数组的彩色编码点(2D Array of Color-Coded Dots)
+            子串没有一个是重复的
+            https://blog.csdn.net/easygooo/article/details/44198915
+            +
+                格雷码一次投射一个数的条带binary code ,  有重复，类似于条纹的方法，需要多次拍摄
+                de brujing 是一次就产生了很多种不重复的条带
+    ppt-3-3d processing 
+    ----character animation techs
+    ppt-4-Rotations and Articulated Objects
+    ppt-5-skinning 
+        f::
+            transform mesh positions according to bone rotations -- how?
+        +
+
+        why artifacts can be avoided interpolating transferms not intermediate points?
+            directly interpolating the individual components of the matrices is not a good one
+            it will lead to unexpected and undesirable results.
+        Projective skinning 
+            avoids the artifacts of Linear Blend Skinning (LBS) and Dual Quaternion Skinning(DQS)
+        Transformation of Normals
+            Our method supports Linear Blend Skinning and Dual Quaternion Skinning. 
+            on a variety of datasets and provide a complete open-source implementation, includingGLSL shaders
+            * the de-facto standard skinning methods areLinear Blend Skinning(LBS) 
+            * modern 3D games use LBS or DQS in prac-tice.
+            these two methods fit very well in thestandard GPU rendering pipeline
+            and they deliver acceptableanimation quality at a small overhead cost
+            crude ap-proximation of the correct normals and tangent frames.
+            * The approximation error stems from ignoringthe spatially-varying, non-rigid deformation component 
+             the standard method produces inac-curate normals that makes the skirt look flat.
+            * Some books such as Introduction to Robotics: Mechanics and Control (3rd Edition) [7] use modified DH parameters.
+                The difference between the classic DH parameters and the modified DH parameters are the locations of the coordinates 
+                    system attachment to the links and the order of the performed transformations
+                https://en.wikipedia.org/wiki/File:DHParameter.png
+                http://home.deib.polimi.it/gini/robot/docs/spong.pdf
+    ppt-6-Skeleton Extraction
+
+    ppt-7-Automatic Rigging
+    ----advanced modeling skills 
+    ppt-8-Subdivision Curves
+        Subdivision Curve Types
+            http://graphics.stanford.edu/courses/cs468-10-fall/LectureSlides/10_Subdivision.pdf
+            Approximating 
+                Equivalent to
+                    Insert single new point at mid edge
+                    Filter entire set of points
+                    Catmull-Clark rule: Filter with (1/8, 6/8, 1/8)
+                B-spline curve 
+                    Piecewise polynomial of degree n
+                    with control points and basis functions
+                    https://www.cnblogs.com/hnfxs/p/3148483.html
+                    其实就是一种差值
+                    Cubic B-Spline (Catmull-Clark) -- 我们的讲义中是合起来写了
+                        反复使用
+                            Odd coefficients (4/8, 4/8)
+                            Even coefficients (1/8, 6/8, 1/8)
+                            Mask of size n yields Cn-1 curve
+                The original point changed 
+                relocate each (original) vertex
+            Interpolating (4-point Scheme)
+                -
+            face
+                Faces are split into sub-faces
+                Vertices are split into multiple vertices
+            Corner Cutting
+                rule 
+                    Insert two new vertices at ¼ and ¾ of each edge
+                    Remove the old vertices
+                    Connect the new vertices
+            
+    ppt-9-Subdivision Surfaces 
+        ?
+            how comes the stencils?
+        +
+            NURBS
+                NURBS是非均匀有理B样条曲线
+                NURBS由Versprille在其博士学位论文中提出
+                NURBS通常在计算机辅助设计（CAD），制造 （CAM），及工程 （CAE） 中有广泛应用
+                 通过计算机程序，他们可以很有效率的被处理，还允许进行简单的人机交互。NURBS 曲面是映射到
+                    三维的空间中的曲面的两个参数的函数。由控制点确定曲面的形状。NURBS 曲面可以用紧凑的
+                    形式表示简单的几何形状。
+            b-spline
+                B-样条是贝兹曲线的一种一般化
+                De Boor算法是一个数值上稳定的计算B样条的方法。
+                B-spline, or basis spline
+            Bézier
+                贝塞尔曲线（英语：Bézier curve，亦作“贝塞尔”）是计算机图形学中相当重要的参数曲线
+                贝塞尔曲线最初由保尔·德·卡斯特里奥于1959年运用德卡斯特里奥算法开发，
+                    以稳定数值的方法求出贝塞尔曲线。
+            德卡斯特里奥算法（英语：De Casteljau's algorithm
+                是计算伯恩斯坦形式的多项式或贝塞尔曲线的递归方法
+                伯恩施坦基本多项式
+        Approximating schemes
+            https://en.wikipedia.org/wiki/Subdivision_surface#Approximating_schemes
+            old vertices might also be altered
+            * limit subdivision surface 
+                the surface produced from this process being 
+                iteratively applied infinitely many times.
+            The limit surface can be calculated directly for most subdivision surfaces 
+                using the technique of Jos Stam
+                eliminates the need for recursive refinement
+            T-Splines are competing technologies
+            subdivision surfaces are spline surfaces with singularities
+            * approximating schemes have greater smoothnes
+            * Some function for quadrilaterals ("quads"), while others operate on triangles. 
+            means that the limit surfaces approximate the initial meshes and that after subdivision
+            * "Approximating" means we recompute positions of all vertices (even and odd)
+        Loop Subdivision
+            to compute v we need some to know the nearby vertices
+            * the stencils 
+                http://www.cs.cmu.edu/afs/cs/academic/class/15462-s14/www/lec_slides/Subdivision.pdf
+                Computing odd vertices
+                    innner 
+                    boundary
+                Computing even vertices
+                    innner 
+                    boundary
+            * The Loop scheme re-uses the cubic B-spline stencils
+            first, Computing odd vertices
+            also, there is a limit stencil for interior points
+            and normal of limit surface can also be calcu.
+        LCBK-'lucbieke'
+            compare 
+                Loop result is assymetric
+                    because cube was triangulated first
+                C2 vs. C1:(good)
+                    Loop and Catmull-Clark are better then Butterfly (C2 vs. C1 )
+                approximating:(bad)
+                    Severe shrinking for approximating schemes
+                    
+                Loop best for triangular meshes
+                Catmull-Clark best for quad meshes
+        +
+            Non-linear subdivision-replace arithmetic mean with other function
+            T-Splines 
+        Butterfly Subdivision
+            On boundary edges the 4- point-rule is applied
+        Catmull Clark (C2)
+            generalizes cubic tensor product B-spline surfaces
+        Kobbelt (C1)
+            4-point scheme in regular case
+        Doo-Sabin
+            limit curve is quadratic B-spline curve
+            creation of four faces around every vertex
+            
+    ppt-10-Inverse Kinematics
+        +
+            机器学习的核心是一个model，一个loss fuction，再加上一个优化的算法
+            最大似然（MLE），最大后验（MAP）都是构造目标函数的方法，
+            构造出这个目标函数后，我们可以用各种优化方法来找到它的极值，
+            一个是如何列出方程（最小二乘、极大似然），一个是如何解方程（梯度下降）
+        IK
+            f() maps q and give the position of EE 
+            F() maps angle and gives angke of EE 
+            其实就是非线性最小二乘？
+                不知道是怎么把参数空间转换计算出Xee的，找不出基函数
+                相比之下，线性最小二乘有基函数
+        最优化问题
+            http://www.whudj.cn/?p=1042
+            求解最优化问题使用迭代法，满足收敛条件为止, 其实和ccd方法很像，但是ccd只是coordinates decent
+            最佳下降方向的问题，还有学习速率的问题，在机器学习领域中这样的参数也被成为超参数(hyperparameter)
+            梯度下降法    
+                时间复杂度低，在每一个迭代中，只需要计算梯度，不需要对二阶导数矩阵
+                空间复杂度低，因为梯度向量为一个n×1的向量，比起Hessian Matrix来，
+                    占用存储空间小n倍。在实际应用中，x的维度可能非常高
+                梯度下降法可能会出现下降非常缓慢的情形
+                收敛速度为线性
+                某一点的梯度只能作为这一点的一个极小的领域处的最快下降方向，一旦梯度变化较快
+                梯度下降法会出现因为学习率不合适而出现”zigzag”现象
+                全局来看，一直沿着梯度方向下降的速度不一定是最快的
+                梯度下降法是最速下降法的一种特例
+                    指定的范数为欧几里得范数时，最速下降法给出的下降方向就是梯度的负方向
+            牛顿法
+                二阶泰勒展开可以推导出牛顿
+                通过求解二次函数最小值的方法得到本次迭代的下降方向
+                对应上式即Hessian为正定矩阵时，函数f(ϵ|x)的最小值才存在。
+                牛顿法首先需要计算Hessian矩阵并且判断其正定性
+                其他文献分析其收敛速度为2次收敛
+                牛顿法应用在Rosenbrock函数上的效果
+                Hessian矩阵的计算难度非常的大
+                牛顿法经常会因为Hessian矩阵不正定而发散(diverage)。
+                牛顿优化法还真可以用牛顿求根法推导得出
+                与根据二阶泰勒展开并求f(ϵ|x)的最小值得到的结论一致
+                本质是类似的
+            拟牛顿、BFGS近似方法
+                ...
+        最小平方问题--用于曲线拟合和求min，也可以用于参数估计
+            LLS:
+                model is linear to parameter, may fit with non-linear function 
+                WNLLS
+            Non-linear least square（宏观的一种求解）
+                非线性最小二乘问题
+                比如说最小化误差的绝对值的和
+                高斯-牛顿法相较牛顿法的最大优点是不需要计算二阶导数矩阵(Hessian矩阵)
+                代价是其仅适用于最小二乘问题
+                采用了近似的Hessian矩阵
+            
+            

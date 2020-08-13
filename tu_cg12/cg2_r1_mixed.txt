@@ -1,0 +1,7 @@
+
+    ppt-3
+         tangent plane fitting does not give sign of normal?
+         sign defines outside direction which needs to be globally consistent
+         basic idea about defining outside direction?
+         main idea in normal orientation? p30
+         

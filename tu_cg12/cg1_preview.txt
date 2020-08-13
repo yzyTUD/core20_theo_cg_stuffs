@@ -1,0 +1,513 @@
+
+    ppt-2-OpenGL概念与过程描述
+        OpenGL Extensions Viewer
+        opengl2 and 3 diff
+		Shading language 3.30
+            many deprecated glBeginxxx
+		(glGetUniformLocation can also be used in opengl 2.0
+            and glVertexAttribPointer)
+        glm/gl/...
+            最小引入？glut+glew
+            GLSL 
+                shader language
+            https://img-blog.csdn.net/20150117134719759
+            glew.h
+                是一个跨平台的C++扩展库，基于OpenGL图形接口
+                再也不用为找不到函数的接口而烦恼，因为GLEW能自动识 
+                    别你的平台所支持的全部OpenGL高级扩展涵数
+                只要包含一个glew.h头文件，你就能使用gl,glu,glext,wgl,glx的全 部函数
+                OpenGL Extension Wrang/ler Library
+            glfw.h 
+                GLFW无愧于其号称的lightweight的OpenGL框架，的确是除了跨平台必要做的事情都没有做
+                GLFW的开发目的是用于替代glut的，从代码和功能上来看，我想它已经完全的完成了任务。
+                因为OpenGL没有窗口管理的功能，所以很多热心的人写了工具来支持这些功能，比如早期的glut，现在的freeglut等
+                glut太老了，最后一个版本还是90年代的。freeglut完全兼容glut，
+                    算是glut的代替品，功能齐全，但是bug太多
+            ---
+            gl.h
+                gl.h这个头文件在windows平台是最原始的版本，微软并不更新
+                在Linux上同样不更新了
+            glm.h
+                GLM是一个OpenGL的数学库
+            glx.h 
+                对于X窗口系统，它所使用的的OpenGL扩展（GLX：OpenGL extension for X.
+                所有的GLX函数都使用前缀glX
+            glut.h 
+                gult：OpenGL工具库 OpenGL Utility Toolkit
+                部分函数以glut开头，主要包括窗口操作函数，窗口初始化、窗口大小、窗口位置等函数；回调函数：响应刷新消息、
+                键盘消息、鼠标消息、定时器函数等；创建复杂的三维物体；菜单函数；程序运行函数。
+                gult对应的开源实现是freegult
+            glext.h
+                最新的OpenGL函数原型在glext.h文件中被声明
+    ppt-3-geometry 
+        use glBindVertexArray to bind an array 
+        基本opengl3.3概念-编程有关-API讲解
+            more at https://learnopengl-cn.readthedocs.io/zh/latest/
+            loop 指的是cpu的loop，vbo是将数据发送到显卡
+            glDrawArrays 是在cpu loop期间进行的
+            ---
+            准备步骤，很多发送数据到显卡的命令
+                shader有关
+                    glCompileShader
+                    glAttachShader
+                    之后连接到统一的shaderProgram
+                    在cpu loop中glUseProgram(shaderProgram);使用shader
+                    也可以在准备阶段发送，如果不变的话
+                发送贴图glTexImage2D（在绑定一个变量以后）
+                +VAO vs VBO
+                    https://learnopengl-cn.readthedocs.io/zh/latest/img/01/04/      
+                        vertex_array_objects_ebo.png
+                    VAO是对VBO的打包（其中可能还有EBO对象）看图
+                    VBO中存放实际数据
+                    glVertexAttribPointer只是用于指定布局的
+                        使用glVertexAttribPointer函数告诉OpenGL该如何解析顶点数据
+                        第五个参数叫做步长(Stride)，它告诉我们在连续的顶点属性组之间的间隔。
+                        用于交叉存储或者非xx
+                        每个顶点属性从一个VBO管理的内存中获得它的数据，而具体是从哪个VBO
+                            （程序中可以有多个VBO）获取则是通过在调用
+                        设定顶点属性指针
+                        stride--每一行的最大元素个数
+                glBufferData发送buffer数据
+                    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), 
+                        vertices, GL_STATIC_DRAW);
+                    发送vertices数据
+                    VBO 
+            cpu loop， draw call--只等这一刻，cpu绘制的指令
+                绘图glDrawArrays（前提是glBindVertexArray）
+                    或者glDrawElements
+                    使用所绑定的VAO中的数据
+                传递数据using uniform variable
+                    glUniform4f
+                    glUniformMatrix4fv
+                    uniform是需要在游戏过程中变化的量，所以要在main loop中改变和发送，比如camera变化
+                    特殊：：贴图
+                        glActiveTexture
+                        glBindTexture就相当于已经发送了贴图到uniform（fragment shader中）
+            优化
+                EBO
+                    可以看到，有几个顶点叠加了。我们指定了右下角和左上角两次！一个矩形只有4个而不是6个顶点，
+                        这样就产生50%的额外开销。当我们有包括上千个三角形的模型之后这个问题会更糟糕，
+                        这会产生一大堆浪费
+                    用glBufferData把索引复制到缓冲里
+                    在draw call 中用glDrawElements来替换glDrawArrays函数
+                线框模式
+                    glPolygonMode函数
+            发送数据
+                glBufferData
+                glUniform4f
+                    glUniformMatrix4fv...
+                glTexImage2D
+        instance rendering 
+            If we were to actually render such a large amount of objects ::
+                for(unsigned int i = 0; i < amount_of_models_to_draw; i++)
+                {
+                    DoSomePreparations(); // bind VAO, bind textures, set uniforms etc.
+                    glDrawArrays(GL_TRIANGLES, 0, amount_of_vertices);
+                }
+            you'll quickly reach a performance bottleneck 
+            slow CPU to GPU bus
+            send some data over to the GPU once and then tell OpenGL to draw multiple 
+                objects with a single drawing call using this data
+            with a single render call
+            parameter called the instance count that sets the number of instances we want to render.
+            The GPU then renders all these instances without having to continually 
+                communicate with the CPU. 
+            when we only done so far--The GPU then renders all these instances without having 
+                to continually communicate with the CPU. 
+            ---
+            GLSL embedded another built-in variable in the vertex shader called gl_InstanceID. 
+            gl_InstanceID is incremented for each instance being rendered starting from 0.
+            Having a unique value per instance means giving a different location in the world
+            Each quad consists of 2 triangles with a total of 6 vertices. Each vertex contains 
+                a 2D NDC position vector and a color vector
+            defined a uniform array called offsets that contain a total of 100 offset vectors.
+            * indexing the offsets array using gl_InstanceID.
+            before we enter the game loop: 
+            we have to set the offset positions
+            * 1. transfer the data to the vertex shader's uniform array:
+            but, without special care, we will eventually hit a limit on the amount of 
+                uniform data we can send to the shaders
+            * 2.we can use instanced arrays that is defined as a vertex attribute
+                fill the data into an array buffer(glBufferData() func)
+                and then set the layout and tell gpu how to use it 
+                glVertexAttribPointer()
+                and glVertexAttribDivisor()
+            * 3. make use of geometry shader, 特殊， 用于很多sphere的渲染
+    ppt-4-光照Lighting
+        光照基础
+            https://www.qiujiawei.com/rendering-equation/
+        各种光照模型
+            +
+                Lighting in OpenGL is therefore based on approximations 
+                    of reality using simplified models 
+                https://www.qiujiawei.com/lighting-1/
+                https://www.cnblogs.com/bluebean/p/5299358.html
+                https://learnopengl.com/Lighting/Basic-Lighting
+                we want to at least simulate 3 lighting components. (can include more )
+                Reflections lets an
+                    illuminated surface
+                    become a light source
+                more lights？
+                    just sum their radiance contributions
+                visibility check for shadows
+                with different ambient, diffuse and 
+                    specular strengths and see how they impact the result?
+                Try to move the light source around the 
+                    scene over time using either sin or cos! code &
+                    https://uploads.disquscdn.com/images/
+                        d5ced67fbedfc50eeea7c18fabee38d20707cca8ac8506f96c8c56f3d340c0d2.gif
+                    https://uploads.disquscdn.com/images/
+                        72dd0d9fae62a2ab61475d02a0c6f14efeda713b3af1612eb49a458c5ba7a07f.gif
+                Direct3D渲染管线中，Blinn-Phong就是默认的渲染模型，
+                Global Illumination全局光照技术是实时渲染的必然发展方向
+                如让我们目瞪口呆的Unreal Engine3，技术规格依旧是48bit Color Phong HDR
+                实时光线跟踪还是不现实的事情，但是我相信未来人们一定可以
+                    在PC机平台上置身于可以和电影画面媲美的场景中交互、游戏
+            Gouraud
+                早期，在顶点着色器中做光照，相比片段来说，顶点要少得多，因此会更高效，
+                    所以（开销大的）光照计算频率会更低
+                结果就是这种光照看起来不会非常真实，除非使用了大量顶点。
+                在顶点着色器中实现的冯氏光照模型叫做Gouraud着色(Gouraud Shading)，而不是冯氏着色
+                    (Phong Shading)。
+                由于插值，这种光照看起来有点逊色。冯氏着色能产生更平滑的光照效果。
+                只用很少的信息，着色器就能计算出光照如何影响到所有物体的片段颜色
+            phong 
+                consist of 3 components: 
+                ambient
+                    even when it is dark there is usually still 
+                        some light somewhere in the world 
+                    almost never completely dark
+                    we use an ambient lighting constant that always 
+                        gives the object some color.
+                    它可以向很多方向发散并反弹，从而能够到达不是非常直接临近的点。
+                    对一个物体产生间接的影响。考虑到这种情况的算法
+                        叫做全局照明(Global Illumination)算法，但是这种算法既开销高昂又极其复杂
+                    所以我们将会先使用一个简化的全局照明模型，即环境光照
+                    我们使用一个很小的常量（光照）颜色，添加到物体片段的最终颜色中
+                    * 我们用光的颜色乘以一个很小的常量环境因子
+                    再乘以物体的颜色
+                    这个物体非常暗，但由于应用了环境光照
+                        （注意光源立方体没受影响是因为我们对它使用了另一个着色器）
+                diffuse 
+                    https://learnopengl.com/img/lighting/diffuse_light.png
+                    The more a part of an object faces the light 
+                        source, the brighter it becomes.
+                    漫反射光照就能开始对物体产生显著的视觉影响了
+                    漫反射光照使物体上与光线方向越接近的片段能从光源处获得更多的亮度
+                    法向量(Normal Vector)的东西，它是垂直于片段表面的一个向量
+                    角度很容易就能够通过点乘计算出来。
+                    当然， 我们需要确保所有的向量都是标准化的，否则点乘返回的就不仅仅是余弦值了
+                    不同片段朝向光源的方向的不同，这些片段被照亮的情况也不同。
+                    作为光源的位置与片段的位置之间向量差的方向向量
+                    应该受到光源位置影响
+                    由于顶点本身并没有表面（它只是空间中一个独立的点），
+                        我们利用它周围的顶点来计算出这个顶点的表面。
+                    我们可以简单地把法线数据手工添加到顶点数据中
+                    现在我们已经向每个顶点添加了一个法向量并更新了顶点着色器，我们还要更新顶点属性指针
+                    至少修改一下顶点属性指针来适应新的顶点数组的大小：
+                    我们只想使用每个顶点的前三个float，并且忽略后三个float：：
+                        glVertexAttribPointer(0, 3, GL_FLOAT, 
+                            GL_FALSE, 6 * sizeof(float), (void*)0);
+                    所以我们需要将法向量由顶点着色器传递到片段着色器
+                    * 所有光照的计算都是在片段着色器里进行
+                    在渲染循环中（渲染循环的外面也可以，因为它不会改变）更新uniform， 
+                    * 光源位置-通过uniform传递
+                    * 片段位置
+                        通过把顶点位置属性乘以模型矩阵（不是观察和投影矩阵）
+                            来把它变换到世界空间坐标
+                        顶点着色器中很容易完
+                    * 算光源和片段位置之间的方向向量
+                        vec3 lightDir = normalize(lightPos - FragPos);
+                    确保你总是对相关向量进行标准化，来保证它们是真正地单位向量。
+                    忘记对向量进行标准化是一个十分常见的错误。
+                    * 计算法向量
+                        手动添加
+                        在vertex shader中进行计算
+                    * 计算角度 float diff = max(dot(norm, lightDir), 0.0);
+                    保证漫反射分量不会变成负数
+                    * 环境光分量和漫反射分量，我们把它们相加，然后把结果乘以物体的颜色
+                    前提是normal正确计算， 才可以获得正确的光照
+                    注意观察法向量和光的方向向量之间的夹角越大，片段就会越暗。
+                    不等比缩放时，法向量就不会再垂直于对应的表面了，这样光照就会被破坏。
+                    它使用了一些线性代数的操作来移除对法向量错误缩放的影响
+                    所以并不是必须要使用一个法线矩阵，仅仅让模型矩阵乘以法线也可以。可是，
+                        如果你进行了不等比缩放，使用法线矩阵去乘以法向量就是必不可少的了
+                        在绘制之前你最好用CPU计算出法线矩阵，
+                            然后通过uniform把值传递给着色器（像模型矩阵一样）。
+                        Normal = mat3(transpose(inverse(model))) * aNormal;
+                specular lighting.
+                    https://learnopengl.com/
+                        img/lighting/basic_lighting_specular_theory.png
+                    the bright spot of a light that appears on shiny objects.
+                    Specular highlights are often more inclined to the color 
+                        of the light
+                    镜面光照也是依据光的方向向量和物体的法向量来决定的，但是它也依赖于观察方向，
+                    例如玩家是从什么方向看着这个片段的。镜面光照是基于光的反射特性
+                    计算反射向量。然后我们计算反射向量和视线方向的角度差，如果夹角越小，那么镜面光
+                        的影响就会越大
+                    * 正好沿着反射光线角度去看的话，应该是一个高光
+                    我们可以使用观察者世界空间位置和片段的位置来计算观察向量
+                    我们选择在世界空间进行光照计算，但是大多数人趋向于在观察空间进行光照计算
+                    在观察空间计算的好处是，观察者的位置总是(0, 0, 0)，所以这样你直接就获
+                        得了观察者位置
+                    * 在学习的时候在世界空间中计算光照更符合直觉
+                    * 观察者位置？通过uniform传递
+                        把相应的摄像机位置坐标传给片段着色器
+                        lightingShader.setVec3("viewPos", camera.Position);
+                        vec3 viewDir = normalize(viewPos - FragPos);
+                    * 获取标准反射位置？
+                        vec3 reflectDir = reflect(-lightDir, norm);
+                        通过reflect函数计算（其实就是一个镜面反射计算）
+                        因为函数的要求，我们需要对light方向取反 
+                    我们定义一个镜面强度(Specular Intensity)变量
+                        float specularStrength = 0.5;
+                    * 添加各种参数并计算 标准反射和视角向量之间的角度有关的数值
+                        pow(max(dot(viewDir, reflectDir), 0.0), 32);
+                        然后取它的32次幂。这个32是高光的反光度(Shininess)
+                        反光度越高，反射光的能力越强，散射得越少，高光点就会越小
+                        https://learnopengl-cn.github.io/img/02/02/ 
+                            basic_lighting_specular_shininess.png
+                    计算亮度 vec3 specular = specularStrength * spec * lightColor;
+                    * last thing sum over 
+                        vec3 result = (ambient + diffuse + specular) * objectColor;
+                    应该看到的是这样的画面
+                        https://learnopengl-cn.github.io/img/02/02/basic_lighting_specular.png
+                    R关于N和L镜像对称，R的公式？exam
+            bill-phong
+                Phong和Blinn-Phong是计算镜面反射光的两种光照模型，两者仅仅有很小的不同之处。
+                Phong模型中计算反射光线的向量是一件相对比较耗时的任务
+                在Phong模型中，必须计算V·R的值，其中R为反射光线的单位向量，V为视线方向的单位向量，
+                    但是在BlinnPhong模型中，用N·H的值来取代V·R。BlinnPhong光照模型公式
+                Blinn-Phong对这一点进行了改进
+                H是“光入射方向L和视点方向V的中间向量”，通常也称为半角向量
+                    H的计算比起反射向量R的计算简单的多
+                    为啥是半角？exam
+                        钝角不好，弄成锐角！
+                Blinn-Phong的高光范围要比Phong更大
+                但算法简单，运行速度快是Blinn-Phong光照模型的优点
+            +varients to 3 components in phong
+                ambient计算
+                    alternative1-最简单的
+                        constant light intensity and color, direction independent
+                    alternative2-Ambient Occlusion
+                        和角度有关的计算
+                        with percentual opening angle of surface point
+                diffuse计算可以有很多变化
+                    alternative1-Constant BRDF
+                    alternative2-Lambertian（phong）
+                        simplest，The brightness does only
+                            depend on lighting but
+                            not on viewing direction
+                        For Lambertian albedo
+                            describes the reflection
+                            properties completely
+                        The sun is no Lambertian Radiator
+                    alternative3-Oren-Nayar
+                specular 计算--Specular lighting types
+                    alternative1-phong model
+                    alternative2-blinn phong
+                    alternative3-Cook Torrance
+                        incorporates self-shadowing into microfacet model (see CG3)
+            高级着色-基于物理的 BRDF -PBR
+                或者用更通俗一些的称呼是指基于物理的渲染(Physically Based Rendering)
+                https://www.qiujiawei.com/pbr-rendering/
+                微平面(microfacets)理论
+                平面的粗糙度决定了它的各个微平面的镜面反射情况：
+                中间方向矢量(halfway vector)
+                    halfway vector(简称h)等于光线方向矢量l加上视角方向矢量v并单位化
+                越多的微平面的法线与h对齐，这个平面的镜面反射就会越强。
+                所有平面的出射光能量总和不能高于入射光能量总和
+                要做到能量守恒，就是要遵守一个原则：平面接收到的光能量要么被反射，要么被吸收，
+                镜面/反射光、漫反射/折射光的能量可以用2个系数kS、kD控制
+                基于光线追踪的离线渲染中，是可以直接基于上面的渲染方程去做工程实现的。
+                    （相比而言，实时渲染更多的是用各种trick技术来近似渲染方程
+                brdf很多种，最主流的是cook-Torrance BRDF，其基本框架公式是
+                并非全局渲染
+            GI 
+                是指既考虑场景中来自光源的直接光照，又考虑经过场景中其他物体反射后的间
+                    接光照的一种渲染技术。
+                大家常听到的光线追踪，路径追踪等同样很酷的概念，都是全局光照中人气较高的算法流派
+                光线追踪 Ray Tracing
+                路径追踪 Path Tracing
+                光线追踪、路径追踪、光线投射的区别
+                Real-Time Rendering 3rd》
+                Real-Time Rendering》 系列书籍一直备受推崇。有人说，它是实时渲染的圣经
+                其实《 Real-Time Rendering》 很像一整本图形学主流知识体系的论文综述， 
+                    它涵盖了计算机图
+                    形和实时渲染的方方面面，可做论文综述合集了解全貌，也可作案头工具书日后查用
+                http://www.realtimerendering.com/
+                This is a visible effect that appears when a scene is rendered with 
+                    Radiosity or full global illumination, 
+                    or can otherwise be simulated by adding colored lights to a 3D scene
+    ppt-5-textures
+        纹理过滤
+            当你有一个很大的物体但是纹理的分辨率很低的时候这就变得很重要了
+            Texture Pixel也叫Texel，你可以想象你打开一张.jpg格式图片，
+                不断放大你会发现它是由无数像素点组成的，这个点就是纹理像素
+            纹理图像不够精细
+            GL_NEAREST（也叫邻近过滤，Nearest Neighbor Filtering）是OpenGL默认的纹理过滤方式
+                加号代表纹理坐标。左上角那个纹理像素的中心距离纹理坐标最近，所以它会被选择为样本颜色
+            GL_LINEAR（也叫线性过滤，(Bi)linear Filtering）它会基于纹
+                理坐标附近的纹理像素，计算出一个插值，近似出这些纹理像素之间的颜色。
+                邻近像素的混合色
+            GL_LINEAR可以产生更真实的输出，但有些开发者更喜欢8-bit风格，所以他们会用GL_NEAREST选项。
+            当进行放大(Magnify)和缩小(Minify)操作的时候可以设置纹理过滤的选项，
+                比如你可以在纹理被缩小的时候使用邻近过滤，被放大时使用线性过滤
+            magnification filtering and minification filtering：：
+                放大或者缩小时候进行的
+                minification：
+                    texture samples exist at a higher frequency than 
+                        required for the sample frequency needed for texture fill 
+            There are many methods of texture filtering, which make different trade-offs 
+                between computational complexity, memory bandwidth and image quality  
+            Mip Mapping
+                切换多级渐远纹理级别时你也可以在两个不同多级渐远纹理级别之间使用NEAREST和LINEAR过滤
+        tangent space calculations 
+            use the sampled normal vectors for the upcoming lighting calculations
+            what would happen if we used the same normal map on a plane laying on the ground 
+                with a surface normal vector pointing in the positive y direction? 
+            shows what the sampled normals approximately look like on this surface
+            * A possible solution to this problem is to define a normal map for each 
+                possible direction of a surface
+            * In the case of a cube we would need 6 normal maps
+            with advanced models that can have more than hundreds of possible surface 
+                directions this becomes an infeasible approach. 
+            * works by doing lighting in a different coordinate space::tangent space. 
+            a space that's local to the surface of a triangle:
+            Using a specific matrix we can then transform normal vectors from this 
+                local tangent space to world or view coordinates
+            Such a matrix is called a TBN matrix where the letters depict a tangent, 
+                bitangent and normal vector.
+            we need three perpendicular vectors that are aligned along the surface of a normal map
+            Calculating the tangent and bitangent vectors is not as straightforward 
+                as the normal vector.
+            align with the direction in which we define a surface's texture coordinates.
+            https://learnopengl.com/img/advanced-lighting/normal_mapping_surface_edges.png
+            our plane has no actual displacement
+        Parallax mapping 
+            aims to offset the texture coordinates at fragment position
+            we would like to do parallax mapping in tangent space.
+    ppt-6-
+        hessian vs jacob
+            多元函数的二阶偏导数构成的方阵
+            局部曲率
+            函数在某点泰勒展开式的矩阵形式中会涉及到黑塞矩阵。
+            实值函数的二阶偏导数组成的方块矩阵
+            海森矩阵被应用于牛顿法解决的大规模优化问题
+            Hessian矩阵引入的复杂性, 使得牛顿迭代求解的难度大大增加, 但是、
+                已经有了解决这个问题的办法就是Quasi-Newton method
+            不再直接计算hessian矩阵, 而是每一步的时候使用梯度向量更新hessian矩阵的近似.
+        jacob
+            是一阶偏导数以一定方式排列成的矩阵
+            可微方程与给出点的最优线性逼近
+            或者说给出了坐标悬架 frame
+        第一基本形式 NEXT
+            第一基本形式完全描述了曲面的度量性质，可以用于计算
+                曲线长度，角度，面积 &公式，例子
+            第一基本形式是正定的，可以用特征值分解
+            can be visualized as an ellipse ？？ P26
+            计算面积，利用detI
+            球面积的例子！ 
+            the anisotropic length deformation
+            各向异性长度变形
+            弧长微元的平方
+            对正则曲面而言，I 是切平面上的一个正定的二次型．
+        curvature
+            curvature is the length of the 2nd derivative vector:
+            Normal Curvature
+        第二基本形式
+            NEXT
+            第一第二相除== K ，事实上是曲面的一个内蕴不变量
+            第二基本形式刻画了曲面离开切平面的弯曲程度，即
+                刻画了曲面在空间中的弯曲性
+        Betti-Number is the expansion of eular equ. 
+            其实是洞的计数 
+        they are defining the topological type of a manifold
+    ppt-10
+        orthogonal to all pairs of edges are used ,  edge dirs are not 
+        practice p86
+    ppt-12
+        bsp with polygon
+            Let each face of the polygon coincide with a partitioning plane of the tree.
+    ppt-13 
+        embedding
+            Tutte embedding is barycentric embedding 
+            crossing-free straight-line embedding
+            each interior vertex is at the average (or barycenter) of its neighbors' positions
+            solution to a system of linear equations.
+            this unique solution is always crossing-free
+            every face of the resulting planar embedding is convex
+            spring theorem
+            弹簧系统
+            any finite graph can be embedded in 3-dimensional Euclidean space
+             
+             
+        线性规划
+            what is that:
+                目标函数f是线性的并且约束空间是多面体--线性规划
+            solution：
+                单纯形算法
+                Simplex method is an approach to solving linear programming models
+        二次规划
+            what is that：
+                如果目标函数是二次的且约束是线性的，则使用二次规划技术
+                二次规划问题可以以下形式来描述 https://blog.csdn.net/miscclp/article/details/7488318
+                关于Q
+                    如果Q是半正定矩阵，那么f(x)是一个凸函数
+                    如果Q是正定矩阵，那么全局最小值就是唯一的
+                    如果Q=0，二次规划问题就变成线性规划问题
+                根据优化理论，一个点x 成为全局最小值的必要条件是满足 Karush-Kuhn-Tucker(KKT)条件
+            solution：
+                Lagrange法求解二次规划问题
+                内点法(interior point)
+                active set
+                共轭梯度法等
+        + 
+            解决问题的方法 如果目标函数f是线性的并且约束空间是多面体，则问题是线性规划问题，
+            其可以使用诸如单纯形法之类的众所周知的线性规划技术来解决。如果目标函数是凹的（最大化问题）
+            或凸（最小化问题）并且约束集是凸的，那么该程序称为凸，并且在大多数情况下可以使用来自凸
+            优化的通用方法。如果目标函数是二次的且约束是线性的，则使用二次规划技术。如果目标函数是凹
+            函数和凸函数的比率（在最大化情况下）并且约束是凸的，那么可以使用分数规划技术将问题转化
+            为凸优化问题。有几种方法可用于解决非凸线问题。一种方法是使用线性规划问题的特殊表达式。另
+            一种方法涉及使用分支和绑定技术，其中程序被划分为要用凸（最小化问题）解决的子类或线性近
+            似，其形成细分内的总成本的下限。在随后的划分​​中，在某一点上将获得实际的解决方案，其成本
+            等于任何近似解的最佳下限。该解决方案是最佳的，尽管可能不是唯一的。该算法也可以提前停止，
+            并保证最佳解决方案处于找到最佳点的容差范围内; 这些点被称为ε-最优。终止于ε-最佳点通常是
+            确保有限终止所必需的。这对大型问题尤其有用在差异性和约束条件下，Karush-Kuhn-Tucker（
+            KKT）条件为解决方案提供了最佳条件。在凸面下，这些条件也是足够的。如果某些功能不可微，次
+            微分的版本Karush -库恩-塔克（KKT）条件下是可用的
+        pseudo inverse 
+            具有部分逆矩阵的特性，但是不一定具有逆矩阵的所有特性的另一矩阵
+            广义逆阵的目的是针对可逆矩阵以外的矩阵（例如非方阵的矩阵）可以找到一矩阵有一些类似逆矩阵的特性
+            任意的矩阵都存在广义逆阵
+            有些广义逆阵可以定义在和结合律乘法有关的数学结构（例如半群）中。 
+        旋转矩阵是正交矩阵
+    ppt-14-Optimization 
+        LLS
+        grid data structure 
+            维数灾难让大部分的搜索算法在高纬情况下都显得花哨且不实用
+            kd 
+                k-d树是空间二分树（Binary space partitioning ）的一种特殊情况。 
+                ：每个节点都与k维中垂直于超平面的那一维有关。
+                轴垂直分割面
+            octree 
+                highly memory efficient because the tree's size can be limited.
+                often used to partition a three-dimensional space by recursively 
+                    subdividing it into eight octants
+                三维计算机图形学中的细节层次渲染[2]
+                最邻近搜索
+                三维空间中的高效碰撞检测
+                稀疏体素八叉树
+                状态估计[3]
+            regular grid 
+                Requirealotofmemory
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

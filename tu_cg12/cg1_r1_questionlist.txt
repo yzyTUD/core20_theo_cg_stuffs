@@ -1,0 +1,589 @@
+
+    ppt-1-导论
+        Main Areas of CG --see slides 
+        what are Most important discrete surface? x4
+        what is Global Illumination
+        what is character Animation
+        what is Physically Based Simulation
+        example Component-wise Multiplication of vec. u v vector
+        Dot Product
+        cross Product of u v vector x2 direction, scalar value 
+        Triple Product, sign and scalar value  x2
+        libs has own coordi?
+        affine combination of points pi to q
+        injective,surjective def!!
+        draft cos nx
+        Bernstein basis and monom basis -- how to understand them 
+            how can they be used to represent a function 
+        Parametric curve of a unit circle
+        analytic form of unit sphere
+        The calcu. Of normal using para. Surface
+        embedding is injective? 
+        affine Interpolation
+        barycentric coordinates 𝜎𝑖 in 3d??
+        bilinear Interpolation of 4 points 
+        the meaning of the columu of Transformation matrix  
+        homogenization of a point 
+        homogenous matrix 
+            Scaling,Translation,Rotation,Shear
+        perspective transform express in pic  p44
+    ppt-2-OpenGL概念与过程描述
+        what is OpenGL
+        example version check with c++ -> GLEW_VERSION_4_1
+        what is glew
+        what freeglut, glfw
+        how to handle input? 
+        from which, debugging with a callback
+        how Shader debugging
+        OpenGL 3.3 Pipeline 3+3 
+        when using column vectors, express matrix transform. and row 
+        use 3 vectors to def observer pose:: e f u
+        coordinates? x6 in Viewing process of opengl 
+        transforms? between 
+            whta is view transformation and model transformation
+            Projective Transform
+        Implementation, when to apply model transformation? 
+        use Textures in shader file?
+        vec & mat types
+        extension control with glsl
+        input data types? x3 
+        get location and <send data> by name? in practice 
+        what does the para. mean, in two cases (glBindBuffer)
+        features opengl 4 pipline x3
+        which verion does webgl support 
+        diff. between opengl2 and 3     --see note r2(from web )
+    ppt-3-几何渲染Geometry Rendering
+        def of a mesh 
+        why winding order
+        draw a cube and give obj file (z-order)
+        how to store the OBJ content?
+        what does vertex attributes store?
+        Primitives in opengl?
+        draw them?
+            bind? draw call?
+        the para. of glDrawArrays()
+        Line Segment in a strip? draw a pic, given Vertex Stream
+        with adjacency? 个数变少
+        Indexed rendering vs array based rendering -- how does the buffers look like?
+            with example p13
+        Data type uint in opengl?
+        valence of a vertex  in case of a stripification?
+        Indexed rendering advantages x2 
+        Tesselation of Height Fields and sphere idea enough 
+        construct interleaved vertex data idea, pseudo code 
+            with a struct
+        Create Index Buffer(indexed rendering ) idea 
+        Indexed Rendering of Poly Meshes, extraction of vertex buffer, change 
+            corner list to index list 
+            Use a map, how(the idea )
+        predefined variables
+            input/o position?
+            input/o color?
+            number of points?
+        Good applications for geometry shader?
+            pass through? 
+            Bezier Curve - how to give the position and emit it? 
+            Show Normals - code idea?
+        the same name has to be used in geo & vertex shader?
+        what is scene def.
+        what are inside scene tree?node typies  x3
+        content of a scene? x4
+        how can we use instance rendering? 
+            in main func, loop, draw call::glDrawElementsInstanced
+            in vertex shader::gl_InstanceID
+        Instanced Rendering of a Sphere
+            key:For each point generate a quad, idea, how?
+        geometry shader can be used to generate a large amount of geometry? 
+        恐龙例子怎么实现-making the matrix an instance attribute？
+        output of vertex shader and frament shader?
+            out vec4 xxx , 默认gl_Position
+            out vec4 color， 默认？
+        instance rendering methods x3 
+    ppt-4-光照Lighting
+        light def Physically 
+        In vacuum, photons move? 
+        Light can be measured by ?
+            calcu Total energy for 𝑛 photons of varying frequency 𝜈𝑖 given 
+        sun irradiates the earth with an average of? watt/m^2
+        given pic naming effect p10 
+        def 
+            Emission,Transport,Scattering,Reflection,Refraction
+        Different illuminations yield different appearances of a scene?
+        IES file format? with light intensity?
+        how comes Color Bleeding?
+        increase Scene brightness?--interreflections
+        Volumetric scattering example?
+        prism splits light into spectral colors?
+        when Shadows arise?
+        three types of light , and their shadow? x3 + x3 
+            i.e.crisp shadow boundaries...
+        Exam why not rgb?
+        what is Stevens‘s Power Law
+        sRGB color space?why 
+            better image quality
+        what is gamma correction?
+        Rendering Equation example for Global illumination x2 detail as many as possible 
+        simplifications in local lighting ? x4 hhhh
+        Point Light equ. and directional light 
+        Influence of shininess -r2 
+        Lighting Calculation equition p26 -prac p37 
+        Requirements for the coordinate system for light calcu.  x2
+        which coordi. does model+light+eye position have? 
+        where can we calcu. normal? 
+        normal transform matrix? 
+        an Example -explain the process -p40 
+        Too steep attenuation? how to solve it 
+        Gamma Correction -how x2 
+        gamma correction is only needed in the last one?
+        different parts can be combined? shader, the idea? the pic 
+        the calcu. of lighting need 3 Components? x3 
+    ppt-5-Texture
+        how to define Texture coordinates of a surface point?
+        Adjustable strategy for coordinates outside of [0, 1] x3
+        DirectX points in the opposite direction?
+        what happend to this pic?  
+        Upload pixel data? how -glTexImage2D para? 
+        use glTexParameteri to define some para. ?
+        Using Textures in GLSL, where to sample an image?
+        Sample a location？ func 
+        why we need Sampling Filters?
+        Moiré patterns? what is that 
+        how Mip Mapping?
+        which const to use?
+        ---
+        what is Bump Mapping， give some example 
+            ---
+            Interpret color as normal,  how? (range)
+            tangent space‘s base vectors?
+            How do we get the tangent and bitangent
+                ->Tangent Frame calculation  practice -p46,  use just two points 
+            Discussion Normal Mapping x2 x1
+            why normal maps looks so blue  practice p47
+            ---
+            Parallax Occlusion Mapping idea pic p23 
+            how to get eye position in uvh space? 1 equition. prac. p48 
+            Discussion Parallax Occlusion Map x1x3 
+            use normal map and parallex map together? 
+        Displacement Mapping idea 
+        also use Height map ? 
+        which shader to implement? 
+        Primitive Generation in Tessellation Shader?
+        where is the shader? compared to vertex and geometry shader 
+        Displ. Mapp. with Tess. Shaders the process? 
+            xxxx 
+                x2
+            xxxx
+                x2
+        Discussion Displacement Mapping x2x2 
+        More Maps? x4 -x2 ok  -thinkaboutthepic in slides 
+        texture can store? x3 
+    ppt-6-Surface
+        basic 
+            quadratic approx,  with taylor 
+            local analysis, in the vicinity of a location 𝑥?
+            the idea of taylor (math ) p11
+            derivative vector is a tangent?
+            saddle surface? 
+            sphere representations para. p7 
+        2nd deriv in Short forms
+            The gradient? meaning 
+            Jacobian matrix? s(u v)
+            jacobian vs Hessian?  p15
+            give you a direction,  calcu. the derivative in this given dir. 
+        Chain Rule simple form 
+            illustrate the chain-volumetric color mapping 𝜸ഺ applied to a surface 𝒔
+            Approximate length 𝑠 with dense sampling:
+                Example circle 
+            Curve mapped to Surface,  curve length?(combined func. calcu. )
+        I and II as matrix 
+            express Infinitesimal Area dA with res. to du and dv 
+                why IES First Fundamental Form looks like so ? 
+            express ds with First Fundamental Form practice p61 
+                example sphere
+                example circle wiki  
+            express angles, length, area with First Fundamental Form with generally I
+            curvature expression ? with s 
+            express the following with EG F
+                normal curvature
+                principle curvatures
+                Gaussian curvature K
+                mean curvature H
+            formulate LMN -II p35
+            what does it mean when K < 0
+            see the characture from K
+                what means K<0,  =0,  >0 ? x3 
+            how can curvature be used as application?  
+        Topologically equivalent def p40 -rubber 
+        topological space S is a 2-manifold? -neighborhood
+        2-manifold with border def?
+        incident vs adjacent?
+        valence,  degree?
+        summing all valences/degrees? 
+        what means oriented ?
+        orientable-has an oriented planar realization?
+        Möbius strip?
+        all closed manifold surfaces are orientable?
+        give pic,  and say if it is orientable.
+        Euler equation ?
+            example as Cube and a tetrahedron
+        Betti-Numbers ℎ𝑖? what are they,  how to calcu.  p45
+            h0h1h2, -closed cutting curves
+        where can betti numbers be used?
+        genus of the surface?
+        every surface is equ. to torus with the number of holes
+        Global properties like curve length and surface area need to be integrated?
+        what is first derivative of curve
+        Tangent space and jacobian matrix 
+        measured the deviation from a straight line / planar surface?
+        well-behaved surfaces?
+    ppt-7-Mesh
+        how to gene. Polygon Meshes ? 
+            parametric surfaces
+            implicit surfaces
+            Height fields
+            point cloud 
+        algo on mesh 
+            Stripification
+            smooth
+            Stripification
+            Subdivision
+        polygon mesh def 
+        The topological type (given by
+            betti numbers) is called mesh
+            topology
+        why the following meshes are not manifold p7
+        Ear-Cutting Algorithm
+        polygon corner are called convex?when ,  cancave
+        an ear?when 
+        the algo 
+        why 𝑛 − 3 ear-cuts needed
+        Why we do not have to check convex vertex?
+        worst case run-time?
+        why 2𝑒 = 3𝑓 ?
+        average valence? why 
+        obj format supports 3 attributes?
+        obj to array containers?
+        we need Iteration of faces....
+        we can use simple arrays or Linked Lists to store obj elements?
+        Euler equation with number of boundary loops 
+        triangle,polygon* face area calcu. -Iterate all edges
+        volume calcu. equ. 
+        volume preserving smoothing?
+        triple product? inner first,  then cross ?
+        Volume Gradient equ.
+        how smooth shading? compared to flat shading 
+        weighted average,  how x3 
+            expression 
+        Vertex Normals with simple DS no halfedge needed 
+        one-ring centroid equ. 
+            with simple mesh data structure ?
+            halfedge needed 
+        compute first Betti number with Union Find* algo 
+        Shells and boundary loops are global features?
+    ppt-8-halfedge
+        what does it mean Neighbor Data Structure
+        what is halfedge
+        restricted manifold connectivity?
+        Halfedge DS,  VEL pic?edge pic below?show the relationship!
+        halfedge properties? (attributes to edges)
+            origin vertex
+            next 
+            prev 
+            inv 
+            boundary flag
+        find one ring vertcies algo p5 
+            the idea*
+            in c lan.*
+            use circulator*
+        Pointer vs Index-Based HalfEdge implementation 
+            advantages
+        how to build halfedge ds -callbacks
+        inverse matching,  detect border,  match or non-manifold?
+            sortx2 
+            with the given example 
+            acc?*
+        why Rendering with triangle stripsx2
+        Computing triangle strips with Randomized Stripification
+            goal?
+            how? * algo code prac. p76 x2+x4
+        why we need Consistent face orientation?    x2 
+        orientate a mesh using region growing
+        Orientability Algorithm* algo 
+            global algo p17 
+            detail algo 
+        reverse face orientation? -swap 
+        stochastic optimization? what is that 
+    ppt-9-Mesh processing  
+        heat equation in 1d 
+            Explicit Euler  integration scheme with dt
+            solve with  finite differences?(Numerical Integration)
+                second derivative expression
+            Implicit Euler integration scheme?
+                Iterative solvers
+        in 2d :Laplacian can be discretized with finite differences -hhh
+        harmonic functions? 
+        we can generalizate the Laplacian from Euclidean space to surfaces?
+        apply Laplace-Beltrami operator to a parameterized surface results in?
+        Smoothing iteration?
+        two smoothing methods?
+            uniform averaging methods-Laplace Operator
+            Cotangent-Laplace Beltrami Operator
+        what means curvature is mapped to color?
+        df in Cotangent Laplace-Beltrami? computes to what? p15 
+        Face Insertion and Removal* algo  hhh
+        Edge Flip & Edge Split generalizate idea 
+            special version for boundary edges
+        optimization of connectivity,  how ?
+    ppt-10-Acc DS introduction
+        minimize false positives， how? with BV
+        Space Subdivision methods x4  1+3tree 
+        Bounding Volume variants x3
+        most cases,  we should structure scene hierarchically first , use heuristic ifn?
+        BV applications 
+            rendering 
+                Occlusion Culling* how? -from front to back and test xxx 
+                View Frustum Culling
+                Ray / Path Tracing
+                shadow test
+            modeling 
+                knn-find 𝑘 closest neighbors, not only one 
+                    or other distance querying problems 
+                        (query sphere for example to
+                        find neighbors up to a given
+                        distance)
+                    range queries
+                    first ray intersection
+                    closest point on surface
+                knn for classification
+                     classified by a majority vote of its neighbors
+                func. reconstruction -use filter to reconstruct,  x4 filters 
+                distPnt2Poly original version * code 
+            animation 
+                Collision detection complexity original? 
+            so many DS? best performing data structure depends on? p21
+            for fully dynamic scene,  hierarchy often too expensive?
+            number of primitives in leaf nodes? fixed?
+                is variable and
+                can be optimized for best
+                runtime performance
+        +ECG :ray-primitive intersection, tgl-tgl intersection
+        SAT theorem?
+        which separating axis directions are sufficient?
+            2d, 3d, polygon
+        box with triangle? box with box?
+            practice p86
+    ppt-11-detail about hirachy DS 
+        situation-bounding box in regular grid cells
+        Inserting objects?
+        Ray traversal
+            Stop if intersection is found?
+            Grid ray traversal idea? 
+        how to select Grid resolution?
+        avoid repeated intersection computations? 
+        mailbox idea?
+        BVHs in Hierarchies
+        what does Inner nodes store?
+        adapt memory consumption? how 
+        how to achieve log time ? p8
+        BVH top down construction p10 x4 
+        selection of bounding volume type is a compromise,  why?
+            we should minimize xxx,simplicity,tightness
+        two example, BVH and SS( Space Subdivision)
+            differ? findSplitPrimitive vs computeSplittingPlane
+            ss resulting a bsp tree?
+        selection of splitting plane? principle x2 p16 
+        classification of corners? or primitives? effecient!
+        line clipping,  further triangulated?
+    ppt-12-*Acceleration details,  how to use bvhs , Pseudo Codes
+        signed distance?
+        idea of Knn on BVHs
+        queue should be sorted? x2
+        pruning?(nearest distance only)
+        structure of KnnResult? PVk what are they 
+        knn, considerPath, func in KnnResult, sdist()* scratch!! Qmin Qmax !
+        modification needed to meshs 
+        Visibility Sorting with space subdivisions -front2back()* code!
+        build tree with given scene -both kd(aligned) and bsp(not aligned)!(?)*
+        two BVH collision test code!*
+        special care when primitives rotate 
+        csg operations with bsp 
+            why use bsp? -simplest query is the point inclusion  test
+            then,  testing and cliping 
+        classification pointLocation with pointLocation(N n,  X x) 
+            node(from root), value * hhh
+        Clipping of Polygon at BSP tree with clipPolygon(N n, Vector<X> p) * hhh
+        ?? splitPolygon(p, ??); 
+        switch (side) case ??, case ??, case??...
+        auto-partition is not efficient ? what should we do 
+        efficiently rejecting large parts of the scene,  how?
+        BP-Octree ?
+    ppt-13-Op1
+        Optimization Problems description 
+            instances of mathematical programming x4 some example?
+            closed form solution vs. iterative methods diff. def.!
+            derivative-free methods what is that ? p6 
+            isolated Minima -arbitrarily small N
+            Convexity constrain?
+            gradient vector for OP problem
+            Hessian matrix 
+            Computing derivatives x2
+            positive definite def.
+            geometrically meaning of positivexxx
+            stationary?
+            Minima condition for  continuously differentiable functions
+            linear case 
+                meaning of eigenvectors of A? p15 
+                geometrically meaning of Eigen-decomposition
+            General Quadratic Case
+                formula?
+                meaning of each component after decomposition -ellipsoid
+            rectangular matrices case 
+            decreasing singular / eigenvalues? why 
+            error of the approximation when concate with m ? expression 
+        LLS
+            what is Least squares problem? minimize what? formula 
+            what is LLS,  the basis ? distinguatish them !
+            Matrix Form of LLS,  express objects function and residual expression !
+                practice p97 98
+            objective function is convex?when 
+            Normal Equations,  drive!
+            Overdetermined case,  illumination with pic 
+            Underdetermined Case, rank-𝑘 pseudo inverse 𝑨𝑘, Illustration!!
+            disambiguate the underdetermined case,  how?
+            why pseudo inverse? what is that for A+k?
+            Pseudo Code to solve any LLS with SVD* algo 
+            weighted least squares formula
+                obj func.?
+                matrix?
+                weighted pseudo inverse...
+        Weighted Plane Fitting Problem
+            obj func.?
+            (similar to WLLS)
+            Reduced Plane Fitting Problem form -with normal p34
+            with Eigenvalue?
+            why not unique?
+            as result? orthogonal to n 
+        Registration
+            idea 
+            Iterative Closest Points (ICP) Algorithm
+            ICP stands for?
+            Pseudo-Code x3 
+            Kabsch
+                input?
+                objective function?
+                solve R*, what is the optimal rotation R? 
+                    -covariance matrix -pseudo inverse
+                solve t* what equation?
+                why center has to be equal?
+    ppt-14-Op2
+        Iterative Optimization Methods
+            Line Search idea 
+            Trust Region Approach idea 
+            SVD has cubic runtime and quadratic memory requirements?
+            superLU?
+            iterative solvers for large problems example x3 
+                steepest descent
+                conjugate gradients
+            Sparse Matrix formats x3 draw them acord. to the given matrix 
+                Sparse triplet
+                Compressed Row Storage
+                Compressed Col. Storage
+            Linear Conjugate Gradient (linearCG)
+                the idea? -LLS 
+                algo p7 * 
+                no more than 𝑛 iterations
+                how we get Optimal Step Width?
+                how we got alpha? force derivative to 0
+                Conjugate Gradient methods supports 
+                    very large problems and sparse matrices
+        Parameterization
+            three steps gen. uv-mapping p12 -the bird 
+            (they are all optimization problems)
+            packing algorithm,  what to minimize?
+            flattening
+                Notation,  spliting inner points and boundary points
+                flattening quality
+                what happend if Gaussian curvature ≠ 0
+                angle preserving vs area preserving embedding 
+                flatness criteria,  analysis I and Jacobian,  idea?
+                avoid overlaps
+                fixed vs free boundaries?
+                Geometrical interpretation of the inner points 
+                boundary vertex texcoords to a circle?
+                weights?(in the exercise,  we just imp. without weights)
+                    spring energy
+                    Dirichlet-Energy
+                    Chi-Energy
+                    Most isometric Parameterizations
+                    Discrete equiareal mappings
+                        Minimize the sum over all
+                        triangles of the squared
+                        difference between original and
+                        embedded area
+                    Angle Based Flattening
+                        Minimize the sum over all inner
+                        angles of the squared
+                        differences under further
+                        conditions
+                    Maximum Stretch Metric 
+        SIMPLIFICATION   
+            it is a discrete optimization problem,  why ？
+            approximation of curves, dynamic programming allows 
+                for a polynomial time solution
+            incrementally simplify ?greedy strategy? is it optimal?
+            Simplification Algorithm,  pseudo code? p29+p38
+            Start with original model?
+            what are affected edge?
+            special version at boundary?
+            Manifold Connectivity check,  how?  hhh p31 
+            different approaches to measure the error
+                compromise between computational cost and approximation quality?
+                quadric error metrics (QEMs) error measurment
+                how is it related to LLS? p32
+                what are planes?
+                optimal target location for the edge collapse operation
+                    supports reconstruction of sharp features?
+            residual expression? r(p)
+            objective func.  p33
+            Large Number of Planes solution? an other equ. later ?? hhh 
+            defines the Quadric Error Metric as 10-tupel Q=[M,v,e]
+            QEM class,  value?operation?
+                evaluate()
+                minarg()
+                    solve_ls_svd(M, v, pref, Hglob, Hloc);
+            initialize QEM ?
+            combined QEMs
+            Discussion x3x2
+            
+            
+            
+            
+            
+                
+                
+            
+            
+                
+          
+            
+            
+            
+            
+            
+            
+            
+            
+        
+            
+        
+        
+
+        
+
+
+        
+        
+
+
+
+

@@ -1,0 +1,1843 @@
+    CG2_SS19_00_Intro.pdf
+    CG2_SS19_01_Implicit_Surfaces.pdf
+        Advanced Modelling
+        3D Scanning
+        calibration
+        articulated objects
+        inverse kinematics
+        rigging motion capturing skinning
+        one joint consultation before first exams
+        Implicit Surfaces
+        Tao Ju, Frank Losasso, Scott Schaefer and Joe Warren, Dual Contouring on Hermite Data, Proceedings of ACM SIGGRAPH, 2002
+        https://www.cse.wustl.edu/~taoju/
+        &t addi. read materials 
+        Robust Optimization for Topological Surface Reconstruction
+        continuous function
+        splits
+        into three sets
+        &q which three?
+        interior
+        implicit surface
+        exterior
+        &q math def. og implicit surface 
+        &
+        An implicit function ?? is called regular, iff 
+        where ?? ?? = 0 the gradient ?????? ?? does not vanish.
+        manifold an
+        regular
+        finite volume
+        an outer region of unbounded volume
+        Implicit Function Theorem
+        &?whatisImplicit Function Theorem?
+        function assumes an arbitrary value ?
+        level set functions
+        Example
+        Numeric Gradients Instable
+        analytic gradient computation
+        &q which is better? why not use num. ? unstable! 
+        &q how comes unstable? what is the effect? math? op08
+        &t try it out! draw a heart! to test numm. unstable property! and better soluton than analytical! 
+        Gradient Computation
+        BlobTree (Wyvill et al. 1998)
+        combine several subtrees with boolean set operations like in a CSG 
+        &t addi. paper 
+        Advantages of Implicit Representation
+        easy to define closed objects
+        closed objects
+        just in time tessellation simplifies modelling
+        CSG
+        space deformation
+        as algebraic distance
+        simple support for skeleton based shape representations
+        skeleton based shape representations
+        direct raytracing by searching for zero crossings
+        &q advantages ad dis. op11 
+        Primitives
+        &q what Primitives are there? x4 
+        distance surfaces
+        algebraic surfaces
+        define function as polynomial in x, y, and z of arbitrary degree
+        &
+        basis on lattice
+        as scalar coefficients to basis
+        radial basis
+        radially symmetric basis functions around point samples
+        Manhattan distance
+        Euclidean distance
+        Minkowski distance
+        ?-norm 
+        Chebyshev distance
+        &q what kind of distance do you know? op13 
+        unit spheres for different p-norms
+        &
+        The shape of a superquadric remains the same also without taking the p2 -th root,
+        significantly simplifies the gradient computation
+        Superquadrics
+        Primitives
+        Superquadrics
+        &q Superquadrics is an other imp. primitive! 
+        &t imp. this primitive! 
+        Signed Distance Functions
+        reproduce the primitive or a one sided offset surface
+        plane
+        cube
+        Euclidean distance
+        Chebyshev distance
+        &q hwo can we define a cube in implicit surface construction? op16 
+        Primitives �C Quadric Examples
+        cone
+        cylinder
+        parabolic
+        hyperbolic
+        hyperboloids
+        elliptic
+        hyperbolic
+        paraboloids
+        &q their math expression 
+        Quadrics are algebraic surfaces of maximum degree two
+        with a symmetric homogeneous matrix
+        Any quadric can be thought of as a perspective transformation of a sphere
+        Perspective transformations can change the topology of the sphere
+        and cut it open or even onto several parts
+        perspective transformation
+        blobs or meta balls are motivated by atoms forming molecules and the corresponding electromagnetic potential
+
+        electromagnetic potential
+        define a potential function decreasing with distance to the atom
+        &q the formula! 
+        implicit surface can be defined:
+        potential function
+        &t imp. the metaball! 
+        &t record the merging process! 
+        Tessellation
+        Marching Cubes
+        Ambiguities
+        Ambiguous cases: 3, 6, 7, 10, 12, 13
+        3, 6, 7, 10, 12, 13
+        where the 2D ambiguity arises on one or more faces
+        choose a higher resolution grid
+        dual contouring
+        MC versus DC
+        &q algos! &t imp. of those two! 
+        &q compare those two! 
+        Dual Contouring
+        marching cubes
+        cuts sharp features short
+
+        circumvents this
+        edge plane intersection
+        compute one point per cell
+        constructing for each edge a plane through the edge point
+        If a cell has more than three edge planes
+        solve a least squares problem with reference point to avoid degeneration
+        avoid degeneration
+        DC Algorithm
+        If a cell has more than three edge planes
+        &q why we should take care when If a cell has more than three
+        & edges?
+        edge plane qem Q
+        &q does DC algo use qem ds? y 
+        the function of the translated circle is
+        Manipulation
+        Space Warping
+        Function Value Mappings
+        affine and projective transformations
+        non linear deformations
+        maps each point from warped to unwarped space.
+        Function Value Mappings
+        define a combined implicit surface with the function
+        combined
+        CSG & blending of surfaces
+        g of surfaces ? a
+        &q what is the diff. bet. space wa. and func. value mapping? what are they used typically 
+        combined implicit surface with the function
+        &h func. val. mapping is about its self --> combine several func. together 
+        &
+        warping function
+        Warped implicit:
+        Gradient of warped implicit
+        Mapped implicit
+        Gradient of mapped implicit
+        &q calcu. derive formulas for those two cases for simple vec.! 
+        Manipulation �C Linear Transformations
+        A corresponding warp function can be implemented with the inverse of the matrix
+        The inverse matrix is just the Jacobian of the warp
+
+        Example 2: Shear
+        &q write the implicit surface func. for given transformation M -- linear model transformation 
+        &h op36 
+        Manipulation �C Non-Linear Examples
+        taper
+        twist
+        bend
+        &q what non-linear transformations do you know? 
+        Function Value Mappings
+        compute the gradient
+        Example Derivative Computation
+        &q what is the gradient calcu. from FVM? op38 
+        Non-Linear Examples
+        &t imp. Non-Linear Examples
+        &q derive formulas for two cases, and drivatives formulas! 
+        Spatial Blending
+        &t code for Spatial Blending
+        get two levelset surfaces on both sides
+        The gradient computes to
+        &q formulas for levelset and outline mapping &t try!! 
+        The min and max operations used for union and intersection of implicit surfaces are not smooth at the intersection of the surfaces.
+        not smooth 
+        For blending we are looking for smoother function value mappings
+        behave in the same way as min and max
+        Other Minkowski norms can be used to reproduce different blending profiles.
+
+        More than two implicit surfaces can be easily incorporated to the blending operators.
+
+        Union & Intersection
+        Signed Distance Functions
+        Smooth Union & Intersection
+        Spherical Blend �C Union 
+        Super-Elliptic Blend 
+        &t imp. 
+        Bulging Artefacts
+        the blended union of boxes still does not work
+        one can correct the radii of influence depending on the angle ? between the gradients
+        &q hwo can we do correction? why also not work sometimes? op47
+        Skeleton Based Implicit Surfaces
+        A skeleton can be 1d, 2d or 3d.
+
+        Distance Surfaces
+        Convolution
+        generates sharp edges in concave regions
+        but generates bulging artefacts
+        &q compare distance surface and convolution surface! op49 
+        The field function is defined as convolution
+        &q func.? 
+        Potential functions
+        &q w Potential functions d u know?
+        Gaussian
+        Cauchy
+        inverse powers of radius
+        blended inverse
+        Jin 2002
+        McCormack 1998
+        convolution is linear operator ? superposition
+        one can handle a skeleton composed of primitives by integrating potential over each primitive and then summing the results
+        each
+        summing
+        Circular Arc
+        Convolution Surfaces �C Bulging
+        Thick Skeletons
+        bulges only arise when skeleton is narrower than filter.
+        use weights and decrease weights at line intersections.
+        X. Jin, C.-L. Tai, Analytical methods for polynomial weighted convolution surfaces with various kernels, C&G 2002
+        &t addi. reading paper! 
+        provide analytic solutions for large number of potential functions for the case of line segments
+        ? introduce up to cubic weighting functions along segments with analytic solutions
+    CG2_SS19_02_3D-Scanning.pdf
+        3D Acquisition Techniques
+        Calibration
+        Projector Model and Calibration
+        Camera Calibration
+        Triangulation
+        Structured Light Approaches
+        Direct vs indirect illuminatio
+        Robust Pixel Classification
+        mechanical measurement of individual points
+        tomographic
+        precise laser triangulation measurement
+        phase shift measurement
+
+        volume visualization of MRI-Volume
+        RGBD-Cameras
+        affordable
+        3D cameras from different manufacturers
+        &
+        &q what kind of 3d  acquisition techni. do u know? x3
+        joint acquisition of color image and depth map with 30-90 fps
+        infrared camera acquires object with projected pattern
+        projector
+        infrared camera
+        RGB-camera
+        Microsoft kinect
+        &q wh
+        &q for Microsoft kinect, which part do you know? how it has been constructed?
+        Hardware architecture
+        &q the Hardware architecture of kinect?
+        Reconstruction algorithm computes depth map
+        Stereo Acquisition
+        system calibration and finding corresponding pixel locations
+        3D Scanning with Structured Light
+        projected patterns encode the projector column
+        ray through the camera pixal is intersected with plane through the projector column.
+        Camera Projection
+        pinhole camera
+        &q describe the pinhole camera model op12
+        in the origin and the z-direction corresponding to the view direction 
+        2D Projective Geometry
+        map points on a plane with a homography to image plane
+
+        world plane
+        image plane
+        ?line as homogeneous vector
+        points and lines are dual:
+        ?intersection of two lines
+        homography
+        homography is defined as a projective transformation 
+        maps from the projective plane to the projective plane bijectively
+        &q what is homoxxx ?
+        4 corresponding points determine homography
+        Estimation of Homography
+        at least ?? = 4 correspondences are necessary
+        (when mixing point and line correspondences, the case with 2 points & 2 lines is degenerate and does not work
+        2 points & 2 lines
+        &q can we use 2 points & 2 lines to estimate the homography? n degenerate case! 
+        &q how many corresp. are needed when estimating homography?
+        solved by the singular vector corresponding to the smallest singular value in the SVD.
+        Homography relate 2 views
+        &q Homography can relate 2 views in 2 ways? which two?
+        planar scene homography between 2 views:
+        pure rotation -> same pin hole:
+        &q model this process with math calcu. op18
+        &q what is the Geometric Camera Model, draw a graph to illu.!
+        Geometric Camera Model
+        &q explain the following:
+        intrinsic calibration
+        extrinsic calibration
+        Extrinsic Parameters
+        camera‘s position and orientation
+        defined by a 3x3 dim rotation matrix and a 3D translation vector.
+        rotation and translation each have 3 degrees of freedom (dof) together these are 6 dof
+        6 dof
+
+        Intrinsic Parameters
+        specify the internal geometry of the camera
+        focal length
+        principle point
+        skew strength
+        This results in 3 up to 5 intrinsic parameters
+        Dissecting the Camera Matrix
+        http://ksimek.github.io/2013/08/13/intrinsic
+        &q the whole calcu. process with matrices! express it! op24
+        Lens Distortion
+        &
+        &t simulate the length distorsion! 
+        non-linear radial and tangential distortion model
+
+        Non-linear Lens Distortion
+        &
+        &q  in such a pipeline, where should we add this Non-linear Lens Distortion process?op26
+        non-linear radial and tangential distortion model
+
+        &q the math. express of non-linear radial
+        &and tangential distortion model
+        &q ?
+        vector field plot tool by Kevin Mehall (©2010)
+        vector field plot tool 
+        &t code a vector field plot tool 
+        Camera Calibration by Zhang
+        &q the process of 
+        chessboard corners
+        chessboard pattern
+
+        estimate intrinsic and extrinsic parameters
+        including lens distortion
+
+        &t calibratino with Zhang method with opencv ! 
+        PROJECTOR MODEL AND CALIBRATION
+        &h here is an other better approach -- stru. light mode! not camera calibration!
+        Projector Model
+        Estimate Local Homographies
+        Fix camera and projector intrinsics and use world
+        Optimize all intrinsic and extrinsic parameters to minimize the total re-projection error
+        &h no , here projector is used with zhangs method, not stru. light! 
+        camera and projector can be modeled with pinhole extended by radial and tangential lens distortion
+        intrinsic camera parameters can be determined by acquisition of chessboard in 3 and more poses 
+        iterative non-linear optimization is performed with parameters estimated from linear model as initial guess
+        projector can be calibrated in the same way by projecting gray code images for projector-camera pixel correspondences.
+        Zhang: A Flexible New Technique for Camera Calibration, TechRep from 1998 and TPAMI 22(11) 2000
+
+        &t paper! 
+        Standard Setup
+        Uses one camera and one projector
+
+        Calibrate projector camera system, optionally rectify
+        Project structured light patterns from projector and acquire images with camera
+        synchronized
+        Reconstruct points through triangulation
+        Uses one camera and one projector
+        &q the problem when using Uses one camera and one
+        &projector
+        & ?
+        Only points seen from camera AND projector can be reconstructed
+        indirect lighting and highlights can cause problems
+        &q how can we solve those problem? op46
+        More Cameras
+        avoid problems with highlights
+        Highspeed Setups
+        In dynamic setting one can use synchronized high speed projector and camera
+        short illumination time
+        partially unsynchronized systems where the projector generates
+
+        STRUCTURED LIGHT APPROACHES
+        Line Shift Approach
+        &q math behind Line Shift Approach?
+        n patterns necessary, where n is number of projector columns
+        Gray Code Pattern Sequence
+        Binary and Gray Code
+        &q explain the approach with Binary and Gray Code! op55
+        &t try them! 
+        Phase Shift Approach
+        Phase Shift Discussion
+        Vorteil
+        fast unabhängig von der Objekttextur und der Schärfe der Aufnahme
+        Debruijn Sequenzen I
+        kodierte Kantenübergänge [Zhang 2002]
+        &h zhangs method used stru. light! 
+        https://en.wikipedia.org/wiki/De_Bruijn_sequence
+        &t imp. this, show the squ. with vis. building block
+        s a cyclic sequence in which every possible length-n string on A occurs exactly once as a substring (i.e., as a contiguous subsequence).
+        De Bruijn graph
+        Each De Bruijn graph is Eulerian and Hamiltonian.
+        The Euler cycles and Hamiltonian cycles of these graphs
+        https://en.wikipedia.org/wiki/De_Bruijn_graph
+        &t addi. effort 
+        Projektionsmuster
+        Microsoft Kinect 
+        Farbkamera
+        Tiefenmessprinzip
+        zwei Vermutungen
+        Stereoblockmatching über Punktmuste
+        Tiefe aus Unschärfe mit astigmatischen Linsen
+        Hybrid: Graycode + Lineshift
+        Hybrid: Graycode + Phasenshift
+        Erweiterung von Debruijn auf 2D
+        Ansätze
+        &
+        &q what alterbnative stru. light pattern do you know? op62 
+        _inv_30min
+        SEPARATION OF DIRECT AND INDIRECT ILLUMINATION
+        S.K. Nayar, G. Krishnan, M. D. Grossberg, R. Raskar, Fast Separation of Direct and Global Components of a Scene using High Frequency Illumination, ACM Trans. on Graphics (also Proc. of ACM SIGGRAPH), 2006.
+        &
+        &t addi effort paper! 
+        directly reflected light
+        indirectly reflected light
+        SEPARATION
+        in structured light scanning only the direct illumination is of interest
+        Indirect
+        &q do we want Indirect illumination in  structured light
+        structured light scanning
+        &scanningq?
+        &q no, we want direct light only. so, we can probab. extract direct light from images! how? 
+        points the luminance due to
+        diffuse or specular interreflections (B)
+        subsurface scattering (C)
+        transluceny (E), or
+        volumetric scattering (F)
+
+        scene points in shadow (G) should be ignored
+        subsurface scattering 
+        &q given an image, say, where is subsurface scattering !
+        Idea of Separation
+        &
+        &q how can we saparate direct light and indirect light from the scene? we can use more than one pic. to do this! 
+        project high frequency pattern with 50% pixels on and its negative, such that each scene point is once illuminated and once not illuminated
+
+        once illuminated and once not illuminated
+        measure minimum and maximum luminance
+        projector sharpness is not perfect and varies over acquisition volume
+        do not use maximum frequency (i.e. 4x4 up to 6x6 squares)
+        &q what problems can arise when using such a strategy? how can we overcome them? x2 
+        &h op67 
+        Extension to Phase Shift
+        project an off pattern to determine Lamb directly
+        indirect component
+        &q can we measure the  indirect component directly? op68 
+        mirror sphere yields artefacts as smoothness assumption is violated
+        &q why can not saparate light correctly for mirror sphere? op71 
+        projector shadow
+        &q where is projector shadow? in this pic? direct and indierct illu.? op72
+        Y. Xu, D. Aliaga: Robust pixel classification for 3D modeling with structured light. Graphics Interface 2007: 233-240
+
+        ROBUST PIXEL CLASSIFICATION
+        Dual Pattern Rules and Comparison
+        if ???? is less than threshold ??, scene point is in projector shadow
+        direct-indirect light separation is done as in previous
+        &q what is the idea used? what is the input for such a cllasification? op73
+        add the constraint that a pixel must classify oppositely in the two patterns
+        &q how can we make a classification more robust? op74 typically in binary classification! 
+        &t imp. the classification technique! 
+        camera-projector setup has problems with highlights which can be eliminated by adding a second camera
+        gray codes, phase shift and their combinations are most prominent methods
+
+        to reduce the number of patterns for fast scanning
+        encode projector column in spatial neighborhood
+        robust binary classification
+        uses global indirect light component to derive classification intervals
+        we did not cover brightness and color calibration. Both projector and camera do not map them linearly!!!
+        brightness and color calibration
+        &t further reading and coding, how can we calibrate brightness and color? op77
+        https://gfx.cs.princeton.edu/pubs/Hall-Holt_2001_SBC/realtimerange.pdf
+        &t paper! to read! 
+    CG2_SS19_03_3D-Scan-Processing.pdf
+        3D Scan Processing
+        Kinect fusion
+        Real-time 3D Reconstruction and Interaction Using a Moving Depth Camera
+        Moving
+        https://www.microsoft.com/en-us/research/project/kinectfusion-project-page/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fprojects%2Fsurfacerecon%2F#!publications
+        &t publication about kinect fusion! 
+        More Recent Fusion Approach
+        http://graphics.stanford.edu/projects/bundlefusion
+        Large-Scale Direct Monocular SLAM
+        http://vision.in.tum.de/research/vslam/lsdslam
+        3D Scan Processing 
+        ? local features
+        matching
+        registration
+        bring 3D scans in same coordinate system
+        estimate pose of camera (camera localization )
+        fusion
+        merge partial scans
+        reconstruction
+        estimate globally consistent surface
+        &q explain those key words 
+        local features
+        classification (outlier, boundary, sharp edge, corner, smooth) ? tangent space or surface normal ? curvatures and higher moments ? histogram descriptors
+
+        Riemann-Graph: f�r jeden Punkt die Kanten zu den k N�chsten Nachbarn (typisches k?[6,20])
+        &q what is riemann graph
+        Berechnung der Delaunay-Tetrahedrisierung �ber Punkteinf�gen oder konvexe H�lle. Robuste und schnelle Implementierungen in CGAL oder qhull.
+
+        http://www.qhull.org/
+        &t code! try out! 
+        &t and understand the code! 
+        &
+        Connect to all neighbors within a sphere of fixed radius estimated from sampling density
+        Outlier detection
+        Estimation of sampling density
+        &q how can we do this?
+        most edges of an outlier point are outgoing and only few ingoing
+        thresholding
+        sampling density ? is defined as the minimum radius
+        a circle in tangential space
+        &q how those cpt are defined?
+        Sampling is the process of converting a signal (e.g., a function of continuous time or space) into a numeric sequence
+        analog-to-digital conversion
+        or simply digitizing
+        at least one surface sample is found
+        Tangent Space Estimation
+        (CG1)
+        &q how did we slved tangent space estimation? in cg1?
+        & by modeling it into a LLS problem
+        &q which difficulties can be found in surface reconstruction? x5 
+        noise
+        corner
+        sharp corner
+        close sheets
+        outlier
+        C0 -discontinuity
+        C1 -discontinuity
+        Selection of robust norms
+        &q explain those 
+        Iterated Re-weightes Least Squares
+        IRLS suitable for convex norms like the p-norm
+        re-compute weights
+        combine IRLS with localization weighting
+        IRLS
+        &q cpt of IRLS
+        &q for what kind of problem is IRLS suitble for? op16
+        homework: combine IRLS with localization weighting
+        &t imp. homework: combine IRLS with localization weighting for plane fitting problem!! 
+        A good family of robust norms is the Minkowski norm 
+        choice of localization and noise scales is important:
+        bilateral weights
+        Problems of weighted Tanget Space Fit
+        &q what are Problems of weighted Tanget Space Fit? op14
+        To support sharp creases and corners, a second weight ???? is multiplied to the localization weight:
+        Two choices have been proposed:
+        The bilateral weights depend on the to be estimated normals and couple the local optimzation problems into a global, nonlinear optimization problem
+        &h here, bilateral weighting actuall means : use a second weight! 
+        compute bilateral weights
+        fit tangential planes with new weights
+        iterate
+        &h for bilateral weights, typically we need to compute iter.
+        normal distance
+
+        plane distance ???? ?? = exp - ????? ?
+        [Fleishman03]
+        &t paper! 
+        We can fit a height field ?? ( ?? , ?? ) in a polynomial description
+        to the neighboring points and use the tailor series
+        compute the curvature properties
+        &q hwo can we compute curvature properties? op21 
+        &h fit a  polonomial first 
+        Local Polynomial Fit
+        monoms are the simplest basis and can be built for increasing degrees
+        a linear combination of the basis functions
+        can be transformed to vector notation:
+
+        compare CG1 script on surface analysis
+        describe larger neighborhood of point with a histogram over angle ?? and height ?
+        Spin Images
+        &q what is Spin Images
+        this compute tangent space and local coordinate frame
+        compute histogram on grid vertices 
+        extrapolation
+        bilinear interpolation 
+        Spin images can well distinguish different local surface types
+        They are used frequently in shape matching approaches
+        &q how spin images can be used in mesh processing approach? op25
+        shape matching approaches
+        &q what other approaches do you know to shape
+        &matching approachesq?
+        &t imp. a shape matching sys.!
+        make matching approaches robust against choice of x -axis
+        &q how can we ensure that this matching process is robust? op25
+        [Johnson�97] � A. E. Johnson. Spin-Images: A Representation for 3-D Surface Matching. PhD thesis, Carnegie Mellon University, 1997.
+        https://dl.acm.org/doi/pdf/10.5555/601671.601673
+        https://dl.acm.org/doi/pdf/10.1145/882262.882368
+        ? [Alexa�01] � M. Alexa, J. Behr, D. Cohen-Or, S. Fleishman, D. Levin, C. T. Silva. Point set surfaces. IEEE Visualization'01, acm.
+        ? [Fleishman03] � S. Fleishman, I. Drori, D. Cohen-Or. Bilateral mesh denoising. SIGGRAPH�03, doi.
+        ? [Jones03] � T. R. Jones, F. Durand, M. Desbrun. Noniterative, feature-preserving mesh smoothing. SIGGRAPH�03, doi
+
+        Y. Lipman, D. Cohen-Or, D. Levin. 2006. Error bounds and optimal neighborhoods for MLS approximation. SGP '06, acm
+
+        https://dl.acm.org/doi/pdf/10.1145/882262.882367
+        &
+        &t further reading paper!
+        consistent normal orientation is precondition of several surface reconstruction techniques
+        Poisson Reconstruction
+        &h here normal refers to point normal or surface normal? 
+        angent plane fitting does not give sign of normal
+        sign defines outside direction which needs to be globally consistent
+        position of 3D scanner defines outside direction, but
+        information is often lost 
+        &q can we preserve the ori. by recording cam. loc. somehow? 
+        normal orientation problem
+        &q what is the output of normal orientation problem?
+        estimate one or several normals from additional knowledge
+        build neighbor graph and propagate normal orientation along graph edges
+        normal orientation
+        &t after 3d scan, write a prog. to fix normal orientation 
+        &t check normal orientation of a scanned 3d dataset point cloud! 
+        initialization: estimate one or several normals per connected component from additional knowledge
+        outside direction of convex hull)
+        &h we may know nothing about the normal dir. of a given point cloud 
+        &q how can we estimate a initial step? op31 
+        build neighbor graph (i.e. Riemann graph with ?? = 16)
+
+        weight each graph edge by unreliability measure
+        define flip criterion
+        propagate normal orientations from initialization over graph edges
+        propagate orientation along minimal spanning tree
+        minimal spanning tree
+        setup global unreliability minimization problem and solve with approximate solver [Schertler16]
+        &q how many solutions are there? x3+ op30 
+        flip criteria and unreliability measures
+        &h many possiblities exists 
+        given initial orientations and a connected graph of edges with unreliability as cost
+        MST
+        can be computed with Kruskal�s algorithm in ??(?? log ??) for ?? edges and minimizes unreliability
+        &q what is the time cost for computing a MST? op35 
+        The idea is to add edges with increasing unreliability starting from least unreliable one 
+        avoid cycles by tracing sets of connected graph vertices with union find data structure (compare CG1)
+        Global Optimization
+        &q hwo can we def. this global optimization problem? op37
+        problem is NP-hard
+        only semi-approximate solvers like QPBO (Quadratic Pseudo-Boolean Optimization) feasible
+        Global Orientation Problem
+        [Hoppe92] � H. Hoppe, T. DeRose, T. Duchamp, J. MCDonald, W. Stuetzle. Surface reconstruction from unorganized points. SIGGRAPH 1992. ? 
+        [Xie03] � H. Xie, J. Wang, J. Hua, H. Qin, A. Kaufman. Piecewise C1 continuous surface reconstruction of noisy point clouds via local implicit quadric regression. IEEE Visualization 2003, ? 
+        [K�nig09] � S. K�nig, S. Gumhold. Consistent Propagation of Normal Orientations in Point Clouds. VMV 2009 ? 
+        [Schertler16] � N. Schertler, B. Savchynskyy, S. Gumhold. Towards Globally Optimal Normal Orientations for Large Point Clouds. CGF, doi:10.1111/cgf.12795
+
+
+        sparse ICP 
+            ....
+        SURFACE RECONSTRUCTION
+    CG2_SS19_04_Rotations-and-Articulated_Objects.pdf
+        Rotations & Articulated Objects
+        Transformation matrices
+        ? Besides the ï¿½realï¿½ dimension, an imaginary dimension extends
+        the imaginary dimension are orthogonal
+        Different equivalent notions exist to describe a point in the complex plane
+        component form
+        trigonometric form
+        &q what is trigonometric form for representing complex numbers? op 6
+        complex product is communitative:
+        conjugation
+        norm
+        inverse
+        zero crossings
+        &q what is conjugation for complex numbers? 
+        &q what is zero crossings
+        
+        
+        &q Eulerï¿½s Formula [what is?] [how is used?] [why do we have to?] [which ones?] [the idea of?] [advantage or disad.?] [formula? proof?]
+        proof is given by Taylor series expansions
+        the trigonometric form of a complex number becomes
+        &q trigonometric form [what is?] [how is used?] [why do we have to?] [which ones?] [the idea of?] [advantage or disad.?] [formula? proof?]
+        2D Rotation with complex number
+        &q how can we do 2D Rotation with complex number? rotate a complex number? 
+        3D ROTATIONS
+        &q how can we express a 3D ROTATIONS?
+        &h x4 
+        &q Properties of rotations in 3D [what is?] [how is used?] [why do we have to?] [which ones?] [the idea of?] [advantage or disad.?] [formula? proof?]
+        retain the length of vectors
+        Rotations form the special orthonormal group
+        Forward Euler Angle
+        A 3D rotation in the 321-convention of Euler angles as used in navigation for yaw, pitch, roll 
+        can be computed from a given rotation matrix
+        Inverse Euler Angles
+        http://staff.city.ac.uk/~sbbh653/publications/euler.pdf
+        &
+        &t paper!
+        321-convention
+        &q what is 321-convention
+        Euler angles as used in navigation for yaw, pitch, roll 
+        &
+        &q how euler angle is used? why we have to get it? from rotation matrix?
+        &q how can we get euler angle from rotation matrix? compute with an algo 
+        http://staff.city.ac.uk/~sbbh653/publications/euler.pdf
+        Pseudo-Code taken from Gregory G. Slabaugh
+        &t further reading 
+        Rotation around Axis
+        Every rotation can be described by an axis and an angle ?
+        For every rotation exist two axis-angle combinations:
+
+        Rotation around Axis
+        &h we can describe a rotation with Rotation around Axis 
+        &h sometimes it is more simpler to repres. rotation in such form 
+        QUATERNIONS
+        &q what is? how is used? the idea? adv. and disadv.?  QUATERNIONS
+        Quaternion Definition
+        comparison with complex number
+        Quaternion
+        &q how is Quaternion be defined?
+        product table
+        &q what is the product table used for Quaternion
+        &h op17 
+        &t rotations in 3D donï¿½t commute [imp.] [paper reading] [+further reading!]
+        &q does rotations in 3D commute?
+        &h def. is similar to orthogonal unit vectors
+        http://3dgep.com/?p=1815
+        &t imp. paperther reading 
+        &
+        &q what is conjugation, norm, ... of Quaternions? basic calcu.! 
+        conjugation
+        norm
+        inverse
+        unit quaternions
+        scalar+vector-interpretation
+        multiplication
+        unit quaternions
+        can be interpreted as rotation by a around 
+        &q how can we  rotate a 3d-vector? op19 
+        &t more on Quaternions! imp. paperther reading ! 
+        efficient concatenation of rotations
+        &q what is the main adv. of using Quaternions for calcu.? &h 
+        efficient concatenation of rotations
+        concatenation of rotation by ?? around ?? followed by rotation by ?? around ?
+        &t formula? proof? 
+        &t calcu.! this example! 
+        concatenation of rotation by ?? around ?? followed by rotation by ?? around ?
+        &
+        &t calculate this example 
+        &h op21 
+        http://www.cg.info.hiroshima-cu.ac.jp/~miyazaki/knowledge/teche52.html
+        Conversions from and to matrix
+        &q how can we convert from and to the form of rotation matrix? op22 
+        &t imp. paperther reading 
+        Double Cover of Rotations
+        &q what is Double Cover of Rotations? what does it mean? 
+        not unique
+        Each rotation has two representations. We call this a double cover of the group of rotations
+        The quaternions are also a double cover
+        &t proof this !
+        &t compare diff. representations! op 24 
+        ARTICULATED OBJECTS
+        Fabricating Articulated Characters using Skinned Meshes, Siggraph 2012
+        http://the-4thworld.com/essentials.html
+        &t imp. Paper Further reading 
+        Skeletal Animation
+        biped body tracking
+        illustration of human skeleton
+        https://en.wikipedia.org/wiki/Human_skeleton#Skull
+        &q anatomy of a humna skel.! 
+        leap motion hand skeleton
+        &q anatomy of a hand op29 
+        &h op28 
+        facial animations
+
+        hand tracking
+        Kinematic Chain
+        the last bone is also called end effector
+        used for example for grabbing
+        connect two bones and often have an own coordinate system
+        bones and joints form a kinematic chain
+        &q explain those cpt:
+        bone/limb/link
+        base
+        end effector
+        joints
+        kinematic chain
+        most basic joint types are revolute and prismatic joints 
+        &q which types of joints do you know? x8 
+        revolute and prismatic 
+        per bone three coordinate systems are defined:
+        input joint
+        bone
+        output joint
+        joint coordinate systems are aligned with joint axis
+        joint coordinate systems are aligned with joint axis
+        Transformations are composed along kinematic chain
+
+        kinematic chain
+        &
+        &q how can we express kinematic chain with list of transf.? op32 
+        Basic Joint Types
+        Revolute
+        Universal
+        prismatic
+        Gimbal
+        Spherical
+        in-planar
+        http://www.mathworks.de/de/help/physmod/sm/assembled-joints.html
+        &t imp. Paper Further reading 
+        Special Joint Types
+        Cylindrical
+        Bearing
+        planar
+        Telescoping
+        Screw
+        &q what kind of joints are there? what is their dof? 
+        Coming from aironautics, the terms roll (x), pitch (y) and yaw (z) are commonly used
+        Roll-Pitch-Yaw
+        An arbitrary rotation is defined by 3 free parameters
+        Navigation using gyroscopes
+        313-Convention
+        The first and third axis can become parallel, thus reducing one degree of freedom. This is called “gimbal lock”.
+        gimbal lock
+        &q explain the gimbal
+        &lock
+        Roll-Pitch-Yaw
+        &q what is Roll-Pitch-Yaw?
+        &
+        kinematic chain (robot arm or path in skeleton) 
+        relative transformations
+        &q calcu. of the posi. of the end effector given a list of para. op36 
+        Forward Kinematics
+        Orientation for example given as Euler angles
+
+        Skeleton
+        a skeleton is a kinematic tree 
+        &q how can we define skel. tree besed on kinematic chan? 
+        with joints as nodes and bones along edges
+        has a single root joint and several end effectors
+        at each joint ?? a coordinate frame ???? is defined
+        the rigid body transformation ??(??) ???? between frames
+        &t write formulas and calculate this example 
+        &h op36 
+        rigid body transformation
+        &h rigid body transformation contains translation and rotation
+        representation of transformations
+        &q hwo can we represent a transformation? x3 
+        &q what is? how is used? the idea? adv. and disadv.? 
+        Denavit-Hartenberg notation
+        Using Euler angles
+        Using quaternion
+        has 7 parameters plus one normalization constraint
+        Euler angles one has 6 parameters
+        &q how many para. for each? 
+        the skeleton tree can be linearized for example in a depth first traversal
+        parents are always computed first
+        &q why we use depth traversal here? to visit a skel.? 
+        Denavit-Hartenberg notation
+        &q what is the adv. of using a DH representation? can use fewer para. four
+        &q what is the input and output of DH? 
+        &h op41 
+        https://www.youtube.com/watch?v=rA9tm0gTln8
+        DH 360° Angle Computation
+        &q why we should take care when calcu. DH 360ø Angle Computation?
+        One needs to determine the sign of ???? from the sign of
+        &q hwo can we determain the sign? op44 
+        &t imp. and paper and further reading 
+        ? [Spong] … Mark W. Spong, Seth Hutchinson, and M. Vidyasagar, Robot Dynamics and Control (2nd Edition), 2004, Chapter 3 – Forward Kinematics: DH Convention
+        [Bächer] … Moritz Bächer, Bernd Bickel, Doug L. James, and Hanspeter Pfister. 2012. Fabricating articulated characters from skinned meshes. ACM Trans. Graph. 31, 4, Article 47 (July 2012), 9 pages. DOI: https://doi.org/10.1145/2185520.2185543
+        https://dl.acm.org/doi/10.1145/2185520.2185543
+    CG2_SS19_05_Skinning.pdf
+        CHARACTER ANIMATION
+        Rigging
+        Animation
+        Skinning
+        &q explain those terms!
+        map skeleton to mesh
+        map pose from skeleton to mesh
+        in reference pose
+        map pose
+        define new pose on skeleton
+        for each bone describe influence on vertices by assigning weights
+        build skeleton, align with mesh and adapt bone lengths
+        morph targets
+        Morph Target Animation
+        &q what is? how is used? the idea? adv. and disadv.? 
+        model a large number of localized deformations to provide different expressions of the mesh
+        provide an animation parameter 
+        Auto-Rigging
+        &q how many Auto-Rigging methods are there? 
+        Given several pose shapes of a character (from 3D scanner or animator)
+        Physically-Based Approaches
+        &q what is? how is used? the idea? adv. and disadv.? 
+        Computational cost
+        Large number of parameters to adapt for each animated individual
+        Scanning
+        Advantages
+        Very realistic
+        Disadvantages
+        Needs scanning devices
+        Need many examples
+        Memory consumption
+        https://doi.org/10.1111/cgf.12048
+        http://www.youtube.com/watch?v=L4T4t2_qkDk
+        &t imp. and paper and further reading 
+        Geometric Approaches
+        Linear blend skinning
+
+        Dual quaternion skinning
+        Geometric Approaches
+        Advantages
+        Simple & efficient
+        Disadvantages
+        Yields some artifacts
+        http://www.youtube.com/watch?v=LUOJccOZfWQ
+        &q how many skinning and rigging methods are there and what are theit adv. and disadvantages! 
+        Keyframe based shape animation
+        physically based animation
+        design model / scene with physical parameters
+
+        compute keyframe based shape animation from laws of physics
+        from laws of physics
+        character animation
+        animate keyframe poses of skeleton
+        attach vertices to bones 
+        animation
+        &q what kind of animation techs are there? x3 
+        &t imp. two of them! 
+        &t imp. and paper and further reading 
+        &h op12 
+        compute deformed surface model
+        Storing a Skinned Mesh
+        vertex weights
+        skeleton joint
+        mesh vertices in rest pose
+        geometry
+        connectivity
+        attach vertices to bones (W)
+        animate keyframe poses of skeleton (Pi )
+        design skeleton S with bones
+        &q the repres. illu. the animation process on op12 !
+        skeleton is aligned with skin mesh in reference pose (?? = 0)
+        &q what we get after rigging? op14 
+        define vertex weights
+        hand, fitting or IK
+        &q hwo can we define a new pose? above 
+        For each joint one can transform coordinates from the reference pose to the new pose with the transformations
+        for each joint
+        we have a transformation defined from the reference pose to the current frame
+        A vertex is influenced by the ones where the weight is larger than zero
+        &q a vertex is not affect by all the bones? y typically 
+        &q how can skel. affect vertex on suface? simplest way? linear combination! 
+        Linear vertex Blend Skinning
+        &q write formulas and calculate this example 
+        skeletal subspace deformation (SSD)
+        linear vertex blending leads to artefacts due to loss of volume:
+        &q what artifacets can arise using SSD method? op18 x2 
+        elbow collapse
+        Candy wrapper
+        due to loss of volume:
+        LBS artefacts
+        &h ssd method is also called lbs 
+        http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.107.8995&rep=rep1&type=pdf
+        high dimensional animation space to be learned from examples
+        all figures © Merry et al. 2006
+        &t imp. and paper and further reading 
+        Interpolation by affine combination
+        &t write formulas and calculate this example 
+        build curves over transformations, which can be used for camera animation
+        To interpolate between two transformations ??? ?? ??0 and ??? ?? ??1 , one can first compute the relative transform
+        Representing transformations by homogeneous matrices, concatenation corresponds to matrix product 
+        add fractional parts ?
+        &q the case of add fractional parts t? write formulas and calculate this example 
+        &h op23 
+        Another approach is to decompose
+        into a product of transformations that can be split into fractional parts individually through parameters
+        &t imp. and paper and further reading 
+        Any homogeneous matrix can be written as product
+        &p
+        &h op23 
+        Interpolation is only possible if no reflection ??? is present
+        &p 
+        But this only works for interpolation not for blending with more than two matrices and weights
+        Affine combination
+        &q Affine combination interpolation? 
+        &q what kind of interpolations are there? which is intunitive one? affine + quaternoin !
+        Quaternion Interpolation
+        ? One can interpolate two unit quaternions q1 and q2 with the SLERP operation,
+        In computer graphics, Slerp is shorthand for spherical linear interpolation
+        &t imp. and paper and further reading 
+        &q why we learn interpolation methods?? for blending, for skinning! 
+        &q the diffculty is how can we model it and not gen. artifacts! 
+        LOG MATRIX BLENDING
+        Log Matrix Blending (Alexa 2002)
+        Basic idea: the log function can be used to transform the product operation into a sum:
+        &q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+        This means that ?? and ?? are split into infinitesimally small parts which are interwoven to a commutative result
+        &t write formulas and calculate this example op29 
+        If logarithms exist of ?? and ?? one can proof the identity
+        Log Matrix Blending (Alexa 2002)
+        Properties when applied to rigid body transformations
+        result is always a valid rigid body transformation
+        valid rigid body transformation
+        interpolates between two rotations with uniform angular speed
+
+        interpolation between two rotations is not necessarily along the shortest path
+        &h we have to do some interpolation when blending?? 
+        &p
+        Discussion
+        linear systems can be solved and SVD be performed in log space allowing for statistical analysis of motion
+        Errors and Omissions in Marc Alexa’s “Linear Combination of Transformations”
+        &t further reading 
+        &t imp. and paper and further reading 
+        repeated conversion to log space, averaging in log space and conversion back to quaternion space 
+        Spherical Averages (Buss 2001)
+        &q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+        SPHERICAL BLENDING
+        has not been used in skinning
+        Spherical Blend Skinning (Kavan 2005)
+        &t imp. and paper and further reading 
+        To avoid artefacts ensure that all dot products of the quaternions are positive
+        SBS
+        Spherical Blend Skinning (Kavan 2005)
+        For cloth simulation we need some optimization approach
+        &t cloth simulation ! 
+        How to find a good rotation center ?? ?? ?
+        &q How to find a good
+        &rotation centerq 
+        For revolute joints simply choose point on joint axis
+        &t write formulas and calculate this example op37 
+        Optimization
+        Accompanying video for paper "Spherical Blend Skinning", I3D 2005.
+        &t imp. and paper and further reading 
+        Real-time Skeletal Skinning with Optimized Centers of Rotation
+        SCREW MOTIONS & DUAL QUATERNION BLENDING
+        DUAL QUATERNION BLENDING
+        &q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+        &t imp. and paper and further reading 
+        rigid body transformation include translations, rotations, reflections and their combinations.
+        rigid body transformation include
+        &q rigid body transformation include??
+        proper rigid body transformations exclude all reflections and are also called roto-translations.
+        A [proper] rigid body transformation can be represented as an orthonormal matrix ?? and a translation vector ?? ? :
+        Screw Motions
+        &q what is? how is used? the idea? adv. and disadv.? 
+        Chasle‘s/Mozzi's/Cauchy's screw theorem
+        Screw theorem
+        Plücker Coordinates
+        &q what is? how is used? the idea? adv. and disadv.? 
+        resulting in 4 degrees of freedom
+        proof
+        &q proof this 
+        an oriented line from ?? through ?? can be represented as a direction vector ?? = ?? - ?? and the moment vector ?? = ????? as 6D homogenous Plücker Coordinates
+        6D homogenous Plücker Coordinates
+        Plücker Coordinates Applications
+        Line Geometry 
+        test whether two lines{??: ??} and {??' : ??'} intersect in 3D:
+        Compute common plane of intersecting lines
+        Compute plane for line and point 
+        Compute homogenous representation of line-line intersection point (no line may pass origin)
+
+        &
+        &q how can we do those? 
+        &t imp. and paper and further reading 
+        &t we can obtain from cgv imp. on its website!
+        Further Applications in Ray-Tracing
+        intersection
+        &t some intersection calcu. with help of Plcker Coordinates!
+        &t imp. and paper and further reading 
+        accelerate ray intersection computations
+        dual base
+        similar to the complex
+        but
+        dual numbers 
+        &q what is? how is used? the idea? adv. and disadv.? 
+        transformation rule is implemented in the dual product:
+        Dual Coordinates
+        Dual Algebra und Dual Quaternions
+        multiplication
+        conjugation
+        inverse
+        square root
+        dual quaternion
+        conjugations
+        norm
+        inverse quaternion
+        Unit Dual Quaternions
+        &q why use dual number? 
+        &h rotations can be rep. better! more intunitively! op46 
+        &h the transfermation rule can be rep. in dual product op46 
+        &t write formulas and calculate this example 
+        &q dual algebra? write formulas and calculate this example ! 
+        &q dual algebra is similar to complex algebra? y! 
+        for unit dual quaternions dual and non dual part are orthogonal
+        composition of rotation and translation is
+        screw motion form of unit dual quaternion with dual angle ??? and dual axis vector ?? ? :
+        &q hwo can we rep. scorew motion with dual quaterion? op49 
+        &t an exampel calculation! op50 
+        convert to dual quaternion:
+        rearrange into
+        convert skinning transformation to dual quaternions
+        Dual quaternion Linear Blending
+        (Kavan 2007/8)
+        To avoid artefacts ensure that all dot products of the dual quaternions are positive
+        For each vertex 
+        for optimized computations and shader code see paper
+        &t addi. imp. and paper and further reading 
+        Properties
+        always computes a valid rigid body transformation
+        interpolates two rigid transformations along the shortest path
+        very fast computation
+        does not interpolate transformations with uniform speed
+        Missing Property
+        &q comparation of four blending methods! 
+        &q adv. adn disadv. of dual quaternion? op53 
+        Understanding Quaternions, http://3dgep.com/?p=1815
+
+        Quaternion Demonstrator, https://graphics.stanford.edu/courses/cs348c-95-fall/software/quatdemo
+        Convert from rotation matrix to quaternion, http://www.cg.info.hiroshima-cu.ac.jp/~miyazaki/knowledge/teche52.html
+        Ben Kenwright: A Beginners Guide to Dual-Quaternions, http://wscg.zcu.cz/wscg2012/short/a29-full.pdf
+        http://wscg.zcu.cz/wscg2012/short/a29-full.pdf
+        TRANSFORMATION OF NORMALS
+        blended transformations of all blending schemes cannot be used to transform vertex normals correctly
+        &q  explain why we have to transform normals why it was not correct before by default? op56 
+        Tangent and Normal transformation
+        A vertex normal is transformed with the inverse transposed of the Jacobian
+        Linear Blend Skinning Case
+        &q how can we fix normal directions in diff. blending cases? 
+        plus the deformable part
+        due to the variation of weights over the skin mesh
+        Computation of weight gradients
+        Similar to vertex normal computation one computes the weight gradients first per triangle and then averages at vertices the gradients of adjacent triangles.
+
+        can be computed from
+        in a preprocessing step.
+
+        Combining the formulas
+        &q write formulas and calculate this example 
+        &q how can we fix the normal problem? in one fomula! in the cese of LBS? op60 
+        for DLB use dual quaternions to compute
+        (LBS or DLB)
+        &q for DLB, there is also normal problems? y 
+        Transformation of Normals
+        Accurate and Efficient Lighting for Skinned Models
+        https://vimeo.com/85267396
+        &t further reading imp. and paper and further reading 
+        &
+        http://shihaowu.net/
+        https://igl.ethz.ch/people/
+        https://igl.ethz.ch/publications/
+        &t imp. and paper and further reading 
+        Linear combination of transformations. In Proceedings of the 29th annual conference on Computer graphics and interactive techniques (SIGGRAPH '02). ACM, New York, NY, USA, 380-387. DOI=10.1145/566570.566592
+        Ladislav Kavan and Jirí Žára. 2005. Spherical blend skinning: a realtime deformation of articulated models. In Proceedings of the 2005 symposium on Interactive 3D graphics and games (I3D '05). ACM, New York, NY, USA, 9-16. DOI=10.1145/1053427.1053429
+        Bruce Merry, Patrick Marais , James Gain. 2006. Animation space: a truly linear framework for character animation. ACM Transactions on Graphics 25(4):1400-1423. http://pubs.cs.uct.ac.za/archive/00000373/
+        Ladislav Kavan, Steven Collins, Jirí Žára, and Carol O'Sullivan. 2007. Skinning with dual quaternions. In Proceedings of the 2007 symposium on Interactive 3D graphics and games (I3D '07). ACM, New York, NY, USA, 39-46. DOI=10.1145/1230100.1230107 ? Marco Tarini, Daniele Panozzo, Olga Sorkine-Hornung, Accurate 
+        http://vcg.isti.cnr.it/deformFactors/
+        Downloadable Demo
+        &t imp. and paper and further reading 
+    CG2_SS19_06_Skeleton-Extraction.pdf
+        Skeleton Extraction
+        Medial Axis
+        &q what is? how is used? the idea? adv. and disadv.? 
+        &q the def. of Medial axis
+        set of shape points with at least two closest points to shape boundary
+        medial axis is very sensitive to small shape changes
+        &t imp. and paper and further reading 
+        Curve Skeletons
+        &h we can obtain Curve Skeletons from medial axis, how? op3 algo!
+        &q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+        Curve Skeleton Algorithms
+        &q what kind of Curve Skeleton Algorithms are there? x3 op4 
+        Thinning
+        Distance field based
+        discretize distance to shape boundary on voxel grid 
+        extract ridge lines
+        Geometric
+        compute voronoi diagram 
+        General field functions
+        force fields and detection of local extrema
+        Competing Fronts
+        Sharf, Andrei et al. “Competing Fronts for Coarse-to-Fine Surface Reconstruction.” EG 2006
+        &q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+        &t imp. and paper and further reading 
+        compute unsigned distance field from points (a) ? initialize model to small sphere at maximum distance ? grow in normal direction with distance controlled step size ? keep deformable mesh smooth through Laplace operator ? tension trades smoothness vs inflation ? decrease tension and refine mesh if necessary ? project final mesh to MLS surface (f)
+
+        small sphere
+        grow in normal direction 
+        keep deformable mesh smooth
+        MLS surface
+        avoids leaking
+        https://www.youtube.com/watch?v=lfNMZ5N2ZxQ
+        Sharf, Andrei, et al. "On-the-fly Curve-skeleton Computation for 3D Shapes." EG 2007
+        Fast Extraction on Noisy Data
+        Noisy Data
+        in different resolutions that evolve to reconstruct the shape
+        &q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+        &t imp. and paper and further reading 
+        keep book of surface to skeleton correspondences and front tension
+        keep book
+        filter short branches of skeleton
+        suitable for incomplete models 
+        postprocessing
+        approach is very fast and can construct skeleton in few seconds
+        &t imp. and paper and further reading 
+        On-the-fly Curve-Skeleton Computation
+        https://www.youtube.com/watch?v=zIPohvB5vHI
+        Mean Curvature Skeletons
+        Tagliasacchi et.al., SGP 2012
+        &q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+        &t imp. and paper and further reading 
+        Iterated mesh contraction via Mean Curvature Flow
+        tries to minimize its tension 
+        Can be expressed with the differential equation
+        &t write formulas and calculate this example 
+        Remeshing is done after every iteration.
+        After convergence, shortest edges are collapsed to produce a 1D curve skeleton.
+        Mean Curvature Skeletons
+        Final conversion to curve skeleton via Edge Collapse
+        MCF Skeletons - Results
+        A. Tagliasacchiy, I. Alhashim, M. Olson, H. Zhang, Mean Curvature Skeletons, SGP 2012, Code: https://code.google.com/p/starlab-mcfskel
+        ? Tamal K. Dey and Jian Sun. 2006. Defining and computing curve-skeletons with medial geodesic function. In Proceedings of the fourth Eurographics symposium on Geometry processing (SGP '06). Eurographics Association, Aire-la-Ville, Switzerland, Switzerland, 143-152.
+        &t imp. and paper and further reading 
+        https://github.com/ataiya/starlab-mcfskel
+    CG2_SS19_07_Rigging.pdf
+        Rigging
+        &q explain the following: 
+        rig
+        rigging
+        skinning
+        build and fit skeleton into model
+        build and fit
+        bone weights
+        skeleton for 3D model
+
+        Rigging from Animations
+        &
+        &h many riggging methods exists! 
+        Pinocchio
+        http://people.csail.mit.edu/ibaran/papers/2007-SIGGRAPH-Pinocchio.pdf
+        fully automatic rigging and skinning of given mesh such that motion data can be mapped to mesh
+        &q what is input and output of pinoccio sys.? 
+        Input
+        3D mesh (close to standard pose)
+        skeleton (fixed topology)
+        Output
+        skeleton embedding
+        vertex weights
+        https://github.com/elrond79/Pinocchio
+        allows rigging, skeleton export and animation
+        Overview of Pinoccio
+        &q pseudo code? proof? complexity? adv. disadv.? imppseudo code? proof? complexity? adv. disadv.? imp. &t
+        Discretization
+        ? Discrete Embedding through two stage discrete optimization of penalty function
+        penalty function
+        continuous optimization 
+        Learn weights of penalty function by max margin method
+        on good and bad example riggings
+        Skinning Weights computation through per bone 
+        heat equation
+
+        &t imp. and paper and further readimp. and paper and further reading
+        &t imp. and paper and further reading 
+        construct sphere cover similar to poisson disk sampling on medial axis 
+        in order of decreasing sphere radius
+        Discrete Embedding
+        reduce skeleton to one bone per chain
+        optimize reduced skeleton by A* algorithm
+        build priority queue of partial embeddings sorted by lower bound estimate of penalty function of extension to full embedding
+        extract best partial embedding, try all extensions and sort them into queue
+        first full embedding found is optimum
+        extend reduced skeleton and perform local continuous optimization
+        gradient descent
+        Terms of Discrete Penalty
+        Penalty
+        &q what kind of Penalty can be defind? why we define them? what kind of bones will be filtered? op8 
+        length unsymmetry
+        vertex sharing
+        zero length (counts bones of zero length)
+        wrong direction unreduced (compute angle between bones in unreduced embedding and skeleton
+        &q what could be the worst case that we have to filter? op8 
+        7. wrong direction unreduced 
+        short bones (compare lengths in embedding and in skeleton)
+        Max Margin Learning
+        &q what is? how is used? the idea? adv. and disadv.? 
+        &t write formulas and calculate this example 
+        generate a large number of positive and negative examples (lots of work!)
+        penalty terms define points in 9D / 4D weighting space
+        difference along this direction between minimal coordinate of bad examples and minimum coordinate of good examples is maximize
+        &q what is the key idea of Max Margin Method? above! 
+        &h MMM is a ml method? y can be substituted by deep learning? maybe somehow 
+        eads to non convex optimization problem that is solved by randomly sample space and downhill simplex method
+        Heat Based Skinning
+        setting heat at bone i to 1 and 0 on all other bones
+        &q what is the key idea of heat based skinning? above! 
+        Solving heat equation on shape gives vertex weights
+        https://www.tau.ac.il/~stoledo/taucs/
+        &t imp. and paper and further reading 
+        eads to sparse linear system
+        Heat based weight computation
+        limitations
+        software plugins available
+        skeleton must be given
+        very thin limbs
+        unclear how to find degree 2 joints such as knees
+        RIGMESH
+        rigging is post processing
+        needs to be redone if further edit operations are necessary
+        &h if you want to change the mesh during dev. you have to repeat the rigging operations! so we can draw mesh and rig it! 
+        incorporate rigging into sketch based modeling
+        sketch based modeling
+        &h it limits on sketch based modeling -- when we are drawing the meshes by ourself 
+        advantage
+        no post processing necessary
+        Skeleton based animation possible ? animation quality can be tested early 
+        animation quality can be tested early in modeling process
+        quality can be tested
+        &q what is? how is used? the idea? adv. and disadv.? 
+        makes Pinocchio system incremental
+        https://en.wikipedia.org/wiki/Ramer%E2%80%93Douglas%E2%80%93Peucker_algorithm
+        based on generalization of Douglas Peucker algorithm
+        &t imp. and paper and further reading 
+        Douglas Peucker algorithm
+        skeletonize
+        animate
+        merge
+        http://www.youtube.com/watch?v=1prInV9ZNY0
+        http://cs.gmu.edu/~ygingold/rigmesh
+        &t imp. and paper and further reading 
+        RIGGING FROM ANIMATIONS
+        &h similar to ml idea 
+        &q explain the idea of this with a graph op18 
+        &q what is the input and output of this process?
+        Input: animated mesh
+        Output: bones, vertex weights, bone motion
+        Advantages
+        compression
+        http://graphics.cs.cmu.edu/projects/sma/
+        Fast and Efficient Skinning of Animated Meshes
+        http://www.jarmilakavanova.cz/ladislav/papers/sam-eg10/sam-eg10.htm
+        &
+        &t imp. and paper and further reading 
+        segment triangles into rigid and flexible parts by examining their time evolutions
+        for each triangle compute feature vector consisting of concatenation of per frame rotations between triangle in initial pose and frame pose
+
+        for each triangle 
+        Perform mean shift clustering in rotation sequences
+        clustering
+        &h it is actually a clustering method -- how can we cluster/ segmentation diff. parts of a given mesh? consider this!
+        triangle segmentation
+        rigid bone estimation
+        averaging over all rotation matrices of bone triangles
+        compute rotation with polar decomposition
+        a factorization of the form
+        Polar 
+        https://en.wikipedia.org/wiki/Polar_decomposition
+        compute translation with area-weighted least squares fit to triangle centers
+
+        &t imp. and paper and further reading 
+        &h calcu. is not so straghtforward, we can imp. other simpler cases first when building our building block!
+        directly do least squares fit of affine transformation to triangle centers
+        bone estimation
+        least squares fit
+        &h actually, it has been transformed to optimization problem, and we can always find a way to solve it! 
+        Estimate Vertex Weights
+        firstly, bone influences are estimated
+        per vertex to a constrained linear least squares problem in the weights (must sum to 1)
+        constrained linear least squares problem 
+        &h similar optimization can be found! 
+        &h when we estimating vertex weights (we have already estimated bone weights above)
+        Avoiding overfitting
+        &q how can we Avoiding overfitting? 
+        can yield large negative weights leading to overfitting
+        weird artefacts in new bone poses
+        truncated least squares or even better by non negative least squares
+        http://graphics.cs.cmu.edu/projects/sma
+        https://www.youtube.com/v/e0rugcfR8K4
+        F&ESAM � Matrix Formulation
+        &t write formulas and calculate this example 
+        &h op27 
+        &q what is? how is used? the idea? adv. and disadv.? SMA!
+        &q how can we improve this method? SMA? 
+        To improve efficiency the problem is solved in a reduced ?? � ?? - dimensional trajectory space
+        ? This can be solved by SVD, but Kavan et al. propose an alternate method that yields larger ?? but in much shorter time,
+        the overall runtime is reduced significantly
+        &h the last mehtod could be slow for we have to calcu. affine transformation per vertex
+        Matrix Decomposition
+        &h for skinning properse, a spec. Matrix Decomposition can be introduced
+        P�ter Boros�n, Ming Jin, Doug DeCarlo, Yotam Gingold, and Andrew Nealen. 2012. RigMesh: automatic rigging for part-based shape modeling and deformation. ACM Trans. Graph. 31, 6
+        http://people.csail.mit.edu/ibaran/papers/2007-SIGGRAPH-Pinocchio.pdf
+        Skinning mesh animations: http://graphics.cs.cmu.edu/projects/sma/ ? L. Kavan, P.-P. Sloan, C. O'Sullivan, 
+        Fast and Efficient Skinning of Animated Meshes, CGF 2010 http://www.jarmilakavanova.cz/ladislav/papers/sam-eg10/sam-eg10.htm
+    CG2_SS19_08_Subdivision-Curves.pdf
+        &t imp. and paper and further reading
+            Subdivision Curves
+            Warren, Weimer: Subdivision Methods for Geometric Design: a constructive approach, Morgan Kaufmann 2002
+            Malcom Sabin: Continuity Analysis of Subdivision Curves
+        &q what is? how is used? the idea? adv. and disadv.? 
+            > Corner Cutting
+            quadratischer B-Spline
+            &t imp. and paper and further reading 
+        &q explain the following 
+            > subdivision scheme:
+            > subdivision step
+            > stationary schemes
+            > even points
+            > odd points
+            > linear
+            > Interpolating vs. approximating
+            subdivision scheme: rule that maps polygon to a polygon with more points ? 
+            subdivision step: one application of the subdivision rule ? 
+            arity a: fraction of number of points after subdivision step divided by number of points before, often a?
+            stationary schemes: subdivision rule is independent of location in polygon and independent of point position ? 
+            even points: old points that existed before a subdivision step and are still exisiting afterwards
+            odd points: points inserted by a subdivision step ? 
+            linear: rule is affine combination of even points ? 
+            Interpolating vs. approximating: rule preserves / does not preserve positions of even points
+            more points
+            one application of the subdivision rule
+            fraction 
+            divided by number of points before
+            often a?2
+            s independent of location in polygon
+            stationary
+            even points: old points
+            before a subdivision step
+            odd points: points inserted
+            linear: rule is affine combination of even points
+        &q write formulas and calculate this example. op5 Curves � matrix notation
+        &t for Schemata,mask, write formulas and calculate this example op6 7
+        &q what is? how is used? the idea? adv. and disadv.? 
+            > Local Subdivision Matrix
+            > Eigenvalue Analysis
+            > provides stencils for the limit position and limit tangents
+            > z-Transformation
+            > maps the coordinate vectors to polynomials
+        &t imp. and paper and further reading 
+        &p some formulas detail 
+        &q what is? how is used? the idea? adv. and disadv.? 
+            > Sufficient Continuity Condition
+            > a mask is called contractive,
+            if the absolute values of even and odd elements, i.e. of the stencils, sum to less than 1. 
+            The limit curve is Ck -continuous
+            if the k?1-th difference scheme multiplied by 2 k is contractive
+            i.e. m(z) can be divided by (z?1) k?1 and 2 k �? k?1m(z) is contractive.
+        &q what is? how is used? the idea? adv. and disadv.? 
+        &t imp. and paper and further reading 
+        &h these two are analysis tools, we can use them to check: Ck-continuous or contractive
+        &q what is convergence and continuity criteria? op13!! 
+            > z-Transformation
+            > Eigenvalue Analysis
+        convergence and continuity criteria
+    CG2_SS19_09_Subdivision-Surfaces.pdf
+        Subdivision Surfaces
+        arbitrary topology: (spherical, toroidal, double toroidal
+        scalability: by definition multi-scale representation
+        numerical robust: if you start with well behaved base meshes suitable for FEM solvers, the subdivided meshes inherit the good proberties
+        good proberties
+
+        simple implementation: code is quite simple even though mathematical analysis is rather involved
+        construction of basis functions and wavelets over surface possible
+        local rules: computational rules should not depend on distant points
+        affine invariance: affine transformations and subdivision process should be commutative
+        commutative
+        continuity: limit curves and surfaces should be as smooth as possible
+        limit curves
+        &q what is limit curves
+        Midpoint Subdivision
+        &h  many subdevision method exists, have diff. properties! 
+        Peters, J. und Reif, U.: The Simplest Subdivision Scheme for Smoothing Polyhedra. ACM Transactions on Graphics 16 (1997), S. 420-431.
+        &t imp. and paper and further reading 
+        split process into subdivision and smoothing:
+        Interpretation
+        Vocabulary
+        &q explain the following 
+        ordinary vertex
+        in triangle meshes valence 6 and at boundary valence 4 in quad meshes valence 4 and at boundary valence 3
+        extraordinary vertex
+        The first subdivision step separates all extraordinary vertices
+        Therefore the limit surface only needs to be analized in neighborhood of ordinary and isolated extraordinary points
+        analized in neighborhood of ordinary
+        Types
+        triangle vs. quad mesh
+        approximating vs. interpolating
+        rule preserves / does not preserve positions of even points
+
+        Interpolating vs. approximating
+        Interpolating
+        preserves
+        continuity of limit surfaces
+        subdivision step: face split vs. vertex split
+        &h many possibilities exists! 
+        &q what kind of subdivision methods are there? x8 op10
+        quad split
+        triangle split
+        vertex split
+        &q explain the diff. bet.  above! 
+        Loop
+        Butterfly
+        Kobbelt
+        Catmull Clark
+        Doo Sabin
+        Midedge
+        Biquartic
+        &t try out those subdivision schmata! 
+        &t imp. and paper and further reading 
+        &q compare them! op12 make it as picmem.
+        Butterfly Subdivision 
+        a face split scheme on triangle meshes
+        face split
+        Positions of old vertices are preserved, such that we get an interpolating scheme
+        Butterfly-stencil is used for edge points
+        On boundary edges
+        &q have spec. stencil on boundaries? y 
+        &q the stencil of it! op21 op22 picmem!
+        &h Extraordinary boundary rule exists! 
+        Decision tree
+        &q how can we make sure, which rule to apply? with what tech.? 
+        &q Decision tree, kind of state machine ...
+        Edge is boundary
+        two inner vertices
+        Butterfly-Regel
+        one inner vertex
+        two boundary vertices
+        &h diff. cases may occour 
+        Nie?ner, M., Loop, C., Meyer, M., & Derose, T. (2012). Feature-adaptive GPU rendering of Catmull-Clark subdivision surfaces. ACM Transactions on Graphics (TOG), 31(1), 6.
+        &q given a picture, judge which subdivision method has been used! op36 
+        There does not exist a surface subdivision scheme that is C2 -continuous also at extraordinary points
+
+        &h 
+        Continuity
+        All subdivision schemes have different artefacts at irregular vertices
+        visualization of the influence or base function corresponding to one vertex
+        &t illu. vis !
+        Interpolation of the positions of a base mesh is also possible for approximating schemes if limit stencil is known
+        &q would it possible to calcu. the final subdivision directly? y op40 
+        &t imp. and paper and further reading 
+        &q it would be no local scheme! global! 
+    CG2_SS19_10_IK.pdf
+        Inverse Kinematics & Motion Capturing
+        Inverse Kinematics Problem
+        &q what is? how is used? the idea? adv. and disadv.? 
+        inverse kinematics problems solves
+        &q what is teh input and output of IK? 
+        &t write formulas and calculate this example  op4 
+        state vector
+        parameters
+        dependent variables
+        parameters
+        the end effector pose
+        degrees of freedom (DOF)
+        ? In most cases the DOFs does not match the number of dependent variables and IK becomes ill-posed 
+        or unsolvable
+        DOFs does not match the number of dependent variables
+        &h ill posed means that there maybe multiple solutions! 
+        often posed in form of a least squares energy minimization
+        &q draw a graph to illu. why IK problem is always ill-posed
+        &h op5 
+        degenerate or singular configurations
+        the end effector looses one or several degrees of freedom
+        oscillations during IK
+        &t further reading, what is oscillations during IK
+        &h op6 not sufficient for understanding 
+        &p 
+        different constraints
+        &q what kind of different
+        &constraints 
+        &q can be found? op7
+        collision constraints
+        avoid self-collisions 
+        joint angle constraints 
+        position constraints to restrict the movement of the end effector
+        orientation constraints to restrict the orientation of the end effector, for example in case of special demands for grasping.
+
+        grasping
+        &h think about the arm chain of robots, grasping! 
+        start with some initial guess 
+        for the parameter vector
+        the default state
+        state of the previous time step in an animation
+        the result of a previous optimization phase
+        some descent direction ?????? is found in parameter space
+
+        Steps ????+1 = ???? + h???????? are taken until no further improvement in energy is possible.
+        relative transformation 
+        &q what is? how is used? the idea? adv. and disadv.? 
+        &op9
+        Forward Kinematics
+        kinematic chain
+        The forward kinematics is described as a function ?? that maps the ??-dimensional parameter vector ?? to a 6D pose:
+        maps the ??-dimensional parameter vector
+        &q describe the forward Kinematics and IK in math. op10 
+        &q what is f? mapping from n para. vector to a 6d pose 
+        &q how energy is defined? op10 
+        This is a non linear least squares problem
+        One can introduce weights
+        &p why we can define weights? diff. bone may have diff. effects? y 
+        Orientation Matrix Formulation
+        Euler Angle Formulatio
+        The weights ???? can be used to blend out orientation constraints for individual axes
+        &p the formula when using Orientation Matrix Formulation?? 
+        &h op12 
+        Quaternion Formulation
+        &q what kind of formulations can be found when representing IK problems?
+        &h x3 
+        With a normalized quaternion ?? ? = ?? ?? ?? ?? the pose is 7D
+        &q how can we formulate the IK problem with Quaternion?
+        &q what problems can arise in this case? op13 hwo can we solve that prob. caused by dual meaning of quaternoin?
+        &q how many dofs are needed in each formulation?
+        &h 6d 10d 7d 
+        Skeleton IK
+        &q what is? how is used? the idea? adv. and disadv.? 
+        multiple target locations are important
+        working with multiple end effectors
+        &q hwo can we solve skel. IK? op14 
+        optimize
+        minimizing the squared sum of the end effector constraints with the Kabsch algorithm
+        Kabsch algorithm
+        minimizing an energy that sums over the squared endeffector-constraint distances where the endeffector locations are computed along kinematic chains from the fixed root node
+        &p cannot understand, further reading &t 
+        &h op14 
+        &t code reading may help
+        &h above is about how can we formulate the IK prob. with math tools 
+        adding fixation points (in the simplest case one at the root node) 
+        fixation points 
+        In an interactive editor one has to define kinematic chains based on user input
+        For a climbing figure we need several end effector constraints. This is discussed by Chris Hecker on his inverse kinematics page
+        http://www.chrishecker.com/Inverse_kinematics
+        particle-based solver (like SHAKE, RATTLE, Jakobsen)
+        rigid body dynamics solver
+        Cyclic Coordinate Descent (CCD)
+        simple serial analytical IK
+        My Adventures in Inverse Kinematics.
+        http://www.chrishecker.com/images/7/76/Gdc2002-ik.ppt
+        http://www.chrishecker.com/Inverse_kinematics
+        &t imp. and paper and further reading 
+        Dual quaternion IK was presented by Ben Kenwright in 2013: Inverse Kinematics with Dual-Quaternions, Exponential-Maps, and Joint Limits
+
+        Inverse Kinematics with Dual-Quaternions, Exponential-Maps, and Joint Limits
+        &t imp. and paper and further reading 
+        CYCLIC COORDINATE DESCENT
+        &h ccd is one of the most simple solvers 
+        need an initial guess
+        monoton
+        Line Search Approach
+        Trust Region Approach
+        Another mentionable derivative-free alternative is the Downhill-Simplex method of Nelder and Mead
+        Coordinate Descent: 
+        Powell‘s method:
+
+        line search along search directions
+        &h ccd is coordinate aligned
+        Search directions are standard basis vectors
+        Line Search Approach
+        &q which 3 method found with Line Search Approach? op17 
+        CCD
+        s often used to generate initial guess for secondary method with fast convergence rate close to optimum 
+        coordinate descent can be implemented efficiently as the line search problem can be solved analytically
+        for secondary method
+        &q pseudo code? proof? complexity? adv. disadv.? imp. &t 
+        reduce IK to parameter
+        &p op19 reduce IK to parameter??
+        CCD – Line Search
+        &q how CCD - Line Search behaves in the simplest case? given pic. op20 
+        reformulate energy minimization in local coordinates according to Orientation Matrix Formulation
+        CCD – Line Search – Full Approach
+        reformulate
+        &q reformulate the math formulas before to the case that uses ccd method! op21 
+        Orientation term
+        Position term
+        &p op22 can not understand 
+        the CCD can get stuck in degenerate situations
+        random offset 
+        solution
+        degenerate situations
+        &q how to hadle degenerate situations for the ccd algo?
+        &h op24 
+        UNCONSTRAINED IK
+        https://www.youtube.com/watch?v=-z_l7Jdz8Bo
+        &
+        &h ccd can either be constrained or unconstrained
+        UNCONSTRAINED IK
+        Steepest Descent
+        Newton
+        convergence rate near local minimum quadratic
+        Quasi Newton methods
+        track approximation of Hessian or its inverse
+        Quasi Newton methods track approximation of Hessian or its inverse
+        Newton methods
+        &h we can use Newton methods or Quasi xxx for solving unconstrained mode 
+        Furthermore
+        DFP
+        BFGS
+        Low memory implementation 
+        L-BFGS
+        Broyden–Fletcher–Goldfarb–Shanno (BFGS) method
+        Davidon–Fletcher–Powell formula
+        &t imp. and paper and further reading 
+        &h many related method can be used!! 
+        &t imp. and paper and further reading 
+        Weighted Non Linear Least Squares
+        WNLLS
+        One problem with the Gauss-Newton method is that the Pseudo inverse becomes unstable in degenerate positions
+        One problem with the Gauss-Newton method
+        &q One problem with the
+        &Gauss-Newton methodq ?
+        This problem does not arise in the steepest descent method where only the transposed of the Jacobian is used
+        ? Idea: combine both methods optimally
+        &h diff. methods may be combined! 
+        &t write formulas and calculate this example 
+        Descent directions
+        &q which Descent directions can be found?
+        the resulting WNLLS approach is then called Gauss-Newton method
+        &
+        Levenberg Marquardt 
+        combine steepest descent
+        with
+        Gauss-Newton approach
+        ?? is initialized to large values and decreased close to the optimum
+        &q how the additional para. be handled in this method? (can be seen as a combined method)
+        Levenberg Marquardt suggest to adapt ??-control to the directional curvature by the generalization
+        &
+        &t imp. and paper and further reading 
+        &t write formulas and calculate this example 
+        &h op33 
+        Self-adapting Levenberg Marquardt
+        self-adaptive LM method
+        Descent with steepest descend direction is also called transposed Jacobian method in IK literature
+        It needs to be combined with a line search method
+        a single iteration is fast
+        often used in interactive IK approaches, e.g. in character pose editors.
+        Newton direction computed from the approximate Hessian is called Gauss-Newton method or non linear least squares in math and inverse Jacobian method in IK
+        Newton direction computed from the approximate Hessian
+        The natural step width of 1 simplifies line search.
+        The taxi cab method corresponds to iteratively optimize only one joint parameter at the time
+        only one joint parameter at the time
+        This is called cyclic coordinate descent method in IK
+        often implemented as the optimal step width can be computed analytically
+        &h ccd always as a pre-processing step
+        ? Levenberg-Marquardt and BFGS are better than inverse Jacobian and often used for IK
+        one can use the non linear conjugate gradient method discussed in CG1.
+
+        https://en.wikipedia.org/wiki/Conjugate_gradient_method
+        &t imp. and paper and further reading 
+        &t further reading 
+        start with cyclic coordinate descent and continue with Levenberg-Marquardt or BFGS.
+        &h the stru. is clear now! 
+        CONSTRAINED IK
+        Parameter Constraints
+        lower and upper bound:
+        simple constraints and the optimization problem is called bound constrained.
+        bound constrained
+        &q bound constrained can easily be handled? y 
+        these constraints can be easily incorporated by the gradient projection method:
+        defines the projection operation
+        uses this to project descent directions to the feasible region
+        The rest of the algorithms stays the same
+        http://users.iems.northwestern.edu/~nocedal/lbfgsb.html
+        https://github.com/PatWie/CppNumericalSolvers
+        &t imp. and paper and further reading 
+        General Constraints
+        Positional constraints like that a foot should stay on the floor are non linear in the parameters
+        foot should stay on the floor
+        non linear in the parameters
+        in the form of equalities or inequalities
+        Lagrangian multiplier method incorporates constraints
+        constraint forces can be derived from constraints
+        reinforce constraints in case of numerical deviations
+        equality constraints
+        &q how can we handle equality constraints in general case? op39 and inque.! x2x1 
+        &q what is? how is used? the idea? adv. and disadv.? 
+        &t imp. and paper and further reading 
+        Linear complementary problems (LCP)
+        &t additional efforts!! if you want to get a clear view of the whole field! 
+        MOTION CAPTURING
+        MoCap
+        illuminate markers from all directions
+        add markers at joints
+        from all directions
+
+        acquire views from several synchronized cameras
+
+        detect markers in each acquired view
+        reconstruct 3D positions
+        track points over time
+        extension: use light emitters of different frequency as markers with id (no matching necessary)
+        Standard MoCap Approach
+        &q what is? how is used? the idea? adv. and disadv.? 
+        &Standard MoCap Approach
+        &h op41 
+        use motion capture data to disambiguate IK
+        solve IK problem by maximizing pose probability
+        Keith Grochow, Steven L. Martin, Aaron Hertzmann, Zoran Popovic, Siggraph 2004
+        Style-Based Inverse Kinematics
+        http://grail.cs.washington.edu/projects/styleik/
+        &t imp. and paper and further reading 
+        &t further reading! 
+        Red points are training poses
+        orange connections mark some training poses
+        https://www.youtube.com/watch?v=X5Z7ZJ39zAA
+        RGBD Motion Capturing
+        &q typical methods for motion capturing? x3 op45 
+        &q what is? how is used? the idea? adv. and disadv.?  compare them!
+        uses depth camera with a machine learning approach
+        http://research.microsoft.com/apps/pubs/default.aspx?id=162510
+        Taylor, Shotton, Sharp, Fitzgibbon CVPR 2012
+        &h this is a computer vision approach 
+        2D parameterized template human mesh (vitruvian manifold)
+
+        use decision tree to estimate per pixel texcoords
+        Interactive Motion Mapping
+        Helge Rhodin, James Tompkin, Kwang In Kim, Kiran Varanasi, Hans-Peter Seidel, Christian Theobalt, Eurographics 2014 (http)
+
+        http://gvv.mpi-inf.mpg.de/projects/DirectMotionMapping/
+        use Kinect skeleton tracking to steer character
+        steer character
+        &h steer means control in simple words 
+        Given sparse pose mapping from source to target, learn pose mapping without rigging and skinning
+        interactive control of virtual character
+        https://www.youtube.com/watch?v=SG5D12tBBAk
+        &t imp. and paper and further reading 
+        SKELETON FITTING
+        &q what is? how is used? the idea? adv. and disadv.? 
+        Input: set of 3D marker points tracked over time 
+        markers can be occluded 
+        Output: skeleton topology
+        bone lengths, joint locations in rotation centers
+        Reference: Adam G. Kirk James F. O¡¯Brien David A. Forsyth, Skeletal Parameter Estimation from Optical Motion Capture Data, CVPR 2015
+        &h that is also a computer vision task 
+        &h for the case of motion capturing with kinect 
+        &paper may have some impro. cap. motion in vr! 
+        &t imp. and paper and further reading 
+        http://graphics.berkeley.edu/papers/Kirk-SPE-2005-06
+        extract topology by minimum spanning tree
+        use IK to extract joint parameters 
+        build matrix of marker pair distances and measure pair distance variance over time
+        http://graphics.berkeley.edu/papers/Kirk-SPE-2005-06/
+        http://graphics.berkeley.edu/papers/Kirk-SPE-2005-06/Kirk-SPE-2005-06.pdf
+        Wang, L-CT, and Chih-Cheng Chen. "A combined optimization method for solving the inverse kinematics problems of mechanical manipulators." Robotics and Automation, IEEE Transactions on 7.4 (1991): 489-499
+        Welman, Chris. Inverse kinematics and geometric constraints for articulated figure manipulation. Diss. Simon Fraser University, 1993.
+        Meredith, Michael, and Steve Maddock. Real-time inverse kinematics: The return of the Jacobian. Technical Report No. CS-04-06, Department of Computer Science, University of Sheffield, 2004.
+        Shan, Shidong. A Levenberg-Marquardt method for large-scale bound-constrained nonlinear least-squares. Diss. The University of British Columbia (Vancouver), 2008
+        Kenwright, Ben. "Inverse Kinematics with Dual-Quaternions, Exponential-Maps, and Joint Limits." International Journal On Advances in Intelligent Systems 6.1 and 2 (2013): 53-65
+        http://chrishecker.com/Inverse_kinematics
+        https://github.com/PatWie/CppNumericalSolvers
+        L-BFGS-B Solver in C++
+        Adam G. Kirk James F. O¡¯Brien David A. Forsyth, Skeletal Parameter Estimation from Optical Motion Capture Data, CVPR 2015
+
+        &t imp. and paper and further reading 

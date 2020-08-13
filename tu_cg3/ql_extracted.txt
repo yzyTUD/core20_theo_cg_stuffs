@@ -1,0 +1,110 @@
+
+    ppt-1
+        what is the equation of harmonic oscillator?  p4 
+        solve? 
+        rewrite with state vector 
+        when using numeric method, there will be err, how to solve? x2 p5 
+        physical quantities and their relationship? -large 
+        terms of base units x7+1 p7 
+        What unit has damping constant? p8 
+        how units can be used? x2 p8 
+        the case of a sphere? p9 
+        solid angle def? 
+        extended units and their expression with standard units p11
+        drive nondimensionalization of damped harmonic oscillator p14 
+        what is Euler and Lagrange view of a sys.? p19 
+        convert from one to an other? p20 
+        the gradient in a field? p21 
+        what is Conservative Force 
+        the diff. equ. of solid angle p23 
+        expression of oumiga direction? 
+        proof that oumiga all = 4*pi p24 
+        eular Lagrange equation? describing a harmonic oscillator p29 
+        Lagrangian of a whole sys. ? p28 
+        action S of a sys. ? p28 ?? 
+        what is the principle of stationary action?
+        what are typical Conserved quantities? p32 
+        diff. integration methods and their properties, stable? preserve energy?... 
+            show them shortly,and the pic  
+            p33 
+        quantities that are conserved, due to spatial and temporal symmetries in the laws of physics....
+        flux def.? p34 
+        velocity field def. p34
+        function for both integral form and differential form. 
+        why no source term in conserved quantities? 
+        what is continuity equation used for? p35 
+    ppt-2
+        why we need Ambient Occlusion? 
+        basic rendering equation p10(transport equation, directional form)
+            explain the meaning of them p12 
+        rendering equation II, area formulation. with visibility check p16 
+        operator form p17 
+            what means double reflaction of emitted light? in equation. p17 
+        refined with D,S,M... p18 
+        mark them p19 
+        measurement equation calculating brightness of a pixel? p20 
+            what is spectral efficiency? 
+            spatial power? 
+        spectral importance function? p21 
+        speed and energy of a tiny photon
+        calcu. of photon energy p25 
+        Spectral Energy Density of diff. light source judge. p26 
+        def. of radiance and irradiance p27 p28 
+        how comes the integration part in rendering equation? p29 
+        def. of BRDF p29 
+        diffuse brdf? p30 
+        Without volumetric scattering, the radiance is constant along rays? 
+        brdf relates incoming irradiance with outgoing radiance? 
+        BRDFs can be analyzed by integrating over one  directional argument. Integration over outgoing  
+            directions yields directional hemispherical reflections  that must be ≤ 1.
+            why? p32 
+        steps to Solve the Rendering Equation p34 x4 
+            the linear sys. p34 
+        the steps of Bidirectional Path-Tracing p35 
+    ppt-3
+        the operator form of the rendering equ. ? op4, i wrote 
+        what is the meaning of each compon. ? s3op6, i wrote 
+        trace-reflection operator? s2p18
+        splitting of the BRDF  s2p18
+        what is measurement operator? p4 
+        explain the dimensional explosion p6 
+        how can we solve a integral numerically? p6 x4 methods... roughly 
+        what is a quadrature rule 
+        why single sample estimator funcs? p9 
+        why choose p(x) proportional to f(x)? p9 
+        what is importance sampling ? p9 
+        how does Monte Carlo Techniques solved the problem of the curse of dimensionality? p11 
+        why we use importance sampling? 
+        what is the equ. applying to reflaction integral? p17 
+        how can one compute Lin recur.in p17? code online 
+        why not use fixed termination depth? p18 
+        proof that the exp. value will stay the same! p18 
+        how to implement russian roulette? p21 
+        explain the given code p19-21 
+        why sampling? p27 
+        explain code p29 
+        how to sample when there are a lot of light sources? p30 
+        what is path tracing p31 
+        the monte carlo case of path tracing p32 formula
+    ppt-4
+        // transfer to the pdf file in this folder , start from slide 4 
+        how does nrook sampling work? p3
+        how one can gen. random shaffed vector? p3
+        what means caustic ?
+        how to gen. uniformly distributed random points with shuffe in c++ p4 
+        what means sampling in regular grids ? p5 
+        ..it is possi. when you get used to it, it will be faster 
+        https://onedrive.live.com/view.aspx?resid=9712B8A082E369A%211407&id=documents&wd=target%28%E5%BF%AB%E9%80%9F%E7%AC%94%E8%AE%B0.one%7C0BE32A9B-AC05-4328-847D-6AF52075C99B%2F%E6%97%A0%E6%A0%87%E9%A2%98%E9%A1%B5%7C2FB0ABD7-9762-455D-9478-7562C513D45F%2F%29
+        onenote:https://d.docs.live.net/09712b8a082e369a/zhongyuan%20的笔记本/快速笔记.one#section-id={0BE32A9B-AC05-4328-847D-6AF52075C99B}&page-id={2FB0ABD7-9762-455D-9478-7562C513D45F}&end
+    ppt-5
+    ppt-6
+    ppt-7
+    ppt-8
+    ppt-9
+    ppt-10
+    ppt-11
+    ppt-12
+    ppt-13
+    ppt-14
+    ppt-15
+    ppt-16
