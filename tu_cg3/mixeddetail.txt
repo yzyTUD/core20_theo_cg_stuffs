@@ -1,45 +1,14 @@
 
 
-    //
-        ***课程的学习就是（我们追求的是：）
-            细节的不断重复，脑回路的复杂化！
-            笔记的不断整理，笔记的结构化！ 
-            原地反复踏步，不断深入！ 
-            刷问题就好了，自己提出的问题
-        概念性的要写答案，计算的就不用了，或者很明显的就不用了 
-        *工程，概念，理论细节 知识的三个层次！！
-            工程是相对简单的，代码都可以相互抄的，只要做好笔记计划好项目一定是可以不断推进的！ 
-            概念相对宽松，只要整理好思路就可以了，但是理论是细节的东西
-            每一个公式，每一个符号都要明白含义！ 目标就是整理问题，反复回答问题加深理论准确性
-            自己还要进行概括
-        工程的重点在于项目进展的最大化，设计的合理化！ 
-            不断向前推进
-        virtual proj. based: phy, realistic rendering ... 
-            vrBallGame + vrExhibition + vrOffice + vrChem
-        what is theo. learnign?
-            explain details, understandings, concepts...
-            derive formulas, re-write algorithms...
-            at the same time! 
-        **tipps
-            口语考试往往有一个主线，从一个问题开始延伸！ 
-            强化口语练习，加强描述能力，就算没有纸笔也要答好！ 
-        r1以后就是要串联一下各个知识，还有项目！
-		如何证明数学/物理公式是正确的？ 
-			解释
-            proof from basic ones 
-			算个数
-        * 一个领域中有五个层次的理解！！！
-            用一个文件包含所有的笔记内容！！    
-        tobecontinued
-        +
-            vector calculus 
-            functional analysis 
-            computational mechanics
-            computational fluids 
-            recent realistic rendering papers 
-                sppm/ ppm/ pm/ ... advanced methods 
-            position estimation methods 
-                MCMC 
+    +tobecontinued
+        vector calculus 
+        functional analysis 
+        computational mechanics
+        computational fluids 
+        recent realistic rendering papers 
+            sppm/ ppm/ pm/ ... advanced methods 
+        position estimation methods 
+            MCMC 
     +https://tu-dresden.de/ing/informatik/smt/cgv/studium/lehrveranstaltungen/ws1920/cg3
         it is about global illumination, physically based simulation
         phy. rendering 
