@@ -2954,7 +2954,7 @@
                     diffuse emission and reflection  
                         reduces problem to a system of linear equations
                     pure diffuse emission
-            ok- slides-3 CG3_03_Monte-Carlo-Techniques
+            re-ok- slides-3 CG3_03_Monte-Carlo-Techniques
                 prev.
                     Numerical_integration
                         https://en.wikipedia.org/wiki/Numerical_integration
@@ -3123,39 +3123,55 @@
                     &h simulate the Dof effect by introducing a 
                         thin lens and adjest its para. 
                     ---Spatial and Temporal Filtering
-                    tobecontinued op17 
-                    tensor product
-                    &q what is  tensor product
-                    Spatial
-                    &q how can we do Spatial filtering ?? temporal filtering for a blur effect? 
-                    Temporal filtering gives motion  blurr and can be done in the  same way for a time interval.
-                    motion  blurr
-                    uniform sampling of the pixel  area corresponds to a box filter
+                    &q what is box filter when doing spacial filtering?? 
+                    &q what is  optimal sinc-filter ? 
+                        Mitchell-Netravali-Filter
                     &q what is box filter 
-                    theoretically optimal sinc-filter 
+                    tensor product
+                    &q what is tensor product
+                    Spatial
+                    &q how can we do Spatial filtering ?? 
+                        > temporal filtering for a blur effect? 
+                    Temporal filtering gives motion  blurr and can be done in the  same way for a time interval.
+                    &q how can we achieve motion blurr? 
+                        with time space filtering, similar to spatial space filtering 
+                    &q how can we extend 1d filtering to 2d? when applying spatial and time space filtering? 
+                        performing tensor product 
+                    &q why uniform sampling of the pixel area corresponds to a box filter?? 
+                    &q what is the filter kernel looks like for box filter? 
+                        > and its relationship with gaussian filter? 
+                    &q what is theoretically optimal sinc-filter??
+                        a sinc filter is an idealized filter that removes all frequency components 
+                            above a given cutoff frequency, without affecting [lower frequencies] 
                     Mitchell-Netravali-Filter
-                    die zum Beispiel beim Antialiasing oder bei der Skalierung von Rastergrafiken verwendet werden k鰊nen
+                    die zum Beispiel beim Antialiasing oder bei der 
+                        > Skalierung von Rastergrafiken verwendet werden k鰊nen
                     werden sie auch als bikubische Filter bezeichnet
                     da sie zu den kubischen Splines z鋒len
-                    Die Mitchell-Netravali-Filter wurden im Rahmen einer Untersuchung zu Artefakten von Rekonstruktionsfiltern entworfen
+                    Die Mitchell-Netravali-Filter wurden im Rahmen einer 
+                        Untersuchung zu Artefakten von Rekonstruktionsfiltern entworfen
                     &q how can we extend 1d filter to 2d?? op17
-                    &q how can we approximate the reflect term of RE?? 
-                    &q using MC integration 
-                    How to choose ?? ????  in for efficient importance sampling
-                    when to  terminate
-                    Russian Roulette
+                    &q how can we approximate the reflect term of RE?? approximate the directional form?? op18 
+                       > using MC integration, the equ! fully understanding! 
+                    How to choose p for efficient importance sampling
+                    &q when to terminate?
+                        Russian Roulette
                     &q the diea of Russian Roulette?
+                        terminates with a probability(decreases when ray travels in the scene)
                     returns the estimate
                     &q the form of expectation in RR?? and why it looks like this? op19
-                    &q rr need a binary random varible b 
-                    &h the expectation remains the same 
-                    &h we have to make sure this 
+                        normalize Monte Carlo estimates, why should we normalize it? 
+                    &q why rr need a binary random varible b 
+                    &q why the expectation remains the same 
+                    &q why we have to make sure that the expectation remains the same??  
                     The variance is increased
-                    we can  stochastically terminate the  recursion in the rendering  equation without changing the  expectation value.
+                    *&h we can stochastically terminate the recursion 
+                        in the rendering equation without changing the expectation value.
                     without changing the  expectation value.
-                    A fixed termination depth  would introduce bias
                     &q why not terminate in a fixed way?? op19
+                        A fixed termination depth  would introduce bias
                     &q will the success probability decrease?? pp 
+                    &q how can we do sample_hemisphere()? what should be feed in, what do we get from that? 
                     N-rook sampling of primary rays 
                     construct ray from aperture sample through pixel sample
                     L_in_? = incoming_radiance(scene, ray, ?[k], potential);
@@ -3164,15 +3180,14 @@
                     split incoming radiance in direct and  indirect illumination to support direct  light sampling
                     Nusselt’s Analogon
                     the cosine weighted  solid angle corresponds to its projection  onto the unit disk
-                    Nusselt’s Analogon
                     &q what is Nusselt's Analogon?? how can be used to improtance sampling?? op25
-                    Importance sampling of the cosine term
+                        can be used to perform importance sampling of the cosine term
                     &q how can we do this? projection back? the formula? 
-                    we sampled according to
                     &q we sampled according to what?? op25
                     &q draw a graph to illus. 
-                    Direct Light Sampling
                     &q what is Direct Light Sampling??
+                        directly illuminated part, no reflection on ray path 
+                    &q the expression of L_direct and L_indirect ?? op26 
                     one splits integral into sum over light sources
                     point light sources emit spectral intensity which is  spectral light power per solid angle 
                     directional lights must be written in the directional form
@@ -3180,31 +3195,37 @@
                     and estimate the  direct light contribution
                     Sampling of area light sources can have high  variance 
                     spherical light source is half  invisible to any scene point
-                    half  invisible
-                    spans a direction cone
-                    projection is hard to do and hard to  sample and we still need visibility check.
-                    &q how can we sample in this picture?? op28 
+                    projection is hard to do and hard to  
+                        sample and we still need visibility check.
+                    &q which light sources are there? 
+                        pnt, dir, area light source 
+                    &q how can we sample light source in this picture?? op28 draw! 
+                        half  invisible
+                        spans a direction cone
                     Indirect light typically comes from all directions
-                    Refined Implementation  for Direct Light Sampling
+                    Refined Implementation for Direct Light Sampling
                     &q explain the code 
                     Dealing with Large Number of Lights
                     &q how to Dealing with Large Number of Lights with help of the idea of RR??
-                    one defines a probability ????  area|pnt|dir for each light source  such that summation of probabilities is one.
-                    Then one chooses one (or more) light source[s] according to the  assigned probabilities
-                    best to assign the probabilities proportional to the emitted  spectral power of the light sources
-                    emitted  spectral power
-                    &q how can we define the probability for each light source ?? op31 
-                    proportional to the emitted  spectral power of the light sources 
-                    Path Tracing
-                    Sampling a large number of primary  rays is always necessary to reduce variance sufficiently. 
-                    The support of colors, spatio temporal filtering, and  depth of field yields a large number of parameters to  integrate over resulting in a large number of primary rays
-                    The support of colors, spatio temporal filtering, and  depth of field
-                    sampling  the Hemisphere 
-                    Importance sampling can be done for
-                    &q Importance sampling can be done in 3 ways 
-                    Cosine term with Nusselt’s analogon
-                    BRDF into diffuse and specular parts
-                    direct and indirect illumination 
+                        one defines a probability parea|pnt|dir for each light source  
+                            such that summation of probabilities is one./ with normalized probability
+                        Then one chooses one (or more) light source[s] according to the  assigned probabilities
+                        best to assign the probabilities proportional to the emitted  
+                            spectral power of the light sources
+                        returns the estimate over probability p
+                    &q how can we define the probability for each light source, 
+                        > when we have multiple sources ?? op31 
+                        proportional to the emitted  spectral power of the light sources 
+                    &q how can we reduce variance in Path Tracing?
+                        Sampling a large number of primary rays is always 
+                            necessary to reduce variance sufficiently. 
+                    The support of colors, spatio temporal filtering, and  depth of field yields a large number of 
+                        parameters to  integrate over resulting in a large number of primary rays
+                    &q Importance sampling is introduced to? 
+                        sampling  the Hemisphere 
+                        Cosine term with Nusselt’s analogon
+                        BRDF into diffuse and specular parts
+                        direct and indirect illumination 
                     &q explain the process of path tracing (later )
             ok- slides-4 CG3_04_Sampling-Techniques
                 ql 
@@ -3502,14 +3523,37 @@
                 Self-occlusion and self-shadowing
                 Cook and Torrance
                 reflection on micro facets
-                geometry term covering self occlusion and self  shadowing of V-shaped grooves
+                geometry term covering self occlusion and self  
+                    shadowing of V-shaped grooves
                 distribution of microfacet  normals that correspond to half vectors  in Blinn-Phong model 
                 V-shaped grooves
                 https://inst.cs.berkeley.edu/~cs283/sp13/lectures/cookpaper.pdf
                 Microfacet Models
                 &p pp op21
-                self shadowing
+                &q how can we simulate/approximate materials with multiple layers
+                &q what can be included in the geometry term? x2 
+                    self shadowing + self occlusion should be considered 
+                    in the cook-Torrance microfacet model 
                 &q what is self shadowing and self occlusion ??
+                &q how can we cpmpute geometry term G? 
+                    Filter approach, the min value of those three cases? 
+                &q describe the filter approach in more detail 
+                    fully illuminated
+                    occlusion 
+                    shadowing 
+                **https://zhuanlan.zhihu.com/p/57032810
+                &q what is the relationship bet. 
+                    > cook Torrance bsdf and Fresnel equation?
+                &q standerd solutions in applications?
+                    Schlick 的 Fresnel 近似
+                    UE4的方案采用的 Schlick-GGX
+                    业界较为主流的法线分布函数 GGX ( Trowbridge-Reitz )
+                &q how can we do Improtance sampling in cook torrance model?
+                    对于 cook-torrance BRDF，可以对函数 D 进行重要性采样。
+                        因为其本身就是一个概率密度函数，那么我们在实现重要性采样的时候就方便了许多。
+                    由于以上两点，在重要性采样上难以同时利用上函数 D、F、G
+                    综合考虑之下，只对函数 D 进行重要性采样。
+                参数 albedo、metallic、roughness 和 ambient occlusion 都可以用贴图来提供
                 https://inst.eecs.berkeley.edu//~cs294-13/fa09/lectures/cookpaper.pdf
                 http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.50.2297&rep=rep1&type=pdf
                 Derivation of Frensnel Equations
@@ -3525,83 +3569,155 @@
                 &q Fresnel Equations for Metals equ? 
                 "Fresnel term approximations for  metals.?(2005) 
                 https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
+                https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
+                &q which fresnel term approximations exists for metals??  
+                &q Oren-Nayar is a brdf model for diffuse approximation?? 
+                迪士尼原则--brdf的深入研究https://zhuanlan.zhihu.com/p/60977923
+                    迪士尼原则的BRDF与BSDF相关总结
+                    Disney Principled BRDF
+                    由于其高度的易用性以及方便的工作流，已经被电影和游戏业界广泛使用，
+                        并成为了次时代高品质渲染技术的代名词
+                    SIGGRAPH 2012
+                    2015年提出的“迪士尼BSDF（Disney BSDF）”
+                    一方面是因为硬件性能的限制，另一方面，则是因为早期的基于物理的渲染
+                        模型包含大量复杂而晦涩的物理参数
+                    不利于美术人员的理解、使用和快速产出。
+                    在创作电影《无敌破坏王（Wreck-It Ralph）》期间，迪士尼动画工作
+                        室对基于物理的渲染进行了系统的研究
+                    迪士尼动画电影《无敌破坏王》（2012）
+                    主流游戏引擎都开始从传统的渲染工作流转移到基于物理的渲染工作流。
+                    【GDC 2014】 Unity：《Physically Based Shading in Unity》
+                    &q 提出了三个方面的工具与资源
+                    MERL 100 BRDF材质库
+                    BRDF Explorer。迪士尼为分析、比较和新开发BRDF模型而开发的可视化工具
+                    最主要的工作便是对材质数据库的观察与进行理论分析
+                    Diffuse项的观察结论  Specular D 项的观察结论  Specular F 
+                        项的观察结论  Specular G 项的观察结论  布料（Fabric）材质的观察结论  彩虹色（Iridescence）的观察结论  
+                    &q 各个模型的年代？具体的时间要记住！ 
+                        Hanrahan-Krueger模型（1993）
+                        Oren-Nayar模型（1995）
+                    微观分布函数D
+                    绝大多数MERL材质都有镜面波瓣（specular lobes）
+                    从本质上而言，Disney Principled BRDF模型是金属和非金属的混合
+                        型模型，最终结果是基于金属度（metallice）在金属BRDF和非金属
+                        BRDF之间进行线性插值。
+                    应使用直观的参数，而不是物理类的晦涩参数。
+                    参数应尽可能少。
+                    参数在其合理范围内应该为0到1。
+                    &q 什么是艺术导向（Art Directable）
+                        在2012年迪士尼提出，他们的着色模型是Art Directable
+                        而不一定要是完全物理正确(physically correct) 的
+                    并且对微平面BRDF的各项都进行了严谨的调查，并提出了清晰明确而简单的解决方案。
+                    原则性”的易用模型，而不是严格的物理模型
+                    艺术导向
+                    可以仅通过少量的参数来涵盖自然界中绝大多数的材质，并可以得到非常逼真的渲染品质。
+                    非常逼真的渲染品质
+                    固有色（baseColor）贴图才会同时包含金属和非金属的材质数据
+                    Disney采用了通用的microfacet Cook-Torrance BRDF着色模型
                 &t must read 
                 Overview over BRDF models 
-                Graphical overview of BRDF models 
-                BRDF MEASUREMENT
-                https://zhuanlan.zhihu.com/p/21376124
-                s a reflectivity model for diffuse reflection from rough surfaces. 
-                It has been shown to accurately predict the appearance of a wide range of natural surfaces, such as concrete, plaster, sand
-                Reflectance is a physical property of a material that describes how it reflects incident light. 
-                reflectance properties
-                Most reflectance models can be broadly classified into two categories: diffuse and specular
-                the diffuse component is often assumed to be Lambertian. A surface that obeys Lambert's Law appears equally bright from all viewing directions.
-                This model for diffuse reflection was proposed by Johann Heinrich Lambert in 1760 
-                has been perhaps the most widely used reflectance model in computer vision and graphics
-                however, the Lambertian model is an inadequate approximation of the diffuse component.
-                inadequate 
-                This is primarily because the Lambertian model does not take the roughness of the surface into account.
-                Rough surfaces can be modelled as a set of facets with different slopes
-                Analysis of this phenomenon has a long history and can be traced back almost a century
-                fit experimental data 
-                The Oren朜ayar reflectance model, developed by Michael Oren and Shree K. Nayar in 1993
-                The model takes into account complex physical phenomena such as masking, shadowing and interreflections between points on the surface facets. I
-                It can be viewed as a generalization of Lambert抯 law
-                important implications for human vision and computer vision problems, such as shape from shading, photometric stereo, etc.
-                roughness
-                microfacet model, proposed by Torrance and Sparrow
-                be composed of long symmetric V-cavities.
-                Each cavity consists of two planar facets
-                In particular, the Gaussian distribution is often used, and thus the variance of the Gaussian distribution
-                he variance of the Gaussian distribution, {\displaystyle \sigma ^{2}}\sigma ^{2}, is a measure of the roughness of the surfaces.
-                The standard deviation of the facet slopes (gradient of the surface elevation)
-                In the Oren朜ayar reflectance model, each facet is assumed to be Lambertian in reflectance
-                In the case of {\displaystyle \sigma =0}\sigma =0 (i.e., all facets in the same plane), we have {\displaystyle A=1}A=1, and {\displaystyle B=0}B=0, and thus the Oren-Nayar model simplifies to the Lambertian model:
-                simplifies to the Lambertian model
-                &q the idea of oren nayer model? generlization of xxx
-                more accurately than the Lambertian model.
-                corresponding to different surface roughnesses (
-                retro-reflective materials
-                Oren-Nayar
-                Fresnel Equations
-                https://zhuanlan.zhihu.com/p/21376124
-                Fresnel
-                反射和折射的比例由菲涅尔方程（Fresnel Equations）给出，菲涅尔方程比较复杂，图形学里一般使用近似公式计算。
-                coefficients
-                The Fresnel equations (or Fresnel coefficients) describe the reflection and transmission of light (or electromagnetic radiation in general) when incident on an interface between different optical media.
-                (or Fresnel coefficients)
-                They were deduced by Augustin-Jean Fresnel (/fre?'n?l/) who was the first to understand that light is a transverse wave,
-                even though no one realized that the "vibrations" of the wave were electric and magnetic fields.
-                transmittance factor:
-                reflection factor: 
-                orthogonal
-                parallel
-                Derivation of Frensnel Equations
-                &q 
+                    Graphical overview of BRDF models 
+                    BRDF MEASUREMENT
+                    https://zhuanlan.zhihu.com/p/21376124
+                    is a reflectivity model for diffuse reflection from rough surfaces. 
+                    It has been shown to accurately predict the appearance 
+                        of a wide range of natural surfaces, such as concrete, plaster, sand
+                    Reflectance is a physical property of a material that describes 
+                        how it reflects incident light. 
+                    reflectance properties
+                    *Most reflectance models can be broadly classified into two categories: 
+                        diffuse and specular
+                    the diffuse component is often assumed to be Lambertian. 
+                    *A surface that obeys Lambert's Law appears equally 
+                        bright from all viewing directions.
+                    This model for diffuse reflection was proposed by 
+                        Johann Heinrich Lambert in 1760 
+                    has been perhaps the most widely used reflectance model 
+                        in computer vision and graphics
+                    however, the Lambertian model is an inadequate 
+                        approximation of the diffuse component.
+                    &q why Lambertian model inadequate ?
+                        This is primarily because the Lambertian model 
+                            *does not take the roughness of the surface into account.
+                    Rough surfaces can be modelled as a set of facets 
+                        with different slopes
+                    Analysis of this phenomenon has a long history and can be traced back almost a century
+                    fit experimental data 
+                    The Oren朜ayar reflectance model, developed by Michael Oren and Shree K. Nayar in 1993
+                    The model takes into account complex physical phenomena such as masking, shadowing and interreflections between points on the surface facets. I
+                    It can be viewed as a generalization of Lambert抯 law
+                    important implications for human vision and computer vision problems, such as shape from shading, photometric stereo, etc.
+                    roughness
+                    &q who introduced microfacet model first to computer graphics?
+                        proposed by Torrance and Sparrow
+                    be composed of long symmetric V-cavities.
+                    Each cavity consists of two planar facets
+                    In particular, the Gaussian distribution is often used, 
+                        and thus the variance of the Gaussian distribution
+                    the variance of the Gaussian distribution, 
+                        {\displaystyle \sigma ^{2}}\sigma ^{2}, is a measure of the 
+                        roughness of the surfaces.
+                    The standard deviation of the facet slopes 
+                        (gradient of the surface elevation)
+                    *In the Oren-Nayar reflectance model, 
+                        each facet is assumed to be Lambertian in reflectance
+                    In the case of {\displaystyle \sigma =0}\sigma =0 
+                        (i.e., all facets in the same plane), 
+                        we have {\displaystyle A=1}A=1, 
+                        and {\displaystyle B=0}B=0, and thus 
+                        the Oren-Nayar model simplifies to the Lambertian model:
+                        simplifies to the Lambertian model
+                    &q what is the relationship bet. Oren-Nayer model and Lambertian model?
+                    &q the idea of oren nayer model? 
+                        generlization of Lambertian
+                        more accurately than the Lambertian model.
+                    corresponding to different surface roughnesses (
+                    retro-reflective materials
+                    Oren-Nayar
+                    Fresnel Equations
+                    https://zhuanlan.zhihu.com/p/21376124
+                    Fresnel
+                    反射和折射的比例由菲涅尔方程（Fresnel Equations）给出，菲涅尔方程比较复杂，
+                        图形学里一般使用近似公式计算。
+                    coefficients
+                    The Fresnel equations (or Fresnel coefficients) 
+                        describe the reflection and transmission of light 
+                        (or electromagnetic radiation in general) 
+                        when incident on an interface between different optical media.
+                    (or Fresnel coefficients)
+                    They were deduced by Augustin-Jean Fresnel (/fre?'n?l/) 
+                        who was the first to understand that light is a transverse wave,
+                    even though no one realized that the "vibrations" of 
+                        the wave were electric and magnetic fields.
+                    transmittance factor:
+                    reflection factor: 
+                    orthogonal
+                    parallel
                 &q explain how to use the frensel equ.
+                    insert into Cook Torrance model, when computing brdf 
                 Oren-Nayar
                 geometry factor and visibility
-                &q the equ.
                 Anisotropic APS-BRDF
                 https://dl.acm.org/doi/pdf/10.1145/344779.344814
                 &t must read
-                ? Isotropic: Most materials (you can rotate about  normal without changing reflections)
+                *Most materials are Isotropic:  
+                    (you can rotate about normal without changing reflections)
                 brushed metal etc. preferred tangential  direction
-                Anisotropic
-                brushed metal
-                rotate about  normal without changing reflections
-                To support anisotropy
+                &q what is a Anisotropic material?
+                    the reflections will change when we rotate about normal
                 &q how to To support anisotropy??
-                one needs a  tangent vector ??  ? pointing in x-direction  within tangent space
-                energy preservation is  not given anymore
-                corrected diffuse BRDF
-                with [bi-]hemispherical reflectance 
-                Metal Fresnel Term Approximations
-                Anisotropic
-                &q how visiblle Anisotropic??
-                Torrance-Sparrow
+                    one needs a  tangent vector ??  ? pointing 
+                    in x-direction  within tangent space
+                    use anisotropic Gaussian distribution in the brdf computing equ.
+                &q how can we handle that the energy preservation will not hold?
+                    corrected diffuse BRDF
+                    with [bi-]hemispherical reflectance 
+                &q what meterials are typically Anisotropic??
+                &q what is Torrance-Sparrow model? 
+                    也被称为Cook-Torrance模型
                 Assume the surface is made up grooves at the microscopic  leve
-                ? Assume the faces of these grooves (called microfacets) are  perfect reflectors.
+                ? Assume the faces of these grooves (called microfacets) 
+                    are  perfect reflectors.
                 Take into account 3 phenomena
                 Torrance-Sparrow Result Sparrow Result
                 Fresnel term:
@@ -3612,17 +3728,17 @@
                 https://digibug.ugr.es/bitstream/handle/10481/19751/rmontes_LSI-2012-001TR.pdf;jsessionid=97878771AD4E28B65B909823A8B0C1F2?sequence=1
                 &t must read
                 &q what does color mean when vis. brdf as Lobe?
-                physical ?derived from  laws of physics
-                plausible ?non negative,  symmetric, energy  conservation
-                plausible
-                &q what mean phy plausible? x2 +
+                    distributions of out going strength for all directions! 
+                    sum over to one 
+                &q what means a brdf is phy plausible? x2 +
+                    derived from laws of physics
+                    non negative,  symmetric, energy  conservation
                 efficient  importance sampling  possible 
                 https://www.disneyanimation.com/technology/brdf.html
                 &t must read
-                &t 
                 &t lobe related!!!!! must read
                 http://www1.cs.columbia.edu/~cs4160/html08spr/slides/lecture20.pdf
-                Messung von BRDFs
+                ---Messung von BRDFs tobecontinued
                 measures reflectance for combinations of sensor (??  ?  out)  and light source position (??  ?  in)
                 Helmholtz reciprocity and isotropy of BRDF help to reduce  number of necessary measurements
                 can move sensor or rotate sample
