@@ -3448,44 +3448,47 @@
                     http://graphics.stanford.edu/papers/veach_thesis
                     tt !!!! have to read 
                     &h full read!!
-            ok- slides-6 CG3_06_Advanced_Materials
+            re-ok- slides-6 CG3_06_Advanced_Materials
                 The reflection type can vary a  lot from purely diffuse to  mirror reflection 
                 the specular reflection  does not introduce additional  color 
                 Empirical
-                Physical  Plausible
-                qq what is Physical
-                &Plausible
+                qq what is Physical Plausible
                 Torrance Sparrow
                 Lafortune
                 Plastik
                 Roughness and Anisotropy
-                Empirical Shading Models
-                qq 
-                Lambertian model (diffuse only)
-                Blinn-Phong: similar to  Phong with variant in  specular term
+                qq which Empirical Shading Models do you know?? x3 
+                    Lambertian model (diffuse only)
+                    Phong model 
+                    Blinn-Phong: similar to  Phong with variant in  specular term
                 scalar BRDFs are defined implicitly
                 When looking towards light source above a reflecting  sources
                 Phong model is unrealistically
-                qq when is Phong model is unrealistically???
-                qq why pp
-                white-sky albedo
-                black-sky  albedo 
-                measure of the diffuse reflection of solar radiation out of the total solar radiation and measured on a scale from 0
+                qq when is Phong model is unrealistically? why pp
+                    ooking towards light source above a reflecting
+                qq compare white-sky albedo and black-sky  albedo 
+                measure of the diffuse reflection of solar radiation out of the total 
+                    solar radiation and measured on a scale from 0
                 absorbs all incident radiation,
-                1, corresponding to a body that reflects all incident radiation.
-                Surface albedo is defined as the ratio of radiosity to the irradiance (flux per unit area) received by a surface
-                The proportion reflected is not only determined by properties of the surface itself, but also by the spectral and angular distribution of solar radiation reaching the Earth's surface
+                corresponding to a body that reflects all incident radiation.
+                Surface albedo is defined as the ratio of radiosity to the 
+                    irradiance (flux per unit area) received by a surface
+                The proportion reflected is not only determined by properties of the 
+                    surface itself, but also by the spectral and angular distribution 
+                    of solar radiation reaching the Earth's surface
                 Directional-hemispherical reflectance is the reflectance of a surface under direct illumination (with no diffuse component)
                 over all viewing directions.
                 It is sometimes called "black-sky albedo"
                 https://journals.ametsoc.org/doi/pdf/10.1175/1525-7541%282004%29005%3C0003%3AUMBAAD%3E2.0.CO%3B2
-                Black-sky albedo (abs) is defined as the albedo in the  absence of a diffuse component
+                Black-sky albedo (abs) is defined as the albedo in the  
+                    absence of a diffuse component
                 is a function of  solar zenith angle.
                 dual to directional  hemispherical reflectance
                 directional
                 in the absence of a direct component
                 independent of solar zenith angle
-                These two extremes  can be combined as a function of the diffuse skylight  fraction (S) for a representation of an actual albedo
+                These two extremes  can be combined as a function of the diffuse skylight  
+                    fraction (S) for a representation of an actual albedo
                 diffuse skylight  fraction (S)
                 black
                 directional
@@ -3494,16 +3497,14 @@
                 bi-
                 directional
                 spectral coefficient
-                times a  scalar BRDF
+                times a scalar BRDF
                 Any physical plausible BRDF-modell must fulfill the  following two properties 
                 https://en.wikipedia.org/wiki/Helmholtz_reciprocity
                 Helmholtz reciprocity
                 Any physical plausible BRDF-modell must fulfill
                 qq 2 properties that Any physical plausible BRDF-modell must fulfill?? x2 op10
-                Helmholtz-Reciprocity (HR): 
-                Energy Preservation (EP):
-                &
-                Phong
+                    Helmholtz-Reciprocity (HR): 
+                    Energy Preservation (EP):
                 http://www.thetenthplanet.de/archives/255
                 The Blinn-Phong Normalization Zoo
                 Wet and dry parts on an asphalt surface, in backlight
@@ -3512,9 +3513,15 @@
                 tt must read
                 normalization constants
                 qq compute the  normalization constants!! op11
-                normal distribution function (NDF)
-                https://zhuanlan.zhihu.com/p/21376124
-                ??????(Normal Distribution Function,???NDF
+                qq how can we make Phong model more realistic? 
+                    by modifing its equ. with physical constrains! 
+                        Helmholtz-Reciprocity (HR): 
+                        Energy Preservation (EP):
+                qq what is normal distribution function (NDF)
+                    ??????(Normal Distribution Function,???NDF
+                    法向分布函数
+                    向NDF输入一个朝向[公式]，NDF会返回朝向是[公式]的微表面数占微表面总数的比例
+                    https://zhuanlan.zhihu.com/p/21376124
                 laser microstructured  steel surface
                 red beech wood
                 Wear surface of chalk-filled polypropylene
@@ -3531,6 +3538,7 @@
                 Microfacet Models
                 &p pp op21
                 qq how can we simulate/approximate materials with multiple layers
+                    affine combinations of several distributions
                 qq what can be included in the geometry term? x2 
                     self shadowing + self occlusion should be considered 
                     in the cook-Torrance microfacet model 
@@ -3542,8 +3550,8 @@
                     occlusion 
                     shadowing 
                 **https://zhuanlan.zhihu.com/p/57032810
-                qq what is the relationship bet. 
-                    > cook Torrance bsdf and Fresnel equation?
+                qq explain the terms in cook Torrance bsdf! op19 
+                qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
                 qq standerd solutions in applications?
                     Schlick 的 Fresnel 近似
                     UE4的方案采用的 Schlick-GGX
@@ -3822,69 +3830,105 @@
                         direct measurement of BRDFs, captures 
                     https://www.xzbu.com/1/view-11108267.htm
                 qq the idea of Lafortune Model
-                Parameter (12 f黵 ein ein-Lob Modell)
-                Bidirectional texture  function (BTF)
-                布料、羊毛和皮革等的技术
-                for each pair of directions  acquire image of ?? × ??  reflectance samples
-                rearrange BTF
-                https://www.cs.columbia.edu/CAVE/software/curet/index.php
-                tt database!!!
-                https://cg.cs.uni-bonn.de/de/projekte/btfdbb/download/
-                OBJECTS2012 Datasets 
-                提出了一种快速的BTF图像超分辨率重建的方法。通过奇异值分解将已采集到的低分辨率BTF数据分解为本征纹理矩阵和特征ABRDF矩阵,然后采用图像超分辨率重建算法,提升本征纹理矩阵的分辨率。最后,高分辨率的BTF图像可以通过高分辨率本征纹理矩阵和低分辨率的特征ABRDF矩阵相乘获得
-                需要采集真实物体表面在不同视角方向和光照方向下的纹理图像
-                这些纹理图像的集合可以被称为双向纹理函数(Bidirectional Texture Function,BTF)数据
-                由于BTF数据维度较高,现实采集中存在采集时间过长、采集数据量庞大等问题,给其实际应用带来了困难
-                BRDF was measured by recording images of the sample under 205 different combinations of viewing and illumination directions.
-                https://www1.cs.columbia.edu/CAVE//exclude/curet/html/brdfm.html
+                qq how many parameters should be computed for a one-Lobe model? two-Lobe model? 
+                    3 * (1 + 3i), i = 1,2...
+                    12 and 21 
+                    Parameter (12 fur ein ein-Lob Modell)
+                ---Bidirectional texture  function (BTF)
+                qq what is BTF 
+                    Bidirectional texture function
+                    a 6-dimensional function
+                    textures can be computed from BTF 
+                    can acquire more infos than just texture
+                    depending on planar texture coordinates (x,y) as well as on view and illumination spherical angles. 
+                    for each pair of directions  acquire image of ?? × ??  reflectance samples
+                    In practice this function is obtained as a set of several thousand color images of material sample
+                    It is an image-based representation, since the geometry of the surface is unknown and not measured.
+                qq idea of spatial BRDF?? sBRDF
+                    similar to BTF: high dimentional function, contains many useful information! 
+                hh BTF is first introduced in 1999, and many similar concepts are introduced since then 
+                qq the form of a btf database? 
+                    BTF measurements are collections of images
+                qq two representation of BTF? draw a graph to illustrate! 
+                    we can transfer to each other by rearranging BTF
+                    texture representation + abrdf representation
+                qq applications of BTF? x2 typical applications! best suitable applications! 
+                    photorealistic material rendering of objects in virtual reality systems and for visual scene analysis
+                    recognition of skin texture
+                tt to read must! 
+                    https://dl.acm.org/doi/pdf/10.1145/300776.300778
+                    https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
+                    http://library.utia.cas.cz/separaty/2009/RO/filip-bidirectional%20texture%20function%20modeling%20state%20of%20the%20art%20survey.pdf
+                hh 
+                    https://www.cs.columbia.edu/CAVE/software/curet/index.php
+                    tt database!!!
+                    205 measurements per sample
+                    https://cg.cs.uni-bonn.de/de/projekte/btfdbb/download/
+                    OBJECTS2012 Datasets 
+                    提出了一种快速的BTF图像超分辨率重建的方法。通过奇异值分解将已
+                        采集到的低分辨率BTF数据分解为本征纹理矩阵和特征ABRDF矩阵,
+                        然后采用图像超分辨率重建算法,提升本征纹理矩阵的分辨率。
+                        最后,高分辨率的BTF图像可以通过高分辨率本征纹理矩阵和低
+                        分辨率的特征ABRDF矩阵相乘获得
+                    需要采集真实物体表面在不同视角方向和光照方向下的纹理图像
+                    这些纹理图像的集合
+                        可以被称为双向纹理函数(Bidirectional Texture Function,BTF)数据
+                    由于BTF数据维度较高,现实采集中存在采集时间过长、
+                        采集数据量庞大等问题,给其实际应用带来了困难
+                    BRDF was measured by recording images of the sample under 205 
+                        different combinations of viewing and illumination directions.
+                    https://www1.cs.columbia.edu/CAVE//exclude/curet/html/brdfm.html
                 tt must read
-                Bidirectional Subsurface  Scattering Reflection  Distribution Function
-                BSSRDF
                 qq what is BSSRDF
-                in  die Fl鋍he eindringt,  gestreut und an anderer  Stelle wieder austritt
-                anderer
-                unit: 1/(m2  穝r)
-                8-dimensional parameter space
-                Subsurface Scattering
-                https://graphics.stanford.edu/courses/cs448-05-winter/papers/nicodemus-brdf-nist.pdf
-                四）- 次表面散射
-                物理着色（四）- 次表面散射
-                继续写之前的基于物理着色系列
-                https://zhuanlan.zhihu.com/p/21247702
-                次表面散射是现实中一种非常常见的材质外观，所有有着半透明外观的物体
-                例如玉石，大理石，蜡烛，可乐，苹果，牛奶（见下图）包括人类的皮肤，等等。
-                半透明
-                下图则是电影《功夫熊猫3》中的一幕，画面中的玉石也是次表面散射材质的典型例子之一。
-                次表面散射现象的模拟也比在前三篇文章里介绍过的一般的表面反射复杂很多，因为要正确的模拟这种现象，光线不止再物体的表面发生散射，而是会先折射到物体内部
-                对于次表面散射性质的材质来说，光线出射的位置和入射的位置是不一样的，而且每一点的亮度取决于物体表面所有其他位置的亮度
-                物体的形状，厚度等
-                BSDF只能用于描述物体表面某一点的散射性质
-                所以它无法描述像次表面散射这种现象。
-                要模拟这样的现象，最简单，最精确，也是计算量最大，最慢的方法，就是直接在物体内部的空间求解带有Participating Media的渲染方程
-                例如最简单的Volumetric Path Tracing，Volumetric Photon Mapping等等。
-                [2]是最简单的Volumetric Path Tracing的tutorial，[3]是State of the art的Participating media estimator。因为话题很大，这里不再展开，以后有时间会再专门写写相关的内容。
-                BSSRDF可以指定不同的光线入射位置和出射的位置。Jensen在2001年的论文[4]可以说那是次表面材质建模最重要的一篇论文，推导了许多重要的物理公式
-                BSSRDF重要性采样
-                ，计算模型，渲染时的参数转换，以及测量了许多生活中常见材质的散射系数等等
-                大部分后来的论文都是在基于这篇文章中的理论的一些提升。不过这篇论文中有大量的数学以及物理公式
-                https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf
-                BSSRDF的意义在于快速的近似。对于许多吸收系数特别低，散射系数特别高的材质来说（大部分浑浊的半透明物体例如牛奶，大理石，苹果，肉等等）
-                https://link.zhihu.com/?target=https%3A//www.mitsuba-renderer.org/releases/current/documentation.pdf
-                https://zhuanlan.zhihu.com/p/20091064
-                https://pic4.zhimg.com/80/992488f76560cd99204fba77ef47fcb7_1440w.jpg
-                当然实际渲染中这种平面不存在，所有模型都不是无限厚度的，也都是有各种形状的，现实中所有物体内部的散射系数也都肯定不会是均匀的
-                这也是BSSRDF近似渲染的最主要的错误来源。
-                EDXRay里用两种完全不同的方法渲染的颜色
-                &
-                材质以及介质参数完全一样的两个佛像。左边的佛像是基于BSSRDF，右边的则是无偏的Participating Media
-                BSSRDF因为假设所有表面都的厚度都是无限的，在实际模型中如果有厚度比较薄的地方，误差会更为明显。
-                这也是为什么BSSRDF渲染的结果相比Participating Media要暗淡一些。除了这些误差以外，BSSRDF也没办法渲染出焦散
-                Left: BRDF ?hard“ light distributio
-                right: BSSRDF describes light transport and scattering inside of material.
-                scattering inside of material
-                qq how bssrdf is used? describe scattering inside of material!!!!
-                internal color bleeding in shadowed region under nose. 
-                much more natural light distribution on skin.
+                    Bidirectional [Subsurface Scattering] Reflection Distribution Function
+                qq the idea of BSSRDF
+                    scattering inside of material is also considered 
+                    BSSRDF much more [natural light distribution] on skin
+                qq unit of a bssrdf? and its dimention? 
+                    1/(m2 * sr)
+                    8-dimensional parameter space
+                hh tt
+                    Subsurface Scattering
+                    https://graphics.stanford.edu/courses/cs448-05-winter/papers/nicodemus-brdf-nist.pdf
+                    四）- 次表面散射
+                    物理着色（四）- 次表面散射
+                    继续写之前的基于物理着色系列
+                    https://zhuanlan.zhihu.com/p/21247702
+                    次表面散射是现实中一种非常常见的材质外观，所有有着半透明外观的物体
+                    例如玉石，大理石，蜡烛，可乐，苹果，牛奶（见下图）包括人类的皮肤，等等。
+                    半透明
+                    下图则是电影《功夫熊猫3》中的一幕，画面中的玉石也是次表面散射材质的典型例子之一。
+                    次表面散射现象的模拟也比在前三篇文章里介绍过的一般的表面反射复杂很多，因为要正确的模拟这种现象，光线不止再物体的表面发生散射，而是会先折射到物体内部
+                    对于次表面散射性质的材质来说，光线出射的位置和入射的位置是不一样的，而且每一点的亮度取决于物体表面所有其他位置的亮度
+                    物体的形状，厚度等
+                    BSDF只能用于描述物体表面某一点的散射性质
+                    所以它无法描述像次表面散射这种现象。
+                    要模拟这样的现象，最简单，最精确，也是计算量最大，最慢的方法，就是直接在物体内部的空间求解带有Participating Media的渲染方程
+                    例如最简单的Volumetric Path Tracing，Volumetric Photon Mapping等等。
+                    [2]是最简单的Volumetric Path Tracing的tutorial，[3]是State of the art的Participating media estimator。因为话题很大，这里不再展开，以后有时间会再专门写写相关的内容。
+                    BSSRDF可以指定不同的光线入射位置和出射的位置。Jensen在2001年的论文[4]可以说那是次表面材质建模最重要的一篇论文，推导了许多重要的物理公式
+                    BSSRDF重要性采样
+                    计算模型，渲染时的参数转换，以及测量了许多生活中常见材质的散射系数等等
+                    大部分后来的论文都是在基于这篇文章中的理论的一些提升。不过这篇论文中有大量的数学以及物理公式
+                    https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf
+                    BSSRDF的意义在于快速的近似。对于许多吸收系数特别低，散射系数特别高的材质来说（大部分浑浊的半透明物体例如牛奶，大理石，苹果，肉等等）
+                    https://link.zhihu.com/?target=https%3A//www.mitsuba-renderer.org/releases/current/documentation.pdf
+                    https://zhuanlan.zhihu.com/p/20091064
+                    https://pic4.zhimg.com/80/992488f76560cd99204fba77ef47fcb7_1440w.jpg
+                    当然实际渲染中这种平面不存在，所有模型都不是无限厚度的，也都是有各种形状的，
+                        现实中所有物体内部的散射系数也都肯定不会是均匀的
+                    这也是BSSRDF近似渲染的最主要的错误来源。
+                    EDXRay里用两种完全不同的方法渲染的颜色
+                    材质以及介质参数完全一样的两个佛像。左边的佛像是基于BSSRDF，右边的则是无偏的Participating Media
+                    BSSRDF因为假设所有表面都的厚度都是无限的，在实际模型中如果有厚度比较薄的地方，误差会更为明显。
+                    这也是为什么BSSRDF渲染的结果相比Participating Media要暗淡一些。除了这些误差以外，BSSRDF也没办法渲染出焦散
+                    Left: BRDF ?hard“ light distributio
+                    right: BSSRDF describes light transport and scattering inside of material.
+                    scattering inside of material
+                qq how bssrdf is used? 
+                    describe scattering inside of material!!!!
+                    internal color bleeding in shadowed region under nose. 
+                    much more natural light distribution on skin.
             ---*
             ok- slides-5 CG3_05_Path-Based-Rendering
                 Metropolis Light Transport
