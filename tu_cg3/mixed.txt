@@ -1,5 +1,4 @@
 
-
     +tobecontinued
         vector calculus 
         functional analysis 
@@ -3227,7 +3226,7 @@
                         BRDF into diffuse and specular parts
                         direct and indirect illumination 
                     qq explain the process of path tracing (later )
-            ok- slides-4 CG3_04_Sampling-Techniques
+            re-ok- slides-4 CG3_04_Sampling-Techniques
                 ql 
                     // transfer to the pdf file in this folder , start from slide 4 
                     how does nrook sampling work? p3
@@ -3239,13 +3238,17 @@
                     https://onedrive.live.com/view.aspx?resid=9712B8A082E369A%211407&id=documents&wd=target%28%E5%BF%AB%E9%80%9F%E7%AC%94%E8%AE%B0.one%7C0BE32A9B-AC05-4328-847D-6AF52075C99B%2F%E6%97%A0%E6%A0%87%E9%A2%98%E9%A1%B5%7C2FB0ABD7-9762-455D-9478-7562C513D45F%2F%29
                     onenote:https://d.docs.live.net/09712b8a082e369a/zhongyuan%20的笔记本/快速笔记.one#section-id={0BE32A9B-AC05-4328-847D-6AF52075C99B}&page-id={2FB0ABD7-9762-455D-9478-7562C513D45F}&end
                 r1 
-                    Rejection Sampling
-                    Importance Sampling
-                    Multiple Importance Sampling
-                    follow  a specific random variable distribution
-                    such as uniform, Normal  or Binomia
-                    N-Rooks Sampling
-                    Problem: We fixed the 1D projections, but  ruined the 2D distribution! It is no better than  that of random sampling: 
+                    qq which Sampling Techniques do you know?
+                        Random Samplings
+                        Rejection Sampling
+                        Importance Sampling
+                        Transformation Sampling
+                        N-Rooks Sampling
+                        Multiple Importance Sampling
+                    qq what means sth. follow a specific random variable distribution, draw to illu.
+                        uniform, Normal or Binomia?
+                    Problem: We fixed the 1D projections, but ruined the 
+                        2D distribution! It is no better than  that of random sampling: 
                     The Mersenne Twister is a pseudorandom number generator (PRNG).
                     was developed in 1997
                     Mersenne Twister algorithm is based on the Mersenne prime 219937-1
@@ -3255,196 +3258,249 @@
                     uniform_real_distribution
                     the <algorithm> header
                     qq with which func. can we gen. random var.?? op03
-                    qq with header  the <algorithm> header
-                    std::random_shuffle()
-                    bring a vector into  random order
-                    std::random_shuffle ( myvector.begin(), myvector.end() );
-                    std::mt19937
-                    qq how can we use std::mt19937 to gen. uniform distributed 2d samples?? it is only a generator, must act as a parameter 
-                    avoids sample clustering
+                        with Generators std::mt19937 and some Distribution functions 
+                    qq bring a vector into random order?
+                        std::random_shuffle() from the <algorithm> header
+                        std::random_shuffle ( myvector.begin(), myvector.end() );
+                        std::mt19937
+                    qq how can we use std::mt19937 to gen. uniform distributed 2d samples?? 
+                        > it is only a generator, must act as a parameter 
+                    qq what is sample clustering? 
+                    qq what is the problem of such a graph?(above)
                     qq what is a good sampling ?? 
-                    &h avoids sample clustering
-                    Possion disk  sampling
-                    qq idea?
-                    In high dimensions nrooks covers each dimension much better.
-                    Stratified grid sampling
-                    N-rooks sampling 
-                    qq the idea?? 
-                    &h samples with uniform sampling on each grid cell 
-                    &h n-rook is, 
-                    performs stratified grid  sampling in 1D per dimension
-                    qq how can we sample according to a function f / sigma(f) ?? or, integrate(f)
-                    &h we have to reject the samples that are larger then desired value 
-                    Rejection Sampling
-                    qq how Rejection Sampling can be used?? 
-                    qq op06
-                    Sampling  Shapes
-                    Rejection sampling can be  used to sample uniformly  inside a given shape
-                    sample uniformly  inside a given shape
-                    qq how can we sample uniformly
-                    &inside a given shape ??
-                    qq how 
+                        avoids sample clustering
+                    qq what is Possion disk sampling, idea?
+                        avoid sample clustering, with rejection test 
+                    qq compare Stratified grid sampling and N-rooks sampling 
+                        nrooks covers each dimension much better in high dimensions 
+                        Stratified grid sampling samples with uniform sampling on each grid cell 
+                        n-rook performs stratified grid  sampling in 1D per dimension
+                    qq how can we sample according to a distribution: function_f/ integrate(f)?
+                        we can achieve this reject the samples that are larger then desired value 
+                    qq what's the problem with Rejection Sampling? 
+                        1.no access to the probability density
+                        2.reject some samples, not so effecient
+                            will not work when the accept rate too low 
+                            the area too small when compared to the whole interval  
+                    qq how Rejection Sampling can be used explain the pic! op06
+                    qq how can we Sampling any Shape? in a simple manner?
+                        rejection sampling 
+                        transformation sampling 
+                    qq how can we sample uniformly inside a given shape?
+                        rejection sampling 
+                        transformation sampling 
                     Rejection sampling can be  trivially combined with other  sampling strategies
                     There is no access to the  probability density in rejection  sampling 
-                    Transformation Sampling
-                    qq idea??
-                    qq goal?? 
-                    suitable function
-                    cumulative probability function
-                    qq what is cumulative probability function
-                    qq derive the equ. used in tranfor,ation sampling 
+                    qq the idea and the goal of Transformation Sampling??
+                        sample xi according to some distribution px over the interval []
+                        sampling uniformly, and then transfer to the desired distribution 
+                        suitable function
+                        cumulative density function
+                        their cdf are the same! op134 drafts on ipad 
+                    qq what is cumulative density function CDF
+                        the probability that X will take a value less than or equal to x
+                    qq derive the equ. used in tranformation sampling, the key condition connecting both? 
                     qq how can we understand transformation?? g(ita)
                     qq compute an example as found in picnotes
-                    qq we know how to gen. uniform =distributed val. in a [0,1] interval, but how can we transform it to arbitry interval??
+                    qq we know how to gen. uniform distributed val.
+                        > in a [0,1] interval, but how can we transform it to arbitry interval??
+                    qq can we change the interval with transformation sampling? y 
+                    hh inverse function in 1d marginalization in 2d 
+                    qq which relations do we have in 2d? 
+                    qq the results! op11 down side
                     qq and folow arbitry distribution at the same time??
                     Transformation Sampling
                     marginalization over ?
-                    computing the conditional probability pdfs and cdfs
+                    qq why do we compute conditional probability pdfs and cdfs?? 
+                        we want to relate cumulative distribution functions of both 
                     qq how can we slove this in 2d??
-                    conditional probability pdfs
-                    the sampling procedure
-                    qq the sampling procedure in 2d 
-                    qq and why 
-                    qq op11 
-                    &err op11 
-                    qq proof this (in pic )
-                    equating cumulative distributions
-                    equating cumulative distributions
+                        equating cumulative distributions
+                        conditional probability pdfs
+                        the sampling procedure
+                    qq the sampling procedure in 2d, example op13!!
+                        compute equalities and then, inverse! 
+                        draft on ipad op137 
+                    qq what is equating cumulative distributions, inverse function??
                     marginal distribution
-                    marginal distribution in ?
                     uniform distribution
-                    qq how can we get uniform distribution over disk?? from a square(in unifrom distrib.) 
+                    qq how can we get uniform distribution over disk?? 
+                        > from a square(in unifrom distrib.) x2 techniques 
+                        transformation sampling 
+                        rejection sampling 
                     &err op13
                     &h a r need to be added..
                     tt in 3d case??
-                    qq what we have to calcu. for a transformation sampling?? the transformation function !!!!
-                    sample manifolds 
-                    sample in  the embedding space
-                    uniform circle sampling
+                    qq the idea of transformation sampling? can we do this? 
+                        > sampling of unit triangle and then transformed to arbitrary triangle
+                    qq what we have to calcu. for a transformation sampling?? 
+                        the transformation function !!!!
+                    qq how can we sample manifolds?
+                        sample in the embedding space
+                        and then project the samples onto the manifold
+                    qq what is manifold and its embedding space?? draw to illustrate! 
                     qq how can we get uniform circle sampling?? op15
-                    sample unit disk with rejection  or transformation sampling
-                    rejection  or transformation sampling
-                    qq compare rejection
-                    &and transformation sampling
+                        sample unit disk with rejection  or transformation sampling
+                        then, do projection 
+                    qq compare rejection and transformation sampling
+                    qq how can we uniformly sample the sphere surface?? 
+                        1. transformation or rejection sampling for a unit sphere 
+                        2. project the samples onto the surface! 
                     normalize sample 
-                    yields uniform sampling of  circle
-                    uniform sampling  on sphere surface
-                    project the samples onto the  manifold
-                    Double Coverage
-                    qq what is Double Coverage? how can we sample a triangle uniformly?? 
-                    sample a shape of twice the size  and then project the samples from  wrong side back to the right side
+                    yields uniform sampling of circle
+                    **qq why Double Coverage is a kind of transformation sampling technique? 
+                        transformation sampling: sampling some where uniformly, 
+                        and then, forming a new shape! 
+                    qq what is Double Coverage?
+                        sometimes, it is more convenient to [sample a shape of twice the size]
+                    **qq how can we sample a triangle uniformly?? 
+                        sample a shape of twice the size  and then 
+                        project the samples from wrong side back to the right side
+                    hh [implicit] transformational sampling?? 
                     extend triangle to unit square
-                    sample unit square
-                    reflect samples from upper right  triangle back into the triangle
-                    example hemisphere for given  normal ?
+                    **qq how can we sample normals on a hemisphere?? 
+                        > example hemisphere for given  normal ?
+                        sample on unit square, negate the negative normals 
+                    reflect samples from upper right triangle back into the triangle
                     transformation from unit  triangle to arbitrary triangle
-                    qq how can we do this? 
-                    &p pp how?? 1x1 value??
-                    marginalization approach:
-                    qq what is marginalization approach:
-                    probability density
+                    qq how can we let probability density p(x,x) be proportional to a constant brdf?
+                        use transformation sampling and marginalization approach:
+                    ---tobecontinued
+                    qq what is marginalization approach?
+                        probability density
                     qq what is the  probability density for a hemisphere?? 
-                    qq with brdf paramiterization 
-                    qq op17 
-                    Transformation Sampling a Diffuse  BRDF in angle parameterization
-                    &
+                        normalization of density from integration over hemisphere
+                    qq what is Transformation Sampling a Diffuse  
+                        > BRDF in angle parameterization?? 
                     ambient reflection constant
                     https://en.wikipedia.org/wiki/Phong_reflection_model
-                    specular reflection constant
-                    diffuse reflection constant
-                    the ratio of reflection of the diffuse term of incoming light
-                    ambient reflection constant,
-                    When this constant is large the specular highlight is small.
-                    which is a shininess constant for this material, which is larger for surfaces that are smoother and more mirror-like
-                    which is the direction pointing towards the viewer (such as a virtual camera)
-                    Computationally more efficient
-                    Inverse Phong reflection model
-                    Visual illustration of the Phong equation: here the light is white, the ambient and diffuse colors are both blue, and the specular color is white
-                    ambient component is uniform (independent of direction).
-                    adding the diffuse  cosine to the specular part
-                    qq where comes the sin term here??
-                    incorporate ?? and ???in,??? + into  the probability density
-                    qq how can we incorporate them into.??
-                    &h rejection sampling 
-                    &
-                    是用Lobe代替hemisphere?
-                    &p pp
-                    https://zhuanlan.zhihu.com/p/21376124
-                    Approximate Transformation  Sampling a Phong Lobe -Pseudocode
-                    &?problem is that sample in direction given out dir.
-                    north pole
-                    符号[公式]表示按向量的分量相乘，因为[公式]和[公式]都包含RGB三个分量。
-                    &h thta is, tensor product. the same as cov.??
-                    Reflectance Equation
-                    上式称为反射方程（Reflectance Equation），用来计算表面反射辐射率
-                    对于点光源、方向光等理想化的精准光源（Punctual Light）
-                    微表面理论（Microfacet Theory）认为我们看到的表面上的一点是由很多朝向各异且光学平的微小表面组成。
-                    https://pic4.zhimg.com/80/85e93632f88e18f46cc9b73729c31a93_1440w.jpg
-                    法线分布函数（Normal Distribution Function，简写为NDF）
-                    向NDF输入一个朝向[公式]，NDF会返回朝向是[公式]的微表面数占微表面总数的比例
-                    比如有1%的微表面朝向是[公式]，那么就有1%的微表面可能将光线反射到[公式]方向
-                    并不是所有微表面都能收到接受到光线
-                    Shadowing
-                    也不是所有反射光线都能到达眼睛，下面中间的图，一部分反射光线被遮挡住了，这种现象称为Masking
-                    Masking
-                    光线在微表面之间还会互相反射，如下面右边的图，这可能也是一部分漫射光的来源，在建模高光时忽略掉这部分光线
-                    光学平面并不会将所有光线都反射掉，而是一部分被反射，一部分被折射，反射比例符合菲涅尔方程（Fresnel Equations）
-                    Torrance-Sparrow基于微表面理论，用上述三个函数建立了高光BRDF模型
-                    F/D/G函数的约束条件和选择
-                    有很多论文基于上式给出不同的F/D/G函数，从而实现不同效果。关于F/D/G函数的比较，可以参考Background: Physics and Math of Shading
+                        specular reflection constant
+                        diffuse reflection constant
+                        the ratio of reflection of the diffuse term of incoming light
+                        ambient reflection constant,
+                    qq what is a Phong model? 
+                        Phong reflection is an [empirical model] of [local illumination]
+                        It describes the way a surface reflects light
+                        It is based on Phong's informal observation 
+                        The model also includes an ambient term to account for the small amount of light that is scattered 
+                        for physical plausible issue, we can further modify the phong model! 
+                            *by adding the diffuse cosine to the specular part
+                        sum of contributions from all light sources could be computed 
+                        it has Computationally more efficient alterations
+                        When this constant is large the specular highlight is small.
+                        which is a shininess constant for this material, 
+                            which is larger for surfaces that are smoother and more mirror-like
+                        which is the direction pointing towards the viewer 
+                            (such as a virtual camera)
+                        Computationally more efficient
+                        Inverse Phong reflection model
+                        Visual illustration of the Phong equation: 
+                            here the light is white, the ambient and diffuse colors are 
+                            both blue, and the specular color is white
+                        **ambient component is uniform (independent of direction).
+                    qq how can we make the phong model more physical plausible?
+                        *by adding the diffuse cosine to the specular part
+                    qq how can we sample a Phong Lobe?
+                    qq what is the probability density of the Phong Lobe?
+                    qq how can we consider the condition here?
+                        by rejection sampling 
+                    &p pp 是用Lobe代替hemisphere? 在Phong模型中依然可以重要性采样，但是为什么？
+                    hh https://zhuanlan.zhihu.com/p/21376124
+                        Approximate Transformation  Sampling a Phong Lobe -Pseudocode
+                        &?problem is that sample in direction given out dir.
+                        north pole
+                        符号[公式]表示按向量的分量相乘，因为[公式]和[公式]都包含RGB三个分量。
+                        &h thta is, tensor product. the same as cov.??
+                        Reflectance Equation
+                        上式称为反射方程（Reflectance Equation），用来计算表面反射辐射率
+                        对于点光源、方向光等理想化的精准光源（Punctual Light）
+                        微表面理论（Microfacet Theory）认为我们看到的表面上的一点是由很多朝向各异且光学平的微小表面组成。
+                        https://pic4.zhimg.com/80/85e93632f88e18f46cc9b73729c31a93_1440w.jpg
+                        法线分布函数（Normal Distribution Function，简写为NDF）
+                        向NDF输入一个朝向[公式]，NDF会返回朝向是[公式]的微表面数占微表面总数的比例
+                        比如有1%的微表面朝向是[公式]，那么就有1%的微表面可能将光线反射到[公式]方向
+                        并不是所有微表面都能收到接受到光线
+                        Shadowing
+                        也不是所有反射光线都能到达眼睛，下面中间的图，一部分反射光线被遮挡住了，这种现象称为Masking
+                        Masking
+                        光线在微表面之间还会互相反射，如下面右边的图，这可能也是一部分漫射光的来源，在建模高光时忽略掉这部分光线
+                        光学平面并不会将所有光线都反射掉，而是一部分被反射，一部分被折射，反射比例符合菲涅尔方程（Fresnel Equations）
+                        Torrance-Sparrow基于微表面理论，用上述三个函数建立了高光BRDF模型
+                        F/D/G函数的约束条件和选择
+                        有很多论文基于上式给出不同的F/D/G函数，从而实现不同效果。关于F/D/G函数的比较，可以参考Background: Physics and Math of Shading
                     Sampling a Discrete Distribution
                     qq how can we sample discreate distribution?? op21
-                    search primitive ?? with
-                    measured on  discrete sample locations
+                        search primitive i with
+                        measured on  discrete sample locations
                     spectrum
-                    a point  light source can be measured  on a discrete sample of  directions 
-                    Multiple importance sampling (MIS) can be used when  several sampling strategies ???? ?? are available
-                    ? MIS weights the strategies to minimize overall variance 
+                    qq what discreate sampling techniques do you know as example?
+                        light sources sampling
+                            a point  light source can be measured  
+                            on a discrete sample of  directions 
+                        BRDF parts (D/S/M) can be sampled 
+                            in a discreate manner 
+                    ---Multiple importance sampling (MIS) 
+                    can be used when several sampling strategies are available
+                    qq why the integrant is often a product of several functions?? 
+                        ray path! 
+                    qq why MIS minimize variance?
+                        weights the strategies to minimize overall variance 
                     qq the idea of MIS multiple improtance sampling 
-                    The weights ???? ?? need to be normalized and zero  where ???? becomes zero
+                        exploits advantages of different strategies and combine them together 
+                        The weights need to be normalized
                     qq give a equ. to show what unbaised mean!!!op26 
-                    sample from the average density 
-                    average density
+                        > the MIS estimator is unbiased??
+                    qq how can we choose the weight so that MIS estimator is unbiased?? 
                     qq how can we compute average density?? op27
-                    the balance heuristic
-                    Balance Heuristic 
-                    qq what is Balance Heuristic
-                    &h decrease bias 
-                    with a maximal variance increase of 
-                    qq with a maximal variance increase of ?? in the case of balance heuristic
-                    two conditions the MISestimator
+                    qq what is Balance Heuristic? formula op28
+                        Choose weights proportional to n * p
+                    qq what is power heuristic? 
+                        Choose weights proportional to (n * p) ^ beta
+                    qq what is the relationship bet. them? 
+                        power heuristic can help to reduce variance further
+                    qq two conditions the MIS estimator??
                     the  power heuristic can help to reduce variance further
-                    Veach proves a bound for the power heuristic  close to the optimal MIS weighting
-                    optimal MIS weighting
-                    qq how can we compute optimal MIS weighting?? 
-                    In numerical experiments he finds a good choice for the  exponent: ?? = 2.
-                    a good choice for the  exponent: ?
-                    qq what is  a good choice for the
-                    &exponent ??
-                    &p pp
-                    BRDF sampling
-                    qq why looks like this??
-                    given pdf there are a multitude of different  sampling strategies from which one can choose
+                    Veach proves a bound for the power heuristic  
+                        close to the optimal MIS weighting
+                    qq how can we compute optimal MIS weighting?? which heuristic
+                    qq how can we combine direct light sampling and brdf sampling techniques
+                        > to reduce variance? 
+                        to evaluate an integral
+                    qq what is  a good choice for the exponent ??
+                        In numerical experiments he finds a good choice for the  exponent: ?? = 2.
+                    pp 
+                    qq distinguish brdf sampling and direct light sampling 
+                        brdf should sample near light source 
+                    Weights vis for MIS! tt 
+                    given pdf there are a multitude of different sampling strategies 
+                        from which one can choose
                     Rejection sampling works even for unnormalized pdfs 
-                    does not provide any means to evaluate  the pdf at a sample
+                    does not provide any means to evaluate the pdf at a sample
                     unnormalized pdfs 
                     qq compare rejection sampling with transformational sampling 
-                    Transformation sampling allows to use uniformly  distributed samples and can be applied when the pdf is  integrable and the cdf invertible. 
-                    Transformation
+                        Transformation sampling allows to use uniformly  
+                            distributed samples and can be applied when 
+                            the pdf is integrable and the cdf invertible.
+                        but can also done implicitly 
                     &h uniform distrib. are transformed somehow
-                    Pdfs resulting from the product of functions can be  handled with multiple importance sampling, which  samples each function and additionally weights the  samples based on the function values.
+                    Pdfs resulting from the product of functions can be  
+                        handled with multiple importance sampling, which  
+                        samples each function and additionally weights the  
+                        samples based on the function values.
                     samples each function
                     a product of  several functions
-                    &p pp  why we need a product of
-                    &several functions?? wha about just one func.??
+                    &p pp  why we need a product of several functions?? wha about just one func.??
                     PhD thesis 
-                    It is based on  the idea of using more than one sampling technique to evaluate an integral,
-                    where each  technique is designed to sample some feature of the integrand that might otherwise lead to  high variance
-                    Our key results are on how to combine the samples: we present combination  strategies that are provably close to optimal
-                    This  leads to low-variance estimators that are useful in a variety of problems in graphics
-                    low-variance estimators
-                    including distribution ray tracing, multi-pass radiosity algorithms, and bidirectional path tracing
-                    &
+                    It is based on  the idea of using more than one 
+                        sampling technique to evaluate an integral,
+                    where each  technique is designed to sample some feature of the 
+                        integrand that might otherwise lead to high variance
+                    Our key results are on how to combine the samples: we present combination  
+                        strategies that are provably close to optimal
+                    This leads to low-variance estimators that are useful in a 
+                        variety of problems in graphics
+                    qq  tt what are low-variance estimators??   
+                    distribution ray tracing, multi-pass radiosity algorithms, 
+                        and bidirectional path tracing
                     http://graphics.stanford.edu/papers/veach_thesis
                     tt !!!! have to read 
                     &h full read!!
