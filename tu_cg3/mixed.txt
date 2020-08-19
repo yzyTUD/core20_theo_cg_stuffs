@@ -4464,7 +4464,88 @@
                 BRDF
                 qq what is the parameter of brdf?
                 qq what is the diff. bet. brdf and bsdf? and btdf ?? and bxdf???
-        ql official 
+        ql official--with answer 
+            //you should be able to explain a [given] rendering/ dynamic equation
+            Explain algorithmic techniques
+                qq path, light and bidirectional path tracing
+                qq idea of multiple importance sampling according to brdf and L_in
+                qq idea of multiple importance sampling in BPT
+                qq direct and indirect light sampling
+                qq final gathering
+                qq photon mapping
+                qq reverse photon mapping
+                qq progressive photon mapping
+                qq vertex merging
+                qq general idea of gammaton tracing
+                qq idea behind boids
+                qq how to simulate a piece of cloth with a particle system?
+                qq Why do stiff springs cause problems?
+                qq How to model hysteresis in cloth simulation?
+                qq How can one avoid collisions in a rigid body simulator?
+                qq What is contact point and what kind of non-degenerate contacts 
+                    exist for polygonal meshes?
+            Explain math
+                qq integration over solid angle
+                qq Monte Carlo (MC) estimation of integral
+                qq variance, bias
+                qq when is MC better than Rieman Integration?
+                qq MC estimation of reflection integral
+                qq idea of importance sampling
+                qq Russian Roulette
+                qq Nusselt’s analogon
+                qq uniform, rejection, N-rooks, transformation sampling
+                qq What parts of the reflection integral in directional form can be importance sampled?
+                qq ordinary and partial differential equations
+                qq reduction to order one system of ODEs
+                qq explicit, implicit, symplectic Euler
+                qq A-stabel
+                qq general idea behind step width adaptation
+                qq how to find the best integrator for a given problem?
+                qq what is numerical dissipation and how does it influence 
+                    numerical methods for solving incompressible
+                    Navier Stokes equations?
+                qq what is the splitting trick when solving ODEs?
+                qq how can the advection step be approached in a semi-Lagragian manner?
+                qq how does the pressure update work for incompressible fluids?
+                qq what are the different boundary conditions used in fluid simulation?
+                qq how do we interpolate attributes in SPH simulation?
+            Explain physics
+                qq unit, idea of non-dimensionalization
+                qq Noether theorem
+                qq radiometry: energy, power, radiosity and irradiance, 
+                    radiance (incoming vs outgoing), brdf, albedo,
+                    potential, spectral quantities
+                qq rendering equation in directional, area formulation and 
+                    operator form, light path regular expressions
+                qq geometry factor and visibility
+                qq emitted radiance of light source, sensor efficiency and 
+                    measurement equation
+                qq brdf properties: Helmholtz reciprocity, energy conservation
+                qq how to make Phong and Blinn-Phong brdfs physically plausible?
+                qq explain microfacette models on a coarse level, 
+                    what are the individual parts?
+                qq what do the Fresnel coefficients describe?
+                qq what is an anisotropic brdf, what an isotropic?
+                qq how to measure a brdf?
+                qq how to represent a measured brdf efficiently?
+                qq What is a bssrdf?
+                qq quantities: mass, acceleration, momentum, (conservative) force. 
+                    energy (kinetic, potential)
+                qq what different forces do you know?
+                qq inertia moment, inertia tensor, vector representation of angular velocity, 
+                    angular acceleration, torque,
+                    rotational kinetic energy
+                    --derivative from time to time, the idea of the Sequential impulse loop/ algorithm 
+                qq how can pose of rigid body be described
+                qq how does pose evolve over time without friction?
+                qq how does orientation chance in dependence of angular velocity?
+                qq how do forces applied to a point on a rigid body act on its linear and angular velocities?
+                qq what is a “Kraftstoß” and how does it help to compute the 
+                    change in momentum during a rigid body
+                    Impulsübertrag, the change of impulse
+                qq what are kinetic and dynamic viscosity?
+                qq what are incompressible fluids?
+        ql official--practice mode 
             //you should be able to explain a [given] rendering/ dynamic equation
             Explain algorithmic techniques
                 qq path, light and bidirectional path tracing
