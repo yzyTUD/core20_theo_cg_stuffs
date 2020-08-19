@@ -3992,35 +3992,52 @@
                 Light Tracing ?caustics
                 reflecting and  refracting
                 caustics
-                qq what is caustics
+                qq what is caustics, draw to illustrate! envelop? incident rays? reflacted rays?
                 different approximation techniques
-                connects them to the eye by direct eye sampling after  Russian Roulette terminated a path 
-                qq how light sampling can be connected to eye?? directly hit the eye position?? n 
-                &h op07
-                connects to the eye point or  chooses a point on the lense 
-                qq connect to the eye point?? not always 
+                connects them to the eye by direct eye sampling 
+                    after  Russian Roulette terminated a path 
+                qq illu. Path Tracing with Direct Lighting and Light Tracing with Eye Rays
+                    op06 
+                qq how light sampling can be connected to eye?? 
+                    > directly hit the eye position?? n 
+                    connects to the eye point or chooses a point [on the lense] 
+                qq always connect to the eye point?? n
                 pixels get different number of samples or even none
                 for BPT an additional sample buffer
-                caustics are reproduced better with light  tracing
-                all other effects are worse than with path tracing
+                qq Light Tracing – Algorithm op08 large! 
+                qq how can we render caustics with lower variance? 
+                    > how to choose the best renderer? 
+                    caustics are reproduced better with light tracing
+                    but all other effects are worse than with path tracing
+                qq is light tracing optimal? 
                 qq compare light tracing and path tracing, good in which effect?
                 light tracing should be only used in combined  approaches
-                it is  important that individual methods do not sample the  same rays several times 
-                qq should we re use the light ray several times?? n 
+                qq how can a lower variance be achieved? what if we sample the same rays many times?
+                    it is important that individual methods do not 
+                        sample the same rays several times 
+                qq should we reuse the light ray several times?? n
+                qq what is the key point of a cache based method? 
+                    intermediate results can be reused futher, thus have a lower variance 
                 interconnects path from eye with path from light source
-                use Roussian Roulette twice for termination
-                all  possible connections between subpaths
-                compute whether connection is blocked
-                multiply probabilities of subpaths
+                qq the idea of Bidirectional Path Tracing? 
+                    start sampling from both side
+                    use Roussian Roulette twice for termination
+                    all possible connections between subpaths
+                    compute whether connection is blocked, drop the whole path maybe 
+                    multiply probabilities of subpaths
+                Irradiance Mapping
                 Roussian Roulette 
                 http://www.pbr-book.org/3ed-2018/Light_Transport_III_Bidirectional_Methods/Bidirectional_Path_Tracing.html
                 16.3.4 Multiple Importance Sampling
-                BPT
-                qq what is BPT in rendering 
-                edge lengths ?? = 1
-                Implementation of BPT without multiple importance  sampling has additional artefacts
-                there are still problems with LSDSE-paths
-                LSDSE-paths
+                qq what is BPT in rendering
+                qq show a ray path with x w notation! op14 
+                edge lengths ?? = 1 
+                qq what is Overall average length?
+                qq what are possible sampling techniques? 
+                Implementation of BPT without multiple importance 
+                    sampling has additional artefacts
+                qq for BPT, there are still problems with which paths?
+                    LSDSE-paths
                 to solve this we need cache based methods 
                 Metropolis Light Transport, Eric Veach and Leonidas J. Guibas,  SIGGRAPH 97 
                 https://graphics.stanford.edu/papers/metro/metro.pdf
@@ -4029,36 +4046,38 @@
                 qq calcu. Average path length 
                 Path Measure
                 tt read ori!! must read 
-                &p pp
-                path pdf
-                can involve 
-                pixel filter sampling, Roussian Roulette,  splitting of BRDF in components, cosine term sampling,  BRDF sampling, direct light sampling, or MIS
-                splitting of BRDF in components
-                cosine term sampling
-                the path pdf is just the product  of the process pdfs
-                path pdf 
-                qq how can we compute path pdf, which varients are there?? xn , many sampling techniques exists 
-                &p pp op18 --> veach thesis!!!!!!!!!!!!
-                Image formation
-                qq what is Image formation, how can we do this? algo.! 
-                qq op19
-                The same path can be generated in several  different ways
-                &p this may intro. bais?? y
+                qq which sampling techs do you know related to calculating path pdf? [open question]
+                    pixel filter sampling, Roussian Roulette,  
+                    splitting of BRDF in components, cosine term sampling,  
+                    BRDF sampling, direct light sampling, or MIS
+                    splitting of BRDF in components
+                    cosine term sampling
+                qq how can we compute path pdf, which varients are there?? xn , 
+                    many sampling techniques exists 
+                &p pp op18 --> veach thesis!!!
+                qq what is Image formation, how can we do this? algo.!  op19
+                qq show that The same path can be generated in several different ways illu. 
+                qq and this may intro. bais?? y
+                qq explain the given picture/ image--pic notes 
                 Path Throughput 
                 dependency on preceding path vertices. 
-                again we have significant dependencies on preceding path  vertices. 
+                again we have significant dependencies on preceding path vertices. 
                 the visibility  test 
                 direct light sampling.
-                qq how can we compute path pdfs?? op21
-                Area sampling is used only for initial light source  samples ??0 and direct light sampling
+                qq how can we compute path pdfs?? op21 Path pdfs
+                qq what does the last pdf mean? x2 
+                Area sampling is used only for initial light source  
+                    samples ??0 and direct light sampling
                 Area sampling
                 to support sampling of directions
                 qq how can we sample directions?? 
-                qq  to support sampling of directions?
-                geometry factor
+                qq to support sampling of directions?
+                    direction pdfs need to be converted to area pdfs
+                    with geometry factor
                 qq why there is no visibility check in direct sampling?? op22 
-                &h it is implicit, as the pdf will be 0
-                BPT connects light and path tracing by generating one  path in each direction and interconnecting them 
+                    it is implicit, as the pdf will be 0
+                BPT connects light and path tracing by generating one  path 
+                    in each direction and interconnecting them 
                 light path
                 reversed eye path
                 connect paths
@@ -4070,16 +4089,20 @@
                 each tuple ?? = ??,?? w
                 defines different  sampling strategy ???? of path ?? with the special cases
                 ?? = 0 ?no light path
-                qq what does it mean if s=0? path tracing 
-                qq and s = 1? direct light sampling 
-                qq t=0? t=1?
-                qq t=0: 
-                qq light tracing, improtant to caustics 
-                qq t=1: direct eye sampling 
-                weights the strategies to minimize overall variance 
-                Weight Computations Example
-                &h MIS products lower variance 
-                &p the lenth of a path is not fixed
+                qq special cases! 
+                    > what does it mean if s=0? path tracing 
+                    > and s = 1? direct light sampling 
+                    > t=0? t=1?
+                    light tracing, improtant to caustics 
+                    t=1: direct eye sampling
+                qq can we do MIS on one path? y what do we need as pre-requires?
+                    need to be able also to compute all other probabilities
+                    weights the strategies to minimize overall variance 
+                    Weight Computations Example
+                    MIS products lower variance 
+                    the lenth of a path is not fixed
+                ---tobecontinued
+                **!pp MIS is for single path or multiple paths??
                 Incremental Weight Computation
                 qq how can we compute weights increamentally?? op29
                 More efficient generation
