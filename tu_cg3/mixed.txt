@@ -4770,6 +4770,11 @@
                     BPT ? vertex Connection (VC) 
                     PM ? Vertex Merging (VM)
                     vertex Connection
+                    vcm is a reformulation of photon mapping as a bidirectional path sampling technique
+                    *The benefit of our new formulation is twofold
+                    *BPT is one of the most versatile light transport algorithms.
+                    not efficient for transport
+                        paths with specular-diffuse-specular (SDS) configurations 
                 qq the MIS formulation of VC and VM 
                 &h many ways exits when computing a ray path from 
                     > light to eye!!! so use MIS in between!
