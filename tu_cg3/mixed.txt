@@ -4782,6 +4782,18 @@
                     which may even go  to zero if point light sources and pinhole cameras are allowed
                     the problem of insufficient techniques
                     Efficient handling of SDS paths
+                    Our new VCM algorithm automatically  
+                    computes a good mixture of sampling techniques from BPT 
+                        and PPM to robustly capture the entire illumination in the scene
+                    The rightmost column 
+                    shows the relative contributions of the BPT and PPM techniques to the VCM image in false color. 
+                    BPT [Veach and Guibas 1997] and PM/PPM [Fan et al. 2005;  
+                    Hachisuka and Jensen 2011].
+                    has long been demonstrated with photon mapping (PM)
+                    A progressive variant has recently drawn attention with its ability to converge  with a bounded memory footprint
+                    Moreover, an adaptation of these heuristics to glossy reflectance is not obvious
+                    //only be replicated using an anisotropic model.
+
                 qq the MIS formulation of VC and VM 
                 &h many ways exits when computing a ray path from 
                     > light to eye!!! so use MIS in between!
