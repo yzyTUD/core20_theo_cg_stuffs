@@ -4041,7 +4041,167 @@
                 to solve this we need cache based methods 
                 Metropolis Light Transport, Eric Veach and Leonidas J. Guibas,  SIGGRAPH 97 
                 https://graphics.stanford.edu/papers/metro/metro.pdf
-                tt must read
+                    tt must read
+                    ---from chapter 8 op245
+                    a measure on this space of paths
+                    measurement contribution function
+                    it allows general-purpose integration methods to  be applied. 
+                    an integration method that allows  several different sampling strategies to be efficiently combined.
+                    path integral model
+                    integral equations
+                    These new techniques can only  be properly understood within the path integral framework.
+                    e three-point form of the light  transport equations
+                    These measures have natural  physical interpretations whose meanings are described
+                    eliminate the directional variables
+                    he arrow notat
+                    light flow
+                    s the union of all scene surfaces, A is the area measure on M
+                    e mutually visib
+                    use the path integral framework in Monte Carlo algorithm
+                    k is a product measur
+                    much simpler structure
+                    path integral formulation
+                    integral equation approach requires  two equations (the light transport and measurement equations)
+                    defined recursively
+                    Measurements are defined and computed directly, by organizing the calculations around a  geometric primitive (the path)
+                    Each path specifies the emission,  scattering, and measurement events along a complete photon trajectory
+                    along a complete photon trajectory
+                    starting with a vertex in the middle,  and building the path outwards in both directions
+                    With the path integral approach, on the other hand,  it is possible to construct paths in arbitrary ways
+                    construct paths in arbitrary ways
+                    computing  probability densities on paths
+                    we must be able to evaluate the functions fj and p for the given  path X  .
+                    n how this path was generated
+                    depends on all of the random choices made during this proces
+                    Local path samplin
+                    generate vertices one at a time, based on local information at existing vertices (such as the BSDF
+                    For example, this is  what happens when the BSDF at an existing vertex is sampled
+                    once  a vertex on a light source has been chosen
+                    combining these three simple techniques, it is possible to sample paths in a great variety  of ways
+                    general enough to accommodate  virtually all path sampling techniques that are used in practice
+                    compare the probabilities with which a given path is sampled by different techniques.
+                    Heckbert抯 regular expression notation for paths
+                    Heckbert [1990] introduced a useful notation 
+                    classifying paths by means of regular expressions.
+                    L denotes the first vertex of the path
+                    E denotes the last vertex (the camera position or 揺ye?
+                    scattering event at each vertex
+                    not the type of the surface
+                    surface itself is allowed to be a combination of specular and diffuse
+                    Multiple Importance Sampling
+                    using more  than one sampling technique to evaluate a given integral
+                    Our motivation is that most numerical integration problems in computer graphics are  揹ifficult?
+                    we would like to design a sampling strategy that gives a low-variance  estimate of the integral.
+                    We do not construct new  sampling techniques ?we assume that these are given to us
+                    by computing weighted combinations of the sample values
+                    can be parameterized by a set of weighting functions
+                    Our goal is to find an estimator with minimum  variance, by choosing these weighting functions appropriately
+                    we can take several potentially good techniques and combine  them so that the strengths of each are preserved.
+                    This chapter is organized as follows.
+                    variance reduction techniques
+                    multi-pass algorithms
+                    The glossy highlights problem
+                    Smooth surfaces (r = 0)  correspond to highly polished, mirror-like reflections
+                    while rough surfaces (r = 1) correspond to diffuse reflection
+                    It is possible to simulate a variety of surface finishes by using  intermediate roughness values in the range 0 < r < 1.
+                    different light source sizes and surface finishes
+                    then examine why each one has high variance in some situations.
+                    sampling the BSDF and sampling the light source
+                    samples  were chosen according to the density
+                    subtended by the light source at the current poin
+                    One of these sampling strategies can have a much lower variance than the other, depending  on the size of the light source and the surface roughness paramete
+                    For example, if the light  source is small and the material is relatively diffuse, then sampling the light source gives  far better results than sampling the BSD
+                    polishe
+                    n sampling the BSDF is far superio
+                    high variance is caused by inadequate sampling where the integrand  is larg
+                    e ideal density function for sampling would be proportional to the product of  all of these factor
+                    neither sampling strategy takes all of these factors into accoun
+                    Dry Erase: Infinite VR Whiteboard
+                    y, so that we can express the two sampling strategies as different  probability distributions on the same domai
+                    many problems in graphics that are similar to the glossy highlights exampl
+                    large number of integrals of a specific form must be evaluate
+                    depend on  various parameters of the scene mode
+                    This makes it difficult to design an adequate sampling strategy, since  the parameter values are not known in advance. 
+                    The main issue is that we would like low-variance results for the entire range of parameter value
+                    too complicated to sample from directl
+                    unconsidered factors has a large effec
+                    Our main concern
+                    how these samples can be automatically combined to obtain low-variance results over the entire range of surface roughness  and light source parameters.
+                    Monte Carlo integration can be made more robust by using  more than one sampling technique to evaluate the same integral
+                    can be represented as a set of weighting functions
+                    balance heuristic
+                    This image was rendered using both the BSDF sampling strategy and the light  source sampling strategy
+                    The samples are exactly the same as those for Figure 9.2(a) and  (b), except that here the two kinds of samples are combined using the balance heuristic.
+                    effective over the entire range of glossy surfaces
+                    These images show close-ups of the glossy highlights test scene
+                    it does not work quite as well as the other
+                    We now present two families of combination strategies
+                    maximum heuristic.
+                    power heuristic
+                    Variance bounds
+                    The final gather problem
+                    we consider a simple test case motivated by multi-pass light transport algorithms.
+                    combination  strategies
+                    Notice that the sampling technique in Figure 9.12(a) does not work well for points near  the light source, since this technique does not take into account the 1=r2  distance term of the  scattering equation
+                    It extends importance sampling to the case where more than  one sampling technique is used
+                    integrand is a  sum of several quantities
+                    A good example in graphics is the BSDF, which is often written  as a sum of diffuse, glossy, and specular components 
+                    The process of taking one or more samples from each component is essentially a form of  stratified sampling
+                    the sample allocation is not as important as choosing a good  combination strateg
+                    can improve the variance by at most a factor  of n, plus a small additive ter
+                    the optimal sample allocation is irrelevant
+                    sophisticated sampling  strategies are generally designed for a specific light source geometry
+                    y (e.g. the light source  must be a triangle or a sphere)
+                    Second, they are often expensive: for example, taking a sample may involve numerical inversion of a function
+                    Thus, combining  samples from two or more techniques
+                    make direct lighting calculations more robust
+                    additional  cost is small
+                    have shown strong bounds on their performance relative to all other combination strategies
+                    the balance heuristic is an excellent choice for a combination strategy: it has the best theoretical bounds
+                    and is the simplest to implement.
+                    the given integral is a low-variance proble
+                    better performance is most noticeable
+                    Direct  lighting calculations are a good example of where this optimization is useful
+                    useful
+                    provides a new viewpoint on Monte Carlo integration
+                    o find a single “perfect”  sampling technique, here the goal is to find a set of techniques that cover the important features of the integrand
+                    It does not matter if there are a few bad sampling techniques as well
+                    the results will not be significantly affected.
+                    whenever there is some situation that is not handled well, then we can simply add another sampling technique designed for that situation alone
+                    We believe that there  are many applications that could benefit from this approach, both in computer graphics and  elsewhere.
+                    By varying the number of vertices generated from each side, we obtain a family of sampling techniques for paths of all  lengths
+                    Samples from all of these techniques are then combined  using multiple importance sampling
+                    efficiencyoptimized Russian roulette
+                    area-product  measure
+                    measurement contribution function
+                    Samples from all of these techniques are then combined  using multiple importance sampling.
+                    detailed mathematical description 
+                    derive explicit formulas for the sample contributions
+                    summarizes our conclusions
+                    The multi-sample estimator
+                    Recall that according to the path integral framework of Chapter 8,
+                    each measurement can  be written in the form
+                    artefacts
+                    incremental
+                    1). It is important to note that there is  more than one sampling technique for each path le
+                    th: in fact, for a given length k it is  easy to see that there are k + 2 different sampling techniques (by letting s = 0; : : : ; k +
+                    concatenating two separately generated pieces.
+                    : The four bidirectional sampling techniques for paths of lengthk = 2.
+                    (b) Monte Carlo path tracing with a direct lighting calculation,
+                    (d) tracing photons and recording an image sample only when photons hit  the camera lens.
+                    finite-aperture lens
+                    different probability distributions on the space of paths,  which makes them useful for sampling different kinds of effects
+                    sampling different kinds of effects
+                    (b) works well under most circumstances (for paths of length two), technique (a)  can be superior if the table is very glossy or specular
+                    Similarly, techniques (c) or (d) can  have the lowest variance if the light source is highly directional.
+                    correspond to different density  functions ps;t on the space of paths
+                    All of these density functions are good candidates for  importance sampling
+                    because they take into account different factors of the measurement  contribution function fj
+                    a wide variety of scenes and lighting  effects can be handled well.
+                    h s + t vertices and k = s + t  1 ed
+                    the connecting ver
+                    the connecting
+                    op328 
                 Average path length 
                 qq calcu. Average path length 
                 Path Measure
@@ -4076,11 +4236,13 @@
                     with geometry factor
                 qq why there is no visibility check in direct sampling?? op22 
                     it is implicit, as the pdf will be 0
-                BPT connects light and path tracing by generating one  path 
-                    in each direction and interconnecting them 
-                light path
-                reversed eye path
-                connect paths
+                qq the idea of BPT? 
+                    connects light and path tracing by generating one path 
+                        in each direction and interconnecting them 
+                    light path
+                    reversed eye path
+                    connect paths
+                    connecting edge? vertices? 
                 qq how the path looks like with zy formation??
                 here ?? and ?? are the lengths (number verts) 
                 of the light  and eye paths
@@ -4101,24 +4263,37 @@
                     Weight Computations Example
                     MIS products lower variance 
                     the lenth of a path is not fixed
+                    *for a fixed length of path, fixed number of vertices 
+                        we can apply different sampling strategies 
+                        those strategies has different probability functions used 
+                        so can be combined together with MIS 
+                        wide variety of scenes and lighting effects can be handled
+                        can taken into account! 
                 ---tobecontinued
-                **!pp MIS is for single path or multiple paths??
-                Incremental Weight Computation
+                **!pp MIS is for single path or multiple paths?? ok 
+                    fixed number of vertices, physically different paths 
+                qq additional artefacts for BPT without MIS? why? 
+                    where faces meet! 
+                    the geometry term can become large and not considered with the 
+                        original sampling technique
+                ---
+                qq why we set 1 to the first few vertices? 
+                    to avoid any extra variance on short subpaths
                 qq how can we compute weights increamentally?? op29
-                More efficient generation
-                Efficient Sampling with path groups
-                qq Efficient Sampling with path groups, how can we do this? with a table!!
-                Efficient Computation of  Contribution
-                qq are there Efficient Computation of
-                &Contribution?
-                qq x2
-                qq the idea? cancel out some factors......
-                tt paper to read 
-                &
-                still problems with LSDSE-paths
-                the same calculations can be reused several  times by a second method. 
-                reused
+                    rearrange the weight computation
+                qq how can we do Russian Roulette in BPT? 
+                    similar way ! op28
+                qq Efficient Sampling with path groups, how can we do this? 
+                    with a table!!
+                qq are there Efficient Computation of Contribution? idea? x2 
+                    incrementally during generation of all path samples
+                    cancel out some factors......
+                    tt paper to read 
+                qq what problems can bpt arise? 
+                    still problems with LSDSE-paths
                 qq what is the most app. advantages for caching?? 
+                    the same calculations can be reused several times by a second method. 
+                    reused
                 METROPOLIS LIGHT  TRANSPORT
                 define Markov-Chain on ?
                 这个被称为影响20世纪科技发展最重要的马尔可夫蒙特卡洛方法（MCMC，Markov Chain Monte Carlo）算法被引入到渲染领域
