@@ -1,13 +1,13 @@
 
     +tobecontinued
         vector calculus 
+        MLT paper and more recently/ advanced technique 
+        position estimation methods  MCMC 
         functional analysis 
         computational mechanics
         computational fluids 
         recent realistic rendering papers 
             sppm/ ppm/ pm/ ... advanced methods 
-        position estimation methods 
-            MCMC 
     +https://tu-dresden.de/ing/informatik/smt/cgv/studium/lehrveranstaltungen/ws1920/cg3
         it is about global illumination, physically based simulation
         phy. rendering 
@@ -3986,7 +3986,7 @@
                     internal color bleeding in shadowed region under nose. 
                     much more natural light distribution on skin.
             ---*
-            ok- slides-5 CG3_05_Path-Based-Rendering
+            re-ok- slides-5 CG3_05_Path-Based-Rendering
                 Metropolis Light Transport
                 PATH BASED  APPROACHES
                 Light Tracing ?caustics
@@ -4294,85 +4294,150 @@
                 qq what is the most app. advantages for caching?? 
                     the same calculations can be reused several times by a second method. 
                     reused
-                METROPOLIS LIGHT  TRANSPORT
-                define Markov-Chain on ?
-                这个被称为影响20世纪科技发展最重要的马尔可夫蒙特卡洛方法（MCMC，Markov Chain Monte Carlo）算法被引入到渲染领域
-                与传统的蒙特卡洛方法（例如路径追踪）不同的是
-                它通过利用样本之间的相关性来更好地探索一个分布函数
-                相关性
-                使得一些非常困难的路径可以更轻易被采样到，然而MLT算法依赖于非常好的突变策略
-                2002年，Csaba Kelemen提出了PSSMLT算法（Simple and Robust Mutation Strategy for Metropolis Light Transport Algorithm）
-                这个采样的过程实际上是对多个[0,1]的随机数的采样过程，这些[0,1]随机数构成一个高维的单位超立方体（unit-hypercube），这称为原采样空间（Primary sample space
-                ，所以如果直接对该空间采样，也能够得到一条路径。
-                另外最重要的是因为使用重要性采样，原采样空间的被积函数为f/p接近为一个常数，这使得原采样空间的被积函数更平坦，采样的方差更低，考虑传统的MLT算法并没有使用重要性采样
-                传统的MLT算法并没有使用重要性采样
-                Markov Chain Monte Carlo
-                PSSMLT
-                qq idea of MLT 
-                qq idea of PSSMLT
-                高维的单位超立方体（unit-hypercube）
-                它将“路径采样”当做一个黑盒子：它直观给你一些随机数，不管你使用什么方法给我一条路径就可以
-                某个顶点一个微小的突变可能导致后续路径发生较大的变换，从而使种子路径和突变路径差异太大而丧失相关性
-                MLT算法被提出来后最重大的一个进展要数2014年Toshiya Hachisuka提出的MMLT算法（Multiplexed Metropolis Light Transport）
-                Multiplexed Metropolis Light Transport）
-                MMLT算法
-                路径除了在每个原采样空间内部执行突变，还可以在不同采样技术之间执行突变。
-                这是一种采样技术，叫Metropolis Sampling。
-                Metropolis Sampling只需要你能求得f(x)的值，就可以自动生成一组和f的大小成比例的样本（就是下图中的红点，f越大红点越密集）
-                这些所有路径中只有一部分路径对最终成像有比较大的贡献的（一个光线照不到的桌子底下反射100次也是没有什么贡献的）
-                不在没有贡献的路径上面浪费计算量
-                绝大多数路径都没有贡献因为他们被强挡住了，所有求交和brdf采样求值的计算都浪费了。
-                如果用markov chain来生成样本，则得到的路径是这样的。大多数路径都是刚好能有效连接光源和camera的。
-                Metropolis Sampling主要就是用来渲染一些采样路径特别复杂的场景的
-                一般室外大太阳的场景用不着付出额外的计算去用这么fancy的采样方法
-                Metropolis Light Transport的论文就是用了一个光源在一个微微打开的门缝后面的场景当的例子：
-                Metroplis Sampling也可以比较高效的计算Specular-Diffuse-Specular这种路径
-                Specular-Diffuse-Specular
-                high level的说了一下为什么渲染可以用到markov chain。具体的实现也不麻烦，基于一个叫Detailed Balance的方法
-                首先光线传递的随机性（光子抵达物体表面材质后被吸收或随机反射）仅由当前状态决定，和历史无关，满足马可夫过程定义
-                满足马可夫过程定义
-                第二，现实场景的物体材质不存在全部是完美镜面的情况，也就是系统中存在扩散/耗散项（非Dirac分布的BRDF，以及吸收项），所以能量分布会趋于稳定，收敛到一个稳态
-                光线传播本身是time-dependent模型，但是渲染里假定了能量瞬间完成重分布，所以需要证明稳态方程解的存在唯一性。
-                MMLT的重要意义在于它将统计中的模拟回火（simulated tempering）的思路引入到了MLT算法中
-                模拟退火本来用于解决最优质问题，由于物体加温之后分子状态之间的转移更活跃，因此状态更易于在全局转移
-                而随着温度逐渐降低，状态之间的转移就逐渐减弱。所以为了求最优值
-                所以为了求最优值，如下图中的最大值，我们首先将温度升高，然后让其慢慢冷却，在其过程中不断寻找最大值，随着温度降低，最终将停留在最大值处。
-                在MMLT算法中，温度即是采样技术，不同的采样技术将原采样空间划分为多个子空间。
-                当采样技术发生改变时，虽然所有的[0,1]随机数并没有发生变化，但是由于使用了不同的采样技术，这些随机数被使用的方式也完全不同了
-                理想情况下，我们希望在改变采样技术时，能够保持路径不变。因此， Benedikt Bitterli于今年提出的RJMCMC（Reversible Jump Metropolis Light Transport using Inverse Mappings）
-                使用一个反向映射方法，当从采样技术1向采样技术2转移时，它将状态1对应的原采样空间的路径在对应路径空间中的形式，通过一个反向映射转换到采样技术2对应的原采样空间，这个过程是决定性（deterministic）计算的
-                Jacopo Pantaleon的CMLT（Charted Metropolis Light Transport）几乎也与上述思路类似，但是强调更泛化的概念
-                HISANARI OTSU的Fusing State Spaces for Markov Chain Monte Carlo Rendering在算法上稍微不同于上述两篇论文
-                今年这几篇论文质量还是可以的，并且更是有Wojciech Jarosz，Wenzel Jakob, Carsten Dachsbacher, Anton S. Kaplanyan等这些保驾护航。
-                https://zhuanlan.zhihu.com/p/28345852
-                Markov Chain
+                ---METROPOLIS LIGHT TRANSPORT
+                qq idea of Metropolis Sampling? 
+                    compared to russian rolate
+                    define Markov-Chain on omega
+                    MLT算法依赖于非常好的突变策略, 使得一些非常困难的路径可以更轻易被采样到
+                    *sampling the secondary paths with help of [Markov Chain Monte Carlo]
+                        applies a sequence of [random mutations] 
+                            [handle a variety of difficult lighting] situations
+                    *instead of RR, we can think that the sampling is done in [unit-hypercube]
+                        but MTL [not take use of improtance sampling ]
+                    some interesting applications exits:
+                        We could also use MLT to render a sequences of images (as
+                            in animation), by sampling the the entire space-time of paths
+                            at once
+                    *inspired by the Metropolis sampling method in computational physics
+                qq which scenes are best suitable for MLT?
+                    a.brightly lit room next to a dark room containing the camera, 
+                        with a door slightly ajar between them
+                        The problem is that for some environments, most
+                            paths do not contribute significantly to the image
+                        Naive path tracing will be very inefficient, 
+                            because it will have difficulty generating paths
+                        Metropolis Light Transport的论文就是用了一个光源在一个
+                            微微打开的门缝后面的场景当的例子
+                        Metropolis Sampling主要就是用来渲染一些采样路径特别复杂的场景的
+                            一般室外大太阳的场景用不着付出额外的计算去用这么fancy的采样方法
+                        大多数路径都是刚好能有效连接光源和camera的
+                        这些所有路径中只有一部分路径对最终成像有比较大的贡献的
+                            （一个光线照不到的桌子底下反射100次也是没有什么贡献的）
+                    b.Metroplis Sampling也可以比较高效的计算Specular-Diffuse-Specular这种路径
+                qq why markov process can be assumed? 
+                    首先光线传递的随机性（光子抵达物体表面材质后被吸收或随机反射）仅由当前状态决定，
+                        和历史无关，满足马可夫过程定义
+                    it has Markov property: memoryless property of a stochastic process.
+                qq what is Markov property        
+                    conditional probability distribution 
+                        depends only upon the present state
+                        not on the sequence of events that preceded it.
+                qq what is Markov process
+                    A process with Markov property is called a Markov process.
+                qq what is Markov chain.
+                    discrete-time stochastic process satisfying 
+                        the Markov property is known as a Markov chain
+                    光线传播本身是time-dependent模型
+                hh  https://zhuanlan.zhihu.com/p/28345852   
+                    suggested extensions!
+                    马尔可夫蒙特卡洛方法（MCMC，Markov Chain Monte Carlo）算法被引入到渲染领域
+                        这个被称为影响20世纪科技发展最重要的
+                        与传统的蒙特卡洛方法（例如路径追踪）不同的是
+                        它通过利用样本之间的相关性来更好地探索一个分布函数
+                    相关性
+                    使得一些非常困难的路径可以更轻易被采样到，然而MLT算法依赖于非常好的突变策略
+                    2002年，Csaba Kelemen提出了PSSMLT算法
+                        （Simple and Robust Mutation Strategy for Metropolis Light Transport Algorithm）
+                    这个采样的过程实际上是对多个[0,1]的随机数的采样过程，
+                        这些[0,1]随机数构成一个高维的单位超立方体（unit-hypercube），
+                        这称为原采样空间（Primary sample space
+                        所以如果直接对该空间采样，也能够得到一条路径。
+                    另外最重要的是因为使用重要性采样，原采样空间的被积函数为f/p接近为一个常数，
+                        这使得原采样空间的被积函数更平坦，采样的方差更低，
+                        考虑传统的MLT算法并没有使用重要性采样
+                    Markov Chain Monte Carlo
+                    qq idea of PSSMLT
+                    高维的单位超立方体（unit-hypercube）
+                    它将“路径采样”当做一个黑盒子：它直观给你一些随机数，不管你使用什么方法给我一条路径就可以
+                    某个顶点一个微小的突变可能导致后续路径发生较大的变换，从而使种子路径和突变路径差异太大而丧失相关性
+                    MLT算法被提出来后最重大的一个进展要数2014年Toshiya Hachisuka提出的
+                        MMLT算法（Multiplexed Metropolis Light Transport）
+                    路径除了在每个原采样空间内部执行突变，还可以在不同采样技术之间执行突变。
+                    这是一种采样技术，叫Metropolis Sampling。
+                    Metropolis Sampling只需要你能求得f(x)的值，就可以自动生成一组和f
+                        的大小成比例的样本（就是下图中的红点，f越大红点越密集）
+                    这些所有路径中只有一部分路径对最终成像有比较大的贡献的
+                        （一个光线照不到的桌子底下反射100次也是没有什么贡献的）
+                    不在没有贡献的路径上面浪费计算量
+                    绝大多数路径都没有贡献因为他们被强挡住了，所有求交和brdf采样求值的计算都浪费了。
+                    如果用markov chain来生成样本，则得到的路径是这样的。
+                        大多数路径都是刚好能有效连接光源和camera的。
+                    Metropolis Sampling主要就是用来渲染一些采样路径特别复杂的场景的
+                    一般室外大太阳的场景用不着付出额外的计算去用这么fancy的采样方法
+                    Metropolis Light Transport的论文就是用了一个光源在一个
+                        微微打开的门缝后面的场景当的例子
+                    Metroplis Sampling也可以比较高效的计算Specular-Diffuse-Specular这种路径
+                    Specular-Diffuse-Specular
+                    high level的说了一下为什么渲染可以用到markov chain。
+                        具体的实现也不麻烦，基于一个叫Detailed Balance的方法
+                    首先光线传递的随机性（光子抵达物体表面材质后被吸收或随机反射）仅由当前状态决定，
+                        和历史无关，满足马可夫过程定义
+                    满足马可夫过程定义
+                    第二，现实场景的物体材质不存在全部是完美镜面的情况，也就是系统中存在扩散/耗散项（非Dirac分布的BRDF，以及吸收项），所以能量分布会趋于稳定，收敛到一个稳态
+                    光线传播本身是time-dependent模型，但是渲染里假定了能量瞬间完成重分布，
+                        所以需要证明稳态方程解的存在唯一性。
+                    MMLT的重要意义在于它将统计中的模拟回火（simulated tempering）
+                        的思路引入到了MLT算法中
+                    模拟退火本来用于解决最优质问题，由于物体加温之后分子状态之间的转移更活跃，
+                        因此状态更易于在全局转移
+                    而随着温度逐渐降低，状态之间的转移就逐渐减弱。所以为了求最优值
+                    所以为了求最优值，如下图中的最大值，我们首先将温度升高，
+                        然后让其慢慢冷却，在其过程中不断寻找最大值，
+                        随着温度降低，最终将停留在最大值处。
+                    在MMLT算法中，温度即是采样技术，不同的采样技术将原采样空间划分为多个子空间。
+                    当采样技术发生改变时，虽然所有的[0,1]随机数并没有发生变化，
+                        但是由于使用了不同的采样技术，这些随机数被使用的方式也完全不同了
+                    理想情况下，我们希望在改变采样技术时，能够保持路径不变。
+                        因此， Benedikt Bitterli于今年提出的RJMCMC
+                        （Reversible Jump Metropolis Light Transport using Inverse Mappings）
+                    使用一个反向映射方法，当从采样技术1向采样技术2转移时，
+                        它将状态1对应的原采样空间的路径在对应路径空间中的形式，
+                        通过一个反向映射转换到采样技术2对应的原采样空间，
+                        这个过程是决定性（deterministic）计算的
+                    Jacopo Pantaleon的CMLT（Charted Metropolis Light Transport）
+                        几乎也与上述思路类似，但是强调更泛化的概念
+                    HISANARI OTSU的Fusing State Spaces for 
+                        Markov Chain Monte Carlo Rendering在算法上稍微不同于上述两篇论文
+                    今年这几篇论文质量还是可以的，并且更是有
+                        Wojciech Jarosz，Wenzel Jakob, Carsten Dachsbacher, Anton S. 
+                        Kaplanyan等这些保驾护航。
                 qq how Markov Chain can be used for MLT?? 
                 qq how simulate tempering can be used for MLT??
-                这种采样技术之间的转移太高效了。
-                秦春林，从事游戏开发已有7个年头，担任游戏开发工程师，主要研究方向是引擎开发和图形渲染。物理专业出身的我属于半路出家
-                https://item.taobao.com/item.htm?spm=a1z10.1-c.w4004-17761944037.2.27fe5c3cX900DC&id=569868401235
-                &
-                不像PBRT聚焦于比较经典的路径追踪算法实现，《全局光照技术》覆盖了截止2017年大量的行业中最前沿的渲染技术
-                例如VCM/UPS，降噪技术，频率域分析，微分流形/几何，梯度域渲染，基于光束的参与媒介渲染技术等等
-                这些都是近几年离线渲染领域最前沿的方向和技术，被广泛运用于最近皮克斯，迪士尼等动画电影当中，使读者能够了解到最前沿的行业动态和趋势
-                而 《Physically Based Rendering: From the Theory to Implementation》聚焦于离线渲染
-                实时和离线渲染同属于计算机图形学领域， 它们只是在当前硬件水平下针对实时性需求的划分
-                很多实时的全局光照模型都是从离线渲染模型优化，改进而来
-                全局光照技术》主要是按照各种全局光照技术为主线进行组织的，本书基本上覆盖了当前行业中最重要的约十种全局光照技术，例如针对离线渲染领域的路径追踪，梅特波利斯光照传输，光子映射，针对交互式需求的辐射度方法
-                为了加速光线追踪计算，与Path tracing直接从物体复杂的几何表述中获取光照信息不同，Photon mapping方法则将光照信息存储为一个独立的数据结构(称为 Photon map)
-                这大大加速了光线追踪的计算。
-                形成了一本270多页的英文稿子（如下视频），虽然该稿子仅仅是出于学习的目的，因此内容不是很严谨，但是它依然能够帮助我建立起一个3D渲染技术的宏观视图，它可以说是现在这本《全局光照技术》的重要基础，并且我相信很少有人在学习的过程中能够形成这种级别的笔记稿子。
-                在这个学习的过程中，我感觉到了知识系统性的重要性，尤其对于图形学这种涉及大量数学知识，以及各种各样算法实现的学科，因此我尝试去总结各种知识的分类及其之间的联系
-                于是我在完成第一章之后就将其大约80多页的内容放到网络上供大家下载试读，我希望借助这种方式能够实时收集到读者的反馈和建议
-                然后印刷上市后才能收到读者的反馈，然而这些反馈基本上对图书质量没有用处，因为它必须要等到再版时才能根据这些反馈作出调整，而很多技术图书甚至没有再版的机会。
-                《全局光照技术》试读章节的电子文件在各个论坛，QQ群以及TheGIBook官网已经被下载超过2000人次
+                hh 
+                    这种采样技术之间的转移太高效了。
+                    秦春林，从事游戏开发已有7个年头，担任游戏开发工程师，
+                        主要研究方向是引擎开发和图形渲染。物理专业出身的我属于半路出家
+                    https://item.taobao.com/item.htm?spm=a1z10.1-c.w4004-17761944037.2.27fe5c3cX900DC&id=569868401235
+                    不像PBRT聚焦于比较经典的路径追踪算法实现，《全局光照技术》覆盖了截止2017年大量的行业中最前沿的渲染技术
+                    例如VCM/UPS，降噪技术，频率域分析，微分流形/几何，梯度域渲染，基于光束的参与媒介渲染技术等等
+                    这些都是近几年离线渲染领域最前沿的方向和技术，被广泛运用于最近皮克斯，迪士尼等动画电影当中，使读者能够了解到最前沿的行业动态和趋势
+                    而 《Physically Based Rendering: From the Theory to Implementation》聚焦于离线渲染
+                    实时和离线渲染同属于计算机图形学领域， 它们只是在当前硬件水平下针对实时性需求的划分
+                    很多实时的全局光照模型都是从离线渲染模型优化，改进而来
+                    全局光照技术》主要是按照各种全局光照技术为主线进行组织的，本书基本上覆盖了当前行业中最重要的约十种全局光照技术，例如针对离线渲染领域的路径追踪，梅特波利斯光照传输，光子映射，针对交互式需求的辐射度方法
+                    为了加速光线追踪计算，与Path tracing直接从物体复杂的几何表述中获取光照信息不同，Photon mapping方法则将光照信息存储为一个独立的数据结构(称为 Photon map)
+                    这大大加速了光线追踪的计算。
+                    形成了一本270多页的英文稿子（如下视频），虽然该稿子仅仅是出于学习的目的，因此内容不是很严谨，但是它依然能够帮助我建立起一个3D渲染技术的宏观视图，它可以说是现在这本《全局光照技术》的重要基础，并且我相信很少有人在学习的过程中能够形成这种级别的笔记稿子。
+                    在这个学习的过程中，我感觉到了知识系统性的重要性，尤其对于图形学这种涉及大量数学知识，以及各种各样算法实现的学科，因此我尝试去总结各种知识的分类及其之间的联系
+                    于是我在完成第一章之后就将其大约80多页的内容放到网络上供大家下载试读，我希望借助这种方式能够实时收集到读者的反馈和建议
+                    然后印刷上市后才能收到读者的反馈，然而这些反馈基本上对图书质量没有用处，因为它必须要等到再版时才能根据这些反馈作出调整，而很多技术图书甚至没有再版的机会。
+                    《全局光照技术》试读章节的电子文件在各个论坛，QQ群以及TheGIBook官网已经被下载超过2000人次
                 qq the idea of Metropolis Light Transport
-                Discussion of Metropolis Sampling
                 qq MLT is best suitable for ? which kind of scene ??
-                &
-                Compute different error norms (L1  , L2 and L?  ) with respect  to reference image
+                Compute different error norms (L1  , L2 and L?  ) 
+                    with respect  to reference image
                 error values of other methods  (PT and BPT) over error value of MLT:
-                qq how to explain those numbers?
+                qq how to explain those numbers? later 
             ok- slides-7 CG3_07_Cache-Based-GI
                 Bidirectional Path Tracing is very bad for caustics in mirror
                 Bidirectional Path Tracing is very bad for caustics in water 
