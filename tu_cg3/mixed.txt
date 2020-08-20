@@ -4775,6 +4775,13 @@
                     *BPT is one of the most versatile light transport algorithms.
                     not efficient for transport
                         paths with specular-diffuse-specular (SDS) configurations 
+                    widely acknowledged that BPT is not efficient
+                    paths with specular-diffuse-specular (SDS) configurations
+                    an interior of a car or a building
+                    sample SDS paths with low probability density
+                    which may even go  to zero if point light sources and pinhole cameras are allowed
+                    the problem of insufficient techniques
+                    Efficient handling of SDS paths
                 qq the MIS formulation of VC and VM 
                 &h many ways exits when computing a ray path from 
                     > light to eye!!! so use MIS in between!
