@@ -1,7 +1,8 @@
 
-    +tobecontinued
+    +toread, tt must read 
         vector calculus 
         MLT paper and more recently/ advanced technique 
+        photon mapping papers 
         position estimation methods  MCMC 
         functional analysis 
         computational mechanics
@@ -28,6 +29,11 @@
             radiance是可以积累的，能量流，irr是单位面积上的
             irr描绘了Radiometry Power
             radiant exitance or radiosity和irr类似，是不同方向上的，一个入社一个出 
+    *review resources 
+        1. ql from slides 
+        2. ql official questions 
+        3. ql from pic notes 
+        4. active mode! 
     ---preview
         extended know. search online, as prepare and concreate understanding 
             ---from interest
@@ -4438,295 +4444,350 @@
                     with respect  to reference image
                 error values of other methods  (PT and BPT) over error value of MLT:
                 qq how to explain those numbers? later 
-            ok- slides-7 CG3_07_Cache-Based-GI
-                Bidirectional Path Tracing is very bad for caustics in mirror
-                Bidirectional Path Tracing is very bad for caustics in water 
-                Photon mapping: generate large number of light paths  first, cache them and find for each eye path the matching  ones
-                cache them
-                emit large number of photons 
-                trace light paths trough purely  mirroring or refracting surfaces 
-                Russian Roulette on  diffuse or glossy surfaces
-                store photons on diffuse or  glossy surfaces in a kd-tree
-                generate per pixel one or  several eye paths
-                closeby photons to  estimation reflected radiance
-                Radiance Estimate 
-                radiance estimate with radial filter
+            re-ok- slides-7 CG3_07_Cache-Based-GI
+                qq Bidirectional Path Tracing is very bad for?? good for??
+                    caustics in mirror
+                    caustics in water 
+                qq idea of Photon mapping:  op08
+                    generate large number of light paths  first, 
+                    cache them and find for each eye path the matching  ones
+                    cache them
+                    emit large number of photons 
+                    trace light paths trough purely  mirroring or refracting surfaces 
+                    Russian Roulette on  diffuse or glossy surfaces
+                    store photons on diffuse or  glossy surfaces in a kd-tree
+                    ---
+                    generate per pixel one or  several eye paths
+                    closeby photons to  estimation reflected radiance
+                qq Radiance Estimation? draw a graph to illustrate op11
                 qq how can we estimate radiance in photon mapping?? op11 
-                Photon Emission
-                qq describe the process of Photon Emission
+                    simplest approach and others 
+                qq describe the process of Photon Emission op12 
+                    > how can we compute photon power??
+                    > location and direction of each photon emitted? 
+                qq does each photon distributes the complete light into the scene?
                 qq illu. the radiance estimate process with a graph
-                each photon distributes the complete  light into the scene
-                dividing through the total number  ??total of photons
-                qq why normalize?? pp
-                &p op13
-                sampling of a light source index
-                to support several light sources
+                qq why normalize??  op13
                 qq how can we support several light sources?? op13 
+                    > compute total light emitted from the light source, photon power in this case!
+                    sampling of a light source index
+                    to support several light sources
+                qq what is pixel estimates in PM? 
+                qq how can we sample reflected direction?? 
+                    > how can we update the power of each photon after storage??  op14 
                 if surface BRDF has diffuse  or glossy part, store photon  in photon map
                 terminate if Russian Roulette  with success probability ?? fails
                 sample reflected direction  ????  ′ with pdf ????′ . according to  BRDF ?? and recurs wit
-                Photon Tracing
-                qq describe Photon Tracing
-                with  the information necessary for later radiance estimates
+                qq describe Photon Tracing process (part of algorithm, detail view) op14
+                with the information necessary for later radiance estimates
                 photons are stored in a list 
                 some optimizations need storage of surface normal,  previous photon on light path, light source index, and  flags
                 Photon Storage
-                qq what infor. is stored in photon stru.?? op15
-                position
-                incoming direction
-                power
-                accelerated collection of photons
-                qq how 
-                kd-tree can be built in inplace to avoid storage of child  pointers 
-                &p pp what does it mean????
-                proved most simple and flexible over  surface subdivision or texture maps
-                &p pp
-                &p op15
+                qq what kind info. is stored in photon stru.?? op15 basic terms x3 
+                    position
+                    power, cosine weighted power
+                    incoming direction
+                qq how to accelerated collection of photons
+                    kd-tree can be built in inplace to 
+                        avoid storage of child pointers 
+                    &p pp what does it mean????
+                    proved most simple and flexible over surface subdivision or texture maps
                 Jensen proposes in 1996 (Global illumination using photon maps) 
-                cone filter with parameter ?? in radiance estimate:
-                cone filter 
                 qq what is cone filter ? why use it??
+                    in radiance estimate
+                    in collecting process 
                 http://graphics.ucsd.edu/~henrik/papers/photon_map/
                 tt must read
                 Illumination splitting 
                 based on BRDF 
                 incoming radiance
-                direct lighting
-                light from caustic
                 direct light sampling
                 caustic  photon map 
                 Approximations
                 Different Approximations
-                qq which Different Approximations can be used in rendering pass of photon mapping??
-                qq op17
-                Two Photon Maps
-                qq which Two Photon Maps??
-                terminate paths at diffuse or  glossy surface
-                define pdf for directions such that  specular objects have very high probability
-                large number of photons needed 
-                fewer photon density needed but
-                support for very long paths 
-                do not store first diffuse surface  hit photon as accounted for by  direct light sampling and caustic  photon map
-                do not store first diffuse
-                qq compare those two photon maps: caustic photon map and global photon map! the diff.??
+                qq which Different Approximations can be used in rendering pass 
+                    > of photon mapping?? op17
+                    direct light sampling 
+                    Monte-Carlo Ray Tracing with multiple importance sampling
+                    make use of caustic photon map 
+                    make use of global photon map 
+                qq which Two Photon Maps?? diff? 
+                    caustic: 
+                        terminate paths at diffuse or  glossy surface
+                        define pdf for directions such that  specular objects 
+                            have very high probability
+                        large number of photons needed 
+                    global
+                        fewer photon density needed 
+                        support for very long paths 
+                        do not store first diffuse surface  hit photon 
+                            as accounted for by  direct light sampling 
+                            and caustic  photon map
+                qq why do not store first diffuse
+                    their are dealed with by caustic photon map, redundent, variance! 
+                qq compare those two photon maps: 
+                    > caustic photon map and global photon map! the diff.??
                 qq why we need caustic photon map?? 
-                qq why not store first diffuse in global photon?? 
-                &h should sample diff. ray path to decrease variance 
-                &h it was for caustic photon map
-                Photon Mapping  Discussion
-                knn-query allows to find light  paths to find LSDSE paths, which  are hard to sample for BPT
-                cached paths can be reused 
-                performance
-                generalization to volumetric  effects simple
-                shadow photons
-                use photon map for importance  sampling 
-                additional optimization potential
-                density estimation  introduces bias
+                    emit more photons and thus to get a lower variance! 
+                qq why not store first diffuse in global photon??
+                    should sample diff. ray path to decrease variance 
+                qq how can we do importance sampling in both cases? 
+                    > caustic photon mapping and global photon mapping?? ! 
+                qq when we terminate paths in both maps? 
+                    diffuse or glossy surfaces 
+                    by russian r, RR 
+                qq Photon Mapping Discussion, advantages of photon mapping x4x1
+                    +cached paths can be [reused]
+                    +allows to find light paths to find LSDSE paths, 
+                        which  are [hard to sample for BPT]
+                    +simple to be generalized to [volumetric effects]
+                    +[additional optimization] potential
+                        shadow photons
+                        use photon map for importance  sampling 
+                    -density estimation  introduces bias
                 qq pro cons for photon mapping when compared to bpt
                 1996 Jensen: Global illumination  using photon maps
                 tt must read
-                &
-                Photon Mapping GI Engine 光子贴图GI引擎
-                Irradiance Cache GI Engine 辐射缓存GI引擎
-                GI（Global Illumination）全局照明模式就是尝试模拟这种光子反弹式的物理照明过程
-                这种光子模拟过程为渲染增加了真实感，帮助数字艺术家得到更为生动、真实的画面。
-                GI也可以营造出极高质量的效果。
-                当光子碰撞到一个粗糙的表面，它就会被 随机地向各个方向散射出去，这就是所谓的Diffuse Global Illumination(漫反射全局照明)
-                当光子击中一个强烈反射或者折射的表面（如镜面或者玻璃），
-                https://pic2.zhimg.com/80/v2-2e2c27b5acbb305dc191f0b0f9dea799_1440w.jpg
-                In Redshift, all of these techniques are called “GI Engines”
-                Each GI Engine has its pros and cons. 
-                为什么要有分别独立的Primary和Secondary的GI引擎呢？Primary GI 的效果对于相机是直接可见的，所以需要尽可能地提高渲染品质级别。另一方面，Secondary GI照明往往对最终光影影响很小，所以可以用稍低的质量（可以想像成“虚化”或者“噪点”）而不会影响最终渲染质量。
-                For reasonable numbers of photons, it renders fast
-                唯一可以渲染Caustic(焦散)效果的方式。
-                Photon mapping is an outdated technique
-                Photons have to be stored in GPU memory so too many photons can be prohibitive in terms of memory usage
-                有一些光子会最终因处于摄像机外面不可见，所以系统计算处理他们花的时间以及存储它们都会是一种成的浪费
-                除非在每个像素上都使用大量采样射线，否则会产生颗粒感的图像
-                in high quality GI there are  many more final gathering rays needed  than photon
-                A speedup of a factor up to 6 can be  achieved by first tracing eye paths to  diffuse or glossy surfaces and storing  them as so called reverse photons:
-                reverse photons
-                qq the idea of reverse photon mapping? 
-                &h use reverse photons to acc. the rendering process up to factor 6 
-                &h do ray tracing path first, then photon tracing path 
+                hh 
+                    Photon Mapping GI Engine 光子贴图GI引擎
+                    Irradiance Cache GI Engine 辐射缓存GI引擎
+                    GI（Global Illumination）全局照明模式就是尝试模拟这种光子反弹式的物理照明过程
+                    这种光子模拟过程为渲染增加了真实感，帮助数字艺术家得到更为生动、真实的画面。
+                    GI也可以营造出极高质量的效果。
+                    当光子碰撞到一个粗糙的表面，它就会被 随机地向各个方向散射出去，
+                        这就是所谓的Diffuse Global Illumination(漫反射全局照明)
+                    当光子击中一个强烈反射或者折射的表面（如镜面或者玻璃），
+                    https://pic2.zhimg.com/80/v2-2e2c27b5acbb305dc191f0b0f9dea799_1440w.jpg
+                    In Redshift, all of these techniques are called “GI Engines”
+                    Each GI Engine has its pros and cons. 
+                    为什么要有分别独立的Primary和Secondary的GI引擎呢？
+                        Primary GI 的效果对于相机是直接可见的，
+                        所以需要尽可能地提高渲染品质级别。另一方面，
+                        Secondary GI照明往往对最终光影影响很小，
+                        所以可以用稍低的质量（可以想像成“虚化”或者“噪点”）而不会影响最终渲染质量。
+                    For reasonable numbers of photons, it renders fast
+                    唯一可以渲染Caustic(焦散)效果的方式。
+                    *Photon mapping is an outdated technique
+                    Photons have to be stored in GPU memory so 
+                        too many photons can be prohibitive in terms of memory usage
+                    有一些光子会最终因处于摄像机外面不可见，所以系统计算处理
+                        他们花的时间以及存储它们都会是一种成的浪费
+                    除非在每个像素上都使用大量采样射线，否则会产生颗粒感的图像
+                qq the computation time of PM? Inversed PM?? 
                 qq the computational demand for both cases?? 
+                    in high quality GI there are  many more final gathering rays 
+                        needed than photon
+                    A speedup of a factor up to 6 can be  achieved by 
+                        first tracing eye paths to  diffuse or glossy 
+                        surfaces and storing  them as so called reverse photons:
+                qq the idea of reverse photon mapping? 
+                    do eye tracing first, then photon tracing path 
+                    store inversed photon 
+                    use reverse photons to acc. the rendering process up to factor 6 
                 &h use kd-tree, there is a log facotor
                 final gathering rays
                 photons
                 &h see pic notes for answer 
-                3 nearest neighbor photons define density  estimation radius in forward photon mapping
-                estimate photon influence radii 
-                qq how to estimate photon influence radii in reversed pm?? 
-                qq how can we measure the  influences of reverse photons?? 
+                3 nearest neighbor photons define density  
+                    estimation radius in forward photon mapping
+                qq how to estimate photon influence radii in reversed pm?? op23
+                    first distributing all photons
+                    Photons are iterated again
+                qq how can we measure the influences of reverse photons?? 
                 qq the complexity for this? 
                 &h see pic 
-                Havran et al., Fast final gathering via reverse photon mapping, 2005 
                 tt must read
-                &
-                &h Lightmass???????????Photon Mapping??????
-                一开始出现的是Photon Mapping，后来有了Progressive Photon Mapping，后来才有了Stochastic Progressive Photon Mapping。
-                SPPM是PPM的改版（或者说“升级版”）。SPPM的优势是没有内存的限制。
-                能轻易捕捉到各种光照效果(比如Monte Carlo ray tracing不易捕捉到的SDS路径)
-                这主要表现为灰暗的墙角，错误的颜色辉映以及漏光等现象。
-                photon ray gathering，需要建立复杂的数据结构比如ray map。
-                紧接着，在07年由Herzog等人提出了photon ray splatting以代替photon ray gathering
-                该方法将整个光子映射算法流程倒了过来，即先进行eye tracing,再进行photon tracing。
-                这种由于密度估计范围r的不趋于零而存在的一种偏差，要解决这一问题，就必须想办法将光子数量扩大到无穷大
-                实际上，借用photon ray splatting中倒转光子映射算法流程的思想，可以破除光子映射中内存的限制，原因很简单，因为屏幕像素有限，所以要存下eye sample到内存是很轻松的事情
-                那么光子图根本就不需要存储，这样要多少光子就可以发射多少光子。
-                08年，由Hachisuka等人提出了渐进式光子映射(Progressive Photon Mapping)
-                通过第一步将eye sample组织成一个kd-tree结构，而后一轮轮地发射光子，每一轮将r减小一次，每一轮渲染一张图片。
-                由于倒转了PM算法的步骤顺序，PPM算法的光子搜集方法又从KNN变回到了直方图估计
-                但是由于PPM算法本身已经没有了光子数量的限制，所以这点劣势很容易以大量的光子数量扳回
-                有了PPM，我们甚至可以不需要final gathering，因为final gathering本身也极其耗时，且不能消除偏差
-                如果是像反走样这样简单的活还可以依靠在eye sample kd-tree中存下每个像素点的所有超采样点来完成的话，那么要模拟反射模糊，景深，运动模糊就更麻烦了
-                要模拟反射模糊，景深，运动模糊就更麻烦了
-                09年，还是Hachisuka，在PPM算法稍作改进，提出了SPPM(Stochastic Progressive Photon Mapping)，该算法与PPM不同之处在于，在每一轮光子发射完毕后重新进行一次eye tracing
-                并且每次eye tracing都带上一个随机的扰动，让每次构建的eye sample kd-tree中的数据都不一样，下图展示了这两个算法的区别：
-                这样做使得SPPM效率上略低于PPM，但是换来的是更加健壮和灵活，实际上SPPM在处理gloss反射的时候效果远好于PPM
-                11年Claude Knaus等人就证明了这种方式和PPM算法具有同样的鲁棒性，由于和标准PM算法的极其相似，所以之前在标准PM算法中可用的扩展
-                正向跟踪和逆向跟踪两种思想
-                两个方向相互对称，而它们每个都具有另一个所没有的优点，bidirectional pathtracing连接了正向与逆向两个路径
-                photon mapping同样利用了正向与逆向两个方向的信息，不仅如此，它还重用了信息(光子图)，所以一般情况下能比bidirectional pathtracing收敛更快
-                从古老的正向跟踪算法Monte Carlo Light Tracing中，可以看到正向跟踪普遍存在的问题，当场景空间很大，但是能被视点看到的部分却很小的时候，会有大量的采样点对最终图像额颜色值贡献很小甚至毫无贡献
-                受到Metropolis light transport的启发，Fan Shaohua等人于05年将Metropolis准则引入了PM算法中的photon tracing中
-                11年，Chen jiating等人在SPPM基础上加入Metropolis准则，同样提高了SPPM在这类场景的收敛速率。
-                In limit for infinitely many photons and zero KDE radius  method becomes unbiased
-                Such convergent methods  are called consistent
-                Photon mapping (PM) is biased
-                qq why Photon mapping (PM) is biased?? KDE??
-                consistent
-                qq what is consistent? convergent method??
-                Progressive Photon Mapping iterates PM with  decreasing density estimation radius such that error  converges to zero in limit
-                There are three important PPM approaches:
-                qq which three?
-                2008 Hachisuka: Progressive Photon Mapping (PPM) 
-                2009 Hachisuka: Stochastic PPM (SPPM)
-                2011 Knaus: PPM - A Probabilistic Approach (probPPM
-                the same radius update:
-                with  decreasing density estimation radius
-                error  converges to zero in limit 
-                How to store KDE radius that can be updated per iteration
+                    Havran et al., Fast final gathering via reverse photon mapping, 2005 
+                    Fast final gathering via reverse photon mapping, 2005 
+                    where reverse photon mapping achieved speedups of factors up to 6
+                qq Pseudocode of the inversed photon mapping algorithm op
+                hh
+                    一开始出现的是Photon Mapping，后来有了Progressive Photon Mapping，
+                        后来才有了Stochastic Progressive Photon Mapping。
+                    SPPM是PPM的改版（或者说“升级版”）。SPPM的优势是没有内存的限制。
+                    能轻易捕捉到各种光照效果(比如Monte Carlo ray tracing不易捕捉到的SDS路径)
+                    这主要表现为灰暗的墙角，错误的颜色辉映以及漏光等现象。
+                    photon ray gathering，需要建立复杂的数据结构比如ray map。
+                    紧接着，在07年由Herzog等人提出了photon ray splatting以代替photon ray gathering
+                    该方法将整个光子映射算法流程倒了过来，即先进行eye tracing,再进行photon tracing。
+                    这种由于密度估计范围r的不趋于零而存在的一种偏差，要解决这一问题，就必须想办法将光子数量扩大到无穷大
+                    实际上，借用photon ray splatting中倒转光子映射算法流程的思想，可以破除光子映射中内存的限制，原因很简单，因为屏幕像素有限，所以要存下eye sample到内存是很轻松的事情
+                    那么光子图根本就不需要存储，这样要多少光子就可以发射多少光子。
+                    08年，由Hachisuka等人提出了渐进式光子映射(Progressive Photon Mapping)
+                    通过第一步将eye sample组织成一个kd-tree结构，而后一轮轮地发射光子，每一轮将r减小一次，每一轮渲染一张图片。
+                    由于倒转了PM算法的步骤顺序，PPM算法的光子搜集方法又从KNN变回到了直方图估计
+                    但是由于PPM算法本身已经没有了光子数量的限制，所以这点劣势很容易以大量的光子数量扳回
+                    有了PPM，我们甚至可以不需要final gathering，因为final gathering本身也极其耗时，且不能消除偏差
+                    如果是像反走样这样简单的活还可以依靠在eye sample kd-tree中存下每个像素点的所有超采样点来完成的话，那么要模拟反射模糊，景深，运动模糊就更麻烦了
+                    要模拟反射模糊，景深，运动模糊就更麻烦了
+                    09年，还是Hachisuka，在PPM算法稍作改进，提出了SPPM(Stochastic Progressive Photon Mapping)，该算法与PPM不同之处在于，在每一轮光子发射完毕后重新进行一次eye tracing
+                    并且每次eye tracing都带上一个随机的扰动，让每次构建的eye sample kd-tree中的数据都不一样，下图展示了这两个算法的区别：
+                    这样做使得SPPM效率上略低于PPM，但是换来的是更加健壮和灵活，实际上SPPM在处理gloss反射的时候效果远好于PPM
+                    11年Claude Knaus等人就证明了这种方式和PPM算法具有同样的鲁棒性，由于和标准PM算法的极其相似，所以之前在标准PM算法中可用的扩展
+                    正向跟踪和逆向跟踪两种思想
+                    两个方向相互对称，而它们每个都具有另一个所没有的优点，bidirectional pathtracing连接了正向与逆向两个路径
+                    photon mapping同样利用了正向与逆向两个方向的信息，不仅如此，它还重用了信息(光子图)，所以一般情况下能比bidirectional pathtracing收敛更快
+                    从古老的正向跟踪算法Monte Carlo Light Tracing中，可以看到正向跟踪普遍存在的问题，当场景空间很大，但是能被视点看到的部分却很小的时候，会有大量的采样点对最终图像额颜色值贡献很小甚至毫无贡献
+                    受到Metropolis light transport的启发，Fan Shaohua等人于05年将Metropolis准则引入了PM算法中的photon tracing中
+                    11年，Chen jiating等人在SPPM基础上加入Metropolis准则，同样提高了SPPM在这类场景的收敛速率。
+                    In limit for infinitely many photons and zero KDE radius  method becomes unbiased
+                    Such convergent methods  are called consistent
+                    Photon mapping (PM) is biased
+                ---
+                qq why Photon mapping (PM) is biased?? 
+                qq what is KDE?? why can introduce bias in PM 
+                qq PM is not a convergent method??
+                qq the idea of PPM?
+                    Progressive Photon Mapping iterates PM with  
+                        [decreasing density estimation radius] such that error  
+                        converges to zero in limit
+                    Progressive Photon Mapping iterates PM with
+                        decreasing density estimation radius such that error
+                        converges to zero in limit
+                qq which three important PPM approaches are there? 
+                    2008 Hachisuka: Progressive Photon Mapping (PPM) 
+                    2009 Hachisuka: Stochastic PPM (SPPM)
+                    2011 Knaus: PPM - A Probabilistic Approach (probPPM
+                qq such three methods have the same radius update? op28 
+                    with  decreasing density estimation radius
+                    error  converges to zero in limit 
                 qq How to store KDE radius that can be updated per iteration??
-                slamcast  
-                How to combine the results of photon mapping iterations
-                qq How to combine the results of photon mapping iterations??
-                Holoportation: Virtual 3D Teleportation in Real-time
-                use reverse photons to  store KDE radius
-                reverse photons
-                store KDE radius
-                update KDE radii 
-                update KDE radi
-                per photon estimate influence radius from KDE radius of closest  reverse photons
-                add photon contribution to accumulated  radiances in influenced photons
-                &h ppm introduces lower variance 
-                reverse photons
+                    stored per reverse photon
+                qq How to combine the results of photon mapping iterations?? op29 
+                    divide summed pixel contributions by 𝑖 ⋅ 𝑀
+                        M is the number of photons generated in current iteration 
+                qq how can we reduce low frequency noise in realistic rendering? 
+                // Holoportation: Virtual 3D Teleportation in Real-time
+                hh 
+                    use reverse photons to  store KDE radius
+                    reverse photons
+                    store KDE radius
+                    update KDE radii 
+                    update KDE radi
+                    per photon estimate influence radius from KDE radius of 
+                        closest  reverse photons
+                    add photon contribution to accumulated  radiances in influenced photons
+                    *ppm introduces lower variance 
+                    reverse photons
                 qq does ppm use reverse photons?? y
-                &
                 the same rendering time
-                https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
-                https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
-                tt must read
+                tt must read 
+                    https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
+                    https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
                 qq draw a graph to illu. the PPM algorithm 
                 qq draw a graph to show SPPM algorithm
                 qq the diff. bet. PPM and SPPM??
+                    a complicated updating pass 
+                    [distributed ray tracing pass]
+                    ori:
+                        ray tracing pass + n * photon tracing pass 
+                    sppm: 
+                        ray tracing pass + n * (photon tracing pass + distributed ray tracing pass)
                 qq what is randomly gen. hit point? how it affects the rendering result?? 
-                gloss反射
+                    lower RMS error 
                 qq in what kind of scene is best suitable for SPPM??
-                qq the pipeline for each method 
-                &
+                    gloss反射
+                qq the pipeline for each method -re 
                 qq hwo can we measure rendering quality?? use 
-                &elativ
-                &e
-                qq use relative error metric
-                https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
+                    relative error metric
                 tt must read !!!
+                    https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
+                qq year of SPPM, ProbPPM? 
+                    2009, 2011 
+                ---
                 Progressive Photon Mapping: A Probabilistic Approach
                 https://www.cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
                 tt must read
-                major new contribution: proof  of consistency (convergence) 
-                &
-                幸而在08年提出的Progressive Photon Mapping将这个空间无限的要求剔除，其核心思想是颠倒了光子发射和光线跟踪计算的顺序，逐步求精计算结果
-                Finally, our approach is readily applicable to volumetric photon mapping
-                We compare our algorithm to previous progressive  photon mapping approaches and show that we achieve the same convergence to unbiased results, even without local photon statistics.
-                cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
-                https://www.cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
-                We fixed the initial radius globally
-                using a box kernel (top row)  and a Gaussian kernel (bottom row).
-                probPPM
-                numerically approximate solutions of the rendering equation [Kajiya 1986].
-                at equal computational cost, it can often produce images with less noise than other Monte Carlo algorithms
-                the expected  error of any approximation with a limited number of samples is  non-zero.
-                biased
-                The reason for the computational efficiency of photon mapping is  that it caches and reuses Monte Carlo samples.
-                This approximation, however, acts similarly to a low-pass  filter on the cached samples.
-                It always returns an overly smooth  approximation of the true radiance, and hence causes the non-zero  expected error, or bias, of the solution.
-                This bias only vanishes in  theory, if it were possible to cache an infinite number of photons.
-                a simple strategy that breaks this memory bottleneck. 
-                They incrementally update a sequence of photon mapping  results,
-                where each step in the sequence uses a limited number of  photons.
-                The key is to reduce the radius such that, in  the limit, the incremental updates converge to an exact, unbiased  solution of the rendering equation
-                The statistics include for example the  number of photons collected in the region
-                the regions are generalized to  render effects such as glossy reflections or depth of field.
-                we introduce a probabilistic derivation of progressive photon mapping
-                The key property of our approach is that it  does not require the maintenance of local statistics.
-                memoryless progressive photon mapping
-                As a benefit, we can  compute each step in parallel or with a standard photon mapper  used as a black box
-                a standard photon mapper  used as a black box
-                allows for arbitrary  kernels in the radiance estimate
-                we demonstrate that it is readily applicable to volumetric photon  mapping
-                we achieve the same convergence to unbiased results,  even without local statistics.
-                In summary, we make the following contributions:
-                a memoryless algorithm that does not require the maintenance  of statistics,
-                and is trivial to extend to  volumetric photon mapping.
-                Volumetric Progressive Photon Mapping. One of the main advantages of our derivation is that its extension to volumetric progressive photon mapping is trivial
-                qq the idea of probPPM
-                qq what is the main contribution of it?? probPPM!
-                globally const or per pixel  KDE radius 
-                &h donnot  use local statictics any more and can be easily adapted to volumetric case
-                . There  is no need to store local statistics
-                The iterations of the main loop are independent and can be performed in parallel. 
-                all pixels 
-                box kerne
-                The Gaussian  kernel leads to slightly smoother results with similar bias.
-                In other words, our approach includes the stochastic PPM  scenario
-                using a conventional photon mapper used as a black box. 
-                ProbPPM Comparison of Kernels
-                VERTEX CONNECTION AND  MERGING (VCM)
-                &p hard to fully understand, we have to read PPM first! PPM->SPPM->probPPM
-                &h main contribution of probPPM is parallel
-                Vertex Connection and Merging
-                combines stochastic PPM with bidirectional path tracing  such that advantages of both methods are exploited
-                Vertex Connection and Merging
-                qq the idea of Vertex Connection and Merging
-                &h combination of BPT nad PPM and take their advantages 
-                https://cgg.mff.cuni.cz/~jaroslav/papers/2012-vcm/2012-vcm-paper.pdf
-                tt must read !!
-                first PPM is reformulated in formalism of BPT and then  integrated via multiple importance sampling 
-                qq first PPM is reformulated in formalism of BPT and then
-                &integrated via multiple importance sampling
-                qq how to understand this??
-                stochastic PPM
-                bidirectional path tracing 
-                BPT ? vertex Connection (VC) 
-                PM ? Vertex Merging (VM)
-                vertex Connection
-                qq what is  vertex Connection process actually?? BPT 
-                qq  and for vertex merging?? PM !
-                &h many ways exits when computing a ray path from light to eye!!! so use MIS in between!
-                REAL-TIME PM
-                https://dl.acm.org/doi/pdf/10.1145/1572769.1572783
-                tt must read
-                http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
-                tt must read
-                BSDF是普遍意义上的说法，反映光入射与出射的强度对应关系。
-                可以通过BxDF以及入射，出射角度计算光的强度
-                BSDF可以认为包含了BRDF和BTDF，BRDF是反射而BTDF是透射
-                BSDF = BRDF+BTDF，下图直观上描述了BSDF,BRDF的意义以及二者关系
-                https://pic3.zhimg.com/80/8c60f94b8b6f430fc5dcb41068770454_1440w.jpg
-                BRDF
+                qq major new contribution of probPPM? 
+                    *based on a probabilistic derivation
+                        a new formulation of progressive photon mapping
+                        proof of consistency (convergence) 
+                    *allows for arbitrary kernels
+                        without local photon statictics
+                hh
+                    幸而在08年提出的Progressive Photon Mapping将这个空间无限的要求剔除，
+                        其核心思想是颠倒了光子发射和光线跟踪计算的顺序，逐步求精计算结果
+                    Finally, our approach is readily applicable to volumetric photon mapping
+                    We compare our algorithm to previous progressive  
+                        photon mapping approaches and show that we 
+                        achieve the same convergence to unbiased results, 
+                        even without local photon statistics.
+                    https://www.cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
+                    We fixed the initial radius globally
+                    using a box kernel (top row)  and a Gaussian kernel (bottom row).
+                    numerically approximate solutions of the rendering equation [Kajiya 1986].
+                    at equal computational cost, it can often produce images with less noise than other Monte Carlo algorithms
+                    the expected  error of any approximation with a limited number of samples is  non-zero.
+                    biased
+                    The reason for the computational efficiency of photon mapping is  that it caches and reuses Monte Carlo samples.
+                    This approximation, however, acts similarly to a low-pass  filter on the cached samples.
+                    It always returns an overly smooth  approximation of the true radiance, and hence causes the non-zero  expected error, or bias, of the solution.
+                    This bias only vanishes in  theory, if it were possible to cache an infinite number of photons.
+                    a simple strategy that breaks this memory bottleneck. 
+                    They incrementally update a sequence of photon mapping  results,
+                    where each step in the sequence uses a limited number of  photons.
+                    The key is to reduce the radius such that, in  the limit, the incremental updates converge to an exact, unbiased  solution of the rendering equation
+                    The statistics include for example the  number of photons collected in the region
+                    the regions are generalized to  render effects such as glossy reflections or depth of field.
+                    we introduce a probabilistic derivation of progressive photon mapping
+                    The key property of our approach is that it  does not require the maintenance of local statistics.
+                    memoryless progressive photon mapping
+                    As a benefit, we can  compute each step in parallel or with a standard photon mapper  used as a black box
+                    a standard photon mapper  used as a black box
+                    allows for arbitrary  kernels in the radiance estimate
+                    we demonstrate that it is readily applicable to volumetric photon  mapping
+                    we achieve the same convergence to unbiased results,  even without local statistics.
+                    In summary, we make the following contributions:
+                    a memoryless algorithm that does not require the maintenance  of statistics,
+                    and is trivial to extend to  volumetric photon mapping.
+                    Volumetric Progressive Photon Mapping. One of the main advantages of our derivation is that its extension to volumetric progressive photon mapping is trivial
+                qq the idea of probPPM -re
+                qq what is the main contribution of it?? probPPM! -re 
+                    globally const or per pixel  KDE radius 
+                    &h donnot  use local statictics any more and can be easily adapted to volumetric case
+                    . There  is no need to store local statistics
+                    The iterations of the main loop are independent and can be performed in parallel. 
+                    all pixels 
+                    box kerne
+                    The Gaussian  kernel leads to slightly smoother results with similar bias.
+                    In other words, our approach includes the stochastic PPM  scenario
+                    using a conventional photon mapper used as a black box. 
+                    ProbPPM Comparison of Kernels
+                    &p hard to fully understand, we have to read PPM first! PPM->SPPM->probPPM
+                    *main contribution of probPPM is parallel
+                ---VERTEX CONNECTION AND  MERGING (VCM)
+                qq idea of Vertex Connection and Merging
+                    combines stochastic PPM with bidirectional path tracing  
+                        such that advantages of both methods are exploited
+                    first PPM is reformulated in formalism of BPT and then  
+                        integrated via multiple importance sampling 
+                *https://cgg.mff.cuni.cz/~jaroslav/papers/2012-vcm/2012-vcm-paper.pdf
+                    tt must read !!
+                    while PPM has difficulties in handling the illumination coming 
+                        from the room seen in the mirror
+                    stochastic PPM
+                    bidirectional path tracing 
+                    BPT ? vertex Connection (VC) 
+                    PM ? Vertex Merging (VM)
+                    vertex Connection
+                qq the MIS formulation of VC and VM 
+                &h many ways exits when computing a ray path from 
+                    > light to eye!!! so use MIS in between!
+                ---REAL-TIME PM
+                    https://dl.acm.org/doi/pdf/10.1145/1572769.1572783
+                    tt must read
+                    http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
+                    tt must read
+                qq bsdf = ? + ? 
+                    BSDF是普遍意义上的说法，反映光入射与出射的强度对应关系。
+                    可以通过BxDF以及入射，出射角度计算光的强度
+                    BSDF可以认为包含了BRDF和BTDF，BRDF是反射而BTDF是透射
+                    BSDF = BRDF+BTDF，
+                        下图直观上描述了BSDF,BRDF的意义以及二者关系
+                    https://pic3.zhimg.com/80/8c60f94b8b6f430fc5dcb41068770454_1440w.jpg
+                    BRDF
                 qq what is the parameter of brdf?
-                qq what is the diff. bet. brdf and bsdf? and btdf ?? and bxdf???
+                qq what is the diff. bet. brdf and btdf? 
         ql official--with answer 
             //you should be able to explain a [given] rendering/ dynamic equation
             Explain algorithmic techniques
@@ -4889,7 +4950,8 @@
                     Impulsübertrag, the change of impulse
                 qq what are kinetic and dynamic viscosity?
                 qq what are incompressible fluids?
-    ---summ.
+        ql picture notes! 
+    ---summ. active mode 
         idea, hlev understanding 
             take away knowledge:
                 lev4* computational methods  
