@@ -4793,6 +4793,7 @@
                     A progressive variant has recently drawn attention with its ability to converge  with a bounded memory footprint
                     Moreover, an adaptation of these heuristics to glossy reflectance is not obvious
                     //only be replicated using an anisotropic model.
+                    http://resources.mpi-inf.mpg.de/departments/d4/teaching/ws200708/cg/slides/CG07-Brdf+Texture.pdf
 
                 qq the MIS formulation of VC and VM 
                 &h many ways exits when computing a ray path from 
