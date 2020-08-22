@@ -3526,9 +3526,25 @@
                 scalar BRDFs are defined implicitly
                 When looking towards light source above a reflecting  sources
                 Phong model is unrealistically
+                spectral coefficient times scalar BRDF
+                qq compare diffuse, glossy and mirror reflaction with a graph 
+                qq what is the diff, bet. glossy and specular reflaction?
+                qq computing reflected radiance from incoming radiance 
+                    > for the following model: Lambertian, phong model, blinn-phong model 
+                    > op07 large 
+                qq what is v here? 
+                    visibility check 
+                qq how can we compute omega_half?  
                 qq when is Phong model is unrealistically? why pp
-                    ooking towards light source above a reflecting
-                qq compare white-sky albedo and black-sky  albedo 
+                    looking towards light source above a reflecting
+                qq compare white-sky albedo and black-sky albedo, large 
+                    integrating over all outgoing direction yields blacksky-albedo
+                        0, corresponding to a black body that absorbs all incident radiation, to 
+                        1, corresponding to a body that reflects all incident radiation. 
+                    the actual albedo {\displaystyle {\alpha }}{\alpha } 
+                        (also called blue-sky albedo) can then be given as a linear combination of the both 
+                        albedo 
+                qq what is blue-sky albedo? 
                 measure of the diffuse reflection of solar radiation out of the total 
                     solar radiation and measured on a scale from 0
                 absorbs all incident radiation,
@@ -3574,7 +3590,7 @@
                 http://www.thetenthplanet.de/archives/255
                 tt must read
                 normalization constants
-                qq compute the  normalization constants!! op11
+                qq compute the normalization constants!! op11
                 qq how can we make Phong model more realistic? 
                     by modifing its equ. with physical constrains! 
                         Helmholtz-Reciprocity (HR): 
@@ -3582,7 +3598,7 @@
                 qq what is normal distribution function (NDF)
                     ??????(Normal Distribution Function,???NDF
                     法向分布函数
-                    向NDF输入一个朝向[公式]，NDF会返回朝向是[公式]的微表面数占微表面总数的比例
+                    向NDF输入一个朝向omega，NDF会返回朝向omega的微表面数占微表面总数的比例
                     https://zhuanlan.zhihu.com/p/21376124
                 laser microstructured  steel surface
                 red beech wood
@@ -3599,6 +3615,7 @@
                 https://inst.cs.berkeley.edu/~cs283/sp13/lectures/cookpaper.pdf
                 Microfacet Models
                 &p pp op21
+                qq cook torrance brdf equ.? write down! 
                 qq how can we simulate/approximate materials with multiple layers
                     affine combinations of several distributions
                 qq what can be included in the geometry term? x2 
