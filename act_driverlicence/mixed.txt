@@ -3776,6 +3776,13 @@
                     manual gearbox 
                     refuse truck
                     the danger of tipping over 
+    *** 如何准备！
+        总结错误，上车训练
+        google map上训练
+        训练听力，youtube，从网上看tippen
+        -Fahrapp 里面的视频！ 
+        了解各种车型！ 口令！ 
+
     * 路考经验
         -erst blick
             你可以无照被抓了以后说你有国内的驾照，你只是来这里读书，你把你学校和教授的联系方式给警察，然后你去大使馆开一张证明，证明你在国内有驾照，但你要跟警察说明，你只是来读书，这些情况以后不会再发生，其实只要你好好说，不要急不要跟人吵，警察看你一个学生一般都会放过你的，不用太担心
@@ -3824,7 +3831,7 @@
             英语学习软件现在还有么？给的那个“其他途径”现在用不了= =
             大鹏兄，我是德、英语双盲，思前顾后选了德语版。各位有什么好招？谢谢了！ 
         *整体印象
-            熟练，安全！习惯！气场很重要，其他都是浮云。 tobetrained
+            熟练，安全！习惯！细节！ 气场很重要，其他都是浮云。 tobetrained
         转向灯
             开左转向灯（表示请求主道路权）
             并入主线
@@ -3909,14 +3916,14 @@
                     有条有理，每一个动作都是可解释的！
                 *30区与50区标定？？30，50，120？ 我在哪？限速多少？ tobetrained
                     认定是30区，标定x4 
-                        倒三角
-                        终止路牌（在左边！）
-                        下一个路口先行标志
-                        后视镜观察，应该有相应出30区标志
+                        中间：下一个路口先行标志
+                            房子多，车道窄
+                        刚进入：后视镜观察，应该有相应出30区标志
+                        出口：倒三角, 终止路牌（在左边！）
                     认定50区，标定x3 
-                        黄色先行权标志，Vorfahrtstraße
-                        道路两边有30区入口标志，说明现在是50区
-                        限速30的牌子，一定不是30区（不然没必要吧...）其实这条未必准确！ 
+                        中间：黄色先行权标志，Vorfahrtstraße
+                        中间：限速30的牌子，一定不是30区（不然没必要吧...）其实这条未必准确！ 
+                        出口：道路两边有30区入口标志，说明现在是50区
                 30区让让让！ 
                 后面来车？
                 转弯？行人？自行车？
@@ -3927,9 +3934,31 @@
                 首先是wahrnehmung, 首先做样子也要做出来！
                     *schulterblick类似的，我们应该【俯身张望！】
                 注意路牌上的时间
-            特殊情形mixed：
-                有镜子一定要明显得看 lev1 tobetrained
-                dekra门口那个30区特别大！！！ lev1 tobetrained
+            细节mixed：
+                高速要到六档 sev-tobetrained
+                迅速变道 sev-tobetrained
+                有镜子一定要明显得看 sev-tobetrained
+                我家那块，要让行！ sev-tobetrained 
+                下高速别变道！ 如果在sudhohe这块！ tobetrained
+                直行的话要变道！ 在dekra那边！ 注意看路牌！ tobetrained
+                侧方停车向后看 sev-tobetrained
+                调整的时候不要再开回主道了 sev-tobetrained
+                stop要注意，在sichtlinie sev-tobetrained 
+                dekra对面那个30区特别大！！！ sev-tobetrained
+                不要schneiden那个fahrban sev-tobetrained
+                如果有LKW在超车，要观察到 tobetrained
+                红绿灯转弯转头？ tobetrained
+                公交车车站附近是30！höchstens 20 bis 30 km/h vorbeifahren  sev-tobetrained
+                倒车可以看那个电子的！ sev-tobetrained
+                做好抬头动作！！ 和转头一样形成习惯！ sev-tobetrained
+                铁轨无灯或灯灭两侧张望，减速 tobetrained
+                特别是Landstrasse，进城看见黄牌迅速降到三档， tobetrained
+                Richts oder links? 要问 tobetrained
+                ---
+                高速至少80
+                右侧不用让！abknikende vorfahrtstrasse
+                注意那是一个大30区，有时候有下一个路口先行权 
+                向右非字型停车的时候左边1.5m tobetrained
                 dekra门口是一个ausfahrt
                 转弯以后加油站是ausfahrt不用让行
                 Strehlener Platz比较复杂，沿着先行权的时候别忘了打灯
@@ -3940,10 +3969,8 @@
                 倒车的时候看好了再倒，万一是马路牙子呢？？ tobetrained
                 严格按照限速来，停车场最多是10！ 一档出溜 
                 刹车要刹出ABS来！ 
-                公交车车站附近是30！höchstens 20 bis 30 km/h vorbeifahren tobetrained
                 kerb stein的时候相当于vorfahrt gewaren tobetrained
                 速度问题，每一段都是连接起来的！ 哪里是70哪里是50哪里是30你心里应该有数！！
-                倒车可以看那个电子的！tobetrained
                 不一定是怎么掉头，一共有三种，不一定哪一种
                 看到右转箭头直接打灯，提前打灯
                 一定注意看路牌！
@@ -4016,7 +4043,15 @@
                 不然路上你会被各种欺负，电瓶车都欺负你。
                 国内开一次车按喇叭次数赶上我在国外一年
                 迅速变道 tobetrained
-    
+            训练听力，youtube，从网上看tippen
+                RvL， 30zone
+                STOP schild 
+                公交车站  25km/h 
+                人行道，尤其是转弯以后
+                fahrrad uberholen 
+                warten, stehen bleiben, sicher 
+
+
     * 附加知识zusatz lernen 
         大灯
             大灯主要有三种：卤素大灯、氙气大灯、LED大灯。

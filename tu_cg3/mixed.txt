@@ -36,7 +36,7 @@
         4. active mode! 
     ---preview
         extended know. search online, as prepare and concreate understanding 
-            ---from interest
+            from interest
                 //用于提升兴趣
                 数值方法
                 数值优化
@@ -55,7 +55,7 @@
                 黎曼求解器
 
                 矩阵论
-            ---from slides detail
+            from slides detail
                 渲染材质
                 brdf材质
                 smoke simulation paper 
@@ -77,7 +77,7 @@
                         too slow or suffer from too much numerical dissipation.
                     numerical dissipation
     ---detailview
-        re-slides-intro 
+        re-ok- slides-intro 
             Physically
             Physically Based Graphics
             tt paper http://blog.mmacklin.com/project/flex
@@ -287,7 +287,7 @@
                         optimization  
                     simulation oomi 
                             computational (lower level, components of opti.)
-        phy 
+        ---phy 
             re-ok- slides-1 CG3_01_Physically-Based-Simulation
                 prev. 
                     *rendering equation 
@@ -377,32 +377,32 @@
                         https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations
                         later      
                 ql 
-                    what is the equation of harmonic oscillator?  p4 
-                    solve? 
-                    rewrite with state vector 
-                    when using numeric method, there will be err, 
-                        how can we know that? 
-                        how to solve? x2 p5 
-                    physical quantities and their relationship? -large 
-                    how derived units can be written?? in terms of base units x7+1 p7 
-                    What unit has damping constant? p8 
-                    how units can be used? x2 p8 
-                        derive units of physical constants
-                    how can we validate physical formulas??
-                    the case of a sphere? p9 
-                    solid angle def.? 
-                    the unit of solid angle?? p9 
-                    extended units and their expression with standard units p11
+                    qq what is the equation of harmonic oscillator?  p4 
+                    qq solve? 
+                    qq rewrite with state vector 
+                    qq when using numeric method, there will be err, 
+                        > how can we know that? 
+                        > how to solve? x2 p5 
+                    qq physical quantities and their relationship? -large 
+                    qq how derived units can be written?? in terms of base units x7+1 p7 
+                    qq What unit has damping constant? p8 
+                    qq how units can be used? x2 p8 
+                        > derive units of physical constants
+                    qq how can we validate physical formulas??
+                    qq the case of a sphere? p9 
+                    qq solid angle def.? 
+                    qq the unit of solid angle?? p9 
+                    qq extended units and their expression with standard units p11
                         steradian? newton? 
                         Pascal? Joule? 
-                    drive nondimensionalization of damped harmonic oscillator p14 
+                    qq drive nondimensionalization of damped harmonic oscillator p14 
                         首先找出谁是变量，对变量做代换，引入一个常量（和变量同单位的）
                             这样一除就可以得到一个无量纲的
-                        why damping ratio is unit free? 
-                    a few characteristic unit free parameters, why are they useful? 
-                    how density is defined? trible derivative? op18 
-                        convert from and to density and mass? 
-                    what is Eulerian and Lagragian view of a sys.? p19
+                        > why damping ratio is unit free? 
+                    qq a few characteristic unit free parameters, why are they useful? 
+                    qq how density is defined? trible derivative? op18 
+                        > convert from and to density and mass? 
+                    qq what is Eulerian and Lagragian view of a sys.? p19
                         1.discretized specification, based on grids or meshes 
                             typically FEM can be used
                             2.fields are easy to implement 
@@ -411,43 +411,43 @@
                             a particle simulation usually performed  
                             2.conceptually simple
                             set of particles
-                    convert from above one to an other? p20 
+                    qq convert from above one to an other? p20 
                         interpreting density as particle probability and sampling
-                    how forces can be computed ? p21 
-                    what is gradient?
+                    qq how forces can be computed ? p21 
+                    qq what is gradient?
                         a vector whose components are the partial derivatives of!
-                    what is Conservative Force def.??
-                    what is gradient theorem? 
+                    qq what is Conservative Force def.??
+                    qq what is gradient theorem? 
                         work done is path independent, and just 
                         potential difference of path end points
-                    the condition that the force is conservative?? 
+                    qq the condition that the force is conservative?? 
                         curl vanishes 
-                    how to compute curl? wiki 
-                    compute the work done by force f from x1 to x2 p22 
-                    the equ. of solid angle?? wrt. theta phi p23 
-                    &h The solid angle corresponding to all directions is 4pi
-                    proof that oumiga all = 4*pi p24 
-                    eular Lagrange equation? describing a harmonic oscillator p29 
-                    Lagrangian of a whole sys. ? p28 
-                    action S of a sys. ? p28 ?? pp
-                    what is the principle of stationary action?
-                    what are typical Conserved quantities? p32 
-                    diff. integration methods and their properties, 
-                        stable? preserve energy?... 
-                        show them shortly,and the pic  
+                    qq how to compute curl? wiki 
+                    qq compute the work done by force f from x1 to x2 p22 
+                    qq the equ. of solid angle?? wrt. theta phi p23 
+                    qq &h The solid angle corresponding to all directions is 4pi
+                    qq proof that oumiga all = 4*pi p24 
+                    qq eular Lagrange equation? describing a harmonic oscillator p29 
+                    qq Lagrangian of a whole sys. ? p28 
+                    qq action S of a sys. ? p28 ?? pp
+                    qq what is the principle of stationary action?
+                    qq what are typical Conserved quantities? p32 
+                    qq diff. integration methods and their properties, 
+                        > stable? preserve energy?... 
+                        > show them shortly,and the pic  
                         p33 
-                    quantities that are conserved, due to spatial and temporal symmetries in the laws of physics....
-                    flux def.? p34 
-                    velocity field def. p34
-                    function for both integral form and differential form. 
-                    why no source term in conserved quantities? 
-                    what is continuity equation used for? p35 
+                    qq quantities that are conserved, due to spatial and temporal symmetries in the laws of physics....
+                    qq flux def.? p34 
+                    qq velocity field def. p34
+                    qq function for both integral form and differential form. 
+                    qq why no source term in conserved quantities? 
+                    qq what is continuity equation used for? p35 
                     qq diff. bet. gradiant/ divergence/ curl operators??
                         https://en.wikipedia.org/wiki/Del#Divergence
                         The divergence of a vector field
                         is a scalar function
-                        qq The formula for the vector product??
-                        qq product rule??
+                    qq The formula for the vector product??
+                    qq product rule??
                 r1
                     Hook‘s law
                     Harmonic Oscillator
@@ -2356,7 +2356,7 @@
                    > how to understand this??
                    ok
                 qq why not use regular grids? when will cause prob.? in which cases?? op46
-        realistic rendering 
+        ---realistic rendering 
             re-ok- slides-2 CG3_02_Rendering-Equation
                 prev. 
                     ray tracing 
@@ -2538,33 +2538,33 @@
                         考虑了入射点以及出射点不同的情况
                         qq derive the reflaction/transmission equation with brdf and bssrdf?? 
                 ql 
-                    why we need Ambient Occlusion? 
-                    basic rendering equation p10(transport equation, directional form)
-                        explain the meaning of them p12 
-                    rendering equation II, area formulation. with visibility check p16 
-                    operator form p17 
-                        what means double reflaction of emitted light? in equation. p17 
-                    refined with D,S,M... p18 
-                    mark them p19 
-                    measurement equation calculating brightness of a pixel? p20 
-                        what is spectral efficiency? 
-                        spatial power? 
-                    spectral importance function? p21 
-                    speed and energy of a tiny photon
-                    calcu. of photon energy p25 
-                    Spectral Energy Density of diff. light source judge. p26 
-                    def. of radiance and irradiance p27 p28 
-                    how comes the integration part in rendering equation? p29 
-                    def. of BRDF p29 
-                    diffuse brdf? p30 
-                    Without volumetric scattering, the radiance is constant along rays? 
-                    brdf relates incoming irradiance with outgoing radiance? 
-                    BRDFs can be analyzed by integrating over one  directional argument. Integration over outgoing  
-                        directions yields directional hemispherical reflections  that must be ≤ 1.
-                        why? p32 
-                    steps to Solve the Rendering Equation p34 x4 
-                        the linear sys. p34 
-                    the steps of Bidirectional Path-Tracing p35 
+                    qq why we need Ambient Occlusion? 
+                    qq basic rendering equation p10(transport equation, directional form)
+                        > explain the meaning of them p12 
+                    qq rendering equation II, area formulation. with visibility check p16 
+                    qq operator form p17 
+                        > what means double reflaction of emitted light? in equation. p17 
+                    qq refined with D,S,M... p18 
+                    qq mark them p19 
+                    qq measurement equation calculating brightness of a pixel? p20 
+                        > what is spectral efficiency? 
+                        > spatial power? 
+                    qq spectral importance function? p21 
+                    qq speed and energy of a tiny photon
+                    qq calcu. of photon energy p25 
+                    qq Spectral Energy Density of diff. light source judge. p26 
+                    qq def. of radiance and irradiance p27 p28 
+                    qq how comes the integration part in rendering equation? p29 
+                    qq def. of BRDF p29 
+                    qq diffuse brdf? p30 
+                    qq Without volumetric scattering, the radiance is constant along rays? 
+                    qq brdf relates incoming irradiance with outgoing radiance? 
+                    qq BRDFs can be analyzed by integrating over one  directional argument. Integration over outgoing  
+                        > directions yields directional hemispherical reflections  that must be ≤ 1.
+                        > why? p32 
+                    qq steps to Solve the Rendering Equation p34 x4 
+                        > the linear sys. p34 
+                    qq the steps of Bidirectional Path-Tracing p35 
                 r1 
                     basic radiometry and hemispherical reflectance
                     Kajiya, J. T. (1986). The Rendering Equation.
@@ -2992,30 +2992,30 @@
                         *用于递归深度的控制，一句话就ok  
                         used to control the depth of recur. of the ray traveling through the scene       
                 ql 
-                    the operator form of the rendering equ. ? op4, i wrote 
-                    what is the meaning of each compon. ? s3op6, i wrote 
-                    trace-reflection operator? s2p18
-                    splitting of the BRDF  s2p18
-                    what is measurement operator? p4 
-                    explain the dimensional explosion p6 
-                    how can we solve a integral numerically? p6 x4 methods... roughly 
-                    what is a quadrature rule 
-                    why single sample estimator funcs? p9 
-                    why choose p(x) proportional to f(x)? p9 
-                    what is importance sampling ? p9 
-                    how does Monte Carlo Techniques solved the problem of the curse of dimensionality? p11 
-                    why we use importance sampling? 
-                    what is the equ. applying to reflaction integral? p17 
-                    how can one compute Lin recur.in p17? code online 
-                    why not use fixed termination depth? p18 
-                    proof that the exp. value will stay the same! p18 
-                    how to implement russian roulette? p21 
-                    explain the given code p19-21 
-                    why sampling? p27 
-                    explain code p29 
-                    how to sample when there are a lot of light sources? p30 
-                    what is path tracing p31 
-                    the monte carlo case of path tracing p32 formula
+                    qq the operator form of the rendering equ. ? op4, i wrote 
+                    qq what is the meaning of each compon. ? s3op6, i wrote 
+                    qq trace-reflection operator? s2p18
+                    qq splitting of the BRDF  s2p18
+                    qq what is measurement operator? p4 
+                    qq explain the dimensional explosion p6 
+                    qq how can we solve a integral numerically? p6 x4 methods... roughly 
+                    qq what is a quadrature rule 
+                    qq why single sample estimator funcs? p9 
+                    qq why choose p(x) proportional to f(x)? p9 
+                    qq what is importance sampling ? p9 
+                    qq how does Monte Carlo Techniques solved the problem of the curse of dimensionality? p11 
+                    qq why we use importance sampling? 
+                    qq what is the equ. applying to reflaction integral? p17 
+                    qq how can one compute Lin recur.in p17? code online 
+                    qq why not use fixed termination depth? p18 
+                    qq proof that the exp. value will stay the same! p18 
+                    qq how to implement russian roulette? p21 
+                    qq explain the given code p19-21 
+                    qq why sampling? p27 
+                    qq explain code p29 
+                    qq how to sample when there are a lot of light sources? p30 
+                    qq what is path tracing p31 
+                    qq the monte carlo case of path tracing p32 formula
                 r1 
                     qq measurement equ in operator form and rendering equ. op4 
                         measurement  operator 
@@ -3235,11 +3235,11 @@
             re-ok- slides-4 CG3_04_Sampling-Techniques
                 ql 
                     // transfer to the pdf file in this folder , start from slide 4 
-                    how does nrook sampling work? p3
-                    how one can gen. random shaffed vector? p3
-                    what means caustic ?
-                    how to gen. uniformly distributed random points with shuffe in c++ p4 
-                    what means sampling in regular grids ? p5 
+                    qq how does nrook sampling work? p3
+                    qq how one can gen. random shaffed vector? p3
+                    qq what means caustic ?
+                    qq how to gen. uniformly distributed random points with shuffe in c++ p4 
+                    qq what means sampling in regular grids ? p5 
                     ..it is possi. when you get used to it, it will be faster 
                     https://onedrive.live.com/view.aspx?resid=9712B8A082E369A%211407&id=documents&wd=target%28%E5%BF%AB%E9%80%9F%E7%AC%94%E8%AE%B0.one%7C0BE32A9B-AC05-4328-847D-6AF52075C99B%2F%E6%97%A0%E6%A0%87%E9%A2%98%E9%A1%B5%7C2FB0ABD7-9762-455D-9478-7562C513D45F%2F%29
                     onenote:https://d.docs.live.net/09712b8a082e369a/zhongyuan%20的笔记本/快速笔记.one#section-id={0BE32A9B-AC05-4328-847D-6AF52075C99B}&page-id={2FB0ABD7-9762-455D-9478-7562C513D45F}&end
@@ -3631,6 +3631,7 @@
                 **https://zhuanlan.zhihu.com/p/57032810
                 qq explain the terms in cook Torrance bsdf! op19 
                 qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
+                qq how can we compute the Geometry Term? which three cases are there? draw to illustrate! 
                 qq standerd solutions in applications?
                     Schlick 的 Fresnel 近似
                     UE4的方案采用的 Schlick-GGX
@@ -4830,9 +4831,9 @@
                     BRDF
                 qq what is the parameter of brdf?
                 qq what is the diff. bet. brdf and btdf? 
-        ql official--with answer 
+        ---ql official--with answer 
             //you should be able to explain a [given] rendering/ dynamic equation
-            Explain algorithmic techniques
+            <> Explain algorithmic techniques
                 qq path, light and bidirectional path tracing
                 qq idea of multiple importance sampling according to brdf and L_in
                 qq idea of multiple importance sampling in BPT
@@ -4850,7 +4851,7 @@
                 qq How can one avoid collisions in a rigid body simulator?
                 qq What is contact point and what kind of non-degenerate contacts 
                     exist for polygonal meshes?
-            Explain math
+            <> Explain math
                 qq integration over solid angle
                 qq Monte Carlo (MC) estimation of integral
                 qq variance, bias
@@ -4875,7 +4876,7 @@
                 qq how does the pressure update work for incompressible fluids?
                 qq what are the different boundary conditions used in fluid simulation?
                 qq how do we interpolate attributes in SPH simulation?
-            Explain physics
+            <> Explain physics
                 qq unit, idea of non-dimensionalization
                 qq Noether theorem
                 qq radiometry: energy, power, radiosity and irradiance, 
@@ -4911,88 +4912,7 @@
                     Impulsübertrag, the change of impulse
                 qq what are kinetic and dynamic viscosity?
                 qq what are incompressible fluids?
-        ql official--practice mode 
-            //you should be able to explain a [given] rendering/ dynamic equation
-            Explain algorithmic techniques
-                qq path, light and bidirectional path tracing
-                qq idea of multiple importance sampling according to brdf and L_in
-                qq idea of multiple importance sampling in BPT
-                qq direct and indirect light sampling
-                qq final gathering
-                qq photon mapping
-                qq reverse photon mapping
-                qq progressive photon mapping
-                qq vertex merging
-                qq general idea of gammaton tracing
-                qq idea behind boids
-                qq how to simulate a piece of cloth with a particle system?
-                qq Why do stiff springs cause problems?
-                qq How to model hysteresis in cloth simulation?
-                qq How can one avoid collisions in a rigid body simulator?
-                qq What is contact point and what kind of non-degenerate contacts 
-                    exist for polygonal meshes?
-            Explain math
-                qq integration over solid angle
-                qq Monte Carlo (MC) estimation of integral
-                qq variance, bias
-                qq when is MC better than Rieman Integration?
-                qq MC estimation of reflection integral
-                qq idea of importance sampling
-                qq Russian Roulette
-                qq Nusselt’s analogon
-                qq uniform, rejection, N-rooks, transformation sampling
-                qq What parts of the reflection integral in directional form can be importance sampled?
-                qq ordinary and partial differential equations
-                qq reduction to order one system of ODEs
-                qq explicit, implicit, symplectic Euler
-                qq A-stabel
-                qq general idea behind step width adaptation
-                qq how to find the best integrator for a given problem?
-                qq what is numerical dissipation and how does it influence 
-                    numerical methods for solving incompressible
-                    Navier Stokes equations?
-                qq what is the splitting trick when solving ODEs?
-                qq how can the advection step be approached in a semi-Lagragian manner?
-                qq how does the pressure update work for incompressible fluids?
-                qq what are the different boundary conditions used in fluid simulation?
-                qq how do we interpolate attributes in SPH simulation?
-            Explain physics
-                qq unit, idea of non-dimensionalization
-                qq Noether theorem
-                qq radiometry: energy, power, radiosity and irradiance, 
-                    radiance (incoming vs outgoing), brdf, albedo,
-                    potential, spectral quantities
-                qq rendering equation in directional, area formulation and 
-                    operator form, light path regular expressions
-                qq geometry factor and visibility
-                qq emitted radiance of light source, sensor efficiency and 
-                    measurement equation
-                qq brdf properties: Helmholtz reciprocity, energy conservation
-                qq how to make Phong and Blinn-Phong brdfs physically plausible?
-                qq explain microfacette models on a coarse level, 
-                    what are the individual parts?
-                qq what do the Fresnel coefficients describe?
-                qq what is an anisotropic brdf, what an isotropic?
-                qq how to measure a brdf?
-                qq how to represent a measured brdf efficiently?
-                qq What is a bssrdf?
-                qq quantities: mass, acceleration, momentum, (conservative) force. 
-                    energy (kinetic, potential)
-                qq what different forces do you know?
-                qq inertia moment, inertia tensor, vector representation of angular velocity, 
-                    angular acceleration, torque,
-                    rotational kinetic energy
-                    --derivative from time to time, the idea of the Sequential impulse loop/ algorithm 
-                qq how can pose of rigid body be described
-                qq how does pose evolve over time without friction?
-                qq how does orientation chance in dependence of angular velocity?
-                qq how do forces applied to a point on a rigid body act on its linear and angular velocities?
-                qq what is a “Kraftstoß” and how does it help to compute the 
-                    change in momentum during a rigid body
-                    Impulsübertrag, the change of impulse
-                qq what are kinetic and dynamic viscosity?
-                qq what are incompressible fluids?
-        ql picture notes! 
+        ---+ql picture notes! 
     ---summ. active mode 
         idea, hlev understanding 
             take away knowledge:
