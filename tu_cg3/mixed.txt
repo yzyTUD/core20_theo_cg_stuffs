@@ -8,7 +8,7 @@
         computational mechanics
         computational fluids 
         recent realistic rendering papers 
-            sppm/ ppm/ pm/ ... advanced methods 
+            sppm/ ppm/ pm/ ... advanced methods  
     +https://tu-dresden.de/ing/informatik/smt/cgv/studium/lehrveranstaltungen/ws1920/cg3
         it is about global illumination, physically based simulation
         phy. rendering 
