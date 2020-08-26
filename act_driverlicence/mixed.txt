@@ -3831,7 +3831,7 @@
             英语学习软件现在还有么？给的那个“其他途径”现在用不了= =
             大鹏兄，我是德、英语双盲，思前顾后选了德语版。各位有什么好招？谢谢了！ 
         *整体印象
-            熟练，安全！习惯！细节！ 气场很重要，其他都是浮云。 tobetrained
+            熟练，细节！合理张望！ 气场很重要，其他都是浮云。 tobetrained
         转向灯
             开左转向灯（表示请求主道路权）
             并入主线
@@ -3954,7 +3954,18 @@
                 铁轨无灯或灯灭两侧张望，减速 tobetrained
                 特别是Landstrasse，进城看见黄牌迅速降到三档， tobetrained
                 Richts oder links? 要问 tobetrained
+                // 24.08.2020 
+                让行的时候，旁边是先行权路口，要让行各个方向 sev-tobetrained
+                注意同方向两侧行人！sev-tobetrained
+                对面来LKW车的话最好停住等待 sev-tobetrained
+                掉头有两种！versuchen sie sich xx zu umkehren  sev-tobetrained
+                轨道一般都会有先行 sev-tobetrained 
+                理论上一般要上130，有机会就超车 sev-tobetrained
+                有一个120限速 sev-tobetrained
+                // 26.08.2020
+                // 27.08.2020  
                 ---
+                路口快速向前，不要太慢 tobetrained
                 高速至少80
                 右侧不用让！abknikende vorfahrtstrasse
                 注意那是一个大30区，有时候有下一个路口先行权 
@@ -4050,7 +4061,6 @@
                 人行道，尤其是转弯以后
                 fahrrad uberholen 
                 warten, stehen bleiben, sicher 
-
 
     * 附加知识zusatz lernen 
         大灯
