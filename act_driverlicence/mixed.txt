@@ -437,13 +437,13 @@
             *绿色箭头转向等3s
             *掉头的时候先靠右到最右边 
             http://stu-cn.de/doc.php?action=view&docid=239
-                Wohngebiet要特别注意rechts vor links，要小心右边出现的每一个路口
+                * Wohngebiet要特别注意rechts vor links，要小心右边出现的每一个路口
                 拐弯时不要换道！！我的第一次考试就是这么挂掉的。拐弯时在左线的拐过之后还要在最左边
-                Fussgaengerüberweg上有人一定要停车让行！有时候
+                * Fussgaengerüberweg上有人一定要停车让行！有时候
                 这时候要减速，准备好bremsen
                 * Ampel旁边有绿色右转箭头则表示右转车不用看Ampel，遵循Stop的原则
                 * 注意玩耍孩子路段，一档不加油，保持7km/h
-                在Stop前要明显停车！如果在你前面还有一辆车，你们俩在Stop前一起停了一会，然后他开走了，你走到Stop面前了，这时还要停车，虽然你之前在后面已经停过了
+                * 在Stop前要明显停车！如果在你前面还有一辆车，你们俩在Stop前一起停了一会，然后他开走了，你走到Stop面前了，这时还要停车，虽然你之前在后面已经停过了
                 窄的路上，如果对面来车，要注意边距，认为不够安全可以减速靠右停车，等他走了以后再走
                 parken之前要打右转灯，观察路上前后的车辆
                 Parken时85％以上的时间是要向后看的
@@ -451,17 +451,18 @@
                 靠右行驶
                 没人没阻碍的时候速度不要过低，比如限速50，开到30以下就不好了
                 第3次，紧张，倒车入库，校正了3次，过了，我都晕死了！
-                最好能3看，其实哪3看并不重要，重要的是你要给考官一个印象，那就是：你时刻清楚地了解四周的情况！后视镜，右视镜，最后左视镜，然后才是打左向灯。
+                最好能3看，其实哪3看并不重要，重要的是你要给考官一个印象，
+                    那就是：你时刻清楚地了解四周的情况！后视镜，右视镜，最后左视镜，然后才是打左向灯。
                 过开放式铁轨时减速，然后两侧张望一下
                 后视镜即便你在开直路的时候你也要经常看，这是考官最容易看到的。尤其是右转的时候
                 如果有先行权的路是转弯的，那么你在往支路尤其是直行的时候，千万别忘了让从先行权路口弯过来的车辆
                 进隧道亮灯，出灭
-                开车最重要的不是技巧，不是速度，而是安全！所以考官考的就是你能不能让他感觉安全
-                当然安全不代表就是开的慢，你开的慢也会引起事故，会诱发别人危险的超车
+                * 开车最重要的不是技巧，不是速度，而是安全！所以考官考的就是你能不能让他感觉安全
+                    当然安全不代表就是开的慢，你开的慢也会引起事故，会诱发别人危险的超车
                 做理论的时候，我发现涉及到行车安全的往往都是4-5分题
                 在技术上你要尽力，而在安全性上你要尽心！
                 你要自信但不要自傲，你要相信，既然教练让你参加路考了，说明你的技术已经没多大问题了
-                自信地展示自己吧
+                * 自信地展示自己吧
                 在某黄灯亮起后，头脑发昏踩刹车，发现自己横在十字路口中央
                 毛毛细雨，landstrasse限速70，我开65到70之间，考官说太快，不安全
                 速度和路况Anpassen
@@ -471,7 +472,8 @@
                 我很zuegig的过去了，估计考官和教练还认为那是一个很教科书般的闯黄灯呢
                 停车。我拉手闸，下钥匙，锁方向盘
                 这才是正确的，你最开始没看就开车门了。  得，又添了一个错。
-                算了一下账，总共开了44个fahrstunde，包括所有的报名费，教材，考试费，体检什么的一共1600多一点
+                算了一下账，总共开了44个fahrstunde，包括所有的报名费，教材，考试费，
+                    体检什么的一共1600多一点
                 要放松。我在开始前就是摞起袖子和教练考官小聊了一会。自己给自己放松
                 前20分钟时最关键的，要给考官留下一个好印象
                 有可能的话考前几天跟朋友的车走两趟考试可能的路线。我就是考前周六跟朋友的车跑了一趟，发现许多新的baustelle 和临时的标牌
@@ -525,7 +527,7 @@
                 https://www.youtube.com/watch?v=2wZEnadWA4c
             Rückwärtsfahren in eine Parklücke (Längsaufstellung)	2.2
                 https://www.youtube.com/watch?v=sHP7faa12Mg
-            **Einfahren in eine Parklücke (Quer- oder Schrägaufstellung) 2.3
+            Einfahren in eine Parklücke (Quer- oder Schrägaufstellung) 2.3
                 seitwärts einparken
                 不要碰到边缘
                 梦飞：
@@ -537,13 +539,17 @@
                     2.回正：当后车完全出现在*左侧后视镜中的时候
                     3.左侧打轮：当*右侧第一个门把手和马路牙子重合的时候
                     4.回正
-            Umkehren	2.4
+            ****Umkehren	2.4
                 https://www.youtube.com/watch?v=clnk0LNfJbQ
                 https://www.youtube.com/watch?v=8V34WS-uWKM
                 1m nach vore
-            Abbremsen mit höchstmöglicher Verzögerung 2.5
+                1.eine Luche nutzen, einfahrt kann auch benutzt werden, 在我家附近的那个30区 
+                2.kreis nutzen, 转圈，在工地那个地方，出30区的那个地方
+                3.ruckartig nach rechts fahren 
+            ****Abbremsen mit höchstmöglicher Verzögerung 2.5
                 https://www.youtube.com/watch?v=7TcBZmmAeiw
                 30km/h 
+                把ABS才出来
             30区行驶
         ---附加
             距离？
@@ -3935,34 +3941,43 @@
                     *schulterblick类似的，我们应该【俯身张望！】
                 注意路牌上的时间
             细节mixed：
-                高速要到六档 sev-tobetrained
-                迅速变道 sev-tobetrained
-                有镜子一定要明显得看 sev-tobetrained
-                我家那块，要让行！ sev-tobetrained 
-                下高速别变道！ 如果在sudhohe这块！ tobetrained
-                直行的话要变道！ 在dekra那边！ 注意看路牌！ tobetrained
-                侧方停车向后看 sev-tobetrained
-                调整的时候不要再开回主道了 sev-tobetrained
-                stop要注意，在sichtlinie sev-tobetrained 
-                dekra对面那个30区特别大！！！ sev-tobetrained
-                不要schneiden那个fahrban sev-tobetrained
-                如果有LKW在超车，要观察到 tobetrained
-                红绿灯转弯转头？ tobetrained
-                公交车车站附近是30！höchstens 20 bis 30 km/h vorbeifahren  sev-tobetrained
-                倒车可以看那个电子的！ sev-tobetrained
-                做好抬头动作！！ 和转头一样形成习惯！ sev-tobetrained
-                铁轨无灯或灯灭两侧张望，减速 tobetrained
+                高速要到六档 sev-tobetrained ok 
+                迅速变道 sev-tobetrained ok 
+                有镜子一定要明显得看 sev-tobetrained ok 
+                我家那块，要让行！ sev-tobetrained  ok 
+                下高速别变道！ 如果在sudhohe这块！ tobetrained ok 
+                直行的话要变道！ 在dekra那边！ 注意看路牌！ tobetrained ok !!
+                侧方停车向后看 sev-tobetrained ok
+                调整的时候不要再开回主道了 sev-tobetrained ok 
+                stop要注意，在sichtlinie sev-tobetrained  ok 
+                dekra对面那个30区特别大！！！ sev-tobetrained 
+                不要schneiden那个fahrban sev-tobetrained ok 
+                如果有LKW在超车，要观察到 tobetrained ok 
+                红绿灯转弯转头？ tobetrained ok 
+                公交车车站附近是30！höchstens 20 bis 30 km/h 
+                    vorbeifahren  sev-tobetrained
+                倒车可以看那个电子的！ sev-tobetrained ok 
+                做好抬头动作！！ 和转头一样形成习惯！ sev-tobetrained ok 
+                铁轨无灯或灯灭两侧张望，减速 tobetrained ok 
                 特别是Landstrasse，进城看见黄牌迅速降到三档， tobetrained
                 Richts oder links? 要问 tobetrained
+
                 // 24.08.2020 
-                让行的时候，旁边是先行权路口，要让行各个方向 sev-tobetrained
+                让行的时候，旁边是先行权路口，要让行各个方向 sev-tobetrained ok 
                 注意同方向两侧行人！sev-tobetrained
-                对面来LKW车的话最好停住等待 sev-tobetrained
-                掉头有两种！versuchen sie sich xx zu umkehren  sev-tobetrained
-                轨道一般都会有先行 sev-tobetrained 
+                对面来LKW车的话最好停住等待 sev-tobetrained ok 
+                掉头有3种！versuchen sie sich xx zu umkehren  sev-tobetrained ok 
+                轨道一般都会有先行 sev-tobetrained ok 
                 理论上一般要上130，有机会就超车 sev-tobetrained
                 有一个120限速 sev-tobetrained
+
                 // 26.08.2020
+                不要着急向前，在红绿灯前以及在让行路口！以及在窄路上！ sev-tobetrained
+                路口一定在最右，哪怕旁边有车，麻烦就麻烦把 sev-tobetrained 
+                3. ampel links abbiegen， 保持车道就好 tobetrained
+                公交车站牌，如果在左边那就在左边就好，施工那块  特殊  tobetrained 
+                有可能向左停车！！ tobetrained
+
                 // 27.08.2020  
                 ---
                 路口快速向前，不要太慢 tobetrained
@@ -4056,9 +4071,10 @@
                 迅速变道 tobetrained
             训练听力，youtube，从网上看tippen
                 RvL， 30zone
+                Fussganger 人行道，尤其是转弯以后
                 STOP schild 
-                公交车站  25km/h 
-                人行道，尤其是转弯以后
+                BUS 公交车站  25km/h 
+                ---
                 fahrrad uberholen 
                 warten, stehen bleiben, sicher 
 
