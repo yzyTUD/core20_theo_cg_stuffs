@@ -66,6 +66,146 @@
         siyan dong 
         nico sh. 
         yuanfeng zhou
+        mlcv 
+            rigorous methodological research
+            A very good university degree in mathematics or computer science or a related discipline
+            Comprehensive education in mathematics, especially in discrete 
+                mathematics and one area of mathematical optimization
+            Implementation, empirical analysis and comparison of these algorithms with respect to real data
+            https://mlcv.inf.tu-dresden.de/job-offer-cv.pdf
+                reimbursed
+                Applications from women are particularly welcome. The same applies to people with disabilities
+                proven experience in C++ (at least C++11)
+            *http://openaccess.thecvf.com/content_cvpr_2017/papers/Levinkov_Joint_Graph_Decomposition_CVPR_2017_paper.pdf
+                This problem offers a common
+                    mathematical abstraction of seemingly unrelated computer
+                    vision tasks
+                instance-separating semantic segmentation, articulated human body pose
+                    estimation and multiple object tracking
+                unconstrained integer quadratic program and the  minimum cost lifted multicut problem, 
+                    both of which are NPhard
+                that has been studied intensively in the context of graphical models
+                Decomposition and Node labeling 
+                semantic segmentation and articulated human body pose estimation
+                q- possible applications? how they are related to cv tasks? 
+                    multiple object tracking for automomous 
+                    human pose estimation 
+                    instance-separating semantic segmentation
+                p-h- the problems studied are NP Hard problems, use appri. instead? 
+                benchmark data sets and feasible solutions found by our algorithms, 
+                    we report state-of-the-art application-specific accuracy.
+                benchmarking -- measurments! 
+                q- what is Multiple object tracking
+                    decide whether this point depicts an object or background
+                    For every pair of points that depict objects, one needs to decide if the object is the same
+                s- decition problems 
+                01-labels indicating that a bounding box depicts an object or background
+                    -> 
+                s- https://ps.is.tuebingen.mpg.de/person/stang
+                q- what is Instance-separating semantic segmentation
+                    modeled as graphical problem? 
+                s-  Kroeger et al. [19] state this problem as a multi-terminal 
+                    cut problem w.r.t. a (super)pixel adjacency graph of the image
+                the problem from the KITTI [11] and Cityscapes [7]  benchmarks, obtaining
+                    more accurate results for Cityscapes  than any published work.
+                q- how is the articulated human pose estimation problem be abstracted? 
+                    s- Pishchulin et al. [25] and Insafutdinov et al.
+                s- some NP hard problems like NL-LMP
+                s- UIQP
+                q- which benchmark to use in this task? 
+                    MPII Human Pose Dataset
+                h- how can we have better score on the dataset? 
+                s- basic graphical algo, and their problems 
+                q- define the minimum cost node labeling
+                    lifted multicut problem, NL-LMP.
+                q- s- Parameters?, Feasible Set, cost function? 
+                s- linearly constrained binary cubic program.
+                q- s-  Lemma 1 For any graph.... 
+                h- lemma-proof 
+                Without loss of generality
+                solution in LMP  is also in NL-LMP 
+                q- local search algo for compute feasible solutions of the NL-LMP efficiently
+                s- DeeperCut: A deeper, stronger, and faster multiperson pose estimation model.
+                a local search is carried out
+                    not over the set of individual transformations of the current
+                    feasible solution but over a set of sequences of transformations
+                This leads us to define two local search algorithms for the NL-LMP.
+                Our C++ implementation computes cost differences incrementally and solves the optimization 
+                    problem over transformations by means of a priority queue
+                The time and space complexities are identical to those of KLj and are established in
+                s- Efficient decomposition of image and mesh graphs by lifted multicuts
+                s- find some code imp. the benchmarks! 
+                s- find soluitons for typical vision tasks, esp. for these three distinct computer vision tasks
+                we set up instances of the NL-LMP from published data
+                Convergence of B&C, KLj/r and KLj∗r in an application to the task of articulated human body pose estimation.
+                s- Convergence graph plot 
+                we compare the convergence
+                arrive at near optimal feasible
+                    solutions after 10−1 seconds
+                five orders of magnitude faster than B&C.
+                KLj/r and KLj∗r have lower cost and higher applicationspecific accuracy (Acc) on average
+                The shorter absolute running time of KLj/r and KLj∗r allows us to increase the number of nodes from 150, as in [13], to 420
+                table, ... 
+                We have defined and implemented two local search algorithms, KLj/r
+                    and KLj∗r
+                converge monotonously to a local optimum
+                We have shown applications of these algorithms to the tasks of articulated human body pose estimation
+                We conclude that the NL-LMP is a useful mathematical abstraction in the field of computer vision
+                *the fields of computer vision and combinatorial optimization
+                s- Multi-Person Tracking by Multicut and Deep Matching
+                    s-  submitted our results to the ECCV 2016 MOT Challenge 2
+                        for evaluation
+            codes from andres
+                *OpenGM 
+                    discrete factor graph models and distributive operations on these models
+                    making OpenGM as flexible as possible such that it can work with the large scope of different models
+                    http://hciweb2.iwr.uni-heidelberg.de/opengm/index.php?l0=algs
+                    Combinatorial/Gobal Optimal Methods
+                    Wrapped External Code for Discrete Graphical Models
+                    s- papers related
+                    s- h5 files, datasaets 
+                    h- rel. large algos., many versions 
+                    s- http://www.andres.sc/publications/andres2012opengm.pdf
+                        high-level concepts such as semantic objects that are to be detected and tracked
+
+                    s- http://www.andres.sc/publications/opengm-2.0.2-beta-manual.pdf
+                    s- http://www.andres.sc/publications/kappes-2013.pdf
+                    s- http://ipa.iwr.uni-heidelberg.de/ipabib/Papers/kappes-dagm2010.pdf
+                graph 
+                    tests only, no apps included....
+                Marray
+                    Fast Runtime-Flexible Multi-dimensional Arrays and Views in C++
+                    s- other imp. such as boost MultiArray and Blitz++
+                    the dimension of Marray views and arrays can be set and changed at runtime.
+                    conjunction with the comprehensive and convenient Marray interface, this brings some of the flexibility
+                    HDF5 input and output, including reading and writing of hyperslabs
+                    not properly for single proj, but works for the proj
+                    s- hdf5 https://support.hdfgroup.org/HDF5/Tutor/h5image.html
+                random-forest
+                    ...
+                seed-growing 
+                    no matlab found 
+                graphics 
+                    no hdf5 found 
+            pubications
+                Motion Segmentation & Multiple Object Tracking by Correlation Co-Clustering
+                http://infoscience.epfl.ch/record/201670/files/turetken16_1.pdf
+                A Comparative Study of Modern Inference Techniques for Structured Discrete Energy Minimization Problems
+                    http://arxiv.org/pdf/1404.0533
+                http://www.andres.sc/publications/andres20123d.pdf
+                http://arxiv.org/pdf/1812.01426
+                http://proceedings.mlr.press/v80/lange18a/lange18a.pdf
+                http://arxiv.org/pdf/1705.05020
+                http://openaccess.thecvf.com/content_ICCV_2017/papers/Rempfler_Efficient_Algorithms_for_ICCV_2017_paper.pdf
+                *http://www.andres.sc/publications/rempfler2017miccai.pdf
+                http://proceedings.mlr.press/v70/hornakova17a/hornakova17a.pdf
+                http://openaccess.thecvf.com/content_cvpr_2017/papers/Swoboda_A_Message_Passing_CVPR_2017_paper.pdf
+                *http://openaccess.thecvf.com/content_cvpr_2017/papers/Levinkov_Joint_Graph_Decomposition_CVPR_2017_paper.pdf
+                +Machine Learning for Computer Vision - Bjoern Andres - Technical University Dresden
+                ---
+                http://arxiv.org/pdf/1706.06822
+                http://www.andres.sc/publications/andres2010arrays.pdf
+            
 
 
 
