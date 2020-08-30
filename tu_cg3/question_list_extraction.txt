@@ -178,8 +178,9 @@
                 qq what properties does a Particle have? x4+ 
                 qq how can we gen. particles, randomly? which sampling?
                 qq what is boids, how diff. from particles ??
-                qq what should we cosider when imp. such a sys.?? x4 
-                qq the idea of ?-ton Tracing
+                qq what should we cosider when imp. such a sys.?? x4 what cases should be avoid?  
+                qq hwo can we do Visual Simulation of Weathering?
+                qq the idea of gamma-ton Tracing
                 qq Movement Probabilities for Each particle? possible movement??
                     ---
                 qq when does the movement probabilities change?

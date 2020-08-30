@@ -1130,7 +1130,8 @@
                 qq how can we gen. particles, randomly? which sampling?
                     transformation sampling
                     One can use transformation sampling to 
-                        generate random particle from uniformly distributed random variables
+                        generate random particle from 
+                            uniformly distributed random variables
                 Flock of Birds, Herds, Schools
                 Boids
                 qq what is boids, how diff. from particles ??
@@ -1138,24 +1139,33 @@
                     *can be used to model Flock of Birds, Herds, Schools
                     & op08
                     with orientation and 3D modell 
-                qq what should we cosider when imp. such a sys.?? x4 
+                qq what should we cosider when imp. such a sys.?? x4 what cases should be avoid?  
                     avoid collisions
                     avoid obstacles
-                    stay close to others
                     synchronize directions
-                qq the idea of ?-ton Tracing
-                    Visual Simulation of Weathering
-                    generated on the outer hemisphere of the scene
-                    Each particle stores 
-                        movement statistic and weathering influence
-                    gamma-ton reflectance are stored per point
+                    stay close to others
+                qq hwo can we do Visual Simulation of Weathering?
+                qq the idea of gamma-ton Tracing
+                    can be seen as an extend to photon tracing 
+                    simulate Weathering with particles 
+                    1.gammaton [shooting] 
+                        emit from the outer hemisphere of the scene
+                            Each particle stores weathering information 
+                        Each particle is assigned propabilities for being one of 4 states 
+                    2.[propergation] 
+                        follow physical and other laws
+                        surfaces are sampled into point clouds
+                        When particle collides with surface, the movement probabilities 
+                            change according to surface reflectance
+                    3.[perform] Gamma-transport until final [equilibrium/ until Settlement]
+                    https://www.idi.ntnu.no/emner/tdt03/Presentations2013/Reiten%20-%20gammaton-tracing.pdf
                 &h
                     ?-tons are generated on the outer hemisphere of the scene
                     Particle Systems
                     surfaces are sampled into point clouds states
                 qq Movement Probabilities for Each particle? possible movement??
                     Linear Motion (in case of high energy)
-                    Paraboloic Curve (modelling particle with carriers)
+                    Parabolic Curve (modelling particle with carriers)
                     ---
                     Flowing along surface (particles with low energy)
                     Settlement (particles with very low energy)
