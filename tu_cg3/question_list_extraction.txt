@@ -182,7 +182,6 @@
                 qq hwo can we do Visual Simulation of Weathering?
                 qq the idea of gamma-ton Tracing
                 qq Movement Probabilities for Each particle? possible movement??
-                    ---
                 qq when does the movement probabilities change?
                 qq where does 𝛾-ton reflectance stores initially?? 
                 qq Patina case? how can we achieve this?? 

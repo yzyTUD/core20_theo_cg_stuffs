@@ -1166,7 +1166,6 @@
                 qq Movement Probabilities for Each particle? possible movement??
                     Linear Motion (in case of high energy)
                     Parabolic Curve (modelling particle with carriers)
-                    ---
                     Flowing along surface (particles with low energy)
                     Settlement (particles with very low energy)
                 qq when does the movement probabilities change?
@@ -1175,8 +1174,9 @@
                     point clouds, sampled from surface 
                 ?-tons that carry water increase Patina fraction of surface
                 qq Patina case? how can we achieve this?? 
-                    blend two fractions  
+                    blend between two materials A and B with a friciton 
                 qq what does a particle carry in this case?? op15
+                    fraction 
                 ---
                 Cloth Simulation
                 qq Woven fabrics typically has which two distinguished directions?
@@ -1185,7 +1185,7 @@
                 qq how can we model this? 
                     rectangular grid with vertices
                 http://www-labs.iro.umontreal.ca/~bernhard/PDF/Thomasze08Asynchronous.pdf
-                    Provot
+                Provot
                 Provot 1995
                 discretization of a piece of fabrics with a regular grid of particles
                 qq how can we simulate internal forces?  x3 
