@@ -4844,11 +4844,35 @@
         ---ql official--with answer 
             //you should be able to explain a [given] rendering/ dynamic equation
             <> Explain algorithmic techniques
-                qq path, light and bidirectional path tracing
-                qq idea of multiple importance sampling according to brdf and L_in
+                qq path, light and bidirectional path tracing x3 + x3 + x2
+                    path tracing samples paths from the eye, 
+                        and connects them to the eye by [direct light sampling] 
+                            after [Russian Roulette] terminated a path
+                        ---
+                            sample, tracing/ bounce around the scene, connect 
+                            [light path in improtant  
+                    light tracing samples paths from the [light sources] 
+                        and connects them to the eye by [direct eye sampling]
+                            after [Russian Roulette] terminated a path
+                    BPT connects light and path tracing by [generating one path in each direction] 
+                        and [interconnecting them]
+                        ---
+                            generate, interconnect
+                qq idea of multiple importance sampling according to brdf and L_in x2 
+                    it will be used when [several sampling strategies] are available, 
+                        it  [weights] the strategies to minimize overall variance 
                 qq idea of multiple importance sampling in BPT
+                    Given a path x [of length k], several sampling strategies exists, 
+                        we can combine them to reduce the bias  
                 qq direct and indirect light sampling
+                    directly illuminated part, [no reflection on ray path ]
                 qq final gathering
+                    in the cache based rendering technique, we cache  results from one
+                        method, the same calculations can be reused several
+                            times by a second method. 
+                    the second method is called final gathering 
+                    ---
+                    the process of collecting photons 
                 qq photon mapping
                 qq reverse photon mapping
                 qq progressive photon mapping
