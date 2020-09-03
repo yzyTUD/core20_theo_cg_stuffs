@@ -55,6 +55,7 @@
                 黎曼求解器
 
                 矩阵论
+                SVBRDF/ 
             from slides detail
                 渲染材质
                 brdf材质
@@ -347,11 +348,11 @@
                         但是在工程中意义未必大
                         “自定义物理梁刚”
                         qq the idea of nondimensionalization?
-                            partial [removal] of [physical dimensions] from an equation
-                            suitable [substitution of variables].
-                            [simplify] and parameterize problems where 
+                            1.partial [removal] of [physical dimensions] from an equation
+                                suitable [substitution of variables].
+                            2.[simplify] and parameterize problems where 
                                 measured units are involved
-                            These units refer to quantities intrinsic to the system, 
+                            3.These units refer to quantities intrinsic to the system, 
                                 rather than units such as SI units
 
                     Vector operator in vector calculus
@@ -510,8 +511,8 @@
                     https://en.wikipedia.org/wiki/Nondimensionalization
                     Nondimensionalization
                     qq what is Nondimensionalization
-                    This technique can simplify and 
-                        parameterize problems where measured units are involved.
+                        This technique can simplify and 
+                            parameterize problems where measured units are involved.
                     the term scaling is used interchangeably with nondimensionalization
                     force constant of spring
                     To simplify the equation
@@ -2112,8 +2113,7 @@
                     We let air blow in or out as it wants 
                 Vorticity Confinement
                 vortices live on all scales and have high visual impact 
-                qq how can vortices disolves too fast?
-                    numerical dissipation
+                qq why vortices disolves too fast?
                     numerical dissipation disolves vortices too fast
                 qq how can we overcome it?/ how can we preserve the vortices?? x2 
                     [Fedkiw 2001] add force that keeps vortices alive
@@ -2154,7 +2154,8 @@
                 tt use c++ and python mixed 
                 modified Hermite  interpolation that is monotonic in the data.
                 numerical dissipation
-                qq how can we deal with numerical dissipation? with interpolation 
+                qq how can we deal with numerical dissipation? 
+                    with interpolation 
                 qq but can not use higher order interpolaiton! 
                     beacase of overshooting
                 ---
@@ -3176,7 +3177,7 @@
                     qq when to terminate?
                         Russian Roulette
                     qq the diea of Russian Roulette?
-                        terminates with a probability(decreases when ray travels in the scene)
+                        terminates with a probability (decreases when ray travels in the scene)
                     returns the estimate
                     qq the form of expectation in RR?? and why it looks like this? op19
                         normalize Monte Carlo estimates, why should we normalize it? 
@@ -3198,7 +3199,7 @@
                     努塞尔数
                     split incoming radiance in direct and  indirect illumination to support direct  light sampling
                     Nusselt’s Analogon
-                    the cosine weighted  solid angle corresponds to its projection  onto the unit disk
+                    the cosine weighted solid angle corresponds to its projection onto the unit disk
                     qq what is Nusselt's Analogon?? how can be used to improtance sampling?? op25
                         can be used to perform importance sampling of the cosine term
                     qq how can we do this? projection back? the formula? 
@@ -4965,63 +4966,145 @@
                             extended contacts
             <> Explain math
                 qq integration over solid angle
+                    pic
                 qq Monte Carlo (MC) estimation of integral
+                    pic 
                 qq variance, bias
+                    a property to an estimator, in statistics
+                        can be measured by [standard deviation]
+                qq why do we need variance in solving rendering equ.? + igen
+                    1.to solve rendering equ., we have to solve multi-dimensional nested integrals
+                    2.MC technique cast integration as [expected value problem], by gen. samples
+                    thus, lower variance means better approximation
                 qq when is MC better than Rieman Integration?
+                    evaluating multidimensional, infinite dimensional integral
                 qq MC estimation of reflection integral
+                    pic
                 qq idea of importance sampling
+                    choose px proportional to fx
+                        a technique to refuce variance 
                 qq Russian Roulette
+                    terminates the traversal of a ray with a probability 
+                        (decreases when ray travels in the scene)
                 qq Nusselt’s analogon
+                    the cosine weighted solid angle corresponds to its projection onto the unit disk
+                    such we can perform importance sampling of the cosine term
                 qq uniform, rejection, N-rooks, transformation sampling
+                    +toread a branch of sampling theory
+                    uniform: randomly choose a value within a given range 
+                    rejection: reject samples that not expected 
+                        rejection test 
+                    N-rooks: stratified grid sampling with random shuffle
+                        1.n samples are placed in an n x n grid
+                        2.there is a single sample, or rook, in each row and each column.
+                        //
+                        step1: Randomly place one sample in each cell [along the main diagonal] of the grid
+                        step2: Randomly shuffle
+                        benefits in high dimention, covers each dimension much better.
+                    transformation sampling: sampling uniformly and then transformed to arbitrary shape
                 qq What parts of the reflection integral in directional form can be importance sampled?
+                    brdf and L_in and cosin term x3 
+                qq what is a differential equation? + igen
+                    a relation between a function in one or several variables and the [partial] derivatives of it 
                 qq ordinary and partial differential equations
-                qq reduction to order one system of ODEs
+                    In case of a single variable, ODE 
+                    if derivatives of several variables arise, PDE
+                qq give some examples of ODE and PDEs? 
+                    ode: oscillator with frictions
+                    pde: Wave Eq., Maxwell Eg
+                qq reduction to order one system of ODEs, order reduction in phy? 
+                    pic
                 qq explicit, implicit, symplectic Euler
+                    pic 
+                qq what is time evoluiton funciton? 
+                    systems with internal state (also called stateful systems). 
+                    state of the system changes with time 
                 qq A-stabel
+                    iff generated approximations converge to for any step width and any time length 
+                qq what means stiff for a DE? 
+                    explicit methods do not always converge. 
                 qq general idea behind step width adaptation
+                    comparing to two steps with half stepwidth, threadhold method, larger than toleranz... 
+                        re-estimate h with a funciton 
                 qq how to find the best integrator for a given problem?
-                qq what is numerical dissipation and how does it influence 
-                    numerical methods for solving incompressible
-                    Navier Stokes equations?
+                    compute integration error for each method and compare them, choose the minimal one 
+                    consider: dimention, function shape 
+                qq what is numerical dissipation and how does it influence numerical methods for solving incompressible
+                    > Navier Stokes equations?
+                    Numerical simulation typically makes errors
+                    it is a kind of problem arises in numerical computing, energy will be reduced in the system 
+                    disolves vortices too fast
                 qq what is the splitting trick when solving ODEs?
+                    split a differential equation in diff. parts, update varibles Sequentially 
+                    exploits intermediate varibles 
+                    pic 
+                    +integrate diff. parts saparately
                 qq how can the advection step be approached in a semi-Lagragian manner?
+                    solve “the advection equation” for any grid quantity 𝑞 
+                    use the Lagrangian notion of advection directly to compute 
+                    interpolate from nearby grid points to get the result 
                 qq how does the pressure update work for incompressible fluids?
+                    an additional divergence constraint to ensure the incompressiblility 
+                    pic 
+                    star means intermediate varibles !
                 qq what are the different boundary conditions used in fluid simulation?
+                    x2 the equ. in pic 
+                    “ghost” solid pressure
                 qq how do we interpolate attributes in SPH simulation?
+                    cubic kernel function or quintic spline
+                    for theory Gaussian is best, not used in practice due to infinite support
             <> Explain physics
                 qq unit, idea of non-dimensionalization
+                    SI units 
+                    non-dimensionalization
+                        1.partial [removal] of [physical dimensions] from an equation
+                            suitable [substitution of variables].
+                        2.[simplify] and parameterize problems where 
+                            measured units are involved
+                        3.These units refer to quantities intrinsic to the system, 
+                            rather than units such as SI units
                 qq Noether theorem
-                qq radiometry: energy, power, radiosity and irradiance, 
-                    radiance (incoming vs outgoing), brdf, albedo,
-                    potential, spectral quantities
-                qq rendering equation in directional, area formulation and 
-                    operator form, light path regular expressions
+                    Any differentiable symmetry of the action of a physical
+                        system has a corresponding conservation law
+                    high lev understanding of the phy. system 
+                qq radiometry: energy, power, radiosity and irradiance, radiance (incoming vs outgoing), brdf, albedo(Diffuse BDRF),
+                    > potential, spectral quantities
+                    power in area A, power per area and solid angle 
+                    brdf: defines how light is reflected at an opaque surface
+                        It is employed in the optics of real-world light
+                    Diffuse BDRF: given incoming direction, integrate over all outgoing direction 
+                qq rendering equation in directional, area formulation and operator form, light path regular expressions
+                    pic 
                 qq geometry factor and visibility
-                qq emitted radiance of light source, sensor efficiency and 
-                    measurement equation
+                    pic explain it! 
+                qq emitted radiance of light source, sensor efficiency and measurement equation
+                    what is W here? spectral efficiency
                 qq brdf properties: Helmholtz reciprocity, energy conservation
+                    pic write them down 
                 qq how to make Phong and Blinn-Phong brdfs physically plausible?
-                qq explain microfacette models on a coarse level, 
-                    what are the individual parts?
+                    apply those two physically plausible conditions: Helmholtz Reciprocity and 
+                        energy conservation to the calssical model 
+                    make the terms symmetric, skip the denominator terms
+                qq explain microfacette models on a coarse level, what are the individual parts?
                 qq what do the Fresnel coefficients describe?
                 qq what is an anisotropic brdf, what an isotropic?
                 qq how to measure a brdf?
                 qq how to represent a measured brdf efficiently?
                 qq What is a bssrdf?
-                qq quantities: mass, acceleration, momentum, (conservative) force. 
-                    energy (kinetic, potential)
+                qq quantities: mass, acceleration, momentum, (conservative) force.  energy (kinetic, potential)
                 qq what different forces do you know?
                 qq inertia moment, inertia tensor, vector representation of angular velocity, 
-                    angular acceleration, torque,
-                    rotational kinetic energy
-                    --derivative from time to time, the idea of the Sequential impulse loop/ algorithm 
+                    > angular acceleration, torque,
+                    > rotational kinetic energy
+                    derivative from time to time
+                qq the idea of the Sequential impulse loop/ algorithm + igen
                 qq how can pose of rigid body be described
                 qq how does pose evolve over time without friction?
                 qq how does orientation chance in dependence of angular velocity?
                 qq how do forces applied to a point on a rigid body act on its linear and angular velocities?
                 qq what is a “Kraftstoß” and how does it help to compute the 
-                    change in momentum during a rigid body
-                    Impulsübertrag, the change of impulse
+                    > change in momentum during a rigid body
+                    > Impulsübertrag, the change of impulse
                 qq what are kinetic and dynamic viscosity?
                 qq what are incompressible fluids?
         ---+ql picture notes! 
