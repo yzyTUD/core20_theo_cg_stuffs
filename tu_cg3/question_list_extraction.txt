@@ -281,6 +281,7 @@
                     > 2 non-degenerated contact types?
                     > degenerated cases 
                 qq hwo can we calcu. contect normal in edge-edge case?? op18
+                qq what is a degenerate casse? 
                 qq how can we handle multiple contact normal directions?? avoid NP hardness 
                 qq what is indeterminate contact? 
                 qq what are degenerate types typically? x5
@@ -452,7 +453,7 @@
                 qq which dir has buoyancy force? what are alpha and beta in such equ.? 
                 qq what If no soot and no temperature difference?? 
                 qq what boundary condition we have to apply when facing open boundaries? 
-                qq how can vortices disolves too fast?
+                qq why vortices disolves too fast?
                 qq how can we overcome it?/ how can we preserve the vortices?? x2 
                 qq what is vorticity?
                 qq what is gradient vorticity?? which direction? 
@@ -466,7 +467,7 @@
                 qq why we would apply monotonic Hermite Interpolation instead of 
                     > other higher order functions? 
                 qq draw example curve for Hermite interpolaiton and the monotonic one!
-                qq how can we deal with numerical dissipation? with interpolation 
+                qq how can we deal with numerical dissipation? 
                 qq but can not use higher order interpolaiton! 
                 ---
                 qq why we typically use SPH approach for water simulation? 
@@ -1010,8 +1011,12 @@
                 qq how to explain those numbers? later 
             re-ok- slides-7 CG3_07_Cache-Based-GI
                 qq Bidirectional Path Tracing is very bad for?? good for??
-                qq idea of Photon mapping:  op08
-                    ---
+                qq idea of Photon mapping:  op08 x4 
+                qq where do we store photons in the scene? 
+                qq when do we store a photon to caustic photon map? what is the criteria? and when global photon map? 
+                qq how can we enforce the caustic probability? 
+                qq when geathering, which hits are accepts?
+                qq what is a photon filter? 
                 qq Radiance Estimation? draw a graph to illustrate op11
                 qq how can we estimate radiance in photon mapping?? op11 
                 qq describe the process of Photon Emission op12 
@@ -1044,7 +1049,8 @@
                 qq pro cons for photon mapping when compared to bpt
                 qq the computation time of PM? Inversed PM?? 
                 qq the computational demand for both cases?? 
-                qq the idea of reverse photon mapping? 
+                qq the idea of reverse photon mapping?
+                qq reverse photon mapping algo? x4
                 qq how to estimate photon influence radii in reversed pm?? op23
                 qq how can we measure the influences of reverse photons?? 
                 qq the complexity for this? 
@@ -1053,7 +1059,7 @@
                 qq why Photon mapping (PM) is biased?? 
                 qq what is KDE?? why can introduce bias in PM 
                 qq PM is not a convergent method??
-                qq the idea of PPM?
+                qq the idea of PPM? Progressive Photon Mapping 
                 qq which three important PPM approaches are there? 
                 qq such three methods have the same radius update? op28 
                 qq How to store KDE radius that can be updated per iteration??
@@ -1082,26 +1088,32 @@
                 qq what is the diff. bet. brdf and btdf? 
         ---ql official--with answer 
             <> Explain algorithmic techniques
-                qq path, light and bidirectional path tracing
-                qq idea of multiple importance sampling according to brdf and L_in
+                qq path, light and bidirectional path tracing x3 + x3 + x2
+                        ---
+                        ---
+                qq idea of multiple importance sampling according to brdf and L_in x2 
                 qq idea of multiple importance sampling in BPT
                 qq direct and indirect light sampling
-                qq final gathering
-                qq photon mapping
-                qq reverse photon mapping
-                qq progressive photon mapping
-                qq vertex merging
-                qq general idea of gammaton tracing
+                qq final gathering x2
+                    ---
+                qq photon mapping x4
+                qq reverse photon mapping x4
+                qq progressive photon mapping x1
+                qq vertex merging 
+                qq general idea of gamma-ton tracing x3
                 qq idea behind boids
                 qq how to simulate a piece of cloth with a particle system?
                 qq Why do stiff springs cause problems?
-                qq How to model hysteresis in cloth simulation?
+                qq How to model hysteresis in cloth simulation? x2 
                 qq How can one avoid collisions in a rigid body simulator?
-                qq What is contact point and what kind of non-degenerate contacts 
+                qq What is contact point and what kind of non-degenerate contacts exist for polygonal meshes?
+                    > 2 non-degenerated contact types?
+                    > degenerated cases 
             <> Explain math
                 qq integration over solid angle
                 qq Monte Carlo (MC) estimation of integral
                 qq variance, bias
+                qq why do we need variance in solving rendering equ.? + igen
                 qq when is MC better than Rieman Integration?
                 qq MC estimation of reflection integral
                 qq idea of importance sampling
@@ -1109,13 +1121,18 @@
                 qq Nusselt’s analogon
                 qq uniform, rejection, N-rooks, transformation sampling
                 qq What parts of the reflection integral in directional form can be importance sampled?
+                qq what is a differential equation? + igen
                 qq ordinary and partial differential equations
-                qq reduction to order one system of ODEs
+                qq give some examples of ODE and PDEs? 
+                qq reduction to order one system of ODEs, order reduction in phy? 
                 qq explicit, implicit, symplectic Euler
+                qq what is time evoluiton funciton? 
                 qq A-stabel
+                qq what means stiff for a DE? 
                 qq general idea behind step width adaptation
                 qq how to find the best integrator for a given problem?
-                qq what is numerical dissipation and how does it influence 
+                qq what is numerical dissipation and how does it influence numerical methods for solving incompressible
+                    > Navier Stokes equations?
                 qq what is the splitting trick when solving ODEs?
                 qq how can the advection step be approached in a semi-Lagragian manner?
                 qq how does the pressure update work for incompressible fluids?
@@ -1124,26 +1141,31 @@
             <> Explain physics
                 qq unit, idea of non-dimensionalization
                 qq Noether theorem
-                qq radiometry: energy, power, radiosity and irradiance, 
-                qq rendering equation in directional, area formulation and 
+                qq radiometry: energy, power, radiosity and irradiance, radiance (incoming vs outgoing), brdf, albedo(Diffuse BDRF),
+                    > potential, spectral quantities
+                qq rendering equation in directional, area formulation and operator form, light path regular expressions
                 qq geometry factor and visibility
-                qq emitted radiance of light source, sensor efficiency and 
+                qq emitted radiance of light source, sensor efficiency and measurement equation
                 qq brdf properties: Helmholtz reciprocity, energy conservation
                 qq how to make Phong and Blinn-Phong brdfs physically plausible?
-                qq explain microfacette models on a coarse level, 
+                qq explain microfacette models on a coarse level, what are the individual parts?
                 qq what do the Fresnel coefficients describe?
                 qq what is an anisotropic brdf, what an isotropic?
                 qq how to measure a brdf?
                 qq how to represent a measured brdf efficiently?
                 qq What is a bssrdf?
-                qq quantities: mass, acceleration, momentum, (conservative) force. 
-                qq what different forces do you know?
+                qq quantities: mass, acceleration, momentum, (conservative) force.  energy (kinetic, potential)
+                qq what different forces do you know? x4 x2 
                 qq inertia moment, inertia tensor, vector representation of angular velocity, 
+                    > angular acceleration, torque,
+                    > rotational kinetic energy
+                qq the idea of the Sequential impulse loop/ algorithm + igen, iwrote
+                    --- the v-p-v approach ---
                 qq how can pose of rigid body be described
                 qq how does pose evolve over time without friction?
-                qq how does orientation chance in dependence of angular velocity?
+                qq how does orientation change in dependence of angular velocity?
                 qq how do forces applied to a point on a rigid body act on its linear and angular velocities?
-                qq what is a “Kraftstoß” and how does it help to compute the 
+                qq what is a “Kraftstoß” and how does it help to compute the change in momentum during a rigid body simulation 
                 qq what are kinetic and dynamic viscosity?
                 qq what are incompressible fluids?
         ---+ql picture notes! 
