@@ -1135,7 +1135,8 @@
                 Flock of Birds, Herds, Schools
                 Boids
                 qq what is boids, how diff. from particles ??
-                    *Extend particles with orientation and 3D modell
+                    *Extend particles with 
+                        orientation and 3D modell
                     *can be used to model Flock of Birds, Herds, Schools
                     & op08
                     with orientation and 3D modell 
@@ -1146,8 +1147,8 @@
                     stay close to others
                 qq hwo can we do Visual Simulation of Weathering?
                 qq the idea of gamma-ton Tracing
-                    can be seen as an extend to photon tracing 
-                    simulate Weathering with particles 
+                    g.can be seen as an extend to photon tracing 
+                        simulate Weathering with particles 
                     1.gammaton [shooting] 
                         emit from the outer hemisphere of the scene
                             Each particle stores weathering information 
@@ -1471,7 +1472,10 @@
                 qq hwo can we calcu. contect normal in edge-edge case?? op18
                     cross product of the two edges
                 vertex-face
-                degenerate
+                qq what is a degenerate casse? 
+                    less likely to happen 
+                    multiple contact normal directions, normal can not be computed directly
+                    NP hard contact resolution problems
                 qq how can we handle multiple contact normal directions?? avoid NP hardness 
                     solve iter. 
                     choosing an arbitrary contact normal
@@ -4476,18 +4480,42 @@
                 qq Bidirectional Path Tracing is very bad for?? good for??
                     caustics in mirror
                     caustics in water 
-                qq idea of Photon mapping:  op08
-                    generate large number of light paths  first, 
-                    cache them and find for each eye path the matching  ones
-                    cache them
-                    emit large number of photons 
-                    trace light paths trough purely  mirroring or refracting surfaces 
-                    Russian Roulette on  diffuse or glossy surfaces
-                    store photons on diffuse or  glossy surfaces in a kd-tree
-                    ---
-                    generate per pixel one or  several eye paths
-                    closeby photons to  estimation reflected radiance
+                qq idea of Photon mapping:  op08 x4 
+                    simpler: 
+                        [generate] large number of [light paths] first,
+                        [trace] light paths trough scene
+                        [store] photons on diffuse or glossy surfaces
+                        [estimate] reflected radiance with help of closeby photons
+                    1.1
+                        generate large number of [light paths] first
+                            cache them and find for each eye path the matching ones
+                        [emit large number of photons] 
+                    1.2
+                        trace light paths trough purely mirroring or refracting surfaces 
+                            Russian Roulette on diffuse or glossy surfaces
+                    1.3
+                        store photons on diffuse or glossy surfaces in a kd-tree
+                            + glossy = Specular not equ. to mirror, partially mirror reflection pp ?
+                    2.1
+                        generate per pixel one or several eye paths
+                        use closeby photons to  estimate  reflected radiance
+                qq where do we store photons in the scene? 
+                    diffuse or glossy surfaces, Store photons only at surfaces where the BRDF is not a delta function
+                    do not store on mirror surfaces, we trace further when such a hit found 
+                qq when do we store a photon to caustic photon map? what is the criteria? and when global photon map? 
+                    Store photons in the caustic photon map, if the photon path 
+                        [had a delta BRDF as first hit]
+                qq how can we enforce the caustic probability? 
+                    rejection sampling 
+                qq when geathering, which hits are accepts?
+                    non-delta, bkg, light 
+                    radiance reconstruction from 
+                        [caustic photon map] and a one-sample Monte Carlo estimator of the 
+                            incoming radiance exploiting the [global photon map]
+                qq what is a photon filter? 
+                    a photon filter can filter out photons with very different normals.
                 qq Radiance Estimation? draw a graph to illustrate op11
+                    reflected radiance
                 qq how can we estimate radiance in photon mapping?? op11 
                     simplest approach and others 
                 qq describe the process of Photon Emission op12 
@@ -4602,20 +4630,25 @@
                         他们花的时间以及存储它们都会是一种成的浪费
                     除非在每个像素上都使用大量采样射线，否则会产生颗粒感的图像
                 qq the computation time of PM? Inversed PM?? 
+                    see pic notes for answer 
                 qq the computational demand for both cases?? 
                     in high quality GI there are  many more final gathering rays 
                         needed than photon
                     A speedup of a factor up to 6 can be  achieved by 
                         first tracing eye paths to  diffuse or glossy 
                         surfaces and storing  them as so called reverse photons:
-                qq the idea of reverse photon mapping? 
-                    do eye tracing first, then photon tracing path 
-                    store inversed photon 
+                    see pic notes for answer 
+                qq the idea of reverse photon mapping?
+                    the fact is that more final gathering rays needed than photons
                     use reverse photons to acc. the rendering process up to factor 6 
-                &h use kd-tree, there is a log facotor
-                final gathering rays
-                photons
-                &h see pic notes for answer 
+                qq reverse photon mapping algo? x4
+                    eye pass
+                        for each pixel [generate eye paths] and store reverse photons
+                            build kd tree 
+                    light pass  
+                        [generate photons ]
+                        [density estimation ]
+                        [radiance estimation], distribute energy to reverse photons 
                 3 nearest neighbor photons define density  
                     estimation radius in forward photon mapping
                 qq how to estimate photon influence radii in reversed pm?? op23
@@ -4665,12 +4698,9 @@
                 qq why Photon mapping (PM) is biased?? 
                 qq what is KDE?? why can introduce bias in PM 
                 qq PM is not a convergent method??
-                qq the idea of PPM?
-                    Progressive Photon Mapping iterates PM with  
+                qq the idea of PPM? Progressive Photon Mapping 
+                    iterates PM with  
                         [decreasing density estimation radius] such that error  
-                        converges to zero in limit
-                    Progressive Photon Mapping iterates PM with
-                        decreasing density estimation radius such that error
                         converges to zero in limit
                 qq which three important PPM approaches are there? 
                     2008 Hachisuka: Progressive Photon Mapping (PPM) 
@@ -4866,25 +4896,73 @@
                         we can combine them to reduce the bias  
                 qq direct and indirect light sampling
                     directly illuminated part, [no reflection on ray path ]
-                qq final gathering
-                    in the cache based rendering technique, we cache  results from one
-                        method, the same calculations can be reused several
-                            times by a second method. 
+                qq final gathering x2
+                    in the cache based rendering technique, we [cache] results from one
+                        method, the same calculations can be reused several times by a second method. 
                     the second method is called final gathering 
                     ---
                     the process of collecting photons 
-                qq photon mapping
-                qq reverse photon mapping
-                qq progressive photon mapping
-                qq vertex merging
-                qq general idea of gammaton tracing
+                qq photon mapping x4
+                    simpler: 
+                        [generate] large number of [light paths] first,
+                        [trace] light paths trough scene
+                        [store] photons on diffuse or glossy surfaces
+                        [estimate] reflected radiance with help of closeby photons
+                qq reverse photon mapping x4
+                    eye pass
+                        for each pixel [generate eye paths] and store reverse photons
+                            build kd tree 
+                    light pass  
+                        [generate photons ]
+                        [density estimation ]
+                        [radiance estimation], distribute energy to reverse photons 
+                qq progressive photon mapping x1
+                    iterates PM with [decreasing density estimation radius] 
+                        such that error converges to zero in limit
+                qq vertex merging 
+                    combines stochastic PPM with bidirectional path tracing  
+                        such that advantages of both methods are exploited
+                        (SPPM abd BPT)
+                        + with help of MIS 
+                    vertex connecting and merging 
+                qq general idea of gamma-ton tracing x3
+                    g.can be seen as an extend to photon tracing 
+                        simulate Weathering with particles 
+                    1.gammaton [shooting] 
+                        emit from the outer hemisphere of the scene
+                            Each particle stores weathering information 
+                        Each particle is assigned propabilities for being one of 4 states 
+                    2.[propergation] 
+                        follow physical and other laws
+                        surfaces are sampled into point clouds
+                        When particle collides with surface, the movement probabilities 
+                            change according to surface reflectance
+                    3.perform [Gamma-transport] until final [equilibrium/ until Settlement]
                 qq idea behind boids
+                    1.[Extend] particles with orientation and 3D modell
+                    2.can be [used to] model Flock of Birds, Herds, Schools
                 qq how to simulate a piece of cloth with a particle system?
+                    visually: use a rectangular grid with vertices
+                    forces: simulated by springs, internal forces  
                 qq Why do stiff springs cause problems?
-                qq How to model hysteresis in cloth simulation?
+                    if spring constant is chosen too small for easier integration, 
+                        there will be a super elastic effect 
+                    two solution strategies exists 
+                qq How to model hysteresis in cloth simulation? x2 
+                    1.add friction forces that depend on 
+                        stretching, shearing and bending velocities
+                    2.Kelvin-Voigt-Spring, damping effect 
                 qq How can one avoid collisions in a rigid body simulator?
-                qq What is contact point and what kind of non-degenerate contacts 
-                    exist for polygonal meshes?
+                    additional de-penetration inpulse, force 
+                qq What is contact point and what kind of non-degenerate contacts exist for polygonal meshes?
+                    > 2 non-degenerated contact types?
+                        vertex-face
+                        edge-edge 
+                    > degenerated cases 
+                        Vertex-vertex, vertex-edge and edge-edge (id)
+                            less likely occour case 
+                        Edge-face and face-face
+                            extended contacts
             <> Explain math
                 qq integration over solid angle
                 qq Monte Carlo (MC) estimation of integral
