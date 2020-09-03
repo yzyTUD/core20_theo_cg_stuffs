@@ -1089,13 +1089,10 @@
         ---ql official--with answer 
             <> Explain algorithmic techniques
                 qq path, light and bidirectional path tracing x3 + x3 + x2
-                        ---
-                        ---
                 qq idea of multiple importance sampling according to brdf and L_in x2 
                 qq idea of multiple importance sampling in BPT
                 qq direct and indirect light sampling
                 qq final gathering x2
-                    ---
                 qq photon mapping x4
                 qq reverse photon mapping x4
                 qq progressive photon mapping x1
@@ -1160,7 +1157,6 @@
                     > angular acceleration, torque,
                     > rotational kinetic energy
                 qq the idea of the Sequential impulse loop/ algorithm + igen, iwrote
-                    --- the v-p-v approach ---
                 qq how can pose of rigid body be described
                 qq how does pose evolve over time without friction?
                 qq how does orientation change in dependence of angular velocity?

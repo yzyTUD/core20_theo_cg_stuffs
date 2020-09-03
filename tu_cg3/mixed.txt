@@ -4879,7 +4879,7 @@
                     path tracing samples paths from the eye, 
                         and connects them to the eye by [direct light sampling] 
                             after [Russian Roulette] terminated a path
-                        ---
+                        //
                             sample, tracing/ bounce around the scene, connect 
                             [light path in improtant  
                     light tracing samples paths from the [light sources] 
@@ -4887,7 +4887,7 @@
                             after [Russian Roulette] terminated a path
                     BPT connects light and path tracing by [generating one path in each direction] 
                         and [interconnecting them]
-                        ---
+                        //
                             generate, interconnect
                 qq idea of multiple importance sampling according to brdf and L_in x2 
                     it will be used when [several sampling strategies] are available, 
@@ -4901,7 +4901,7 @@
                     in the cache based rendering technique, we [cache] results from one
                         method, the same calculations can be reused several times by a second method. 
                     the second method is called final gathering 
-                    ---
+                    //
                     the process of collecting photons 
                 qq photon mapping x4
                     simpler: 
@@ -5124,7 +5124,7 @@
                     pic 
                 qq the idea of the Sequential impulse loop/ algorithm + igen, iwrote
                     1.compute list of contact points 
-                    --- the v-p-v approach ---
+                    // the v-p-v approach
                     2.compute relative [velocities]
                     3.iteratively apply impulses with constrains (impulse accumulation)
                         and add de-penetration bias velocity
