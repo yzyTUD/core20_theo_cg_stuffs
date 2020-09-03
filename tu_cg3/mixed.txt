@@ -3785,8 +3785,8 @@
                     coefficients
                     The Fresnel equations (or Fresnel coefficients) 
                         describe the reflection and transmission of light 
-                        (or electromagnetic radiation in general) 
-                        when incident on an interface between different optical media.
+                            (or electromagnetic radiation in general) 
+                            when incident on an interface between different optical media.
                     (or Fresnel coefficients)
                     They were deduced by Augustin-Jean Fresnel (/fre?'n?l/) 
                         who was the first to understand that light is a transverse wave,
@@ -5086,9 +5086,23 @@
                         energy conservation to the calssical model 
                     make the terms symmetric, skip the denominator terms
                 qq explain microfacette models on a coarse level, what are the individual parts?
+                    x3 The BRDF results from
+                        Distribution of the orientation of the microfacets
+                        Properties of Planar Reflection
+                        Self-occlusion and self-shadowing
+                    microfacets modeled as planar reflectors
                 qq what do the Fresnel coefficients describe?
+                    reflection on micro facets
+                    describe the reflection and transmission of light 
+                        (or electromagnetic radiation in general) 
+                        when incident on an interface between different optical media.
+                    +toread Metal Fresnel Term Approximations
                 qq what is an anisotropic brdf, what an isotropic?
+                    when the incoming direction changes, outgoing direction varies  pp 
+                    brushed metal
+                    Most materials are isotropic
                 qq how to measure a brdf?
+                    
                 qq how to represent a measured brdf efficiently?
                 qq What is a bssrdf?
                 qq quantities: mass, acceleration, momentum, (conservative) force.  energy (kinetic, potential)
