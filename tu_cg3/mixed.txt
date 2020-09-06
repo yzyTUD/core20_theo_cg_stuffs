@@ -4875,12 +4875,12 @@
         ---ql official--with answer 
             //you should be able to explain a [given] rendering/ dynamic equation
             <> Explain algorithmic techniques
-                qq path, light and bidirectional path tracing x3 + x3 + x2
+                qq path, light and bidirectional path tracing x4 + x4 + x2
                     path tracing samples paths from the eye, 
-                        and connects them to the eye by [direct light sampling] 
+                        and connects them to the light by [direct light sampling] 
                             after [Russian Roulette] terminated a path
                         //
-                            sample, tracing/ bounce around the scene, connect 
+                            sample, tracing/ the ray bounces around the scene, connect 
                             [light path in improtant  
                     light tracing samples paths from the [light sources] 
                         and connects them to the eye by [direct eye sampling]
@@ -4889,26 +4889,43 @@
                         and [interconnecting them]
                         //
                             generate, interconnect
+
+                    +++
+                    path tracing:
+                    [the ray path] generated from the eye, 
+                        bounces around the scene, 
+                            terminates with RR, 
+                                perform direct light sampling 
+                    light tracing:
+                    the ray path generated from the light, 
+                        bounces around the scene, 
+                            terminates with RR, 
+                                perform direct eye sampling 
+                    bpt: 
+                    generating one path in each direction, 
+                        interconnect them in the middle 
                 qq idea of multiple importance sampling according to brdf and L_in x2 
+                    pic 
+                qq what is MIS? +igen 
                     it will be used when [several sampling strategies] are available, 
                         it  [weights] the strategies to minimize overall variance 
                 qq idea of multiple importance sampling in BPT
-                    Given a path x [of length k], several sampling strategies exists, 
+                    several sampling strategies exists for a given ray length, 
                         we can combine them to reduce the bias  
                 qq direct and indirect light sampling
                     directly illuminated part, [no reflection on ray path ]
                 qq final gathering x2
-                    in the cache based rendering technique, we [cache] results from one
-                        method, the same calculations can be reused several times by a second method. 
+                    used in the cache based rendering technique, 
+                        we [cache] results from one method, the same calculations can be reused several times by a second method. 
                     the second method is called final gathering 
                     //
                     the process of collecting photons 
                 qq photon mapping x4
                     simpler: 
-                        [generate] large number of [light paths] first,
-                        [trace] light paths trough scene
+                        [generate] large number of photon from light source,
+                        [trace] them trough the scene
                         [store] photons on diffuse or glossy surfaces
-                        [estimate] reflected radiance with help of closeby photons
+                        reflected radiance can be [estimated] with help of closeby photons
                 qq reverse photon mapping x4
                     eye pass
                         for each pixel [generate eye paths] and store reverse photons
@@ -4964,6 +4981,7 @@
                             less likely occour case 
                         Edge-face and face-face
                             extended contacts
+                    :less likely to happen and special care should be taken 
             <> Explain math
                 qq integration over solid angle
                     pic
@@ -5017,18 +5035,19 @@
                 qq explicit, implicit, symplectic Euler
                     pic 
                 qq what is time evoluiton funciton? 
+                    can be derived from equ. of motion, used to compute state of the system in an arbitry time t
+                    fully describe the state of the system 
+                    function describe the state of the system when time evolves 
                     systems with internal state (also called stateful systems). 
-                    state of the system changes with time 
                 qq A-stabel
-                    iff generated approximations converge to for any step width and any time length 
+                    iff generated approximations converge to 0 for any step width and arbitrary long time 
                 qq what means stiff for a DE? 
                     explicit methods do not always converge. 
                 qq general idea behind step width adaptation
                     comparing to two steps with half stepwidth, threadhold method, larger than toleranz... 
                         re-estimate h with a funciton 
                 qq how to find the best integrator for a given problem?
-                    compute integration error for each method and compare them, choose the minimal one 
-                    consider: dimention, function shape 
+                    depends on application, how fast are expected to run, real time application?
                 qq what is numerical dissipation and how does it influence numerical methods for solving incompressible
                     > Navier Stokes equations?
                     Numerical simulation typically makes errors
@@ -5039,16 +5058,23 @@
                     exploits intermediate varibles 
                     pic 
                     +integrate diff. parts saparately
-                qq how can the advection step be approached in a semi-Lagragian manner?
+                qq how can the advection step be approached in a semi-Lagragian manner? x3 
                     solve “the advection equation” for any grid quantity 𝑞 
                     use the Lagrangian notion of advection directly to compute 
                     interpolate from nearby grid points to get the result 
+                    +++
+                    solve “the advection equation” for any grid quantity 𝑞 
+                    trace with Lagrangian notion 
+                    compute q(x_old) with interpolation from nearby grids 
                 qq how does the pressure update work for incompressible fluids?
                     an additional divergence constraint to ensure the incompressiblility 
                     pic 
                     star means intermediate varibles !
-                qq what are the different boundary conditions used in fluid simulation?
-                    x2 the equ. in pic 
+                qq what are the different boundary conditions used in fluid simulation? 
+                    x3 
+                    fluid-fluid boundaries 
+                    fluid solid boundaries
+                    fluid air/ free space boundaries
                     “ghost” solid pressure
                 qq how do we interpolate attributes in SPH simulation?
                     cubic kernel function or quintic spline
@@ -5152,6 +5178,98 @@
                     divergence of u is zero. u is velocity with components u,v,w 
                     divergence depends only on spatial derivatives 
         ---+ql picture notes! 
+        ---story mode 
+            cg3 
+                rendering equ./ ray simulation/ ray tracing/ particle tracing 
+                    // derive equ.
+                        derive: phy view
+                            operator form, nested integral form, directional, area formulation, light path regular expressions
+                                geometry factor and visibility
+                            radiance computing: emitted radiance of light source, sensor efficiency and measurement equation
+                            how to make Phong and Blinn-Phong brdfs physically plausible? derive a new equ follow phy rules 
+                            explain microfacette models on a coarse level, what are the individual parts? more realistic brdf!
+                            what do the Fresnel coefficients describe?
+                            brdf properties: Helmholtz reciprocity, energy conservation
+                        evaluate:  math view 
+                            MC method, other integrator? 
+                            formula in MC method? why should we use MC integrator? 
+                            reduce variance? MIS 
+                            integration over solid angle
+                            variance, bias, why do we need variance in solving rendering equ.?
+                            MC estimation of reflection integral
+                            Nusselt’s analogon
+                            uniform, rejection, N-rooks, transformation sampling
+                            what is an anisotropic brdf, what an isotropic?
+                            how to measure a brdf?
+                            how to represent a measured brdf efficiently?
+                            what is a bssrdf?
+                    // inteprete above equ. in codes
+                        sample the rays: coder view/ geo. view 
+                            basic: 
+                                path, light and bidirectional path tracing 
+                            cache-based method: 
+                                final gathering, photon mapping, reverse photon mapping, ppm, vcm, sppm, probPPM
+                        particle tracing 
+                            gamma-ton tracing, boids
+                        +tracing other quantities 
+                differental equ./ ode, pde, physical simulation 
+                    essential 
+                        // solving DE
+                            what is a differential equation?
+                            ordinary and partial differential equations
+                            explicit, implicit, symplectic Euler
+                            what is time evoluiton funciton? 
+                            A-stabel
+                            what means stiff for a DE? 
+                            general idea behind step width adaptation
+                            how to find the best integrator for a given problem?
+                        // quantities
+                            unit, idea of non-dimensionalization
+                            Noether theorem
+                            radiometry: energy, power, radiosity and irradiance, radiance
+                            quantities: mass, acceleration, momentum, (conservative) force.  energy (kinetic, potential)
+                            what forces do you know? 
+                            inertia moment, inertia tensor, vector representation of angular velocity,
+                                > angular acceleration, torque,
+                                > rotational kinetic energy
+                    rbody simualtion 
+                        // derive equ.
+                            the simulation loop! 
+                            the idea of the Sequential impulse loop/ algorithm + igen, iwrote
+                        // inteprete
+                            // diff. parts of the equ./ algo:
+                                how can pose of rigid body be described
+                                how does pose evolve over time without friction?
+                                how does orientation change in dependence of angular velocity?
+                                what is a “Kraftstoß” and how does it help to compute the change in momentum during a rigid body simulation 
+                                avoid collisions in a rigid body simulator?
+                        // addi. simulation requirements
+                            contact point and what kind of non-degenerate contacts exist?
+                                handle them better! 
+                    fluid simulation
+                        // derive
+                            what are incompressible fluids?
+                            the idea, the simualtion loop? derive the simulation equ.
+                            what are kinetic and dynamic viscosity?
+                            splitting trick when solving ODEs
+                        // inteprete
+                            // diff. parts of the simulation equ./ algo.
+                                how can the advection step be approached in a semi-Lagragian manner?
+                                how does the pressure update work for incompressible fluids?
+                        // addi. simulation requirements
+                            how do we interpolate attributes in SPH simulation?
+                            what are the different boundary conditions used in fluid simulation?
+                            what is numerical dissipation and how does it influence numerical methods for solving incompressible
+                                Navier Stokes equations?
+                    cloth simulation
+                        // derive 
+                            the idea, the simualtion loop? 
+                            how to model a piece of cloth
+                        // inteprete
+                            // addi. simulation requirements
+                                stiff spring? hysteresis?
+
+
     ---summ. active mode 
         idea, hlev understanding 
             take away knowledge:
