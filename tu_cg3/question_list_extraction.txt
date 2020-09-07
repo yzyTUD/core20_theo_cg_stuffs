@@ -1088,8 +1088,9 @@
                 qq what is the diff. bet. brdf and btdf? 
         ---ql official--with answer 
             <> Explain algorithmic techniques
-                qq path, light and bidirectional path tracing x3 + x3 + x2
+                qq path, light and bidirectional path tracing x4 + x4 + x2
                 qq idea of multiple importance sampling according to brdf and L_in x2 
+                qq what is MIS? +igen 
                 qq idea of multiple importance sampling in BPT
                 qq direct and indirect light sampling
                 qq final gathering x2
@@ -1131,13 +1132,13 @@
                 qq what is numerical dissipation and how does it influence numerical methods for solving incompressible
                     > Navier Stokes equations?
                 qq what is the splitting trick when solving ODEs?
-                qq how can the advection step be approached in a semi-Lagragian manner?
+                qq how can the advection step be approached in a semi-Lagragian manner? x3 
                 qq how does the pressure update work for incompressible fluids?
-                qq what are the different boundary conditions used in fluid simulation?
+                qq what are the different boundary conditions used in fluid simulation? 
                 qq how do we interpolate attributes in SPH simulation?
             <> Explain physics
                 qq unit, idea of non-dimensionalization
-                qq Noether theorem
+                qq Noether's theorem
                 qq radiometry: energy, power, radiosity and irradiance, radiance (incoming vs outgoing), brdf, albedo(Diffuse BDRF),
                     > potential, spectral quantities
                 qq rendering equation in directional, area formulation and operator form, light path regular expressions
@@ -1165,4 +1166,7 @@
                 qq what are kinetic and dynamic viscosity?
                 qq what are incompressible fluids?
         ---+ql picture notes! 
+        ---story mode 
+                                > angular acceleration, torque,
+                                > rotational kinetic energy
     ---summ. active mode 

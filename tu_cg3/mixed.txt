@@ -5089,8 +5089,8 @@
                             measured units are involved
                         3.These units refer to quantities intrinsic to the system, 
                             rather than units such as SI units
-                qq Noether theorem
-                    Any differentiable symmetry of the action of a physical
+                qq Noether's theorem
+                    Any differentiable symmetry of the [action] of a physical
                         system has a corresponding conservation law
                     high lev understanding of the phy. system 
                 qq radiometry: energy, power, radiosity and irradiance, radiance (incoming vs outgoing), brdf, albedo(Diffuse BDRF),
@@ -5164,8 +5164,10 @@
                 qq how does orientation change in dependence of angular velocity?
                     the same, above, time evolution funciton 
                 qq how do forces applied to a point on a rigid body act on its linear and angular velocities?
-                    forces can be transfered to impulses (with direction information), and thus can be used to update linear and angular velocity 
+                    forces can be transfered to impulses (with direction information), 
+                    and thus can be used to update linear and angular velocity 
                 qq what is a “Kraftstoß” and how does it help to compute the change in momentum during a rigid body simulation 
+                    Impulsänderung
                     Jeder Kraftstoß ist mit einer Impulsänderung verbunden
                     Der Kraftstoß auf einen Körper ist gleich der Änderung seines Impulses.
                     it is the change of impulse, can be used to update velocities, momentums 
