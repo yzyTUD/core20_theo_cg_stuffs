@@ -2,17 +2,19 @@
     ---detailview
         re-ok- slides-intro 
                 qq what are typicall complicated computing cases? x2 
-                qq what we do typically when doing pre processing ? 
                 qq whats the diff. bet. FVM and FEM
                 qq how can we model the fluids? 
                 qq what is lageridian multiplier? how it was used? 
-                    qq proof it!
-                    qq fomula
             qq what is the diff. bet. cfd and sph?
             qq explain following: DEM, CFD, SPH, FEM, FVM? FDM
             qq if we want to simulate fluid, what kind of method can we use? 
             qq if we want to siulate sand? 
             qq what if we want to similate powders? 
+                > sugar or proteins
+                > bulk materials in storage silos
+                > granular matter, like sand;
+                > Blocky or jointed rock masses
+                > rock masses
             qq compare CFD methods: FEM, FVM, and SPH 
             qq if we want to simulate: gases, wind
         ---phy 

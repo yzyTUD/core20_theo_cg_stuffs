@@ -99,7 +99,7 @@
                 The volume occupied by the fluid is divided into discrete cells (the mesh). The mesh may be uniform or non-uniform, structured or unstructured, consisting of a combination of hexahedral, tetrahedral
                 prismatic, pyramidal or polyhedral elements.
                 During preprocessing
-                qq what we do typically when doing pre processing ? 
+                what we do typically when doing pre processing ? 
                 https://en.wikipedia.org/wiki/Computational_fluid_dynamics#Turbulence_models
                 Methodology
                 Boundary conditions are defined. This involves specifying the fluid behaviour and properties 
@@ -108,13 +108,14 @@
                 postprocessor 
                 visualization 
                 analysis 
-                The finite volume method (FVM) is a common approach used in CFD codes
                 Reynolds number turbulent flows
                 combustion
                 are recast in a conservative form
                 and then solved over discrete control volumes.
                 The finite element method (FEM) is used in structural analysis of solids
                 qq whats the diff. bet. FVM and FEM
+                    The finite volume method (FVM)
+                        is a common approach used in CFD codes
                     structural analysis of solids, but is also applicable to fluids
                     special care to ensure a conservative solution.
                     much more stable than the finite volume approach
@@ -164,8 +165,8 @@
                         it solves introducing a new variable
                 拉格朗日乘数法含n个变量和k个约束的情况
                 拉格朗日乘数法的正确性的证明
-                    qq proof it!
-                    qq fomula
+                    qql proof it!
+                    qql fomula
                 Lagrange function (or Lagrangian or Lagrangian expression
                 We introduce a new variable ({\displaystyle \lambda }\lambda ) 
                     called a Lagrange multiplier 
@@ -177,11 +178,10 @@
                 tt code! IK 
             hydrodynamics
             qq what is the diff. bet. cfd and sph?
-                Smoothed-particle hydrodynamics
-                grid based? diff scale, cfd is larger concept 
                 cfd indicates computational fluid dynamics 
-                and sph is a non-grid based method 
-                smooth particle hydrodynamics 
+                    cfd is larger concept 
+                sph is: Smoothed-particle hydrodynamics
+                    sph is a non-grid based method 
             CFD applications
             结构计算方法
                 一般分为有限元（FEM finite element method）、
@@ -209,9 +209,9 @@
                 便完成了这个时间点的仿真计算
                 受力、颗粒的速度、加速度
             qq explain following: DEM, CFD, SPH, FEM, FVM? FDM
-                The finite difference method (FDM) has historical importance
+                The finite difference method (FDM) has [historical importance]
                 the interaction of the fluid (liquids and gases) with surfaces
-                defined by boundary conditions
+                    defined by boundary conditions
                 accuracy and speed of complex simulation scenarios
                 transonic or turbulent flows.
                 engineering problems in many fields of study and industries
@@ -227,7 +227,8 @@
                 finite differences approximate the derivatives.
                 FDMs convert linear ordinary differential equations (ODE) or non-linear partial differential equations (PDE) 
                 FDMs are the dominant approach to numerical solutions of PDEs
-                FDM is an older method than FEM that requires less computational power but is also less accurate in some cases where higher-order accuracy is required
+                FDM is an older method than FEM that requires less computational power but is also 
+                    less accurate in some cases where higher-order accuracy is required
                 requires more computational power and is also more exigent on the quality of the mesh
             qq if we want to simulate fluid, what kind of method can we use? 
                 FEM, SPH, particle based, cfd methods 
@@ -235,11 +236,11 @@
             qq if we want to siulate sand? 
                 DEM
             qq what if we want to similate powders? 
-                sugar or proteins
-                bulk materials in storage silos
-                granular matter, like sand;
-                Blocky or jointed rock masses
-                rock masses
+                > sugar or proteins
+                > bulk materials in storage silos
+                > granular matter, like sand;
+                > Blocky or jointed rock masses
+                > rock masses
                 DEM 
             qq compare CFD methods: FEM, FVM, and SPH 
             qq if we want to simulate: gases, wind
