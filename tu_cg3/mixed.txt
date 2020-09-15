@@ -86,7 +86,7 @@
             Contact Handling
             https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
             tt papers page 5! 
-            +Computational fluid dynamics - Wikipedia
+            +qq Computational fluid dynamics - Wikipedia
                 a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows.
                 interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions.
                 complex simulation scenarios such as transonic or turbulent flows
@@ -348,13 +348,13 @@
                         使得方程相对简单
                         但是在工程中意义未必大
                         “自定义物理梁刚”
-                        qq the idea of nondimensionalization?
-                            1.partial [removal] of [physical dimensions] from an equation
-                                suitable [substitution of variables].
-                            2.[simplify] and parameterize problems where 
-                                measured units are involved
-                            3.These units refer to quantities intrinsic to the system, 
-                                rather than units such as SI units
+                    qq the idea of nondimensionalization?
+                        1.partial [removal] of [physical dimensions] from an equation
+                            suitable [substitution of variables].
+                        2.[simplify] and parameterize problems where 
+                            measured units are involved
+                        3.These units refer to quantities intrinsic to the system, 
+                            rather than units such as SI units
 
                     Vector operator in vector calculus
                         include the gradient, divergence, and curl:
@@ -415,13 +415,17 @@
                             set of particles
                     qq convert from above one to an other? p20 
                         interpreting density as particle probability and sampling
-                    qq how forces can be computed ? p21 
-                    qq what is gradient?
-                        a vector whose components are the partial derivatives of!
+                    qq how forces can be computed in a field? p21 
+                    qq what is gradient? express with standard unit vectors
+                        a vector whose components are the partial derivatives
+                        pointing in the direction of the 
+                        steepest slope
                     qq what is Conservative Force def.??
-                    qq what is gradient theorem? 
+                        total work done in moving a particle between two points is independent of the taken path
+                        path independent
+                    qq what is gradient theorem? proof it! computes the Work done with force. 
                         work done is path independent, and just 
-                        potential difference of path end points
+                            potential difference of path end points
                     qq the condition that the force is conservative?? 
                         curl vanishes 
                     qq how to compute curl? wiki 
@@ -432,7 +436,18 @@
                     qq eular Lagrange equation? describing a harmonic oscillator p29 
                     qq Lagrangian of a whole sys. ? p28 
                     qq action S of a sys. ? p28 ?? pp
-                    qq what is the principle of stationary action?
+                    qq what is the principle of stationary action? used to compute the what? with variational calculus?
+                        is a variational principle that, 
+                            when applied to the action of a mechanical system, 
+                            can be used to obtain the equations of motion for that system
+
+                            requires finding the path of motion in space that has the least value
+                            even general relativity (see Einstein–Hilbert action)
+                            The principle remains central in modern physics and mathematics
+
+                            [The path taken] by the system between times t1 and t2 and configurations 
+                                q1 and q2 is the one for which the action is stationary (no change) to first order.
+                    qq Noether theorem? 
                     qq what are typical Conserved quantities? p32 
                     qq diff. integration methods and their properties, 
                         > stable? preserve energy?... 
@@ -444,18 +459,20 @@
                     qq function for both integral form and differential form. 
                     qq why no source term in conserved quantities? 
                     qq what is continuity equation used for? p35 
+                        describe temporal changes of
+                            physical quantities inside of fluids or fields
                     qq diff. bet. gradiant/ divergence/ curl operators??
                         https://en.wikipedia.org/wiki/Del#Divergence
                         The divergence of a vector field
                         is a scalar function
                     qq The formula for the vector product??
-                    qq product rule??
                 r1
                     Hook‘s law
                     Harmonic Oscillator
                     Analytic Solution
                     qq formulas op04
                         solution
+                    qq product rule??
                     https://flothesof.github.io/harmonic-oscillator-three-methods-solution.html
                     explicit Euler
                     with step width ?
@@ -534,7 +551,7 @@
                     undetermined parameters
                     general numerical process often used in differential equations
                     qq Buckingham π theorem?? 
-                        a theorem for dimensional analysis
+                        *a theorem for dimensional analysis
                         if there is a physically meaningful equation involving a certain
                             number n of physical variables, 
                             then the original equation can be rewritten in terms of a set of 
@@ -587,18 +604,23 @@
                     respect to volume
                     &h 
                     Field vs Particles
-                    Eulerian View
-                    Lagragian View
                     qq compare those two views
-                    Describe physics in form of particles that move in space
-                    particle
-                    particles are the discretization unit and typically do not represent single physical 
-                    sampling
-                    density estimation
-                    reconstruction
+                        Eulerian View
+                            Describe physics as fields, often discretized over grids or meshes
+                        Lagragian View
+                            Describe physics in form of particles that move in space
+                            particles are the discretization unit and typically do not represent single physical, but bundles
                     qq how can we transfer from field view to particle? and back? 
-                    qq similar to the case of: from density, we know a 
+                        interpolation
+                        //
+                        density estimation
+                        reconstruction
+                    similar to the case of: from density, we know a 
                         volumetric representation, and we reconstru. back to spacial view 
+                        ---REVIEW---
+                        ---
+                        ---
+                        ---
                     gradient is 
                         direction of steepest ascent
                     qq compare the direction of force and gradient of potential?
@@ -676,7 +698,7 @@
                         Light travels along the shortest path 
                         wrt. time
                         根据费马原理，光线传播的路径是所需时间为极值的路径
-                    qq what is 斯涅尔定律 Snell's law??
+                    qq what is 斯涅尔定律 Snell's law?? law of refraction
                         equivalent to the ratio of phase velocities
                         取传播时间{\displaystyle T}T对变数{\displaystyle x}x的导数，设定其为零：
                         根据正弦函数定义，可以得到传播速度与折射角的关系式：
@@ -5271,8 +5293,6 @@
                         // inteprete
                             // addi. simulation requirements
                                 stiff spring? hysteresis?
-
-
     ---summ. active mode 
         idea, hlev understanding 
             take away knowledge:

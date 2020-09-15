@@ -1,6 +1,7 @@
     ---preview
     ---detailview
         re-ok- slides-intro 
+            +qq Computational fluid dynamics - Wikipedia
                 qq what are typicall complicated computing cases? x2 
                 qq whats the diff. bet. FVM and FEM
                 qq how can we model the fluids? 
@@ -19,7 +20,7 @@
             qq if we want to simulate: gases, wind
         ---phy 
             re-ok- slides-1 CG3_01_Physically-Based-Simulation
-                        qq the idea of nondimensionalization?
+                    qq the idea of nondimensionalization?
                     qq what is the equation of harmonic oscillator?  p4 
                     qq solve? 
                     qq rewrite with state vector 
@@ -44,10 +45,10 @@
                     qq what is Eulerian and Lagragian view of a sys.? p19
                         ---
                     qq convert from above one to an other? p20 
-                    qq how forces can be computed ? p21 
-                    qq what is gradient?
+                    qq how forces can be computed in a field? p21 
+                    qq what is gradient? express with standard unit vectors
                     qq what is Conservative Force def.??
-                    qq what is gradient theorem? 
+                    qq what is gradient theorem? proof it! computes the Work done with force. 
                     qq the condition that the force is conservative?? 
                     qq how to compute curl? wiki 
                     qq compute the work done by force f from x1 to x2 p22 
@@ -57,7 +58,8 @@
                     qq eular Lagrange equation? describing a harmonic oscillator p29 
                     qq Lagrangian of a whole sys. ? p28 
                     qq action S of a sys. ? p28 ?? pp
-                    qq what is the principle of stationary action?
+                    qq what is the principle of stationary action? used to compute the what? with variational calculus?
+                    qq Noether theorem? 
                     qq what are typical Conserved quantities? p32 
                     qq diff. integration methods and their properties, 
                         > stable? preserve energy?... 
@@ -70,8 +72,8 @@
                     qq what is continuity equation used for? p35 
                     qq diff. bet. gradiant/ divergence/ curl operators??
                     qq The formula for the vector product??
-                    qq product rule??
                     qq formulas op04
+                    qq product rule??
                     qq Derivation of the Explicit Euler Method
                     qq Graphical Illustration of the Explicit Euler Method
                     qq proof the stability 
@@ -86,7 +88,6 @@
                     qq example of damped harmonic oszillator
                     qq compare those two views
                     qq how can we transfer from field view to particle? and back? 
-                    qq similar to the case of: from density, we know a 
                     qq compare the direction of force and gradient of potential?
                     qq how is conservative force defined? op22 
                     qq def. of Conservative force 
@@ -118,6 +119,10 @@
                     qq gradient theorem, proof op22 
                     qq what is the def. of conservative force??
             re-ok- slides-8 CG3_08_DGLs(Differentialgleichung)
+                        ---REVIEW---
+                        ---
+                        ---
+                        ---
                 qq what is differential equation?
                 qq what is the diff. bet. ode and pde??
                 qq what is boundary conditions??
