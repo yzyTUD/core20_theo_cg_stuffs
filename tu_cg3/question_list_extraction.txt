@@ -88,6 +88,10 @@
                     qq example of damped harmonic oszillator
                     qq compare those two views
                     qq how can we transfer from field view to particle? and back? 
+                        ---REVIEW---
+                        ---
+                        ---
+                        ---
                     qq compare the direction of force and gradient of potential?
                     qq how is conservative force defined? op22 
                     qq def. of Conservative force 
@@ -95,7 +99,7 @@
                     qq express the dir with theta and phi
                     qq what is Minimization Principle
                     qq what is Fermat’s Principle
-                    qq what is 斯涅尔定律 Snell's law??
+                    qq what is 斯涅尔定律 Snell's law?? law of refraction
                     qq derive the equ. of refraction 
                     qq the equ. of scalar Lagrangian?? op28 
                     qq action 𝑆 of the system?? op28 
@@ -119,62 +123,55 @@
                     qq gradient theorem, proof op22 
                     qq what is the def. of conservative force??
             re-ok- slides-8 CG3_08_DGLs(Differentialgleichung)
-                        ---REVIEW---
-                        ---
-                        ---
-                        ---
                 qq what is differential equation?
                 qq what is the diff. bet. ode and pde??
                 qq what is boundary conditions??
-                qq 
+                qq implicit representation of an ode of order n?and explicit representation? 
                 qq what is Order reduction?
                 qq what is phase space, the case in physical system of 2nd order? 
                 qq 自治（驻定）的系统?
                 qq the case of Harmonic Oscillator, phase space?? what is that equ.?? 
                 qq what is the time evoluiton func. of Harmonic Oscillator?? p6 
-                qq what is autonomous DE?? 
+                qq what is autonomous DE?? how can it be used? why we need to know this? 
                 qq what is Picard–Lindelöf theorem
                 qq does Picard–Lindelöf theorem always true?
                 qq 初值问题边值问题与柯西问题 
                 qq describe the initial val. problem! of odes
                 qq what is Lipschitz condition? **
                 qq re- what is Lipschitz-condition, bi-Lipschitz-condition??  
-                qq explain: Every function that has bounded first 
+                qq explain: * Every function that has bounded first derivatives is Lipschitz continuous
                 qq can we solve sys. with collisions with closed form?? n why?? op08
                 qq how can we archieve Analytic Solutions of odes??
                 qq how can we solve initial value problem numerically?? p10 
-                qq formulate a numerical solition form of a DE
+                qq re- how conditions like initial value be used?? 
+                qq formulate a numerical solution form of a DE
                 qq why not a typical integration? how can we solve it? op10
                 qq use explicit euler to solve this?? 
-                qq what is the bkg? what field?
+                qq what is the bkg image p13? what field?
                 qq error with respect to what?
                 qq expression of the accu. error?? op15
                 qq what is the appro. order of explict euler method??? error estimation? op15
                 qq but the accumulated error grows with O(h)?? not h^2 ?? 
                 qq what is the approximation order of a method whose has error pt. h^2 ?? 
                 qq what is the approximation order of explicit Euler?
-                ---
-                qq what Numeric Integration methods do you know? x4 
-                ---Verlet
+                qq what Numeric Integration methods do you know? x5 
                 qq how does Verlet Method get a higher order? 
                 qq estimate velocity from Numeric Integration, which difference scheme? 
                 qq whats the approxi. order of Verlet method?? 
                 qq the fomr. of verlet method, limitations of it?
                 qq the formula/ proof of 4 methods  -large
                 qq formula of diff. interpolation schemes x3 which one has better approxi. order?? 
-                --- Euler-Cromer Methode
                 qq does Euler-Cromer Methode have approx. order ?
                 qq why is Euler-Cromer Methode more stable than others of the same order?
-                --- Runge-Kutta
                 qq what is the App. ord.  of Runge-Kutta Methods?? 
                 qq the idea of RK? why have higher order? 
-                ---
                 qq explain A-stable op21
                 qq what test case does A-stable use? 
                 qq what means of a DE is stiff?? 
                 qq does implicit Euler Method is A-stable?
                 qq proof that! op22 large 
                 qq f ! explicit and implicit case! for Midpoint methods
+                qq implicit midpoint is also symplectic??
                 qq what feature does symplectic mean?  
                 qq  let step be a kth app.ord. method. how can we adapt stepwidth? op26
                     qq how can we estimate step error?? 
@@ -182,6 +179,10 @@
                 qq does most efficient scheme depends on application?
             ---*
             re-ok- slides-9 CG3_09_Particles
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 qq what properties does a Particle have? x4+ 
                 qq how can we gen. particles, randomly? which sampling?
                 qq what is boids, how diff. from particles ??

@@ -900,15 +900,13 @@
                 Wave Eq., Maxwell Eg., Schr鰀inger Eq.,
                 Einsteinean Field Eq., Navier-Stokes-Eq
                 highest derivative
-                qq 
-                    implicit representation of an ode of order n?
-                    explicit representation? 
+                qq implicit representation of an ode of order n?and explicit representation? 
                 In this case the ansatz will yield an (n-1)-th order 
                     equation for {\displaystyle v}v
                 &p pp op4 1 should be n-1??
                 qq what is Order reduction?
                     DE of order n can be transformed into 
-                        a system of DE of order 1.
+                        [a system of] DE of order 1.
                 &h maybe 1 right...
                 combined with derivatives up to (?? - 1) to a ??-d 
                 qq what is phase space, the case in physical system of 2nd order? 
@@ -932,16 +930,19 @@
                 qq the case of Harmonic Oscillator, phase space?? what is that equ.?? 
                 qq what is the time evoluiton func. of Harmonic Oscillator?? p6 
                     vector field on the simulation domain
-                qq what is autonomous DE?? 
+                qq what is autonomous DE?? how can it be used? why we need to know this? 
                     if the time evoluiton funcction does not depend explicitly on t
+                    In case of autonomous
+                        DE, the time evolution correspond to streamlines of the vector field
                 qq what is Picard–Lindelöf theorem
-                    gives a set of conditions under which an initial value problem has a 
-                        unique solution.
+                    * gives a set of Lipschitz conditions under which 
+                        an initial value problem has a unique solution.
+                    on time evolution, 
                     https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem
                 qq does Picard–Lindelöf theorem always true?
-                    not for pdes
+                    * not for pdes
                         pdes are typically harder prob. we can not say it has unique soluiton 
-                    In case of Kollisions
+                    * In case of Kollisions
                         cannot be fulfill due to instantaneous
                             changes in the velocity 
                     对于偏微分是不适用的，对于碰撞是不适用的
@@ -957,7 +958,7 @@
                     在数学中，特别是实分析，利普希茨连续（Lipschitz continuity）
                         以德国数学家鲁道夫·利普希茨命名，是一个
                         比通常连续更强的光滑性条件
-                    *直觉上，利普希茨连续函数限制了函数改变的速度，符合利普希
+                    * 直觉上，利普希茨连续函数限制了函数改变的速度，符合利普希
                         茨条件的函数的斜率，必小于一个称为利普希茨
                         常数的实数（该常数依函数而定）。
                     K 称为 {\displaystyle f}f 的利普希茨常数。
@@ -999,14 +1000,13 @@
                     In case of Kollisions the Lipschitz-condition cannot be fulfill due to instantaneous changes in the velocity.
                     Lipschitz-condition
                 qq re- what is Lipschitz-condition, bi-Lipschitz-condition??  
-                qq explain: Every function that has bounded first 
-                        derivatives is Lipschitz continuous
+                qq explain: * Every function that has bounded first derivatives is Lipschitz continuous
                 &h 
                     最小的常数
                     strong form of uniform continuity for functions
                     the smallest such bound is called the Lipschitz constant of the function
                     bounded first derivatives is Lipschitz continuous
-                    guarantees the existence and uniqueness of the solution 
+                    * guarantees the existence and uniqueness of the solution 
                         to an initial value problem
                     A special type of Lipschitz continuity, called contraction, 
                         is used in the Banach fixed-point theore  
@@ -1030,14 +1030,14 @@
                 qq how can we solve initial value problem numerically?? p10 
                     Integral on right side is determined numerically
                     Numeric Integration
-                    how conditions like initial value be used?? 
-                qq formulate a numerical solition form of a DE
+                qq re- how conditions like initial value be used?? 
+                qq formulate a numerical solution form of a DE
                 qq why not a typical integration? how can we solve it? op10
-                    appears on right side too
+                    unknown Functions appears on right side too
                     Approximate with polygonal line
                 qq use explicit euler to solve this?? 
                 accumulated error
-                qq what is the bkg? what field?
+                qq what is the bkg image p13? what field?
                     a vector field
                 qq error with respect to what?
                     analytic solution
@@ -1068,41 +1068,39 @@
                     implicit methods are stable but lead to 
                         system of non-linear equations to be solve
                     most efficient scheme depends on application
-                ---
-                qq what Numeric Integration methods do you know? x4 
-                ---Verlet
+                //
+                qq what Numeric Integration methods do you know? x5 
+                //Verlet
                 qq how does Verlet Method get a higher order? 
                     Exploit Taylor series addind +h and –h
                         *eliminates some componnets to achieve a higher order 
                 qq estimate velocity from Numeric Integration, which difference scheme? 
-                    central difference have best approximation order
+                    centeral difference
+                        have best approximation order
+                    backward difference
+                    forward difference
+                    Second-order central
+                    https://en.wikipedia.org/wiki/Finite_difference
                 qq whats the approxi. order of Verlet method?? 
                     approximation order 3:(higher order)
                 qq the fomr. of verlet method, limitations of it?
                     specifically designed for physical systems of order 2 
                 qq the formula/ proof of 4 methods  -large
                 &h 
-                    central difference
-                        have best approximation order
-                    centeral difference
-                    backward difference
-                    forward difference
-                    Second-order central
-                    https://en.wikipedia.org/wiki/Finite_difference
                 qq formula of diff. interpolation schemes x3 which one has better approxi. order?? 
-                --- Euler-Cromer Methode
+                // Euler-Cromer Methode
                 qq does Euler-Cromer Methode have approx. order ?
                 qq why is Euler-Cromer Methode more stable than others of the same order?
                     semi-implicit, symplectic
                     more stable than other methods of approximation order 1.
-                --- Runge-Kutta
+                // Runge-Kutta
                 qq what is the App. ord.  of Runge-Kutta Methods?? 
                 qq the idea of RK? why have higher order? 
                     Family
                     App. ord. 𝑛 builds on 𝑛 function evaluations
                     Very popular is RK4
                     kernel style?
-                ---
+                //
                 qq explain A-stable op21
                     generated approximations converge to 
                 qq what test case does A-stable use? 
@@ -1110,6 +1108,7 @@
                 &h we are talking about numeric integration method
                 qq what means of a DE is stiff?? 
                     explicit euler not converge all the time 
+                    explicit methods do not always converge.
                 qq does implicit Euler Method is A-stable?
                 qq proof that! op22 large 
                 &h 
@@ -1119,6 +1118,7 @@
                     pays off as larger steps can be taken
                     is it recommand to use implicit from?? y can paid off 
                 qq f ! explicit and implicit case! for Midpoint methods
+                qq implicit midpoint is also symplectic??
                 red chord is approximately parallel to the tangent line at the midpoint
                 Both methods are of approximation order 2
                 implicit midpoint is also symplectic
@@ -1140,6 +1140,10 @@
                 qq does most efficient scheme depends on application?
             ---*
             re-ok- slides-9 CG3_09_Particles
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 Generalizations of Point Mass
                 3d Particle Grid
                 Class-Hierarchy-Physics Particle
