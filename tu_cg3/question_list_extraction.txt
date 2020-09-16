@@ -1,6 +1,6 @@
     ---preview
     ---detailview
-        re-ok- slides-intro 
+        pruf-re-ok- slides-intro 
             +qq Computational fluid dynamics - Wikipedia
                 qq what are typicall complicated computing cases? x2 
                 qq whats the diff. bet. FVM and FEM
@@ -19,7 +19,7 @@
             qq compare CFD methods: FEM, FVM, and SPH 
             qq if we want to simulate: gases, wind
         ---phy 
-            re-ok- slides-1 CG3_01_Physically-Based-Simulation
+            pruf-re-ok- slides-1 CG3_01_Physically-Based-Simulation
                     qq the idea of nondimensionalization?
                     qq what is the equation of harmonic oscillator?  p4 
                     qq solve? 
@@ -122,7 +122,7 @@
                     qq what is divergence theorem?? the basic of continuity equ. 
                     qq gradient theorem, proof op22 
                     qq what is the def. of conservative force??
-            re-ok- slides-8 CG3_08_DGLs(Differentialgleichung)
+            pruf-re-ok- slides-8 CG3_08_DGLs(Differentialgleichung)
                 qq what is differential equation?
                 qq what is the diff. bet. ode and pde??
                 qq what is boundary conditions??
@@ -178,16 +178,12 @@
                 qq why use damped harmonic oscillator as a demo? 
                 qq does most efficient scheme depends on application?
             ---*
-            re-ok- slides-9 CG3_09_Particles
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
+            pruf-re-ok- slides-9 CG3_09_Particles
                 qq what properties does a Particle have? x4+ 
                 qq how can we gen. particles, randomly? which sampling?
                 qq what is boids, how diff. from particles ??
                 qq what should we cosider when imp. such a sys.?? x4 what cases should be avoid?  
-                qq hwo can we do Visual Simulation of Weathering?
+                qq how can we do Visual Simulation of Weathering?
                 qq the idea of gamma-ton Tracing
                 qq Movement Probabilities for Each particle? possible movement??
                 qq when does the movement probabilities change?
@@ -204,35 +200,32 @@
                 qq which three forces are used?
                 qq what is Hysteresis effect? how can we simulate?
                 qq what possible additional connections are there?  
-            re-ok- slides-10 CG3_10_RigidBody 
+            pruf-re-ok- slides-10 CG3_10_RigidBody 
                 qq what are Dynamics and Kinematics
                 qq short notation that projections from one onto the other vector op3
                 qq what is Euclidean transformation 
                 qq how can we define natural origin and rotation of a rigid body? in 2d and 3d 
-                qq what is the natural origin of an object
-                qq  how can we compute center of gravity in descrate case and continus case??
+                qq what is the natural origin of an object? 
+                qq how can we compute center of gravity in descrate case and continus case??
                 qq what is affine combination
                 qq draw the base vectors on a given graph!
                 qq transform from object corrdi. to world coordi. *** and back. formula!!x2 
-                --- tobecontinued
-                qq derive velocity equ.!! with x X r R
-                    ok-pp op07 can not understand what prof. is doing
+                qq derive velocity equ.!! both angular and linear velocity!
                 qq what is the diff. bet. kinematics and dynamics?? 
                 qq what is the dir. of Torque??
                 qq how to understand this? :force acts twice once for linear and once the angular dynamics
-                ---
                 qq expression of the torque? in 3d case. vec3 calcu. op10
                 qq the dimention of a torque in 3d case? 
                 qq what is moment of inertia
                 qq continuous case, the inertia tensor results from? the formula in continus case?
-                qq calcu. of Inertia in both continus or descrate case 
+                qq calcu. of Inertia in both continus or descrate case *
                 qq derive the fromula of Inertia tensor 
                 qq why use  a* a^T?? matrix form?? 
                 qq inertia tensor fromula op11  both descrete case and continus case! In 2d and 3d! x4 
                 qq * give the formula in 3d case! op12 calcu. Inertia in Example of circular disk
                 qq how can we express inertia tensor in program? 
                 qq what is the dimention of inertia tensor?? 
-                    > and inv_mass? and angular velocities?
+                    > and inv_mass? and angular velocities?position? orientation? 
                 qq give the calculation formula of computing the I of Cuboid! op13 
                     > and the result that we can directly use later! 
                 qq how can we compute inertia tensor in world coordinate system? 
@@ -242,7 +235,7 @@
                 qq what is the relation between force and linear momentum? 
                     > Torque and angular momentum?? 
                 qq Inertia Tensor are changing during simulation? 
-                qq what kind of spinning top are there?? 
+                qq what kind of spinning tops are there?? !
                 qq will angular momentum and angular velosity 
                     > pointing at the same direction? 
                 qq say, what’s the dir of angular velocity and the one of torque!?
@@ -250,12 +243,12 @@
                 qq where are spinning tops??
                 qq what kind of spinning tops are there?? x2
                 qq how a state of a rbody is defined?? x4 by four components?? position, ori. and? 
-                qq  reciprocal values
+                qq why only reciprocal values are needed? 
                 qq rotation must be orthogonalized after each integration step? we did not do that ?
                 qq what is the The time evolution function as motion equ.?? op17 *** research 
                 qq what does it mean if a 0 is stored in reciprocal mass or tensor of inertia???
                 qq Normal component of mass matrix compute!! task5!! description..
-            re-ok- slides-11 CG3_11_Collision 
+            pruf-re-ok- slides-11 CG3_11_Collision 
                 qq what is coll. handling??  
                 qq what is free motions
                 qq what is penetration depth??
@@ -265,9 +258,8 @@
                 qq why we filtering 
                 qq main idea/ gen. idea/ which phy. laws are used in computing collisions?
                 qq when and how we have to do an integration step?
-                qq what impact types are there?? x2
+                qq what impact types are there?? x3
                 qq what is Hertz’s force law?
-                    > maximum displacement
                 qq which two phases are there?
                 qq what is local influence area
                 qq the Hertz’s constant can be calculated with a formula, for spec. shape?
@@ -281,15 +273,17 @@
                 qq what is the direction of relative velocity before and after collision?
                 qq the velocities can be computed with epsilon! op14
                 qq is the rel. velocity reversed after collision?? 
+                qq If both masses are the same, we have a trivial solution?
                 qq which non conservative forces do you know?? p15
-                qq how is the relationship bet. Stokes‘ friction and Air friction and velocity?
-                qq is COR and coeffi. of friction properties of an object or material?? n two! 
-                qq Typically used values can be found online! 
+                qq how is the relationship bet. Stokes‘ friction and Air friction and velocity? how to determin the coef.?
+                qq is COR and coeffi. of friction properties of an object or material?? 
+                qq Typically used values can be found online? which key word? 
                 qq which contact types are there for polyhedral? 
                     > 2 non-degenerated contact types?
                     > degenerated cases 
                 qq hwo can we calcu. contect normal in edge-edge case?? op18
-                qq what is a degenerate casse? 
+                qq what is a trival solution? 
+                qq what is a degenerate case? 
                 qq how can we handle multiple contact normal directions?? avoid NP hardness 
                 qq what is indeterminate contact? 
                 qq what are degenerate types typically? x5
@@ -298,11 +292,10 @@
                 qq the idea of BVH collision test
                 qq what do we need to test collections in near phase? 
                     qq tt how can we do xxx intersection tests? 
-                qq Contact Extraction
+                qq Contact Extraction algo? large x3+
                 qq Near Phase with SAT for OOBB, how many axis to be tested?? 
                 qq the idea of SAT theorem?? 
-                ---Collision Handling 
-                qq express conservation law in normal direction! 
+                qq we have to express conservation law in normal direction! ??! 
                 qq how can we simulate joints? ensure the joint constraint? 
                 qq what is cross product matrix? 
                 qq explain the idea of inverse mass matrix! K-matrix! 
@@ -312,7 +305,7 @@
                     > how can we compute impulse in: inelastic/ elastic/ partial elastic case? 
                     > (based on ennergy conservation) 
                 qq how can friction force be visualized? 
-                qq what means a spin of the rigid body is observed? 
+                qq what does it indicates if a spin of the rigid body is observed? 
                 qq what is normal_mass and tangent_mass? what are their difference? 
                     > and how are they used?? 
                 qq how can we compute/ include friction forces? 
@@ -324,18 +317,20 @@
                 qq * for the Newton’s Cradle, our current knowledge is not sufficient! why? 
                 qq how to handle this case? we may can not simulate Cradle
                 qq describe the Sequential Impulses Algorithm(loop) detail  op46 
-                    --- the v-p-v approach ---
                 qq how can we avoid penetration between diff. bodies? 
                 qq what is the pre-condition of impulses computation? 
                 qq impulses computation: op47 
-                qq how can we inprove the stability of the Sequential impulse loop? 
+                qq how can we inprove the stability of the Sequential impulse loop? ** x2 
                 qq examples of Contact Constraints (for contact forces)
                 qq what is contact forces vector? can we apply constrains on it?
                 qq how can we solve LCP problem arises in computational mechanics? 
                 qq how can we deal with Interpenetration from discrete time stepping ? 
-                qq how can we handle geometrical constrains arised in computational mechanics?
-                    > or, in games? e.g. chains of bodies 
+                qq how can we handle in games? e.g. chains of bodies?
             re-ok- slides-12 CG3_12_Fluid  
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 qq op7 equ.
                 stream lines diverge  (div ?? > 0)
                 qq what is divergence of a vector field u?? op08 the pic! 
@@ -1094,7 +1089,7 @@
                 qq bsdf = ? + ? 
                 qq what is the parameter of brdf?
                 qq what is the diff. bet. brdf and btdf? 
-        ---ql official--with answer 
+        ---ql pruf-official--with answer 
             <> Explain algorithmic techniques
                 qq path, light and bidirectional path tracing x4 + x4 + x2
                 qq idea of multiple importance sampling according to brdf and L_in x2 

@@ -78,7 +78,7 @@
                         too slow or suffer from too much numerical dissipation.
                     numerical dissipation
     ---detailview
-        re-ok- slides-intro 
+        pruf-re-ok- slides-intro 
             Physically
             Physically Based Graphics
             tt paper http://blog.mmacklin.com/project/flex
@@ -290,7 +290,7 @@
                     simulation oomi 
                             computational (lower level, components of opti.)
         ---phy 
-            re-ok- slides-1 CG3_01_Physically-Based-Simulation
+            pruf-re-ok- slides-1 CG3_01_Physically-Based-Simulation
                 prev. 
                     *rendering equation 
                         is an integral equation in which the equilibrium radiance leaving a  平衡辐射
@@ -886,7 +886,7 @@
                     tt futher derivation of motion equ. of diff. phy systems!
                         the theorem behind them! phy stuffs! 
                     tt futher use numerical methods to solve them! code 
-            re-ok- slides-8 CG3_08_DGLs(Differentialgleichung)
+            pruf-re-ok- slides-8 CG3_08_DGLs(Differentialgleichung)
                 single variable
                 ordinary differential equation
                 qq what is differential equation?
@@ -1139,11 +1139,7 @@
                     implicit midpoint method
                 qq does most efficient scheme depends on application?
             ---*
-            re-ok- slides-9 CG3_09_Particles
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
+            pruf-re-ok- slides-9 CG3_09_Particles
                 Generalizations of Point Mass
                 3d Particle Grid
                 Class-Hierarchy-Physics Particle
@@ -1173,7 +1169,7 @@
                     avoid obstacles
                     synchronize directions
                     stay close to others
-                qq hwo can we do Visual Simulation of Weathering?
+                qq how can we do Visual Simulation of Weathering?
                 qq the idea of gamma-ton Tracing
                     g.can be seen as an extend to photon tracing 
                         simulate Weathering with particles 
@@ -1203,7 +1199,7 @@
                     point clouds, sampled from surface 
                 ?-tons that carry water increase Patina fraction of surface
                 qq Patina case? how can we achieve this?? 
-                    blend between two materials A and B with a friciton 
+                    blend between two materials A and B with a fraction 
                 qq what does a particle carry in this case?? op15
                     fraction 
                 ---
@@ -1251,12 +1247,12 @@
                     variety of effects like fire, herds and weathering in an adhoc
                 forming a grid like structures with *additional connections
                 qq what possible additional connections are there?  
-            re-ok- slides-10 CG3_10_RigidBody 
+            pruf-re-ok- slides-10 CG3_10_RigidBody 
                 https://www.cs.cmu.edu/~baraff/sigcourse/
                 qq what are Dynamics and Kinematics
                     *Kinematics- Deals with study of motion
                         of material objects [without] taking into 
-                            account the factors which causes motio
+                            account the factors which causes motion
                     *Dynamics is based on concept of force.
                     Mechanics involves forces and displacements, 
                         typically on objects with mass
@@ -1269,14 +1265,16 @@
                 Euclidean transformation
                 qq what is Euclidean transformation 
                     a rotation and a translation
+                    A rigid body can be positioned in space with it 
                 qq how can we define natural origin and rotation of a rigid body? in 2d and 3d 
                     center of gravity ?? 
-                qq what is the natural origin of an object
-                Discrete Case
+                qq what is the natural origin of an object? 
+                Discrete Case and contineous case! 
                 affine combination
                 center of gravity ?
-                qq  how can we compute center of gravity in descrate case and continus case??
+                qq how can we compute center of gravity in descrate case and continus case??
                     *average position weighted with the point mass
+                    summations become integrals
                 qq what is affine combination
                 ?? and ?? stand for world and object coordinate system
                 For base vectors, the additional superscripts
@@ -1284,11 +1282,10 @@
                 base vectors
                 qq draw the base vectors on a given graph!
                 qq transform from object corrdi. to world coordi. *** and back. formula!!x2 
-                --- tobecontinued
                 two contribu - tions to the velocity 
                 Angular velocity
-                qq derive velocity equ.!! with x X r R
-                    ok-pp op07 can not understand what prof. is doing
+                qq derive velocity equ.!! both angular and linear velocity!
+                    op07 can not understand what prof. is doing
                     http://www.kwon3d.com/theory/moi/iten.html
                     https://www.cs.cmu.edu/~baraff/sigcourse/notesd1.pdf
                 As with kinematics, dynamics can be split into linear and angular motion
@@ -1306,7 +1303,6 @@
                 component of the force orthogonal to ???? .
                 qq how to understand this? :force acts twice once for linear and once the angular dynamics
                 &p Fges?? ges stands for? op8 pp 
-                ---
                 qq expression of the torque? in 3d case. vec3 calcu. op10
                     http://www.kwon3d.com/theory/moi/iten.html
                 qq the dimention of a torque in 3d case? 
@@ -1323,7 +1319,7 @@
                         if only linear dynamics are present, I will not exist
                     grows quadratically in the distance to the axis of rotation
                 qq continuous case, the inertia tensor results from? the formula in continus case?
-                qq calcu. of Inertia in both continus or descrate case 
+                qq calcu. of Inertia in both continus or descrate case *
                 * cross product is anticommutative
                 * Vector triple product 
                 * matrix multiplication
@@ -1336,8 +1332,10 @@
                 qq inertia tensor fromula op11  both descrete case and continus case! In 2d and 3d! x4 
                 qq * give the formula in 3d case! op12 calcu. Inertia in Example of circular disk
                 qq how can we express inertia tensor in program? 
+                    mat3 
                 qq what is the dimention of inertia tensor?? 
-                    > and inv_mass? and angular velocities?
+                    > and inv_mass? and angular velocities?position? orientation? 
+                    mat3, float, vec3 
                 qq give the calculation formula of computing the I of Cuboid! op13 
                     > and the result that we can directly use later! 
                 &h
@@ -1375,7 +1373,7 @@
                 qq Inertia Tensor are changing during simulation? 
                     have to be calculated in world coordi. sys.! 
                 ?Inertia Tensor
-                qq what kind of spinning top are there?? 
+                qq what kind of spinning tops are there?? !
                     prolate oblate
                     two kinds 
                 qq will angular momentum and angular velosity 
@@ -1388,7 +1386,7 @@
                 qq what kind of spinning tops are there?? x2
                 The state of the rigid body is uniquely defined
                 qq how a state of a rbody is defined?? x4 by four components?? position, ori. and? 
-                qq  reciprocal values
+                qq why only reciprocal values are needed? 
                 &h 
                     only reciprocal values of
                         mass and inertia tensor are
@@ -1404,7 +1402,7 @@
                 tt dyadic product 
                     https://en.wikipedia.org/wiki/Talk%3ADyadic_product
                 for each collision, save both normal and tangential impulses
-            re-ok- slides-11 CG3_11_Collision 
+            pruf-re-ok- slides-11 CG3_11_Collision 
                 // r2 only: op19/59 later- fixed! finished! 
                 Friction
                 Collision Handling 
@@ -1434,27 +1432,34 @@
                 ? In both elastic and inelastic impacts, we assume that  
                     speeds change instantaneously.
                 Impact types
-                qq what impact types are there?? x2
+                qq what impact types are there?? x3
+                    elastic 
+                    partical elastic
+                    inelastic
                 collision time must be determined  precisely 
                     in order to simulate the collision correctly.
                 Elastic Impact Details
                 local surroundings of elastic bodies become springs  
                     following Hertz’s force law
                 qq what is Hertz’s force law?
-                    > maximum displacement
+                    similar to Hook‘s law, but higher order, as there is an exponent part 
+                        to the displacement
                 qq which two phases are there?
                     compression phase
                     restitution phase
                 qq what is local influence area
                 constant ?? depends on
                 qq the Hertz’s constant can be calculated with a formula, for spec. shape?
+                    depends on local parameters.
                 illustration for shear modulus
                 qq compare Rigid Body Impact and inelastic impact 
-                    both bodies coalesce and  unite into one large body
+                    both bodies coalesce and unite into one large body
+                        energy is lost in deformation
+                    //
                     elastic collision the bodies touch each other  
                         briefly and bounce off each other without loss of  energy
-                    momentum is conserved
-                    energy is lost in deformation
+                    //
+                    momentum is conserved in both cases 
                 Central Case
                 two bodies of mass ??1 and  ??2 meet centrally 
                 deformation work
@@ -1464,13 +1469,14 @@
                 qq nearly all materials are partially elastic?
                 qq how can we quantify the elastic property if a material? formula?
                     Coefficient of restitution
+                    impact inverts direction of relative velocity
                 qq what is COR? coeffi. of restitution??
                 qq what is the direction of relative velocity before and after collision?
                     impact inverts direction of relative velocity
                     velocities after impact and the deformation energy
                 qq the velocities can be computed with epsilon! op14
                 qq is the rel. velocity reversed after collision?? 
-                &h If both masses are the same, we have a trivial solution:
+                qq If both masses are the same, we have a trivial solution?
                     This simply corresponds to the bodies exchanging 
                     their initial velocities to each other.
                 exchanging 
@@ -1481,11 +1487,13 @@
                         Sliding friction, Rolling friction, 
                     Viscouse Friction Forces
                         Stokes‘ friction., Air friction 
-                qq how is the relationship bet. Stokes‘ friction and Air friction and velocity?
-                properties of a contact of two object not properties of an  object or of a material. 
-                qq is COR and coeffi. of friction properties of an object or material?? n two! 
-                qq Typically used values can be found online! 
-                http://atc.sjf.stuba.sk/files/mechanika_vms_ADAMS/Contact_Table.pdf
+                qq how is the relationship bet. Stokes‘ friction and Air friction and velocity? how to determin the coef.?
+                    properties of a contact of two object and not properties of an  object or of a material. 
+                qq is COR and coeffi. of friction properties of an object or material?? 
+                    n two! 
+                qq Typically used values can be found online? which key word? 
+                    Contact_Table 
+                    http://atc.sjf.stuba.sk/files/mechanika_vms_ADAMS/Contact_Table.pdf
                 contact normal, which indicates the direction 
                     perpendicular to the contact, is important for the treatment
                 qq which contact types are there for polyhedral? 
@@ -1500,7 +1508,9 @@
                 qq hwo can we calcu. contect normal in edge-edge case?? op18
                     cross product of the two edges
                 vertex-face
-                qq what is a degenerate casse? 
+                qq what is a trival solution? 
+                    solution in special cases, easy cases typically 
+                qq what is a degenerate case? 
                     less likely to happen 
                     multiple contact normal directions, normal can not be computed directly
                     NP hard contact resolution problems
@@ -1518,20 +1528,24 @@
                     Sort...enter event...exit event...
                     nlogn+k 
                 qq the idea of BVH collision test
+                    the collision test only descents down (in detail level)
+                        only when the root nodes intersect
                 qq what do we need to test collections in near phase? 
                     triangle-triangle intersection tests
                     qq tt how can we do xxx intersection tests? 
-                qq Contact Extraction
-                    bodies have been moved
-                    Broad phase enumerates potential contact pairs
-                    Near phase filters out actual contact pairs 
-                    compute exact contact information for list of contact pairs 
+                qq Contact Extraction algo? large x3+
+                    [body movement]
+                    [Broad phase] enumerates potential contact pairs
+                    [Near phase] filters out actual contact pairs 
+                    compute [exact contact information] for list of contact pairs 
                         positional vertex
                         normal 
                         penetration depth
                 qq Near Phase with SAT for OOBB, how many axis to be tested?? 
                 qq the idea of SAT theorem?? 
-                ---Collision Handling 
+                    no intersection between two bodies 
+                        if [one separating axis exist] where 1D projections do not intersect
+                //Collision Handling 
                 &h 
                     impulse transfer 
                     we can treat  multiple contact collisions through a sequence of single  contact impact
@@ -1549,12 +1563,13 @@
                     *https://animation.rwth-aachen.de/media/papers/2012-EG-STAR_Rigid_Body_Dynamics.pdf
                     https://www.cs.cmu.edu/~baraff/sigcourse/notesd2.pdf
                     *https://box2d.org/files/ErinCatto_SequentialImpulses_GDC2006.pdf 
-                qq express conservation law in normal direction! 
+                qq we have to express conservation law in normal direction! ??! 
                     3rd Newton‘s law
                 qq how can we simulate joints? ensure the joint constraint? 
                     ensure the velocity after collisions is zero 
                 qq what is cross product matrix? 
                 qq explain the idea of inverse mass matrix! K-matrix! 
+                    relate the change in velocity to the force impact
                 qq tt Derivation of K-Matrix! 
                 qq tt compute the Change in Total Energy, derivation and the result? 
                 qq how can we compute impulse? how can we update velocities of the two? pp with code?? 
@@ -1563,10 +1578,16 @@
                     (Frictionless Impact and with frictions)
                 qq how can friction force be visualized? 
                     friction cone
-                qq what means a spin of the rigid body is observed? 
+                qq what does it indicates if a spin of the rigid body is observed? 
                     friction force/ impulse imp. 
                 qq what is normal_mass and tangent_mass? what are their difference? 
                     > and how are they used?? 
+                    
+                    mat3 m1 = c.body1->inv_inertia*(dot(r1, r1) * I - dyad(r1, r1));
+                    mat3 m2 = c.body2->inv_inertia*(dot(r2, r2) * I - dyad(r2, r2));
+
+                    float inv_mass_sum = c.body1->inv_mass + c.body2->inv_mass;
+                    c.normal_mass = 1.0f / (inv_mass_sum + dot(c.normal, m1 * c.normal) + dot(c.normal, m2 * c.normal));
                 qq how can we compute/ include friction forces? 
                     compute Tangential impulse similarly to normal impulse! 
                 qq * how can we decide whether to apply static or sliding friction?? 
@@ -1581,12 +1602,12 @@
                     update for each each body i and each contact point j 
                 qq * for the Newton’s Cradle, our current knowledge is not sufficient! why? 
                     it is not a dispersion-free system.! 
-                    impact propagation time can not be ignored! 
+                    [impact propagation time] can not be ignored! 
                 qq how to handle this case? we may can not simulate Cradle
                     collisions are dispersion-free and propagate fast 
                 qq describe the Sequential Impulses Algorithm(loop) detail  op46 
                     1.compute list of contact points 
-                    --- the v-p-v approach ---
+                    // the v-p-v approach //
                     2.compute relative velocities
                     3.iteratively apply impulses with constrains (impulse accumulation)
                         and add de-penetration bias velocity
@@ -1597,9 +1618,9 @@
                     list of contact points & normals extracted 
                 qq impulses computation: op47 
                     inelastic normal impulse, friction impulse, de-penetration impulse
-                qq how can we inprove the stability of the Sequential impulse loop? 
+                qq how can we inprove the stability of the Sequential impulse loop? ** x2 
                     key1. compute iteratively, k=10-50, 
-                        key2. permute order of contact list continuously
+                    key2. permute order of contact list continuously
                 qq examples of Contact Constraints (for contact forces)
                     The contact forces can "push" but not "pull".
                     once two bodies have separated at a contact point, there is no
@@ -1615,9 +1636,9 @@
                     express/ classify contact points to vanishing and non-vanishing 
                         and then solve with linear programming 
                 qq how can we deal with Interpenetration from discrete time stepping ? 
-                    with bias velocities
-                qq how can we handle geometrical constrains arised in computational mechanics?
-                    > or, in games? e.g. chains of bodies 
+                    ** with bias velocities
+                qq how can we handle in games? e.g. chains of bodies?
+                    //geometrical constrains arised in computational mechanics!
                     *https://www.cs.cmu.edu/~baraff/papers/sig89.pdf
                         solving linear systems of inequalities
                         calculate  the forces that would naturally arises
@@ -1636,6 +1657,10 @@
                     use Analytical methods instead of the one we used before 
                         but it is relative hard to implement 
             re-ok- slides-12 CG3_12_Fluid  
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 https://www.cs.ubc.ca/~rbridson/fluidsimulation/
                 http://david.li/fluid/
                 mit verschiedenen Parametern f黵  Gase und Fl黶sigkeiten angewendet werden.
@@ -4899,7 +4924,7 @@
                     BRDF
                 qq what is the parameter of brdf?
                 qq what is the diff. bet. brdf and btdf? 
-        ---ql official--with answer 
+        ---ql pruf-official--with answer 
             //you should be able to explain a [given] rendering/ dynamic equation
             <> Explain algorithmic techniques
                 qq path, light and bidirectional path tracing x4 + x4 + x2
