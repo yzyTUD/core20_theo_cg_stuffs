@@ -2087,10 +2087,6 @@
                 only solve for ?? in Fluid cells
                 empty cells: ?? = 0 (free surface)
                 qq how can we compute the "ghost" solid pressure in this case?? op66
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
                 qq re- when solving pressure, how can we handle Boundary conditions?? op65 x2
                     &h the pressure should be zero but be a 
                         ghost val. to simulate correctly
@@ -2170,11 +2166,12 @@
                     “Boussinesq approximation
                     Constants ?? and ?? can be tuned 
                 qq what If no soot and no temperature difference?? 
-                &h bouy. force is a vector force!
+                qq bouy. force is a vector force?
                 qq what boundary condition we have to apply when facing open boundaries? 
-                    free surface (?? = 0)
+                    free surface (p = 0)
                     explicitly zero velocity on far boundaries
                     We let air blow in or out as it wants 
+                    explicitly zero velocity on far boundaries
                 Vorticity Confinement
                 vortices live on all scales and have high visual impact 
                 qq why vortices disolves too fast?
@@ -2200,7 +2197,7 @@
                 qq mark omega, ita and force dir in this pic.!op77
                 numerical dissipation of soot density and temperature  counteracts the gains of vorticity confinement
                 counteracts
-                qq what is monotonic Hermite Interpolation, how it benefits? 
+                qq what is monotonic Hermite Interpolation, how it benefits? solves overshooting??
                     Fedkiw [2001] propose to use a modified Hermite interpolation
                     ensure the monotonicity of the resulting Hermite spline.
                 qq how can we do vorticity confinement ??
@@ -2228,7 +2225,7 @@
                 &h water and sph approach left 
                 qq how can we sampling the water-air surface correctly? 
                     > two better ways than grid based ones 
-                    Marker particles
+                    Marker particles, render with meta balls
                     Level Sets 
                 qq compare voxelization approach and Marker particles
                 qq the idea of Marker particles! 

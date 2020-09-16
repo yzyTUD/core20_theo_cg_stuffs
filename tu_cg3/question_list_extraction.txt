@@ -440,10 +440,6 @@
                 qq do we have apply iterative computing process here? why? 
                 qq *why Voxelization is Suboptimal?? drawbacks of grid based solution? x2 
                 qq how can we compute the "ghost" solid pressure in this case?? op66
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
                 qq re- when solving pressure, how can we handle Boundary conditions?? op65 x2
                 qq how can we conpute pressure for solid cells??
                 qq how to update pressure and velocity?? op68
@@ -458,6 +454,7 @@
                 qq how can we add external buoyancy force in momentum equation?? 
                 qq which dir has buoyancy force? what are alpha and beta in such equ.? 
                 qq what If no soot and no temperature difference?? 
+                qq bouy. force is a vector force?
                 qq what boundary condition we have to apply when facing open boundaries? 
                 qq why vortices disolves too fast?
                 qq how can we overcome it?/ how can we preserve the vortices?? x2 
@@ -468,7 +465,7 @@
                 qq what is the direction of vorticity confinement force??
                 qq why we need delta x here? 
                 qq mark omega, ita and force dir in this pic.!op77
-                qq what is monotonic Hermite Interpolation, how it benefits? 
+                qq what is monotonic Hermite Interpolation, how it benefits? solves overshooting??
                 qq how can we do vorticity confinement ??
                 qq why we would apply monotonic Hermite Interpolation instead of 
                     > other higher order functions? 
