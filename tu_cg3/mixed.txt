@@ -1666,11 +1666,13 @@
                 mit verschiedenen Parametern f黵  Gase und Fl黶sigkeiten angewendet werden.
                 Fire (Fedwik 2002) 
                 Momentum Equation
-                qq op7 equ.
-                stream lines diverge  (div ?? > 0)
+                qq Incompressible Navier-Stoke’s  op7 equ.
+                qq “Incompressibility condition”?
+                stream lines diverge  (div ?? >0)
                 stream lines
                 qq what is divergence of a vector field u?? op08 the pic! 
-                qq does div depends on spatial derivatives?? 
+                qq does div depends on time??
+                    no, only on spatial derivatives
                 Divergence does not  depend on the time  
                     derivative but only on  spatial derivatives
                 &h divergence does not dep. on time 
@@ -1685,27 +1687,26 @@
                 component form
                 Reynold憇 Number
                 qq what is Reynolds Number
-                    it is the ratio between inertia force and frictional force
-                    determines the behavior of the fluid 
+                    it is the ratio between [inertia force and frictional force]
+                    *determines the behavior of the fluid 
                     Re determines the depth of the vortex cascade.
                         for large Re, small vortices are still relevant.
                         thus the simulation in such situation is computational expensive! 
+                    (for gases typically large and for  
+                        fluids a broad range [water ?honey]  possible
                 qq what is Re<1, Re>40, Re>2000?? 
                     stationary flow
                     periodic behavior
                     individual vortices
                     turbulent, chaotic, vortical
-                (for gases typically large and for  
-                    fluids a broad range [water ?honey]  possible
-                ---tobecontinued op18 
                 qq what are particularly hard to simulate? 
                     small vortices
                 qq what is Existence- and Uniqueness of „physically plausible “ (energy-restricted) 
                     > solution of Navier-Stoke‘s-Equations in 3 dimensions? tt 
                 qq what are our goals in cg? 
-                    fast approximate solutions
-                        with a good visual impression
-                        without suppressing vortices. 
+                    [fast] approximate solutions
+                        with a good [visual impression]
+                            without [suppressing vortices]. 
                 qq what happends to Reynold when simulating gases??
                 qq explain the behavier of Re number 
                 Kolmogorov-Cascade of turbulent Fluids
@@ -1724,7 +1725,7 @@
                 fast approximate solutions
                 Momentum Equation of fluid
                 qq what is material derivative?? 
-                qq What forces act on the blob?
+                qq What forces act on the blob? x4
                     gravity: mg 
                     pressure: integrating [pressure gradient] over the blob’s volume Vdelta(p)
                     Viscosity: blurred diffused, yields [Laplacian]
@@ -1733,6 +1734,7 @@
                     > explain it! derive! op19
                 qq we define a quantity in Eulerian view, how can we compute the derivative 
                     > in Lagrangian view? 
+                    > derive the material derivative!`
                     (take use of the chain rule to derive, and rearrange it)
                 qq what is advection?
                     if 𝑞 moves with the fluid particles and no external forces ! 
@@ -1777,9 +1779,10 @@
                     > in fliud simulation? 
                     Compressibility is nearly irrelevant for animation
                     has a very little effect when simulating 
+                qq derive the incompressible condition op31
+                    fix your eyes on any volume Ω of space...
                 qq why irrelevant for animation?? op30
-                    Acoustic waves usually have little  
-                    effect on visible fluid motion
+                    Acoustic waves usually have little effect on visible fluid motion
                 qq the reason that div of u is zero everywhere?? for incompressible fluids. 
                     fix your eyes on any volume, assume fluid is incompressible, 
                         we know  volume of
@@ -1788,6 +1791,8 @@
                 constrained dynamics
                 qq why velocity field is divergence free for incompressible fluids? 
                 qq how can we simulate this div free system? x2 
+                    1.constrained dynamics
+                    2.artificial compressibility
                     solve for a pressure that makes our fluid incompressible
                         *constrained dynamics
                         may have to slove linear system 
@@ -1868,6 +1873,9 @@
                     人工耗散（artificial dissipation
                     numerical dissipation 
                 qq what is numerical dissipation? how can be solved ??
+                    side-effects that may occur as a result of a numerical solution
+                    will cause the loss of energy 
+                    "artificial dissipation" is intentionally added to improve the numerical stability
                 viscosity of air
                 viscosity of water
                 Dynamic viscosity
@@ -1875,7 +1883,6 @@
                 qq is air more viscous than water? 
                     air is 10 times more viscous than water
                 qq incompressible Euler equations? and explain!
-                ---tobecontinued
                 We know what’s going on inside the fluid: what about at  the surface
                 qq which Three types of surface can be found with fluid??
                     https://www.youtube.com/watch?v=kphzE0KXuNw
@@ -1892,11 +1899,12 @@
                 qq what is “no-slip”  condition? 
                     For viscous fluids only, can additionally impose “no-slip”  condition
                 qq how can we model Free Surface? 
-                    with help of gradient of pressure, we can set pressure to be 0 
+                    with help of gradient of pressure, 
+                        we can set pressure to be 0 
                 qq what if surface tension is impro. ??If surface tension is important 
                     pressure is instead related to mean curvature of surface
                 qq how about the pressure in this case??
-                    mean curvature of surface
+                    mean curvature of surface is considered 
                 qq how can we model surface tension in Free Surface?? op39 
                 qq when simulating two fluids interacting with each other, 
                     > do we know Density jump?
@@ -1920,7 +1928,7 @@
                 momentum equation
                 pain to handle them all simultaneously
                 Splitting Example
-                qq hwo can we split it?? op43 pic given 
+                qq hwo can we split a differential equation?? op43 pic given 
                     a separate solution module for each term
                 qq can we split any equ. by solving them saparately? how? op43
                     > F and G function 
@@ -1945,7 +1953,7 @@
                     Staggered Grids
                     we estimate divergence at a grid point as
                     put velocities halfway between grid points
-                qq what is The MAC Grid?
+                qq what is The MAC Grid? pros and cons for it? 
                     From the Marker-and-Cell  (MAC) method  [Harlow&Welch’65]
                     particular staggering of variables
                 qq compute pressure gradient at velocity sampling point? 
@@ -1976,6 +1984,7 @@
                 qq compute the x_old with help of x_new? in explicit euler? 
                     Forward Euler does not
                     Instability, obvious spiral artifacts
+                qq compute u at staggered location? 
                 qq what is the particular requirements of a stable ODE integrator? 
                     handle rotation well, without artifacts
                 qq does Forward Euler handle vortices well? why? 
@@ -2011,6 +2020,7 @@
                     interpolation is down between known observations
                 qq region of interest (ROI) 
                     interpolation focuses on an area known as the region of interest (ROI)
+                    be careful about what’s known and unknown on the grid
                 &h 
                     trickiest bits of code
                     与内插类似，但其所得的结果意义更小，而且更加受不确定性影响。
@@ -2036,7 +2046,6 @@
                     bad numerical viscosity
                 qq what is volumetric animator forces?
                 qq how can we add such a force? 
-                ---tobecontinued
                 qq we have to solve pressure before advection? 
                     https://github.com/tunabrain/incremental-fluids/blob/master/1-matrixless/Documentation.md
                     computational fluid dynamics
@@ -2062,11 +2071,11 @@
                     after the first iterate that all pressure has been computed, we can apply 
                     advection, fluid simulation, update velocities! (pp ?? may prob.)
                 qq compute the ghost pressure for the simplist case! 
-                qq linear equations for pressure at the end? 
+                qq linear equations for pressure due to div free? 
                     End up with a sparse set of linear equations to solve for pressure
                 qq do we have apply iterative computing process here? why? 
                     Iterate until the divergence is small enough (pp ?? may prob.)
-                qq *why Voxelization is Suboptimal?? drawbacks of grid based solution? 
+                qq *why Voxelization is Suboptimal?? drawbacks of grid based solution? x2 
                     Free surface artifacts
                         may not grid-aligned
                     Solid wall artifacts
@@ -2078,10 +2087,14 @@
                 only solve for ?? in Fluid cells
                 empty cells: ?? = 0 (free surface)
                 qq how can we compute the "ghost" solid pressure in this case?? op66
-                qq when solving pressure, how can we handle Boundary conditions?? op65 x2
-                &h the pressure should be zero but be a 
-                    ghost val. to simulate correctly
-                pressure update formula into discrete divergence
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
+                qq re- when solving pressure, how can we handle Boundary conditions?? op65 x2
+                    &h the pressure should be zero but be a 
+                        ghost val. to simulate correctly
+                    pressure update formula into discrete divergence
                 qq how can we conpute pressure for solid cells??
                 &p drop to 5??op68
                 qq how to update pressure and velocity?? op68
@@ -2114,7 +2127,6 @@
                 Slopes are turned into stairs, 
                 water will pool
                 *ref. https://github.com/tunabrain/incremental-fluids
-                --- smoke, tobecontinued
                 soot particles
                 composed of soot particles suspended in air
                 track concentration of soot on the  grid: ??(??,??)
@@ -2210,7 +2222,6 @@
                     with interpolation 
                 qq but can not use higher order interpolaiton! 
                     beacase of overshooting
-                ---
                 qq why we typically use SPH approach for water simulation? 
                     voxelization does not working well when simulating water air surafce 
                     voxelization approach does not sufficiently reproduce  water surfaces
@@ -2284,7 +2295,7 @@
                 qq what means Adaptive Discretization?
                     level set method was extended to octrees
                     taking use of octrees
-                --- SPH 
+                //SPH 
                 http://physbam.stanford.edu/~fedkiw/papers/stanford2004-07.pdf
                 qq what is SPH, and why we use it instead of grid based methods?
                     Smoothed Particle Hydrodynamics
@@ -2325,7 +2336,6 @@
                     &p pp derive?? 
                 qq how can we compute pressure? 
                 qq how can we update pressure and viscosity? what is the updating eqution? Basic Algorithm op93
-                ---tobecontinued
                 further variations at fluid-fluid and fluid-solid boundaries
                 Spatial derivatives: Spatial derivatives can be computed in various ways
                 various alternatives have been investigated and currently, the following 
@@ -2394,7 +2404,6 @@
                 Incompressibility Update
                 qq how can we make Incompressibility Update in sph simulation ? divergence free? 
                     use perr in formula (9)
-                ---
                 sparse linear solver needed
                 qq how can we do Pressure Projection in sph?
                     Pressure Projection means computing pressure with alternatives
