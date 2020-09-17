@@ -2614,6 +2614,11 @@
                         qq derive the reflaction/transmission equation with brdf and bssrdf?? 
                 ql 
                     qq why we need Ambient Occlusion? 
+                        ambient occlusion is a shading and rendering technique 
+                            to calculate [how exposed] each point in a scene is to ambient lighting.
+                            the interior of a tube is typically more occluded (and hence darker) than the exposed outer surfaces
+                            darker the deeper inside
+                            accessibility value that is calculated for each surface point
                     qq basic rendering equation p10(transport equation, directional form)
                         > explain the meaning of them p12 
                     qq rendering equation II, area formulation. with visibility check p16 

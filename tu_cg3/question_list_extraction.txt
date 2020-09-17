@@ -521,10 +521,6 @@
                    > how to understand this??
                 qq why not use regular grids? when will cause prob.? in which cases?? op46
         ---realistic rendering 
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
             re-ok- slides-2 CG3_02_Rendering-Equation
                         qq 一个波长为 lamda 的光子所携带的能量? 
                         qq 渲染的稳态假设？ 
@@ -549,6 +545,10 @@
                     qq why we need Ambient Occlusion? 
                     qq basic rendering equation p10(transport equation, directional form)
                         > explain the meaning of them p12 
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                     qq rendering equation II, area formulation. with visibility check p16 
                     qq operator form p17 
                         > what means double reflaction of emitted light? in equation. p17 
