@@ -326,11 +326,7 @@
                 qq how can we solve LCP problem arises in computational mechanics? 
                 qq how can we deal with Interpenetration from discrete time stepping ? 
                 qq how can we handle in games? e.g. chains of bodies?
-            re-ok- slides-12 CG3_12_Fluid  
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
+            pruf-re-ok- slides-12 CG3_12_Fluid  
                 qq Incompressible Navier-Stoke’s  op7 equ.
                 qq “Incompressibility condition”?
                 qq what is divergence of a vector field u?? op08 the pic! 
@@ -484,7 +480,6 @@
                 qq the computing example of Fast Distance Function on op82 
                 qq 3 ways to define a surface when simnulating 
                 qq how lower envelop looks like??
-                qq can be represented ?? modelled? computed?? 
                 qq how can we compute the intersection of two evolops? 
                 qq how Evelop can be built, description? and the code? 
                 qq the Extrapolation process?? 
@@ -494,8 +489,8 @@
                 qq what means Adaptive Discretization?
                 qq what is SPH, and why we use it instead of grid based methods?
                 qq what is the sph formulation of the momentum equ.? 
-                qq how can quantities be interpolated in sph method?? op91
-                qq which interpol;ation are we going to use in practice? 
+                qq how can quantities be interpolated in sph method? op91
+                qq which interpolation are we going to use in practice? 
                 qq which 2 methods to interpolate exists?
                 qq which mehtod is the best one theoretically?? why it is probabilistic in practice?
                 qq what is the prob. with gaussian kernel? why we do not use it?? op91 
@@ -503,14 +498,16 @@
                     > in a simple way? what may be the prob. of that? 
                 qq how can we compute a robust approx. for gradient and lap. of Ai??
                 qq how can we compute pressure? 
-                qq how can we update pressure and viscosity? what is the updating eqution? Basic Algorithm op93
+                qq how can we update pressure and viscosity? what is the updating eqution? 
+                    > Basic Algorithm op93
                 qq how can we compute, estimate time step width Δ?? smaller than a threshold?
                     > with safty term 
                 qq SPH - Basic Algorithm op93, detail see paper! 
                 qq how time step width t? is computed  is defined?? computed?? 
-                qq when interpolating, how can we do Neighbor Search effeciently?? what may be the benefits?
+                qq when interpolating, how can we do Neighbor Search effeciently?? 
+                    > what may be the benefits?
                 qq compare Z-Index Sort and KNN algo.?
-                qq why Z-order_curve can provide more locality? suitable for pgu parallel?? 
+                qq why Z-order_curve can provide more locality? 
                 qq why it has a z shape?
                 qq incompressible condition for sph approach? 
                 qq what search strategies can be used for Neighbor Search?? op94
@@ -518,12 +515,16 @@
                 qq how can we make Incompressibility Update in sph simulation ? divergence free? 
                 qq how can we do Pressure Projection in sph?
                 qq what is Multi-Phase Fluids? 
-                qq artefacts at the fluidfluid interface? what can be the reason? how can we solve it?
+                qq artefacts at the fluidfluid interface? what can be the reason? how can we solve it? x2
                 qq what is Solid Body Coupling op99 how can we archieve this? 
                 qq how can we render in sph simulation?? op100
                    > how to understand this??
                 qq why not use regular grids? when will cause prob.? in which cases?? op46
         ---realistic rendering 
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
             re-ok- slides-2 CG3_02_Rendering-Equation
                         qq 一个波长为 lamda 的光子所携带的能量? 
                         qq 渲染的稳态假设？ 

@@ -1656,11 +1656,7 @@
                         arbitrary holonomic geometric constraints can be achieved with this paper! 
                     use Analytical methods instead of the one we used before 
                         but it is relative hard to implement 
-            re-ok- slides-12 CG3_12_Fluid  
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
+            pruf-re-ok- slides-12 CG3_12_Fluid  
                 https://www.cs.ubc.ca/~rbridson/fluidsimulation/
                 http://david.li/fluid/
                 mit verschiedenen Parametern f黵  Gase und Fl黶sigkeiten angewendet werden.
@@ -2263,7 +2259,6 @@
                     all parabolae
                     compute lower envelop of  parabolae
                     height of lower envelop over  all parabolae
-                qq can be represented ?? modelled? computed?? 
                 qq how can we compute the intersection of two evolops? 
                 qq how Evelop can be built, description? and the code? 
                     Evelop is built in sweep from  left to right, 
@@ -2311,12 +2306,11 @@
                 qq what is the sph formulation of the momentum equ.? 
                 with kernel ??, smoothing length ? and number of  dimensions ?
                 Interpolation
-                qq how can quantities be interpolated in sph method?? op91
+                qq how can quantities be interpolated in sph method? op91
                     from closest particles
-                    with cubic interpolation 
-                    Typically used cubic kernel function:
-                    also quintic spline used in practice
-                qq which interpol;ation are we going to use in practice? 
+                    cubic kernel function  or quintic spline
+                    gaussian kernel
+                qq which interpolation are we going to use in practice? 
                     quintic spline interpolaiton
                 qq which 2 methods to interpolate exists?
                 qq which mehtod is the best one theoretically?? why it is probabilistic in practice?
@@ -2332,7 +2326,8 @@
                     uses the  more robust approximations, derived in ori paper! 
                     &p pp derive?? 
                 qq how can we compute pressure? 
-                qq how can we update pressure and viscosity? what is the updating eqution? Basic Algorithm op93
+                qq how can we update pressure and viscosity? what is the updating eqution? 
+                    > Basic Algorithm op93
                 further variations at fluid-fluid and fluid-solid boundaries
                 Spatial derivatives: Spatial derivatives can be computed in various ways
                 various alternatives have been investigated and currently, the following 
@@ -2347,7 +2342,8 @@
                 SPH – Basic Algorithm
                 qq SPH - Basic Algorithm op93, detail see paper! 
                 qq how time step width t? is computed  is defined?? computed?? 
-                qq when interpolating, how can we do Neighbor Search effeciently?? what may be the benefits?
+                qq when interpolating, how can we do Neighbor Search effeciently?? 
+                    > what may be the benefits?
                     typically a regular and potentially hashed grid is used
                     better locality by using Z-index Sorting  of grid cells 
                     *Z-index Sorting
@@ -2358,7 +2354,8 @@
                 qq compare Z-Index Sort and KNN algo.?
                     Z-index is better for gpu based parallism, knn runs on cpu 
                     Z-index has the best GPU performance when reading neighbors
-                qq why Z-order_curve can provide more locality? suitable for pgu parallel?? 
+                qq why Z-order_curve can provide more locality? 
+                    suitable for pgu parallel?? 
                     suitable for the gpu mem. layout 
                     &h ***Some GPUs store texture maps in Z-order to increase spatial locality of 
                         reference during texture mapped rasterization.
@@ -2408,9 +2405,10 @@
                     and their combinations can be used 
                 qq what is Multi-Phase Fluids? 
                     simulating multiple fluids  
-                qq artefacts at the fluidfluid interface? what can be the reason? how can we solve it?
+                qq artefacts at the fluidfluid interface? what can be the reason? how can we solve it? x2
                     difference in fluid densities leads to 
                     number density
+                    interpolation schame
                 Solid Body Coupling
                 sample solids along boundary  with particles
                 Solid Body Coupling
@@ -2430,6 +2428,10 @@
                    ok
                 qq why not use regular grids? when will cause prob.? in which cases?? op46
         ---realistic rendering 
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
             re-ok- slides-2 CG3_02_Rendering-Equation
                 prev. 
                     ray tracing 
