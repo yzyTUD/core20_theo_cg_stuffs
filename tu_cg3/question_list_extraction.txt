@@ -521,7 +521,11 @@
                    > how to understand this??
                 qq why not use regular grids? when will cause prob.? in which cases?? op46
         ---realistic rendering 
-            re-ok- slides-2 CG3_02_Rendering-Equation
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
+            pruf-re-ok- slides-2 CG3_02_Rendering-Equation
                         qq 一个波长为 lamda 的光子所携带的能量? 
                         qq 渲染的稳态假设？ 
                         qq flux？ 
@@ -545,10 +549,6 @@
                     qq why we need Ambient Occlusion? 
                     qq basic rendering equation p10(transport equation, directional form)
                         > explain the meaning of them p12 
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
                     qq rendering equation II, area formulation. with visibility check p16 
                     qq operator form p17 
                         > what means double reflaction of emitted light? in equation. p17 
@@ -570,20 +570,24 @@
                     qq BRDFs can be analyzed by integrating over one  directional argument. Integration over outgoing  
                         > directions yields directional hemispherical reflections  that must be ≤ 1.
                         > why? p32 
-                    qq steps to Solve the Rendering Equation p34 x4 
-                        > the linear sys. p34 
+                    qq how can we Solve the Rendering Equation? x2 p34
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                     qq the steps of Bidirectional Path-Tracing p35 
+                ---r1
                     qq what is Ambient Occlusion
                     qq what is global illumination? 
                     qq what is color bleeding
                     qq what is radiosity 
                     qq what is mirror reflections
-                    qq 
+                    qq Crepuscular Rays are volumetric scattering effects
                     qq what is volumetric scattering
                     qq compare volumetric Subsurface scattering and volumetric scattering! 
                     qq describe the light transporting process 
                     qq basic observation about the light transport ?? 
-                    qq which Simplifications will be made to simulate the light transport ?? large
+                    qq which Simplifications will be made to simulate the light transport ?? x2
                     qq raytracing operator:
                     qq what is the equ. in this light path??
                     qq describe which parts are there in transport equation
@@ -596,7 +600,8 @@
                     qq explain the rendering equ. each para. op11
                     qq how total outgoing radiance can be solved in math view ??
                     qq what if is constant C? 
-                    qq alternative to RE, with integration over scene area and visibility check, explain!op15
+                    qq RE in Surface Patches formulation, with integration over scene area and 
+                        > visibility check, explain!op15
                     qq mark omega y->x in this pic
                     qq transfrom the RE to the form of Lout! 
                     qq explain this equ. in a new form rendering equ. 
@@ -617,7 +622,6 @@
                         > use a regular expression syntax?? how op18
                     qq give the name of the paths! in this pic!! op19
                     qq definition of diffuse, specular and mirror, difference??
-                    --- tobecontinued op20 
                     qq what is Sensor Efficiency? 
                     qq how can we compute the brightness of a pixel 
                     qq describe the simplified camera model, where is aperture? pixels?  
@@ -635,7 +639,7 @@
                     qq what is the relationship bet. freq./wavelength and light speed? op24
                     qq each photon carries a tiny amount of energy q? 
                     qq what is typical wavelength for lights? 
-                    qq how can we know the energy given a graph? special graph! 
+                    qq how can we know the energy given a graph? spectural graph! 
                     qq how can we compute the energy of a photon?? hv 
                     qq range of wavelength?? 
                     qq Spectral Energy Density
@@ -651,7 +655,7 @@
                     qq The units of the BRDF ??
                     qq what is bsdf 
                     qq what is bssrdf
-                    qq what is steradians in a full unit hemisphere??
+                    qq how many steradians for a hemisphere??
                     qq radiance describes?? phy meaning of that??
                     qq relations bet. radiance and irradiance 
                     qq what is the fact of volumetric scattering?? 
@@ -671,7 +675,7 @@
                     *qq how can we describe and scan material property? 
                     qq monte-carlo integration techniques
                     qq how monte-carlo integration techniques be used?? later, highlev  
-            re-ok- slides-3 CG3_03_Monte-Carlo-Techniques
+            pruf-re-ok- slides-3 CG3_03_Monte-Carlo-Techniques
                     qq the operator form of the rendering equ. ? op4, i wrote 
                     qq what is the meaning of each compon. ? s3op6, i wrote 
                     qq trace-reflection operator? s2p18
@@ -681,7 +685,6 @@
                     qq how can we solve a integral numerically? p6 x4 methods... roughly 
                     qq what is a quadrature rule 
                     qq why single sample estimator funcs? p9 
-                    qq why choose p(x) proportional to f(x)? p9 
                     qq what is importance sampling ? p9 
                     qq how does Monte Carlo Techniques solved the problem of the curse of dimensionality? p11 
                     qq why we use importance sampling? 
@@ -689,13 +692,14 @@
                     qq how can one compute Lin recur.in p17? code online 
                     qq why not use fixed termination depth? p18 
                     qq proof that the exp. value will stay the same! p18 
-                    qq how to implement russian roulette? p21 
+                    qq how to implement russian roulette? p21  returns the estimate?
                     qq explain the given code p19-21 
                     qq why sampling? p27 
                     qq explain code p29 
                     qq how to sample when there are a lot of light sources? p30 
                     qq what is path tracing p31 
                     qq the monte carlo case of path tracing p32 formula
+                ---r1
                     qq measurement equ in operator form and rendering equ. op4 
                     qq why nested integrals?? op5 formulation 
                     qq how can we compute spectual power with help of nasted integral?? op5 
@@ -770,7 +774,7 @@
                     qq draw a graph to illus. 
                     qq what is Direct Light Sampling??
                     qq the expression of L_direct and L_indirect ?? op26 
-                    qq which light sources are there? 
+                    qq which light sources are there? x3
                     qq how can we sample light source in this picture?? op28 draw! 
                     qq explain the code 
                     qq how to Dealing with Large Number of Lights with help of the idea of RR??
@@ -779,12 +783,17 @@
                     qq how can we reduce variance in Path Tracing?
                     qq Importance sampling is introduced to? 
                     qq explain the process of path tracing (later )
-            re-ok- slides-4 CG3_04_Sampling-Techniques
+            pruf-re-ok- slides-4 CG3_04_Sampling-Techniques
+                        ---REVIEW---
+                        ---
+                        ---
+                        ---
                     qq how does nrook sampling work? p3
                     qq how one can gen. random shaffed vector? p3
                     qq what means caustic ?
                     qq how to gen. uniformly distributed random points with shuffe in c++ p4 
                     qq what means sampling in regular grids ? p5 
+                ---r1
                     qq which Sampling Techniques do you know?
                     qq what means sth. follow a specific random variable distribution, draw to illu.
                     the <algorithm> header
@@ -804,6 +813,7 @@
                     qq how can we Sampling any Shape? in a simple manner?
                     qq how can we sample uniformly inside a given shape?
                     qq the idea and the goal of Transformation Sampling??
+                    qq what is marginalization? 
                     qq what is cumulative density function CDF
                     qq derive the equ. used in tranformation sampling, the key condition connecting both? 
                     qq how can we understand transformation?? g(ita)
@@ -843,10 +853,10 @@
                     qq how can we make the phong model more physical plausible?
                     qq how can we sample a Phong Lobe?
                     qq what is the probability density of the Phong Lobe?
-                    qq how can we consider the condition here?
                     qq how can we sample discreate distribution?? op21
                     qq what discreate sampling techniques do you know as example?
                     ---Multiple importance sampling (MIS) 
+                    qq MIS-estimator? expression?
                     qq why the integrant is often a product of several functions?? 
                     qq why MIS minimize variance?
                     qq the idea of MIS multiple improtance sampling 
@@ -865,7 +875,7 @@
                     qq distinguish brdf sampling and direct light sampling 
                     qq compare rejection sampling with transformational sampling 
                     qq  tt what are low-variance estimators??   
-            re-ok- slides-6 CG3_06_Advanced_Materials
+            pruf-re-ok- slides-6 CG3_06_Advanced_Materials
                 qq what is Physical Plausible
                 qq which Empirical Shading Models do you know?? x3 
                 qq compare diffuse, glossy and mirror reflaction with a graph 
@@ -889,26 +899,35 @@
                 qq what is self shadowing and self occlusion ??
                 qq how can we cpmpute geometry term G? 
                 qq describe the filter approach in more detail 
+                qq compare cook-torrance and oren nayer?
+                qq compare cook-torrance and oren nayer?
+                qq how can we compute the Fresnel term more effeciently?? why we have to approximate it? 
+                    ---REVIEW---
+                    ---
+                    ---
+                    --- 
                 qq explain the terms in cook Torrance bsdf! op19 
                 qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
                 qq how can we compute the Geometry Term? which three cases are there? draw to illustrate! 
                 qq standerd solutions in applications?
                 qq how can we do Improtance sampling in cook torrance model?
-                    对于 cook-torrance BRDF，可以对函数 D 进行重要性采样。
                 qq Derivation of Frensnel Equations
                 qq Fresnel Equations for Metals equ? 
                 qq which fresnel term approximations exists for metals??  
                 qq Oren-Nayar is a brdf model for diffuse approximation?? 
+                qq 迪士尼原则--brdf的深入研究https://zhuanlan.zhihu.com/p/60977923
                     qq 提出了三个方面的工具与资源
                     qq 各个模型的年代？具体的时间要记住！ 
                     qq 什么是艺术导向（Art Directable）
                     Disney采用了通用的microfacet Cook-Torrance BRDF着色模型
+                qq Overview over BRDF models 
                     qq why Lambertian model inadequate ?
                     qq who introduced microfacet model first to computer graphics?
                     qq what is the relationship bet. Oren-Nayer model and Lambertian model?
                     qq the idea of oren nayer model? 
                 qq explain how to use the frensel equ.
                 qq what is a Anisotropic material?
+                qq what is APS brdf? 
                 qq how to To support anisotropy??
                 qq how can we handle that the energy preservation will not hold?
                 qq what meterials are typically Anisotropic??
@@ -931,7 +950,7 @@
                 qq describe the image-based BRDF measurement system?? 
                     > what is the idea behind? x2 
                 qq idea of Lafortune model? the formula? 
-                qq BRDF的数值模型分为三类? compare them! 
+                qq three types of brdf? compare them! 
                 qq the idea of Lafortune Model
                 qq how many parameters should be computed for a one-Lobe model? two-Lobe model? 
                 ---Bidirectional texture  function (BTF)
@@ -946,6 +965,10 @@
                 qq how bssrdf is used? 
             ---*
             re-ok- slides-5 CG3_05_Path-Based-Rendering
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 qq what is caustics, draw to illustrate! envelop? incident rays? reflacted rays?
                 qq illu. Path Tracing with Direct Lighting and Light Tracing with Eye Rays
                 qq how light sampling can be connected to eye?? 

@@ -2432,7 +2432,7 @@
                     ---
                     ---
                     ---
-            re-ok- slides-2 CG3_02_Rendering-Equation
+            pruf-re-ok- slides-2 CG3_02_Rendering-Equation
                 prev. 
                     ray tracing 
                         现在游戏基本都没有应用光源追踪技术，光线都是由你能看到的亮光的物体自身发出的，
@@ -2630,6 +2630,8 @@
                         > what is spectral efficiency? 
                         > spatial power? 
                     qq spectral importance function? p21 
+                        the influence of the radiance
+                            measurememt of improtance 
                     qq speed and energy of a tiny photon
                     qq calcu. of photon energy p25 
                     qq Spectral Energy Density of diff. light source judge. p26 
@@ -2642,10 +2644,15 @@
                     qq BRDFs can be analyzed by integrating over one  directional argument. Integration over outgoing  
                         > directions yields directional hemispherical reflections  that must be ≤ 1.
                         > why? p32 
-                    qq steps to Solve the Rendering Equation p34 x4 
-                        > the linear sys. p34 
+                    qq how can we Solve the Rendering Equation? x2 p34
+                        1. form a linear sys.
+                        2. sample ray paths 
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                     qq the steps of Bidirectional Path-Tracing p35 
-                r1 
+                ---r1
                     basic radiometry and hemispherical reflectance
                     Kajiya, J. T. (1986). The Rendering Equation.
                     https://www.researchgate.net/profile/Michael_Cohen12/publication/220720201_A_Radiosity_Method_for_Non-Diffuse_Environments/links/00b49520a6f1482f85000000/A-Radiosity-Method-for-Non-Diffuse-Environments.pdf
@@ -2664,7 +2671,7 @@
                     Multiple Scattering
                     qq what is color bleeding
                         objects or surfaces are colored 
-                            by reflection of colored light 
+                            by [reflection of colored light]
                                 from nearby surfaces.
                     qq what is radiosity 
                         a GI algorithm 
@@ -2704,20 +2711,19 @@
                         tt In a vacuum, the speed of light, denoted as "c," is constant. 
                         material's refractive index
                         tt refractive index
-                    Crepuscular Rays are volumetric scattering effects
-                    qq 
+                    qq Crepuscular Rays are volumetric scattering effects
                     Realtime volumetric scattering in game engine, 
                     qq what is volumetric scattering
+                        * radiance may not constant along rays between surfaces
+                        scattering from particles in the atmosphere makes the sky blue and sunsets red.
+                        how light is affected as it passes through participating media
+                        large numbers of very small particles are considered 
                         casts a volumetric shadow
                         we made the assumption that scenes are made of 
                             collections of surfaces in a vacuum
                                 but this may not always hold 
-                        radiance may not constant along rays between surfaces
                         simulate 
                             fog and smoke attenuate and scatter light
-                        scattering from particles in the atmosphere makes the sky blue and sunsets red.
-                        how light is affected as it passes through participating media
-                        large numbers of very small particles are considered 
                     qq compare volumetric Subsurface scattering and volumetric scattering! 
                         consider the scattering inside the objects and the 
                     qq describe the light transporting process 
@@ -2725,11 +2731,9 @@
                         light is reflected between mutually visible surfaces
                         objects reflect and become emitters too
                         dynamic energy equilibrium
-                    qq which Simplifications will be made to simulate the light transport ?? large
+                    qq which Simplifications will be made to simulate the light transport ?? x2
                         no volumetric  scattering
-                        no refraction
                         ignore  polarization
-                        Opaque Scenes/ nontransparent 
                     qq raytracing operator:
                     qq what is the equ. in this light path??
                         total outgoing  light is emission  plus reflection
@@ -2747,10 +2751,10 @@
                             signal processing, for example as the famous spectral 
                             concentration problem popularized by David Slepian.
                     qq why we use Radiance? &h 
-                        it is useful because it indicates how much of the power emitted, 
-                        reflected, transmitted or received by a surface will be 
-                            received by an optical system looking at that surface 
-                                from a specified angle of view
+                        it is useful because it indicates [how much of the power emitted, 
+                            reflected, transmitted or received by a surface will be 
+                                received by an optical system looking at that surface 
+                                    from a specified angle of view
                         radiance and luminance are both sometimes called "brightness"
                         indicates how much of the power emitted
                         ? is the partial derivative symbol;
@@ -2772,7 +2776,8 @@
                     qq what if is constant C? 
                         result in pi * C !
                     Connection to Surface Patches
-                    qq alternative to RE, with integration over scene area and visibility check, explain!op15
+                    qq RE in Surface Patches formulation, with integration over scene area and 
+                        > visibility check, explain!op15
                         plugging into rendering  equation yields new form
                         rendering equation, with integration over [scene area] and [visibility check]
                     qq mark omega y->x in this pic
@@ -2840,13 +2845,12 @@
                     Importance Sampling : A math technique to approximate the result of an integral.
                     Split Sum Approximation : A way,used in Unreal Engine 4, to transform the specular radiance integral into 2 sums that can be easily baked into prefiltered textures.
                     https://books.google.de/books?id=mSJB1KLY7woC&pg=PA56&lpg=PA56&dq=heckbert+90+path+gramma&source=bl&ots=5P104l12wp&sig=ACfU3U39IdXt9jQV11wHLxLJrfpzQp2nZA&hl=en&sa=X&ved=2ahUKEwjOgZ6-6OrpAhWBM-wKHRM6BYIQ6AEwAHoECAsQAQ#v=onepage&q=heckbert%2090%20path%20gramma&f=false
-                    &p pp mirror reflaction???? brdf??? op18
-                    --- tobecontinued op20 
+                    &p pp mirror reflaction???? brdf??? op18    
                     Wavelength can be defined as the distance between two successive crests
                     crests or troughs of a wave.
                     It is measured in the direction of the wave.
                     electromagnetic wave
-                    In the simplest case efficiency is  one for rays that hit the sensor  and zero otherwise.
+                    In the simplest case efficiency is one for rays that hit the sensor and zero otherwise.
                     qq what is Sensor Efficiency? 
                         not all rays hit the camera are accepted! 
                         the effeciency defines the improtance! 
@@ -2891,7 +2895,7 @@
                     visualization of a light photon
                     qq what is typical wavelength for lights? 
                         400nm - 800nm 
-                    qq how can we know the energy given a graph? special graph! 
+                    qq how can we know the energy given a graph? spectural graph! 
                     directed  transport  of energy
                     qq how can we compute the energy of a photon?? hv 
                     qq range of wavelength?? 
@@ -2974,7 +2978,7 @@
                         ...
                     In radiometry, when considering a point on the surface
                     The solid angle is used to refer to some small surface area on the hemisphere.
-                    qq what is steradians in a full unit hemisphere??
+                    qq how many steradians for a hemisphere??
                         2pi in a unit hemisphere.
                     how much light hits a point from all incoming directions
                     watts per meter squared
@@ -3039,7 +3043,7 @@
                     diffuse emission and reflection  
                         reduces problem to a system of linear equations
                     pure diffuse emission
-            re-ok- slides-3 CG3_03_Monte-Carlo-Techniques
+            pruf-re-ok- slides-3 CG3_03_Monte-Carlo-Techniques
                 prev.
                     Numerical_integration
                         https://en.wikipedia.org/wiki/Numerical_integration
@@ -3081,7 +3085,6 @@
                     qq how can we solve a integral numerically? p6 x4 methods... roughly 
                     qq what is a quadrature rule 
                     qq why single sample estimator funcs? p9 
-                    qq why choose p(x) proportional to f(x)? p9 
                     qq what is importance sampling ? p9 
                     qq how does Monte Carlo Techniques solved the problem of the curse of dimensionality? p11 
                     qq why we use importance sampling? 
@@ -3089,14 +3092,14 @@
                     qq how can one compute Lin recur.in p17? code online 
                     qq why not use fixed termination depth? p18 
                     qq proof that the exp. value will stay the same! p18 
-                    qq how to implement russian roulette? p21 
+                    qq how to implement russian roulette? p21  returns the estimate?
                     qq explain the given code p19-21 
                     qq why sampling? p27 
                     qq explain code p29 
                     qq how to sample when there are a lot of light sources? p30 
                     qq what is path tracing p31 
                     qq the monte carlo case of path tracing p32 formula
-                r1 
+                ---r1
                     qq measurement equ in operator form and rendering equ. op4 
                         measurement  operator 
                         spectral power
@@ -3157,7 +3160,7 @@
                         quadrature approaches
                     suffers from the curse of  dimensionality
                     qq the idea of MC integration? 
-                        Monte Carlo techniques pose the numeric integration  
+                        Monte Carlo techniques cast the numeric integration  
                             problem as an expected value estimation problem
                     averaging  estimates from samples drawn from a distribution
                     Standard deviation (sqrt of variance)
@@ -3167,9 +3170,9 @@
                     ---MONTE CARLO  GLOBAL ILLUMINATION
                     contributions to a pixel depend on parameters for  light measurement and for the light path 
                     qq why can we sample independently?  
-                    can be multiplied
-                    yields product of individual terms
-                    Distribution Raytracing
+                        can be multiplied
+                        yields product of individual terms
+                        Distribution Raytracing
                     qq how can we summ over all contributions of rays ?? 
                         > single path Monte Carlo estimator looks like?
                         > from all diff. paths 
@@ -3272,6 +3275,7 @@
                     qq draw a graph to illus. 
                     qq what is Direct Light Sampling??
                         directly illuminated part, no reflection on ray path 
+                        ray is traced to the light
                     qq the expression of L_direct and L_indirect ?? op26 
                     one splits integral into sum over light sources
                     point light sources emit spectral intensity which is  spectral light power per solid angle 
@@ -3282,7 +3286,7 @@
                     spherical light source is half  invisible to any scene point
                     projection is hard to do and hard to  
                         sample and we still need visibility check.
-                    qq which light sources are there? 
+                    qq which light sources are there? x3
                         pnt, dir, area light source 
                     qq how can we sample light source in this picture?? op28 draw! 
                         half  invisible
@@ -3312,8 +3316,12 @@
                         BRDF into diffuse and specular parts
                         direct and indirect illumination 
                     qq explain the process of path tracing (later )
-            re-ok- slides-4 CG3_04_Sampling-Techniques
+            pruf-re-ok- slides-4 CG3_04_Sampling-Techniques
                 ql 
+                        ---REVIEW---
+                        ---
+                        ---
+                        ---
                     // transfer to the pdf file in this folder , start from slide 4 
                     qq how does nrook sampling work? p3
                     qq how one can gen. random shaffed vector? p3
@@ -3323,7 +3331,7 @@
                     ..it is possi. when you get used to it, it will be faster 
                     https://onedrive.live.com/view.aspx?resid=9712B8A082E369A%211407&id=documents&wd=target%28%E5%BF%AB%E9%80%9F%E7%AC%94%E8%AE%B0.one%7C0BE32A9B-AC05-4328-847D-6AF52075C99B%2F%E6%97%A0%E6%A0%87%E9%A2%98%E9%A1%B5%7C2FB0ABD7-9762-455D-9478-7562C513D45F%2F%29
                     onenote:https://d.docs.live.net/09712b8a082e369a/zhongyuan%20的笔记本/快速笔记.one#section-id={0BE32A9B-AC05-4328-847D-6AF52075C99B}&page-id={2FB0ABD7-9762-455D-9478-7562C513D45F}&end
-                r1 
+                ---r1
                     qq which Sampling Techniques do you know?
                         Random Samplings
                         Rejection Sampling
@@ -3366,7 +3374,7 @@
                     qq what's the problem with Rejection Sampling? 
                         1.no access to the probability density
                         2.reject some samples, not so effecient
-                            will not work when the accept rate too low 
+                            will not work when [the accept rate] too low 
                             the area too small when compared to the whole interval  
                     qq how Rejection Sampling can be used explain the pic! op06
                     qq how can we Sampling any Shape? in a simple manner?
@@ -3383,6 +3391,8 @@
                         suitable function
                         cumulative density function
                         their cdf are the same! op134 drafts on ipad 
+                        * sample unit square first and transfer to the desired shape 
+                    qq what is marginalization? 
                     qq what is cumulative density function CDF
                         the probability that X will take a value less than or equal to x
                     qq derive the equ. used in tranformation sampling, the key condition connecting both? 
@@ -3487,7 +3497,7 @@
                         *by adding the diffuse cosine to the specular part
                     qq how can we sample a Phong Lobe?
                     qq what is the probability density of the Phong Lobe?
-                    qq how can we consider the condition here?
+                    how can we consider the condition here?
                         by rejection sampling 
                     &p pp 是用Lobe代替hemisphere? 在Phong模型中依然可以重要性采样，但是为什么？
                     hh https://zhuanlan.zhihu.com/p/21376124
@@ -3512,7 +3522,8 @@
                         光学平面并不会将所有光线都反射掉，而是一部分被反射，一部分被折射，反射比例符合菲涅尔方程（Fresnel Equations）
                         Torrance-Sparrow基于微表面理论，用上述三个函数建立了高光BRDF模型
                         F/D/G函数的约束条件和选择
-                        有很多论文基于上式给出不同的F/D/G函数，从而实现不同效果。关于F/D/G函数的比较，可以参考Background: Physics and Math of Shading
+                        有很多论文基于上式给出不同的F/D/G函数，从而实现不同效果。关于F/D/G函数的比较，可以参考Background: 
+                            Physics and Math of Shading
                     Sampling a Discrete Distribution
                     qq how can we sample discreate distribution?? op21
                         search primitive i with
@@ -3525,6 +3536,7 @@
                         BRDF parts (D/S/M) can be sampled 
                             in a discreate manner 
                     ---Multiple importance sampling (MIS) 
+                    qq MIS-estimator? expression?
                     can be used when several sampling strategies are available
                     qq why the integrant is often a product of several functions?? 
                         ray path! 
@@ -3543,6 +3555,7 @@
                         Choose weights proportional to (n * p) ^ beta
                     qq what is the relationship bet. them? 
                         power heuristic can help to reduce variance further
+                            the power heuristic close to the optimal MIS weighting
                     qq two conditions the MIS estimator??
                     the  power heuristic can help to reduce variance further
                     Veach proves a bound for the power heuristic  
@@ -3590,7 +3603,7 @@
                     http://graphics.stanford.edu/papers/veach_thesis
                     tt !!!! have to read 
                     &h full read!!
-            re-ok- slides-6 CG3_06_Advanced_Materials
+            pruf-re-ok- slides-6 CG3_06_Advanced_Materials
                 The reflection type can vary a  lot from purely diffuse to  mirror reflection 
                 the specular reflection  does not introduce additional  color 
                 Empirical
@@ -3708,7 +3721,13 @@
                     fully illuminated
                     occlusion 
                     shadowing 
+                qq compare cook-torrance and oren nayer?
+                qq how can we compute the Fresnel term more effeciently?? why we have to approximate it? 
                 **https://zhuanlan.zhihu.com/p/57032810
+                    ---REVIEW---
+                    ---
+                    ---
+                    --- 
                 qq explain the terms in cook Torrance bsdf! op19 
                 qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
                 qq how can we compute the Geometry Term? which three cases are there? draw to illustrate! 
@@ -3717,7 +3736,7 @@
                     UE4的方案采用的 Schlick-GGX
                     业界较为主流的法线分布函数 GGX ( Trowbridge-Reitz )
                 qq how can we do Improtance sampling in cook torrance model?
-                    对于 cook-torrance BRDF，可以对函数 D 进行重要性采样。
+                    improtance sampling according to D 
                         因为其本身就是一个概率密度函数，那么我们在实现重要性采样的时候就方便了许多。
                     由于以上两点，在重要性采样上难以同时利用上函数 D、F、G
                     综合考虑之下，只对函数 D 进行重要性采样。
@@ -3739,8 +3758,10 @@
                 https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
                 https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
                 qq which fresnel term approximations exists for metals??  
+                    Schlick 的 Fresnel 近似
+                    UE4的方案采用的 Schlick-GGX
                 qq Oren-Nayar is a brdf model for diffuse approximation?? 
-                迪士尼原则--brdf的深入研究https://zhuanlan.zhihu.com/p/60977923
+                qq 迪士尼原则--brdf的深入研究https://zhuanlan.zhihu.com/p/60977923
                     迪士尼原则的BRDF与BSDF相关总结
                     Disney Principled BRDF
                     由于其高度的易用性以及方便的工作流，已经被电影和游戏业界广泛使用，
@@ -3783,7 +3804,7 @@
                     固有色（baseColor）贴图才会同时包含金属和非金属的材质数据
                     Disney采用了通用的microfacet Cook-Torrance BRDF着色模型
                 tt must read 
-                Overview over BRDF models 
+                qq Overview over BRDF models 
                     Graphical overview of BRDF models 
                     BRDF MEASUREMENT
                     https://zhuanlan.zhihu.com/p/21376124
@@ -3806,7 +3827,7 @@
                         approximation of the diffuse component.
                     qq why Lambertian model inadequate ?
                         This is primarily because the Lambertian model 
-                            *does not take the roughness of the surface into account.
+                            *does not take the [roughness of the surface] into account.
                     Rough surfaces can be modelled as a set of facets 
                         with different slopes
                     Analysis of this phenomenon has a long history and can be traced back almost a century
@@ -3873,14 +3894,20 @@
                 brushed metal etc. preferred tangential  direction
                 qq what is a Anisotropic material?
                     the reflections will change when we rotate about normal
+                    direction-dependent mediums
+                    the mechanical properties of anisotropic materials depend on the orientation of the material’s body.
+                qq what is APS brdf? 
+                    Ashikmin, Premoze, Shirley
                 qq how to To support anisotropy??
                     one needs a  tangent vector ??  ? pointing 
                     in x-direction  within tangent space
                     use anisotropic Gaussian distribution in the brdf computing equ.
+                    just modify the distribution function to a desired form! 
                 qq how can we handle that the energy preservation will not hold?
                     corrected diffuse BRDF
                     with [bi-]hemispherical reflectance 
                 qq what meterials are typically Anisotropic??
+
                 qq what is Torrance-Sparrow model? 
                     也被称为Cook-Torrance模型
                 Assume the surface is made up grooves at the microscopic  leve
@@ -3981,7 +4008,7 @@
                     Phong模型的扩展
                     BRDF描述了入射光在物体表面某一点反射后出射光的分布情况
                     分布情况
-                qq BRDF的数值模型分为三类? compare them! 
+                qq three types of brdf? compare them! 
                     经验模型（Empirical Models)
                         Phong model/ Blinn-Phong model.... old ones 
                     基于物理的模型（Physical-based Models）
@@ -4003,7 +4030,7 @@
                     depending on planar texture coordinates (x,y) as well as on view and illumination spherical angles. 
                     for each pair of directions  acquire image of ?? × ??  reflectance samples
                     In practice this function is obtained as a set of several thousand color images of material sample
-                    It is an image-based representation, since the geometry of the surface is unknown and not measured.
+                    * It is an image-based representation, since the geometry of the surface is unknown and not measured.
                 qq idea of spatial BRDF?? sBRDF
                     similar to BTF: high dimentional function, contains many useful information! 
                 hh BTF is first introduced in 1999, and many similar concepts are introduced since then 
@@ -4013,7 +4040,8 @@
                     we can transfer to each other by rearranging BTF
                     texture representation + abrdf representation
                 qq applications of BTF? x2 typical applications! best suitable applications! 
-                    photorealistic material rendering of objects in virtual reality systems and for visual scene analysis
+                    photorealistic material rendering of objects 
+                        in virtual reality systems and for visual scene analysis
                     recognition of skin texture
                 tt to read must! 
                     https://dl.acm.org/doi/pdf/10.1145/300776.300778
@@ -4088,9 +4116,13 @@
                 qq how bssrdf is used? 
                     describe scattering inside of material!!!!
                     internal color bleeding in shadowed region under nose. 
-                    much more natural light distribution on skin.
+                    [much more natural light distribution on skin.]
             ---*
             re-ok- slides-5 CG3_05_Path-Based-Rendering
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 Metropolis Light Transport
                 PATH BASED  APPROACHES
                 Light Tracing ?caustics
