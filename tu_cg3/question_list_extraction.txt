@@ -521,10 +521,6 @@
                    > how to understand this??
                 qq why not use regular grids? when will cause prob.? in which cases?? op46
         ---realistic rendering 
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
             pruf-re-ok- slides-2 CG3_02_Rendering-Equation
                         qq 一个波长为 lamda 的光子所携带的能量? 
                         qq 渲染的稳态假设？ 
@@ -964,7 +960,7 @@
                 qq unit of a bssrdf? and its dimention? 
                 qq how bssrdf is used? 
             ---*
-            re-ok- slides-5 CG3_05_Path-Based-Rendering
+            pruf-re-ok- slides-5 CG3_05_Path-Based-Rendering
                     ---REVIEW---
                     ---
                     ---
@@ -978,6 +974,7 @@
                 qq how can we render caustics with lower variance? 
                     > how to choose the best renderer? 
                 qq is light tracing optimal? 
+                qq what benefits does light tracing have? x1 
                 qq compare light tracing and path tracing, good in which effect?
                 qq how can a lower variance be achieved? what if we sample the same rays many times?
                 qq should we reuse the light ray several times?? n
@@ -988,7 +985,6 @@
                 qq what is Overall average length?
                 qq what are possible sampling techniques? 
                 qq for BPT, there are still problems with which paths?
-                    ---from chapter 8 op245
                 qq calcu. Average path length 
                 qq which sampling techs do you know related to calculating path pdf? [open question]
                 qq how can we compute path pdf, which varients are there?? xn , 
@@ -1004,6 +1000,12 @@
                 qq why there is no visibility check in direct sampling?? op22 
                 qq the idea of BPT? 
                 qq how the path looks like with zy formation??
+                qq what is s and t? 
+                qq how can we compute k from s and t?  k is the number of edges 
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 qq special cases! 
                     > what does it mean if s=0? path tracing 
                     > and s = 1? direct light sampling 
@@ -1032,7 +1034,11 @@
                 qq the idea of Metropolis Light Transport
                 qq MLT is best suitable for ? which kind of scene ??
                 qq how to explain those numbers? later 
-            re-ok- slides-7 CG3_07_Cache-Based-GI
+            pruf-re-ok- slides-7 CG3_07_Cache-Based-GI
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 qq Bidirectional Path Tracing is very bad for?? good for??
                 qq idea of Photon mapping:  op08 x4 
                 qq where do we store photons in the scene? 
@@ -1052,10 +1058,10 @@
                     > compute total light emitted from the light source, photon power in this case!
                 qq what is pixel estimates in PM? 
                 qq how can we sample reflected direction?? 
-                    > how can we update the power of each photon after storage??  op14 
+                    > how can we update the power of each photon after reflaction??  op14 
                 qq describe Photon Tracing process (part of algorithm, detail view) op14
                 qq what kind info. is stored in photon stru.?? op15 basic terms x3 
-                qq how to accelerated collection of photons
+                qq how to accelerate the collection of photons
                 qq what is cone filter ? why use it??
                 qq which Different Approximations can be used in rendering pass 
                     > of photon mapping?? op17
@@ -1070,6 +1076,7 @@
                 qq when we terminate paths in both maps? 
                 qq Photon Mapping Discussion, advantages of photon mapping x4x1
                 qq pro cons for photon mapping when compared to bpt
+                ---inversed PM  
                 qq the computation time of PM? Inversed PM?? 
                 qq the computational demand for both cases?? 
                 qq the idea of reverse photon mapping?
@@ -1077,7 +1084,7 @@
                 qq how to estimate photon influence radii in reversed pm?? op23
                 qq how can we measure the influences of reverse photons?? 
                 qq the complexity for this? 
-                qq Pseudocode of the inversed photon mapping algorithm op
+                qq Pseudocode of the inversed photon mapping algorithm op24
                 ---
                 qq why Photon mapping (PM) is biased?? 
                 qq what is KDE?? why can introduce bias in PM 
@@ -1102,7 +1109,7 @@
                 qq the idea of probPPM -re
                 qq what is the main contribution of it?? probPPM! -re 
                 ---VERTEX CONNECTION AND  MERGING (VCM)
-                qq idea of Vertex Connection and Merging
+                qq idea of Vertex Connection and Merging x2
                 qq the MIS formulation of VC and VM 
                     > light to eye!!! so use MIS in between!
                 ---REAL-TIME PM
