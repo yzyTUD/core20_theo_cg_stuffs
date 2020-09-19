@@ -3705,6 +3705,9 @@
                 Microfacet Models
                 &p pp op21
                 qq cook torrance brdf equ.? write down! 
+                qq the physical meaning of each term! 
+                    for fresnel equ. it computes a term to control 
+                        bet. ideal mirror reflection and ideal refraction
                 qq how can we simulate/approximate materials with multiple layers
                     affine combinations of several distributions
                 qq what can be included in the geometry term? x2 
@@ -3719,11 +3722,63 @@
                     shadowing 
                 qq compare cook-torrance and oren nayer?
                 qq how can we compute the Fresnel term more effeciently?? why we have to approximate it? 
-                **https://zhuanlan.zhihu.com/p/57032810
-                    ---REVIEW---
-                    ---
-                    ---
-                    --- 
+                +
+                    https://zhuanlan.zhihu.com/p/57032810
+                        Normal Distribution Function ) 法线分布函数
+                        ( Fresnel Equation ) 菲涅尔方程：菲涅尔方程描述的是在不同的表面角下表面所反射的光线所占的比率。
+                        业界方案一般都采用的 Schlick 的 Fresnel 近似
+                        G：UE4的方案采用的 Schlick-GGX
+                        G 和 F 都是用来对光线进行衰减
+                        F 考虑的是菲涅尔效应
+                        为什么不再考虑下同时对函数 F 和 G 进行重要性采样呢？
+                            第一，他们本身不是概率密度函数，那么我们首先要得到一个概率密度函数，要求其在半球面上的积分值为1
+                    many different options for our specular BRDF    
+                        http://graphicrants.blogspot.com/2013/08/specular-brdf-reference.html
+                        Another weak point in existing models appears
+                    qq https://blog.selfshadow.com/publications/s2013-shading-course/
+                        various radiometric quantities
+                        radiance
+                        quantify the magnitude of light along a  single ray
+                        qq what is a spectral quantity? 
+                            the amount varies as a function of wavelength
+                        for production (film and game) rendering, RGB triples are used instead.
+                        it is convenient to have all vectors point away from the surface
+                        *The surface’s response to  light is quantified by a function called the BRDF
+                        *brdf is the surface’s response to light
+                        Each direction (incoming and outgoing) can be parameterized with two numbers (e.g. polar coordinates), 
+		                    so the overall dimensionality of the BRDF is four 
+                        qq what are isotropic BRDFs?
+                            rotating the [light and view directions] around [the surface normal] 
+                                does not affect the BRDF.
+                        parameter becomes three in the case of isotropic BRDFs
+                        t is a tangent vector defining a preferred direction over the surface 
+                            (this is only used for anisotropic BRDFs,
+                        * Avoiding back-facing light directions
+                            is straightforward
+                        qq how can we set the light contributions from any back-facing  direction to zero?
+                        can be avoided by clamping n·v to 0
+                        * over all directions above the surface
+                        continuous  weighted average. 
+                        qq why we use component-wise vector multiplication here? in computing reflection? 
+                        both BRDF and light color are spectral (RGB) vectors
+                        the BRDF gives the relative contribution of light from  each incoming direction to the outgoing light.
+                        swapped
+                        Energy conservation refers to the fact that a surface cannot reflect more than 100% of incoming light  energy.
+                        must not exceed 1.
+                        The vector halfway between l and v is  called the half-vector or half-angle vector ; we will denote it as h.
+                        the denominator 4(n · l)(n · v) is * a correction factor
+                        macrosurface
+                        we can think of this value (which we will denote F0) as the characteristic specular reflectance  of the material.
+                        Limitations of the Microfacet Model
+                        This formulation of microfacet theory is quite powerful and flexible
+                        If these are important, then modifications or  extensions to the model may be required. 
+                        The microfacet model does not take account of pronounced wave optics effects such as diffraction  and interference.
+                        the microfacet model is based on a relatively limited model of the surface microgeometry, with several unstated assumptions.
+                        the definition of the normal distribution function
+                        This is equivalent to assuming that microgeometry height and normal are  uncorrelated 
+                        However, this assumption is not always true
+                        A surface with a strong correlation between height and orientation
+                        is the best-understood and most successful tool
                 qq explain the terms in cook Torrance bsdf! op19 
                 qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
                 qq how can we compute the Geometry Term? which three cases are there? draw to illustrate! 

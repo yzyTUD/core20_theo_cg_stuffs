@@ -889,6 +889,7 @@
                 qq how can we make Phong model more realistic? 
                 qq what is normal distribution function (NDF)
                 qq cook torrance brdf equ.? write down! 
+                qq the physical meaning of each term! 
                 qq how can we simulate/approximate materials with multiple layers
                 qq what can be included in the geometry term? x2 
                     in the cook-Torrance microfacet model 
@@ -898,10 +899,11 @@
                 qq compare cook-torrance and oren nayer?
                 qq compare cook-torrance and oren nayer?
                 qq how can we compute the Fresnel term more effeciently?? why we have to approximate it? 
-                    ---REVIEW---
-                    ---
-                    ---
-                    --- 
+                    qq https://blog.selfshadow.com/publications/s2013-shading-course/
+                        qq what is a spectral quantity? 
+                        qq what are isotropic BRDFs?
+                        qq how can we set the light contributions from any back-facing  direction to zero?
+                        qq why we use component-wise vector multiplication here? in computing reflection? 
                 qq explain the terms in cook Torrance bsdf! op19 
                 qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
                 qq how can we compute the Geometry Term? which three cases are there? draw to illustrate! 
