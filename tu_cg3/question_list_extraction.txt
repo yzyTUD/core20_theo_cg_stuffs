@@ -567,10 +567,7 @@
                         > directions yields directional hemispherical reflections  that must be ≤ 1.
                         > why? p32 
                     qq how can we Solve the Rendering Equation? x2 p34
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
+                    
                     qq the steps of Bidirectional Path-Tracing p35 
                 ---r1
                     qq what is Ambient Occlusion
@@ -963,10 +960,7 @@
                 qq how bssrdf is used? 
             ---*
             pruf-re-ok- slides-5 CG3_05_Path-Based-Rendering
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
+                    
                 qq what is caustics, draw to illustrate! envelop? incident rays? reflacted rays?
                 qq illu. Path Tracing with Direct Lighting and Light Tracing with Eye Rays
                 qq how light sampling can be connected to eye?? 
@@ -1004,10 +998,7 @@
                 qq how the path looks like with zy formation??
                 qq what is s and t? 
                 qq how can we compute k from s and t?  k is the number of edges 
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
+                    
                 qq special cases! 
                     > what does it mean if s=0? path tracing 
                     > and s = 1? direct light sampling 
@@ -1037,10 +1028,7 @@
                 qq MLT is best suitable for ? which kind of scene ??
                 qq how to explain those numbers? later 
             pruf-re-ok- slides-7 CG3_07_Cache-Based-GI
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
+                    
                 qq Bidirectional Path Tracing is very bad for?? good for??
                 qq idea of Photon mapping:  op08 x4 
                 qq where do we store photons in the scene? 
