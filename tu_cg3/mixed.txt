@@ -5367,6 +5367,7 @@
                     divergence depends only on spatial derivatives 
         ---+ql picture notes! 
         ---story mode 
+            ---
             cg3 
                 rendering equ./ ray simulation/ ray tracing/ particle tracing 
                     // derive equ.
@@ -5456,6 +5457,13 @@
                         // inteprete
                             // addi. simulation requirements
                                 stiff spring? hysteresis?
+            ---
+            cg3 (山川河流人物光线)
+                essential
+                rbody sim 
+                fliud sim 
+                cloth sim 
+                ray sim 
     ---summ. active mode 
         idea, hlev understanding 
             take away knowledge:
@@ -5470,16 +5478,33 @@
                     optimization  
                 simulation oomi 
                         computational (lower level, components of opti.)
-        problems 
-            is VR = high frame rate rendering ？
-            what is V meaning ? s2p15.... p16
-            why not M p18 
-            why 2+2+2.... s3p5 
-            s2p10 should be x'? 
-            err? s3p5 2*(2+2+2...)
-            potential 的计算，为啥和radiance一样麻烦？p19 
-            sample的过程？ 有一定pdf函数？ 完全随机？ 
-            not understood p26 
-
-
-    
+    ---problems 
+        is VR = high frame rate rendering ？
+        what is V meaning ? s2p15.... p16
+        why not M p18 
+        why 2+2+2.... s3p5 
+        s2p10 should be x'? 
+        err? s3p5 2*(2+2+2...)
+        potential 的计算，为啥和radiance一样麻烦？p19 
+        sample的过程？ 有一定pdf函数？ 完全随机？ 
+        not understood p26 
+    ---re-考试复习
+        注意事项
+            带证件
+            考前保持清醒，注意饮食作息：
+                在家吃饭，超市买一些红牛，早睡早起
+            考前保持规律复习，从不同的角度复习效果更好，lower variance
+        复习过程
+            前期阶段：解决所有问题，形成问题列表。
+                想象自己是讲师，不断重复讲解，深化知识点
+                背的时候不停回看， 这样背诵效率最高，不要怕麻烦
+                把困难的任务先完成，不要退缩
+            后期重复，最后几天每日iter: 1h，每日至少5h
+                刷基础，顺序刷，随机刷
+                刷错误，经常错的问题反复训练
+                //
+                刷意识，加快反应速度，顺序
+                刷扩展，论文阅读计算
+                //
+                刷讲解，active mode
+                ...
