@@ -1,140 +1,4 @@
 
-    ---extended, from tt slides ref papers  
-        // slides ref. 
-            https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
-            http://graphics.berkeley.edu/papers/Koh-VDA-2014-07/
-            http://blog.mmacklin.com/project/flex/
-            http://tiantianliu.cn/papers/liu17quasi/liu17quasi.html
-            https://research.cs.cornell.edu/Sound/fire/
-            https://on-demand.gputechconf.com/gtc/2012/presentations/S0102-Flame-on-RT-Fire-Simulation-for-Video-Games.pdf
-            http://www.dartmouth.edu/~boolzhu/papers/ferrofluid.pdf
-            https://www.microsoft.com/en-us/research/publication/visual-simulation-of-weathering-by-%CE%B3-ton-tracing/
-            https://cgl.ethz.ch/publications/papers/papers.php
-            A Radiosity  Method for Non-Diffuse Environments
-            https://graphics.cs.kuleuven.be/publications/BDPT/BDPT_paper.pdf
-            https://graphics.stanford.edu/courses/cs348b-03/papers/veach-chapter10.pdf
-            https://cg.cs.uni-bonn.de/de/projekte/btfdbb/download/
-            https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
-            https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
-            http://graphics.ucsd.edu/~henrik/papers/sig98.html
-            https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf
-            https://cseweb.ucsd.edu/~ravir/papers/singlescat/scattering.pdf
-            https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.2582&rep=rep1&type=pdf
-            http://www.roboticsproceedings.org/rss04/p12.pdf
-            https://ge.in.tum.de/publications/2017-sig-um/
-            https://cg.informatik.uni-freiburg.de/publications/2012_SIGGRAPH_rigidFluidCoupling.pdf
-            http://s2017.siggraph.org/sites/default/files/firstpages_part_08.pdf
-            https://cg.informatik.uni-freiburg.de/publications/2014_EG_SPH_STAR.pdf
-            http://physbam.stanford.edu/~fedkiw/papers/stanford2001-01.pdf
-            https://www.cs.ubc.ca/~rbridson/fluidsimulation/
-            http://physbam.stanford.edu/~fedkiw/
-        // papers
-            // essential 
-                http://physbam.stanford.edu/~fedkiw/papers/cam2000-08.pdf
-                http://physbam.stanford.edu/~fedkiw/papers/stanford2004-07.pdf
-                http://www.cs.cornell.edu/~dph/papers/dt.pdf
-                http://web.stanford.edu/class/cs277/resources/papers/Moller1997b.pdf
-            // other mixed
-                http://www.xtong.info/gammaton.pdf
-                https://dl.acm.org/doi/pdf/10.1145/3197517.3201399
-                https://pdfs.semanticscholar.org/815c/f5781791ea6e8ecfef42a5252f12455f9cbb.pdf
-                meta ball 
-                level set method, heat diffusion 
-                reconstruction methods 
-                photon mapping papers 
-                MLT paper and more recently/ advanced technique 
-                position estimation methods  MCMC 
-                recent realistic rendering papers 
-                    sppm/ ppm/ pm/ ... advanced methods  
-                    vcm/ 
-                渲染材质
-                icp algos 
-            // rbody sim 
-                https://www.cs.cmu.edu/~baraff/papers/sig89.pdf
-                https://animation.rwth-aachen.de/media/papers/2012-EG-STAR_Rigid_Body_Dynamics.pdf
-                http://www.roboticsproceedings.org/rss04/p12.pdf
-                http://blog.mmacklin.com/project/flex
-            // fluid sim
-                https://cg.informatik.uni-freiburg.de/intern/seminar/gridFluids_GPU_Gems.pdf
-                https://cg.informatik.uni-freiburg.de/publications/2014_EG_SPH_STAR.pdf
-                https://cg.informatik.uni-freiburg.de/
-                https://ge.in.tum.de/publications/2017-sig-um/
-            // cloth sim 
-                http://www-labs.iro.umontreal.ca/~bernhard/PDF/Thomasze08Asynchronous.pdf
-            // smoke sim 
-                https://www.diva-portal.org/smash/get/diva2:676008/FULLTEXT01.pdf
-            // rendering and brdf, ray sim 
-                https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
-                http://www.smallupbp.com/
-                https://diglib.eg.org/bitstream/handle/10.2312/egs20011003/short16.pdf?sequence=1&isAllowed=y
-                https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
-                https://rgl.epfl.ch/publications
-                https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
-                https://www.mpi-inf.mpg.de/departments/computer-graphics/publications
-                https://dl.acm.org/doi/pdf/10.1145/1572769.1572783
-                http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
-                http://www.apsipa.org/proceedings_2013/papers/380_A-Datadriven-Song-2943205.pdf
-                https://web.cs.wpi.edu/~matt/courses/cs563/talks/radiosity.html
-                https://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf
-                https://zhuanlan.zhihu.com/p/60977923
-                https://zhuanlan.zhihu.com/p/21376124
-                https://web.cs.wpi.edu/~emmanuel/courses/cs563/write_ups/chuckm/chuckm_BRDFs_overview.html#:~:text=The%20BRDF%2C%20referred%20to%20as,point%20P%20on%20the%20surface.
-                http://www.thetenthplanet.de/archives/255
-                http://graphics.stanford.edu/papers/veach_thesis
-                https://digibug.ugr.es/bitstream/handle/10481/19751/rmontes_LSI-2012-001TR.pdf;jsessionid=97878771AD4E28B65B909823A8B0C1F2?sequence=1
-                https://www.cs.drexel.edu/~david/Classes/CS431/Lectures/BRDF.pdf
-                https://dl.acm.org/doi/pdf/10.1145/300776.300778
-                https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
-                http://library.utia.cas.cz/separaty/2009/RO/filip-bidirectional%20texture%20function%20modeling%20state%20of%20the%20art%20survey.pdf
-                https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf
-                https://graphics.stanford.edu/papers/metro/metro.pdf
-                https://cgg.mff.cuni.cz/~jaroslav/papers/2012-vcm/2012-vcm-paper.pdf
-                https://www.cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
-                https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
-                https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
-                https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
-                http://people.mpi-inf.mpg.de/alumni/d4/2016/rherzog/Papers/reversePMeg05.pdf
-                http://graphics.ucsd.edu/~henrik/papers/ewr7/global_illumination_using_photon_maps_egwr96.pdf
-                http://graphics.ucsd.edu/~henrik/papers/photon_map/
-        // non-papers 
-            vector calculus 
-            functional analysis 
-            computational mechanics
-            computational fluids  
-            黎曼求解器
-            矩阵论 
-            Newtonian Physics
-            https://www.cs.cmu.edu/~baraff/sigcourse/
-            https://box2d.org/files/ErinCatto_SequentialImpulses_GDC2006.pdf
-            Symplectic integrator
-                https://www.av8n.com/physics/symplectic-integrator.htm
-            continuity equation 
-                https://en.wikipedia.org/wiki/Continuity_equation#Definition_of_flux
-                https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations
-                later   
-            Vector operator and vector calculus
-                include the gradient, divergence, and curl:
-                https://mathinsight.org/divergence_curl_examples
-                http://tutorial.math.lamar.edu/Classes/CalcIII/CurlDivergence.aspx
-                http://blog.sina.com.cn/s/blog_4d0723b301017ivo.html
-                向量还是标量？ 
-                http://www.ittc.ku.edu/~jstiles/220/handouts/The%20Curl%20of%20a%20Conservative%20Field.pdf
-                http://www.home.uni-osnabrueck.de/mfrankland/Math241/Math241_165_ConservativeR3.pdf
-            http://www.pbr-book.org/3ed-2018/Light_Transport_III_Bidirectional_Methods/Metropolis_Light_Transport.html
-            https://en.wikipedia.org/wiki/Z-order_curve
-            https://en.wikipedia.org/wiki/Tensor_algebra#Coalgebra
-            https://en.wikipedia.org/wiki/Talk%3ADyadic_product
-            https://people.math.ethz.ch/~salamon/PREPRINTS/funcana.pdf
-            http://ramanujan.math.trinity.edu/wtrench/texts/TRENCH_LAGRANGE_METHOD.PDF
-            https://www.whitman.edu/mathematics/multivariable/multivariable_16_Vector_Calculus.pdf
-            https://www.math.ust.hk/~machas/vector-calculus-for-engineers.pdf
-            http://www.mecmath.net/calc3book.pdf
-            https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf
-            https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf
-            http://www.doc.ic.ac.uk/~ahanda/referencepdfs/MatrixCalculus.pdf
-            http://www.ams.sunysb.edu/~zhu/ams571/matrixvector.pdf
-            http://www.personal.rdg.ac.uk/~sis01xh/teaching/CY4C9/ANN3.pdf
-            http://personal.lse.ac.uk/sasane/ma412.pdf    
     +https://tu-dresden.de/ing/informatik/smt/cgv/studium/lehrveranstaltungen/ws1920/cg3
         it is about global illumination, physically based simulation
         phy. rendering 
@@ -5604,6 +5468,276 @@
         potential 的计算，为啥和radiance一样麻烦？p19 
         sample的过程？ 有一定pdf函数？ 完全随机？ 
         not understood p26 
+    ---extended, from tt slides ref papers  
+        // slides ref. non-structured 
+            View-Dependent Adaptive Cloth Simulation http://graphics.berkeley.edu/papers/Koh-VDA-2014-07/
+                Given a prescribed camera motion, the method adjusts the criteria controlling refinement to account  for visibility and apparent size in the camera’s view
+                dynamically adaptive mesh refinement
+                coarsening
+                camera’s view frustum
+                Characters completely outside the view frustum are simulated at very low  resolution
+                a simple way of  achieving computational savings for cloth simulation
+                The main limitation of our method is that it requires an  adaptive framework
+                We also believe that our approach would scale very  well to massive scenes with thousands of actors,
+                scale very well
+                where it  would produce even larger savings.
+                there would be additional challenges in applying it to interactive animation.
+                it may not be possible to apply it in interactive settings  where camera motions are not predetermined.
+                virtual characters wearing simulated clothing is now widespread
+                cloth simulation remains  computationally expensive
+                fine details will not be visible to the viewer and  work spent computing those details is wasted
+                For closeup shots where only part of a character  is in frame
+            Unified Particle Physics for Real-Time Applications http://blog.mmacklin.com/project/flex/
+                Bunnies parachute into a pool of water. 
+                Cloth, rigid bodies and fluids coupled through constraints interact seamlessly in our  framework. 
+                Unified Particle Physics
+                Unified Particle Physics for Real-Time Applications
+                * treat contact and collisions in a unified manner
+                * model gases, liquids, deformable solids, rigid bodies and clothing with two-way interactions are modeled with particles and constrains between them 
+                parallel constraint solver based on position based dynamics that is efficient enough for real-time applications.
+                SIGGRAPH 2014
+                Creates redundant work 
+                Everything is a set of particles connected  by constraints
+                recreate these packages in real-time 
+                Melting, phase-changes 
+                Position-Based Dynamics
+                Using particles connected by constraints as our fundamental  building block allows us to treat contact and collisions in a unified  manner
+                +https://d2f99xq7vri1nk.cloudfront.net/legacy_app_files/pdf/nucleus.pdf
+                +https://matthias-research.github.io/pages/publications/posBasedDyn.pdf
+            http://tiantianliu.cn/papers/liu17quasi/liu17quasi.html
+            Animating Fire with Sound https://research.cs.cornell.edu/Sound/fire/ https://research.cs.cornell.edu/Sound/fire/FireSound2011.pdf 
+                Not necessarily physically accurate!
+                a large artistic component
+                visual effects
+                5 Tips For Good Looking Fluid Sims
+                Used in Harry Potter film
+                Our method produces the familiar sound of roaring flames synchronized with an 
+                    underlying low-frequency  physically based flame simulation
+                Additional mid- to high-frequency sound content is synthesized using methods based on spectral bandwidth  extension
+                synthesizing plausible fire  sounds that are synchronized with physically based fire animations
+                combustion sounds
+                data-driven  texture synthesis to synthesize high-frequency content based on input flame sound recordings
+            https://on-demand.gputechconf.com/gtc/2012/presentations/S0102-Flame-on-RT-Fire-Simulation-for-Video-Games.pdf
+            http://www.dartmouth.edu/~boolzhu/papers/ferrofluid.pdf
+            Visual Simulation of Weathering By γ-ton Tracing 
+                https://www.microsoft.com/en-us/research/publication/visual-simulation-of-weathering-by-%CE%B3-ton-tracing/
+                https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/gamma_ton.pdf
+                A weathering sequence generated by our system
+	            this paper presents a visual  simulation technique 
+                    that works well for a wide variety of weathering phenomena
+            https://cgl.ethz.ch/publications/papers/papers.php
+            A Radiosity  Method for Non-Diffuse Environments
+            https://graphics.cs.kuleuven.be/publications/BDPT/BDPT_paper.pdf
+                ined as a generalisation of the wellknown path tracing algo
+                forms signicantly better for typical indoor scenes where indirect lighting  is imp
+                RELATED WORK  An important milestone in the development  of the global illumination theory for computer  graphics was the introduction of the radios  ity method 
+                is based on the e
+                s the scene to be discretised into patches  or elements and as such it is a nit
+                ele  ment method The radiosity solution i
+                ce from the viewpoint  In Ka jiya  Ka jiya presented 
+                ender  ing equation and introduced path tracing as  a Monte Car
+                Cook et al  Shirley Monte Carlo techniques are ca  pable of handling the most general class of  lighting e	ects but are
+                hit  points on the respective particle paths are  then connected using shadow rays 
+                    and the  appropriate contributions are added to the    ux of the pix
+                +https://www.cg.tuwien.ac.at/research/publications/2017/dodik-2017-pcbpt/
+            https://graphics.stanford.edu/courses/cs348b-03/papers/veach-chapter10.pdf
+            https://cg.cs.uni-bonn.de/de/projekte/btfdbb/download/
+            
+            Global Illumination using Photon Maps 
+                http://graphics.ucsd.edu/~henrik/papers/ewr7/global_illumination_using_photon_maps_egwr96.pdf
+            Efficient Caustic Rendering with Lightweight Photon Mapping
+                https://graphics.cg.uni-saarland.de/papers/grittmann-2018-lwpm-paper.pdf
+            https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
+            https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
+            Efficient Simulation of Light Transport in Scenes with Participating Media using Photon Maps, Henrik Wann Jensen
+                http://graphics.ucsd.edu/~henrik/papers/sig98.html 
+                http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.118.6575&rep=rep1&type=pdf
+            https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf
+            https://cseweb.ucsd.edu/~ravir/papers/singlescat/scattering.pdf
+            https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.2582&rep=rep1&type=pdf
+            http://www.roboticsproceedings.org/rss04/p12.pdf
+            https://ge.in.tum.de/publications/2017-sig-um/
+            https://cg.informatik.uni-freiburg.de/publications/2012_SIGGRAPH_rigidFluidCoupling.pdf
+            http://s2017.siggraph.org/sites/default/files/firstpages_part_08.pdf
+            https://cg.informatik.uni-freiburg.de/publications/2014_EG_SPH_STAR.pdf
+            http://physbam.stanford.edu/~fedkiw/papers/stanford2001-01.pdf
+            https://www.cs.ubc.ca/~rbridson/fluidsimulation/
+            http://physbam.stanford.edu/~fedkiw/
+        // papers
+            // essential 
+                http://physbam.stanford.edu/~fedkiw/papers/cam2000-08.pdf
+                http://physbam.stanford.edu/~fedkiw/papers/stanford2004-07.pdf
+                http://www.cs.cornell.edu/~dph/papers/dt.pdf
+                http://web.stanford.edu/class/cs277/resources/papers/Moller1997b.pdf
+            // other mixed
+                http://www.xtong.info/gammaton.pdf
+                https://dl.acm.org/doi/pdf/10.1145/3197517.3201399
+                https://pdfs.semanticscholar.org/815c/f5781791ea6e8ecfef42a5252f12455f9cbb.pdf
+                meta ball 
+                level set method, heat diffusion 
+                reconstruction methods 
+                photon mapping papers 
+                MLT paper and more recently/ advanced technique 
+                position estimation methods  MCMC 
+                recent realistic rendering papers 
+                    sppm/ ppm/ pm/ ... advanced methods  
+                    vcm/ 
+                渲染材质
+                icp algos 
+            // rbody sim 
+                https://www.cs.cmu.edu/~baraff/papers/sig89.pdf
+                https://animation.rwth-aachen.de/media/papers/2012-EG-STAR_Rigid_Body_Dynamics.pdf
+                http://www.roboticsproceedings.org/rss04/p12.pdf
+                http://blog.mmacklin.com/project/flex
+            // fluid sim
+                https://cg.informatik.uni-freiburg.de/intern/seminar/gridFluids_GPU_Gems.pdf
+                https://cg.informatik.uni-freiburg.de/publications/2014_EG_SPH_STAR.pdf
+                https://cg.informatik.uni-freiburg.de/
+                https://ge.in.tum.de/publications/2017-sig-um/
+            // cloth sim 
+                http://www-labs.iro.umontreal.ca/~bernhard/PDF/Thomasze08Asynchronous.pdf
+            // smoke sim 
+                https://www.diva-portal.org/smash/get/diva2:676008/FULLTEXT01.pdf
+            // rendering and brdf, ray sim 
+                variations to classical GI 
+                    voxel-cone-tracing
+                        https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
+                            Voxel Cone Tracing
+                            realistic image synthesis
+                            Indirect illumination
+                            off-line computation and pre-baking can be acceptable
+                            many applications (games, simulators, etc.) require real-time or interactive approaches
+                            evaluate indirect illumination
+                            costly precomputation
+                            voxel octree representation generated and updated on the fly from a regular 
+                                scene mesh coupled with an approximate voxel cone tracing
+                            scene-independent performance and can handle complex scenes with dynamic content
+                            integration of 2-bounce illumination
+                            drastically improves the realism of a rendered scene
+                            complex scenes are challenging  to illuminate
+                            qq Global illumination is computationally expensive for several  reasons?
+                                computing visibility between arbitrary  points in the 3D scene, which is difficult with rasterization  based rendering
+                                it requires integrating lighting information over a large number of directions for each shaded  point.
+                            millions of triangles
+                            We reach real-time frame rates even for highly  detailed environments and 
+                                produce plausible indirect illumination (see Teaser).
+                            Teaser
+                            pre-filtered hierarchical voxel representation of the scene geometry
+                            stored on the GPU in the  form of a dynamic sparse voxel octree
+                            efficiently exploits the GPU rasterization pipeline.
+                            d is then updated interactively  with moving objects
+                            dynamic modifications
+                            The main contributions of our work are the following
+                            a fast GPU-based mesh  voxelization and octree-building algorithm
+                            An efficient approximate cone-tracing integration
+                            supports diffuse and glossy reflections
+                            Recent GPU  implementations of photon mapping [Hac05,WZPB09] use  clustering and exploit the spatial coherence of illumination
+                            High-Quality  Global Illumination Rendering Using Rasterization
+                            can be seen in the accompanying video
+                            But this solution is not fast enough to  provide real-time performances
+                            sparse voxel  octree structure storing geometry and direct lighting information
+                            pp can not classified properly
+                        https://www.eecs.yorku.ca/~amana/research/cones.pdf
+                            Global illumination using photon maps
+                            anti-aliasing
+                            image synthesis
+                            what level of detail is  sufficient in a texture map or in a procedural or  hierarchical model of an object when ray tracing
+                            exploit  area-sampling techniques to avoid aliasing artifacts
+                            not enough information associated with the ray to perform anti-aliasing 
+                            There is no way of  knowing or calculating what else is visible in the  neighborhood surrounding the sample point
+                            The only way to anti-alias within standard  ray tracing is to go to higher resolution. Whitted  proposed adaptive supersampling and it is now  almost universally used
+                            to modify the definition of  "ray"
+                            The pixel should represent not a point but  an area of the screen
+                            pyramid with the apex  at the eye and the base defined by the four planes  that cut the borders of the pixel
+                            only one ray per pixel is  sufficient regardless of scene complexity.
+                            Voxel Cone Tracing
+                    modern GPU rasterization pipeline acceleration
+                        http://www.jp.square-enix.com/tech/library/pdf/Real-Time%20Bidirectional%20Path%20Tracing%20via%20Rasterization%20(preprint).pdf
+                            perceptually important for interactive applications such as video games, lighting design or virtual  reality systems. 
+                            high rendering cost.
+                            Many techniques including shaders have been developed  for rasterization pipeline
+                            on a modern  commodity GPU
+                            Monte Carlo  integration to calculate indirect illumination
+                            This paper proposes a new real-time rendering system
+                            an approximate  bidirectional path tracing in a simplistic way.
+                            implemented with a modern GPU rasterization
+                            Global ray-bundles were often used for off-line rendering  to accelerate visibility test.
+                            Global Ray-Bundles
+                            we create global ray-bundles using per  pixel linked-list construction on a DirectX 11 GPU
+                            Real-Time Bidirectional Path Tracing via Rasterization
+                bsdf 
+                classical GI 
+                https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                http://www.smallupbp.com/
+                https://diglib.eg.org/bitstream/handle/10.2312/egs20011003/short16.pdf?sequence=1&isAllowed=y
+                https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
+                https://rgl.epfl.ch/publications
+                https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                https://www.mpi-inf.mpg.de/departments/computer-graphics/publications
+                https://dl.acm.org/doi/pdf/10.1145/1572769.1572783
+                http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
+                http://www.apsipa.org/proceedings_2013/papers/380_A-Datadriven-Song-2943205.pdf
+                https://web.cs.wpi.edu/~matt/courses/cs563/talks/radiosity.html
+                https://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf
+                https://zhuanlan.zhihu.com/p/60977923
+                https://zhuanlan.zhihu.com/p/21376124
+                https://web.cs.wpi.edu/~emmanuel/courses/cs563/write_ups/chuckm/chuckm_BRDFs_overview.html#:~:text=The%20BRDF%2C%20referred%20to%20as,point%20P%20on%20the%20surface.
+                http://www.thetenthplanet.de/archives/255
+                http://graphics.stanford.edu/papers/veach_thesis
+                https://digibug.ugr.es/bitstream/handle/10481/19751/rmontes_LSI-2012-001TR.pdf;jsessionid=97878771AD4E28B65B909823A8B0C1F2?sequence=1
+                https://www.cs.drexel.edu/~david/Classes/CS431/Lectures/BRDF.pdf
+                https://dl.acm.org/doi/pdf/10.1145/300776.300778
+                https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
+                http://library.utia.cas.cz/separaty/2009/RO/filip-bidirectional%20texture%20function%20modeling%20state%20of%20the%20art%20survey.pdf
+                https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf
+                https://graphics.stanford.edu/papers/metro/metro.pdf
+                https://cgg.mff.cuni.cz/~jaroslav/papers/2012-vcm/2012-vcm-paper.pdf
+                https://www.cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
+                https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
+                https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
+                https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
+                http://people.mpi-inf.mpg.de/alumni/d4/2016/rherzog/Papers/reversePMeg05.pdf
+                http://graphics.ucsd.edu/~henrik/papers/ewr7/global_illumination_using_photon_maps_egwr96.pdf
+                http://graphics.ucsd.edu/~henrik/papers/photon_map/
+        // non-papers 
+            vector calculus 
+            functional analysis 
+            computational mechanics
+            computational fluids  
+            黎曼求解器
+            矩阵论 
+            Newtonian Physics
+            https://www.cs.cmu.edu/~baraff/sigcourse/
+            https://box2d.org/files/ErinCatto_SequentialImpulses_GDC2006.pdf
+            Symplectic integrator
+                https://www.av8n.com/physics/symplectic-integrator.htm
+            continuity equation 
+                https://en.wikipedia.org/wiki/Continuity_equation#Definition_of_flux
+                https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations
+                later   
+            Vector operator and vector calculus
+                include the gradient, divergence, and curl:
+                https://mathinsight.org/divergence_curl_examples
+                http://tutorial.math.lamar.edu/Classes/CalcIII/CurlDivergence.aspx
+                http://blog.sina.com.cn/s/blog_4d0723b301017ivo.html
+                向量还是标量？ 
+                http://www.ittc.ku.edu/~jstiles/220/handouts/The%20Curl%20of%20a%20Conservative%20Field.pdf
+                http://www.home.uni-osnabrueck.de/mfrankland/Math241/Math241_165_ConservativeR3.pdf
+            http://www.pbr-book.org/3ed-2018/Light_Transport_III_Bidirectional_Methods/Metropolis_Light_Transport.html
+            https://en.wikipedia.org/wiki/Z-order_curve
+            https://en.wikipedia.org/wiki/Tensor_algebra#Coalgebra
+            https://en.wikipedia.org/wiki/Talk%3ADyadic_product
+            https://people.math.ethz.ch/~salamon/PREPRINTS/funcana.pdf
+            http://ramanujan.math.trinity.edu/wtrench/texts/TRENCH_LAGRANGE_METHOD.PDF
+            https://www.whitman.edu/mathematics/multivariable/multivariable_16_Vector_Calculus.pdf
+            https://www.math.ust.hk/~machas/vector-calculus-for-engineers.pdf
+            http://www.mecmath.net/calc3book.pdf
+            https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf
+            https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf
+            http://www.doc.ic.ac.uk/~ahanda/referencepdfs/MatrixCalculus.pdf
+            http://www.ams.sunysb.edu/~zhu/ams571/matrixvector.pdf
+            http://www.personal.rdg.ac.uk/~sis01xh/teaching/CY4C9/ANN3.pdf
+            http://personal.lse.ac.uk/sasane/ma412.pdf    
     ---re-考试复习
         注意事项
             带证件
@@ -5619,9 +5753,8 @@
                 //
                     刷基础，顺序刷，随机刷
                     刷错误，经常错的问题反复训练 tobere
-                //
                     刷意识，加快反应速度，顺序
-                    刷扩展，论文阅读计算
                 //
+                    刷扩展，论文阅读计算
                     刷讲解，active mode
                 ...
