@@ -1,6 +1,102 @@
 
-    +toread, tt must read 
-        large 
+    ---extended, from tt slides ref papers  
+        // slides ref. 
+            https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
+            http://graphics.berkeley.edu/papers/Koh-VDA-2014-07/
+            http://blog.mmacklin.com/project/flex/
+            http://tiantianliu.cn/papers/liu17quasi/liu17quasi.html
+            https://research.cs.cornell.edu/Sound/fire/
+            https://on-demand.gputechconf.com/gtc/2012/presentations/S0102-Flame-on-RT-Fire-Simulation-for-Video-Games.pdf
+            http://www.dartmouth.edu/~boolzhu/papers/ferrofluid.pdf
+            https://www.microsoft.com/en-us/research/publication/visual-simulation-of-weathering-by-%CE%B3-ton-tracing/
+            https://cgl.ethz.ch/publications/papers/papers.php
+            A Radiosity  Method for Non-Diffuse Environments
+            https://graphics.cs.kuleuven.be/publications/BDPT/BDPT_paper.pdf
+            https://graphics.stanford.edu/courses/cs348b-03/papers/veach-chapter10.pdf
+            https://cg.cs.uni-bonn.de/de/projekte/btfdbb/download/
+            https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
+            https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
+            http://graphics.ucsd.edu/~henrik/papers/sig98.html
+            https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf
+            https://cseweb.ucsd.edu/~ravir/papers/singlescat/scattering.pdf
+            https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.2582&rep=rep1&type=pdf
+            http://www.roboticsproceedings.org/rss04/p12.pdf
+            https://ge.in.tum.de/publications/2017-sig-um/
+            https://cg.informatik.uni-freiburg.de/publications/2012_SIGGRAPH_rigidFluidCoupling.pdf
+            http://s2017.siggraph.org/sites/default/files/firstpages_part_08.pdf
+            https://cg.informatik.uni-freiburg.de/publications/2014_EG_SPH_STAR.pdf
+            http://physbam.stanford.edu/~fedkiw/papers/stanford2001-01.pdf
+            https://www.cs.ubc.ca/~rbridson/fluidsimulation/
+            http://physbam.stanford.edu/~fedkiw/
+        // papers
+            // essential 
+                http://physbam.stanford.edu/~fedkiw/papers/cam2000-08.pdf
+                http://physbam.stanford.edu/~fedkiw/papers/stanford2004-07.pdf
+                http://www.cs.cornell.edu/~dph/papers/dt.pdf
+                http://web.stanford.edu/class/cs277/resources/papers/Moller1997b.pdf
+            // other mixed
+                http://www.xtong.info/gammaton.pdf
+                https://dl.acm.org/doi/pdf/10.1145/3197517.3201399
+                https://pdfs.semanticscholar.org/815c/f5781791ea6e8ecfef42a5252f12455f9cbb.pdf
+                meta ball 
+                level set method, heat diffusion 
+                reconstruction methods 
+                photon mapping papers 
+                MLT paper and more recently/ advanced technique 
+                position estimation methods  MCMC 
+                recent realistic rendering papers 
+                    sppm/ ppm/ pm/ ... advanced methods  
+                    vcm/ 
+                渲染材质
+                icp algos 
+            // rbody sim 
+                https://www.cs.cmu.edu/~baraff/papers/sig89.pdf
+                https://animation.rwth-aachen.de/media/papers/2012-EG-STAR_Rigid_Body_Dynamics.pdf
+                http://www.roboticsproceedings.org/rss04/p12.pdf
+                http://blog.mmacklin.com/project/flex
+            // fluid sim
+                https://cg.informatik.uni-freiburg.de/intern/seminar/gridFluids_GPU_Gems.pdf
+                https://cg.informatik.uni-freiburg.de/publications/2014_EG_SPH_STAR.pdf
+                https://cg.informatik.uni-freiburg.de/
+                https://ge.in.tum.de/publications/2017-sig-um/
+            // cloth sim 
+                http://www-labs.iro.umontreal.ca/~bernhard/PDF/Thomasze08Asynchronous.pdf
+            // smoke sim 
+                https://www.diva-portal.org/smash/get/diva2:676008/FULLTEXT01.pdf
+            // rendering and brdf, ray sim 
+                https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                http://www.smallupbp.com/
+                https://diglib.eg.org/bitstream/handle/10.2312/egs20011003/short16.pdf?sequence=1&isAllowed=y
+                https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
+                https://rgl.epfl.ch/publications
+                https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                https://www.mpi-inf.mpg.de/departments/computer-graphics/publications
+                https://dl.acm.org/doi/pdf/10.1145/1572769.1572783
+                http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
+                http://www.apsipa.org/proceedings_2013/papers/380_A-Datadriven-Song-2943205.pdf
+                https://web.cs.wpi.edu/~matt/courses/cs563/talks/radiosity.html
+                https://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf
+                https://zhuanlan.zhihu.com/p/60977923
+                https://zhuanlan.zhihu.com/p/21376124
+                https://web.cs.wpi.edu/~emmanuel/courses/cs563/write_ups/chuckm/chuckm_BRDFs_overview.html#:~:text=The%20BRDF%2C%20referred%20to%20as,point%20P%20on%20the%20surface.
+                http://www.thetenthplanet.de/archives/255
+                http://graphics.stanford.edu/papers/veach_thesis
+                https://digibug.ugr.es/bitstream/handle/10481/19751/rmontes_LSI-2012-001TR.pdf;jsessionid=97878771AD4E28B65B909823A8B0C1F2?sequence=1
+                https://www.cs.drexel.edu/~david/Classes/CS431/Lectures/BRDF.pdf
+                https://dl.acm.org/doi/pdf/10.1145/300776.300778
+                https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
+                http://library.utia.cas.cz/separaty/2009/RO/filip-bidirectional%20texture%20function%20modeling%20state%20of%20the%20art%20survey.pdf
+                https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf
+                https://graphics.stanford.edu/papers/metro/metro.pdf
+                https://cgg.mff.cuni.cz/~jaroslav/papers/2012-vcm/2012-vcm-paper.pdf
+                https://www.cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
+                https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
+                https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
+                https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
+                http://people.mpi-inf.mpg.de/alumni/d4/2016/rherzog/Papers/reversePMeg05.pdf
+                http://graphics.ucsd.edu/~henrik/papers/ewr7/global_illumination_using_photon_maps_egwr96.pdf
+                http://graphics.ucsd.edu/~henrik/papers/photon_map/
+        // non-papers 
             vector calculus 
             functional analysis 
             computational mechanics
@@ -8,19 +104,37 @@
             黎曼求解器
             矩阵论 
             Newtonian Physics
-        small but deep 
-            meta ball 
-            level set method, heat diffusion 
-            reconstruction methods 
-            photon mapping papers 
-            MLT paper and more recently/ advanced technique 
-            position estimation methods  MCMC 
-            recent realistic rendering papers 
-                sppm/ ppm/ pm/ ... advanced methods  
-                vcm/ 
-            渲染材质
-            http://www.roboticsproceedings.org/rss04/p12.pdf
-            
+            https://www.cs.cmu.edu/~baraff/sigcourse/
+            https://box2d.org/files/ErinCatto_SequentialImpulses_GDC2006.pdf
+            Symplectic integrator
+                https://www.av8n.com/physics/symplectic-integrator.htm
+            continuity equation 
+                https://en.wikipedia.org/wiki/Continuity_equation#Definition_of_flux
+                https://en.wikipedia.org/wiki/Navier%E2%80%93Stokes_equations
+                later   
+            Vector operator and vector calculus
+                include the gradient, divergence, and curl:
+                https://mathinsight.org/divergence_curl_examples
+                http://tutorial.math.lamar.edu/Classes/CalcIII/CurlDivergence.aspx
+                http://blog.sina.com.cn/s/blog_4d0723b301017ivo.html
+                向量还是标量？ 
+                http://www.ittc.ku.edu/~jstiles/220/handouts/The%20Curl%20of%20a%20Conservative%20Field.pdf
+                http://www.home.uni-osnabrueck.de/mfrankland/Math241/Math241_165_ConservativeR3.pdf
+            http://www.pbr-book.org/3ed-2018/Light_Transport_III_Bidirectional_Methods/Metropolis_Light_Transport.html
+            https://en.wikipedia.org/wiki/Z-order_curve
+            https://en.wikipedia.org/wiki/Tensor_algebra#Coalgebra
+            https://en.wikipedia.org/wiki/Talk%3ADyadic_product
+            https://people.math.ethz.ch/~salamon/PREPRINTS/funcana.pdf
+            http://ramanujan.math.trinity.edu/wtrench/texts/TRENCH_LAGRANGE_METHOD.PDF
+            https://www.whitman.edu/mathematics/multivariable/multivariable_16_Vector_Calculus.pdf
+            https://www.math.ust.hk/~machas/vector-calculus-for-engineers.pdf
+            http://www.mecmath.net/calc3book.pdf
+            https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf
+            https://ccrma.stanford.edu/~dattorro/matrixcalc.pdf
+            http://www.doc.ic.ac.uk/~ahanda/referencepdfs/MatrixCalculus.pdf
+            http://www.ams.sunysb.edu/~zhu/ams571/matrixvector.pdf
+            http://www.personal.rdg.ac.uk/~sis01xh/teaching/CY4C9/ANN3.pdf
+            http://personal.lse.ac.uk/sasane/ma412.pdf    
     +https://tu-dresden.de/ing/informatik/smt/cgv/studium/lehrveranstaltungen/ws1920/cg3
         it is about global illumination, physically based simulation
         phy. rendering 
@@ -99,6 +213,8 @@
             Contact Handling
             https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
             tt papers page 5! 
+            https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+
             +qq Computational fluid dynamics - Wikipedia
                 a branch of fluid mechanics that uses numerical analysis and data structures to analyze and solve problems that involve fluid flows.
                 interaction of the fluid (liquids and gases) with surfaces defined by boundary conditions.
@@ -5500,11 +5616,12 @@
                 背的时候不停回看， 这样背诵效率最高，不要怕麻烦
                 把困难的任务先完成，不要退缩
             后期重复，最后几天每日iter: 1h，每日至少5h
-                刷基础，顺序刷，随机刷
-                刷错误，经常错的问题反复训练
                 //
-                刷意识，加快反应速度，顺序
-                刷扩展，论文阅读计算
+                    刷基础，顺序刷，随机刷
+                    刷错误，经常错的问题反复训练 tobere
                 //
-                刷讲解，active mode
+                    刷意识，加快反应速度，顺序
+                    刷扩展，论文阅读计算
+                //
+                    刷讲解，active mode
                 ...
