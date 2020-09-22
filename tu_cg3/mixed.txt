@@ -1,14 +1,26 @@
 
     +toread, tt must read 
-        vector calculus 
-        MLT paper and more recently/ advanced technique 
-        photon mapping papers 
-        position estimation methods  MCMC 
-        functional analysis 
-        computational mechanics
-        computational fluids   
-        recent realistic rendering papers 
-            sppm/ ppm/ pm/ ... advanced methods    
+        large 
+            vector calculus 
+            functional analysis 
+            computational mechanics
+            computational fluids  
+            黎曼求解器
+            矩阵论 
+            Newtonian Physics
+        small but deep 
+            meta ball 
+            level set method, heat diffusion 
+            reconstruction methods 
+            photon mapping papers 
+            MLT paper and more recently/ advanced technique 
+            position estimation methods  MCMC 
+            recent realistic rendering papers 
+                sppm/ ppm/ pm/ ... advanced methods  
+                vcm/ 
+            渲染材质
+            http://www.roboticsproceedings.org/rss04/p12.pdf
+            
     +https://tu-dresden.de/ing/informatik/smt/cgv/studium/lehrveranstaltungen/ws1920/cg3
         it is about global illumination, physically based simulation
         phy. rendering 
@@ -34,6 +46,11 @@
         2. ql official questions 
         3. ql from pic notes 
         4. active mode! 
+    ---keywords 
+        > qq 
+        > pp 
+        > tobecontinue
+        > tobere 
     ---preview
         extended know. search online, as prepare and concreate understanding 
             from interest
@@ -52,12 +69,8 @@
                     大尺度矩阵运算
                     首先最基本的控制方程，不管是欧拉还是NS，层流还是湍流，如果做aeroacoustics还有波动方程和lighthill analogy等等
                     方保镕的《矩阵论》还是不错的
-                黎曼求解器
-
-                矩阵论
                 SVBRDF/ 
             from slides detail
-                渲染材质
                 brdf材质
                 smoke simulation paper 
                     exploits physics unique to smoke in order to design a  numerical method
@@ -1297,7 +1310,7 @@
                     in dynamics, forces are considered, included 
                 Torque ?? is the rotational equivalent to force
                 lever action
-                qq what is the dir. of Torque??
+                qq what is the dir. of Torque?? tobere
                     Torque points along the rotation axis
                 length
                 component of the force orthogonal to ???? .
@@ -1366,7 +1379,7 @@
                 &p ok-op14 why this? have we imp. this before?? yes 
                 qq how can we change bases from one to an other??.... matrix calcu. later!!! tt 
                 linear momentum and angular momentum
-                qq what is the relation between force and linear momentum? 
+                qq what is the relation between force and linear momentum? tobere
                     > Torque and angular momentum?? 
                 Angular momentum ?? is a vectorial conserved quantity
                 calculate_mass_and_inertia
@@ -1467,7 +1480,7 @@
                     > for both cases: elastic and inelastic cases
                 qq the velocities and work can be computed? op13
                 qq nearly all materials are partially elastic?
-                qq how can we quantify the elastic property if a material? formula?
+                qq how can we quantify the elastic property if a material? formula? tobere
                     Coefficient of restitution
                     impact inverts direction of relative velocity
                 qq what is COR? coeffi. of restitution??
@@ -1528,12 +1541,12 @@
                     Sort...enter event...exit event...
                     nlogn+k 
                 qq the idea of BVH collision test
-                    the collision test only descents down (in detail level)
-                        only when the root nodes intersect
+                    the collision test only 
+                        descents down (in detail level) only when the root nodes intersect
                 qq what do we need to test collections in near phase? 
                     triangle-triangle intersection tests
                     qq tt how can we do xxx intersection tests? 
-                qq Contact Extraction algo? large x3+
+                qq Contact Extraction algo? large x3+ tobere
                     [body movement]
                     [Broad phase] enumerates potential contact pairs
                     [Near phase] filters out actual contact pairs 
@@ -2120,7 +2133,9 @@
                 water will pool
                 *ref. https://github.com/tunabrain/incremental-fluids
                 soot particles
+                qq how can we simulate smoke? phy model? 
                 composed of soot particles suspended in air
+                Smoke is composed of soot particles suspended in air
                 track concentration of soot on the  grid: ??(??,??)
                 Evolution equation:
                 qq equ. for soot concentration on grid 
@@ -2415,7 +2430,7 @@
                 qq what is Solid Body Coupling op99 how can we archieve this? 
                     add constraint forces that avoid interpenetration
                     compute forces and torques of fluid on solids 
-                qq how can we render in sph simulation?? op100
+                qq how can we render in sph simulation?? given a set of particles op100
                     define iso-surface  from particles
                     render with volume  rendering  techniques
                     lots of works with particle visualization techniques exists! 
@@ -3084,7 +3099,7 @@
                     qq what is importance sampling ? p9 
                     qq how does Monte Carlo Techniques solved the problem of the curse of dimensionality? p11 
                     qq why we use importance sampling? 
-                    qq what is the equ. applying to reflaction integral? p17 
+                    qq what is the MC technique applying to reflaction integral? p17 
                     qq how can one compute Lin recur.in p17? code online 
                     qq why not use fixed termination depth? p18 
                     qq proof that the exp. value will stay the same! p18 
@@ -3456,7 +3471,7 @@
                     transformation from unit  triangle to arbitrary triangle
                     qq how can we let probability density p(x,x) be proportional to a constant brdf?
                         use transformation sampling and marginalization approach:
-                    ---tobecontinued
+                    ---tobecontinue
                     qq what is marginalization approach?
                         probability density
                     qq what is the  probability density for a hemisphere?? 
@@ -3984,7 +3999,7 @@
                 tt must read
                 tt lobe related!!!!! must read
                 http://www1.cs.columbia.edu/~cs4160/html08spr/slides/lecture20.pdf
-                ---Messung von BRDFs tobecontinued
+                ---Messung von BRDFs tobecontinue
                 https://digibug.ugr.es/bitstream/handle/10481/19751/rmontes_LSI-2012-001TR.pdf;jsessionid=81B56BD1DB6156AD61574AC2151786F5?sequence=1
 
                 qq measures reflectance for combinations of?? what are inputs of the measuring process?
@@ -4468,7 +4483,7 @@
                         so can be combined together with MIS 
                         wide variety of scenes and lighting effects can be handled
                         can taken into account! 
-                ---tobecontinued
+                ---tobecontinue
                 **!pp MIS is for single path or multiple paths?? ok 
                     fixed number of vertices, physically different paths 
                 qq additional artefacts for BPT without MIS? why? 

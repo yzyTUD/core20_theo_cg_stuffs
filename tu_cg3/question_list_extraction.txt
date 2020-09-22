@@ -1,3 +1,9 @@
+    ---keywords 
+        > qq 
+        > qq 
+        > pp 
+        > tobecontinue
+        > tobere 
     ---preview
     ---detailview
         pruf-re-ok- slides-intro 
@@ -212,7 +218,7 @@
                 qq transform from object corrdi. to world coordi. *** and back. formula!!x2 
                 qq derive velocity equ.!! both angular and linear velocity!
                 qq what is the diff. bet. kinematics and dynamics?? 
-                qq what is the dir. of Torque??
+                qq what is the dir. of Torque?? tobere
                 qq how to understand this? :force acts twice once for linear and once the angular dynamics
                 qq expression of the torque? in 3d case. vec3 calcu. op10
                 qq the dimention of a torque in 3d case? 
@@ -232,7 +238,7 @@
                     > transform from local coordi to global coordi.  op14 
                 &p ok-op14 why this? have we imp. this before?? yes 
                 qq how can we change bases from one to an other??.... matrix calcu. later!!! tt 
-                qq what is the relation between force and linear momentum? 
+                qq what is the relation between force and linear momentum? tobere
                     > Torque and angular momentum?? 
                 qq Inertia Tensor are changing during simulation? 
                 qq what kind of spinning tops are there?? !
@@ -268,7 +274,7 @@
                     > for both cases: elastic and inelastic cases
                 qq the velocities and work can be computed? op13
                 qq nearly all materials are partially elastic?
-                qq how can we quantify the elastic property if a material? formula?
+                qq how can we quantify the elastic property if a material? formula? tobere
                 qq what is COR? coeffi. of restitution??
                 qq what is the direction of relative velocity before and after collision?
                 qq the velocities can be computed with epsilon! op14
@@ -292,7 +298,7 @@
                 qq the idea of BVH collision test
                 qq what do we need to test collections in near phase? 
                     qq tt how can we do xxx intersection tests? 
-                qq Contact Extraction algo? large x3+
+                qq Contact Extraction algo? large x3+ tobere
                 qq Near Phase with SAT for OOBB, how many axis to be tested?? 
                 qq the idea of SAT theorem?? 
                 qq we have to express conservation law in normal direction! ??! 
@@ -442,6 +448,7 @@
                 qq what about the pressure matrix?
                 qq the linear equ. of pressure can be solved effeciently? 
                 qq why we iterate? 
+                qq how can we simulate smoke? phy model? 
                 qq equ. for soot concentration on grid 
                 qq why and how can we track temprature?? the Evolution equation!
                 qq what is conduction??
@@ -517,7 +524,7 @@
                 qq what is Multi-Phase Fluids? 
                 qq artefacts at the fluidfluid interface? what can be the reason? how can we solve it? x2
                 qq what is Solid Body Coupling op99 how can we archieve this? 
-                qq how can we render in sph simulation?? op100
+                qq how can we render in sph simulation?? given a set of particles op100
                    > how to understand this??
                 qq why not use regular grids? when will cause prob.? in which cases?? op46
         ---realistic rendering 
@@ -567,7 +574,10 @@
                         > directions yields directional hemispherical reflections  that must be ≤ 1.
                         > why? p32 
                     qq how can we Solve the Rendering Equation? x2 p34
-                    
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                     qq the steps of Bidirectional Path-Tracing p35 
                 ---r1
                     qq what is Ambient Occlusion
@@ -681,7 +691,7 @@
                     qq what is importance sampling ? p9 
                     qq how does Monte Carlo Techniques solved the problem of the curse of dimensionality? p11 
                     qq why we use importance sampling? 
-                    qq what is the equ. applying to reflaction integral? p17 
+                    qq what is the MC technique applying to reflaction integral? p17 
                     qq how can one compute Lin recur.in p17? code online 
                     qq why not use fixed termination depth? p18 
                     qq proof that the exp. value will stay the same! p18 
@@ -801,7 +811,7 @@
                     qq what is Possion disk sampling, idea?
                     qq compare Stratified grid sampling and N-rooks sampling 
                     qq how can we sample according to a distribution: function_f/ integrate(f)?
-                    qq what's the problem with Rejection Sampling? 
+                    qq what's the problem with Rejection Sampling?  tobere
                     qq how Rejection Sampling can be used explain the pic! op06
                     qq how can we Sampling any Shape? in a simple manner?
                     qq how can we sample uniformly inside a given shape?
@@ -830,14 +840,14 @@
                     qq what is manifold and its embedding space?? draw to illustrate! 
                     qq how can we get uniform circle sampling?? op15
                     qq compare rejection and transformation sampling
-                    qq how can we uniformly sample the sphere surface?? 
+                    qq how can we uniformly sample the sphere surface?? tobere
                     **qq why Double Coverage is a kind of transformation sampling technique? 
                     qq what is Double Coverage?
-                    **qq how can we sample a triangle uniformly?? 
-                    **qq how can we sample normals on a hemisphere?? 
+                    **qq how can we sample a triangle uniformly?? tobere
+                    **qq how can we sample normals on a hemisphere?? tobere
                         > example hemisphere for given  normal ?
                     qq how can we let probability density p(x,x) be proportional to a constant brdf?
-                    ---tobecontinued
+                    ---tobecontinue
                     qq what is marginalization approach?
                     qq what is the  probability density for a hemisphere?? 
                     qq what is Transformation Sampling a Diffuse  
@@ -930,7 +940,7 @@
                     也被称为Cook-Torrance模型
                 qq what does color mean when vis. brdf as Lobe?
                 qq what means a brdf is phy plausible? x2 +
-                ---Messung von BRDFs tobecontinued
+                ---Messung von BRDFs tobecontinue
                 qq measures reflectance for combinations of?? what are inputs of the measuring process?
                 qq how can we reduce number of necessary measurements? x2 
                 qq how can a single BRDF sample can be illustated?
@@ -960,7 +970,6 @@
                 qq how bssrdf is used? 
             ---*
             pruf-re-ok- slides-5 CG3_05_Path-Based-Rendering
-                    
                 qq what is caustics, draw to illustrate! envelop? incident rays? reflacted rays?
                 qq illu. Path Tracing with Direct Lighting and Light Tracing with Eye Rays
                 qq how light sampling can be connected to eye?? 
@@ -998,13 +1007,16 @@
                 qq how the path looks like with zy formation??
                 qq what is s and t? 
                 qq how can we compute k from s and t?  k is the number of edges 
-                    
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 qq special cases! 
                     > what does it mean if s=0? path tracing 
                     > and s = 1? direct light sampling 
                     > t=0? t=1?
                 qq can we do MIS on one path? y what do we need as pre-requires?
-                ---tobecontinued
+                ---tobecontinue
                 qq additional artefacts for BPT without MIS? why? 
                 ---
                 qq why we set 1 to the first few vertices? 
@@ -1028,12 +1040,15 @@
                 qq MLT is best suitable for ? which kind of scene ??
                 qq how to explain those numbers? later 
             pruf-re-ok- slides-7 CG3_07_Cache-Based-GI
-                    
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 qq Bidirectional Path Tracing is very bad for?? good for??
                 qq idea of Photon mapping:  op08 x4 
                 qq where do we store photons in the scene? 
-                qq when do we store a photon to caustic photon map? what is the criteria? and when global photon map? 
-                qq how can we enforce the caustic probability? 
+                qq when do we store a photon to caustic photon map? what is the criteria? and when global photon map? tobere
+                qq how can we enforce the caustic probability? tobere
                 qq when geathering, which hits are accepts?
                 qq what is a photon filter? 
                 qq Radiance Estimation? draw a graph to illustrate op11
