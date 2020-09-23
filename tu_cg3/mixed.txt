@@ -4877,10 +4877,10 @@
                     2011 Knaus: PPM - A Probabilistic Approach (probPPM
                 qq such three methods have the same radius update? op28 
                     with  decreasing density estimation radius
-                    error  converges to zero in limit 
+                        error  converges to zero in limit 
                 qq How to store KDE radius that can be updated per iteration??
                     stored per reverse photon
-                    user adjustable fraction
+                        user adjustable fraction
                 qq How to combine the results of photon mapping iterations?? op29 
                     divide summed pixel contributions by 𝑖 ⋅ 𝑀
                         M is the number of photons generated in current iteration 
@@ -4904,7 +4904,7 @@
                     https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
                 qq draw a graph to illu. the PPM algorithm 
                 qq draw a graph to show SPPM algorithm
-                qq the diff. bet. PPM and SPPM??
+                qq the diff. bet. PPM and SPPM?? number of passes can be written as an equ.? 
                     a complicated updating pass 
                     [distributed ray tracing pass]
                     ori:
@@ -5623,6 +5623,8 @@
                     https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
                         +https://cg.cs.uni-bonn.de/aigaion2root/attachments/sattler-2003-efficient.pdf
                 classical GI 
+                    Robust Monte Carlo Methods for Light Transport Simulation
+                        http://graphics.stanford.edu/papers/veach_thesis
                     bidirectional path tracing  
                         https://graphics.cs.kuleuven.be/publications/BDPT/BDPT_paper.pdf
                         ined as a generalisation of the wellknown path tracing algo
@@ -5740,27 +5742,82 @@
                         algorithms based on Monte Carlo ray tracing are  capable of solving the rendering equation without any approximations [Dutre et al. 2006].
                         light being transported along a specular to diffuse to  specular path (SDS path) before being seen by the eye
                         this type of illumination is very common. 
-                        unbiased Monte Carlo ray tracing methods  such as path tracing
-                        Progressive photon mapping uses multiple photon  tracing steps to compute an accurate solution without maintaining  every photons from each iteration.
+                        unbiased Monte Carlo ray tracing methods such as path tracing
+                        Progressive photon mapping uses multiple photon tracing steps to compute an 
+                            accurate solution without maintaining  every photons from each iteration.
                         qq what is the biggest advantage of progressive photon mapping?? 
                             * Arbitry accuracy can be achieved by a limited memory consumption, when it compared to traditional photon mapping methods 
                             Each photon tracing pass results in an increasingly accurate global illumination  solution
                             any desired accuracy can be reached using a limited amount of memory. 
-                        
+                        qq what is Progressive Radiance Estimate
+                        To address the shortcomings of BDPT Veach and Guibas [1997]  proposed the Metropolis light transport algorithm
+                        qq In MLT,  each path is generated based on?
+                            the mutation (perturbation) of a  previous path. 
+                        illumination coming through a slight opening of  door.
+                        such paths are difficult to generate by mutating existing paths.
+                        improvement to MLT called Energy Redistribution Path Tracing (ERPT)
+                        it shares the same weakness in the context of mirror reflections of caustics.
+                        Path  space is the space of all possible light transport paths in a scene
+                        Note that path tracing, BDPT, MLT,  ERPT and PMC-ER are all unbiased path-space based methods
+                        Photon mapping is a two-pass global illumination algorithm developed by Jensen [1996].
+                        two-pass global illumination algorithm
+                        qq what is nearest  neighbor density estimation
+                        qq why the density estimation process  can be considered as a way of loosely 
+                            > connecting paths from the  eye to the light? 
+                        photon mapping is very effective at rendering SDS  paths
+                        qq the final quality of PM is often limited by?
+                            the maximum number of photons
+                        Havran et al. introduced the concept of reverse photon mapping [Havran et al. 2005].
+                        ray tracing in the first pass and photon tracing in the second pass.
+                        The motivation for this approach is to reduce  the complexity and improve the performance of photon mapping  
+                            when a large number of rays
+                        adaptive image filtering  algorithm
+                        Our method also uses the number of photons to reduce the search radius of the radiance  estimate
+                        With progressive photon mapping we can use an unlimited number of photons, since we do not need to store all the photons  and we retain all the advantages of the standard photon mapping  method
+                        being able to handle non-Lambertian surfaces.
+                        a new radiance estimate
+                        radius update
+                        qq two conditions to ensure the convergence of the PM method? 
+                            use an infinite number of photons in the photon map
+                            the radius should converge to zero. 
+                        obtain a solution with arbitrary precision
+                        Photon mapping with 20 million photons results in a noisy and blurry image
                     Stochastic Progressive Photon Mapping
-                        https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
+                        https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf	
+                        Progressive photon mapping [Hachisuka et al. 2008] removed the  memory bound of photon mapping, 
+                            which makes the results converge to the correct solutions 
+                                (i.e., bias goes to zero in the limit).
+                        * bias goes to zero in the limit
+                        The application of Markov Chain Monte Carlo have been shown to  improve the efficiency of the path construction
+                        progressive refinement of photon statistics  at a point where the radiance value is computed
+                        a new progressive  density estimation technique. P
+                        with bounded memory  consumption
+                        still retains the robustness of photon mapping
+                        improves its robustness to an even wider class of scene settings.
+                        We are not aware of existing work in density estimation literatures outside graphics
+                        Time dependent photon mapping [Cammarano and Jensen 2002]
+                        qq how can we model motion blur and depth of field in GI algos? x2 
+                            motion blur requires computing the average  radiance value over a 
+                            visible part of a scene for a given shutter time,  
+                            and depth-of-field needs the average radiance value over a part of  scene that is visible through a lens
+                        the original progressive radiance estimate is restricted to computing  the correct radiance value at a point ~x.
+                        shared statistics over a region that we would like  to compute the average radiance value for
+                        over the region
+                        Figure 2 summarizes the difference between the algorithms of progressive photon  mapping and our algorithm
+                        the modification is simple
+                        In order to explain our new formulation
                     Progressive Photon Mapping: A Probabilistic Approach
                         https://www.cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
+                        main contribution: proof of convergence
                     Adaptive Progressive Photon Mapping
                         https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
                     Fast Final Gathering via Reverse Photon Mapping
                         http://people.mpi-inf.mpg.de/alumni/d4/2016/rherzog/Papers/reversePMeg05.pdf
                     Light Transport Simulation with Vertex Connection and Merging
                         https://cgg.mff.cuni.cz/~jaroslav/papers/2012-vcm/2012-vcm-paper.pdf
+                        main idea: combine bpt and sppm with help of MIS 
                     Unifying points, beams, and paths in volumetric light transport simulation
                         http://www.smallupbp.com/
-                    Robust Monte Carlo Methods for Light Transport Simulation
-                        http://graphics.stanford.edu/papers/veach_thesis
                 fancy renderer 
                     voxel-cone-tracing
                         https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing

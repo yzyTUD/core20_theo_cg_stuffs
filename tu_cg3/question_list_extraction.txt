@@ -1044,6 +1044,11 @@
                 qq MLT is best suitable for ? which kind of scene ??
                 qq how to explain those numbers? later 
             pruf-re-ok- slides-7 CG3_07_Cache-Based-GI
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
+                qq how radius update work in ppm? 
                 qq Bidirectional Path Tracing is very bad for?? good for??
                 qq idea of Photon mapping:  op08 x4 
                 qq where do we store photons in the scene? 
@@ -1103,9 +1108,9 @@
                 qq does ppm use reverse photons?? y
                 qq draw a graph to illu. the PPM algorithm 
                 qq draw a graph to show SPPM algorithm
-                qq the diff. bet. PPM and SPPM??
+                qq the diff. bet. PPM and SPPM?? number of passes can be written as an equ.? 
                 qq what is randomly gen. hit point? how it affects the rendering result?? 
-                qq in what kind of scene is best suitable for SPPM?? 
+                qq in what kind of scene is best suitable for SPPM??
                 qq the pipeline for each method -re 
                 qq hwo can we measure rendering quality?? use 
                 qq year of SPPM, ProbPPM? 
@@ -1209,5 +1214,13 @@
     ---summ. active mode 
     ---problems 
     ---extended, from tt slides ref papers  
+                        qq what is a radiosity algorithm? 
+                        qq which three classes of gi algorithms are there? 
+                        qq how can be evaluate the direct illumination part in both cases? approximate and accurate
+                        qq how can evaluate Caustics part of the reflected integral? 
+                        qq the photon map structure is completely separated from the geometric representation? how to understand this?
+                        qq three main types of GI? 
+                        qq what is the prob. of this pic? it lacks the fine detail in the  illumination
+                        qq what is the biggest advantage of progressive photon mapping?? 
                             qq Global illumination is computationally expensive for several  reasons?
     ---re-考试复习
