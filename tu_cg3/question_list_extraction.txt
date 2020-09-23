@@ -6,25 +6,25 @@
         > tobere 
     ---preview
     ---detailview
-        pruf-re-ok- slides-intro 
-            +qq Computational fluid dynamics - Wikipedia
-                qq what are typicall complicated computing cases? x2 
-                qq whats the diff. bet. FVM and FEM
-                qq how can we model the fluids? 
-                qq what is lageridian multiplier? how it was used? 
-            qq what is the diff. bet. cfd and sph?
-            qq explain following: DEM, CFD, SPH, FEM, FVM? FDM
-            qq if we want to simulate fluid, what kind of method can we use? 
-            qq if we want to siulate sand? 
-            qq what if we want to similate powders? 
-                > sugar or proteins
-                > bulk materials in storage silos
-                > granular matter, like sand;
-                > Blocky or jointed rock masses
-                > rock masses
-            qq compare CFD methods: FEM, FVM, and SPH 
-            qq if we want to simulate: gases, wind
-        ---phy 
+        ---essential 
+            pruf-re-ok- slides-intro 
+                +qq Computational fluid dynamics - Wikipedia
+                    qq what are typicall complicated computing cases? x2 
+                    qq whats the diff. bet. FVM and FEM
+                    qq how can we model the fluids? 
+                    qq what is lageridian multiplier? how it was used? 
+                qq what is the diff. bet. cfd and sph?
+                qq explain following: DEM, CFD, SPH, FEM, FVM? FDM
+                qq if we want to simulate fluid, what kind of method can we use? 
+                qq if we want to siulate sand? 
+                qq what if we want to similate powders? 
+                    > sugar or proteins
+                    > bulk materials in storage silos
+                    > granular matter, like sand;
+                    > Blocky or jointed rock masses
+                    > rock masses
+                qq compare CFD methods: FEM, FVM, and SPH 
+                qq if we want to simulate: gases, wind
             pruf-re-ok- slides-1 CG3_01_Physically-Based-Simulation
                     qq the idea of nondimensionalization?
                     qq what is the equation of harmonic oscillator?  p4 
@@ -183,7 +183,297 @@
                     qq how can we estimate step error?? 
                 qq why use damped harmonic oscillator as a demo? 
                 qq does most efficient scheme depends on application?
-            ---*
+            pruf-re-ok- slides-4 CG3_04_Sampling-Techniques
+                        ---REVIEW---
+                        ---
+                        ---
+                        ---
+                    qq how does nrook sampling work? p3
+                    qq how one can gen. random shaffed vector? p3
+                    qq what means caustic ?
+                    qq how to gen. uniformly distributed random points with shuffe in c++ p4 
+                    qq what means sampling in regular grids ? p5 
+                ---r1
+                    qq which Sampling Techniques do you know?
+                    qq what means sth. follow a specific random variable distribution, draw to illu.
+                    the <algorithm> header
+                    qq with which func. can we gen. random var.?? op03
+                    qq bring a vector into random order?
+                        std::random_shuffle() from the <algorithm> header
+                    qq how can we use std::mt19937 to gen. uniform distributed 2d samples?? 
+                        > it is only a generator, must act as a parameter 
+                    qq what is sample clustering? 
+                    qq what is the problem of such a graph?(above)
+                    qq what is a good sampling ?? 
+                    qq what is Possion disk sampling, idea?
+                    qq compare Stratified grid sampling and N-rooks sampling 
+                    qq how can we sample according to a distribution: function_f/ integrate(f)?
+                    qq what's the problem with Rejection Sampling? 
+                    qq how Rejection Sampling can be used explain the pic! op06
+                    qq how can we Sampling any Shape? in a simple manner?
+                    qq how can we sample uniformly inside a given shape?
+                    qq the idea and the goal of Transformation Sampling??
+                    qq what is marginalization? 
+                    qq what is cumulative density function CDF
+                    qq derive the equ. used in tranformation sampling, the key condition connecting both? 
+                    qq how can we understand transformation?? g(ita)
+                    qq compute an example as found in picnotes
+                    qq we know how to gen. uniform distributed val.
+                        > in a [0,1] interval, but how can we transform it to arbitry interval??
+                    qq can we change the interval with transformation sampling? y 
+                    qq which relations do we have in 2d? 
+                    qq the results! op11 down side
+                    qq and folow arbitry distribution at the same time??
+                    qq why do we compute conditional probability pdfs and cdfs?? 
+                    qq how can we slove this in 2d??
+                    qq the sampling procedure in 2d, example op13!!
+                    qq what is equating cumulative distributions, inverse function??
+                    qq how can we get uniform distribution over disk?? 
+                        > from a square(in unifrom distrib.) x2 techniques 
+                    qq the idea of transformation sampling? can we do this? 
+                        > sampling of unit triangle and then transformed to arbitrary triangle
+                    qq what we have to calcu. for a transformation sampling?? 
+                    qq how can we sample manifolds?
+                    qq what is manifold and its embedding space?? draw to illustrate! 
+                    qq how can we get uniform circle sampling?? op15
+                    qq compare rejection and transformation sampling
+                    qq how can we uniformly sample the sphere surface?? 
+                    **qq why Double Coverage is a kind of transformation sampling technique? 
+                    qq what is Double Coverage?
+                    **qq how can we sample a triangle uniformly?? 
+                    **qq how can we sample normals on a hemisphere?? 
+                        > example hemisphere for given  normal ?
+                    qq how can we let probability density p(x,x) be proportional to a constant brdf?
+                    ---tobecontinue
+                    qq what is marginalization approach?
+                    qq what is the  probability density for a hemisphere?? 
+                    qq what is Transformation Sampling a Diffuse  
+                        > BRDF in angle parameterization?? 
+                    qq what is a Phong model? 
+                    qq how can we make the phong model more physical plausible?
+                    qq how can we sample a Phong Lobe?
+                    qq what is the probability density of the Phong Lobe?
+                    qq how can we sample discreate distribution?? op21
+                    qq what discreate sampling techniques do you know as example?
+                    ---Multiple importance sampling (MIS) 
+                    qq MIS-estimator? expression?
+                    qq why the integrant is often a product of several functions?? 
+                    qq why MIS minimize variance?
+                    qq the idea of MIS multiple improtance sampling 
+                    qq give a equ. to show what unbaised mean!!!op26 
+                        > the MIS estimator is unbiased??
+                    qq how can we choose the weight so that MIS estimator is unbiased?? 
+                    qq how can we compute average density?? op27
+                    qq what is Balance Heuristic? formula op28
+                    qq what is power heuristic? 
+                    qq what is the relationship bet. them? 
+                    qq two conditions the MIS estimator??
+                    qq how can we compute optimal MIS weighting?? which heuristic
+                    qq how can we combine direct light sampling and brdf sampling techniques
+                        > to reduce variance? 
+                    qq what is  a good choice for the exponent ??
+                    qq distinguish brdf sampling and direct light sampling 
+                    qq compare rejection sampling with transformational sampling 
+                    qq  tt what are low-variance estimators??   
+            pruf-re-ok- slides-6 CG3_06_Advanced_Materials
+                qq what is Physical Plausible
+                qq which Empirical Shading Models do you know?? x3 
+                qq compare diffuse, glossy and mirror reflaction with a graph 
+                qq what is the diff, bet. glossy and specular reflaction?
+                qq computing reflected radiance from incoming radiance 
+                    > for the following model: Lambertian, phong model, blinn-phong model 
+                    > op07 large 
+                qq what is v here? 
+                qq how can we compute omega_half?  
+                qq when is Phong model is unrealistically? why pp
+                qq compare white-sky albedo and black-sky albedo, large 
+                qq what is blue-sky albedo? 
+                qq 2 properties that Any physical plausible BRDF-modell must fulfill?? x2 op10
+                qq compute the normalization constants!! op11
+                qq how can we make Phong model more realistic? 
+                qq what is normal distribution function (NDF)
+                qq cook torrance brdf equ.? write down! 
+                qq the physical meaning of each term! 
+                qq how can we simulate/approximate materials with multiple layers
+                qq what can be included in the geometry term? x2 
+                    in the cook-Torrance microfacet model 
+                qq what is self shadowing and self occlusion ??
+                qq how can we cpmpute geometry term G? 
+                qq describe the filter approach in more detail 
+                qq compare cook-torrance and oren nayer?
+                qq compare cook-torrance and oren nayer?
+                qq how can we compute the Fresnel term more effeciently?? why we have to approximate it? 
+                    qq https://blog.selfshadow.com/publications/s2013-shading-course/
+                        qq what is a spectral quantity? 
+                        qq what are isotropic BRDFs?
+                        qq how can we set the light contributions from any back-facing  direction to zero?
+                        qq why we use component-wise vector multiplication here? in computing reflection? 
+                qq explain the terms in cook Torrance bsdf! op19 
+                qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
+                qq how can we compute the Geometry Term? which three cases are there? draw to illustrate! 
+                qq standerd solutions in applications?
+                qq how can we do Improtance sampling in cook torrance model?
+                qq Derivation of Frensnel Equations
+                qq Fresnel Equations for Metals equ? 
+                qq which fresnel term approximations exists for metals??  
+                qq Oren-Nayar is a brdf model for diffuse approximation?? 
+                qq 迪士尼原则--brdf的深入研究https://zhuanlan.zhihu.com/p/60977923
+                    qq 提出了三个方面的工具与资源
+                    qq 各个模型的年代？具体的时间要记住！ 
+                    qq 什么是艺术导向（Art Directable）
+                    Disney采用了通用的microfacet Cook-Torrance BRDF着色模型
+                qq Overview over BRDF models 
+                    qq why Lambertian model inadequate ?
+                    qq who introduced microfacet model first to computer graphics?
+                    qq what is the relationship bet. Oren-Nayer model and Lambertian model?
+                    qq the idea of oren nayer model? 
+                qq explain how to use the frensel equ.
+                qq what is a Anisotropic material?
+                qq what is APS brdf? 
+                qq how to To support anisotropy??
+                qq how can we handle that the energy preservation will not hold?
+                qq what meterials are typically Anisotropic??
+                qq what is Torrance-Sparrow model? 
+                    也被称为Cook-Torrance模型
+                qq what does color mean when vis. brdf as Lobe?
+                qq what means a brdf is phy plausible? x2 +
+                ---Messung von BRDFs tobecontinue
+                qq measures reflectance for combinations of?? what are inputs of the measuring process?
+                qq how can we reduce number of necessary measurements? x2 
+                qq how can a single BRDF sample can be illustated?
+                qq For isotropic BRDFs all measurements  with the dots rotated around the normal 
+                qq how can we get the brdf result? completely measure a BRDF
+                qq how can we measure a brdf with minimal effort ? 
+                    > sensor locations can be restricted to?
+                qq which devices can be used to measure brdf?
+                qq Three elemental components that can be used to model a variety of light-surface interactions??
+                    > draw a graph to show the results 
+                qq what pre requirements are needed?? op48
+                qq describe the image-based BRDF measurement system?? 
+                    > what is the idea behind? x2 
+                qq idea of Lafortune model? the formula? 
+                qq three types of brdf? compare them! 
+                qq the idea of Lafortune Model
+                qq how many parameters should be computed for a one-Lobe model? two-Lobe model? 
+                ---Bidirectional texture  function (BTF)
+                qq what is BTF 
+                qq idea of spatial BRDF?? sBRDF
+                qq the form of a btf database? 
+                qq two representation of BTF? draw a graph to illustrate! 
+                qq applications of BTF? x2 typical applications! best suitable applications! 
+                qq what is BSSRDF
+                qq the idea of BSSRDF
+                qq unit of a bssrdf? and its dimention? 
+                qq how bssrdf is used? 
+            pruf-re-ok- slides-3 CG3_03_Monte-Carlo-Techniques
+                    qq the operator form of the rendering equ. ? op4, i wrote 
+                    qq what is the meaning of each compon. ? s3op6, i wrote 
+                    qq trace-reflection operator? s2p18
+                    qq splitting of the BRDF  s2p18
+                    qq what is measurement operator? p4 
+                    qq explain the dimensional explosion p6 
+                    qq how can we solve a integral numerically? p6 x4 methods... roughly 
+                    qq what is a quadrature rule 
+                    qq why single sample estimator funcs? p9 
+                    qq what is importance sampling ? p9 
+                    qq how does Monte Carlo Techniques solved the problem of the curse of dimensionality? p11 
+                    qq why we use importance sampling? 
+                    qq what is the MC technique applying to reflaction integral? p17 
+                    qq how can one compute Lin recur.in p17? code online 
+                    qq why not use fixed termination depth? p18 
+                    qq proof that the exp. value will stay the same! p18 
+                    qq how to implement russian roulette? p21  returns the estimate?
+                    qq explain the given code p19-21 
+                    qq why sampling? p27 
+                    qq explain code p29 
+                    qq how to sample when there are a lot of light sources? p30 
+                    qq what is path tracing p31 
+                    qq the monte carlo case of path tracing p32 formula
+                ---r1
+                    qq measurement equ in operator form and rendering equ. op4 
+                    qq why nested integrals?? op5 formulation 
+                    qq how can we compute spectual power with help of nasted integral?? op5 
+                    qq what is the dimension of the nasted integral??
+                    qq quadrature rule
+                    qq error estimation in brick-rule?? 1d,2d,d dimention! 
+                    qq why exponential to d?
+                    qq explain dimensional explosion or the curse of dimensionality
+                    qq error estimation for d dimention?? 
+                    qq what is the idea of Monte-Carlo Quadrature 
+                    qq the expected val of func. f in uniform distribution case ?? op07
+                    qq the error analysis of Monte-Carlo estimator, 
+                        > how it decreases with increasing number of samples 
+                    qq the most imp. part of MC estimator is that Independent of the dimension
+                    qq variance of the expected val?? 
+                    qq the expression of the estimator?? op7
+                    qq how fast error changes with the number of sampels?? compute?
+                    qq a modified estimator? why we do the modification?? 
+                    qq what is the new expected value of estimator and variation?? op09
+                    qq what simplifacation will be done for nested integrals 
+                        > along light transport paths
+                    qq what is Importance sampling, why good for estimating ?? 
+                    qq why can we reduce variance in this way?? 
+                    qq what can we do to reduce variance with MC estimator?? 
+                    qq ofcourse we can do every thing with uniform distribution 
+                        > instead of Importance Sampling? but with a high variance! 
+                    qq the idea of MC integration? 
+                    ---MONTE CARLO GLOBAL ILLUMINATION
+                    qq why can we sample independently?  
+                    qq how can we summ over all contributions of rays ?? 
+                        > single path Monte Carlo estimator looks like?
+                        > from all diff. paths 
+                    qq how can we Sampling the spectrum??
+                    ---lense equation
+                    qq what is focal points? not always pass through a focal point!
+                    qq give the names in blank places! 
+                    qq lens equ.! large 
+                    qq how can we simulate depth of field (DoF) in GI??
+                    qq Three main factors that will affect your control of the Dof??? 
+                    qq How does aperture control depth of field? addi 
+                    qq how can we simulate Dof in rendering ?? 
+                    qq the longer you set your focal length the shallower the depth of field?
+                    ---Spatial and Temporal Filtering
+                    qq what is box filter when doing spacial filtering?? 
+                    qq what is  optimal sinc-filter ? 
+                    qq what is box filter 
+                    qq what is tensor product
+                    qq how can we do Spatial filtering ?? 
+                        > temporal filtering for a blur effect? 
+                    qq how can we achieve motion blurr? 
+                    qq how can we extend 1d filtering to 2d? when applying spatial and time space filtering? 
+                    qq why uniform sampling of the pixel area corresponds to a box filter?? 
+                    qq what is the filter kernel looks like for box filter? 
+                        > and its relationship with gaussian filter? 
+                    qq what is theoretically optimal sinc-filter??
+                        > Skalierung von Rastergrafiken verwendet werden k鰊nen
+                    qq how can we extend 1d filter to 2d?? op17
+                    qq how can we approximate the reflect term of RE?? approximate the directional form?? op18 
+                       > using MC integration, the equ! fully understanding! 
+                    qq when to terminate?
+                    qq the diea of Russian Roulette?
+                    qq the form of expectation in RR?? and why it looks like this? op19
+                    qq why rr need a binary random varible b 
+                    qq why the expectation remains the same 
+                    qq why we have to make sure that the expectation remains the same??  
+                    qq why not terminate in a fixed way?? op19
+                    qq will the success probability decrease?? pp 
+                    qq how can we do sample_hemisphere()? what should be feed in, what do we get from that? 
+                    qq what is Nusselt's Analogon?? how can be used to improtance sampling?? op25
+                    qq how can we do this? projection back? the formula? 
+                    qq we sampled according to what?? op25
+                    qq draw a graph to illus. 
+                    qq what is Direct Light Sampling??
+                    qq the expression of L_direct and L_indirect ?? op26 
+                    qq which light sources are there? x3
+                    qq how can we sample light source in this picture?? op28 draw! 
+                    qq explain the code 
+                    qq how to Dealing with Large Number of Lights with help of the idea of RR??
+                    qq how can we define the probability for each light source, 
+                        > when we have multiple sources ?? op31 
+                    qq how can we reduce variance in Path Tracing?
+                    qq Importance sampling is introduced to? 
+                    qq explain the process of path tracing (later )
+        ---particle/smoke sim  
             pruf-re-ok- slides-9 CG3_09_Particles
                 qq what properties does a Particle have? x4+ 
                 qq how can we gen. particles, randomly? which sampling?
@@ -206,6 +496,7 @@
                 qq which three forces are used?
                 qq what is Hysteresis effect? how can we simulate?
                 qq what possible additional connections are there?  
+        ---rbody sim
             pruf-re-ok- slides-10 CG3_10_RigidBody 
                 qq what are Dynamics and Kinematics
                 qq short notation that projections from one onto the other vector op3
@@ -332,6 +623,7 @@
                 qq how can we solve LCP problem arises in computational mechanics? 
                 qq how can we deal with Interpenetration from discrete time stepping ? 
                 qq how can we handle in games? e.g. chains of bodies?
+        ---fluid sim
             pruf-re-ok- slides-12 CG3_12_Fluid  
                 qq Incompressible Navier-Stoke’s  op7 equ.
                 qq “Incompressibility condition”?
@@ -527,7 +819,7 @@
                 qq how can we render in sph simulation?? given a set of particles op100
                    > how to understand this??
                 qq why not use regular grids? when will cause prob.? in which cases?? op46
-        ---realistic rendering 
+        ---ray sim 
             pruf-re-ok- slides-2 CG3_02_Rendering-Equation
                         qq 一个波长为 lamda 的光子所携带的能量? 
                         qq 渲染的稳态假设？ 
@@ -678,297 +970,6 @@
                     *qq how can we describe and scan material property? 
                     qq monte-carlo integration techniques
                     qq how monte-carlo integration techniques be used?? later, highlev  
-            pruf-re-ok- slides-3 CG3_03_Monte-Carlo-Techniques
-                    qq the operator form of the rendering equ. ? op4, i wrote 
-                    qq what is the meaning of each compon. ? s3op6, i wrote 
-                    qq trace-reflection operator? s2p18
-                    qq splitting of the BRDF  s2p18
-                    qq what is measurement operator? p4 
-                    qq explain the dimensional explosion p6 
-                    qq how can we solve a integral numerically? p6 x4 methods... roughly 
-                    qq what is a quadrature rule 
-                    qq why single sample estimator funcs? p9 
-                    qq what is importance sampling ? p9 
-                    qq how does Monte Carlo Techniques solved the problem of the curse of dimensionality? p11 
-                    qq why we use importance sampling? 
-                    qq what is the MC technique applying to reflaction integral? p17 
-                    qq how can one compute Lin recur.in p17? code online 
-                    qq why not use fixed termination depth? p18 
-                    qq proof that the exp. value will stay the same! p18 
-                    qq how to implement russian roulette? p21  returns the estimate?
-                    qq explain the given code p19-21 
-                    qq why sampling? p27 
-                    qq explain code p29 
-                    qq how to sample when there are a lot of light sources? p30 
-                    qq what is path tracing p31 
-                    qq the monte carlo case of path tracing p32 formula
-                ---r1
-                    qq measurement equ in operator form and rendering equ. op4 
-                    qq why nested integrals?? op5 formulation 
-                    qq how can we compute spectual power with help of nasted integral?? op5 
-                    qq what is the dimension of the nasted integral??
-                    qq quadrature rule
-                    qq error estimation in brick-rule?? 1d,2d,d dimention! 
-                    qq why exponential to d?
-                    qq explain dimensional explosion or the curse of dimensionality
-                    qq error estimation for d dimention?? 
-                    qq what is the idea of Monte-Carlo Quadrature 
-                    qq the expected val of func. f in uniform distribution case ?? op07
-                    qq the error analysis of Monte-Carlo estimator, 
-                        > how it decreases with increasing number of samples 
-                    qq the most imp. part of MC estimator is that Independent of the dimension
-                    qq variance of the expected val?? 
-                    qq the expression of the estimator?? op7
-                    qq how fast error changes with the number of sampels?? compute?
-                    qq a modified estimator? why we do the modification?? 
-                    qq what is the new expected value of estimator and variation?? op09
-                    qq what simplifacation will be done for nested integrals 
-                        > along light transport paths
-                    qq what is Importance sampling, why good for estimating ?? 
-                    qq why can we reduce variance in this way?? 
-                    qq what can we do to reduce variance with MC estimator?? 
-                    qq ofcourse we can do every thing with uniform distribution 
-                        > instead of Importance Sampling? but with a high variance! 
-                    qq the idea of MC integration? 
-                    ---MONTE CARLO  GLOBAL ILLUMINATION
-                    qq why can we sample independently?  
-                    qq how can we summ over all contributions of rays ?? 
-                        > single path Monte Carlo estimator looks like?
-                        > from all diff. paths 
-                    qq how can we Sampling the spectrum??
-                    ---lense equation
-                    qq what is focal points? not always pass through a focal point!
-                    qq give the names in blank places! 
-                    qq lens equ.! large 
-                    qq how can we simulate depth of field (DoF) in GI??
-                    qq Three main factors that will affect your control of the Dof??? 
-                    qq How does aperture control depth of field? addi 
-                    qq how can we simulate Dof in rendering ?? 
-                    qq the longer you set your focal length the shallower the depth of field?
-                    ---Spatial and Temporal Filtering
-                    qq what is box filter when doing spacial filtering?? 
-                    qq what is  optimal sinc-filter ? 
-                    qq what is box filter 
-                    qq what is tensor product
-                    qq how can we do Spatial filtering ?? 
-                        > temporal filtering for a blur effect? 
-                    qq how can we achieve motion blurr? 
-                    qq how can we extend 1d filtering to 2d? when applying spatial and time space filtering? 
-                    qq why uniform sampling of the pixel area corresponds to a box filter?? 
-                    qq what is the filter kernel looks like for box filter? 
-                        > and its relationship with gaussian filter? 
-                    qq what is theoretically optimal sinc-filter??
-                        > Skalierung von Rastergrafiken verwendet werden k鰊nen
-                    qq how can we extend 1d filter to 2d?? op17
-                    qq how can we approximate the reflect term of RE?? approximate the directional form?? op18 
-                       > using MC integration, the equ! fully understanding! 
-                    qq when to terminate?
-                    qq the diea of Russian Roulette?
-                    qq the form of expectation in RR?? and why it looks like this? op19
-                    qq why rr need a binary random varible b 
-                    qq why the expectation remains the same 
-                    qq why we have to make sure that the expectation remains the same??  
-                    qq why not terminate in a fixed way?? op19
-                    qq will the success probability decrease?? pp 
-                    qq how can we do sample_hemisphere()? what should be feed in, what do we get from that? 
-                    qq what is Nusselt's Analogon?? how can be used to improtance sampling?? op25
-                    qq how can we do this? projection back? the formula? 
-                    qq we sampled according to what?? op25
-                    qq draw a graph to illus. 
-                    qq what is Direct Light Sampling??
-                    qq the expression of L_direct and L_indirect ?? op26 
-                    qq which light sources are there? x3
-                    qq how can we sample light source in this picture?? op28 draw! 
-                    qq explain the code 
-                    qq how to Dealing with Large Number of Lights with help of the idea of RR??
-                    qq how can we define the probability for each light source, 
-                        > when we have multiple sources ?? op31 
-                    qq how can we reduce variance in Path Tracing?
-                    qq Importance sampling is introduced to? 
-                    qq explain the process of path tracing (later )
-            pruf-re-ok- slides-4 CG3_04_Sampling-Techniques
-                        ---REVIEW---
-                        ---
-                        ---
-                        ---
-                    qq how does nrook sampling work? p3
-                    qq how one can gen. random shaffed vector? p3
-                    qq what means caustic ?
-                    qq how to gen. uniformly distributed random points with shuffe in c++ p4 
-                    qq what means sampling in regular grids ? p5 
-                ---r1
-                    qq which Sampling Techniques do you know?
-                    qq what means sth. follow a specific random variable distribution, draw to illu.
-                    the <algorithm> header
-                    qq with which func. can we gen. random var.?? op03
-                    qq bring a vector into random order?
-                        std::random_shuffle() from the <algorithm> header
-                    qq how can we use std::mt19937 to gen. uniform distributed 2d samples?? 
-                        > it is only a generator, must act as a parameter 
-                    qq what is sample clustering? 
-                    qq what is the problem of such a graph?(above)
-                    qq what is a good sampling ?? 
-                    qq what is Possion disk sampling, idea?
-                    qq compare Stratified grid sampling and N-rooks sampling 
-                    qq how can we sample according to a distribution: function_f/ integrate(f)?
-                    qq what's the problem with Rejection Sampling? 
-                    qq how Rejection Sampling can be used explain the pic! op06
-                    qq how can we Sampling any Shape? in a simple manner?
-                    qq how can we sample uniformly inside a given shape?
-                    qq the idea and the goal of Transformation Sampling??
-                    qq what is marginalization? 
-                    qq what is cumulative density function CDF
-                    qq derive the equ. used in tranformation sampling, the key condition connecting both? 
-                    qq how can we understand transformation?? g(ita)
-                    qq compute an example as found in picnotes
-                    qq we know how to gen. uniform distributed val.
-                        > in a [0,1] interval, but how can we transform it to arbitry interval??
-                    qq can we change the interval with transformation sampling? y 
-                    qq which relations do we have in 2d? 
-                    qq the results! op11 down side
-                    qq and folow arbitry distribution at the same time??
-                    qq why do we compute conditional probability pdfs and cdfs?? 
-                    qq how can we slove this in 2d??
-                    qq the sampling procedure in 2d, example op13!!
-                    qq what is equating cumulative distributions, inverse function??
-                    qq how can we get uniform distribution over disk?? 
-                        > from a square(in unifrom distrib.) x2 techniques 
-                    qq the idea of transformation sampling? can we do this? 
-                        > sampling of unit triangle and then transformed to arbitrary triangle
-                    qq what we have to calcu. for a transformation sampling?? 
-                    qq how can we sample manifolds?
-                    qq what is manifold and its embedding space?? draw to illustrate! 
-                    qq how can we get uniform circle sampling?? op15
-                    qq compare rejection and transformation sampling
-                    qq how can we uniformly sample the sphere surface?? 
-                    **qq why Double Coverage is a kind of transformation sampling technique? 
-                    qq what is Double Coverage?
-                    **qq how can we sample a triangle uniformly?? 
-                    **qq how can we sample normals on a hemisphere?? 
-                        > example hemisphere for given  normal ?
-                    qq how can we let probability density p(x,x) be proportional to a constant brdf?
-                    ---tobecontinue
-                    qq what is marginalization approach?
-                    qq what is the  probability density for a hemisphere?? 
-                    qq what is Transformation Sampling a Diffuse  
-                        > BRDF in angle parameterization?? 
-                    qq what is a Phong model? 
-                    qq how can we make the phong model more physical plausible?
-                    qq how can we sample a Phong Lobe?
-                    qq what is the probability density of the Phong Lobe?
-                    qq how can we sample discreate distribution?? op21
-                    qq what discreate sampling techniques do you know as example?
-                    ---Multiple importance sampling (MIS) 
-                    qq MIS-estimator? expression?
-                    qq why the integrant is often a product of several functions?? 
-                    qq why MIS minimize variance?
-                    qq the idea of MIS multiple improtance sampling 
-                    qq give a equ. to show what unbaised mean!!!op26 
-                        > the MIS estimator is unbiased??
-                    qq how can we choose the weight so that MIS estimator is unbiased?? 
-                    qq how can we compute average density?? op27
-                    qq what is Balance Heuristic? formula op28
-                    qq what is power heuristic? 
-                    qq what is the relationship bet. them? 
-                    qq two conditions the MIS estimator??
-                    qq how can we compute optimal MIS weighting?? which heuristic
-                    qq how can we combine direct light sampling and brdf sampling techniques
-                        > to reduce variance? 
-                    qq what is  a good choice for the exponent ??
-                    qq distinguish brdf sampling and direct light sampling 
-                    qq compare rejection sampling with transformational sampling 
-                    qq  tt what are low-variance estimators??   
-            pruf-re-ok- slides-6 CG3_06_Advanced_Materials
-                qq what is Physical Plausible
-                qq which Empirical Shading Models do you know?? x3 
-                qq compare diffuse, glossy and mirror reflaction with a graph 
-                qq what is the diff, bet. glossy and specular reflaction?
-                qq computing reflected radiance from incoming radiance 
-                    > for the following model: Lambertian, phong model, blinn-phong model 
-                    > op07 large 
-                qq what is v here? 
-                qq how can we compute omega_half?  
-                qq when is Phong model is unrealistically? why pp
-                qq compare white-sky albedo and black-sky albedo, large 
-                qq what is blue-sky albedo? 
-                qq 2 properties that Any physical plausible BRDF-modell must fulfill?? x2 op10
-                qq compute the normalization constants!! op11
-                qq how can we make Phong model more realistic? 
-                qq what is normal distribution function (NDF)
-                qq cook torrance brdf equ.? write down! 
-                qq the physical meaning of each term! 
-                qq how can we simulate/approximate materials with multiple layers
-                qq what can be included in the geometry term? x2 
-                    in the cook-Torrance microfacet model 
-                qq what is self shadowing and self occlusion ??
-                qq how can we cpmpute geometry term G? 
-                qq describe the filter approach in more detail 
-                qq compare cook-torrance and oren nayer?
-                qq compare cook-torrance and oren nayer?
-                qq how can we compute the Fresnel term more effeciently?? why we have to approximate it? 
-                    qq https://blog.selfshadow.com/publications/s2013-shading-course/
-                        qq what is a spectral quantity? 
-                        qq what are isotropic BRDFs?
-                        qq how can we set the light contributions from any back-facing  direction to zero?
-                        qq why we use component-wise vector multiplication here? in computing reflection? 
-                qq explain the terms in cook Torrance bsdf! op19 
-                qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
-                qq how can we compute the Geometry Term? which three cases are there? draw to illustrate! 
-                qq standerd solutions in applications?
-                qq how can we do Improtance sampling in cook torrance model?
-                qq Derivation of Frensnel Equations
-                qq Fresnel Equations for Metals equ? 
-                qq which fresnel term approximations exists for metals??  
-                qq Oren-Nayar is a brdf model for diffuse approximation?? 
-                qq 迪士尼原则--brdf的深入研究https://zhuanlan.zhihu.com/p/60977923
-                    qq 提出了三个方面的工具与资源
-                    qq 各个模型的年代？具体的时间要记住！ 
-                    qq 什么是艺术导向（Art Directable）
-                    Disney采用了通用的microfacet Cook-Torrance BRDF着色模型
-                qq Overview over BRDF models 
-                    qq why Lambertian model inadequate ?
-                    qq who introduced microfacet model first to computer graphics?
-                    qq what is the relationship bet. Oren-Nayer model and Lambertian model?
-                    qq the idea of oren nayer model? 
-                qq explain how to use the frensel equ.
-                qq what is a Anisotropic material?
-                qq what is APS brdf? 
-                qq how to To support anisotropy??
-                qq how can we handle that the energy preservation will not hold?
-                qq what meterials are typically Anisotropic??
-                qq what is Torrance-Sparrow model? 
-                    也被称为Cook-Torrance模型
-                qq what does color mean when vis. brdf as Lobe?
-                qq what means a brdf is phy plausible? x2 +
-                ---Messung von BRDFs tobecontinue
-                qq measures reflectance for combinations of?? what are inputs of the measuring process?
-                qq how can we reduce number of necessary measurements? x2 
-                qq how can a single BRDF sample can be illustated?
-                qq For isotropic BRDFs all measurements  with the dots rotated around the normal 
-                qq how can we get the brdf result? completely measure a BRDF
-                qq how can we measure a brdf with minimal effort ? 
-                    > sensor locations can be restricted to?
-                qq which devices can be used to measure brdf?
-                qq Three elemental components that can be used to model a variety of light-surface interactions??
-                    > draw a graph to show the results 
-                qq what pre requirements are needed?? op48
-                qq describe the image-based BRDF measurement system?? 
-                    > what is the idea behind? x2 
-                qq idea of Lafortune model? the formula? 
-                qq three types of brdf? compare them! 
-                qq the idea of Lafortune Model
-                qq how many parameters should be computed for a one-Lobe model? two-Lobe model? 
-                ---Bidirectional texture  function (BTF)
-                qq what is BTF 
-                qq idea of spatial BRDF?? sBRDF
-                qq the form of a btf database? 
-                qq two representation of BTF? draw a graph to illustrate! 
-                qq applications of BTF? x2 typical applications! best suitable applications! 
-                qq what is BSSRDF
-                qq the idea of BSSRDF
-                qq unit of a bssrdf? and its dimention? 
-                qq how bssrdf is used? 
-            ---*
             pruf-re-ok- slides-5 CG3_05_Path-Based-Rendering
                     ---REVIEW---
                     ---
@@ -1222,5 +1223,13 @@
                         qq three main types of GI? 
                         qq what is the prob. of this pic? it lacks the fine detail in the  illumination
                         qq what is the biggest advantage of progressive photon mapping?? 
+                        qq what is Progressive Radiance Estimate
+                        qq In MLT,  each path is generated based on?
+                        qq what is nearest  neighbor density estimation
+                        qq why the density estimation process  can be considered as a way of loosely 
+                            > connecting paths from the  eye to the light? 
+                        qq the final quality of PM is often limited by?
+                        qq two conditions to ensure the convergence of the PM method? 
+                        qq how can we model motion blur and depth of field in GI algos? x2 
                             qq Global illumination is computationally expensive for several  reasons?
     ---re-考试复习
