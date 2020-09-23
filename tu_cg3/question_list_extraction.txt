@@ -811,7 +811,7 @@
                     qq what is Possion disk sampling, idea?
                     qq compare Stratified grid sampling and N-rooks sampling 
                     qq how can we sample according to a distribution: function_f/ integrate(f)?
-                    qq what's the problem with Rejection Sampling?  tobere
+                    qq what's the problem with Rejection Sampling? 
                     qq how Rejection Sampling can be used explain the pic! op06
                     qq how can we Sampling any Shape? in a simple manner?
                     qq how can we sample uniformly inside a given shape?
@@ -840,11 +840,11 @@
                     qq what is manifold and its embedding space?? draw to illustrate! 
                     qq how can we get uniform circle sampling?? op15
                     qq compare rejection and transformation sampling
-                    qq how can we uniformly sample the sphere surface?? tobere
+                    qq how can we uniformly sample the sphere surface?? 
                     **qq why Double Coverage is a kind of transformation sampling technique? 
                     qq what is Double Coverage?
-                    **qq how can we sample a triangle uniformly?? tobere
-                    **qq how can we sample normals on a hemisphere?? tobere
+                    **qq how can we sample a triangle uniformly?? 
+                    **qq how can we sample normals on a hemisphere?? 
                         > example hemisphere for given  normal ?
                     qq how can we let probability density p(x,x) be proportional to a constant brdf?
                     ---tobecontinue
@@ -970,6 +970,10 @@
                 qq how bssrdf is used? 
             ---*
             pruf-re-ok- slides-5 CG3_05_Path-Based-Rendering
+                    ---REVIEW---
+                    ---
+                    ---
+                    ---
                 qq what is caustics, draw to illustrate! envelop? incident rays? reflacted rays?
                 qq illu. Path Tracing with Direct Lighting and Light Tracing with Eye Rays
                 qq how light sampling can be connected to eye?? 
@@ -1040,15 +1044,11 @@
                 qq MLT is best suitable for ? which kind of scene ??
                 qq how to explain those numbers? later 
             pruf-re-ok- slides-7 CG3_07_Cache-Based-GI
-                    ---REVIEW---
-                    ---
-                    ---
-                    ---
                 qq Bidirectional Path Tracing is very bad for?? good for??
                 qq idea of Photon mapping:  op08 x4 
                 qq where do we store photons in the scene? 
-                qq when do we store a photon to caustic photon map? what is the criteria? and when global photon map? tobere
-                qq how can we enforce the caustic probability? tobere
+                qq when do we store a photon to caustic photon map? what is the criteria? and when global photon map? 
+                qq how can we enforce the caustic probability? 
                 qq when geathering, which hits are accepts?
                 qq what is a photon filter? 
                 qq Radiance Estimation? draw a graph to illustrate op11
@@ -1105,7 +1105,7 @@
                 qq draw a graph to show SPPM algorithm
                 qq the diff. bet. PPM and SPPM??
                 qq what is randomly gen. hit point? how it affects the rendering result?? 
-                qq in what kind of scene is best suitable for SPPM??
+                qq in what kind of scene is best suitable for SPPM?? 
                 qq the pipeline for each method -re 
                 qq hwo can we measure rendering quality?? use 
                 qq year of SPPM, ProbPPM? 
@@ -1202,6 +1202,12 @@
                 qq what are incompressible fluids?
         ---+ql picture notes! 
         ---story mode 
+            ---
                                 > angular acceleration, torque,
                                 > rotational kinetic energy
+            ---
     ---summ. active mode 
+    ---problems 
+    ---extended, from tt slides ref papers  
+                            qq Global illumination is computationally expensive for several  reasons?
+    ---re-考试复习
