@@ -4640,6 +4640,10 @@
                     ---
                     ---
                     ---
+                qq how radius update work in ppm? 
+                    N is number of photons in previous iter. and M is number of current iter.
+                    user adjustable fraction alpha to adjest how much of M will be used in current estimation 
+                    the radius can be updated according to?... 
                 qq Bidirectional Path Tracing is very bad for?? good for??
                     *caustics in mirror
                     caustics in water 
@@ -5636,10 +5640,113 @@
                     Global Illumination using Photon Maps 
                         http://graphics.ucsd.edu/~henrik/papers/ewr7/global_illumination_using_photon_maps_egwr96.pdf
                         http://graphics.ucsd.edu/~henrik/papers/photon_map/
+                        It represents a significant improvement of a previously described  approach both with respect to speed, accuracy and versatility
+                        packets of energy (photons)
+                        one high  resolution caustics photon map to render caustics
+                        distribution ray tracing algorithm
+                        radiosity has been extended with directional capabilities
+                        qq what is a radiosity algorithm? 
+                            radiosity is an application of the finite element method to solving the rendering equation 
+                                for scenes with surfaces that reflect light diffusely.
+                            Unlike rendering methods that use Monte Carlo algorithms (such as path tracing), 
+                                which handle all types of light paths, typical radiosity only account for paths 
+                                    (represented by the code "LD*E") 
+                            Radiosity is a global illumination algorithm in the sense that the illumination 
+                                arriving on a surface comes not just directly from the light sources, 
+                                    but also from other surfaces reflecting light. 
+                            Radiosity is viewpoint independent
+                            the scene can be baked
+                            linear system can be driven 
+                        qq which three classes of gi algorithms are there? 
+                            * radiosity implementations and ray tracing implementations before cache based imp. 
+                        which increases the calculations involved
+                        Radiosity methods were first developed in about 1950 in the engineering field of heat transfer. 
+                        Notable commercial radiosity engines are Enlighten by Geomerics
+                        accounted for diffuse indirect lighting.
+                        In this context, radiosity is the total radiative flux (both reflected and re-radiated) leaving a surface
+                        as radiant exitance.
+                        Calculation of radiosity, rather than surface temperatures, is a key aspect of the radiosity method that permits linear matrix methods to be applied to the problem.
+                        multiple bounces are computed
+                        Individual patches are visible as squares on the walls and floor.
+                        lends an added element of realism to the finished scene
+                        mimics real-world phenomena
+                        Consider a simple room scene.
+                        Difference between standard direct illumination without shadow umbra, and radiosity with shadow umbra
+                        subtle lighting effects are noticeable around the room
+                        bled onto the grey walls
+                        model soft indirect illumination
+                        radiosity algorithm is performed on a simple geometric approximation of the original model.
+                        a two pass method in which we simplify the representation  of the illumination instead of simplifying the geometry
+                        we store incoming flux (photons)
+                        The use of photons allows us to estimate surface radiance at surfaces with  arbitrary BRDF’s
+                        situations where we need an accurate  computation and situations in which an approximate estimate can be applied
+                        For highly glossy surfaces  we do however trace additional sample rays since reasonable radiance estimates  for these surfaces require a large number of photons.
+                        using a separate caustics photon map which has a high  density of photons.
+                        The caustics photon map is used only to store  photons corresponding to caustics
+                        created by emitting photons towards the  specular objects in the scene and storing these as they hit diffuse surfaces.
+                        this requires a high density of photons.
+                        The global photon map is used as a rough approximation of the light/flux within  the scene
+                        and at the following intersection points  we store shadow photons.
+                        improved both the speed,  reduced the memory requirements and improved the accuracy of the method
+                        The photons are stored in a balanced kd-tree
+                        The fact that the tree is balanced guarantees that the time it  takes to locate M photons in a tree with N photons is O(M · log2(N))
+                        The final image is rendered using Monte Carlo ray tracing
+                        while the specular part are highly glossy and ideal specular reflection  models 
+                        Lr, depends on the radiance values in the rest of the scene and it can  be solved directly using Monte Carlo techniques like path tracing.
+                        We distinguish between two different evaluations of the integrals: An accurate and  an approximate
+                        (it contributes only  little to the pixel radiance
+                        The approximate evaluation is simply the radiance estimate obtained from the  global photon map
+                        qq how can be evaluate the direct illumination part in both cases? approximate and accurate
+                            * The rendering equation (1) can be split into a sum of several components.
+                                and the reflection part can be splited to four parts
+                                    the method used to evaluate each part depends on wheather we want to evaluate it in accurate 
+                                        way or approximate take a look at the direct light part, 
+                                            radiance estimate can be taken directly from global photon map(approximation ) or 
+                                                perform light source evaluations! 
+                        qq how can evaluate Caustics part of the reflected integral? 
+                            represents caustics on diffuse and slightly glossy surfaces
+                            evaluate this term using the information in the caustics photon map
+                            the radiance estimate based on the caustics photon map is visualized directly
+                            number of photons in the caustics photon map must be high.
+                        The information in the photon map can be used to compute the radiance leaving a
+                            surface in a given direction
+                        An alternative could be using a sphere of a fixed size and use all the photons  within this sphere
+                        considered a number of adaptive strategies for computing the necessary size of the  sphere based on the local photon density.
+                        cone-filter to the estimate.
+                        too low the radiance estimation  strategy can give blurry results.
+                        a general two-pass global illumination method
+                        Comparisons  with existing global illumination techniques indicate that 
+                            the photon map provides an efficient environment for global illumination.
+                        qq the photon map structure is completely separated from the geometric representation? how to understand this?
+                        The photon map code can be provided in a separate module that contains the necessary 
+                            functions (e.g. a function that given a position and a surface definition returns the  
+                            radiance in a given direction).
+                        Schlick’s reflection model
+                        colour bleeding effect between the walls
+                        metallic teapot
+                        using Ward’s anisotropic model
                     Metropolis Light Transport
                         https://graphics.stanford.edu/papers/metro/metro.pdf
                     Progressive Photon Mapping
                         https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
+                        This type of illumination is difficult  to simulate with Monte Carlo ray tracing methods such as path tracing, 
+                        qq three main types of GI? 
+                            radiosity methods, Monte Carlo ray tracing methods, cache based methods 
+                            Monte Carlo ray tracing methods includes: path tracing, bidirectional path tracing, and Metropolis light transport.
+                        Photon mapping is significantly better at capturing the caustics lighting seen through the lamp
+                            it is cache based method! 
+                        qq what is the prob. of this pic? it lacks the fine detail in the  illumination
+                        Sampling and  Reconstruction, Density Estimation 
+                        algorithms based on Monte Carlo ray tracing are  capable of solving the rendering equation without any approximations [Dutre et al. 2006].
+                        light being transported along a specular to diffuse to  specular path (SDS path) before being seen by the eye
+                        this type of illumination is very common. 
+                        unbiased Monte Carlo ray tracing methods  such as path tracing
+                        Progressive photon mapping uses multiple photon  tracing steps to compute an accurate solution without maintaining  every photons from each iteration.
+                        qq what is the biggest advantage of progressive photon mapping?? 
+                            * Arbitry accuracy can be achieved by a limited memory consumption, when it compared to traditional photon mapping methods 
+                            Each photon tracing pass results in an increasingly accurate global illumination  solution
+                            any desired accuracy can be reached using a limited amount of memory. 
+                        
                     Stochastic Progressive Photon Mapping
                         https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf
                     Progressive Photon Mapping: A Probabilistic Approach
