@@ -303,11 +303,6 @@
                 qq compare cook-torrance and oren nayer?
                 qq compare cook-torrance and oren nayer?
                 qq how can we compute the Fresnel term more effeciently?? why we have to approximate it? 
-                    qq https://blog.selfshadow.com/publications/s2013-shading-course/
-                        qq what is a spectral quantity? 
-                        qq what are isotropic BRDFs?
-                        qq how can we set the light contributions from any back-facing  direction to zero?
-                        qq why we use component-wise vector multiplication here? in computing reflection? 
                 qq explain the terms in cook Torrance bsdf! op19 
                 qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
                 qq how can we compute the Geometry Term? which three cases are there? draw to illustrate! 
@@ -417,7 +412,7 @@
                     qq ofcourse we can do every thing with uniform distribution 
                         > instead of Importance Sampling? but with a high variance! 
                     qq the idea of MC integration? 
-                    ---MONTE CARLO GLOBAL ILLUMINATION
+                    ---MONTE CARLO  GLOBAL ILLUMINATION
                     qq why can we sample independently?  
                     qq how can we summ over all contributions of rays ?? 
                         > single path Monte Carlo estimator looks like?
@@ -1215,11 +1210,68 @@
     ---summ. active mode 
     ---problems 
     ---extended, from tt slides ref papers  
+            >> rendering and brdf, ray sim 
+                >> bsdf 
+                    >> https://rgl.epfl.ch/publications
+                    >> https://www.mpi-inf.mpg.de/departments/computer-graphics/publications
+                    >> A Microfacet Based Coupled Specular-Matte BRDF Model with Importance Sampling
+                        qq a brdf model targets?
+                        qq what is HR?
+                        qq why albedo can also be interpreted as the response to homogeneous unit illumination
+                        qq the requirements of physical plausibility? 
+                        qq describe the microfacet model
+                        qq how microfacets are modeled?
+                        qq what are the drawbacks of cook torrance model??
+                        Our specular BRDF is a  simplification of the Cook-Torrance model.
+                        compares the original Cook-Torrance model with  the new BRDF
+                    >> https://zhuanlan.zhihu.com/p/60977923
+                    >> https://disney-animation.s3.amazonaws.com/library/s2012_pbs_disney_brdf_notes_v2.pdf
+                    >> https://zhuanlan.zhihu.com/p/21376124
+                        qq what does Fresnel term describe? 
+                    >> An Inexpensive BRDF Model for Physically-based Rendering
+                    >> https://zhuanlan.zhihu.com/p/57032810
+                        qq Desired Traits of a BRDF Model for production? Compactness, Expressiveness, Editability
+                        qq what is Lambertian reflectance
+                        qq what is Ideal Retroreflector
+                    >> many different options for our specular BRDF    
+                    >> sig2013-shading-course
+                        qq what is a spectral quantity? 
+                        qq brdf is the surface’s response to light?
+                        qq what are isotropic BRDFs?
+                        qq how can we set the light contributions from any back-facing  direction to zero?
+                        qq why we use component-wise vector multiplication here? in computing reflection? 
+                        qq Limitations of the Microfacet Model?
+                    >> Microfacet Models for Refraction through Rough Surfaces
+                    >> Discrete Stochastic Microfacet Models
+                    >> A Physically-Based BSDF for Modeling the Appearance of Paper
+                    >> https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
+                    >> http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
+                    >> http://www.apsipa.org/proceedings_2013/papers/380_A-Datadriven-Song-2943205.pdf
+                    >> https://web.cs.wpi.edu/~matt/courses/cs563/talks/radiosity.html
+                    >> https://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf
+                    >> https://web.cs.wpi.edu/~emmanuel/courses/cs563/write_ups/chuckm/chuckm_BRDFs_overview.html#:~:text=The%20BRDF%2C%20referred%20to%20as,point%20P%20on%20the%20surface.
+                    >> http://www.thetenthplanet.de/archives/255
+                    >> https://digibug.ugr.es/bitstream/handle/10481/19751/rmontes_LSI-2012-001TR.pdf;jsessionid=97878771AD4E28B65B909823A8B0C1F2?sequence=1
+                    >> https://www.cs.drexel.edu/~david/Classes/CS431/Lectures/BRDF.pdf
+                    >> https://dl.acm.org/doi/pdf/10.1145/300776.300778
+                    >> https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
+                    >> http://library.utia.cas.cz/separaty/2009/RO/filip-bidirectional%20texture%20function%20modeling%20state%20of%20the%20art%20survey.pdf
+                    >> https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf
+                    >> https://cgl.ethz.ch/publications/papers/papers.php
+                    >> A Radiosity  Method for Non-Diffuse Environments
+                    >> https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
+                        >> +https://cg.cs.uni-bonn.de/aigaion2root/attachments/sattler-2003-efficient.pdf
+                >> classical GI 
+                    >> Robust Monte Carlo Methods for Light Transport Simulation
+                    >> bidirectional path tracing  
+                    >> Global Illumination using Photon Maps 
                         qq what is a radiosity algorithm? 
                         qq which three classes of gi algorithms are there? 
                         qq how can be evaluate the direct illumination part in both cases? approximate and accurate
                         qq how can evaluate Caustics part of the reflected integral? 
                         qq the photon map structure is completely separated from the geometric representation? how to understand this?
+                    >> Metropolis Light Transport
+                    >> Progressive Photon Mapping
                         qq three main types of GI? 
                         qq what is the prob. of this pic? it lacks the fine detail in the  illumination
                         qq what is the biggest advantage of progressive photon mapping?? 
@@ -1230,6 +1282,23 @@
                             > connecting paths from the  eye to the light? 
                         qq the final quality of PM is often limited by?
                         qq two conditions to ensure the convergence of the PM method? 
+                    >> Stochastic Progressive Photon Mapping
                         qq how can we model motion blur and depth of field in GI algos? x2 
+                    >> Progressive Photon Mapping: A Probabilistic Approach
+                    >> Adaptive Progressive Photon Mapping
+                    >> Fast Final Gathering via Reverse Photon Mapping
+                    >> Light Transport Simulation with Vertex Connection and Merging
+                    >> Unifying points, beams, and paths in volumetric light transport simulation
+                >> fancy renderer 
+                    >> voxel-cone-tracing
                             qq Global illumination is computationally expensive for several  reasons?
+                    >> modern GPU rasterization pipeline acceleration
+                    >> Efficient Simulation of Light Transport in Scenes with Participating Media using Photon Maps, Henrik Wann Jensen
+                    >> Fast, Flexible, Physically-Based Volumetric Light Scattering
+                    >> A Practical Analytic Single Scattering Model for Real Time Rendering
+                    >> EFFICIENTLY RENDERING SHADOWS USING THE PHOTON MAP
+                    >> Efficient Caustic Rendering with Lightweight Photon Mapping
+                    >> https://www.ci.i.u-tokyo.ac.jp/~hachisuka/mmlt.pdf
+                    >> https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                    >> Image Space Photon Mapping
     ---re-考试复习

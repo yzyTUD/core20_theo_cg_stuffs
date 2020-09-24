@@ -1541,63 +1541,6 @@
                     shadowing 
                 qq compare cook-torrance and oren nayer?
                 qq how can we compute the Fresnel term more effeciently?? why we have to approximate it? 
-                +
-                    https://zhuanlan.zhihu.com/p/57032810
-                        Normal Distribution Function ) 法线分布函数
-                        ( Fresnel Equation ) 菲涅尔方程：菲涅尔方程描述的是在不同的表面角下表面所反射的光线所占的比率。
-                        业界方案一般都采用的 Schlick 的 Fresnel 近似
-                        G：UE4的方案采用的 Schlick-GGX
-                        G 和 F 都是用来对光线进行衰减
-                        F 考虑的是菲涅尔效应
-                        为什么不再考虑下同时对函数 F 和 G 进行重要性采样呢？
-                            第一，他们本身不是概率密度函数，那么我们首先要得到一个概率密度函数，要求其在半球面上的积分值为1
-                    many different options for our specular BRDF    
-                        http://graphicrants.blogspot.com/2013/08/specular-brdf-reference.html
-                        Another weak point in existing models appears
-                    qq https://blog.selfshadow.com/publications/s2013-shading-course/
-                        various radiometric quantities
-                        radiance
-                        quantify the magnitude of light along a  single ray
-                        qq what is a spectral quantity? 
-                            the amount varies as a function of wavelength
-                        for production (film and game) rendering, RGB triples are used instead.
-                        it is convenient to have all vectors point away from the surface
-                        *The surface’s response to  light is quantified by a function called the BRDF
-                        *brdf is the surface’s response to light
-                        Each direction (incoming and outgoing) can be parameterized with two numbers (e.g. polar coordinates), 
-		                    so the overall dimensionality of the BRDF is four 
-                        qq what are isotropic BRDFs?
-                            rotating the [light and view directions] around [the surface normal] 
-                                does not affect the BRDF.
-                        parameter becomes three in the case of isotropic BRDFs
-                        t is a tangent vector defining a preferred direction over the surface 
-                            (this is only used for anisotropic BRDFs,
-                        * Avoiding back-facing light directions
-                            is straightforward
-                        qq how can we set the light contributions from any back-facing  direction to zero?
-                        can be avoided by clamping n·v to 0
-                        * over all directions above the surface
-                        continuous  weighted average. 
-                        qq why we use component-wise vector multiplication here? in computing reflection? 
-                        both BRDF and light color are spectral (RGB) vectors
-                        the BRDF gives the relative contribution of light from  each incoming direction to the outgoing light.
-                        swapped
-                        Energy conservation refers to the fact that a surface cannot reflect more than 100% of incoming light  energy.
-                        must not exceed 1.
-                        The vector halfway between l and v is  called the half-vector or half-angle vector ; we will denote it as h.
-                        the denominator 4(n · l)(n · v) is * a correction factor
-                        macrosurface
-                        we can think of this value (which we will denote F0) as the characteristic specular reflectance  of the material.
-                        Limitations of the Microfacet Model
-                        This formulation of microfacet theory is quite powerful and flexible
-                        If these are important, then modifications or  extensions to the model may be required. 
-                        The microfacet model does not take account of pronounced wave optics effects such as diffraction  and interference.
-                        the microfacet model is based on a relatively limited model of the surface microgeometry, with several unstated assumptions.
-                        the definition of the normal distribution function
-                        This is equivalent to assuming that microgeometry height and normal are  uncorrelated 
-                        However, this assumption is not always true
-                        A surface with a strong correlation between height and orientation
-                        is the best-understood and most successful tool
                 qq explain the terms in cook Torrance bsdf! op19 
                 qq what is the relationship bet. cook Torrance bsdf and Fresnel equation?
                 qq how can we compute the Geometry Term? which three cases are there? draw to illustrate! 
@@ -5598,35 +5541,182 @@
                     A weathering sequence generated by our system
                     this paper presents a visual  simulation technique 
                         that works well for a wide variety of weathering phenomena
-            // rendering and brdf, ray sim 
-                bsdf 
-                    https://diglib.eg.org/bitstream/handle/10.2312/egs20011003/short16.pdf?sequence=1&isAllowed=y
-                    https://zhuanlan.zhihu.com/p/60977923
-                    https://zhuanlan.zhihu.com/p/21376124
-                    https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
-                    https://rgl.epfl.ch/publications
-                    https://www.mpi-inf.mpg.de/departments/computer-graphics/publications
-                    https://dl.acm.org/doi/pdf/10.1145/1572769.1572783
-                    http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
-                    http://www.apsipa.org/proceedings_2013/papers/380_A-Datadriven-Song-2943205.pdf
-                    https://web.cs.wpi.edu/~matt/courses/cs563/talks/radiosity.html
-                    https://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf
-                    https://web.cs.wpi.edu/~emmanuel/courses/cs563/write_ups/chuckm/chuckm_BRDFs_overview.html#:~:text=The%20BRDF%2C%20referred%20to%20as,point%20P%20on%20the%20surface.
-                    http://www.thetenthplanet.de/archives/255
-                    https://digibug.ugr.es/bitstream/handle/10481/19751/rmontes_LSI-2012-001TR.pdf;jsessionid=97878771AD4E28B65B909823A8B0C1F2?sequence=1
-                    https://www.cs.drexel.edu/~david/Classes/CS431/Lectures/BRDF.pdf
-                    https://dl.acm.org/doi/pdf/10.1145/300776.300778
-                    https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
-                    http://library.utia.cas.cz/separaty/2009/RO/filip-bidirectional%20texture%20function%20modeling%20state%20of%20the%20art%20survey.pdf
-                    https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf
-                    https://cgl.ethz.ch/publications/papers/papers.php
-                    A Radiosity  Method for Non-Diffuse Environments
-                    https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
-                        +https://cg.cs.uni-bonn.de/aigaion2root/attachments/sattler-2003-efficient.pdf
-                classical GI 
-                    Robust Monte Carlo Methods for Light Transport Simulation
+            >> rendering and brdf, ray sim 
+                >> bsdf 
+                    >> https://rgl.epfl.ch/publications
+                    >> https://www.mpi-inf.mpg.de/departments/computer-graphics/publications
+                    open areas:
+                        faster Fresnel Approximations 
+                    //
+                    >> A Microfacet Based Coupled Specular-Matte BRDF Model with Importance Sampling
+                        https://diglib.eg.org/bitstream/handle/10.2312/egs20011003/short16.pdf?sequence=1&isAllowed=y
+                        a new realistic material models is designed 
+                            not only physically plausible, i.e. symmetric and energy conserving
+                            it is similar to cook torrance brdf model but features at computing speed, improtance sampling support 
+                            In order to keep the resulting formulae simple, several approximations are made.
+                            the results are generalized and simplified with the aim of allowing  
+                                fast computations and importance sampling.
+                        A Microfacet Based Coupled Specular-Matte BRDF Model
+                        off-specular peak and the mirroring limit case
+                        reflection for different pairs of incoming and outgoing light directions.
+                        qq a brdf model targets?
+                            mimic the features of real materials.
+                            is expected not to violate physics laws including the Helmholtz-symmetry
+                        qq what is HR?
+                            light and view directions can be exchanged in the BRDF
+                            it is a kind of rotational symmetry
+                        becomes more mirror-like for greater viewing angles
+                        qq why albedo can also be interpreted as the response to homogeneous unit illumination
+                        qq the requirements of physical plausibility? 
+                        physically based  analysis is carried out, which is similar to that presented by  
+                            Cook and Torrance and by Shirley et. al
+                        qq describe the microfacet model
+                            a surface is assumed to consist of randomly oriented perfect mirrors (tiny surfaces), so-called 
+                        A photon may be absorbed or reflected when colliding  with a microfacet
+                        qq how microfacets are modeled?
+                            as heightfields
+                        qq what are the drawbacks of cook torrance model??
+                            no sufficient support for improtance sampling 
+                        specular reflections become  dominant at grazing angles
+                        Our specular BRDF is a  simplification of the Cook-Torrance model.
+                        Simplification of the geometric term
+                        Coupling the matte and the specular components
+                        Importance sampling of the matte component
+                        compares the original Cook-Torrance model with  the new BRDF
+                        Albedo curves of the specular component with different microfacet orientation probabilities
+                    >> https://zhuanlan.zhihu.com/p/60977923
+                        Disney Principled BRDF
+                        让美术同学用非常直观的少量参数，以及非常标准化的工作流
+                        迪士尼原则的BRDF（Disney Principled BRDF）核心理念
+                        应使用直观的参数，而不是物理类的晦涩参数。  参数应尽可能少。  参数在其合理范围内应该为0到1。  允许参数在有意义时超出正常的合理范围。  所有参数组合应尽可能健壮和合理
+                        Disney Principled BRDF模型是金属和非金属的混合型模型
+                        最终结果是基于金属度（metallice）在金属BRDF和非金属BRDF之间进行线性插值。
+                        Disney BRDF Explorer
+                        https://github.com/wdas/brdf
+                            development and analysis  of bidirectional reflectance distribution functions (BRDFs)
+                            Most of the application should be (hopefully) self explanatory
+                            document the less obvious bits of usage
+                            as well as providing some useful info.
+                            several different sampling strategies to compute the albedo
+                            combo box on the right to choose between these sampling strategies
+                            .brdf files consist of a set of parameters and a BRDF function written in GLSL.
+                            the application creates UI elements for each parameter, and creates  shaders for different views that incorporate the GLSL function.
+                            Anything valid in GLSL can go between "::begin shader" and "::end shader"
+                        https://www.merl.com/brdf/
+                            The MERL BRDF database contains reflectance functions of 100 different materials. 
+                                Each reflectance function is stored as a densely measured Bidirectional Reflectance 
+                                Distribution Function (BRDF).
+                            Sample code to read the data is included with the database. Note that 
+                                parameterization of theta-half has changed.
+                            Mitsubishi Electric Research Laboratories (MERL).
+                    >> https://disney-animation.s3.amazonaws.com/library/s2012_pbs_disney_brdf_notes_v2.pdf
+                    >> https://zhuanlan.zhihu.com/p/21376124
+                        反射比例符合菲涅尔方程（Fresnel Equations）
+                        qq what does Fresnel term describe? 
+                            the probability that a photon is reflected from the microfacet model 
+                        diff. approximation exists 
+                        Properties of Planar Reflection
+                        can be seen as an attenuation of the whole reflection
+                    >> An Inexpensive BRDF Model for Physically-based Rendering
+                        http://igorsklyar.com/system/documents/papers/28/Schlick94.pdf
+                    >> https://zhuanlan.zhihu.com/p/57032810
+                        Normal Distribution Function ) 法线分布函数
+                        ( Fresnel Equation ) 菲涅尔方程：菲涅尔方程描述的是在不同的表面角下表面所反射的光线所占的比率。
+                        业界方案一般都采用的 Schlick 的 Fresnel 近似
+                        G：UE4的方案采用的 Schlick-GGX
+                        G 和 F 都是用来对光线进行衰减
+                        F 考虑的是菲涅尔效应
+                        为什么不再考虑下同时对函数 F 和 G 进行重要性采样呢？
+                            第一，他们本身不是概率密度函数，那么我们首先要得到一个概率密度函数，要求其在半球面上的积分值为1
+                        Image Formation 
+                        qq Desired Traits of a BRDF Model for production? Compactness, Expressiveness, Editability
+                            Small number of parameters
+                            Modeling a wide variety of behavior 
+                            Ability to be intuitively modified 
+                        qq what is Lambertian reflectance
+                            a material property that Scatters light equally in all viewing directions 
+                            [J.Lambert 1760]
+                        qq what is Ideal Retroreflector
+                            Light reflected back to incident direction 
+                        some ‘energy’ has been lost due to shadowing
+                    >> many different options for our specular BRDF    
+                        http://graphicrants.blogspot.com/2013/08/specular-brdf-reference.html
+                        Another weak point in existing models appears
+                    >> sig2013-shading-course
+                        https://blog.selfshadow.com/publications/s2013-shading-course/
+                        various radiometric quantities
+                        radiance
+                        quantify the magnitude of light along a  single ray
+                        qq what is a spectral quantity? 
+                            the amount varies as a function of wavelength
+                        for production (film and game) rendering, RGB triples are used instead.
+                        it is convenient to have all vectors point away from the surface
+                        * The surface’s response to  light is quantified by a function called the BRDF
+                        qq brdf is the surface’s response to light?
+                        Each direction (incoming and outgoing) can be parameterized with two numbers (e.g. polar coordinates), 
+		                    so the overall dimensionality of the BRDF is four 
+                        qq what are isotropic BRDFs?
+                            rotating the [light and view directions] around [the surface normal] 
+                                does not affect the BRDF.
+                        parameter becomes three in the case of isotropic BRDFs
+                        t is a tangent vector defining a preferred direction over the surface 
+                            (this is only used for anisotropic BRDFs,
+                        * Avoiding back-facing light directions
+                            is straightforward
+                        qq how can we set the light contributions from any back-facing  direction to zero?
+                        can be avoided by clamping n·v to 0
+                        * over all directions above the surface
+                        continuous  weighted average. 
+                        qq why we use component-wise vector multiplication here? in computing reflection? 
+                        both BRDF and light color are spectral (RGB) vectors
+                        the BRDF gives the relative contribution of light from  each incoming direction to the outgoing light.
+                        swapped
+                        Energy conservation refers to the fact that a surface cannot reflect more than 100% of incoming light  energy.
+                        must not exceed 1.
+                        The vector halfway between l and v is  called the half-vector or half-angle vector ; we will denote it as h.
+                        the denominator 4(n · l)(n · v) is * a correction factor
+                        macrosurface
+                        we can think of this value (which we will denote F0) as the characteristic specular reflectance  of the material.
+                        qq Limitations of the Microfacet Model?
+                            The microfacet model does not take account of pronounced wave optics 
+                                effects such as diffraction  and interference.
+                            the microfacet model is based on a relatively limited model of the surface microgeometry, 
+                                with several unstated assumptions.
+                            However, this assumption is not always true
+                        This formulation of microfacet theory is quite powerful and flexible
+                        If these are important, then modifications or  extensions to the model may be required. 
+                        the definition of the normal distribution function
+                        This is equivalent to assuming that microgeometry height and normal are uncorrelated 
+                        A surface with a strong correlation between height and orientation
+                        is the best-understood and most successful tool
+                    >> Microfacet Models for Refraction through Rough Surfaces
+                        https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf
+                    >> Discrete Stochastic Microfacet Models
+                        https://rgl.s3.eu-central-1.amazonaws.com/media/papers/Jakob2014Discrete.pdf
+                    >> A Physically-Based BSDF for Modeling the Appearance of Paper
+                        https://people.inf.ethz.ch/~mpapas/publications/paper-paper.pdf
+                    >> https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
+                    >> http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
+                    >> http://www.apsipa.org/proceedings_2013/papers/380_A-Datadriven-Song-2943205.pdf
+                    >> https://web.cs.wpi.edu/~matt/courses/cs563/talks/radiosity.html
+                    >> https://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf
+                    >> https://web.cs.wpi.edu/~emmanuel/courses/cs563/write_ups/chuckm/chuckm_BRDFs_overview.html#:~:text=The%20BRDF%2C%20referred%20to%20as,point%20P%20on%20the%20surface.
+                    >> http://www.thetenthplanet.de/archives/255
+                    >> https://digibug.ugr.es/bitstream/handle/10481/19751/rmontes_LSI-2012-001TR.pdf;jsessionid=97878771AD4E28B65B909823A8B0C1F2?sequence=1
+                    >> https://www.cs.drexel.edu/~david/Classes/CS431/Lectures/BRDF.pdf
+                    >> https://dl.acm.org/doi/pdf/10.1145/300776.300778
+                    >> https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
+                    >> http://library.utia.cas.cz/separaty/2009/RO/filip-bidirectional%20texture%20function%20modeling%20state%20of%20the%20art%20survey.pdf
+                    >> https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf
+                    >> https://cgl.ethz.ch/publications/papers/papers.php
+                    >> A Radiosity  Method for Non-Diffuse Environments
+                    >> https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
+                        >> +https://cg.cs.uni-bonn.de/aigaion2root/attachments/sattler-2003-efficient.pdf
+                    LTC Fresnel Approximation
+                >> classical GI 
+                    >> Robust Monte Carlo Methods for Light Transport Simulation
                         http://graphics.stanford.edu/papers/veach_thesis
-                    bidirectional path tracing  
+                    >> bidirectional path tracing  
                         https://graphics.cs.kuleuven.be/publications/BDPT/BDPT_paper.pdf
                         ined as a generalisation of the wellknown path tracing algo
                         forms signicantly better for typical indoor scenes where indirect lighting  is imp
@@ -5640,7 +5730,7 @@
                         hit  points on the respective particle paths are  then connected using shadow rays 
                             and the  appropriate contributions are added to the    ux of the pix
                         +https://www.cg.tuwien.ac.at/research/publications/2017/dodik-2017-pcbpt/
-                    Global Illumination using Photon Maps 
+                    >> Global Illumination using Photon Maps 
                         http://graphics.ucsd.edu/~henrik/papers/ewr7/global_illumination_using_photon_maps_egwr96.pdf
                         http://graphics.ucsd.edu/~henrik/papers/photon_map/
                         It represents a significant improvement of a previously described  approach both with respect to speed, accuracy and versatility
@@ -5728,9 +5818,9 @@
                         colour bleeding effect between the walls
                         metallic teapot
                         using Ward’s anisotropic model
-                    Metropolis Light Transport
+                    >> Metropolis Light Transport
                         https://graphics.stanford.edu/papers/metro/metro.pdf
-                    Progressive Photon Mapping
+                    >> Progressive Photon Mapping
                         https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
                         This type of illumination is difficult  to simulate with Monte Carlo ray tracing methods such as path tracing, 
                         qq three main types of GI? 
@@ -5783,7 +5873,7 @@
                             the radius should converge to zero. 
                         obtain a solution with arbitrary precision
                         Photon mapping with 20 million photons results in a noisy and blurry image
-                    Stochastic Progressive Photon Mapping
+                    >> Stochastic Progressive Photon Mapping
                         https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf	
                         Progressive photon mapping [Hachisuka et al. 2008] removed the  memory bound of photon mapping, 
                             which makes the results converge to the correct solutions 
@@ -5807,20 +5897,20 @@
                         Figure 2 summarizes the difference between the algorithms of progressive photon  mapping and our algorithm
                         the modification is simple
                         In order to explain our new formulation
-                    Progressive Photon Mapping: A Probabilistic Approach
+                    >> Progressive Photon Mapping: A Probabilistic Approach
                         https://www.cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
                         main contribution: proof of convergence
-                    Adaptive Progressive Photon Mapping
+                    >> Adaptive Progressive Photon Mapping
                         https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
-                    Fast Final Gathering via Reverse Photon Mapping
+                    >> Fast Final Gathering via Reverse Photon Mapping
                         http://people.mpi-inf.mpg.de/alumni/d4/2016/rherzog/Papers/reversePMeg05.pdf
-                    Light Transport Simulation with Vertex Connection and Merging
+                    >> Light Transport Simulation with Vertex Connection and Merging
                         https://cgg.mff.cuni.cz/~jaroslav/papers/2012-vcm/2012-vcm-paper.pdf
                         main idea: combine bpt and sppm with help of MIS 
-                    Unifying points, beams, and paths in volumetric light transport simulation
+                    >> Unifying points, beams, and paths in volumetric light transport simulation
                         http://www.smallupbp.com/
-                fancy renderer 
-                    voxel-cone-tracing
+                >> fancy renderer 
+                    >> voxel-cone-tracing
                         https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
                             Voxel Cone Tracing
                             realistic image synthesis
@@ -5871,7 +5961,7 @@
                             pyramid with the apex  at the eye and the base defined by the four planes  that cut the borders of the pixel
                             only one ray per pixel is  sufficient regardless of scene complexity.
                             Voxel Cone Tracing
-                    modern GPU rasterization pipeline acceleration
+                    >> modern GPU rasterization pipeline acceleration
                         http://www.jp.square-enix.com/tech/library/pdf/Real-Time%20Bidirectional%20Path%20Tracing%20via%20Rasterization%20(preprint).pdf
                             perceptually important for interactive applications such as video games, lighting design or virtual  reality systems. 
                             high rendering cost.
@@ -5885,19 +5975,21 @@
                             Global Ray-Bundles
                             we create global ray-bundles using per  pixel linked-list construction on a DirectX 11 GPU
                             Real-Time Bidirectional Path Tracing via Rasterization
-                    Efficient Simulation of Light Transport in Scenes with Participating Media using Photon Maps, Henrik Wann Jensen
+                    >> Efficient Simulation of Light Transport in Scenes with Participating Media using Photon Maps, Henrik Wann Jensen
                         http://graphics.ucsd.edu/~henrik/papers/sig98.html 
                         http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.118.6575&rep=rep1&type=pdf
-                    Fast, Flexible, Physically-Based Volumetric Light Scattering
+                    >> Fast, Flexible, Physically-Based Volumetric Light Scattering
                         https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf
-                    A Practical Analytic Single Scattering Model for Real Time Rendering
+                    >> A Practical Analytic Single Scattering Model for Real Time Rendering
                         https://cseweb.ucsd.edu/~ravir/papers/singlescat/scattering.pdf
-                    EFFICIENTLY RENDERING SHADOWS USING THE PHOTON MAP
+                    >> EFFICIENTLY RENDERING SHADOWS USING THE PHOTON MAP
                         https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.2582&rep=rep1&type=pdf
-                    Efficient Caustic Rendering with Lightweight Photon Mapping
+                    >> Efficient Caustic Rendering with Lightweight Photon Mapping
                         https://graphics.cg.uni-saarland.de/papers/grittmann-2018-lwpm-paper.pdf
-                    https://www.ci.i.u-tokyo.ac.jp/~hachisuka/mmlt.pdf
-                    https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                    >> https://www.ci.i.u-tokyo.ac.jp/~hachisuka/mmlt.pdf
+                    >> https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                    >> Image Space Photon Mapping
+                        https://www.researchgate.net/profile/Morgan_Mcguire/publication/221248989_Hardware-Accelerated_Global_Illumination_by_Image_Space_Photon_Mapping/links/0912f5102b956ba310000000/Hardware-Accelerated-Global-Illumination-by-Image-Space-Photon-Mapping.pdf
         // non-papers 
             vector calculus 
             functional analysis 
