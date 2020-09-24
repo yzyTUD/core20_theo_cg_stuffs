@@ -1,5 +1,5 @@
 
-    ----mixedpool
+    ---mixedpool
         delft https://graphics.tudelft.nl/research/
             http://graphics.tudelft.nl/xuejiao-luo/
         http://vecg.cs.ucl.ac.uk/publications.html
@@ -12,7 +12,9 @@
         https://arxiv.org/pdf/2001.08942.pdf 
         https://www.zhihu.com/question/25064719
         PointCNN 
-    ----conferences
+        icp papers 
+        inversed Kinematics
+    ---conferences
         IEEE VR 2020
             *Manipulating Puppets in VR
                 https://conferences.computer.org/vr-tvcg/2020/pdfs/VR2020-2f8MzUJjtCXG6Ue9RYFSN2/560800a010/560800a010.pdf
@@ -59,7 +61,7 @@
                 Simulation
             *Incremental Potential Contact: Intersection- and Inversion-free, Large-Deformation Dynamics 
                 Simulation
-    ----labs/peoples
+    ---labs/peoples
         epfl 
         TU Delft
         Stanford Lab 
@@ -205,8 +207,588 @@
                 ---
                 http://arxiv.org/pdf/1706.06822
                 http://www.andres.sc/publications/andres2010arrays.pdf
-            
+    ---Structured *
+        cg, modeling 
+        cg, animation 
+        cg, realistic sim
+            >> essential 
+                >> http://physbam.stanford.edu/~fedkiw/papers/cam2000-08.pdf
+                >> http://physbam.stanford.edu/~fedkiw/papers/stanford2004-07.pdf
+                >> http://www.cs.cornell.edu/~dph/papers/dt.pdf
+                >> http://web.stanford.edu/class/cs277/resources/papers/Moller1997b.pdf
+            >> other mixed
+                Online Optical Marker-based Hand Tracking with Deep Labels
+                    https://dl.acm.org/doi/pdf/10.1145/3197517.3201399
+                Singularity-Robust Inverse
+                    Kinematics Using Lagrange
+                    Multiplier for Redundant
+                    Manipulators
+                    https://pdfs.semanticscholar.org/815c/f5781791ea6e8ecfef42a5252f12455f9cbb.pdf
+            >> rbody sim 
+                https://www.cs.cmu.edu/~baraff/papers/sig89.pdf
+                https://animation.rwth-aachen.de/media/papers/2012-EG-STAR_Rigid_Body_Dynamics.pdf
+                http://www.roboticsproceedings.org/rss04/p12.pdf
+                http://blog.mmacklin.com/project/flex
+                A Numerically Robust LCP Solver for Simulating Articulated Rigid Bodies in Contact
+                    http://www.roboticsproceedings.org/rss04/p12.pdf
+                    numerically robust algorithm  for solving linear complementarity problems (LCPs)
+                    articulated rigid bodies
+                    Constraint-based approaches often employ linear complementarity problem (LCP)
+                    Most models can  be categorized into penalty- and constraint-based methods
+                    Modeling collisions and contacts
+                    contact forces are easily computed from penetration depths  and relative velocities
+                    the approach suffers from numerical  instability problem due to impulsive forces
+                    linear complementarity problem (LCP) [1] to formulate the constraints.
+                    LCPs can be solved by either iterative or pivot-based  approach
+                    numerical root-finding  techniques such as Newton’s method to find the equilibrium.
+                    Pivot-based approaches are theoretically  guaranteed to find a solution with finite number of trials
+                    for general problems
+                    However, it is known  that pivot-based approaches often suffer from numerical problem especially for large-scale and/or ill-conditioned problems
+                    Jourdan et al. [4] applied an iterative  LCP solver similar to Gauss-Seidel algorithm
+                    proved convergence in most  practical cases.
+                    free rigid bodies,  in which case M is generally sparse and the LCP is likely  to be relatively easily solved by both iterative and pivot-based  approaches
+                    iterative methods do not guarantee convergence to a  solution
+                    The main contribution of this paper is improvement of  Lemke Algorithm to deal with large-scale and ill-conditioned  LCPs derived from frictional contacts between articulated  rigid bodies of arbitrary geometry
+                Unified Particle Physics for Real-Time Applications http://blog.mmacklin.com/project/flex/
+                    Bunnies parachute into a pool of water. 
+                    Cloth, rigid bodies and fluids coupled through constraints interact seamlessly in our  framework. 
+                    Unified Particle Physics
+                    Unified Particle Physics for Real-Time Applications
+                    * treat contact and collisions in a unified manner
+                    * model gases, liquids, deformable solids, rigid bodies and clothing with two-way interactions are modeled with particles and constrains between them 
+                    parallel constraint solver based on position based dynamics that is efficient enough for real-time applications.
+                    SIGGRAPH 2014
+                    Creates redundant work 
+                    Everything is a set of particles connected  by constraints
+                    recreate these packages in real-time 
+                    Melting, phase-changes 
+                    Position-Based Dynamics
+                    Using particles connected by constraints as our fundamental  building block allows us to treat contact and collisions in a unified  manner
+                    +https://d2f99xq7vri1nk.cloudfront.net/legacy_app_files/pdf/nucleus.pdf
+                    +https://matthias-research.github.io/pages/publications/posBasedDyn.pdf
+            >> fluid sim
+                https://cg.informatik.uni-freiburg.de/intern/seminar/gridFluids_GPU_Gems.pdf
+                https://cg.informatik.uni-freiburg.de/publications/2014_EG_SPH_STAR.pdf
+                https://cg.informatik.uni-freiburg.de/
+                https://ge.in.tum.de/publications/2017-sig-um/
+                Perceptual Evaluation of Liquid Simulation Methods
+                    https://ge.in.tum.de/publications/2017-sig-um/
+                    visual accuracy metric
+                    perceptual evaluation, liquid simulation
+                    smoothed particle hydrodynamics
+                    suitable one among various methods for a given task
+                    This paper targets numerical simulations of liquids
+                Versatile Rigid-Fluid Coupling for Incompressible SPH
+                    https://cg.informatik.uni-freiburg.de/publications/2012_SIGGRAPH_rigidFluidCoupling.pdf
+                Infinite Continuous Adaptivity for Incompressible SPH
+                    http://s2017.siggraph.org/sites/default/files/firstpages_part_08.pdf
+                SPH Fluids in Computer Graphics
+                    https://cg.informatik.uni-freiburg.de/publications/2014_EG_SPH_STAR.pdf      
+                Fluids in Games
+                    https://www.cs.ubc.ca/~rbridson/fluidsimulation/
+                http://physbam.stanford.edu/~fedkiw/
+            >> cloth sim 
+                Asynchronous Cloth Simulation
+                    http://www-labs.iro.umontreal.ca/~bernhard/PDF/Thomasze08Asynchronous.pdf
+                View-Dependent Adaptive Cloth Simulation 
+                    http://graphics.berkeley.edu/papers/Koh-VDA-2014-07/
+                    Given a prescribed camera motion, the method adjusts the criteria controlling refinement to account  for visibility and apparent size in the camera’s view
+                    dynamically adaptive mesh refinement
+                    coarsening
+                    camera’s view frustum
+                    qq key idea?
+                        Characters completely outside the view frustum are simulated at very low  resolution
+                        a simple way of  achieving computational savings for cloth simulation
+                    The main limitation of our method is that it requires an  adaptive framework
+                    would scale very  well to massive scenes with thousands of actors
+                    scale very well
+                    where it  would produce even larger savings.
+                    there would be additional challenges in applying it to interactive animation.
+                    it may not be possible to apply it in interactive settings  where camera motions are not predetermined.
+                    virtual characters wearing simulated clothing is now widespread
+                    cloth simulation remains  computationally expensive
+                    fine details will not be visible to the viewer and  work spent computing those details is wasted
+                    For closeup shots where only part of a character  is in frame 
+            >> smoke sim 
+                https://www.diva-portal.org/smash/get/diva2:676008/FULLTEXT01.pdf
+                Visual Simulation of Smoke
+                    http://physbam.stanford.edu/~fedkiw/papers/stanford2001-01.pdf
+            >> fire sim 
+                Animating Fire with Sound https://research.cs.cornell.edu/Sound/fire/ https://research.cs.cornell.edu/Sound/fire/FireSound2011.pdf 
+                    Not necessarily physically accurate!
+                    a large artistic component
+                    visual effects
+                    5 Tips For Good Looking Fluid Sims
+                    Used in Harry Potter film
+                    Our method produces the familiar sound of roaring flames synchronized with an 
+                        underlying low-frequency  physically based flame simulation
+                    Additional mid- to high-frequency sound content is synthesized using methods based on spectral bandwidth  extension
+                    synthesizing plausible fire  sounds that are synchronized with physically based fire animations
+                    combustion sounds
+                    data-driven  texture synthesis to synthesize high-frequency content based on input flame sound recordings
+                https://on-demand.gputechconf.com/gtc/2012/presentations/S0102-Flame-on-RT-Fire-Simulation-for-Video-Games.pdf
+            >> Magnetic sim 
+                http://www.dartmouth.edu/~boolzhu/papers/ferrofluid.pdf
+            >> spec. materials sim 
+                http://tiantianliu.cn/papers/liu17quasi/liu17quasi.html
+                Visual Simulation of Weathering By γ-ton Tracing 
+                    https://www.microsoft.com/en-us/research/publication/visual-simulation-of-weathering-by-%CE%B3-ton-tracing/
+                    https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/gamma_ton.pdf
+                    A weathering sequence generated by our system
+                    this paper presents a visual  simulation technique 
+                        that works well for a wide variety of weathering phenomena
+            >> ray sim 
+                >> fancy bsdf 
+                    >> https://rgl.epfl.ch/publications
+                    >> https://www.mpi-inf.mpg.de/departments/computer-graphics/publications
+                    open areas:
+                        faster Fresnel Approximations 
+                    //
+                    >> A Microfacet Based Coupled Specular-Matte BRDF Model with Importance Sampling
+                        https://diglib.eg.org/bitstream/handle/10.2312/egs20011003/short16.pdf?sequence=1&isAllowed=y
+                        a new realistic material models is designed 
+                            not only physically plausible, i.e. symmetric and energy conserving
+                            it is similar to cook torrance brdf model but features at computing speed, improtance sampling support 
+                            In order to keep the resulting formulae simple, several approximations are made.
+                            the results are generalized and simplified with the aim of allowing  
+                                fast computations and importance sampling.
+                        A Microfacet Based Coupled Specular-Matte BRDF Model
+                        off-specular peak and the mirroring limit case
+                        reflection for different pairs of incoming and outgoing light directions.
+                        qq a brdf model targets?
+                            mimic the features of real materials.
+                            is expected not to violate physics laws including the Helmholtz-symmetry
+                        qq what is HR?
+                            light and view directions can be exchanged in the BRDF
+                            it is a kind of rotational symmetry
+                        becomes more mirror-like for greater viewing angles
+                        qq why albedo can also be interpreted as the response to homogeneous unit illumination
+                        qq the requirements of physical plausibility? 
+                        physically based  analysis is carried out, which is similar to that presented by  
+                            Cook and Torrance and by Shirley et. al
+                        qq describe the microfacet model
+                            a surface is assumed to consist of randomly oriented perfect mirrors (tiny surfaces), so-called 
+                        A photon may be absorbed or reflected when colliding  with a microfacet
+                        qq how microfacets are modeled?
+                            as heightfields
+                        qq what are the drawbacks of cook torrance model??
+                            no sufficient support for improtance sampling 
+                        specular reflections become  dominant at grazing angles
+                        Our specular BRDF is a  simplification of the Cook-Torrance model.
+                        Simplification of the geometric term
+                        Coupling the matte and the specular components
+                        Importance sampling of the matte component
+                        compares the original Cook-Torrance model with  the new BRDF
+                        Albedo curves of the specular component with different microfacet orientation probabilities
+                    >> https://zhuanlan.zhihu.com/p/60977923
+                        Disney Principled BRDF
+                        让美术同学用非常直观的少量参数，以及非常标准化的工作流
+                        迪士尼原则的BRDF（Disney Principled BRDF）核心理念
+                        应使用直观的参数，而不是物理类的晦涩参数。  参数应尽可能少。  参数在其合理范围内应该为0到1。  允许参数在有意义时超出正常的合理范围。  所有参数组合应尽可能健壮和合理
+                        Disney Principled BRDF模型是金属和非金属的混合型模型
+                        最终结果是基于金属度（metallice）在金属BRDF和非金属BRDF之间进行线性插值。
+                        Disney BRDF Explorer
+                        https://github.com/wdas/brdf
+                            development and analysis  of bidirectional reflectance distribution functions (BRDFs)
+                            Most of the application should be (hopefully) self explanatory
+                            document the less obvious bits of usage
+                            as well as providing some useful info.
+                            several different sampling strategies to compute the albedo
+                            combo box on the right to choose between these sampling strategies
+                            .brdf files consist of a set of parameters and a BRDF function written in GLSL.
+                            the application creates UI elements for each parameter, and creates  shaders for different views that incorporate the GLSL function.
+                            Anything valid in GLSL can go between "::begin shader" and "::end shader"
+                        https://www.merl.com/brdf/
+                            The MERL BRDF database contains reflectance functions of 100 different materials. 
+                                Each reflectance function is stored as a densely measured Bidirectional Reflectance 
+                                Distribution Function (BRDF).
+                            Sample code to read the data is included with the database. Note that 
+                                parameterization of theta-half has changed.
+                            Mitsubishi Electric Research Laboratories (MERL).
+                    >> https://disney-animation.s3.amazonaws.com/library/s2012_pbs_disney_brdf_notes_v2.pdf
+                    >> https://zhuanlan.zhihu.com/p/21376124
+                        反射比例符合菲涅尔方程（Fresnel Equations）
+                        qq what does Fresnel term describe? 
+                            the probability that a photon is reflected from the microfacet model 
+                        diff. approximation exists 
+                        Properties of Planar Reflection
+                        can be seen as an attenuation of the whole reflection
+                    >> An Inexpensive BRDF Model for Physically-based Rendering
+                        http://igorsklyar.com/system/documents/papers/28/Schlick94.pdf
+                    >> https://zhuanlan.zhihu.com/p/57032810
+                        Normal Distribution Function ) 法线分布函数
+                        ( Fresnel Equation ) 菲涅尔方程：菲涅尔方程描述的是在不同的表面角下表面所反射的光线所占的比率。
+                        业界方案一般都采用的 Schlick 的 Fresnel 近似
+                        G：UE4的方案采用的 Schlick-GGX
+                        G 和 F 都是用来对光线进行衰减
+                        F 考虑的是菲涅尔效应
+                        为什么不再考虑下同时对函数 F 和 G 进行重要性采样呢？
+                            第一，他们本身不是概率密度函数，那么我们首先要得到一个概率密度函数，要求其在半球面上的积分值为1
+                        Image Formation 
+                        qq Desired Traits of a BRDF Model for production? Compactness, Expressiveness, Editability
+                            Small number of parameters
+                            Modeling a wide variety of behavior 
+                            Ability to be intuitively modified 
+                        qq what is Lambertian reflectance
+                            a material property that Scatters light equally in all viewing directions 
+                            [J.Lambert 1760]
+                        qq what is Ideal Retroreflector
+                            Light reflected back to incident direction 
+                        some ‘energy’ has been lost due to shadowing
+                    >> many different options for our specular BRDF    
+                        http://graphicrants.blogspot.com/2013/08/specular-brdf-reference.html
+                        Another weak point in existing models appears
+                    >> sig2013-2020-shading-course
+                        https://blog.selfshadow.com/publications/s2013-shading-course/
+                        various radiometric quantities
+                        radiance
+                        quantify the magnitude of light along a  single ray
+                        qq what is a spectral quantity? 
+                            the amount varies as a function of wavelength
+                        for production (film and game) rendering, RGB triples are used instead.
+                        it is convenient to have all vectors point away from the surface
+                        * The surface’s response to  light is quantified by a function called the BRDF
+                        qq brdf is the surface’s response to light?
+                        Each direction (incoming and outgoing) can be parameterized with two numbers (e.g. polar coordinates), 
+		                    so the overall dimensionality of the BRDF is four 
+                        qq what are isotropic BRDFs?
+                            rotating the [light and view directions] around [the surface normal] 
+                                does not affect the BRDF.
+                        parameter becomes three in the case of isotropic BRDFs
+                        t is a tangent vector defining a preferred direction over the surface 
+                            (this is only used for anisotropic BRDFs,
+                        * Avoiding back-facing light directions
+                            is straightforward
+                        qq how can we set the light contributions from any back-facing  direction to zero?
+                        can be avoided by clamping n·v to 0
+                        * over all directions above the surface
+                        continuous  weighted average. 
+                        qq why we use component-wise vector multiplication here? in computing reflection? 
+                        both BRDF and light color are spectral (RGB) vectors
+                        the BRDF gives the relative contribution of light from  each incoming direction to the outgoing light.
+                        swapped
+                        Energy conservation refers to the fact that a surface cannot reflect more than 100% of incoming light  energy.
+                        must not exceed 1.
+                        The vector halfway between l and v is  called the half-vector or half-angle vector ; we will denote it as h.
+                        the denominator 4(n · l)(n · v) is * a correction factor
+                        macrosurface
+                        we can think of this value (which we will denote F0) as the characteristic specular reflectance  of the material.
+                        qq Limitations of the Microfacet Model?
+                            The microfacet model does not take account of pronounced wave optics 
+                                effects such as diffraction  and interference.
+                            the microfacet model is based on a relatively limited model of the surface microgeometry, 
+                                with several unstated assumptions.
+                            However, this assumption is not always true
+                        This formulation of microfacet theory is quite powerful and flexible
+                        If these are important, then modifications or  extensions to the model may be required. 
+                        the definition of the normal distribution function
+                        This is equivalent to assuming that microgeometry height and normal are uncorrelated 
+                        A surface with a strong correlation between height and orientation
+                        is the best-understood and most successful tool
+                    >> Microfacet Models for Refraction through Rough Surfaces
+                        https://www.cs.cornell.edu/~srm/publications/EGSR07-btdf.pdf
+                    >> Discrete Stochastic Microfacet Models
+                        https://rgl.s3.eu-central-1.amazonaws.com/media/papers/Jakob2014Discrete.pdf
+                    >> A Physically-Based BSDF for Modeling the Appearance of Paper
+                        https://people.inf.ethz.ch/~mpapas/publications/paper-paper.pdf
+                    >> https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
+                    >> A BSSRDF Model for Efficient Rendering of Fur with Global Illumination
+                        http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
+                    >> http://www.apsipa.org/proceedings_2013/papers/380_A-Datadriven-Song-2943205.pdf
+                    >> https://web.cs.wpi.edu/~matt/courses/cs563/talks/radiosity.html
+                    >> https://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf
+                    >> https://web.cs.wpi.edu/~emmanuel/courses/cs563/write_ups/chuckm/chuckm_BRDFs_overview.html#:~:text=The%20BRDF%2C%20referred%20to%20as,point%20P%20on%20the%20surface.
+                    >> http://www.thetenthplanet.de/archives/255
+                    >> https://digibug.ugr.es/bitstream/handle/10481/19751/rmontes_LSI-2012-001TR.pdf;jsessionid=97878771AD4E28B65B909823A8B0C1F2?sequence=1
+                    >> https://www.cs.drexel.edu/~david/Classes/CS431/Lectures/BRDF.pdf
+                    >> https://dl.acm.org/doi/pdf/10.1145/300776.300778
+                    >> https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
+                    >> http://library.utia.cas.cz/separaty/2009/RO/filip-bidirectional%20texture%20function%20modeling%20state%20of%20the%20art%20survey.pdf
+                    >> https://graphics.stanford.edu/papers/bssrdf/bssrdf.pdf
+                    >> https://cgl.ethz.ch/publications/papers/papers.php
+                    >> A Radiosity  Method for Non-Diffuse Environments
+                    >> https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
+                        >> +https://cg.cs.uni-bonn.de/aigaion2root/attachments/sattler-2003-efficient.pdf
+                    LTC Fresnel Approximation
+                    >> https://shuangz.com/projects/psdr-sg20/psdr-sg20.pdf
+                >> fancy renderer 
+                    >> voxel-cone-tracing
+                        https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
+                            Voxel Cone Tracing
+                            realistic image synthesis
+                            Indirect illumination
+                            off-line computation and pre-baking can be acceptable
+                            many applications (games, simulators, etc.) require real-time or interactive approaches
+                            evaluate indirect illumination
+                            costly precomputation
+                            voxel octree representation generated and updated on the fly from a regular 
+                                scene mesh coupled with an approximate voxel cone tracing
+                            scene-independent performance and can handle complex scenes with dynamic content
+                            integration of 2-bounce illumination
+                            drastically improves the realism of a rendered scene
+                            complex scenes are challenging  to illuminate
+                            qq Global illumination is computationally expensive for several  reasons?
+                                computing visibility between arbitrary  points in the 3D scene, which is difficult with rasterization  based rendering
+                                it requires integrating lighting information over a large number of directions for each shaded  point.
+                            millions of triangles
+                            We reach real-time frame rates even for highly  detailed environments and 
+                                produce plausible indirect illumination (see Teaser).
+                            Teaser
+                            pre-filtered hierarchical voxel representation of the scene geometry
+                            stored on the GPU in the  form of a dynamic sparse voxel octree
+                            efficiently exploits the GPU rasterization pipeline.
+                            d is then updated interactively  with moving objects
+                            dynamic modifications
+                            The main contributions of our work are the following
+                            a fast GPU-based mesh  voxelization and octree-building algorithm
+                            An efficient approximate cone-tracing integration
+                            supports diffuse and glossy reflections
+                            Recent GPU  implementations of photon mapping [Hac05,WZPB09] use  clustering and exploit the spatial coherence of illumination
+                            High-Quality  Global Illumination Rendering Using Rasterization
+                            can be seen in the accompanying video
+                            But this solution is not fast enough to  provide real-time performances
+                            sparse voxel  octree structure storing geometry and direct lighting information
+                            pp can not classified properly
+                        https://www.eecs.yorku.ca/~amana/research/cones.pdf
+                            Global illumination using photon maps
+                            anti-aliasing
+                            image synthesis
+                            what level of detail is  sufficient in a texture map or in a procedural or  hierarchical model of an object when ray tracing
+                            exploit  area-sampling techniques to avoid aliasing artifacts
+                            not enough information associated with the ray to perform anti-aliasing 
+                            There is no way of  knowing or calculating what else is visible in the  neighborhood surrounding the sample point
+                            The only way to anti-alias within standard  ray tracing is to go to higher resolution. Whitted  proposed adaptive supersampling and it is now  almost universally used
+                            to modify the definition of  "ray"
+                            The pixel should represent not a point but  an area of the screen
+                            pyramid with the apex  at the eye and the base defined by the four planes  that cut the borders of the pixel
+                            only one ray per pixel is  sufficient regardless of scene complexity.
+                            Voxel Cone Tracing
+                    >> modern GPU rasterization pipeline acceleration
+                        http://www.jp.square-enix.com/tech/library/pdf/Real-Time%20Bidirectional%20Path%20Tracing%20via%20Rasterization%20(preprint).pdf
+                            perceptually important for interactive applications such as video games, lighting design or virtual  reality systems. 
+                            high rendering cost.
+                            Many techniques including shaders have been developed  for rasterization pipeline
+                            on a modern  commodity GPU
+                            Monte Carlo  integration to calculate indirect illumination
+                            This paper proposes a new real-time rendering system
+                            an approximate  bidirectional path tracing in a simplistic way.
+                            implemented with a modern GPU rasterization
+                            Global ray-bundles were often used for off-line rendering  to accelerate visibility test.
+                            Global Ray-Bundles
+                            we create global ray-bundles using per  pixel linked-list construction on a DirectX 11 GPU
+                            Real-Time Bidirectional Path Tracing via Rasterization
+                    >> Efficient Simulation of Light Transport in Scenes with Participating Media using Photon Maps, Henrik Wann Jensen
+                        http://graphics.ucsd.edu/~henrik/papers/sig98.html 
+                        http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.118.6575&rep=rep1&type=pdf
+                    >> Fast, Flexible, Physically-Based Volumetric Light Scattering
+                        https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf
+                    >> A Practical Analytic Single Scattering Model for Real Time Rendering
+                        https://cseweb.ucsd.edu/~ravir/papers/singlescat/scattering.pdf
+                    >> EFFICIENTLY RENDERING SHADOWS USING THE PHOTON MAP
+                        https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.2582&rep=rep1&type=pdf
+                    >> Efficient Caustic Rendering with Lightweight Photon Mapping
+                        https://graphics.cg.uni-saarland.de/papers/grittmann-2018-lwpm-paper.pdf
+                    >> https://www.ci.i.u-tokyo.ac.jp/~hachisuka/mmlt.pdf
+                    >> https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                    >> Image Space Photon Mapping
+                        https://www.researchgate.net/profile/Morgan_Mcguire/publication/221248989_Hardware-Accelerated_Global_Illumination_by_Image_Space_Photon_Mapping/links/0912f5102b956ba310000000/Hardware-Accelerated-Global-Illumination-by-Image-Space-Photon-Mapping.pdf  
+                >> classical GI 
+                    >> Robust Monte Carlo Methods for Light Transport Simulation
+                        http://graphics.stanford.edu/papers/veach_thesis
+                    >> bidirectional path tracing  
+                        https://graphics.cs.kuleuven.be/publications/BDPT/BDPT_paper.pdf
+                        ined as a generalisation of the wellknown path tracing algo
+                        forms signicantly better for typical indoor scenes where indirect lighting  is imp
+                        RELATED WORK  An important milestone in the development  of the global illumination theory for computer  graphics was the introduction of the radios  ity method 
+                        is based on the e
+                        s the scene to be discretised into patches  or elements and as such it is a nit
+                        ele  ment method The radiosity solution i
+                        ce from the viewpoint  In Ka jiya  Ka jiya presented 
+                        ender  ing equation and introduced path tracing as  a Monte Car
+                        Cook et al  Shirley Monte Carlo techniques are ca  pable of handling the most general class of  lighting e	ects but are
+                        hit  points on the respective particle paths are  then connected using shadow rays 
+                            and the  appropriate contributions are added to the    ux of the pix
+                        +https://www.cg.tuwien.ac.at/research/publications/2017/dodik-2017-pcbpt/
+                    >> Global Illumination using Photon Maps 
+                        http://graphics.ucsd.edu/~henrik/papers/ewr7/global_illumination_using_photon_maps_egwr96.pdf
+                        http://graphics.ucsd.edu/~henrik/papers/photon_map/
+                        It represents a significant improvement of a previously described  approach both with respect to speed, accuracy and versatility
+                        packets of energy (photons)
+                        one high  resolution caustics photon map to render caustics
+                        distribution ray tracing algorithm
+                        radiosity has been extended with directional capabilities
+                        qq what is a radiosity algorithm? 
+                            radiosity is an application of the finite element method to solving the rendering equation 
+                                for scenes with surfaces that reflect light diffusely.
+                            Unlike rendering methods that use Monte Carlo algorithms (such as path tracing), 
+                                which handle all types of light paths, typical radiosity only account for paths 
+                                    (represented by the code "LD*E") 
+                            Radiosity is a global illumination algorithm in the sense that the illumination 
+                                arriving on a surface comes not just directly from the light sources, 
+                                    but also from other surfaces reflecting light. 
+                            Radiosity is viewpoint independent
+                            the scene can be baked
+                            linear system can be driven 
+                        qq which three classes of gi algorithms are there? 
+                            * radiosity implementations and ray tracing implementations before cache based imp. 
+                        which increases the calculations involved
+                        Radiosity methods were first developed in about 1950 in the engineering field of heat transfer. 
+                        Notable commercial radiosity engines are Enlighten by Geomerics
+                        accounted for diffuse indirect lighting.
+                        In this context, radiosity is the total radiative flux (both reflected and re-radiated) leaving a surface
+                        as radiant exitance.
+                        Calculation of radiosity, rather than surface temperatures, is a key aspect of the radiosity method that permits linear matrix methods to be applied to the problem.
+                        multiple bounces are computed
+                        Individual patches are visible as squares on the walls and floor.
+                        lends an added element of realism to the finished scene
+                        mimics real-world phenomena
+                        Consider a simple room scene.
+                        Difference between standard direct illumination without shadow umbra, and radiosity with shadow umbra
+                        subtle lighting effects are noticeable around the room
+                        bled onto the grey walls
+                        model soft indirect illumination
+                        radiosity algorithm is performed on a simple geometric approximation of the original model.
+                        a two pass method in which we simplify the representation  of the illumination instead of simplifying the geometry
+                        we store incoming flux (photons)
+                        The use of photons allows us to estimate surface radiance at surfaces with  arbitrary BRDF’s
+                        situations where we need an accurate  computation and situations in which an approximate estimate can be applied
+                        For highly glossy surfaces  we do however trace additional sample rays since reasonable radiance estimates  for these surfaces require a large number of photons.
+                        using a separate caustics photon map which has a high  density of photons.
+                        The caustics photon map is used only to store  photons corresponding to caustics
+                        created by emitting photons towards the  specular objects in the scene and storing these as they hit diffuse surfaces.
+                        this requires a high density of photons.
+                        The global photon map is used as a rough approximation of the light/flux within  the scene
+                        and at the following intersection points  we store shadow photons.
+                        improved both the speed,  reduced the memory requirements and improved the accuracy of the method
+                        The photons are stored in a balanced kd-tree
+                        The fact that the tree is balanced guarantees that the time it  takes to locate M photons in a tree with N photons is O(M · log2(N))
+                        The final image is rendered using Monte Carlo ray tracing
+                        while the specular part are highly glossy and ideal specular reflection  models 
+                        Lr, depends on the radiance values in the rest of the scene and it can  be solved directly using Monte Carlo techniques like path tracing.
+                        We distinguish between two different evaluations of the integrals: An accurate and  an approximate
+                        (it contributes only  little to the pixel radiance
+                        The approximate evaluation is simply the radiance estimate obtained from the  global photon map
+                        qq how can be evaluate the direct illumination part in both cases? approximate and accurate
+                            * The rendering equation (1) can be split into a sum of several components.
+                                and the reflection part can be splited to four parts
+                                    the method used to evaluate each part depends on wheather we want to evaluate it in accurate 
+                                        way or approximate take a look at the direct light part, 
+                                            radiance estimate can be taken directly from global photon map(approximation ) or 
+                                                perform light source evaluations! 
+                        qq how can evaluate Caustics part of the reflected integral? 
+                            represents caustics on diffuse and slightly glossy surfaces
+                            evaluate this term using the information in the caustics photon map
+                            the radiance estimate based on the caustics photon map is visualized directly
+                            number of photons in the caustics photon map must be high.
+                        The information in the photon map can be used to compute the radiance leaving a
+                            surface in a given direction
+                        An alternative could be using a sphere of a fixed size and use all the photons  within this sphere
+                        considered a number of adaptive strategies for computing the necessary size of the  sphere based on the local photon density.
+                        cone-filter to the estimate.
+                        too low the radiance estimation  strategy can give blurry results.
+                        a general two-pass global illumination method
+                        Comparisons  with existing global illumination techniques indicate that 
+                            the photon map provides an efficient environment for global illumination.
+                        qq the photon map structure is completely separated from the geometric representation? how to understand this?
+                        The photon map code can be provided in a separate module that contains the necessary 
+                            functions (e.g. a function that given a position and a surface definition returns the  
+                            radiance in a given direction).
+                        Schlick’s reflection model
+                        colour bleeding effect between the walls
+                        metallic teapot
+                        using Ward’s anisotropic model
+                    >> Metropolis Light Transport
+                        https://graphics.stanford.edu/papers/metro/metro.pdf
+                    >> Progressive Photon Mapping
+                        https://www.ci.i.u-tokyo.ac.jp/~hachisuka/ppm.pdf
+                        This type of illumination is difficult  to simulate with Monte Carlo ray tracing methods such as path tracing, 
+                        qq three main types of GI? 
+                            radiosity methods, Monte Carlo ray tracing methods, cache based methods 
+                            Monte Carlo ray tracing methods includes: path tracing, bidirectional path tracing, and Metropolis light transport.
+                        Photon mapping is significantly better at capturing the caustics lighting seen through the lamp
+                            it is cache based method! 
+                        qq what is the prob. of this pic? it lacks the fine detail in the  illumination
+                        Sampling and  Reconstruction, Density Estimation 
+                        algorithms based on Monte Carlo ray tracing are  capable of solving the rendering equation without any approximations [Dutre et al. 2006].
+                        light being transported along a specular to diffuse to  specular path (SDS path) before being seen by the eye
+                        this type of illumination is very common. 
+                        unbiased Monte Carlo ray tracing methods such as path tracing
+                        Progressive photon mapping uses multiple photon tracing steps to compute an 
+                            accurate solution without maintaining  every photons from each iteration.
+                        qq what is the biggest advantage of progressive photon mapping?? 
+                            * Arbitry accuracy can be achieved by a limited memory consumption, when it compared to traditional photon mapping methods 
+                            Each photon tracing pass results in an increasingly accurate global illumination  solution
+                            any desired accuracy can be reached using a limited amount of memory. 
+                        qq what is Progressive Radiance Estimate
+                        To address the shortcomings of BDPT Veach and Guibas [1997]  proposed the Metropolis light transport algorithm
+                        qq In MLT,  each path is generated based on?
+                            the mutation (perturbation) of a  previous path. 
+                        illumination coming through a slight opening of  door.
+                        such paths are difficult to generate by mutating existing paths.
+                        improvement to MLT called Energy Redistribution Path Tracing (ERPT)
+                        it shares the same weakness in the context of mirror reflections of caustics.
+                        Path  space is the space of all possible light transport paths in a scene
+                        Note that path tracing, BDPT, MLT,  ERPT and PMC-ER are all unbiased path-space based methods
+                        Photon mapping is a two-pass global illumination algorithm developed by Jensen [1996].
+                        two-pass global illumination algorithm
+                        qq what is nearest  neighbor density estimation
+                        qq why the density estimation process  can be considered as a way of loosely 
+                            > connecting paths from the  eye to the light? 
+                        photon mapping is very effective at rendering SDS  paths
+                        qq the final quality of PM is often limited by?
+                            the maximum number of photons
+                        Havran et al. introduced the concept of reverse photon mapping [Havran et al. 2005].
+                        ray tracing in the first pass and photon tracing in the second pass.
+                        The motivation for this approach is to reduce  the complexity and improve the performance of photon mapping  
+                            when a large number of rays
+                        adaptive image filtering  algorithm
+                        Our method also uses the number of photons to reduce the search radius of the radiance  estimate
+                        With progressive photon mapping we can use an unlimited number of photons, since we do not need to store all the photons  and we retain all the advantages of the standard photon mapping  method
+                        being able to handle non-Lambertian surfaces.
+                        a new radiance estimate
+                        radius update
+                        qq two conditions to ensure the convergence of the PM method? 
+                            use an infinite number of photons in the photon map
+                            the radius should converge to zero. 
+                        obtain a solution with arbitrary precision
+                        Photon mapping with 20 million photons results in a noisy and blurry image
+                    >> Stochastic Progressive Photon Mapping
+                        https://www.ci.i.u-tokyo.ac.jp/~hachisuka/sppm.pdf	
+                        Progressive photon mapping [Hachisuka et al. 2008] removed the  memory bound of photon mapping, 
+                            which makes the results converge to the correct solutions 
+                                (i.e., bias goes to zero in the limit).
+                        * bias goes to zero in the limit
+                        The application of Markov Chain Monte Carlo have been shown to  improve the efficiency of the path construction
+                        progressive refinement of photon statistics  at a point where the radiance value is computed
+                        a new progressive  density estimation technique. P
+                        with bounded memory  consumption
+                        still retains the robustness of photon mapping
+                        improves its robustness to an even wider class of scene settings.
+                        We are not aware of existing work in density estimation literatures outside graphics
+                        Time dependent photon mapping [Cammarano and Jensen 2002]
+                        qq how can we model motion blur and depth of field in GI algos? x2 
+                            motion blur requires computing the average  radiance value over a 
+                            visible part of a scene for a given shutter time,  
+                            and depth-of-field needs the average radiance value over a part of  scene that is visible through a lens
+                        the original progressive radiance estimate is restricted to computing  the correct radiance value at a point ~x.
+                        shared statistics over a region that we would like  to compute the average radiance value for
+                        over the region
+                        Figure 2 summarizes the difference between the algorithms of progressive photon  mapping and our algorithm
+                        the modification is simple
+                        In order to explain our new formulation
+                    >> Progressive Photon Mapping: A Probabilistic Approach
+                        https://www.cs.umd.edu/~zwicker/publications/PPMProbabilistic-TOG11.pdf
+                        main contribution: proof of convergence
+                    >> Adaptive Progressive Photon Mapping
+                        https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
+                    >> Fast Final Gathering via Reverse Photon Mapping
+                        http://people.mpi-inf.mpg.de/alumni/d4/2016/rherzog/Papers/reversePMeg05.pdf
+                    >> Light Transport Simulation with Vertex Connection and Merging
+                        https://cgg.mff.cuni.cz/~jaroslav/papers/2012-vcm/2012-vcm-paper.pdf
+                        main idea: combine bpt and sppm with help of MIS 
+                    >> Unifying points, beams, and paths in volumetric light transport simulation
+                        http://www.smallupbp.com/
+        cg, proj/ idea/ VR/ VIS
+        cv, segmentation
 
-
-
-        
+    ---writingpool 

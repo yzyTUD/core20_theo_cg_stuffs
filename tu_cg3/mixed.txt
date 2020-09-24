@@ -19,16 +19,19 @@
             radiance是可以积累的，能量流，irr是单位面积上的
             irr描绘了Radiometry Power
             radiant exitance or radiosity和irr类似，是不同方向上的，一个入社一个出 
+    
     *review resources 
         1. ql from slides 
         2. ql official questions 
         3. ql from pic notes 
         4. active mode! 
+    
     ---keywords 
         > qq 
         > pp 
         > tobecontinue
         > tobere 
+    
     ---preview
         extended know. search online, as prepare and concreate understanding 
             from interest
@@ -68,6 +71,7 @@
                     Unfortunately, current CG smoke models are  either 
                         too slow or suffer from too much numerical dissipation.
                     numerical dissipation
+    
     ---detailview
         ---essential 
             pruf-re-ok- slides-intro 
@@ -5390,6 +5394,7 @@
                 fliud sim 
                 cloth sim 
                 ray sim 
+    
     ---summ. active mode 
         idea, hlev understanding 
             take away knowledge:
@@ -5404,6 +5409,7 @@
                     optimization  
                 simulation oomi 
                         computational (lower level, components of opti.)
+    
     ---problems 
         is VR = high frame rate rendering ？
         what is V meaning ? s2p15.... p16
@@ -5414,6 +5420,7 @@
         potential 的计算，为啥和radiance一样麻烦？p19 
         sample的过程？ 有一定pdf函数？ 完全随机？ 
         not understood p26 
+    
     ---extended, from tt slides ref papers  
         // realistic simualtion (cg3 course)
             // essential 
@@ -6045,6 +6052,7 @@
             http://www.ams.sunysb.edu/~zhu/ams571/matrixvector.pdf
             http://www.personal.rdg.ac.uk/~sis01xh/teaching/CY4C9/ANN3.pdf
             http://personal.lse.ac.uk/sasane/ma412.pdf    
+   
     ---re-考试复习
         注意事项
             带证件
