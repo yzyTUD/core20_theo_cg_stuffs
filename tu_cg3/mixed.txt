@@ -5500,8 +5500,12 @@
                     https://www.cs.ubc.ca/~rbridson/fluidsimulation/
                 http://physbam.stanford.edu/~fedkiw/
             // cloth sim 
+                https://www.cs.umd.edu/class/fall2019/cmsc828X/LEC/Wei_Cloth.pdf
+                    
                 Asynchronous Cloth Simulation
                     http://www-labs.iro.umontreal.ca/~bernhard/PDF/Thomasze08Asynchronous.pdf
+                Efficient cloth simulation using an adaptive finite element method
+                    https://animation.rwth-aachen.de/media/papers/2012-VRIPHYS-AdaptiveCloth.pdf
                 View-Dependent Adaptive Cloth Simulation 
                     http://graphics.berkeley.edu/papers/Koh-VDA-2014-07/
                     Given a prescribed camera motion, the method adjusts the criteria controlling refinement to account  for visibility and apparent size in the camera’s view
@@ -5724,6 +5728,36 @@
                     LTC Fresnel Approximation
                     >> https://shuangz.com/projects/psdr-sg20/psdr-sg20.pdf
                 >> fancy renderer 
+                    >> PCBPT 
+                        https://www-sop.inria.fr/reves/Basilic/2015/PRDD15b/PCBPT.pdf
+                        Bidirectional path tracing (BDPT) with Multiple Importance Sampling is one of the most versatile 
+                            unbiased rendering algorithms today
+                        qq why BPT not so good? 
+                            Unfortunately, many such bidirectional connections turn out to have low contribution to the solution.
+                        two key advantages: we efficiently create connections with low variance by Monte Carlo sampling, and  we reuse light paths across different eye paths
+                        We present results of our method which shows significant improvement  over previous unbiased global illumination methods, and evaluate our algorithmic choices. 
+                        the connection  itself unfortunately is not
+                        We do this by estimating probability mass functions  (PMF) of the discrete set of possible connections to all light  paths. 
+                        with contributions that reduce variance more quickly
+                        since reuse makes paths correlated, resulting in high variance if multiple importance sampling is applied directly
+                        probabilistically connects to all of them
+                        qq what is EORR
+                            The efficiency optimized Russian roulette (EORR) approach in Sect. 10.4 of Veach’s Ph.D.  thesis [Vea98],
+                        * contributions from diff. parts can be illustated, such as Path Tracing contributions
+                        * In some region  PCBPT and BDPT are equivalent
+                        qq in which cases does PCBPT have best performance?
+                        * PCBPT achieves best  performance for scenes where 
+                            inner paths dominate the computation (Kitchen and Apartment see Table 2).
+                        qq how to understand, Probabilistic Connections for Bidirectional Path Tracing? probabilistic connections?
+                        qq main contributions of PCBPT?? 
+                            connections are importance sampled  for bidirectional path tracing
+                            and obtained superior results over  previous unbiased methods for the same computation time
+                            importance sample connections to an eye sub-path  by 
+                                considering multiple [light sub-paths] at once and 
+                                    creating connections probabilistically
+                        combining this approach with VCM [GKDS12] or PEA [HPJ12] would provide a practical solution for treating hard illumination paths
+                        PCBPT can dramatically  reduce the variance from inner paths
+                        achieve speedups of up to 3.4 compared to BDPT  to achieve the same quality
                     >> voxel-cone-tracing
                         https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
                             Voxel Cone Tracing
@@ -5809,15 +5843,19 @@
                         http://graphics.stanford.edu/papers/veach_thesis
                     >> bidirectional path tracing  
                         https://graphics.cs.kuleuven.be/publications/BDPT/BDPT_paper.pdf
+                        https://www.cs.princeton.edu/courses/archive/fall03/cs526/papers/lafortune93.pdf
                         ined as a generalisation of the wellknown path tracing algo
                         forms signicantly better for typical indoor scenes where indirect lighting  is imp
-                        RELATED WORK  An important milestone in the development  of the global illumination theory for computer  graphics was the introduction of the radios  ity method 
-                        is based on the e
-                        s the scene to be discretised into patches  or elements and as such it is a nit
-                        ele  ment method The radiosity solution i
-                        ce from the viewpoint  In Ka jiya  Ka jiya presented 
+                        An important milestone in the development  of the global illumination theory 
+                            for computer  graphics was the introduction of the radiosity method 
+                            the scene to be discretised into patches  or elements and as such it is a nit
+                                ele  ment method The radiosity solution i
+                                ce from the viewpoint  In Ka jiya  Ka jiya presented 
+                        qq BPT is a versatile method, can and can not? 
+                            can render caustics better than path tracing. But it fails at rendering DSD ray paths!
                         ender  ing equation and introduced path tracing as  a Monte Car
-                        Cook et al  Shirley Monte Carlo techniques are ca  pable of handling the most general class of  lighting e	ects but are
+                        Cook et al  Shirley Monte Carlo techniques are capable of handling 
+                            the most general class of  lighting e	ects but are
                         hit  points on the respective particle paths are  then connected using shadow rays 
                             and the  appropriate contributions are added to the    ux of the pix
                         +https://www.cg.tuwien.ac.at/research/publications/2017/dodik-2017-pcbpt/
@@ -5842,7 +5880,7 @@
                             the scene can be baked
                             linear system can be driven 
                         qq which three classes of gi algorithms are there? 
-                            * radiosity implementations and ray tracing implementations before cache based imp. 
+                            * radiosity implementations,  ray tracing implementations,  cache based imp. 
                         which increases the calculations involved
                         Radiosity methods were first developed in about 1950 in the engineering field of heat transfer. 
                         Notable commercial radiosity engines are Enlighten by Geomerics
@@ -5853,27 +5891,33 @@
                         multiple bounces are computed
                         Individual patches are visible as squares on the walls and floor.
                         lends an added element of realism to the finished scene
-                        mimics real-world phenomena
+                        * we are going to mimics real-world phenomena
                         Consider a simple room scene.
                         Difference between standard direct illumination without shadow umbra, and radiosity with shadow umbra
                         subtle lighting effects are noticeable around the room
                         bled onto the grey walls
                         model soft indirect illumination
                         radiosity algorithm is performed on a simple geometric approximation of the original model.
-                        a two pass method in which we simplify the representation  of the illumination instead of simplifying the geometry
+                        * instead of simplifying the geometry, photon mapping simplifies the representation of the illumination 
                         we store incoming flux (photons)
-                        The use of photons allows us to estimate surface radiance at surfaces with  arbitrary BRDF’s
-                        situations where we need an accurate  computation and situations in which an approximate estimate can be applied
-                        For highly glossy surfaces  we do however trace additional sample rays since reasonable radiance estimates  for these surfaces require a large number of photons.
-                        using a separate caustics photon map which has a high  density of photons.
-                        The caustics photon map is used only to store  photons corresponding to caustics
-                        created by emitting photons towards the  specular objects in the scene and storing these as they hit diffuse surfaces.
-                        this requires a high density of photons.
-                        The global photon map is used as a rough approximation of the light/flux within  the scene
-                        and at the following intersection points  we store shadow photons.
+                        * The use of photons allows us to estimate surface radiance at surfaces with  arbitrary BRDF’s
+                            situations where we need an accurate  computation and situations in which an approximate estimate can be applied
+                        For highly glossy surfaces  we do however trace additional sample rays since reasonable radiance estimates  
+                            for these surfaces require a large number of photons.
+                        qq why use a separate caustics photon map which has a high density of photons.
+                            The caustics photon map is used only to store  photons corresponding to caustics
+                            created by emitting photons towards the  specular objects in the scene and 
+                                storing these as they hit diffuse surfaces.
+                            this requires a high density of photons.
+                            simulate caustics correctly
+                        qq how The global photon map is used?
+                            as a rough approximation of the light/flux within the scene
+                        qq where do we store shadow photons?
+                            at the following intersection points  we store shadow photons.
                         improved both the speed,  reduced the memory requirements and improved the accuracy of the method
                         The photons are stored in a balanced kd-tree
-                        The fact that the tree is balanced guarantees that the time it  takes to locate M photons in a tree with N photons is O(M · log2(N))
+                        The fact that the tree is balanced guarantees that the time it  
+                            takes to locate M photons in a tree with N photons is O(M · log2(N))
                         The final image is rendered using Monte Carlo ray tracing
                         while the specular part are highly glossy and ideal specular reflection  models 
                         Lr, depends on the radiance values in the rest of the scene and it can  be solved directly using Monte Carlo techniques like path tracing.
@@ -5883,10 +5927,9 @@
                         qq how can be evaluate the direct illumination part in both cases? approximate and accurate
                             * The rendering equation (1) can be split into a sum of several components.
                                 and the reflection part can be splited to four parts
-                                    the method used to evaluate each part depends on wheather we want to evaluate it in accurate 
-                                        way or approximate take a look at the direct light part, 
-                                            radiance estimate can be taken directly from global photon map(approximation ) or 
-                                                perform light source evaluations! 
+                                    the method used to evaluate each part depends on wheather we want to evaluate it in accurate way or approximate 
+                                        take a look at the direct light part, radiance estimate can be taken directly 
+                                            from global photon map(approximation ) or perform light source evaluations! 
                         qq how can evaluate Caustics part of the reflected integral? 
                             represents caustics on diffuse and slightly glossy surfaces
                             evaluate this term using the information in the caustics photon map
@@ -5901,10 +5944,11 @@
                         a general two-pass global illumination method
                         Comparisons  with existing global illumination techniques indicate that 
                             the photon map provides an efficient environment for global illumination.
-                        qq the photon map structure is completely separated from the geometric representation? how to understand this?
-                        The photon map code can be provided in a separate module that contains the necessary 
-                            functions (e.g. a function that given a position and a surface definition returns the  
-                            radiance in a given direction).
+                        qq the advantages of photon mapping when compared to ray tracing based implementations? xn the photon map structure is completely separated!
+                            the photon map structure is completely separated from the geometric representation? how to understand this?
+                            The photon map code can be provided in a separate module that contains the necessary 
+                                functions (e.g. a function that given a position and a surface definition returns the  
+                                radiance in a given direction).
                         Schlick’s reflection model
                         colour bleeding effect between the walls
                         metallic teapot
