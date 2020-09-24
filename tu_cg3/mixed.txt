@@ -5298,8 +5298,8 @@
             ---
             cg3 
                 rendering equ./ ray simulation/ ray tracing/ particle tracing 
-                    // derive equ.
-                        derive: phy view
+                    essential
+                        // phy for brdf reflectance
                             operator form, nested integral form, directional, area formulation, light path regular expressions
                                 geometry factor and visibility
                             radiance computing: emitted radiance of light source, sensor efficiency and measurement equation
@@ -5307,7 +5307,7 @@
                             explain microfacette models on a coarse level, what are the individual parts? more realistic brdf!
                             what do the Fresnel coefficients describe?
                             brdf properties: Helmholtz reciprocity, energy conservation
-                        evaluate:  math view 
+                        // math for MC sampling 
                             MC method, other integrator? 
                             formula in MC method? why should we use MC integrator? 
                             reduce variance? MIS 
@@ -5320,17 +5320,6 @@
                             how to measure a brdf?
                             how to represent a measured brdf efficiently?
                             what is a bssrdf?
-                    // inteprete above equ. in codes
-                        sample the rays: coder view/ geo. view 
-                            basic: 
-                                path, light and bidirectional path tracing 
-                            cache-based method: 
-                                final gathering, photon mapping, reverse photon mapping, ppm, vcm, sppm, probPPM
-                        particle tracing 
-                            gamma-ton tracing, boids
-                        +tracing other quantities 
-                differental equ./ ode, pde, physical simulation 
-                    essential 
                         // solving DE
                             what is a differential equation?
                             ordinary and partial differential equations
@@ -5349,7 +5338,7 @@
                             inertia moment, inertia tensor, vector representation of angular velocity,
                                 > angular acceleration, torque,
                                 > rotational kinetic energy
-                    rbody simualtion 
+                    rbody sim
                         // derive equ.
                             the simulation loop! 
                             the idea of the Sequential impulse loop/ algorithm + igen, iwrote
@@ -5362,8 +5351,12 @@
                                 avoid collisions in a rigid body simulator?
                         // addi. simulation requirements
                             contact point and what kind of non-degenerate contacts exist?
-                                handle them better! 
-                    fluid simulation
+                                handle them better!  
+                    
+                    particle sim 
+                        gamma-ton tracing, boids
+                        +tracing other quantities 
+                    fluid sim
                         // derive
                             what are incompressible fluids?
                             the idea, the simualtion loop? derive the simulation equ.
@@ -5378,13 +5371,18 @@
                             what are the different boundary conditions used in fluid simulation?
                             what is numerical dissipation and how does it influence numerical methods for solving incompressible
                                 Navier Stokes equations?
-                    cloth simulation
+                    cloth sim
                         // derive 
                             the idea, the simualtion loop? 
                             how to model a piece of cloth
                         // inteprete
                             // addi. simulation requirements
                                 stiff spring? hysteresis?
+                    ray sim 
+                        basic: 
+                            path, light and bidirectional path tracing 
+                        cache-based method: 
+                            final gathering, photon mapping, reverse photon mapping, ppm, vcm, sppm, probPPM
             ---
             cg3 (山川河流人物光线)
                 essential
@@ -5417,7 +5415,7 @@
         sample的过程？ 有一定pdf函数？ 完全随机？ 
         not understood p26 
     ---extended, from tt slides ref papers  
-        // papers
+        // realistic simualtion (cg3 course)
             // essential 
                 http://physbam.stanford.edu/~fedkiw/papers/cam2000-08.pdf
                 http://physbam.stanford.edu/~fedkiw/papers/stanford2004-07.pdf
@@ -5495,16 +5493,19 @@
                     https://www.cs.ubc.ca/~rbridson/fluidsimulation/
                 http://physbam.stanford.edu/~fedkiw/
             // cloth sim 
-                http://www-labs.iro.umontreal.ca/~bernhard/PDF/Thomasze08Asynchronous.pdf
-                View-Dependent Adaptive Cloth Simulation http://graphics.berkeley.edu/papers/Koh-VDA-2014-07/
+                Asynchronous Cloth Simulation
+                    http://www-labs.iro.umontreal.ca/~bernhard/PDF/Thomasze08Asynchronous.pdf
+                View-Dependent Adaptive Cloth Simulation 
+                    http://graphics.berkeley.edu/papers/Koh-VDA-2014-07/
                     Given a prescribed camera motion, the method adjusts the criteria controlling refinement to account  for visibility and apparent size in the camera’s view
                     dynamically adaptive mesh refinement
                     coarsening
                     camera’s view frustum
-                    Characters completely outside the view frustum are simulated at very low  resolution
-                    a simple way of  achieving computational savings for cloth simulation
+                    qq key idea?
+                        Characters completely outside the view frustum are simulated at very low  resolution
+                        a simple way of  achieving computational savings for cloth simulation
                     The main limitation of our method is that it requires an  adaptive framework
-                    We also believe that our approach would scale very  well to massive scenes with thousands of actors,
+                    would scale very  well to massive scenes with thousands of actors
                     scale very well
                     where it  would produce even larger savings.
                     there would be additional challenges in applying it to interactive animation.
@@ -5541,8 +5542,8 @@
                     A weathering sequence generated by our system
                     this paper presents a visual  simulation technique 
                         that works well for a wide variety of weathering phenomena
-            >> rendering and brdf, ray sim 
-                >> bsdf 
+            >> ray sim 
+                >> fancy bsdf 
                     >> https://rgl.epfl.ch/publications
                     >> https://www.mpi-inf.mpg.de/departments/computer-graphics/publications
                     open areas:
@@ -5642,7 +5643,7 @@
                     >> many different options for our specular BRDF    
                         http://graphicrants.blogspot.com/2013/08/specular-brdf-reference.html
                         Another weak point in existing models appears
-                    >> sig2013-shading-course
+                    >> sig2013-2020-shading-course
                         https://blog.selfshadow.com/publications/s2013-shading-course/
                         various radiometric quantities
                         radiance
@@ -5696,7 +5697,8 @@
                     >> A Physically-Based BSDF for Modeling the Appearance of Paper
                         https://people.inf.ethz.ch/~mpapas/publications/paper-paper.pdf
                     >> https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
-                    >> http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
+                    >> A BSSRDF Model for Efficient Rendering of Fur with Global Illumination
+                        http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
                     >> http://www.apsipa.org/proceedings_2013/papers/380_A-Datadriven-Song-2943205.pdf
                     >> https://web.cs.wpi.edu/~matt/courses/cs563/talks/radiosity.html
                     >> https://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf
@@ -5713,6 +5715,88 @@
                     >> https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
                         >> +https://cg.cs.uni-bonn.de/aigaion2root/attachments/sattler-2003-efficient.pdf
                     LTC Fresnel Approximation
+                    >> https://shuangz.com/projects/psdr-sg20/psdr-sg20.pdf
+                >> fancy renderer 
+                    >> voxel-cone-tracing
+                        https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
+                            Voxel Cone Tracing
+                            realistic image synthesis
+                            Indirect illumination
+                            off-line computation and pre-baking can be acceptable
+                            many applications (games, simulators, etc.) require real-time or interactive approaches
+                            evaluate indirect illumination
+                            costly precomputation
+                            voxel octree representation generated and updated on the fly from a regular 
+                                scene mesh coupled with an approximate voxel cone tracing
+                            scene-independent performance and can handle complex scenes with dynamic content
+                            integration of 2-bounce illumination
+                            drastically improves the realism of a rendered scene
+                            complex scenes are challenging  to illuminate
+                            qq Global illumination is computationally expensive for several  reasons?
+                                computing visibility between arbitrary  points in the 3D scene, which is difficult with rasterization  based rendering
+                                it requires integrating lighting information over a large number of directions for each shaded  point.
+                            millions of triangles
+                            We reach real-time frame rates even for highly  detailed environments and 
+                                produce plausible indirect illumination (see Teaser).
+                            Teaser
+                            pre-filtered hierarchical voxel representation of the scene geometry
+                            stored on the GPU in the  form of a dynamic sparse voxel octree
+                            efficiently exploits the GPU rasterization pipeline.
+                            d is then updated interactively  with moving objects
+                            dynamic modifications
+                            The main contributions of our work are the following
+                            a fast GPU-based mesh  voxelization and octree-building algorithm
+                            An efficient approximate cone-tracing integration
+                            supports diffuse and glossy reflections
+                            Recent GPU  implementations of photon mapping [Hac05,WZPB09] use  clustering and exploit the spatial coherence of illumination
+                            High-Quality  Global Illumination Rendering Using Rasterization
+                            can be seen in the accompanying video
+                            But this solution is not fast enough to  provide real-time performances
+                            sparse voxel  octree structure storing geometry and direct lighting information
+                            pp can not classified properly
+                        https://www.eecs.yorku.ca/~amana/research/cones.pdf
+                            Global illumination using photon maps
+                            anti-aliasing
+                            image synthesis
+                            what level of detail is  sufficient in a texture map or in a procedural or  hierarchical model of an object when ray tracing
+                            exploit  area-sampling techniques to avoid aliasing artifacts
+                            not enough information associated with the ray to perform anti-aliasing 
+                            There is no way of  knowing or calculating what else is visible in the  neighborhood surrounding the sample point
+                            The only way to anti-alias within standard  ray tracing is to go to higher resolution. Whitted  proposed adaptive supersampling and it is now  almost universally used
+                            to modify the definition of  "ray"
+                            The pixel should represent not a point but  an area of the screen
+                            pyramid with the apex  at the eye and the base defined by the four planes  that cut the borders of the pixel
+                            only one ray per pixel is  sufficient regardless of scene complexity.
+                            Voxel Cone Tracing
+                    >> modern GPU rasterization pipeline acceleration
+                        http://www.jp.square-enix.com/tech/library/pdf/Real-Time%20Bidirectional%20Path%20Tracing%20via%20Rasterization%20(preprint).pdf
+                            perceptually important for interactive applications such as video games, lighting design or virtual  reality systems. 
+                            high rendering cost.
+                            Many techniques including shaders have been developed  for rasterization pipeline
+                            on a modern  commodity GPU
+                            Monte Carlo  integration to calculate indirect illumination
+                            This paper proposes a new real-time rendering system
+                            an approximate  bidirectional path tracing in a simplistic way.
+                            implemented with a modern GPU rasterization
+                            Global ray-bundles were often used for off-line rendering  to accelerate visibility test.
+                            Global Ray-Bundles
+                            we create global ray-bundles using per  pixel linked-list construction on a DirectX 11 GPU
+                            Real-Time Bidirectional Path Tracing via Rasterization
+                    >> Efficient Simulation of Light Transport in Scenes with Participating Media using Photon Maps, Henrik Wann Jensen
+                        http://graphics.ucsd.edu/~henrik/papers/sig98.html 
+                        http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.118.6575&rep=rep1&type=pdf
+                    >> Fast, Flexible, Physically-Based Volumetric Light Scattering
+                        https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf
+                    >> A Practical Analytic Single Scattering Model for Real Time Rendering
+                        https://cseweb.ucsd.edu/~ravir/papers/singlescat/scattering.pdf
+                    >> EFFICIENTLY RENDERING SHADOWS USING THE PHOTON MAP
+                        https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.2582&rep=rep1&type=pdf
+                    >> Efficient Caustic Rendering with Lightweight Photon Mapping
+                        https://graphics.cg.uni-saarland.de/papers/grittmann-2018-lwpm-paper.pdf
+                    >> https://www.ci.i.u-tokyo.ac.jp/~hachisuka/mmlt.pdf
+                    >> https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                    >> Image Space Photon Mapping
+                        https://www.researchgate.net/profile/Morgan_Mcguire/publication/221248989_Hardware-Accelerated_Global_Illumination_by_Image_Space_Photon_Mapping/links/0912f5102b956ba310000000/Hardware-Accelerated-Global-Illumination-by-Image-Space-Photon-Mapping.pdf  
                 >> classical GI 
                     >> Robust Monte Carlo Methods for Light Transport Simulation
                         http://graphics.stanford.edu/papers/veach_thesis
@@ -5909,87 +5993,8 @@
                         main idea: combine bpt and sppm with help of MIS 
                     >> Unifying points, beams, and paths in volumetric light transport simulation
                         http://www.smallupbp.com/
-                >> fancy renderer 
-                    >> voxel-cone-tracing
-                        https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
-                            Voxel Cone Tracing
-                            realistic image synthesis
-                            Indirect illumination
-                            off-line computation and pre-baking can be acceptable
-                            many applications (games, simulators, etc.) require real-time or interactive approaches
-                            evaluate indirect illumination
-                            costly precomputation
-                            voxel octree representation generated and updated on the fly from a regular 
-                                scene mesh coupled with an approximate voxel cone tracing
-                            scene-independent performance and can handle complex scenes with dynamic content
-                            integration of 2-bounce illumination
-                            drastically improves the realism of a rendered scene
-                            complex scenes are challenging  to illuminate
-                            qq Global illumination is computationally expensive for several  reasons?
-                                computing visibility between arbitrary  points in the 3D scene, which is difficult with rasterization  based rendering
-                                it requires integrating lighting information over a large number of directions for each shaded  point.
-                            millions of triangles
-                            We reach real-time frame rates even for highly  detailed environments and 
-                                produce plausible indirect illumination (see Teaser).
-                            Teaser
-                            pre-filtered hierarchical voxel representation of the scene geometry
-                            stored on the GPU in the  form of a dynamic sparse voxel octree
-                            efficiently exploits the GPU rasterization pipeline.
-                            d is then updated interactively  with moving objects
-                            dynamic modifications
-                            The main contributions of our work are the following
-                            a fast GPU-based mesh  voxelization and octree-building algorithm
-                            An efficient approximate cone-tracing integration
-                            supports diffuse and glossy reflections
-                            Recent GPU  implementations of photon mapping [Hac05,WZPB09] use  clustering and exploit the spatial coherence of illumination
-                            High-Quality  Global Illumination Rendering Using Rasterization
-                            can be seen in the accompanying video
-                            But this solution is not fast enough to  provide real-time performances
-                            sparse voxel  octree structure storing geometry and direct lighting information
-                            pp can not classified properly
-                        https://www.eecs.yorku.ca/~amana/research/cones.pdf
-                            Global illumination using photon maps
-                            anti-aliasing
-                            image synthesis
-                            what level of detail is  sufficient in a texture map or in a procedural or  hierarchical model of an object when ray tracing
-                            exploit  area-sampling techniques to avoid aliasing artifacts
-                            not enough information associated with the ray to perform anti-aliasing 
-                            There is no way of  knowing or calculating what else is visible in the  neighborhood surrounding the sample point
-                            The only way to anti-alias within standard  ray tracing is to go to higher resolution. Whitted  proposed adaptive supersampling and it is now  almost universally used
-                            to modify the definition of  "ray"
-                            The pixel should represent not a point but  an area of the screen
-                            pyramid with the apex  at the eye and the base defined by the four planes  that cut the borders of the pixel
-                            only one ray per pixel is  sufficient regardless of scene complexity.
-                            Voxel Cone Tracing
-                    >> modern GPU rasterization pipeline acceleration
-                        http://www.jp.square-enix.com/tech/library/pdf/Real-Time%20Bidirectional%20Path%20Tracing%20via%20Rasterization%20(preprint).pdf
-                            perceptually important for interactive applications such as video games, lighting design or virtual  reality systems. 
-                            high rendering cost.
-                            Many techniques including shaders have been developed  for rasterization pipeline
-                            on a modern  commodity GPU
-                            Monte Carlo  integration to calculate indirect illumination
-                            This paper proposes a new real-time rendering system
-                            an approximate  bidirectional path tracing in a simplistic way.
-                            implemented with a modern GPU rasterization
-                            Global ray-bundles were often used for off-line rendering  to accelerate visibility test.
-                            Global Ray-Bundles
-                            we create global ray-bundles using per  pixel linked-list construction on a DirectX 11 GPU
-                            Real-Time Bidirectional Path Tracing via Rasterization
-                    >> Efficient Simulation of Light Transport in Scenes with Participating Media using Photon Maps, Henrik Wann Jensen
-                        http://graphics.ucsd.edu/~henrik/papers/sig98.html 
-                        http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.118.6575&rep=rep1&type=pdf
-                    >> Fast, Flexible, Physically-Based Volumetric Light Scattering
-                        https://developer.nvidia.com/sites/default/files/akamai/gameworks/downloads/papers/NVVL/Fast_Flexible_Physically-Based_Volumetric_Light_Scattering.pdf
-                    >> A Practical Analytic Single Scattering Model for Real Time Rendering
-                        https://cseweb.ucsd.edu/~ravir/papers/singlescat/scattering.pdf
-                    >> EFFICIENTLY RENDERING SHADOWS USING THE PHOTON MAP
-                        https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.47.2582&rep=rep1&type=pdf
-                    >> Efficient Caustic Rendering with Lightweight Photon Mapping
-                        https://graphics.cg.uni-saarland.de/papers/grittmann-2018-lwpm-paper.pdf
-                    >> https://www.ci.i.u-tokyo.ac.jp/~hachisuka/mmlt.pdf
-                    >> https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
-                    >> Image Space Photon Mapping
-                        https://www.researchgate.net/profile/Morgan_Mcguire/publication/221248989_Hardware-Accelerated_Global_Illumination_by_Image_Space_Photon_Mapping/links/0912f5102b956ba310000000/Hardware-Accelerated-Global-Illumination-by-Image-Space-Photon-Mapping.pdf
+        // modeling (cg1/2 course, master thesis)        
+        // animation (cg2 course, project, short paper)
         // non-papers 
             vector calculus 
             functional analysis 
