@@ -11,6 +11,7 @@
         marks
             
             levx 严重程度
+    
     德国交规知识结构梳理structured formualtion 
         https://www.fahrschule.de/Fragenkatalog/
         Grundstoff
@@ -125,6 +126,7 @@
                 Ausrüstung von Fahrzeugen
             Eignung und Befähigung von Kraftfahrern
                 Eignung und Befähigung von Kraftfahrern
+    
     交规整理 structured（书和题目只是引子，进行补充扩展！主要是那些mark过的题目）
         官方文件，行车事件
             // 1,10,11
@@ -153,6 +155,7 @@
             ...
         环境问题
             排放标准
+    
     * 理论错题经验
         （整理晚了，刷题类的必须要把每一道提落实在笔记里面不管对错，截图是低效的）
         +很多都是显而易见的题目，百分之九十，其余有的比较模糊！ 
@@ -408,6 +411,7 @@
         五分题：
             交警手势》红绿灯》先行权道路》rightbeforeleft》...
                 很多时候，两辆车都在priority road上，但是你不可以obstruct对面来车
+    
     old 路考经验预览 
         ---开头难开头要表现好，让他敢放你上路
             *口头问题
@@ -567,6 +571,7 @@
             最容易失分点？
         ---问题
             转向灯问题：优先权路口？汇入的时候？单行线角度过大？
+    
     * 语言问题words 
         de
             topic--exams 
@@ -3782,6 +3787,7 @@
                     manual gearbox 
                     refuse truck
                     the danger of tipping over 
+    
     *** 如何准备！
         总结错误，上车训练
         google map上训练
@@ -4848,6 +4854,7 @@
             ...
         // in-de 
             ...
+    
     复习计划与资源
         ok-marked题目，5分题目再刷
         ok-截图  
