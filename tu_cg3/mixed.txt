@@ -31,6 +31,7 @@
         > pp 
         > tobecontinue
         > tobere 
+        > lan !
     
     ---preview
         extended know. search online, as prepare and concreate understanding 
@@ -4950,6 +4951,7 @@
                     vcm is a reformulation of photon mapping as a bidirectional path sampling technique
                     *The benefit of our new formulation is twofold
                     *BPT is one of the most versatile light transport algorithms.
+                    lan BPT是最通用的光传输算法之一。
                     not efficient for transport
                         paths with specular-diffuse-specular (SDS) configurations 
                     widely acknowledged that BPT is not efficient
@@ -5665,11 +5667,13 @@
                         it is convenient to have all vectors point away from the surface
                         * The surface’s response to  light is quantified by a function called the BRDF
                         qq brdf is the surface’s response to light?
+                        lan brdf是表面对光的反应
                         Each direction (incoming and outgoing) can be parameterized with two numbers (e.g. polar coordinates), 
 		                    so the overall dimensionality of the BRDF is four 
                         qq what are isotropic BRDFs?
                             rotating the [light and view directions] around [the surface normal] 
                                 does not affect the BRDF.
+                        lan 围绕[表面法线]旋转[光照和视图方向]不会影响BRDF。
                         parameter becomes three in the case of isotropic BRDFs
                         t is a tangent vector defining a preferred direction over the surface 
                             (this is only used for anisotropic BRDFs,
@@ -5694,7 +5698,9 @@
                                 effects such as diffraction  and interference.
                             the microfacet model is based on a relatively limited model of the surface microgeometry, 
                                 with several unstated assumptions.
-                            However, this assumption is not always true
+                            assumption is not always true
+                        lan 微面模型未考虑明显的波光学效应，例如衍射和干涉。
+                        lan 有几个未阐明的假设
                         This formulation of microfacet theory is quite powerful and flexible
                         If these are important, then modifications or  extensions to the model may be required. 
                         the definition of the normal distribution function
@@ -5732,6 +5738,7 @@
                         https://www-sop.inria.fr/reves/Basilic/2015/PRDD15b/PCBPT.pdf
                         Bidirectional path tracing (BDPT) with Multiple Importance Sampling is one of the most versatile 
                             unbiased rendering algorithms today
+                        lan BPT是最通用的光传输算法之一。
                         qq why BPT not so good? 
                             Unfortunately, many such bidirectional connections turn out to have low contribution to the solution.
                         two key advantages: we efficiently create connections with low variance by Monte Carlo sampling, and  we reuse light paths across different eye paths
@@ -5751,12 +5758,15 @@
                         qq how to understand, Probabilistic Connections for Bidirectional Path Tracing? probabilistic connections?
                         qq main contributions of PCBPT?? 
                             connections are importance sampled  for bidirectional path tracing
-                            and obtained superior results over  previous unbiased methods for the same computation time
+                            superior results are obtained, over previous unbiased methods, for the same computation time
                             importance sample connections to an eye sub-path  by 
                                 considering multiple [light sub-paths] at once and 
                                     creating connections probabilistically
+                            lan 在双向路径跟踪中，连接也被重要性采样了
+                            lan 与以前的无偏方法相比，在相同的计算时间上可获得优异的结果
                         combining this approach with VCM [GKDS12] or PEA [HPJ12] would provide a practical solution for treating hard illumination paths
                         PCBPT can dramatically  reduce the variance from inner paths
+                        lan PCBPT可以大大减少variance
                         achieve speedups of up to 3.4 compared to BDPT  to achieve the same quality
                     >> voxel-cone-tracing
                         https://research.nvidia.com/publication/interactive-indirect-illumination-using-voxel-cone-tracing
@@ -5852,7 +5862,7 @@
                                 ele  ment method The radiosity solution i
                                 ce from the viewpoint  In Ka jiya  Ka jiya presented 
                         qq BPT is a versatile method, can and can not? 
-                            can render caustics better than path tracing. But it fails at rendering DSD ray paths!
+                            can render caustics better than path tracing. But it fails in rendering DSD ray paths!
                         ender  ing equation and introduced path tracing as  a Monte Car
                         Cook et al  Shirley Monte Carlo techniques are capable of handling 
                             the most general class of  lighting e	ects but are
@@ -6039,14 +6049,24 @@
                         https://cg.ivd.kit.edu/publications/p2012/APPM_Kaplanyan_2012/APPM_Kaplanyan_2012.pdf
                     >> Fast Final Gathering via Reverse Photon Mapping
                         http://people.mpi-inf.mpg.de/alumni/d4/2016/rherzog/Papers/reversePMeg05.pdf
+                    
                     >> Light Transport Simulation with Vertex Connection and Merging
                         https://cgg.mff.cuni.cz/~jaroslav/papers/2012-vcm/2012-vcm-paper.pdf
                         main idea: combine bpt and sppm with help of MIS 
                     >> Unifying points, beams, and paths in volumetric light transport simulation
                         http://www.smallupbp.com/
+                        https://cgg.mff.cuni.cz/~jaroslav/papers/2014-upbp/2014-upbp-paper.pdf
+                        
         // modeling (cg1/2 course, master thesis)        
         // animation (cg2 course, project, short paper)
-        // non-papers 
+        >> non-papers 
+            >> brdf measurement 
+                describe optical scattering characteristics of the material surface
+                three-dimensional turntables
+                angle resolution
+                the sensitivity of measuring instrument and the stability of illuminating light source
+                optical remote sensing
+                environmental surveillance
             vector calculus 
             functional analysis 
             computational mechanics
@@ -6054,6 +6074,7 @@
             黎曼求解器
             矩阵论 
             Newtonian Physics
+            lan 牛顿力学
             meta ball 
             level set method, heat diffusion 
             reconstruction methods 
@@ -6096,7 +6117,7 @@
             http://www.ams.sunysb.edu/~zhu/ams571/matrixvector.pdf
             http://www.personal.rdg.ac.uk/~sis01xh/teaching/CY4C9/ANN3.pdf
             http://personal.lse.ac.uk/sasane/ma412.pdf    
-   
+
     ---re-考试复习
         注意事项
             带证件

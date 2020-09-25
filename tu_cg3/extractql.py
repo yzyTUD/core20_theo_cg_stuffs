@@ -39,6 +39,15 @@ def extractp(file_name):
                 resulttxtlist.append(linetxt)
             if x != None:
                 resulttxtlist.append(linetxt)
+    resulttxtlist.append("\n---\n")            
+    with open(file_name,encoding='utf-8') as f:
+        for linetxt in f:
+        #linetxt = f.readline():
+            #print(linetxt)
+            linetxt = linetxt.lstrip()
+            preservmark_1 = re.search("lan ", linetxt)
+            if preservmark_1 != None:
+                resulttxtlist.append("\t\t"+linetxt)
     #print(resulttxtlist)
     with open("question_list_extraction.txt","w",encoding='utf-8') as fout:
         for l in resulttxtlist:

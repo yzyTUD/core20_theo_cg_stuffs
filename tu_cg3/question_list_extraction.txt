@@ -4,6 +4,7 @@
         > pp 
         > tobecontinue
         > tobere 
+        > lan !
     ---preview
     ---detailview
         ---essential 
@@ -1210,8 +1211,9 @@
     ---summ. active mode 
     ---problems 
     ---extended, from tt slides ref papers  
-            >> rendering and brdf, ray sim 
-                >> bsdf 
+                    qq key idea?
+            >> ray sim 
+                >> fancy bsdf 
                     >> https://rgl.epfl.ch/publications
                     >> https://www.mpi-inf.mpg.de/departments/computer-graphics/publications
                     >> A Microfacet Based Coupled Specular-Matte BRDF Model with Importance Sampling
@@ -1234,7 +1236,7 @@
                         qq what is Lambertian reflectance
                         qq what is Ideal Retroreflector
                     >> many different options for our specular BRDF    
-                    >> sig2013-shading-course
+                    >> sig2013-2020-shading-course
                         qq what is a spectral quantity? 
                         qq brdf is the surface’s response to light?
                         qq what are isotropic BRDFs?
@@ -1245,7 +1247,7 @@
                     >> Discrete Stochastic Microfacet Models
                     >> A Physically-Based BSDF for Modeling the Appearance of Paper
                     >> https://dspace5.zcu.cz/bitstream/11025/11214/1/Lazanyi.pdf
-                    >> http://graphics.ucsd.edu/~henrik/papers/fur_bssrdf.pdf
+                    >> A BSSRDF Model for Efficient Rendering of Fur with Global Illumination
                     >> http://www.apsipa.org/proceedings_2013/papers/380_A-Datadriven-Song-2943205.pdf
                     >> https://web.cs.wpi.edu/~matt/courses/cs563/talks/radiosity.html
                     >> https://www1.cs.columbia.edu/CAVE/publications/pdfs/Oren_SIGGRAPH94.pdf
@@ -1261,15 +1263,38 @@
                     >> A Radiosity  Method for Non-Diffuse Environments
                     >> https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
                         >> +https://cg.cs.uni-bonn.de/aigaion2root/attachments/sattler-2003-efficient.pdf
+                    >> https://shuangz.com/projects/psdr-sg20/psdr-sg20.pdf
+                >> fancy renderer 
+                    >> PCBPT 
+                        qq why BPT not so good? 
+                        qq what is EORR
+                        qq in which cases does PCBPT have best performance?
+                        qq how to understand, Probabilistic Connections for Bidirectional Path Tracing? probabilistic connections?
+                        qq main contributions of PCBPT?? 
+                    >> voxel-cone-tracing
+                            qq Global illumination is computationally expensive for several  reasons?
+                    >> modern GPU rasterization pipeline acceleration
+                    >> Efficient Simulation of Light Transport in Scenes with Participating Media using Photon Maps, Henrik Wann Jensen
+                    >> Fast, Flexible, Physically-Based Volumetric Light Scattering
+                    >> A Practical Analytic Single Scattering Model for Real Time Rendering
+                    >> EFFICIENTLY RENDERING SHADOWS USING THE PHOTON MAP
+                    >> Efficient Caustic Rendering with Lightweight Photon Mapping
+                    >> https://www.ci.i.u-tokyo.ac.jp/~hachisuka/mmlt.pdf
+                    >> https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
+                    >> Image Space Photon Mapping
                 >> classical GI 
                     >> Robust Monte Carlo Methods for Light Transport Simulation
                     >> bidirectional path tracing  
+                        qq BPT is a versatile method, can and can not? 
                     >> Global Illumination using Photon Maps 
                         qq what is a radiosity algorithm? 
                         qq which three classes of gi algorithms are there? 
+                        qq why use a separate caustics photon map which has a high density of photons.
+                        qq how The global photon map is used?
+                        qq where do we store shadow photons?
                         qq how can be evaluate the direct illumination part in both cases? approximate and accurate
                         qq how can evaluate Caustics part of the reflected integral? 
-                        qq the photon map structure is completely separated from the geometric representation? how to understand this?
+                        qq the advantages of photon mapping when compared to ray tracing based implementations? xn the photon map structure is completely separated!
                     >> Metropolis Light Transport
                     >> Progressive Photon Mapping
                         qq three main types of GI? 
@@ -1289,16 +1314,17 @@
                     >> Fast Final Gathering via Reverse Photon Mapping
                     >> Light Transport Simulation with Vertex Connection and Merging
                     >> Unifying points, beams, and paths in volumetric light transport simulation
-                >> fancy renderer 
-                    >> voxel-cone-tracing
-                            qq Global illumination is computationally expensive for several  reasons?
-                    >> modern GPU rasterization pipeline acceleration
-                    >> Efficient Simulation of Light Transport in Scenes with Participating Media using Photon Maps, Henrik Wann Jensen
-                    >> Fast, Flexible, Physically-Based Volumetric Light Scattering
-                    >> A Practical Analytic Single Scattering Model for Real Time Rendering
-                    >> EFFICIENTLY RENDERING SHADOWS USING THE PHOTON MAP
-                    >> Efficient Caustic Rendering with Lightweight Photon Mapping
-                    >> https://www.ci.i.u-tokyo.ac.jp/~hachisuka/mmlt.pdf
-                    >> https://developer.download.nvidia.com/SDK/10.5/direct3d/Source/ScreenSpaceAO/doc/ScreenSpaceAO.pdf
-                    >> Image Space Photon Mapping
+        >> non-papers 
+            >> brdf measurement 
     ---re-考试复习
+
+---
+		> lan !
+		lan brdf是表面对光的反应
+		lan 围绕[表面法线]旋转[光照和视图方向]不会影响BRDF。
+		lan 微面模型未考虑明显的波光学效应，例如衍射和干涉。
+		lan 有几个未阐明的假设
+		lan 在双向路径跟踪中，连接也被重要性采样了
+		lan 与以前的无偏方法相比，在相同的计算时间上可获得优异的结果
+		lan PCBPT可以大大减少variance
+		lan 牛顿力学
