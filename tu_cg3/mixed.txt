@@ -5733,7 +5733,7 @@
                         >> +https://cg.cs.uni-bonn.de/aigaion2root/attachments/sattler-2003-efficient.pdf
                     LTC Fresnel Approximation
                     >> https://shuangz.com/projects/psdr-sg20/psdr-sg20.pdf
-                >> fancy renderer 
+                >> fancy renderer   
                     >> PCBPT 
                         https://www-sop.inria.fr/reves/Basilic/2015/PRDD15b/PCBPT.pdf
                         Bidirectional path tracing (BDPT) with Multiple Importance Sampling is one of the most versatile 
