@@ -1264,7 +1264,7 @@
                     >> https://cg.cs.uni-bonn.de/de/projekte/btfdbb/
                         >> +https://cg.cs.uni-bonn.de/aigaion2root/attachments/sattler-2003-efficient.pdf
                     >> https://shuangz.com/projects/psdr-sg20/psdr-sg20.pdf
-                >> fancy renderer 
+                >> fancy renderer   
                     >> PCBPT 
                         qq why BPT not so good? 
                         qq what is EORR
@@ -1320,10 +1320,12 @@
 
 ---
 		> lan !
+		lan BPT是最通用的光传输算法之一。
 		lan brdf是表面对光的反应
 		lan 围绕[表面法线]旋转[光照和视图方向]不会影响BRDF。
 		lan 微面模型未考虑明显的波光学效应，例如衍射和干涉。
 		lan 有几个未阐明的假设
+		lan BPT是最通用的光传输算法之一。
 		lan 在双向路径跟踪中，连接也被重要性采样了
 		lan 与以前的无偏方法相比，在相同的计算时间上可获得优异的结果
 		lan PCBPT可以大大减少variance
