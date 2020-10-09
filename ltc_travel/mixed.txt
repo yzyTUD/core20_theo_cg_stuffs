@@ -2,24 +2,51 @@
 
 
     2020.09.29-2020.10.04 北德之行
-        吕贝克--费马恩岛
-        吕贝克--Büsum
-        Büsum--Hamburg
-        Hamburg--Hanover
-        Hanover--Wolfsburg
-        Wolfsburg--dresden
+        吕贝克
+        费马恩岛
+        Büsum
+        Hamburg
+        Hanover
+        Wolfsburg
+        dresden
 
-    2020.10 北欧之行
-        里加--塔林
-            大巴
-        塔林--赫尔辛基
-            坐船
-        赫尔辛基--土尔库
-            火车
-        土尔库--斯德哥尔摩
-            坐船
-        斯德哥尔摩--哥本哈根
-            坐船或者坐飞机
-        哥本哈根--柏林
-            飞机
+    2020.10.12- 北欧之行
+        里加 Riga, Latvia
+            景点：
+            转场：
+                大巴 11eu
+                时间：
+        维尔纽斯 Vilnius
+            景点：
+            转场：
+                大巴 27eu
+                时间：
+        塔林 Tallinn, Estonia
+            景点：
+            转场：
+                轮渡 11.13英镑
+                时间：
+        赫尔辛基 Helsinki, Finland
+            景点：
+            转场：
+                飞机 63eu
+                时间：10.17特价，其他时间100欧左右
+        //土尔库 Turku, Finland
+            景点：
+            转场：大巴
+                时间：
+        斯德哥尔摩 Stockholm, Sweden
+            景点：
+            转场：
+                飞机 53eu
+                时间： 10.19特价  
+        哥本哈根 Copenhagen, Denmark
+            景点：
+            转场：
+                飞机
+                时间：10.19、 10.21  特价，33eu
+        柏林 berlin
+            景点：
+            转场：大巴
+                时间：
     
