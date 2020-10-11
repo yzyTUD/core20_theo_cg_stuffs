@@ -14,7 +14,7 @@
         里加 Riga, Latvia
             景点：
             转场：
-                大巴 11eu
+                大巴 11eu   
                 时间：
         维尔纽斯 Vilnius
             景点：
@@ -38,12 +38,12 @@
         斯德哥尔摩 Stockholm, Sweden
             景点：
             转场：
-                飞机 53eu
+                //飞机 53eu
                 时间： 10.19特价  
         哥本哈根 Copenhagen, Denmark
             景点：
             转场：
-                飞机
+                
                 时间：10.19、 10.21  特价，33eu
         柏林 berlin
             景点：
