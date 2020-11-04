@@ -1348,6 +1348,7 @@
             https://github.com/StanfordVL/cs131_notes
         slides--https://cs231n.github.io/classification/ new     
         seed--media related algos.
+        computer-vision-a-modern-approach
     ---
     tomove 
         仰望星空，每天都要抬头看看，方向在哪里，目标还有多远 每天1h       
@@ -1730,6 +1731,490 @@
     ---
     code_pass 
         code--cv2,ml1,ml2 tud 
+            []canny edge detection, slightly modified 
+                #include "opencv2/core/utility.hpp"
+                #include "opencv2/imgproc.hpp"
+                #include "opencv2/imgcodecs.hpp"
+                #include "opencv2/highgui.hpp"
+                #include <stdio.h>
+                using namespace cv;
+                using namespace std;
+                int edgeThresh = 1;
+                int edgeThreshScharr = 1;
+                Mat image, gray, blurImage, edge1, edge2, cedge;
+                const char* window_name1 = "Edge map : Canny default (Sobel gradient)";
+                const char* window_name2 = "Edge map : Canny with custom gradient (Scharr)";
+                // define a trackbar callback
+                static void onTrackbar(int, void*)
+                {
+                    blur(gray, blurImage, Size(3, 3));
+                    // Run the edge detector on grayscale
+                    Canny(blurImage, edge1, edgeThresh, edgeThresh * 3, 3);
+                    cedge = Scalar::all(0);
+                    image.copyTo(cedge, edge1);
+                    imshow(window_name1, cedge);
+                    Mat dx, dy;
+                    Scharr(blurImage, dx, CV_16S, 1, 0);
+                    Scharr(blurImage, dy, CV_16S, 0, 1);
+                    Canny(dx, dy, edge2, edgeThreshScharr, edgeThreshScharr * 3);
+                    cedge = Scalar::all(0);
+                    image.copyTo(cedge, edge2);
+                    imshow(window_name2, cedge);
+                }
+                static void help(const char** argv)
+                {
+                    printf("\nThis sample demonstrates Canny edge detection\n"
+                        "Call:\n"
+                        "    %s [image_name -- Default is fruits.jpg]\n\n", argv[0]);
+                }
+                const char* keys =
+                {
+                    "{help h||}{@image |fruits.jpg|input image name}"
+                };
+                int main(int argc, const char** argv)
+                {
+                    help(argv);
+                    /*CommandLineParser parser(argc, argv, keys);
+                    string filename = parser.get<string>(0);
+                    image = imread(samples::findFile(filename), IMREAD_COLOR);*/
+                    image = imread("../mywork/IMG_20200604_101242.jpg", IMREAD_COLOR);
+                    if (image.empty())
+                    {
+                        //printf("Cannot read image file: %s\n", filename.c_str());
+                        help(argv);
+                        return -1;
+                    }
+                    cedge.create(image.size(), image.type());
+                    cvtColor(image, gray, COLOR_BGR2GRAY);
+                    // Create a window
+                    namedWindow(window_name1, 1);
+                    namedWindow(window_name2, 1);
+                    // create a toolbar
+                    createTrackbar("Canny threshold default", window_name1, &edgeThresh, 100, onTrackbar);
+                    createTrackbar("Canny threshold Scharr", window_name2, &edgeThreshScharr, 400, onTrackbar);
+                    // Show the image
+                    onTrackbar(0, 0);
+                    // Wait for a key stroke; the same function arranges events processing
+                    waitKey(0);
+                    return 0;
+                }
+            []gamma correction, 3 channels version, from Tania
+                // TU Dresden, Inf, CV1 Ex1, Holger Heidrich
+                // non-linear grey value transformation, Gamma correction
+                // --
+                // This program does Gamma correction.	
+                // Clicking into the "GreyCurve"-image gives a point which the gamma curve has to go trough.
+                // The "GreyCurve"-image itself has size (512,512). Point (0,0) is upper left corner for the image, but (0,0) of the curve is at (0,511) in the curve image. \n"
+                // Map values x of the input image to values y of an output image by creating and using a lookup table.\n"
+                //
+                // the input image is taken from
+                // https://github.com/opencv/opencv/tree/master/samples/data
+                //-----------------------------------------------------------------------------
+
+                #include "opencv2/imgproc/imgproc.hpp"
+                #include "opencv2/highgui/highgui.hpp"
+                #include <iostream>
+                #include <math.h>
+
+                using namespace cv;
+                using namespace std;
+
+                // #define MaxPoints 1
+                // int nb_points = 0;
+
+                enum Channels { BLUE, GREEN, RED }; // OpenCV uses BGR color format
+
+                Mat MapCurveImage512;
+                Mat image, color_img;
+                // Point    SrcPtInt[(int)MaxPoints];
+                // unsigned char LUtable[256];
+                Mat LUtable;
+
+                double gammas[3] = { 0.5, 0.5, 0.5 };
+                int channel = RED; // use Red as the default channel
+
+                void help()
+                {
+                    cout <<
+                        "\nTU Dresden, CV1 Ex1, Holger Heidrich\n"
+                        "This program does Gamma correction.\n"
+                        "Clicking into the \"GreyCurve\"-image gives a point which the gamma curve has to go trough.\n"
+                        "The \"GreyCurve\"-image itself has size (512,512). Point (0,0) is upper left corner for the image, but (0,0) of the curve is at (0,511) in the curve image. \n"
+                        "Map values x of the input image to values y of an output image.\n"
+                        "Call:\n"
+                        "./image Image [image-name Default: fruits.jpg]\n" << endl;
+                }
+
+                void draw_curve()
+                {
+                    // reset MapCurveImage for redraw
+                    MapCurveImage512 = 0;
+
+                    // create the LUT for that curve function and 
+                    // draw the gamma curve in the MapCurveImage (pixelwise)
+                    // your code for the gamma curve and color transform (instead of or additionally to the following line)
+                    // line(MapCurveImage512, Point(0,511),  Point((x*511.0)/(511.0-y),0), CV_RGB(255, 255, 255));	 // line example 
+
+                    // map each x in MapCurveImage to y according to the gamma coefficient
+                    // only change the color channel which user selected
+                    for (int x = 0; x < 512; ++x) {
+                        double y = (511.0 * pow((double)x / 511.0, gammas[channel]));
+
+                        MapCurveImage512.at<Vec3b>(511.0 - y, x)[channel] = 255;
+                    }
+
+                    // put help text
+                    putText(MapCurveImage512, "Type 1 for RED, 2 for GREEN, or 3 for BLUE", Point(20, 20), FONT_HERSHEY_PLAIN, 1, { 255, 255, 255 });
+
+                    // show non-linear mapping curve
+                    imshow("Gamma Curve", MapCurveImage512);
+                }
+
+                void init_image()
+                {
+                    // map each color in lookup table to color gc according to the initial gamma coefficient
+                    for (int c = 0; c < 256; ++c) {
+                        // since initial gamma coefficient is 1, mapped color will be identical to the original color
+                        unsigned char gc = c;
+
+                        // change all color channels
+                        LUtable.at<Vec3b>(c) = { gc, gc, gc };
+                    }
+                }
+
+                void draw_image()
+                {
+                    // map each color in lookup table to color gc according to the gamma coefficient
+                    for (int c = 0; c < 256; ++c) {
+                        // formula for mapping the color is as follows:
+                        // divide the original color by the maximum possible value (255)
+                        // raise it to the power of gamma
+                        // and multiply it with the maximum possible value
+                        double gc = 255.0 * pow((double)c / 255.0, gammas[channel]);
+
+                        // only change the color channel which user selected
+                        LUtable.at<Vec3b>(c)[channel] = gc;
+                    }
+
+                    // use the lookup table (LUT) to map the input image to the result image
+                    // use the same LUT for all color channel
+                    // LUT(image, lookUpTable, color_img);
+                    LUT(image, LUtable, color_img);
+
+                    // show the result
+                    imshow("Processed Image", color_img);
+                }
+
+                void on_mouse(int event, int x, int y, int flags, void* param)
+                {
+                    switch (event)
+                    {
+                    case EVENT_LBUTTONDOWN:
+                    {
+                        // new point to pass trough
+                        // SrcPtInt[nb_points].x=x;
+                        // SrcPtInt[nb_points].y=y;
+
+                        // read the curve point
+                        // int x1 = SrcPtInt[0].x;	
+                        // int y1 = 511 - SrcPtInt[0].y; // "511 -" cause we have "0" in lower left corner
+
+                        // determine gamma coefficient 
+                        // (want to cheat? see end of file)
+                        // determine g of y(x):=x^g
+                        double xd = x / 511.0;
+                        double yd = (511 - y) / 511.0;
+                        double gamma = log(yd) / log(xd);
+
+                        if (gammas[channel] != gamma) {
+                            gammas[channel] = gamma;
+
+                            // user clicks a new point, causing gamma to change
+                            // do remapping of curve and image based on the new gamma
+                            draw_curve();
+                            draw_image();
+                        }
+                    }
+                    break;
+                    }
+                }  // void on_mouse( int event, int x, int y, int flags, void* param )
+
+
+                int main(int argc, char** argv)
+                {
+                    help();
+
+                    char* filename = argc == 3 ? argv[2] : (char*)"../fruits.jpg";
+                    image = imread(filename, 1);
+                    color_img = image.clone();
+
+                    namedWindow("Gamma Curve");
+                    namedWindow("Original Image");
+                    imshow("Original Image", color_img);
+
+                    MapCurveImage512.create(512, 512, CV_8UC3);
+                    MapCurveImage512 = 0;
+                    imshow("Gamma Curve", MapCurveImage512);
+
+                    LUtable.create(1, 256, CV_8UC3);
+                    LUtable = 0;
+
+                    draw_curve();
+
+                    init_image();
+                    draw_image();
+
+                    setMouseCallback("Gamma Curve", on_mouse, 0);
+
+                    while (true) {
+                        int key = waitKey() & 0xFF;
+
+                        if (key == 0x31) { // user typed '1', change channel to Red (BGR)
+                            if (channel == RED)
+                                continue;
+
+                            channel = RED;
+                            draw_curve();
+                        }
+                        else if (key == 0x32) { // user typed '2', change channel to Green (BGR)
+                            if (channel == GREEN)
+                                continue;
+
+                            channel = GREEN;
+                            draw_curve();
+                        }
+                        else if (key == 0x33) { // user typed '3', change channel to Blue (BGR)
+                            if (channel == BLUE)
+                                continue;
+
+                            channel = BLUE;
+                            draw_curve();
+                        }
+                    }
+
+                    return 0;
+                }
+            []gamma correction, from Liu 
+                // TU Dresden, Inf, CV1 Ex1, Holger Heidrich
+                // non-linear grey value transformation, Gamma correction
+                // --
+                // This program does Gamma correction.	
+                // Clicking into the "GreyCurve"-image gives a point which the gamma curve has to go trough.
+                // The "GreyCurve"-image itself has size (512,512). Point (0,0) is upper left corner for the image, but (0,0) of the curve is at (0,511) in the curve image. \n"
+                // Map values x of the input image to values y of an output image by creating and using a lookup table.\n"
+                //
+                // the input image is taken from
+                // https://github.com/opencv/opencv/tree/master/samples/data
+                //-----------------------------------------------------------------------------
+                #include <iostream>
+                #include <opencv2/imgproc/imgproc.hpp>
+                #include <opencv2/highgui/highgui.hpp>
+                #include <math.h>
+                using namespace cv;
+                using namespace std;
+                Point clickpoint;
+                Mat image, color_img;
+                Mat MapCurveImage512;
+                int nb_points = 0;
+                #define MaxPoints 1
+                Point    SrcPtInt[(int)MaxPoints];
+                unsigned char LUtable[256];
+                void help()
+                {
+                    cout <<
+                        "\nTU Dresden, CV1 Ex1, Holger Heidrich\n"
+                        "This program does Gamma correction.\n"
+                        "Clicking into the \"GreyCurve\"-image gives a point which the gamma curve has to go trough.\n"
+                        "The \"GreyCurve\"-image itself has size (512,512). Point (0,0) is upper left corner for the image, but (0,0) of the curve is at (0,511) in the curve image. \n"
+                        "Map values x of the input image to values y of an output image.\n"
+                        "Call:\n"
+                        "./image Image [image-name Default: fruits.jpg]\n" << endl;
+                }
+                void on_mouse(int event, int x, int y, int flags, void* param)
+                {
+                    switch (event) {
+                    case EVENT_LBUTTONDOWN:
+                    {
+                        MapCurveImage512.create(512, 512, CV_8U);
+                        MapCurveImage512 = 0;
+                        imshow("GreyCurve", MapCurveImage512);
+                        // new point to pass trough
+                        SrcPtInt[nb_points].x = x;
+                        SrcPtInt[nb_points].y = y;
+                        double x0 = SrcPtInt[0].x;
+                        double y0 = 511.0 - SrcPtInt[0].y;// "511 -" cause we have "0" in lower left corner
+                        double x1 = x0 / 511.0;
+                        double y1 = y0 / 511.0;
+                        double r = log(y1) / log(x1);//y=x^r
+                        double curve_x;
+                        Point p1, p2;
+                        p1.x = 0;
+                        p1.y = 0;
+                        double a1, a2;
+                        // draw the gamma curve in the MapCurveimage (pixelwise)
+                        for (curve_x = 1.0; curve_x < 512.0; curve_x++)
+                        {
+
+                            p2.x = curve_x;
+                            a1 = curve_x / 512;
+                            a2 = pow(a1, r) * 512;
+                            p2.y = 511 - a2;
+                            line(MapCurveImage512, p1, p2, CV_RGB(255, 255, 255));
+                            p1 = p2;
+
+
+                        }
+
+                        // use the lookup table (LUT) to map the input image to the result image
+                        // use the same LUT for each color channel (or fantasize) 
+                        double newvalue;
+                        for (int i = 0; i < 256; i++)
+                        {
+                            newvalue = pow(((double)i) / 255, r) * 255;
+                            LUtable[i] = newvalue;
+
+                        }
+                        Mat lookUpTable(1, 256, CV_8U, &LUtable);
+                        LUT(image, lookUpTable, color_img);
+                        // show non-linear mapping curve
+                        imshow("GreyCurve", MapCurveImage512);
+                        // show the result
+                        imshow("output", color_img);
+                    }
+                    break;
+                    }
+                }
+                int main(int argc, char** argv) {
+                    char* filename = argc == 3 ? argv[1] : (char*)"../fruits.jpg";
+                    image = imread(filename, 1);
+                    color_img = image.clone();
+
+                    namedWindow("GreyCurve");
+                    namedWindow("output");
+                    imshow("output", color_img);
+                    MapCurveImage512.create(512, 512, CV_8U);
+                    MapCurveImage512 = 0;
+                    imshow("GreyCurve", MapCurveImage512);
+                    setMouseCallback("GreyCurve", on_mouse, 0);
+                    waitKey();
+
+                    return 0;
+                }
+            []gamma correction, start code 
+                // TU Dresden, Inf, CV1 Ex1, Holger Heidrich
+                // non-linear grey value transformation, Gamma correction
+                // --
+                // This program does Gamma correction.	
+                // Clicking into the "GreyCurve"-image gives a point which the gamma curve has to go trough.
+                // The "GreyCurve"-image itself has size (512,512). Point (0,0) is upper left corner for the image, but (0,0) of the curve is at (0,511) in the curve image. \n"
+                // Map values x of the input image to values y of an output image by creating and using a lookup table.\n"
+                //
+                // the input image is taken from
+                // https://github.com/opencv/opencv/tree/master/samples/data
+                //-----------------------------------------------------------------------------
+
+                #include "opencv2/imgproc/imgproc.hpp"
+                #include "opencv2/highgui/highgui.hpp"
+                #include <iostream>
+                #include <math.h>
+
+                using namespace cv;
+                using namespace std;
+
+                #define MaxPoints 1
+                int nb_points = 0;
+
+                Mat MapCurveImage512;
+                Mat image, color_img;
+                Point    SrcPtInt[(int)MaxPoints];
+                unsigned char LUtable[256];
+
+                void help()
+                {
+                    cout <<
+                    "\nTU Dresden, CV1 Ex1, Holger Heidrich\n"
+                    "This program does Gamma correction.\n"
+                    "Clicking into the \"GreyCurve\"-image gives a point which the gamma curve has to go trough.\n"
+                    "The \"GreyCurve\"-image itself has size (512,512). Point (0,0) is upper left corner for the image, but (0,0) of the curve is at (0,511) in the curve image. \n"
+                    "Map values x of the input image to values y of an output image.\n"
+                    "Call:\n"
+                    "./image Image [image-name Default: fruits.jpg]\n" << endl;
+                }
+
+                void on_mouse( int event, int x, int y, int flags, void* param )
+                {
+                    switch( event )
+                    {
+                        case EVENT_LBUTTONDOWN:
+                        {
+                            // new point to pass trough
+                            SrcPtInt[nb_points].x=x;
+                            SrcPtInt[nb_points].y=y;
+                            MapCurveImage512 = 0;
+
+                            // read the curve point
+                            int x1 = SrcPtInt[0].x;	
+                            int y1 = 511 - SrcPtInt[0].y; // "511 -" cause we have "0" in lower left corner
+
+                            // determine gamma coefficient 
+                            // (want to cheat? see end of file)
+
+                            
+                            double slope = (double)(511.0-y)/x;
+                            
+                            // create the LUT for that curve function and 
+                            // draw the gamma curve in the MapCurveimage (pixelwise)
+                            // your code for the gamma curve and color transform (instead of or additionally to the following line)
+                            line(MapCurveImage512, Point(0,511),  Point((x*511.0)/(511.0-y),0), CV_RGB(255, 255, 255));	 // line example 
+
+                            for (int i=0; i<256; i++)
+                            { 
+                                LUtable[i] = i*slope;     
+                            }
+                            // use the lookup table (LUT) to map the input image to the result image
+                            // use the same LUT for each color channel (or fantasize) 
+                            
+                            // show non-linear mapping curve
+                            imshow("GreyCurve", MapCurveImage512);
+                                
+                            // show the result
+                            imshow( "result image", color_img);
+                        }
+                        break;
+                    }
+                }  // void on_mouse( int event, int x, int y, int flags, void* param )
+
+
+                int main( int argc, char** argv )
+                {
+                    help();
+                    
+                    char* filename = argc == 3 ? argv[1] : (char*)"../images/fruits.jpg";
+                    image = imread(filename, 1);
+                    color_img = image.clone();
+
+                    namedWindow( "GreyCurve");
+                    namedWindow( "Fruits!");
+                    imshow( "Fruits!", color_img);
+                    
+                    MapCurveImage512.create(512, 512, CV_8U);
+                    MapCurveImage512 = 0;
+                    imshow("GreyCurve", MapCurveImage512);
+
+                    setMouseCallback( "GreyCurve", on_mouse, 0 );
+                    waitKey();
+                    
+                    return 0;
+                }
+
+
+                /*
+                // determine g of y(x):=x^g
+                double xd = x/511.0;
+                double yd = (511-y)/511.0;
+                double gamma = log(yd)/log(xd);
+                */
+
         code--opencv3 
         code--OpenGM 2 https://mlcv.inf.tu-dresden.de/code.html
             OpenGM comes with an uniform inference algorithm framework, which makes developing of new algorithms quite easy
