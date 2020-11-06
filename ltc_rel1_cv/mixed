@@ -1730,7 +1730,7 @@
         ...
     ---
     code_pass 
-        code--cv2,ml1,ml2 tud 
+        code--cv1,cv2,ml1,ml2 tud 
             []canny edge detection, slightly modified 
                 #include "opencv2/core/utility.hpp"
                 #include "opencv2/imgproc.hpp"
