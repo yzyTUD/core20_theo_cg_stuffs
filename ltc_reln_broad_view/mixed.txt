@@ -20,7 +20,7 @@
     ---
         hardware-tech 
             seed--
-                SoC, fpga, 硬件加速,nvidia computing libs.
+                SoC, fpga, 硬件加速, nvidia computing libs.
             book--
             online--gpgpu nvidia
     

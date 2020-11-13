@@ -1730,7 +1730,7 @@
         ...
     ---
     code_pass 
-        code--cv1,cv2,ml1,ml2 tud 
+        cv1 tud 
             []canny edge detection, slightly modified 
                 #include "opencv2/core/utility.hpp"
                 #include "opencv2/imgproc.hpp"
@@ -2373,19 +2373,39 @@
 
                     return 0;
                 }       
-    ---
-    code--opencv3 
-        code--OpenGM 2 https://mlcv.inf.tu-dresden.de/code.html
+        typical cv tasks 
+            https://medium.com/@ananya.banerjee.rr/different-computer-vision-tasks-b3b49bbae891
+            Object Detection
+                detect or identify objects in any given image correctly 
+                    along with their spatial position in the given image
+            Image Classification
+            Visual Relationship Detection
+                Here the relationship is “plays”, the subject is “man” and object is “guitar”.
+            Image Captioning
+                looking at an image and describing what is happening in the image.
+            Image Reconstruction or Image Inpainting
+                the ability to identify what is missing in an image in order to reconstruct it
+            Face Recognition
+                we are capable of face recognition
+            Instance Segmentation
+                identify different instances given in the image
+                identify each object instance in the image and recognized their boundary at the deep pixel level.
+                https://miro.medium.com/max/750/1*TsZ_gq-phMdM3O1igLkD6w.jpeg
+            Semantic Segmentation
+                identify similar objects in the object which belong to the same class at the pixel level
+                color coded them in same color to symbolize them belonging to same class
+        opencv3 demos 
+        OpenGM 2 https://mlcv.inf.tu-dresden.de/code.html
             OpenGM comes with an uniform inference algorithm framework, which makes developing of new algorithms quite easy
             OpenGM is a C++ template library for discrete factor graph models
             No restrictions are imposed on the factor graph or the operations of the model
             The binary OpenGM file format is based on the HDF5 standard and incorporates user extensions automatically.
             Discrete Graphical Models in C++
-        code--Marray https://mlcv.inf.tu-dresden.de/code.html
+        Marray https://mlcv.inf.tu-dresden.de/code.html
             Fast Runtime-Flexible Multi-dimensional Arrays and Views in C++
-        code--graph https://mlcv.inf.tu-dresden.de/code.html
+        graph https://mlcv.inf.tu-dresden.de/code.html
             Graph – Graphs and Graph Algorithms in C++
-        code--Seeded region growing https://mlcv.inf.tu-dresden.de/code.html
+        Seeded region growing https://mlcv.inf.tu-dresden.de/code.html
             In n-dimensional grid graphs, in linear time (C++ and MATLAB)
     ---
     idea_gen:哪个坑里做什么,大概可行！ 

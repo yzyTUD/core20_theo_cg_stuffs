@@ -760,6 +760,10 @@
                     proof the result by calcu. black
             designed vis proj. 
                 task- 
+            mcmc algo. 
+                https://github.com/mkleesiek/versatile-mcmc
+                https://github.com/kthohr/mcmc
+            https://people.math.sc.edu/Burkardt/
 
     ---phy 
         //

@@ -1,6 +1,23 @@
 
 
-    making gif or plots in paper:
-        https://paul.pub/matplotlib-3d-plotting/#id-
-    processing data with py -- the best way, excel alternative 
-        ...
+
+    preview_pass 
+        seedori.thought
+            varify?
+                making gif or plots in paper:
+                    https://paul.pub/matplotlib-3d-plotting/#id-
+                processing data with py -- the best way, excel alternative 
+                    ...
+        seedonline  
+        seedfrombookcpt
+        seedfrompapercpt
+        seedfromcode
+    ---
+    book_pass
+        book--
+        book--
+        online--
+    ---
+    paper_pass
+    ---
+    code_pass

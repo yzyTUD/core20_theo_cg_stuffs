@@ -1,0 +1,86 @@
+
+    preview_pass 
+        seedonline  
+            RTMP、RTSP、HTTP协议 h.264 
+            https://me.csdn.net/nonmarking
+            FFmpeg
+                一款多媒体视频处理工具，有非常强大的功能包括视频采集功能、视频格式转换、视频抓图、给视频加水印等
+            https://ffmpeg.org/ffmpeg.html#Description
+                commands
+                    ffmpeg -r 25 -f dshow -s 640x480 -i video="screen-capture-recorder" -vcodec libx264 -b 600k -vpre slow -acodec libfaac -ab 128k rtmp://localhost:1234
+                    ffmpeg -r 25 -f dshow -i video="screen-capture-recorder" -vcodec libx264 -acodec libfaac -ab 128k rtmp://127.0.0.1:1234
+                    ffmpeg -f dshow -i video="screen-capture-recorder" -r 10 -vcodec libx264 -preset ultrafast -tune zerolatency -crf 18 -b:v 500k -bufsize 300k -f mpegts udp://localhost:1234
+                    ffmpeg -f dshow -i video="screen-capture-recorder" -f rtsp -rtsp_transport tcp rtsp://localhost:8888/live.sdp
+                    ffmpeg -re -f dshow -i video="screen-capture-recorder" -f rtsp -muxdelay 0.1 rtsp://localhost:8888/live.sdp
+                    ffmpeg -f dshow -i video="screen-capture-recorder" -vcodec libx264 -tune zerolatency -crf 18 http://localhost:1234/feed1.ffm
+                    ffmpeg -f dshow -i video="screen-capture-recorder" -vcodec libx264 -tune zerolatency -crf 18 -f rtsp -muxdelay 0.1 rtsp://192.168.1.200:1234
+                ffmpeg is a very fast video and audio converter that can also grab from a live audio/video source
+                input "files" (which can be regular files, pipes, network streams, grabbing devices, etc.)
+                Selecting which streams from which inputs will go into which output is either done automatically or with the -map option
+                2:3 refers to the fourth stream in the third input file. Also see the Stream specifiers chapter
+                q- To force the frame rate of the output file to 24 fps? 
+                    ffmpeg -i input.avi -r 24 output.avi
+                q- transcoding process with a pic?
+                h- ffmpeg calls the libavformat library (containing demuxers) to read input files and get 
+                    packets containing encoded data 
+                q- what libs does ffmpeg relaies on? 
+                h- The decoder produces uncompressed frames (raw video/PCM audio/...) which can be processed further by filtering (see next section)
+                Finally those are passed to the muxer, which writes the encoded packets to the output file.
+                q- the detailed transcoding process 
+                ffmpeg can process raw audio and video frames using filters from the libavfilter library
+                Several chained filters form a filter graph
+                q- what is a filter graph?
+                Stream copy is a mode selected by supplying the copy parameter to the -codec option
+                q- what means stream copy? 
+                    does only demuxing and muxing.
+                    modifying container-level metadata.
+                    it is very fast and there is no quality loss
+                q- can we apply filter in steam copy mode? n 
+                    filters work on uncompressed data.
+                q- some para. 
+                    -y Overwrite output files without asking. 
+                    -f Force input or output file format. 
+                    stream_specifier stream_type is one of following: ’v’ or ’V’ for video, ’a’ for audio, ’s’ for subtitle, ’d’ for data, and ’t’ for attachments
+                    ffmpeg -i INPUT -map 0 -c:v libx264 -c:a copy OUTPUT
+                many video, audio options exist 
+                Uses the dshow (DirectShow) input device which is the preferred option for Windows users
+                streaming 
+                Point to point streaming
+                    If you want to stream "from one computer to another", you could start up a server on one, and then stream from FFmpeg to that server,
+                https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+                ...
+            RTSP协议
+                一般传输的是 ts、mp4 格式的流
+            https://blog.csdn.net/Calvin_zhou/article/details/88937568
+            直播流下载
+                ffmpeg -i http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8 -c copy cctv1.mp4
+            掌握录制视频（rtsp和系统相机）录制音频（qt）开发方法，掌握音视频各类参数含义，掌握音视频编码（h264+acc），
+                磨皮美颜（opencv）,音视频封装（flv），基于rtmp协议推流
+            mjpeg 是motion jpeg协议
+                MJPEG is the compilation of separately compressed JPEGs in a sequence, which 
+                    leads to high quality outcome in terms of resolution.
+                can save a significant amount of bandwidth compared to MJPEG (which encodes 
+                    each frame as new), but results in a video of lower quality.
+            Using VLC transcode Video RTSP stream to MJPEG
+            MJPEG Server implements MJPEG over HTTP using FFmpeg or any other input source capable 
+                of piping a multipart JPEG stream to stdout.
+            providing screen recordings for remote Webdriver tests
+            The more robust ffmpeg-server also provides M-JPEG streaming support.
+            video-capture devices such as digital cameras, IP cameras, and webcams, 
+                as well as by non-linear video editing systems
+            webrtc 
+                there is a configurable webrtc streamer, you just have to edit the web page to achieve the streaming 
+                and could be fast enough! 
+                but: public ip!!? 
+        seedfrombookcpt
+        seedfrompapercpt
+        seedfromcode
+    ---
+    book_pass
+        book--
+        book--
+        online--
+    ---
+    paper_pass
+    ---
+    code_pass

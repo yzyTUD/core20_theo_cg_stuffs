@@ -1233,12 +1233,11 @@
             梯度下降和随机梯度下降以及优化算法
             多GPU计算
             图像增广
-
-
     ---
     paper_pass
     ---
     code_pass
-        code--cgv framework 
-        code--cs284 stanford 
-        code--physical system 
+        https://pub.ist.ac.at/~vnk/
+        https://github.com/Skielex/QPBO
+        https://github.com/opengm/opengm
+        https://github.com/pboyer/LilOpt

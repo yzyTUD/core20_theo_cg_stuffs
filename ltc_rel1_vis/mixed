@@ -1,16 +1,25 @@
 
-    //
-        课件和论文可以一起，本身论文算法没那么多
-    previewseed
-        vulkan tutorial 
-        vulkan shaders/ shading stage 
-        gpu pipeline 
-        scivis slides 
-        papers:
-            franz. paper with code 
-            http://ceur-ws.org/Vol-1136/paper3.pdf
-            motion volume 
-            Large amount of ... 
-        code:
-
-    detail 
+    preview_pass 
+        seedonline 
+            vulkan tutorial 
+            vulkan shaders/ shading stage 
+            gpu pipeline 
+            scivis slides 
+            papers:
+                franz. paper with code 
+                http://ceur-ws.org/Vol-1136/paper3.pdf
+                motion volume 
+                Large amount of ... 
+            code: 
+        seedfrombookcpt
+        seedfrompapercpt
+        seedfromcode
+    ---
+    book_pass
+        book--
+        book--
+        online--
+    ---
+    paper_pass
+    ---
+    code_pass

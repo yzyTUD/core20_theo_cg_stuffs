@@ -1,54 +1,58 @@
-
-    Game networking oveview
-        "127.0.0.1" for the address to bind
-        connect to on both sides and its worked fine
-        Both should have IP addresses.
-        The basic building block for communication is the socket.
-        Raw socket
-        a pair of connected stream sockets provides an interface 
-            nearly identical to that of pipes.
-        https://pvigier.github.io/2019/09/08/beginner-guide-game-networking.html
-            mainly two possible network architectures: peer-to-peer and client-server. 
-            [authoritative server] approach enables us to detect cheating more easily
-            mainly three components in game networking:
-            Transport protocol: how to transport the data between clients and the server?
-            you can also make your own custom transport protocol based on one of them or use a library that uses them.
-            It provides a reliable, ordered, and error-checked connection between two hosts
-            TCP is really handy and is used in numerous other protocols such as HTTP, FTP or SMTP
-            But all these features come with a cost: latency.
-            TCP ensures the packets are arriving in order
-            especially for action based games such as FPS
-            That is the reason why many games use UDP with a custom protocol.
-            They are several ways a custom protocol using UDP may be more efficient than TCP
-            Thus, it will not care if an unreliable packet arrives or not at its destination.
-            the custom protocol can implement reliability in another way than TCP which is more efficient under video games assumption.
-            under video games assumption.
-            sub-optimal for video game networking.
-            where the latency and the packet loss rate is way smaller than on the Internet.
-            Many successful games, such as World of Warcraft, Minecraft or Terraria, use TCP.
-            However, most of FPS use a custom protocol based on UDP, we are going to talk more about that in the next sections.
-            To know more about the differences between UDP and TCP in a multiplayer game context
-            Network libraries
-            http://enet.bespin.org/
-            http://enet.bespin.org/Features.html
-            https://github.com/MFatihMAR/Game-Networking-Resources
-            https://web.archive.org/web/20180823014743/https://gafferongames.com/tags/networking
-            https://www.reddit.com/r/gamedev/wiki/index#wiki_networking
-            relatively thin, simple and robust network communication layer on top of UDP (User Datagram Protocol)
-            ENet omits certain higher level networking features such as authentication, lobbying, server discovery, encryption
-            application specific
-            the library remains flexible, portable, and easily embeddable.
-            Game networking is a subset of computer networking that commonly covers transport protocols, data replication, entity synchronization, lag compensation, client-side prediction, server reconciliation, interest management, bandwidth optimization, physics rollback/fastforward simulation
-        Photon Unity Networking (PUN) 
-            is a Unity package for multiplayer games.
-            objects can be synced over the network
-            The fast and (optionally) reliable communication is done through dedicated Photon server(s),
-            clients don't need to connect one to one.
-            Unity-specific features like networked objects, RPCs and so on.
-            https://doc.photonengine.com/en-us/pun/current/getting-started/pun-intro
-            when the client established the connection, joined a room, etc..
-            PhotonNetwork.JoinRoom("someRoom");
-            stream.Serialize(ref pos);
-            A networking engine for computationally demanding multiplayer games
-            networking engine
-        unity? interaction with skel.
+ 
+    preview_pass 
+        Game networking oveview
+            "127.0.0.1" for the address to bind
+            connect to on both sides and its worked fine
+            Both should have IP addresses.
+            The basic building block for communication is the socket.
+            Raw socket
+            a pair of connected stream sockets provides an interface 
+                nearly identical to that of pipes.
+            https://pvigier.github.io/2019/09/08/beginner-guide-game-networking.html
+                mainly two possible network architectures: peer-to-peer and client-server. 
+                [authoritative server] approach enables us to detect cheating more easily
+                mainly three components in game networking:
+                Transport protocol: how to transport the data between clients and the server?
+                you can also make your own custom transport protocol based on one of them or use a library that uses them.
+                It provides a reliable, ordered, and error-checked connection between two hosts
+                TCP is really handy and is used in numerous other protocols such as HTTP, FTP or SMTP
+                But all these features come with a cost: latency.
+                TCP ensures the packets are arriving in order
+                especially for action based games such as FPS
+                That is the reason why many games use UDP with a custom protocol.
+                They are several ways a custom protocol using UDP may be more efficient than TCP
+                Thus, it will not care if an unreliable packet arrives or not at its destination.
+                the custom protocol can implement reliability in another way than TCP which is more efficient under video games assumption.
+                under video games assumption.
+                sub-optimal for video game networking.
+                where the latency and the packet loss rate is way smaller than on the Internet.
+                Many successful games, such as World of Warcraft, Minecraft or Terraria, use TCP.
+                However, most of FPS use a custom protocol based on UDP, we are going to talk more about that in the next sections.
+                To know more about the differences between UDP and TCP in a multiplayer game context
+                Network libraries
+                http://enet.bespin.org/
+                http://enet.bespin.org/Features.html
+                https://github.com/MFatihMAR/Game-Networking-Resources
+                https://web.archive.org/web/20180823014743/https://gafferongames.com/tags/networking
+                https://www.reddit.com/r/gamedev/wiki/index#wiki_networking
+                relatively thin, simple and robust network communication layer on top of UDP (User Datagram Protocol)
+                ENet omits certain higher level networking features such as authentication, lobbying, server discovery, encryption
+                application specific
+                the library remains flexible, portable, and easily embeddable.
+                Game networking is a subset of computer networking that commonly covers transport protocols, data replication, entity synchronization, lag compensation, client-side prediction, server reconciliation, interest management, bandwidth optimization, physics rollback/fastforward simulation
+            Photon Unity Networking (PUN) 
+                is a Unity package for multiplayer games.
+                objects can be synced over the network
+                The fast and (optionally) reliable communication is done through dedicated Photon server(s),
+                clients don't need to connect one to one.
+                Unity-specific features like networked objects, RPCs and so on.
+                https://doc.photonengine.com/en-us/pun/current/getting-started/pun-intro
+                when the client established the connection, joined a room, etc..
+                PhotonNetwork.JoinRoom("someRoom");
+                stream.Serialize(ref pos);
+                A networking engine for computationally demanding multiplayer games
+                networking engine
+            unity? interaction with skel.
+    book_pass
+    paper_pass
+    code_pass
