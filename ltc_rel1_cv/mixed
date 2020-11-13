@@ -2373,7 +2373,7 @@
 
                     return 0;
                 }       
-
+    ---
     code--opencv3 
         code--OpenGM 2 https://mlcv.inf.tu-dresden.de/code.html
             OpenGM comes with an uniform inference algorithm framework, which makes developing of new algorithms quite easy
@@ -2387,7 +2387,7 @@
             Graph – Graphs and Graph Algorithms in C++
         code--Seeded region growing https://mlcv.inf.tu-dresden.de/code.html
             In n-dimensional grid graphs, in linear time (C++ and MATLAB)
-    ---- 
+    ---
     idea_gen:哪个坑里做什么,大概可行！ 
         cg：
             综合的一种信念，vr中真实交互，出现在科幻电影中的那种
