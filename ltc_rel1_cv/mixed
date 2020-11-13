@@ -2214,8 +2214,167 @@
                 double yd = (511-y)/511.0;
                 double gamma = log(yd)/log(xd);
                 */
+            []gamma correction, study 
+                learn 
+                    CV_8U is unsigned 8bit/pixel - ie a pixel can have values 0-255, 
+                        this is the normal range for most image and video formats
+                assembling
+                    image reading -- flexible way, suport both cmd and vs debug 
+                        char* filename = argc == 3 ? argv[1] : (char*)"../fruits.jpg";
+                    create a new img for drawing curve? giving black color 
+                        MapCurveImage512.create(512, 512, CV_8U);
+                        MapCurveImage512 = 0;
+                        imshow("GreyCurve", MapCurveImage512);
+                    ---
+                    set call back on an image? 
+                        setMouseCallback("GreyCurve", on_mouse, 0);
+                    transform, we want y zero on left buttom side 
+                        double x1 = x0 / 511.0;
+		                double y1 = y0 / 511.0; 
+                    compute rate/coefficient.? 
+		                double r = log(y1) / log(x1);//y=x^r
+                    compute LUtable and apply it to images 
+                        double newvalue;
+                        for (int i = 0; i < 256; i++){
+                            newvalue = pow(((double)i) / 255, r) * 255;
+                            LUtable[i] = newvalue;
+                        }
+                        Mat lookUpTable(1, 256, CV_8U, &LUtable);
+                        LUT(image, lookUpTable, color_img);
+                        imshow("GreyCurve", MapCurveImage512);
+                        imshow("output", color_img);
+                    ---
+                    draw curve? 
+                        for (int x = 0; x < 512; ++x) {
+                            double y = (511.0 * pow((double) x / 511.0, gammas[channel]));
+                            MapCurveImage512.at<Vec3b>(511.0 - y, x)[channel] = 255;
+                        }
+                    access pixel value? assign value?
+                        Mat.at<Vec3b>(y,x) = Vec3b();
+                    ---
+            []gamma, my solution v1 
+                // TU Dresden, Inf, CV1 Ex1, Holger Heidrich
+                // non-linear grey value transformation, Gamma correction
+                // --
+                // This program does Gamma correction.	
+                // Clicking into the "GreyCurve"-image gives a point which the gamma curve has to go trough.
+                // The "GreyCurve"-image itself has size (512,512). Point (0,0) is upper left corner for the image, but (0,0) of the curve is at (0,511) in the curve image. \n"
+                // Map values x of the input image to values y of an output image by creating and using a lookup table.\n"
+                //
+                // the input image is taken from
+                // https://github.com/opencv/opencv/tree/master/samples/data
+                //-----------------------------------------------------------------------------
 
-        code--opencv3 
+                #include "opencv2/imgproc/imgproc.hpp"
+                #include "opencv2/highgui/highgui.hpp"
+                #include <iostream>
+                #include <math.h>
+
+                using namespace cv;
+                using namespace std;
+
+                #define MaxPoints 1
+                int nb_points = 0;
+
+                Mat MapCurveImage512;
+                Mat image, color_img;
+                Point    SrcPtInt[(int)MaxPoints];
+                unsigned char LUtable[256];
+
+                void help()
+                {
+                    cout <<
+                        "\nTU Dresden, CV1 Ex1, Holger Heidrich\n"
+                        "This program does Gamma correction.\n"
+                        "Clicking into the \"GreyCurve\"-image gives a point which the gamma curve has to go trough.\n"
+                        "The \"GreyCurve\"-image itself has size (512,512). Point (0,0) is upper left corner for the image, but (0,0) of the curve is at (0,511) in the curve image. \n"
+                        "Map values x of the input image to values y of an output image.\n"
+                        "Call:\n"
+                        "./image Image [image-name Default: fruits.jpg]\n" << endl;
+                }
+
+                void on_mouse(int event, int x, int y, int flags, void* param)
+                {
+                    switch (event)
+                    {
+                    case EVENT_LBUTTONDOWN:
+                    {
+                        // new point to pass trough
+                        SrcPtInt[nb_points].x = x;
+                        SrcPtInt[nb_points].y = y;
+                        MapCurveImage512 = 0;
+
+                        // read the curve point
+                        //int x1 = SrcPtInt[0].x;
+                        //int y1 = 511 - SrcPtInt[0].y; // "511 -" cause we have "0" in lower left corner
+
+                        // determine gamma coefficient 
+                        // (want to cheat? see end of file)
+                        // determine g of y(x):=x^g
+                        double xd = x / 511.0;
+                        double yd = (511 - y) / 511.0;
+                        double gamma = log(yd) / log(xd);
+
+                        //double slope = (double)(511.0 - y) / x;
+
+                        // create the LUT for that curve function and 
+                        // draw the gamma curve in the MapCurveimage (pixelwise)
+                        // your code for the gamma curve and color transform (instead of or additionally to the following line)
+                        //line(MapCurveImage512, Point(0, 511), Point((x * 511.0) / (511.0 - y), 0), CV_RGB(255, 255, 255));	 // line example 
+                        for (int x = 0; x < 512; x++) {
+                            int y = 511.0 - pow(((double)x) / 511.0, gamma) * 511.0;
+                            MapCurveImage512.at<char>(y, x) = (char)255;
+                        }
+
+
+                        /*for (int i = 0; i < 256; i++)
+                        {
+                            LUtable[i] = i * slope;
+                        }*/
+                        // use the lookup table (LUT) to map the input image to the result image
+                        // use the same LUT for each color channel (or fantasize) 
+                        double table_value;
+                        for (int i = 0; i < 256; i++) {
+                            table_value = pow(((double)i) / 255, gamma) * 255;
+                            LUtable[i] = table_value;
+                        }
+                        Mat lookUpTable(1, 256, CV_8U, &LUtable);
+                        LUT(image, lookUpTable, color_img);
+
+                        // show non-linear mapping curve
+                        imshow("GreyCurve", MapCurveImage512);
+
+                        // show the result
+                        imshow("result image", color_img);
+                    }
+                    break;
+                    }
+                }  // void on_mouse( int event, int x, int y, int flags, void* param )
+
+
+                int main(int argc, char** argv)
+                {
+                    help();
+
+                    char* filename = argc == 3 ? argv[1] : (char*)"../fruits.jpg";
+                    image = imread(filename, 1);
+                    color_img = image.clone();
+
+                    namedWindow("GreyCurve");
+                    namedWindow("Fruits!");
+                    imshow("Fruits!", color_img);
+
+                    MapCurveImage512.create(512, 512, CV_8U);
+                    MapCurveImage512 = 0;
+                    imshow("GreyCurve", MapCurveImage512);
+
+                    setMouseCallback("GreyCurve", on_mouse, 0);
+                    waitKey();
+
+                    return 0;
+                }       
+
+    code--opencv3 
         code--OpenGM 2 https://mlcv.inf.tu-dresden.de/code.html
             OpenGM comes with an uniform inference algorithm framework, which makes developing of new algorithms quite easy
             OpenGM is a C++ template library for discrete factor graph models
