@@ -1,5 +1,5 @@
 
-    preview
+    preview_pass
         seedonline  
             color buffer, framebuffer ... 
             double mode, (glut display mode? )
@@ -290,8 +290,7 @@
             lib--https://www.graphics.rwth-aachen.de/software/openmesh/
             lib--https://www.cgal.org/
             code--http://www.meshlab.net/
-    detailview
-        // 不同chapter之间随便跳跃，不同书籍之间也是！ 
+    book_pass
         online--LearningOpenGL 
         slides--tud_cg1 
             CGI_01_Intro.pdf
@@ -3085,5 +3084,9 @@
                 ignoring physical properties such as mass, force or torque, as well as possible self-collisions.
             an implementation of the algorithm as a plugin for ROS 
             ref-  
+    paper_pass 
+    code_pass 
+        LearningOpenGL
+        pbrt3 
 
     

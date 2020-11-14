@@ -2408,9 +2408,9 @@
         Seeded region growing https://mlcv.inf.tu-dresden.de/code.html
             In n-dimensional grid graphs, in linear time (C++ and MATLAB)
     ---
-    idea_gen:哪个坑里做什么,大概可行！ 
+    idea_gen
         cg：
-            综合的一种信念，vr中真实交互，出现在科幻电影中的那种
+            vr中真实交互
             rendering(cg1 cg3)
                 rendering in VR -- master thesis? research direction? 
                     真实感渲染，大量数据渲染，科学可视化
@@ -2419,7 +2419,6 @@
                         如果要读博，基本就是这个方向
                 Machine Learning for Rendering
             *dynamics -- Learning to Move (cg2)
-                这学期proj在搞
             mesh processing, FEM (cg1 cg2)
         cv 
             *segmentation 

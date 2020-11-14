@@ -8,16 +8,21 @@
                     https://paul.pub/matplotlib-3d-plotting/#id-
                 processing data with py -- the best way, excel alternative 
                     ...
-        seedonline  
+        seedonline 
+            modern-cpp
+            history of cpp 
+            build a system with c/c++ 
+            MinGW/... c/c++ compiler
+                https://www.stroustrup.com/compilers.html
+              
         seedfrombookcpt
         seedfrompapercpt
         seedfromcode
     ---
     book_pass
-        book--
-        book--
+        book--modern-cpp-tutorial-en-us
+        book--C++ Primer Plus 6th Edition
+        book--Practical C++17 - Jason Turner - CppCon 2017
         online--
-    ---
-    paper_pass
     ---
     code_pass

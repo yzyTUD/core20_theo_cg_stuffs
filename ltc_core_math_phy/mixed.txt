@@ -7,9 +7,8 @@
             q- questions 
             p- problems not solved 
             lan- good language
-             
-    //
-    ---math
+    ---
+    math
         //
             basic math, general edu. 
             output  
@@ -559,7 +558,7 @@
                 
             seedfrompapercpt
             seedfromcode    
-           
+        ---   
         book_pass
             book- basic geo. formulas
                 q- what types of triangles are there? x3 
@@ -736,13 +735,13 @@
             +discreate dir. 
                 book- discreate math
                 book- Mathematical Optimization
-            book- 普特南数学竞赛
-        
+            book- 普特南数学竞赛     
+        ---
         paper_pass
             about the conferences 
             reading
-      
-        code_pass(这里只是简单的一些task)
+        ---
+        code_pass
             openmesh 
                 read detail 
                 ok-merge 
@@ -765,7 +764,8 @@
                 https://github.com/kthohr/mcmc
             https://people.math.sc.edu/Burkardt/
 
-    ---phy 
+    ---
+    phy 
         //
             output
                 cae calculations
@@ -777,16 +777,15 @@
                 各种连接结构的比例极限
                 calcu. cases 
                 questions for basic concepts 
-        
+        ---
         preview_pass 
             seedonline  
             seedfrombookcpt
             seedfrompapercpt
             seedfromcodelibs
-        
+        ---
         book_pass    
             book-math basic duke 
-                finish 
             book-gen. phy 
                 book- General Physics I & II 
                     I 
@@ -1015,7 +1014,7 @@
                         ---Electricity and Magnetism
 
                         ---Magnetism
-            +FEM dir.   
+            FEM dir.   
                 *book- 弹性力学 - elasticity-theory-applications-and-numerics-sadd-3rd
                 qv- keyexp- web, books ... 
                     //
@@ -1299,19 +1298,20 @@
                                 电压分析？
 
                             ---化学模拟（蒙特卡洛方法）
-            +Electricity Magnetism dir. 
+            Electricity Magnetism dir. 
                 book- 
-            +plasma dir. 
-            *+inversed kenimatics dir. 
+            plasma dir. 
+            inversed kenimatics dir. 
                 book- Introduction-Kinematics_final
                 book- slides cg2 
-            +condensed case phy.
-            +fluid mechanics 
+            condensed case phy.
+            fluid mechanics 
+        ---
+        paper_pass
+        ---
+        code_pass (computational)
         
-        paper- 
-        
-        code- 
-        
+
         
                         
                     

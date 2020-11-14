@@ -1,6 +1,4 @@
 
-    // 目标：看懂论文，实现论文中方法，在cgv中使用
-
     preview_pass 
         seedonline  
             卷积神经网络,卷积层，池化层，全连接，激活函数
@@ -748,11 +746,9 @@
             Mathematical foundations
                 Minimum st-cut problem
                 Basics of polyhedral geometry
-        **"neural network pytorch tutorial"
+        "neural network pytorch tutorial"
             https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html
-                ...
             http://neuralnetworksanddeeplearning.com/about.html
-                ...
             https://adventuresinmachinelearning.com/neural-networks-tutorial/
         https://pytorch.org/tutorials/
         https://github.com/pytorch/examples
@@ -1241,3 +1237,4 @@
         https://github.com/Skielex/QPBO
         https://github.com/opengm/opengm
         https://github.com/pboyer/LilOpt
+
