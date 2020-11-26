@@ -9,12 +9,53 @@
                 processing data with py -- the best way, excel alternative 
                     ...
         seedonline 
-            modern-cpp
-            history of cpp 
-            build a system with c/c++ 
+            ref. 
+                https://www.cplusplus.com/reference/vector/vector/emplace_back/
+                
+            template 
+            shared_ptr
+            inline 
+            push_back vs emplace_back 
+                C++ vector::push_back 会先创建临时对象，然后将临时对象拷贝到容器中，最后销毁临时对象；但是 emplace_back 仅会在容器中原地创建一个对象出来，减少临时对象拷贝、销毁的步骤，所以性能更高。
+                https://zhuanlan.zhihu.com/p/183861524
+                当vector的类型（ [公式] ）是我们自定义类型（ [公式] ）：class或者struct，并且这个类型接受多个构造参数，那么push_back需要传一个对象（ [公式] ），emplace_back可以只将构造参数传进去
+                不仅写法更简洁，而且性能也更高了，这是差异2，也是我想说的消疑的点，后面讲）；
+                vec.emplace_back( 41 , "Shanks" ) ;  
+                vec.emplace_back( New(78 , "Gomu gomu" ) );  
+                push_back只接受一个传参，你传多了自然是不可以的
+                emplace_back是可以接受一个参数列表的
+                C++11的新特性--可变模版参数
+                内置类型（built-in type）：都一样  用户自定义的类（User-defined type）：emplace_pack仅在通过 使用 构造参数 传入 的时候更高效！
+                A (int x_arg) : x (x_arg) 
+                通过构造参数向vector中插入对象（emplace_back很高效）
+                插入临时对象（二者一样！）
+                插入对象实例（二者还是一样！）
+                emplace_back并不是总比push_back高效的。所以要注意用法
+                emplace_back的直接构造也不一定就是好事
+                通过编译，但运行时抛出异常并且难以定位
+                std::vector<std::vector<int>> v; v.push_back({1,2,3}); // OK v.emplace_back({1,2,3}); // error v.emplace_back(std::vector<int>{1,2,3}); // OK v.emplace_back<std::vector<int>>({1,2,3}); // OK  作者：debye 链接：https://www.zhihu.com/question/387522517/answer/1152868848 来源：知乎 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+                某些场合获取到的就是已经构造好的对象，那就没必要再构造一次了，push_back进去就行了。
+
             MinGW/... c/c++ compiler
                 https://www.stroustrup.com/compilers.html
-              
+            RAII
+                资源的有效期与持有资源的对象的生命期严格绑定
+                实际上，C++标准库的实现就广泛应用了RAII，典型的如容器、智能指针等。
+                copy (if possible) -- duplicate the resource
+                release() -- get the underlying handle, detaching its ownership from the object
+                但是当一个异常抛出时，释放资源的语句就不会被执行。于是Bjarne Stroustrup就想
+                    到确保能运行资源释放代码的地方就是在这个程序段（栈帧）中放置的对象的析构函数了，因为stack winding会保证它们的析构函数都会被执行
+                RAII 的做法是使用一个对象，在其构造时获取资源，在对象生命期控制对资源的访问使
+                    始终保持有效，最后在对象析构的时候释放资源
+                RAII的核心思想 是 使用对象管理资源 ， 对象“消亡”则自动释放资源。理解和使用
+                    RAII能使软件设计更清晰，代码更健壮。
+                使用对象管理资源
+                与大名鼎鼎的垃圾收集(GC)不同的是，RAII可管理广义的资源，而垃圾收集只关注“内存泄漏”，
+                    不关心诸如文件句柄、同步对象等一些系统资源的泄漏问题
+            systems built with c/c++ 
+            modern-cpp
+            history of cpp 
+
         seedfrombookcpt
         seedfrompapercpt
         seedfromcode
@@ -22,6 +63,26 @@
     book_pass
         book--modern-cpp-tutorial-en-us
         book--C++ Primer Plus 6th Edition
+            using only the basic types for  arguments and return values
+            such a common task that it makes sense to design a function to do the job.
+            using a pointer as if it were an array name.
+            &q write a function that calcu. the sum of an array 
+            in most contexts treats the  name of an array as if it were a pointer
+            C++ interprets an array name as the address of its first element
+            applying sizeof to an array name yields the size of the whole  array, in bytes
+            applying sizeof to an array
+            &t applying sizeof to an array!
+            This suggests that the correct  function header should be this:
+            in C++ the notations int *arr and int arr[] have the identical meaning when  (and only when)
+            Both mean that arr is a  pointer-to-int
+            , the array notation version (int arr[]) symbolically reminds  you that arr not only points to an int
+            uses the pointer notation when the pointer is to an isolated value.
+            bracket array notation
+            Pointer addition  and array subscription are two equivalent ways of counting elements from the beginning  of an array
+            two equivalent ways of counting elements from the beginning  of an array
+            &q two equivalent ways of counting elements from the beginning
+            &of an array?
+            
         book--Practical C++17 - Jason Turner - CppCon 2017
         online--
     ---

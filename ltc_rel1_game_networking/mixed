@@ -53,6 +53,52 @@
                 A networking engine for computationally demanding multiplayer games
                 networking engine
             unity? interaction with skel.
+        TLS/SSL 
+        nng 
+            nng - nanomsg-next-gen
+            It may help to think of this as "nanomsg-next-generation".
+            adds significant new capabilities, while retaining compatibility with the original.
+            NNG: Lightweight Messaging Library
+            broker-less library
+            connection management, retries, and other common considerations
+            The goal to the license is to minimize friction in adoption, use, and contribution.
+            most nanomsg users can begin using NNG right away.
+            Existing nanomsg and mangos applications can inter-operate with NNG applications automatically.
+            some API capabilities that are useful for foreign language bindings are not implemented yet.
+            and least interesting from a performance perspective
+            made our lives as developers measurably better
+            Transport Layer Security (TLS), and its now-deprecated predecessor, Secure Sockets Layer (SSL)
+            https://en.wikipedia.org/wiki/Transport_Layer_Security
+        https://github.com/cwzx/nngpp
+            nngpp is a C++ wrapper around the nanomsg NNG API
+            What's nanomsg? In a nutshell it's a spiritual successor to ZeroMQ,
+            incarnation, spiritual 
+            Zero overhead -- no virtual functions, no extra allocations or copies
+            Compatible with C++11 but uses C++17 features when available
+            create a socket
+            In nngpp these handles are wrapped in views that expose all of the corresponding functionality as member functions.
+            For example, the nng_socket handle is wrapped by a nng::socket_view that has the member function dial()
+            All views provide a common set of member functions:
+            get() -- get the handle
+            Dialers have at most one active connection at a time  // This is similar to the legacy nn_connect()
+            NNG_FLAG_NONBLOCK to indicate that the first attempt to  // dial will be made in the background
+            In this case, if the connection fails, the function will  // keep retrying in the background.
+            This is only possible if  // the dialer is not already dialing.
+            nng_dialer_start
+            soc_pair_master.dial(remote_address.c_str(), NNG_FLAG_NONBLOCK);
+            RAII（Resource Acquisition Is Initialization）
+            资源获取即初始化
+            RAII要求，资源的有效期与持有资源的对象的生命期严格绑定
+            实际上，C++标准库的实现就广泛应用了RAII，典型的如容器、智能指针等。
+            copy (if possible) -- duplicate the resource
+            release() -- get the underlying handle, detaching its ownership from the object
+            但是当一个异常抛出时，释放资源的语句就不会被执行。于是Bjarne Stroustrup就想到确保能运行资源释放代码的地方就是在这个程序段（栈帧）中放置的对象的析构函数了，因为stack winding会保证它们的析构函数都会被执行
+            RAII 的做法是使用一个对象，在其构造时获取资源，在对象生命期控制对资源的访问使之始终保持有效，最后在对象析构的时候释放资源
+            shared_ptr
+            RAII的核心思想 是 使用对象管理资源 ， 对象“消亡”则自动释放资源。理解和使用RAII能使软件设计更清晰，代码更健壮。
+            使用对象管理资源
+            与大名鼎鼎的垃圾收集(GC)不同的是，RAII可管理广义的资源，而垃圾收集只关注“内存泄漏”，不关心诸如文件句柄、同步对象等一些系统资源的泄漏问题
+
     book_pass
     paper_pass
     code_pass
