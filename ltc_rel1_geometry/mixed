@@ -1,0 +1,75 @@
+
+    preview_pass 
+        seedonline  
+            scanning besed modeling pipeline
+                build neighbourgrouph 
+                    Riemannian-Graph: directed 
+                    symmetrized Riemannian-Graph: no direction 
+                Outlier filter 
+                    In not symmetrized RiemannianGraph most edges of 
+                        an outlier  point are outgoing and only few  ingoing 
+                sampling density estimation 
+                    sampling density ? is defined  as the minimum radius of a circle  in tangential space
+                    Sampling density typically  varies over surface
+                    can be estimeted from average  distance to 3rd up to sixth nearest  
+                        neighbor points. 
+                Tangent Space Estimation, normal computation 
+                    optimization problem
+                        Linear least squares
+                        basic localization weighting
+                    Iterated Re-weightes Least Squares, IRLS fitting 
+                        solves the discontinuities problem 
+                    bilateral fitting 
+                        couple the local optimzation
+                            problems into a global, nonlinear optimization problem
+                    globally consistent normal 
+                    position of 3D scanner defines outside direction
+                    typically this is done by building neighbor graph and propagate
+                        normal orientation along graph edges
+                compute curvature
+                    use the tailor series of 𝑔(𝑥, 𝑦) around the 2D origin to
+                        compute the curvature properties
+                    Solve with weighted pseudo inverse or with SVD
+                    https://dl.acm.org/doi/pdf/10.5555/601671.601673
+                feature detection/ modification  
+                    https://www.researchgate.net/publication/2554207_Feature_Extraction_from_Point_Clouds
+                    what feature can be expected 
+                        corner
+                        sharp corner 
+                        close sheets
+                        edges 
+                        faces 
+                    Spin images 
+                        can well distinguish different
+                        local surface types
+                    denoising 
+                        https://dl.acm.org/doi/pdf/10.1145/882262.882368
+                        https://dl.acm.org/doi/pdf/10.1145/882262.882367
+                    control the density 
+            modeling
+            cad 
+            spline 
+            region growing 
+            triangulation 
+            3d printing 
+                gcode generation 
+                adjestment  
+                    height adjestment 
+                    temp. 
+                        pingtai
+            
+        seedfrombookcpt
+        seedfrompapercpt
+        seedfromcode
+    ---
+    book_pass
+        book--
+        book--
+        online--
+    ---
+    paper_pass
+    ---
+    code_pass
+        pcl library 
+        cgal 
+        eigen 
