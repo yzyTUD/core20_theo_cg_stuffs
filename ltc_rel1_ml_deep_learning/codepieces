@@ -1,0 +1,292 @@
+
+###ENV###
+    pycharm, anaconda... 
+
+// basic py 
+###TOPIC### pagerank
+    from IPython.display import Image
+    Image(url='http://upload.wikimedia.org/wikipedia/commons/f/fb/PageRanks-Example.svg')
+
+    import numpy as np
+
+
+    # M: the adjacency matrix of the pages. It is assumed to be column-stochastic (ie column sum to 1); all links have equal weight.
+    # A page with no outgoing links (sink) is represented as a page with outgoing links to each other page (ie restart page).
+    # d: damping factor
+    # square_error: the algorithm iterates until the difference between two successive PageRank vectors v is less than this (in squared norm)
+    # returns the PageRanks of all pages
+
+    def pagerank(M, d=0.85, square_error=1e-6):
+        n_pages = M.shape[0] # n_pages is the number of rows of M
+        v = np.random.rand(n_pages) # initialize to random vector
+        v = v / v.sum() # make v sum to 1
+        last_v = np.ones((n_pages)) # will contain the previous v
+        M_hat = d * M + (1-d)/n_pages * np.ones((n_pages, n_pages)) # equation (***) in Wikipedia page
+        while np.square(v - last_v).sum() > square_error:
+            last_v = v
+            v = M_hat.dot(v) # at each iteration, progress one timestep
+        return v
+
+    #check that M has the right format to be used by pagerank function
+    def check_M(M):
+        n_pages = M.shape[0] # n_pages is the number of rows of M
+        np.testing.assert_equal(M.shape[0], M.shape[1], err_msg = 'M should be square')
+        np.testing.assert_array_almost_equal(M.sum(axis=0), np.ones((n_pages)),err_msg = 'assert each column sums to one (M is assumed column-stochastic)')
+        for j in range(n_pages):
+            M_column = M[:,j]
+            n_nonzero = np.count_nonzero(M[:,j])
+            np.testing.assert_array_almost_equal(M_column[M_column.nonzero()], np.ones((n_nonzero)) / n_nonzero,err_msg = 'in column %g, all non-zero entries should be equal (and equal to 1 divided by their number)' % j)
+
+
+    # numbering pages A through K as 0 to 10
+    n_pages = 11
+
+    # will hold the number of link counts (assumed 0 or 1)
+    # columns = starting page, row = destination page, ie M_ij = whether or not there is a link from j to i
+    M_counts = np.zeros((n_pages, n_pages))
+
+    # page 0 (A in the graphic) is a sink because it has no outgoing links at all;
+    # however, M cannot contain an all-zero column, so do as if A was linking to all other pages (ie put 1's everywhere)
+    M_counts[:,0] = 1
+    M_counts[2,1] = 1 # B->C
+    M_counts[1,2] = 1 # C->B
+    M_counts[0,3] = 1 # D->A
+    M_counts[1,3] = 1 # D->B
+    M_counts[1,4] = 1 # E->B
+    M_counts[3,4] = 1 # E->D
+    M_counts[5,4] = 1 # E->F
+    M_counts[1,5] = 1 # F->B
+    M_counts[4,5] = 1 # F->E
+    M_counts[1,6] = 1 # G,H,I->B,E
+    M_counts[4,6] = 1
+    M_counts[1,7] = 1
+    M_counts[4,7] = 1
+    M_counts[1,8] = 1
+    M_counts[4,8] = 1
+    M_counts[4,9] = 1 # J,K->E
+    M_counts[4,10] = 1
+
+    print(M_counts)
+
+    M = np.empty((n_pages, n_pages))
+    for j in range(n_pages):
+        M[:,j] = M_counts[:,j] / M_counts[:,j].sum()
+    np.set_printoptions(precision=3)
+    print(M)
+
+    pagerank(M)
+
+###TOPIC### 8 queen py 
+    import random
+
+
+    # 冲突检查，在定义state时，采用state来标志每个皇后的位置，其中索引用来表示横坐标，基对应的值表示纵坐标，例如： state[0]=3，表示该皇后位于第1行的第4列上
+    def conflict(state, nextX):
+        nextY = len(state)
+        for i in range(nextY):
+            # 如果下一个皇后的位置与当前的皇后位置相邻（包括上下，左右）或在同一对角线上，则说明有冲突，需要重新摆放
+            if abs(state[i] - nextX) in (0, nextY - i):
+                return True
+        return False
+
+
+    # 采用生成器的方式来产生每一个皇后的位置，并用递归来实现下一个皇后的位置。
+    def queens(num, state=()):
+        for pos in range(num):
+            if not conflict(state, pos):
+                # 产生当前皇后的位置信息
+                if len(state) == num - 1:
+                    yield (pos,)
+                # 否则，把当前皇后的位置信息，添加到状态列表里，并传递给下一皇后。
+                else:
+                    for result in queens(num, state + (pos,)):
+                        yield (pos,) + result
+
+
+    # 为了直观表现棋盘，用X表示每个皇后的位置
+    def prettyprint(solution):
+        def line(pos, length=len(solution)):
+            return '. ' * (pos) + 'X ' + '. ' * (length - pos - 1)
+
+        for pos in solution:
+            print(line(pos))
+
+    prettyprint(random.choice(list(queens(8))))
+
+// numpy 
+###TOPIC### logic regression numpy 
+    import numpy as np
+
+    #--Creating values--
+    mu1, sigma1 = 0.0, 1.0 # mean and standard deviation
+    mu2, sigma2 = 2.0, 1.0 # mean and standard deviation
+    np.random.seed(23456789)
+    #np.random.seed(12345678)
+
+    #--Storing values in array--
+    #Setting distribution values
+    sizeN = 5
+    s1 = np.random.normal(mu1, sigma1, sizeN) #location, scale, size
+    s2 = np.random.normal(mu2, sigma2, sizeN) #location, scale, size
+    #s1 = np.random.uniform(-1, 0, size) #low, high, size
+    #s2 = np.random.uniform(0, 1, size)
+
+    #Setting class array as a bunch of ones and converting it to a new array
+    #First uniform curve
+    x1 = np.array(s1)
+    class0 = np.zeros(sizeN)
+    array1 = np.transpose(np.array([x1,class0]))
+
+    #Second uniform curve
+    x2 = np.array(s2)
+    # class2 = np.negative(np.ones(sizeN))
+    class1 = np.ones(sizeN)
+    array2 = np.transpose(np.array([x2,class1]))
+
+    train_data = np.vstack([array1, array2])
+
+    print(train_data)
+
+    # Draw graph
+    import matplotlib.pyplot as plt
+    y = np.ones(sizeN)
+    #Two seperate commands so color changes
+    # plt.scatter(x1, y)
+    # plt.scatter(x2, y)
+    t = np.transpose(train_data)
+    plt.scatter(t[0], t[1])
+
+    plt.title('Gaussian Distributions')
+    #plt.suptitle('Uniform Distribution')
+    #plt.yticks([]) #Do not show numbers on y-axis
+    plt.ylabel('Class 0, Class 1')
+    plt.xlabel('x')
+
+    # we have the data - generated or read in
+
+    def gradient(theta):
+        grad = np.zeros(2)
+        for s in range(len(train_data)):
+            d = 1.0/(1+2**(-theta[1]*train_data[s][0]-theta[0])) - train_data[s][1]
+            grad[0] += d
+            grad[1] += d * train_data[s][0]
+        return grad
+
+    max_iter = 1000000
+    eps = 1.0e-7
+    lam = 1/10
+
+    theta = [1,0]
+    gradient_norm = 1.0
+    iter = 0
+    while gradient_norm > eps:
+        grad = gradient(theta)
+        theta = theta - lam*grad
+        gradient_norm = np.linalg.norm(grad)
+        if (iter % 100000) == 0:
+            print("gradient_norm:  ",gradient_norm)
+        iter += 1
+        if iter > max_iter: 
+            break
+        
+    print("iter: ",iter)        
+    print("gradient_norm: ",gradient_norm) 
+    print("theta: ",theta)
+    print("x_0: ", -theta[0]/theta[1])
+
+    # show the resultin logistic funtion
+    x = np.linspace(mu1-4, mu2+4, 300)
+    y = 1.0/(1+2**(-theta[1]*x-theta[0]))
+    plt.plot(x,y)
+    plt.show()
+
+###TOPIC### gradient decent 
+
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    def update2(x, a, b, c, d, lam):
+    x = x - lam*(4*a*x**3 + 2*b*x + c)
+
+    return x
+
+    def V(x, a, b, c, d):
+    return a*x**4 + b*x**2 + c*x + d
+
+    # TODO: Change to right parameters.
+    a = 1
+    b = -3
+    c = 1
+    d = 3.514
+
+    x0 = -1.75
+    iterations = 101
+    lams = np.array([0.001, 0.19, 0.1, 0.205])
+
+    losses = np.empty(shape=(iterations, len(lams)))
+    results = np.empty(len(lams))
+
+    for j in range(len(lams)):
+    x = x0
+    lam = lams[j]
+    for i in range(iterations):
+        losses[i, j] = V(x, a, b, c, d)
+        if i != iterations - 1:
+        x = update2(x, a, b, c, d, lam)
+    results[j] = x
+
+    for j in range(len(lams)):
+    print(100*"-")
+    print("lambdas: ", lams[j])
+    print("xmin: ", results[j])
+    print("Loss: ", V(results[j], a, b, c, d))
+
+    colors = {
+        0.001: "blue",
+        0.19: "red",
+        0.1: "black",
+        0.205: "orange"
+    }
+
+    plt.figure(figsize=(8, 8))
+    plt.title("Lernkurven")
+    plt.xlabel("Epoche")
+    plt.ylabel("Loss V")
+    plt.xlim(0, iterations)
+
+    for i in range(len(lams)):
+    lam = lams[i]
+    plt.plot(range(iterations), losses[:, i], label=str(lam), color=colors[lam])
+
+    plt.legend()
+    plt.ylim(bottom=0)
+    plt.show()
+
+    plt.figure(figsize=(8, 8))
+    plt.title("Funktion V und Minima")
+    plt.xlabel("x")
+    plt.ylabel("V(x)")
+
+    xs = np.linspace(-2, 2, 100)
+    ys = V(xs, a, b, c, d)
+
+    plt.plot(xs, ys)
+
+    for j in range(len(lams)):
+    lam = lams[j]
+    xmin = results[j]
+    vxmin = V(xmin, a, b, c, d)
+    plt.plot(xmin, vxmin, marker='.', linestyle="None", label=str(lam), color=colors[lam], ms=10)
+    plt.legend()
+    plt.show()
+
+// deep learning 
+
+
+
+
+
+
+
+
+
