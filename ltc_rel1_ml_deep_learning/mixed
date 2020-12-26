@@ -1,6 +1,6 @@
 
-    preview_pass 
-        seedonline  
+    preview_pass, basic_cpts, book_pass, paper_pass
+        basic_cpts --   
             卷积神经网络,卷积层，池化层，全连接，激活函数
                 卷积神经
                 对于大型图像处理有出色表现。
@@ -191,7 +191,6 @@
             python 
             famous python packages
                 https://towardsdatascience.com/installing-keras-tensorflow-using-anaconda-for-machine-learning-44ab28ff39cb
-            ...
             famous cnns, dnns 
             状态空间搜索问题（启发式搜索）
                 A＊算法
@@ -340,29 +339,6 @@
                 image to image translation using conditional GAN's
                 an adversarial example using the Fast Gradient Signed Method (FGSM)
                 generate images of handwritten digits by training a Variational Autoencoder
-        seedfrombookcpt
-            https://www.deeplearningbook.org/lecture_slides.html
-                Gradient Descent
-                Structure of Neural Network Cost Functions
-                Deep Feedforward Networks
-            https://github.com/m2dsupsdlclass/lectures-labs
-                Intro to Deep Learning
-                Neural Networks and Backpropagation
-                Embeddings and Recommender Systems
-                Convolutional Neural Networks for Image Classification
-                Deep Learning for Object Detection and Image Segmentation
-                Recurrent Neural Networks and NLP
-                Sequence to sequence, attention and memory
-                Expressivity, Optimization and Generalization
-                Imbalanced classification and metric learning
-                Unsupervised Deep Learning and Generative models
-            https://web.stanford.edu/class/cs20si/syllabus.html
-        seedfrompapercpt
-            https://github.com/Tencent/ActionDetection-DBG
-        seedfromcodelibs
-            https://github.com/pbharrin/machinelearninginaction
-            https://github.com/PacktPublishing/Python-Deep-Learning-Second-Edition
-            https://github.com/Unity-Technologies/ml-agents
             scikit-learn: 
                 machine learning in Python https://scikit-learn.org
             numpy
@@ -392,11 +368,7 @@
                 conda就可以帮助你为不同的项目建立不同的运行环境。
                 还有很多项目使用的包版本不同，比如不同的pandas版本，不可能同时安装两个 Numpy 版本
                 每个项目中几乎都有一个独立环境和py
-                安装完Anaconda已经自带安装好了Python，不需要你再安装Python了。
-            summ_tasks:
-                https://github.com/pytorch/examples
-    ---
-    book_pass
+                安装完Anaconda已经自带安装好了Python，不需要你再安装Python了。 
         book--Machine Learning in Action
             classification 
                 NN、决策树、朴素贝叶斯、支持向量机svm、ridge回归、线性回归
@@ -723,6 +695,22 @@
                 16.6.2 逆强化学习 391
                 16.7 阅读材料 393
         book--understanding-machine-learning-theory-algorithms.pdf
+        tutorial -- https://www.deeplearningbook.org/lecture_slides.html
+            Gradient Descent
+            Structure of Neural Network Cost Functions
+            Deep Feedforward Networks
+        tutorial -- https://github.com/m2dsupsdlclass/lectures-labs
+            Intro to Deep Learning
+            Neural Networks and Backpropagation
+            Embeddings and Recommender Systems
+            Convolutional Neural Networks for Image Classification
+            Deep Learning for Object Detection and Image Segmentation
+            Recurrent Neural Networks and NLP
+            Sequence to sequence, attention and memory
+            Expressivity, Optimization and Generalization
+            Imbalanced classification and metric learning
+            Unsupervised Deep Learning and Generative models
+        tutorial -- https://web.stanford.edu/class/cs20si/syllabus.html
         slides--http://cs229.stanford.edu/syllabus-spring2019.html
         slides--http://www.cs.cmu.edu/~ninamf/ML13/
             http://www.cs.cmu.edu/~ninamf/ML13/lect0819.pdf
@@ -746,12 +734,10 @@
             Mathematical foundations
                 Minimum st-cut problem
                 Basics of polyhedral geometry
-        "neural network pytorch tutorial"
-            https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html
-            http://neuralnetworksanddeeplearning.com/about.html
-            https://adventuresinmachinelearning.com/neural-networks-tutorial/
+        tutorial -- https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html
+        tutorial -- http://neuralnetworksanddeeplearning.com/about.html
+        tutorial -- https://adventuresinmachinelearning.com/neural-networks-tutorial/
         https://pytorch.org/tutorials/
-        https://github.com/pytorch/examples
         book--Deep-Learning-with-PyTorch
         deeplearningbook.org
         book--Introduction to Machine Learning with Python
@@ -1230,9 +1216,12 @@
             多GPU计算
             图像增广
     ---
-    paper_pass
-    ---
     code_pass
+        https://github.com/Tencent/ActionDetection-DBG
+        https://github.com/pbharrin/machinelearninginaction
+        https://github.com/PacktPublishing/Python-Deep-Learning-Second-Edition
+        https://github.com/Unity-Technologies/ml-agents
+        https://github.com/pytorch/examples
         https://pub.ist.ac.at/~vnk/
         https://github.com/Skielex/QPBO
         https://github.com/opengm/opengm
