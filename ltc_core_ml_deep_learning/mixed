@@ -1215,13 +1215,29 @@
             梯度下降和随机梯度下降以及优化算法
             多GPU计算
             图像增广
+    
     ---
     code_pass
+        //
+        mnist classification 
+        
+        //
+        https://vision.princeton.edu/projects/2014/3DShapeNets/
+        https://modelnet.cs.princeton.edu/
+        https://github.com/hxdengBerkeley/PointCNN.Pytorch
+        https://github.com/rusty1s/pytorch_geometric
+        https://github.com/yangyanli/PointCNN
+        https://hkust-vgd.github.io/scanobjectnn/
+        https://github.com/pytorch/examples
+        https://github.com/pytorch/examples
+        https://github.com/PacktPublishing/Python-Deep-Learning-Second-Edition
+        https://towardsdatascience.com/deep-learning-on-point-clouds-implementing-pointnet-in-google-colab-1fd65cd3a263
+        deep learning on point clouds 
+
+        //
         https://github.com/Tencent/ActionDetection-DBG
         https://github.com/pbharrin/machinelearninginaction
-        https://github.com/PacktPublishing/Python-Deep-Learning-Second-Edition
         https://github.com/Unity-Technologies/ml-agents
-        https://github.com/pytorch/examples
         https://pub.ist.ac.at/~vnk/
         https://github.com/Skielex/QPBO
         https://github.com/opengm/opengm
